@@ -82,7 +82,7 @@ def passage(e, p, idx):
     if ct and ct.get("headers"):
         th = "".join(f"<th>{md(h)}</th>" for h in ct["headers"])
         trs = "".join("<tr>" + "".join(f"<td>{md(c)}</td>" for c in r) + "</tr>" for r in ct["rows"])
-        table = f'<div class="sub-h">한눈에 비교</div><table class="cmp"><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table>'
+        table = f'<div class="keep"><div class="sub-h">한눈에 비교</div><table class="cmp"><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table></div>'
 
     qs = []
     for q in p.get("questions", []):
@@ -118,8 +118,8 @@ def passage(e, p, idx):
 
   <div class="sec"><div class="sec-h">지문 요약</div>
     <ol class="struct">{struct}</ol>
-    <div class="sub-h">핵심 개념 정리</div>
-    <div class="kps">{kp}</div>
+    <div class="keep"><div class="sub-h">핵심 개념 정리</div>
+    <div class="kps">{kp}</div></div>
     {table}
   </div>
 
