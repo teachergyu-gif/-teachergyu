@@ -62,6 +62,17 @@ def cover(exams):
 </section>"""
 
 
+SAME = {"(좌동)", "좌동", "(동일)", "동일", "-", "—", ""}
+
+
+def row_html(r):
+    """A row whose later cells repeat the first value cell (or say '좌동') becomes one merged cell."""
+    head, first, rest = r[0], r[1], r[2:]
+    if rest and all(c.strip() in SAME or c.strip() == first.strip() for c in rest):
+        return f'<tr class="merged"><td>{md(head)}</td><td colspan="{len(r) - 1}">{md(first)}</td></tr>'
+    return "<tr>" + "".join(f"<td>{md(c)}</td>" for c in r) + "</tr>"
+
+
 def passage(e, p, idx):
     kw = "".join(f'<span class="kw">{md(k)}</span>' for k in p.get("keywords", []))
     struct = "".join(
@@ -76,7 +87,7 @@ def passage(e, p, idx):
     table = ""
     if ct and ct.get("headers"):
         th = "".join(f"<th>{md(h)}</th>" for h in ct["headers"])
-        trs = "".join("<tr>" + "".join(f"<td>{md(c)}</td>" for c in r) + "</tr>" for r in ct["rows"])
+        trs = "".join(row_html(r) for r in ct["rows"])
         table = f"""<div class="sec"><div class="sec-h">한눈에 비교</div>
     <table class="cmp"><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table></div>"""
     run = f'<div class="run"><span class="p-idx">{idx:02d}</span><span class="tag">{md(p["field"])}</span><span class="run-title">{md(p["title"])}</span><span class="p-exam">{md(e["exam"])}</span></div>'

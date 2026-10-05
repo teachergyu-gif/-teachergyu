@@ -132,3 +132,4 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
 .cmp{font-size:9.4pt}
 .cmp th,.cmp td{padding:2.8mm 3mm}
 .pg .sec + .sec{margin-top:8mm}
+.cmp tr.merged td[colspan]{text-align:center;background:var(--gold-xl);font-weight:600;color:var(--navy)}
