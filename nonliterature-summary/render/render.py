@@ -41,7 +41,7 @@ def cover(exams):
             rows.append(
                 f'<tr><td class="toc-no">{n:02d}</td><td class="toc-exam">{md(e["exam_short"])}</td>'
                 f'<td><span class="tag tag-sm">{md(p["field"])}</span></td>'
-                f'<td class="toc-title">{md(p["title"])}</td><td class="toc-q">{md(p["qrange"])}</td></tr>'
+                f'<td class="toc-title">{md(p["title"])}</td></tr>'
             )
     return f"""
 <section class="cover">
@@ -110,7 +110,7 @@ def passage(e, p, idx):
     return f"""
 <section class="passage">
   <header class="p-head">
-    <div class="p-meta"><span class="p-idx">{idx:02d}</span><span class="tag">{md(p["field"])}</span><span class="p-exam">{md(e["exam"])}</span><span class="p-q">{md(p["qrange"])}</span></div>
+    <div class="p-meta"><span class="p-idx">{idx:02d}</span><span class="tag">{md(p["field"])}</span><span class="p-exam">{md(e["exam"])}</span></div>
     <h2 class="p-title">{md(p["title"])}</h2>
     <div class="p-core"><span class="core-label">핵심 한 줄</span>{md(p.get("one_line"))}</div>
     <div class="kws">{kw}</div>
