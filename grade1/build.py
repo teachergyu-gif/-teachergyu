@@ -41,7 +41,7 @@ def mark(html, anchor):
     """Put an invisible, extractable marker on the block's first page (pass 1 only)."""
     if not MARKS:
         return html
-    m = f'<span class="anchor-mark">⟦{anchor}⟧</span>'
+    m = f'<span class="anchor-mark">QQ{anchor}QQ</span>'
     i = html.find('<div class="fit">')
     if i >= 0:
         j = i + len('<div class="fit">')
@@ -55,7 +55,7 @@ def grammar_topic(t, idx):
     for s in t.get("sections", []):
         pts = "".join(f"<li>{md(p)}</li>" for p in s.get("points", []))
         exs = "".join(f'<div class="g-ex">{md(e)}</div>' for e in s.get("examples", []))
-        exs = f'<div class="g-exs"><span class="g-ex-label">예문</span>{exs}</div>' if exs else ""
+        exs = f'<div class="g-exs"><span class="g-ex-label">예문</span><div class="g-ex-list">{exs}</div></div>' if exs else ""
         secs.append(f'<div class="g-sec keep"><div class="g-sec-h">{md(s["heading"])}</div><ul class="g-pts">{pts}</ul>{exs}</div>')
     table = ""
     tb = t.get("table")
@@ -172,7 +172,7 @@ def find_pages(pdf, anchors):
     found = {}
     for p in range(1, n + 1):
         txt = subprocess.run(["pdftotext", "-f", str(p), "-l", str(p), pdf, "-"], capture_output=True, text=True).stdout
-        for a in re.findall(r"⟦([GLUM]\d+)⟧", txt):
+        for a in re.findall(r"QQ([GLUM]\d+)QQ", txt):
             found.setdefault(a, p)
     missing = [a for a in anchors if a not in found]
     if missing:

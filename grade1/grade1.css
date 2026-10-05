@@ -1,6 +1,6 @@
 
 /* ---------- grade 1 booklet ---------- */
-.anchor-mark{position:absolute;font-size:1px;color:#fff;opacity:.01;pointer-events:none}
+.anchor-mark{position:absolute;font-size:3px;color:#fff;pointer-events:none}
 .parts4{grid-template-columns:1fr 1fr;gap:4mm;margin-top:10mm}
 .parts4 .part-card{padding:5mm 5.5mm 6mm}
 .parts4 .part-name{font-size:17pt;margin:.5mm 0 2mm}
@@ -12,7 +12,14 @@
 .g-pts{margin:0;padding-left:5mm}
 .g-pts li{margin:.6mm 0;font-size:9.4pt}
 .g-pts li::marker{color:var(--gold)}
-.g-exs{margin-top:2mm;background:var(--bg-soft);border-radius:3px;padding:2mm 3mm;display:grid;grid-template-columns:11mm 1fr;column-gap:2mm;row-gap:1mm}
-.g-ex-label{grid-row:span 9;font-size:7.6pt;font-weight:700;color:var(--gold);letter-spacing:.06em;padding-top:.6mm}
+.g-exs{margin-top:2mm;background:var(--bg-soft);border-radius:3px;padding:2mm 3mm;display:flex;gap:3mm}
+.g-ex-label{flex:none;font-size:7.6pt;font-weight:700;color:var(--gold);letter-spacing:.06em;padding-top:.6mm}
+.g-ex-list{display:flex;flex-direction:column;gap:1mm}
 .g-ex{font-size:9pt;color:#3b404b}
 .gtopic .sec + .sec{margin-top:6mm}
+
+/* compact table of contents (4 parts, ~25 rows) */
+.toc-page{height:auto;min-height:263mm}
+.toc-page .toc-title-h{margin-bottom:4mm}
+.toc-page .toc-part{margin:4.5mm 0 .5mm}
+.toc-page .toc td{padding:1.25mm 1.5mm;font-size:8.8pt}
