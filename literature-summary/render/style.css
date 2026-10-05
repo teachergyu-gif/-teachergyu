@@ -147,7 +147,7 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
 .chars{display:grid;grid-template-columns:repeat(2,1fr);gap:2.5mm}
 .ch{border:1px solid var(--line);border-radius:3px;padding:2.6mm 3.4mm}
 .ch-name{font-weight:700;color:var(--navy);font-size:9.8pt;margin-bottom:.5mm}
-.ch-name:before{content:"● ";color:var(--gold);font-size:7pt;position:relative;top:-1px}
+.ch-name:before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--gold);margin-right:6px;position:relative;top:-2px}
 .ch-desc{font-size:9pt;color:#3b404b}
 .ch:last-child:nth-child(odd){grid-column:1/-1}
 .cmp-sec{margin-top:9mm}
