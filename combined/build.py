@@ -64,7 +64,7 @@ def toc(nl_rows, lit_rows, nl_start, lit_start):
     return f"""
 <section class="toc-page">
   <div class="toc-title-h">목차</div>
-  <div class="toc-part"><span class="part-no">PART 1</span><span class="toc-part-name">비문학</span><span class="toc-part-legend">중요도 <i class="on">★</i> 5점 만점</span><span class="toc-part-pg">{nl_start}</span></div>
+  <div class="toc-part"><span class="part-no">PART 1</span><span class="toc-part-name">비문학</span><span class="toc-part-legend">중요도 <i class="on">★</i></span><span class="toc-part-pg">{nl_start}</span></div>
   {table(nl_rows)}
   <div class="toc-part"><span class="part-no">PART 2</span><span class="toc-part-name">문학</span><span class="toc-part-pg">{lit_start}</span></div>
   {table(lit_rows)}
