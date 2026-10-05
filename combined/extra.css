@@ -17,3 +17,10 @@
 /* cover title: clean bold gothic (Do Hyeon) */
 .cover-title{font-family:"Do Hyeon","Pretendard",sans-serif;font-weight:400;font-size:33pt;line-height:1.3;letter-spacing:0}
 .cover-title em{font-weight:400}
+/* 비문학 중요도 */
+.toc-star{width:24mm;text-align:right;white-space:nowrap}
+.stars i,.toc-part-legend i{font-style:normal;font-family:"Noto Sans CJK KR",sans-serif;font-size:10pt;letter-spacing:.5px}
+.stars .on,.toc-part-legend .on{color:var(--gold)}
+.stars .off{color:#dde0e6}
+.toc-part-legend{margin-left:auto;font-size:8pt;color:var(--muted)}
+.toc-part-legend + .toc-part-pg{margin-left:10mm}

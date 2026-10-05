@@ -4,6 +4,24 @@ import importlib.util, os
 C = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(C)
 TITLE = "부산외고 2학년 중간고사 비문학, 문학 요약 자료"
+# 비문학 중요도 (5점 만점), keyed by passage title
+IMPORTANCE = {
+    "클라이버의 기초 대사량 연구": 5,
+    "공포 소구에 대한 연구": 2,
+    "고체 촉매의 구성 요소": 2,
+    "몸과 의식의 관계에 대한 철학적 탐구": 4,
+    "데이터 소유권과 데이터 이동권": 4,
+    "초정밀 저울의 작동 원리와 응용": 5,
+    "조선 시대의 신분 제도": 3,
+    "경마식 보도의 특성과 보완 방안": 5,
+    "데이터에서 결측치와 이상치의 처리방법": 4,
+    "노자에 대한 학자들의 해석": 5,
+}
+
+
+def stars(title):
+    n = IMPORTANCE[title]
+    return f'<span class="stars" title="중요도 {n}/5">' + '<i class="on">★</i>' * n + '<i class="off">★</i>' * (5 - n) + "</span>"
 
 
 def load_module(name, path):
@@ -46,7 +64,7 @@ def toc(nl_rows, lit_rows, nl_start, lit_start):
     return f"""
 <section class="toc-page">
   <div class="toc-title-h">목차</div>
-  <div class="toc-part"><span class="part-no">PART 1</span><span class="toc-part-name">비문학</span><span class="toc-part-pg">{nl_start}</span></div>
+  <div class="toc-part"><span class="part-no">PART 1</span><span class="toc-part-name">비문학</span><span class="toc-part-legend">중요도 <i class="on">★</i> 5점 만점</span><span class="toc-part-pg">{nl_start}</span></div>
   {table(nl_rows)}
   <div class="toc-part"><span class="part-no">PART 2</span><span class="toc-part-name">문학</span><span class="toc-part-pg">{lit_start}</span></div>
   {table(lit_rows)}
@@ -66,7 +84,7 @@ def build():
             nl_rows.append(
                 f'<tr><td class="toc-no">{idx:02d}</td><td class="toc-exam">{md(e["exam_short"])}</td>'
                 f'<td><span class="tag tag-sm">{md(p["field"])}</span></td>'
-                f'<td class="toc-title">{md(p["title"])}</td><td class="toc-pg">{page}</td></tr>'
+                f'<td class="toc-title">{md(p["title"])}</td><td class="toc-star">{stars(p["title"])}</td><td class="toc-pg">{page}</td></tr>'
             )
             nl_body.append(nl.passage(e, p, idx))
             page += 2
