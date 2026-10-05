@@ -43,3 +43,9 @@
 .caution-pts{margin-top:2mm}
 .caution-tb td:nth-child(2){white-space:nowrap;text-align:center}
 .caution-tb td:first-child{font-weight:700;color:var(--navy);background:var(--bg-soft)}
+/* compact reference table under a concept section (상대 높임 체계) so it can stay on the same page */
+.sbox{padding:2.5mm 3.5mm 1mm}
+.sbox .caution-h{font-size:9pt;margin-bottom:1.8mm}
+.sbox .caution-item{padding:2mm 2.5mm;margin-bottom:1.5mm}
+.sb-tb{font-size:7.9pt}
+.sb-tb th,.sb-tb td{padding:.9mm 1.8mm;line-height:1.38}
