@@ -48,7 +48,7 @@ def cover(exams):
   <div class="cover-top">
     <div class="cover-school">RICH ACADEMY</div>
     <div class="cover-rule"></div>
-    <div class="cover-author">제작 <b>이재규T</b></div>
+    <div class="cover-author"><b>이재규T</b></div>
   </div>
   <div class="cover-main">
     <div class="cover-kicker">2학년 · 중간고사 대비</div>
