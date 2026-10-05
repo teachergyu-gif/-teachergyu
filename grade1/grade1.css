@@ -23,3 +23,13 @@
 .toc-page .toc-title-h{margin-bottom:4mm}
 .toc-page .toc-part{margin:4.5mm 0 .5mm}
 .toc-page .toc td{padding:1.25mm 1.5mm;font-size:8.8pt}
+
+/* 주의할 유형 ! (grammar caution box) */
+.caution{border:1.5px solid var(--beige);border-radius:3px;background:var(--gold-xl);padding:3.5mm 4.5mm 2mm;margin:4mm 0 3mm}
+.caution-h{display:inline-block;font-weight:800;font-size:10pt;color:#fff;background:var(--navy);border-radius:2px;padding:.4mm 3mm;margin-bottom:2.5mm}
+.caution-item{background:#fff;border:1px solid var(--line);border-radius:3px;padding:3mm 4mm;margin-bottom:2.5mm}
+.caution-q{font-weight:700;color:var(--navy);font-size:10pt;margin-bottom:1.2mm}
+.caution-no{color:var(--gold);margin-right:5px}
+.caution-a{font-size:9.3pt}
+.caution-tb{margin-top:2.5mm;font-size:8.9pt}
+.caution-tb td:first-child{white-space:nowrap}

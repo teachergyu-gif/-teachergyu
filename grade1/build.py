@@ -57,6 +57,20 @@ def grammar_topic(t, idx):
         exs = "".join(f'<div class="g-ex">{md(e)}</div>' for e in s.get("examples", []))
         exs = f'<div class="g-exs"><span class="g-ex-label">예문</span><div class="g-ex-list">{exs}</div></div>' if exs else ""
         secs.append(f'<div class="g-sec keep"><div class="g-sec-h">{md(s["heading"])}</div><ul class="g-pts">{pts}</ul>{exs}</div>')
+    cautions = ""
+    if t.get("cautions"):
+        items = []
+        for n, c in enumerate(t["cautions"], 1):
+            exs = "".join(f'<div class="g-ex">{md(e)}</div>' for e in c.get("examples", []))
+            exs = f'<div class="g-exs"><span class="g-ex-label">예문</span><div class="g-ex-list">{exs}</div></div>' if exs else ""
+            ctb = ""
+            if c.get("table"):
+                th = "".join(f"<th>{md(h)}</th>" for h in c["table"]["headers"])
+                trs = "".join("<tr>" + "".join(f"<td>{md(x)}</td>" for x in r) + "</tr>" for r in c["table"]["rows"])
+                ctb = f'<table class="cmp caution-tb"><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table>'
+            items.append(f'<div class="caution-item keep"><div class="caution-q"><span class="caution-no">({n})</span>{md(c["title"])}</div>'
+                         f'<div class="caution-a">{md(c["desc"])}</div>{exs}{ctb}</div>')
+        cautions = f'<div class="caution"><div class="caution-h">주의할 유형 !</div>{"".join(items)}</div>'
     table = ""
     tb = t.get("table")
     if tb and tb.get("headers"):
@@ -74,7 +88,7 @@ def grammar_topic(t, idx):
     <h2 class="p-title">{md(t["title"])}</h2>
     <div class="p-core"><span class="core-label">핵심 한 줄</span>{md(t.get("one_line"))}</div>
   </header>
-  <div class="sec"><div class="sec-h">개념 정리</div>{''.join(secs)}</div>
+  <div class="sec"><div class="sec-h">개념 정리</div>{''.join(secs)}{cautions}</div>
   {table}
   {tips}
 </section>"""
