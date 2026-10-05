@@ -80,7 +80,7 @@ def grammar_topic(t, idx):
     tips = ""
     if t.get("tips"):
         cards = "".join(f'<div class="kp"><div class="kp-term">{md(k["term"])}</div><div class="kp-desc">{md(k["desc"])}</div></div>' for k in t["tips"])
-        tips = f'<div class="sec keep"><div class="sec-h">구별 포인트</div><div class="kps">{cards}</div></div>'
+        tips = f'<div class="sec keep"><div class="sec-h">{md(t.get("tips_heading") or "구별 포인트")}</div><div class="kps">{cards}</div></div>'
     return f"""
 <section class="gtopic">
   <header class="p-head">
