@@ -24,3 +24,5 @@
 .stars .off{color:#dde0e6}
 .toc-part-legend{margin-left:auto;font-size:8pt;color:var(--muted)}
 .toc-part-legend + .toc-part-pg{margin-left:10mm}
+.toc-note{margin-top:2.5mm;font-size:8.6pt;color:var(--muted);text-align:right}
+.toc-note i{font-style:normal;font-family:"Noto Sans CJK KR",sans-serif;color:var(--gold);margin-right:3px}
