@@ -4,7 +4,8 @@ const path = require('path');
   const S = __dirname;
   const out = process.argv[2] || path.join(S, 'out.pdf');
   const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--allow-file-access-from-files'] });
-  const page = await browser.newPage();
+  const page = await browser.newPage({ viewport: { width: 680, height: 1000 } });
+  await page.emulateMedia({ media: 'print' });
   await page.goto('file://' + path.join(S, 'summary.html'), { waitUntil: 'networkidle' });
   await page.evaluate(() => document.fonts.ready);
   const fits = await page.evaluate(() => {
@@ -17,6 +18,17 @@ const path = require('path');
         f.style.zoom = z;
         f.style.width = (100 / z) + '%';
         if (f.getBoundingClientRect().height <= pg.clientHeight) break;
+      }
+      const ol = f.querySelector('.struct');
+      if (ol && z === 1) {
+        const items = ol.querySelectorAll('li');
+        const spare = pg.clientHeight - f.getBoundingClientRect().height - 8;
+        const extra = Math.min(Math.max(spare, 0) / items.length / 2, 14);
+        items.forEach(li => {
+          const cs = getComputedStyle(li);
+          li.style.paddingTop = (parseFloat(cs.paddingTop) + extra) + 'px';
+          li.style.paddingBottom = (parseFloat(cs.paddingBottom) + extra) + 'px';
+        });
       }
       res.push([i + 1, z, Math.round(f.getBoundingClientRect().height / pg.clientHeight * 100)]);
     });
