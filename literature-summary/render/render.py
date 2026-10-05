@@ -129,6 +129,17 @@ def set_html(st, idx):
         pts.append(f'<div class="sec"><div class="sec-h">감상 포인트 <span class="sec-work">{mark}{md(w["title"])}</span></div><div class="kps">{cards}</div></div>')
     run = (f'<div class="run"><span class="p-idx">{idx:02d}</span><span class="tag">{md(st["set_label"])}</span>'
            f'<span class="run-title">{md(st["set_title"])}</span><span class="p-exam">{md(st.get("source"))}</span></div>')
+    if len(ws) >= 3:
+        # three short works: one column per work keeps the shared page compact
+        cols = []
+        for w in ws:
+            mark = f'<span class="w-mark">{md(w["mark"])}</span>' if w.get("mark") else ""
+            cards = "".join(
+                f'<div class="kp"><div class="kp-term">{md(k["term"])}</div><div class="kp-desc">{md(k["desc"])}</div></div>'
+                for k in w.get("points", [])
+            )
+            cols.append(f'<div class="pcol"><div class="pcol-h">{mark}{md(w["title"])}</div>{cards}</div>')
+        pts = [f'<div class="sec"><div class="sec-h">감상 포인트</div><div class="pcols">{"".join(cols)}</div></div>']
     out.append(f'<section class="pg"><div class="fit">{run}{"".join(pts)}{cmp}</div></section>')
     return "".join(out)
 

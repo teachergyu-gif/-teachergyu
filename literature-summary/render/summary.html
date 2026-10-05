@@ -17,7 +17,7 @@
 @page{size:A4;margin:16mm 15mm 17mm 15mm}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:#fff}
-body{font-family:"Pretendard",sans-serif;color:var(--ink);font-size:9.6pt;line-height:1.62;word-break:keep-all;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:"Pretendard","Noto Sans CJK KR",sans-serif;color:var(--ink);font-size:9.6pt;line-height:1.62;word-break:keep-all;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 strong{color:var(--navy);font-weight:700;background:linear-gradient(transparent 62%,var(--gold-l) 62%)}
 p{margin:0}
 
@@ -30,32 +30,32 @@ p{margin:0}
 .cover-main:after{content:"";position:absolute;right:-30mm;top:-30mm;width:90mm;height:90mm;border:1px solid rgba(168,133,79,.45);border-radius:50%}
 .cover-main:before{content:"";position:absolute;right:-12mm;top:-12mm;width:54mm;height:54mm;border:1px solid rgba(168,133,79,.3);border-radius:50%}
 .cover-kicker{font-size:9pt;letter-spacing:.2em;color:var(--gold-l);margin-bottom:8mm}
-.cover-title{font-family:"NSerif",serif;font-weight:700;font-size:30pt;line-height:1.32;margin:0;letter-spacing:-.01em}
+.cover-title{font-family:"NSerif","Noto Serif CJK KR",serif;font-weight:700;font-size:30pt;line-height:1.32;margin:0;letter-spacing:-.01em}
 .cover-title em{font-style:normal;color:#e2c48f;font-weight:900}
 .cover-sub{margin-top:9mm;font-size:9.5pt;color:#c9d0de;border-top:1px solid rgba(255,255,255,.18);padding-top:5mm}
 .cover-toc{margin-top:11mm}
-.toc-head{font-family:"NSerif",serif;font-weight:700;font-size:12pt;color:var(--navy);border-bottom:2px solid var(--navy);padding-bottom:2mm;margin-bottom:1mm}
+.toc-head{font-family:"NSerif","Noto Serif CJK KR",serif;font-weight:700;font-size:12pt;color:var(--navy);border-bottom:2px solid var(--navy);padding-bottom:2mm;margin-bottom:1mm}
 .toc{width:100%;border-collapse:collapse;font-size:9.4pt}
 .toc td{padding:2.1mm 1.5mm;border-bottom:1px solid var(--line);vertical-align:middle}
-.toc-no{font-family:"NSerif",serif;color:var(--gold);font-weight:700;width:9mm}
+.toc-no{font-family:"NSerif","Noto Serif CJK KR",serif;color:var(--gold);font-weight:700;width:9mm}
 .toc-exam{color:var(--muted);width:27mm;font-size:8.6pt}
 .toc-title{font-weight:600;color:var(--navy)}
 .toc-q{text-align:right;color:var(--muted);font-size:8.6pt;width:18mm}
 .cover-guide{margin-top:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
 .guide-item{border-top:2px solid var(--gold);padding-top:3mm;font-size:8.3pt;color:var(--muted);display:flex;flex-direction:column;gap:1mm}
 .guide-item b{color:var(--navy);font-size:10pt}
-.gi-n{font-family:"NSerif",serif;color:var(--gold);font-weight:700}
+.gi-n{font-family:"NSerif","Noto Serif CJK KR",serif;color:var(--gold);font-weight:700}
 
 /* ---------- passage ---------- */
 .passage{page-break-before:always}
 .p-head{border-bottom:2px solid var(--navy);padding-bottom:4mm;margin-bottom:5mm}
 .p-meta{display:flex;align-items:center;gap:7px;font-size:8.5pt;color:var(--muted)}
-.p-idx{font-family:"NSerif",serif;font-weight:900;font-size:15pt;color:var(--gold);line-height:1;margin-right:2px}
+.p-idx{font-family:"NSerif","Noto Serif CJK KR",serif;font-weight:900;font-size:15pt;color:var(--gold);line-height:1;margin-right:2px}
 .p-exam{font-weight:600;color:var(--navy2)}
 .p-q{margin-left:auto;border:1px solid var(--line);padding:0 8px;border-radius:20px}
 .tag{background:var(--navy);color:#fff;font-size:8pt;font-weight:600;padding:1px 9px;border-radius:2px;letter-spacing:.04em}
 .tag-sm{font-size:7.5pt;padding:0 7px;white-space:nowrap}
-.p-title{font-family:"NSerif",serif;font-weight:700;font-size:19pt;color:var(--navy);margin:2.5mm 0 3.5mm;line-height:1.3;letter-spacing:-.01em}
+.p-title{font-family:"NSerif","Noto Serif CJK KR",serif;font-weight:700;font-size:19pt;color:var(--navy);margin:2.5mm 0 3.5mm;line-height:1.3;letter-spacing:-.01em}
 .p-core{background:var(--gold-xl);border-left:3px solid var(--gold);padding:3mm 4mm;font-size:10pt;font-weight:500;color:var(--navy)}
 .core-label{display:block;font-size:7.6pt;letter-spacing:.14em;color:var(--gold);font-weight:700;margin-bottom:.5mm}
 .p-core strong{background:none}
@@ -64,7 +64,7 @@ p{margin:0}
 .kw:before{content:"# ";color:var(--gold)}
 
 .sec{margin-top:6mm}
-.sec-h{display:flex;align-items:baseline;gap:8px;font-family:"NSerif",serif;font-weight:700;font-size:13pt;color:var(--navy);padding-bottom:2mm;border-bottom:1px solid var(--line);margin-bottom:3.5mm;break-after:avoid}
+.sec-h{display:flex;align-items:baseline;gap:8px;font-family:"NSerif","Noto Serif CJK KR",serif;font-weight:700;font-size:13pt;color:var(--navy);padding-bottom:2mm;border-bottom:1px solid var(--line);margin-bottom:3.5mm;break-after:avoid}
 .sec-h small{font-family:"Pretendard";font-size:8.5pt;color:var(--muted);font-weight:400}
 .sec-n{font-size:9pt;color:#fff;background:var(--gold);padding:0 6px;border-radius:2px;font-family:"Pretendard";font-weight:700;position:relative;top:-2px}
 .sub-h{font-weight:700;color:var(--navy);font-size:9.8pt;margin:4.5mm 0 2.5mm;padding-left:7px;border-left:3px solid var(--navy);break-after:avoid}
@@ -89,7 +89,7 @@ p{margin:0}
 .trend strong{color:#fff;background:none}
 .q{display:grid;grid-template-columns:17mm 1fr;border:1px solid var(--line);border-radius:3px;margin-bottom:2.6mm;break-inside:avoid;overflow:hidden}
 .q-side{background:var(--bg-soft);border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1mm;padding:2mm 0}
-.q-no{font-family:"NSerif",serif;font-weight:700;color:var(--navy);font-size:11pt}
+.q-no{font-family:"NSerif","Noto Serif CJK KR",serif;font-weight:700;color:var(--navy);font-size:11pt}
 .q-ans{font-size:8pt;font-weight:700;color:#fff;background:var(--gold);border-radius:10px;padding:0 7px;white-space:nowrap}
 .q-main{padding:2.4mm 3.5mm}
 .q-type{display:inline-block;font-size:7.8pt;font-weight:700;color:var(--gold);letter-spacing:.03em;border-bottom:1px solid var(--gold-l);margin-bottom:.8mm}
@@ -121,7 +121,7 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
 .pg .fit{transform-origin:top left}
 .run{display:flex;align-items:center;gap:7px;font-size:8.5pt;color:var(--muted);border-bottom:2px solid var(--navy);padding-bottom:3mm;margin-bottom:2mm}
 .run .p-idx{font-size:13pt}
-.run-title{font-family:"NSerif",serif;font-weight:700;font-size:12pt;color:var(--navy);margin-right:auto}
+.run-title{font-family:"NSerif","Noto Serif CJK KR",serif;font-weight:700;font-size:12pt;color:var(--navy);margin-right:auto}
 .pg .sec:first-of-type{margin-top:5mm}
 .struct li{padding:2.4mm 0}
 .kps{gap:3mm}
@@ -144,7 +144,7 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
 .facts th{width:22mm;text-align:left;background:var(--navy);color:#fff;font-weight:600;padding:2.2mm 3mm;border-bottom:1px solid #3a4a68;vertical-align:top}
 .facts td{padding:2.2mm 3.5mm;border-bottom:1px solid var(--line);vertical-align:top}
 .facts tr:first-child td{border-top:1px solid var(--line)}
-.flow .fl-quote{font-family:"NSerif",serif;font-size:9.4pt;color:var(--navy2);background:var(--bg-soft);border-left:2px solid var(--gold);padding:1mm 3mm;margin:.3mm 0 1.4mm;display:inline-block}
+.flow .fl-quote{font-family:"NSerif","Noto Serif CJK KR",serif;font-size:9.4pt;color:var(--navy2);background:var(--bg-soft);border-left:2px solid var(--gold);padding:1mm 3mm;margin:.3mm 0 1.4mm;display:inline-block}
 .chars{display:grid;grid-template-columns:repeat(2,1fr);gap:2.5mm}
 .ch{border:1px solid var(--line);border-radius:3px;padding:2.6mm 3.4mm}
 .ch-name{font-weight:700;color:var(--navy);font-size:9.8pt;margin-bottom:.5mm}
@@ -159,6 +159,12 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
 .sec-work{font-family:"Pretendard";font-size:10pt;font-weight:600;color:var(--navy2);margin-left:4px}
 .sec-work .w-mark{font-size:8pt;padding:0 5px;top:-1px;margin-right:5px}
 .toc .toc-q{width:auto;white-space:nowrap}
+.pcols{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm;align-items:start}
+.pcol{display:flex;flex-direction:column;gap:2.5mm}
+.pcol-h{font-weight:700;color:var(--navy);font-size:9.6pt;padding-bottom:1.5mm;border-bottom:2px solid var(--gold)}
+.pcol-h .w-mark{font-size:8pt;padding:0 5px;top:-1px;margin-right:5px}
+.pcol .kp{padding:3mm 3.2mm}
+.pcol .kp-desc{font-size:9pt;line-height:1.6}
 </style></head><body>
 <section class="cover">
   <div class="cover-top">
@@ -169,11 +175,11 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
   <div class="cover-main">
     <div class="cover-kicker">2학년 · 중간고사 대비</div>
     <h1 class="cover-title">부산외고 2학년<br>중간고사 대비<br><em>문학 요약자료</em></h1>
-    <div class="cover-sub">문학 7세트 10작품 · 작품 해제 · 작품 분석</div>
+    <div class="cover-sub">문학 11세트 20작품 · 작품 해제 · 작품 분석</div>
   </div>
   <div class="cover-toc">
     <div class="toc-head">수록 작품</div>
-    <table class="toc"><tr><td class="toc-no">01</td><td><span class="tag tag-sm">고전시가·수필</span></td><td class="toc-title">한거십팔곡 <span class="toc-au">권호문</span> · 기취서행 <span class="toc-au">김낙행</span></td><td class="toc-q">2024학년도 6월 모의평가</td></tr><tr><td class="toc-no">02</td><td><span class="tag tag-sm">고전시가</span></td><td class="toc-title">관동별곡 <span class="toc-au">정철</span></td><td class="toc-q">2학기 수업 자료</td></tr><tr><td class="toc-no">03</td><td><span class="tag tag-sm">현대시</span></td><td class="toc-title">맹세 <span class="toc-au">조지훈</span> · 봄 <span class="toc-au">오규원</span></td><td class="toc-q">2024학년도 6월 모의평가</td></tr><tr><td class="toc-no">04</td><td><span class="tag tag-sm">현대소설</span></td><td class="toc-title">무성격자 <span class="toc-au">최명익</span></td><td class="toc-q">2024학년도 6월 모의평가</td></tr><tr><td class="toc-no">05</td><td><span class="tag tag-sm">현대소설</span></td><td class="toc-title">폐어인 <span class="toc-au">최명익</span></td><td class="toc-q">2학기 수업 자료</td></tr><tr><td class="toc-no">06</td><td><span class="tag tag-sm">고전소설</span></td><td class="toc-title">상사동기 <span class="toc-au">작자 미상</span></td><td class="toc-q">2024학년도 6월 모의평가</td></tr><tr><td class="toc-no">07</td><td><span class="tag tag-sm">고전소설</span></td><td class="toc-title">금령전 <span class="toc-au">작자 미상</span> · 심청전 <span class="toc-au">작자 미상</span></td><td class="toc-q">2학기 수업 자료</td></tr></table>
+    <table class="toc"><tr><td class="toc-no">01</td><td><span class="tag tag-sm">고전시가·수필</span></td><td class="toc-title">한거십팔곡 <span class="toc-au">권호문</span> · 기취서행 <span class="toc-au">김낙행</span></td><td class="toc-q">2024학년도 6월 모의평가</td></tr><tr><td class="toc-no">02</td><td><span class="tag tag-sm">고전시가</span></td><td class="toc-title">관동별곡 <span class="toc-au">정철</span></td><td class="toc-q">2학기 수업 자료</td></tr><tr><td class="toc-no">03</td><td><span class="tag tag-sm">고전시가</span></td><td class="toc-title">흥망이 유수하니~ <span class="toc-au">원천석</span> · 국화야 너는 어이~ <span class="toc-au">이정보</span> · 동짓달 기나긴 밤을~ <span class="toc-au">황진이</span></td><td class="toc-q">2학기 수업 자료</td></tr><tr><td class="toc-no">04</td><td><span class="tag tag-sm">고전시가</span></td><td class="toc-title">두터비 파리를 물고~ <span class="toc-au">작자 미상</span> · 어이 못 오던다~ <span class="toc-au">작자 미상</span> · 한숨아 세한숨아~ <span class="toc-au">작자 미상</span></td><td class="toc-q">2학기 수업 자료</td></tr><tr><td class="toc-no">05</td><td><span class="tag tag-sm">현대시</span></td><td class="toc-title">맹세 <span class="toc-au">조지훈</span> · 봄 <span class="toc-au">오규원</span></td><td class="toc-q">2024학년도 6월 모의평가</td></tr><tr><td class="toc-no">06</td><td><span class="tag tag-sm">현대시</span></td><td class="toc-title">동물원의 오후 <span class="toc-au">조지훈</span> · 밤은 영양이 풍부하다 <span class="toc-au">김현승</span></td><td class="toc-q">2학기 수업 자료</td></tr><tr><td class="toc-no">07</td><td><span class="tag tag-sm">현대시</span></td><td class="toc-title">성에꽃 <span class="toc-au">최두석</span> · 귀뚜라미 <span class="toc-au">나희덕</span></td><td class="toc-q">2학기 수업 자료</td></tr><tr><td class="toc-no">08</td><td><span class="tag tag-sm">현대소설</span></td><td class="toc-title">무성격자 <span class="toc-au">최명익</span></td><td class="toc-q">2024학년도 6월 모의평가</td></tr><tr><td class="toc-no">09</td><td><span class="tag tag-sm">현대소설</span></td><td class="toc-title">폐어인 <span class="toc-au">최명익</span></td><td class="toc-q">2학기 수업 자료</td></tr><tr><td class="toc-no">10</td><td><span class="tag tag-sm">고전소설</span></td><td class="toc-title">상사동기 <span class="toc-au">작자 미상</span></td><td class="toc-q">2024학년도 6월 모의평가</td></tr><tr><td class="toc-no">11</td><td><span class="tag tag-sm">고전소설</span></td><td class="toc-title">금령전 <span class="toc-au">작자 미상</span> · 심청전 <span class="toc-au">작자 미상</span></td><td class="toc-q">2학기 수업 자료</td></tr></table>
   </div>
 </section>
 <section class="pg"><div class="fit">
@@ -226,7 +232,93 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
 </div></section>
 <section class="pg"><div class="fit">
   <header class="p-head">
-    <div class="p-meta"><span class="p-idx">03</span><span class="tag">현대시</span><span class="p-exam">2024학년도 6월 모의평가</span></div>
+    <div class="p-meta"><span class="p-idx">03</span><span class="tag">고전시가</span><span class="p-exam">2학기 수업 자료</span></div>
+    <h2 class="p-title"><span class="w-mark">(가)</span>흥망이 유수하니~ <span class="w-author">원천석</span></h2>
+  </header>
+  <div class="sec"><div class="sec-h"><span class="sec-n">01</span>작품 해제</div>
+    <table class="facts"><tr><th>갈래</th><td>평시조, 회고가</td></tr><tr><th>성격</th><td>회고적, 애상적, 감상적</td></tr><tr><th>화자/어조</th><td>고려 왕궁 터를 지나는 고려 유신(&#x27;객&#x27;) / 애상적·영탄적 독백 어조</td></tr><tr><th>주제</th><td>고려 왕조 회고와 인생무상(무상감)</td></tr><tr><th>특징</th><td>화자를 &#x27;객&#x27;으로 표현하여 슬픔을 객관화함 ; &#x27;추초&#x27;(시각)·&#x27;목적&#x27;(청각) 등 감각적 이미지로 정서 환기 ; &#x27;-로다&#x27;, &#x27;-노라&#x27;의 영탄적 어미 사용</td></tr></table>
+    <div class="p-core"><span class="core-label">작품 개관</span>고려 유신인 작가가 잡초 우거진 옛 궁궐 터 <strong>만월대</strong>를 바라보며 고려 멸망에 대한 <strong>무상감</strong>을 노래한 회고가임. 초장에서 폐허가 된 왕궁 터를, 중장에서 사라진 오백 년 왕업을 제시하고, 종장에서 지나는 객의 눈물로 슬픔을 집약함.</div>
+  </div>
+  <div class="sec"><div class="sec-h"><span class="sec-n">02</span>작품 분석</div>
+    <ol class="struct flow"><li><span class="st-label">초장</span><div class="st-body"><div class="fl-quote">만월대(滿月臺)도 추초(秋草)ㅣ로다 (만월대도 가을 풀만 우거졌구나)</div>&#x27;흥망이 유수ᄒᆞ니&#x27;에서 나라의 흥망은 운수에 달렸다는 <strong>운명론적 세계관</strong>이 드러남. 고려 왕궁 터 만월대가 &#x27;추초&#x27;로 덮였다고 하여 <strong>쇠락한 고려 왕조</strong>를 가을 풀의 시각적 이미지로 비유함.</div></li><li><span class="st-label">중장</span><div class="st-body"><div class="fl-quote">오백 년 왕업이 목적에 부쳤으니 (오백 년 왕업이 목동의 피리 소리에 남았으니)</div>찬란했던 오백 년 왕업이 이제 목동의 피리 소리에만 남았다고 하여 <strong>인생무상</strong>을 드러냄. &#x27;목적&#x27;은 <strong>청각적 이미지</strong>로 쓸쓸함을 더함.</div></li><li><span class="st-label">종장</span><div class="st-body"><div class="fl-quote">석양에 지나ᄂᆞᆫ 객이 눈물계워 ᄒᆞ노라 (석양에 지나는 나그네가 눈물겨워하노라)</div>해 지는 &#x27;석양&#x27;은 <strong>하강의 이미지</strong>로 고려 왕조의 멸망을 간접적으로 표현하며 화자의 정서를 심화함. 화자 자신을 &#x27;객&#x27;으로 표현하여 <strong>주관적 슬픔을 객관화</strong>하고, 영탄적 어미로 침울한 심정을 드러냄.</div></li></ol>
+  </div>
+</div></section>
+
+<section class="pg"><div class="fit">
+  <header class="p-head">
+    <div class="p-meta"><span class="p-idx">03</span><span class="tag">고전시가</span><span class="p-exam">2학기 수업 자료</span></div>
+    <h2 class="p-title"><span class="w-mark">(나)</span>국화야 너는 어이~ <span class="w-author">이정보</span></h2>
+  </header>
+  <div class="sec"><div class="sec-h"><span class="sec-n">01</span>작품 해제</div>
+    <table class="facts"><tr><th>갈래</th><td>평시조</td></tr><tr><th>성격</th><td>예찬적, 교훈적, 의지적</td></tr><tr><th>화자/어조</th><td>국화를 바라보는 선비 / 국화에게 말을 건네는 예찬적 어조</td></tr><tr><th>주제</th><td>오상고절을 보여 주는 국화에 대한 예찬</td></tr><tr><th>특징</th><td>국화를 &#x27;너&#x27;로 부르는 의인법·돈호법 ; &#x27;삼월동풍&#x27;과 &#x27;낙목한천&#x27;의 대비 ; 의문형 어미와 영탄법 활용</td></tr></table>
+    <div class="p-core"><span class="core-label">작품 개관</span>벼슬에서 물러난 작가가 추운 계절에 홀로 핀 <strong>국화</strong>를 예찬한 시조임. 초장·중장에서 봄을 마다하고 낙목한천에 핀 국화에게 묻고, 종장에서 국화를 <strong>오상고절</strong>이라 예찬하여 군자가 지녀야 할 덕목인 <strong>절개</strong>를 드러냄.</div>
+  </div>
+  <div class="sec"><div class="sec-h"><span class="sec-n">02</span>작품 분석</div>
+    <ol class="struct flow"><li><span class="st-label">초장</span><div class="st-body"><div class="fl-quote">국화(菊花)야 너ᄂᆞᆫ 어이 (국화야 너는 어찌하여)</div>국화를 &#x27;너&#x27;라 부르는 <strong>의인법·돈호법</strong>으로 청자를 설정하여 말을 건넴. &#x27;삼월동풍&#x27;은 만물이 자라는 따뜻한 봄, 곧 꽃을 피우기 좋은 <strong>평온한 시절</strong>을 뜻함(이별의 시간이 아님).</div></li><li><span class="st-label">중장</span><div class="st-body"><div class="fl-quote">낙목한천(落木寒天)에 네 홀로 피었느냐 (잎 지는 추운 때에 너 홀로 피었느냐)</div>&#x27;낙목한천&#x27;은 <strong>시련과 고난</strong>의 시기를 상징하며 &#x27;삼월동풍&#x27;과 대비됨. &#x27;네 홀로&#x27;에 다른 꽃들과 대조되는 국화의 속성이 드러나고, <strong>의문형 어미</strong>로 국화에게 묻는 방식을 취함.</div></li><li><span class="st-label">종장</span><div class="st-body"><div class="fl-quote">오상고절(傲霜孤節)은 너뿐인가 ᄒᆞ노라 (서리에도 굴하지 않는 절개는 너뿐인가 하노라)</div>서릿발에도 굴하지 않는 국화를 &#x27;<strong>오상고절</strong>&#x27;로 예찬하며 <strong>영탄법</strong>으로 마무리함. 자연물의 특성을 통해 화자가 바람직하게 여기는 <strong>인간상(지조 있는 군자)</strong>을 제시함.</div></li></ol>
+  </div>
+</div></section>
+
+<section class="pg"><div class="fit">
+  <header class="p-head">
+    <div class="p-meta"><span class="p-idx">03</span><span class="tag">고전시가</span><span class="p-exam">2학기 수업 자료</span></div>
+    <h2 class="p-title"><span class="w-mark">(다)</span>동짓달 기나긴 밤을~ <span class="w-author">황진이</span></h2>
+  </header>
+  <div class="sec"><div class="sec-h"><span class="sec-n">01</span>작품 해제</div>
+    <table class="facts"><tr><th>갈래</th><td>평시조, 연정가</td></tr><tr><th>성격</th><td>연정적, 낭만적, 감각적</td></tr><tr><th>화자/어조</th><td>임과 헤어져 홀로 지내는 여인 / 그리움과 기다림을 담은 애틋한 어조</td></tr><tr><th>주제</th><td>임에 대한 그리움과 애틋한 기다림</td></tr><tr><th>특징</th><td>추상적 개념(시간)의 구체화 ; 음성 상징어(의태어)로 우리말의 묘미를 살림 ; 부정적 시간과 긍정적 시간의 대비</td></tr></table>
+    <div class="p-core"><span class="core-label">작품 개관</span>임과 헤어진 화자가 임을 그리워하며 간절히 재회를 바라는 <strong>연정가</strong>의 대표작임. 임 없는 동짓달 긴 밤을 잘라 두었다가(초장) 봄바람 이불 아래 간직하고(중장) 임 오신 밤에 펴겠다는(종장) <strong>참신한 발상</strong>으로 그리움을 표현함.</div>
+  </div>
+  <div class="sec"><div class="sec-h"><span class="sec-n">02</span>작품 분석</div>
+    <ol class="struct flow"><li><span class="st-label">초장</span><div class="st-body"><div class="fl-quote">동지(冬至)ㅅ 기나긴 밤을 한 허리를 버혀 내여 (동짓달 긴 밤의 한가운데를 잘라 내어)</div>&#x27;동지&#x27;는 밤이 가장 긴 절기로, 임이 없어 길게 느껴지는 <strong>부정적 시간</strong>이며 화자의 <strong>고독감</strong>을 강조함. 보이지 않는 시간을 베어 낸다고 하여 <strong>추상적 개념을 구체화</strong>함.</div></li><li><span class="st-label">중장</span><div class="st-body"><div class="fl-quote">춘풍(春風) 니블 아래 서리서리 너헛다가 (봄바람 이불 아래 서리서리 넣어 두었다가)</div>잘라 낸 시간을 따뜻한 &#x27;춘풍 니블&#x27; 아래 넣어 둔다고 하여 임에 대한 <strong>그리움</strong>을 드러냄. &#x27;서리서리&#x27;는 긴 것을 둥글게 감아 두는 모양의 <strong>음성 상징어(의태어)</strong>임.</div></li><li><span class="st-label">종장</span><div class="st-body"><div class="fl-quote">어론 님 오신 날 밤이여든 구뷔구뷔 펴리라 (정든 임 오신 날 밤이면 굽이굽이 펴리라)</div>임이 온 밤은 <strong>긍정적 시간</strong>으로, 간직한 시간을 펴서 임과의 밤을 길게 늘리고자 하는 바람을 드러냄. &#x27;구뷔구뷔&#x27;의 의태어로 사랑을 의지로 이루려는 <strong>적극적 태도</strong>가 나타남.</div></li></ol>
+  </div>
+</div></section>
+<section class="pg"><div class="fit"><div class="run"><span class="p-idx">03</span><span class="tag">고전시가</span><span class="run-title">흥망이 유수하니 · 국화야 너는 어이 · 동짓달 기나긴 밤을</span><span class="p-exam">2학기 수업 자료</span></div><div class="sec"><div class="sec-h">감상 포인트</div><div class="pcols"><div class="pcol"><div class="pcol-h"><span class="w-mark">(가)</span>흥망이 유수하니~</div><div class="kp"><div class="kp-term">자연물·자연 현상의 기능</div><div class="kp-desc">&#x27;추초&#x27;는 쇠락한 고려 왕조, &#x27;석양&#x27;은 왕조의 몰락을 간접 표현함. 계절감(&#x27;추초&#x27;=가을)을 통해 화자의 정서를 강조함(백성의 고통 비유는 아님).</div></div><div class="kp"><div class="kp-term">감정의 객관화</div><div class="kp-desc">화자가 자신을 &#x27;<strong>객</strong>&#x27;이라 표현하여 고려 멸망에 대한 슬픔을 한 걸음 물러서 객관화함.</div></div><div class="kp"><div class="kp-term">독백적 어조</div><div class="kp-desc">청자 없이 &#x27;-로다&#x27;, &#x27;-노라&#x27;의 <strong>영탄적 어미</strong>로 혼잣말하듯 내면을 드러냄. 공간 대비는 나타나지 않음.</div></div><div class="kp"><div class="kp-term">회고가의 보편적 특징</div><div class="kp-desc">조선 건국 후 고려의 도읍지(개경)의 장소·사물을 보며 <strong>망국의 한과 무상감</strong>을 노래하는 회고가의 전형임.</div></div></div><div class="pcol"><div class="pcol-h"><span class="w-mark">(나)</span>국화야 너는 어이~</div><div class="kp"><div class="kp-term">의인화와 예찬</div><div class="kp-desc">국화를 &#x27;너&#x27;로 의인화해 <strong>청자로 설정</strong>하고 말을 건네는 방식으로 국화의 절개를 예찬함(독백적 어조 아님).</div></div><div class="kp"><div class="kp-term">시어의 대비</div><div class="kp-desc">&#x27;<strong>삼월동풍</strong>&#x27;(좋은 시절, 다른 꽃들)과 &#x27;<strong>낙목한천</strong>&#x27;(시련, 홀로 핀 국화)의 대비로 국화의 지조를 부각함.</div></div><div class="kp"><div class="kp-term">자연물의 상징성</div><div class="kp-desc">유학자에게 자연은 추구할 윤리적 덕목을 상징함. 국화는 <strong>지조와 절개</strong>의 상징임.</div></div></div><div class="pcol"><div class="pcol-h"><span class="w-mark">(다)</span>동짓달 기나긴 밤을~</div><div class="kp"><div class="kp-term">추상적 개념의 구체화</div><div class="kp-desc">보이지 않는 &#x27;밤(시간)&#x27;을 베고, 넣고, 펴는 <strong>사물처럼 형상화</strong>함.</div></div><div class="kp"><div class="kp-term">두 시간의 대비</div><div class="kp-desc">임이 없는 <strong>동짓달 긴 밤</strong>(부정적 시간)을 줄여 임 오신 밤(긍정적 시간)을 늘리겠다는 발상임.</div></div><div class="kp"><div class="kp-term">음성 상징어</div><div class="kp-desc">&#x27;<strong>서리서리</strong>&#x27;, &#x27;<strong>구뷔구뷔</strong>&#x27;의 의태어로 순우리말의 묘미를 살림(세 작품 중 (다)만 해당).</div></div><div class="kp"><div class="kp-term">계절감</div><div class="kp-desc">&#x27;동지&#x27;(겨울)와 &#x27;춘풍&#x27;(봄)의 계절감 있는 시어로 고독과 그리움을 강조함.</div></div></div></div></div><div class="sec"><div class="sec-h">작품 비교 <small>흥망이 유수하니 · 국화야 너는 어이 · 동짓달 기나긴 밤을</small></div>
+  <table class="cmp"><thead><tr><th>구분</th><th>(가) 원천석</th><th>(나) 이정보</th><th>(다) 황진이</th></tr></thead><tbody><tr><td>화자/대상</td><td>고려 유신(&#x27;객&#x27;) / 만월대(옛 왕궁 터)</td><td>선비 / 국화</td><td>임과 이별한 여인 / 부재하는 임</td></tr><tr><td>정서/태도</td><td>망국의 슬픔, 무상감</td><td>국화의 절개 예찬</td><td>임에 대한 그리움, 재회 소망</td></tr><tr><td>어조/말하기 방식</td><td>독백적, 영탄적(-로다, -노라)</td><td>국화를 청자로 한 말 건네기, 예찬적</td><td>독백적, 애틋함</td></tr><tr><td>주요 표현</td><td>감정의 객관화(&#x27;객&#x27;), 감각적 이미지</td><td>의인법·돈호법, 시어 대비</td><td>추상의 구체화, 음성 상징어</td></tr><tr><td>계절 시어</td><td>추초(가을), 석양</td><td>삼월동풍(봄) ↔ 낙목한천(겨울)</td><td>동지(겨울), 춘풍(봄)</td></tr><tr class="merged"><td>공통점</td><td colspan="3">계절감을 주는 시어로 화자의 정서를 강조함, 3장 6구의 평시조 형식</td></tr></tbody></table></div></div></section>
+<section class="pg"><div class="fit">
+  <header class="p-head">
+    <div class="p-meta"><span class="p-idx">04</span><span class="tag">고전시가</span><span class="p-exam">2학기 수업 자료</span></div>
+    <h2 class="p-title"><span class="w-mark">(가)</span>두터비 파리를 물고~ <span class="w-author">작자 미상</span></h2>
+  </header>
+  <div class="sec"><div class="sec-h"><span class="sec-n">01</span>작품 해제</div>
+    <table class="facts"><tr><th>갈래</th><td>사설시조</td></tr><tr><th>성격</th><td>풍자적, 우의적, 해학적</td></tr><tr><th>화자/어조</th><td>두터비의 행태를 관찰하는 화자(종장은 두터비의 말) / 익살스럽고 비판적인 어조</td></tr><tr><th>주제</th><td>탐관오리의 횡포와 허장성세에 대한 풍자</td></tr><tr><th>특징</th><td>동물을 의인화한 우의적 표현 ; 상황을 희화화하여 웃음을 유발함 ; 종장에서 두터비의 자기 합리화를 직접 제시함</td></tr></table>
+    <div class="p-core"><span class="core-label">작품 개관</span>두터비·파리·백송골의 관계로 당대 지배층의 횡포를 <strong>우의적</strong>으로 풍자한 사설시조임. 약자(파리)를 물고 위세를 부리던 두터비가 강자(백송골)를 보고 놀라 자빠진 뒤, 오히려 제 날램을 자랑하는 모습을 통해 <strong>약자에게 강하고 강자에게 약한</strong> 세태를 비꼼.</div>
+  </div>
+  <div class="sec"><div class="sec-h"><span class="sec-n">02</span>작품 분석</div>
+    <ol class="struct flow"><li><span class="st-label">초장</span><div class="st-body"><div class="fl-quote">두터비 파리를 물고 두엄 위에 치달아 앉아</div>두터비(탐관오리)가 파리(힘없는 백성)를 물고 두엄(수탈한 재물) 위에 올라앉음. 백성을 <strong>수탈</strong>하며 위세를 부리는 모습임.</div></li><li><span class="st-label">중장</span><div class="st-body"><div class="fl-quote">백송골(白松鶻)이 떠 있거늘</div>백송골(상부의 중앙 관리, 강자)을 보고 섬뜩하여 달아나다 두엄 아래 자빠짐. 강자 앞에서 비굴해지는 모습을 <strong>희화화</strong>함.</div></li><li><span class="st-label">종장</span><div class="st-body"><div class="fl-quote">모쳐라 날랜 나일세망정</div>두터비의 말로, 날랜 나였기에 망정이지 멍이 들 뻔했다며 <strong>자화자찬</strong>함. 실수를 덮는 <strong>자기 합리화</strong>로 해학성이 극대화됨.</div></li></ol>
+  </div>
+</div></section>
+
+<section class="pg"><div class="fit">
+  <header class="p-head">
+    <div class="p-meta"><span class="p-idx">04</span><span class="tag">고전시가</span><span class="p-exam">2학기 수업 자료</span></div>
+    <h2 class="p-title"><span class="w-mark">(나)</span>어이 못 오던다~ <span class="w-author">작자 미상</span></h2>
+  </header>
+  <div class="sec"><div class="sec-h"><span class="sec-n">01</span>작품 해제</div>
+    <table class="facts"><tr><th>갈래</th><td>사설시조</td></tr><tr><th>성격</th><td>해학적, 과장적, 연정가</td></tr><tr><th>화자/어조</th><td>오지 않는 임을 기다리는 화자 / 임(&#x27;너&#x27;)에게 따져 묻는 원망 섞인 어조</td></tr><tr><th>주제</th><td>오지 않는 임에 대한 그리움과 원망</td></tr><tr><th>특징</th><td>연쇄법·열거법·과장법으로 장애물을 나열함 ; 의문형 문장의 반복 ; 종장의 설의적 표현</td></tr></table>
+    <div class="p-core"><span class="core-label">작품 개관</span>오지 않는 임에게 그 이유를 따져 묻는 사설시조임. 중장에서 임을 가로막는 장애물을 <strong>가상적으로 겹겹이 설정</strong>하여 기다림의 답답함을 해학적으로 드러내고, 종장에서 한 달 서른 날 중 하루도 없느냐며 <strong>원망과 그리움</strong>을 직설적으로 토로함.</div>
+  </div>
+  <div class="sec"><div class="sec-h"><span class="sec-n">02</span>작품 분석</div>
+    <ol class="struct flow"><li><span class="st-label">초장</span><div class="st-body"><div class="fl-quote">어이 못 오던다 무슨 일로 못 오던다</div>오지 않는 이유를 임에게 거듭 물음. 의문형이지만 설의가 아닌 <strong>질문</strong>이며, 반복으로 답답함을 강조함.</div></li><li><span class="st-label">중장</span><div class="st-body"><div class="fl-quote">성 안에 담 쌓고 담 안에란 집을 짓고</div>성→담→집→뒤주→궤로 점점 좁혀 가며 임을 결박하고 자물쇠로 잠갔느냐고 물음. <strong>연쇄법·열거·과장</strong>으로 그리움을 웃음으로 승화함.</div></li><li><span class="st-label">종장</span><div class="st-body"><div class="fl-quote">날 보라 올 하루 업스랴</div>한 달을 &#x27;셜흔 날&#x27;로 풀어 나를 보러 올 하루가 없겠느냐고 <strong>설의</strong>함. 원망·안타까움·그리움을 직설적으로 드러냄.</div></li></ol>
+  </div>
+</div></section>
+
+<section class="pg"><div class="fit">
+  <header class="p-head">
+    <div class="p-meta"><span class="p-idx">04</span><span class="tag">고전시가</span><span class="p-exam">2학기 수업 자료</span></div>
+    <h2 class="p-title"><span class="w-mark">(다)</span>한숨아 세한숨아~ <span class="w-author">작자 미상</span></h2>
+  </header>
+  <div class="sec"><div class="sec-h"><span class="sec-n">01</span>작품 해제</div>
+    <table class="facts"><tr><th>갈래</th><td>사설시조</td></tr><tr><th>성격</th><td>해학적, 과장적, 애상적</td></tr><tr><th>화자/어조</th><td>근심으로 잠 못 이루는 화자 / 의인화된 한숨에게 말을 건네는 하소연조</td></tr><tr><th>주제</th><td>깊은 시름으로 잠을 이루지 못하는 괴로움</td></tr><tr><th>특징</th><td>추상적 대상(한숨)의 의인화 ; 잠금 장치의 열거와 과장 ; 동일 구절 반복과 음성 상징어 활용</td></tr></table>
+    <div class="p-core"><span class="core-label">작품 개관</span>마음에서 나오는 <strong>한숨</strong>을 밖에서 들어오는 존재처럼 의인화하여 근심을 형상화한 사설시조임. 온갖 문과 잠금 장치로 막아도 한숨이 들어온다는 과장으로 시름을 해학적으로 그리고, 종장에서 한숨이 온 밤에는 잠 못 든다는 괴로움을 드러냄.</div>
+  </div>
+  <div class="sec"><div class="sec-h"><span class="sec-n">02</span>작품 분석</div>
+    <ol class="struct flow"><li><span class="st-label">초장</span><div class="st-body"><div class="fl-quote">네 어내 틈으로 들어오느냐</div>&#x27;한숨&#x27;을 &#x27;너&#x27;로 부르며 어느 틈으로 들어오는지 물음. 추상적인 근심을 <strong>의인화</strong>하여 구체화함.</div></li><li><span class="st-label">중장</span><div class="st-body"><div class="fl-quote">용거북 자물쇠로 수기수기 채웠는데</div>고모장지·세살장지·돌쩌귀·배목걸새 등 <strong>잠금 장치를 열거</strong>하며 문을 단단히 잠갔다고 함. 불가능한 일을 진지하게 시도하는 모습이 <strong>해학적</strong>임.</div></li><li><span class="st-label">종장</span><div class="st-body"><div class="fl-quote">너 온 날 밤이면 잠 못 들어 하노라</div>한숨이 찾아온 밤이면 잠을 이루지 못한다고 하여 깊은 시름(전전반측)을 솔직하게 드러냄.</div></li></ol>
+  </div>
+</div></section>
+<section class="pg"><div class="fit"><div class="run"><span class="p-idx">04</span><span class="tag">고전시가</span><span class="run-title">사설시조 3수</span><span class="p-exam">2학기 수업 자료</span></div><div class="sec"><div class="sec-h">감상 포인트</div><div class="pcols"><div class="pcol"><div class="pcol-h"><span class="w-mark">(가)</span>두터비 파리를 물고~</div><div class="kp"><div class="kp-term">우의적 풍자</div><div class="kp-desc">두터비=탐관오리, 파리=백성, 백송골=중앙 관리로, 동물 관계에 <strong>지배층의 위계</strong>를 빗댐.</div></div><div class="kp"><div class="kp-term">허장성세</div><div class="kp-desc">약자 앞에서 위세 부리다 강자 앞에서 비굴해지고도 허세를 부리는 이중적 태도를 비판함.</div></div><div class="kp"><div class="kp-term">해학과 희화화</div><div class="kp-desc">&#x27;풀쩍 뛰어 내닫다가 두엄 아래 자빠지거고&#x27;의 우스꽝스러운 동작 묘사로 <strong>웃음을 유발</strong>함.</div></div><div class="kp"><div class="kp-term">사설시조의 형식</div><div class="kp-desc">중장이 길어진 형태이며, 종장 첫 구 &#x27;모쳐라&#x27;(마침)는 시조의 종장 형식을 유지함.</div></div></div><div class="pcol"><div class="pcol-h"><span class="w-mark">(나)</span>어이 못 오던다~</div><div class="kp"><div class="kp-term">가상적 장애물</div><div class="kp-desc">무쇠 성·담·집·뒤주·궤·자물쇠는 실제가 아닌 상상으로, 임이 못 오는 이유를 <strong>과장</strong>하여 기다림의 절실함을 드러냄.</div></div><div class="kp"><div class="kp-term">연쇄법과 점강법</div><div class="kp-desc">앞 구절의 끝말을 이어받으며 공간을 <strong>점점 좁혀</strong> 리듬감과 해학성을 높임.</div></div><div class="kp"><div class="kp-term">원망의 방향</div><div class="kp-desc">임과 떨어진 문제의 원인을 <strong>오지 않는 임</strong>에게 돌리며, 임이 돌아오기를 바람.</div></div><div class="kp"><div class="kp-term">사설시조의 특징</div><div class="kp-desc">장형화된 중장, 일상적 사물, 쉬운 언어로 <strong>이면적 자아</strong>의 솔직한 감정을 표현함.</div></div></div><div class="pcol"><div class="pcol-h"><span class="w-mark">(다)</span>한숨아 세한숨아~</div><div class="kp"><div class="kp-term">한숨의 의인화</div><div class="kp-desc">내면의 근심인 한숨을 외부에서 침입하는 존재로 설정하여, 막을 수 없는 <strong>시름의 깊이</strong>를 강조함.</div></div><div class="kp"><div class="kp-term">열거·과장</div><div class="kp-desc">생활 속 문과 잠금 장치를 길게 늘어놓아 근심을 막으려는 노력을 과장하고 <strong>슬픔을 웃음으로 승화</strong>함.</div></div><div class="kp"><div class="kp-term">반복과 음성 상징어</div><div class="kp-desc">&#x27;네 어내 틈으로 들어오느냐&#x27; 반복, &#x27;뚝딱&#x27;, &#x27;덜컥&#x27;, &#x27;데굴데굴&#x27; 등으로 리듬감과 생동감을 줌.</div></div><div class="kp"><div class="kp-term">원망의 대상</div><div class="kp-desc">잠 못 드는 원인을 <strong>한숨의 탓</strong>으로 돌리며 한숨에게서 벗어나기를 원함.</div></div></div></div></div><div class="sec"><div class="sec-h">작품 비교 <small>사설시조 3수</small></div>
+  <table class="cmp"><thead><tr><th>구분</th><th>(가) 두터비 파리를 물고~</th><th>(나) 어이 못 오던다~</th><th>(다) 한숨아 세한숨아~</th></tr></thead><tbody><tr><td>대상</td><td>두터비(탐관오리)</td><td>오지 않는 임(&#x27;너&#x27;)</td><td>의인화된 한숨(&#x27;너&#x27;)</td></tr><tr><td>화자의 태도</td><td>허장성세를 비판·조롱함</td><td>원망하며 임이 오기를 바람</td><td>원망하며 한숨에게서 벗어나기를 바람</td></tr><tr><td>표현</td><td>동물의 의인화(우의), 희화화</td><td>연쇄법·열거·과장, 설의</td><td>의인화, 열거·과장, 반복, 음성 상징어</td></tr><tr><td>해학의 방식</td><td>두터비의 우스꽝스러운 행동과 자기 합리화</td><td>임을 가두는 가상적 장애물 설정</td><td>한숨을 막으려 문을 잠그는 행동</td></tr><tr class="merged"><td>공통점</td><td colspan="3">사설시조로 대상에 대한 부정적 인식이 깔려 있으며 과장·해학으로 웃음을 자아냄</td></tr></tbody></table></div></div></section>
+<section class="pg"><div class="fit">
+  <header class="p-head">
+    <div class="p-meta"><span class="p-idx">05</span><span class="tag">현대시</span><span class="p-exam">2024학년도 6월 모의평가</span></div>
     <h2 class="p-title"><span class="w-mark">(가)</span>맹세 <span class="w-author">조지훈</span></h2>
   </header>
   <div class="sec"><div class="sec-h"><span class="sec-n">01</span>작품 해제</div>
@@ -240,7 +332,7 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
 
 <section class="pg"><div class="fit">
   <header class="p-head">
-    <div class="p-meta"><span class="p-idx">03</span><span class="tag">현대시</span><span class="p-exam">2024학년도 6월 모의평가</span></div>
+    <div class="p-meta"><span class="p-idx">05</span><span class="tag">현대시</span><span class="p-exam">2024학년도 6월 모의평가</span></div>
     <h2 class="p-title"><span class="w-mark">(나)</span>봄 <span class="w-author">오규원</span></h2>
   </header>
   <div class="sec"><div class="sec-h"><span class="sec-n">01</span>작품 해제</div>
@@ -251,11 +343,69 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
     <ol class="struct flow"><li><span class="st-label">1연 (1)</span><div class="st-body"><div class="fl-quote">모두 이리 와 내 언어 속에 서라</div>담벽, 라일락, 별, 개똥 등 사소한 주변 대상을 &#x27;저기 저&#x27;로 하나씩 불러냄. 각 대상의 <strong>개별성</strong>에 주목하며 이를 자신만의 언어로 표현하겠다는 의지를 드러냄.</div></li><li><span class="st-label">1연 (2)</span><div class="st-body"><div class="fl-quote">내가 내 언어에게 자유를 주었으니</div>언어에 자유를 주어 대상도 &#x27;자유롭게 서고, 앉고, 반짝이고, 굴러라&#x27;고 함. 자유로운 언어로 대상을 구속에서 해방하려는 지향을 보이며 &#x27;그래 봄이다&#x27;로 맺음.</div></li><li><span class="st-label">2연 (1)</span><div class="st-body"><div class="fl-quote">봄은 자유다</div>1연 끝의 &#x27;봄&#x27;을 이어받아 봄 = 자유로 규정함. &#x27;~고 싶은 놈 ~고&#x27;의 반복으로 대상들이 각자 원하는 바를 실현하는 자유로운 모습을 보여 줌.</div></li><li><span class="st-label">2연 (2)</span><div class="st-body"><div class="fl-quote">그래 봄은 지옥이다</div>봄을 &#x27;꽃피는 지옥&#x27;으로 바꿔 부르는 <strong>새로운 표현</strong>을 시도함. 이름이 달라져도 꽃은 피고 별은 반짝인다는 데서 언어로 대상을 규정하는 것의 <strong>한계</strong>를 드러내고, &#x27;자유다 마음대로 뛰어라&#x27;로 획득한 자유를 선언함.</div></li></ol>
   </div>
 </div></section>
-<section class="pg"><div class="fit"><div class="run"><span class="p-idx">03</span><span class="tag">현대시</span><span class="run-title">맹세 · 봄</span><span class="p-exam">2024학년도 6월 모의평가</span></div><div class="sec"><div class="sec-h">감상 포인트 <span class="sec-work"><span class="w-mark">(가)</span>맹세</span></div><div class="kps"><div class="kp"><div class="kp-term">이미지의 대비</div><div class="kp-desc">&#x27;싸늘한 바위/뜨거운 가슴&#x27;, &#x27;어둠/해돋는 아침&#x27;은 대상의 양면성이 아니라 임에 대한 <strong>화자의 마음을 부각</strong>하는 장치임.</div></div><div class="kp"><div class="kp-term">가정과 불가능한 상황</div><div class="kp-desc">&#x27;다 잃고라도&#x27;, &#x27;부활하여 다시 죽을 날까지&#x27; 등으로 <strong>영원한 사랑의 의지</strong>를 강조함.</div></div><div class="kp"><div class="kp-term">반복과 수미 구조적 호응</div><div class="kp-desc">4·9연의 유사 구문, 5·10연 끝의 <strong>&#x27;나는 울어라&#x27;</strong> 반복으로 정서를 강조함.</div></div><div class="kp"><div class="kp-term">피리와 &#x27;아픈 가락&#x27;</div><div class="kp-desc">의로운 사람들의 <strong>희생과 설움</strong>을 담은 가락이며, 화자는 이것을 살아남은 사람이 아닌 <strong>임</strong>이 듣기를 바람.</div></div><div class="kp"><div class="kp-term">화자의 시선</div><div class="kp-desc">&#x27;꽃송이&#x27;를 &#x27;어둠에 창백한&#x27; 존재로 보는 등 대상에게 <strong>의미를 부여하는 화자의 시선</strong>이 두드러짐.</div></div></div></div><div class="sec"><div class="sec-h">감상 포인트 <span class="sec-work"><span class="w-mark">(나)</span>봄</span></div><div class="kps"><div class="kp"><div class="kp-term">반복과 쉼표</div><div class="kp-desc">&#x27;저기 저 ~&#x27;, &#x27;~고 싶은 놈 ~고&#x27; 등 같은 표현의 반복과 쉼표로 <strong>리듬감</strong>을 형성함.</div></div><div class="kp"><div class="kp-term">시어의 연결</div><div class="kp-desc">1연 끝 &#x27;그래 봄이다&#x27;와 2연 첫 &#x27;봄은 자유다&#x27;를 <strong>&#x27;봄&#x27;</strong>으로 이어 봄이 곧 자유라는 의미를 드러냄.</div></div><div class="kp"><div class="kp-term">&#x27;지옥&#x27;이라는 명명</div><div class="kp-desc">하나의 대상을 다른 언어로도 표현할 수 있음을 보여 주며 언어와 대상이 <strong>자유를 얻을 가능성</strong>을 모색함.</div></div><div class="kp"><div class="kp-term">대상 중심의 시선</div><div class="kp-desc">화자의 해석보다 <strong>대상들 각각의 모습</strong>이 두드러짐. &#x27;담벽&#x27;은 공간이 아니라 주목하는 대상의 하나임.</div></div><div class="kp"><div class="kp-term">언어의 한계와 가능성</div><div class="kp-desc">언어는 대상을 파악하게 하지만 대상을 <strong>구속</strong>하기도 함. 시인은 기존 관습을 벗어난 언어로 이를 넘어서려 함.</div></div></div></div><div class="sec"><div class="sec-h">작품 비교 <small>맹세 · 봄</small></div>
+<section class="pg"><div class="fit"><div class="run"><span class="p-idx">05</span><span class="tag">현대시</span><span class="run-title">맹세 · 봄</span><span class="p-exam">2024학년도 6월 모의평가</span></div><div class="sec"><div class="sec-h">감상 포인트 <span class="sec-work"><span class="w-mark">(가)</span>맹세</span></div><div class="kps"><div class="kp"><div class="kp-term">이미지의 대비</div><div class="kp-desc">&#x27;싸늘한 바위/뜨거운 가슴&#x27;, &#x27;어둠/해돋는 아침&#x27;은 대상의 양면성이 아니라 임에 대한 <strong>화자의 마음을 부각</strong>하는 장치임.</div></div><div class="kp"><div class="kp-term">가정과 불가능한 상황</div><div class="kp-desc">&#x27;다 잃고라도&#x27;, &#x27;부활하여 다시 죽을 날까지&#x27; 등으로 <strong>영원한 사랑의 의지</strong>를 강조함.</div></div><div class="kp"><div class="kp-term">반복과 수미 구조적 호응</div><div class="kp-desc">4·9연의 유사 구문, 5·10연 끝의 <strong>&#x27;나는 울어라&#x27;</strong> 반복으로 정서를 강조함.</div></div><div class="kp"><div class="kp-term">피리와 &#x27;아픈 가락&#x27;</div><div class="kp-desc">의로운 사람들의 <strong>희생과 설움</strong>을 담은 가락이며, 화자는 이것을 살아남은 사람이 아닌 <strong>임</strong>이 듣기를 바람.</div></div><div class="kp"><div class="kp-term">화자의 시선</div><div class="kp-desc">&#x27;꽃송이&#x27;를 &#x27;어둠에 창백한&#x27; 존재로 보는 등 대상에게 <strong>의미를 부여하는 화자의 시선</strong>이 두드러짐.</div></div></div></div><div class="sec"><div class="sec-h">감상 포인트 <span class="sec-work"><span class="w-mark">(나)</span>봄</span></div><div class="kps"><div class="kp"><div class="kp-term">반복과 쉼표</div><div class="kp-desc">&#x27;저기 저 ~&#x27;, &#x27;~고 싶은 놈 ~고&#x27; 등 같은 표현의 반복과 쉼표로 <strong>리듬감</strong>을 형성함.</div></div><div class="kp"><div class="kp-term">시어의 연결</div><div class="kp-desc">1연 끝 &#x27;그래 봄이다&#x27;와 2연 첫 &#x27;봄은 자유다&#x27;를 <strong>&#x27;봄&#x27;</strong>으로 이어 봄이 곧 자유라는 의미를 드러냄.</div></div><div class="kp"><div class="kp-term">&#x27;지옥&#x27;이라는 명명</div><div class="kp-desc">하나의 대상을 다른 언어로도 표현할 수 있음을 보여 주며 언어와 대상이 <strong>자유를 얻을 가능성</strong>을 모색함.</div></div><div class="kp"><div class="kp-term">대상 중심의 시선</div><div class="kp-desc">화자의 해석보다 <strong>대상들 각각의 모습</strong>이 두드러짐. &#x27;담벽&#x27;은 공간이 아니라 주목하는 대상의 하나임.</div></div><div class="kp"><div class="kp-term">언어의 한계와 가능성</div><div class="kp-desc">언어는 대상을 파악하게 하지만 대상을 <strong>구속</strong>하기도 함. 시인은 기존 관습을 벗어난 언어로 이를 넘어서려 함.</div></div></div></div><div class="sec"><div class="sec-h">작품 비교 <small>맹세 · 봄</small></div>
   <table class="cmp"><thead><tr><th>구분</th><th>(가) 맹세</th><th>(나) 봄</th></tr></thead><tbody><tr><td>화자/주체</td><td>부재하는 임을 기다리는 &#x27;나&#x27;</td><td>주변 대상을 언어로 부르는 시인 &#x27;나&#x27;</td></tr><tr><td>지향/바람</td><td>임의 귀환, 어둠을 벗어난 더 나은 세상</td><td>봄과 같은 세계에서 대상들과 함께 누리는 자유</td></tr><tr><td>태도</td><td>자신을 바치는 희생적·의지적 태도</td><td>대상이 원하는 바를 실현하게 하는 해방적 태도</td></tr><tr><td>시선</td><td>대상에 의미를 부여하는 화자의 시선 중심</td><td>대상들 각각의 모습(개별성) 중심</td></tr><tr><td>표현</td><td>대비되는 이미지, 설의법, 유사 구문 반복</td><td>반복과 쉼표의 리듬, 명령형, 시어 연결</td></tr><tr class="merged"><td>공통점</td><td colspan="2">반복 표현으로 운율과 의미를 강조하고 화자의 소망(바람)을 드러냄</td></tr></tbody></table></div></div></section>
 <section class="pg"><div class="fit">
   <header class="p-head">
-    <div class="p-meta"><span class="p-idx">04</span><span class="tag">현대소설</span><span class="p-exam">2024학년도 6월 모의평가</span></div>
+    <div class="p-meta"><span class="p-idx">06</span><span class="tag">현대시</span><span class="p-exam">2학기 수업 자료</span></div>
+    <h2 class="p-title"><span class="w-mark">(가)</span>동물원의 오후 <span class="w-author">조지훈</span></h2>
+  </header>
+  <div class="sec"><div class="sec-h"><span class="sec-n">01</span>작품 해제</div>
+    <table class="facts"><tr><th>갈래</th><td>현대시, 자유시, 서정시</td></tr><tr><th>성격</th><td>비판적, 애상적, 고백적</td></tr><tr><th>화자/어조</th><td>나라 잃은 시인 &#x27;나&#x27; / 비통하고 애상적인 어조</td></tr><tr><th>주제</th><td>일제 강점기를 살아가는 식민지 시인의 비애</td></tr><tr><th>특징</th><td>주객전도의 상황 설정 ; 구속의 이미지(쇠창살·철책·창살) ; 비유를 통한 감각적 정서 표현(통곡과도 같은 낙조) ; 말줄임표로 여운 형성</td></tr></table>
+    <div class="p-core"><span class="core-label">작품 개관</span><strong>나라 잃은 시인</strong>의 비애를 동물원이라는 공간을 통해 드러낸 시임. 화자는 현실에서 하소연할 곳 없는 슬픔을 달래려 동물원을 찾지만, 오히려 철책 안의 짐승들이 자신을 구경하는 듯한 <strong>주객전도</strong>를 겪으며 자신이 갇힌 존재임을 자각함. 위로를 구하는 마음 → 처지의 자각 → 통곡과 같은 비애로 시상이 전개됨.</div>
+  </div>
+  <div class="sec"><div class="sec-h"><span class="sec-n">02</span>작품 분석</div>
+    <ol class="struct flow"><li><span class="st-label">1연</span><div class="st-body"><div class="fl-quote">짐승에게라도 하소해야지</div>시름에 젖은 화자가 동물원을 찾는 이유가 제시됨. 사람과 말할 수 없는 슬픔은 마음을 하소연할 곳 없는 <strong>부정적 현실</strong>을 드러내며, 동물원은 위로받고자 찾은 공간임.</div></li><li><span class="st-label">2연</span><div class="st-body"><div class="fl-quote">뺨을 부비며 울고 싶은 마음</div>구경하러 온 것이 아니라며 갇힌 짐승들에게 <strong>동질감</strong>을 느끼고 함께 울고 싶은 심정을 드러냄.</div></li><li><span class="st-label">3연</span><div class="st-body"><div class="fl-quote">혼자서 숨어 앉아 시를 써도</div>시를 숨어서 써야 하고 읽어 줄 사람도 없다는 데서 <strong>창작의 자유를 빼앗긴</strong> 일제 강점기 시인의 처지가 드러남. &#x27;쇠창살&#x27;은 단절·속박의 이미지로, 그 앞에서 짐승들에게 시집을 읽어 주는 모습이 처연함.</div></li><li><span class="st-label">4연</span><div class="st-body"><div class="fl-quote">철책 안에 갇힌 것은 나였다</div>구경하는 자와 구경당하는 자의 위치가 뒤바뀌는 <strong>주객전도</strong>가 일어남. 짐승들이 창살 틈으로 화자를 들여다보며 &#x27;나라 없는 시인&#x27;이라 속삭인다는 표현으로, 화자는 위로받기는커녕 망국민으로서의 처지를 절실히 재인식함. 말줄임표로 여운을 남김.</div></li><li><span class="st-label">5연</span><div class="st-body"><div class="fl-quote">통곡과도 같은 낙조</div>사람 없는 동물원의 오후, 지는 해의 <strong>하강 이미지</strong>에 통곡하고 싶은 비통한 정서를 투영함. 비유를 통해 화자의 비애를 감각적으로 형상화하며 마무리함.</div></li></ol>
+  </div>
+</div></section>
+
+<section class="pg"><div class="fit">
+  <header class="p-head">
+    <div class="p-meta"><span class="p-idx">06</span><span class="tag">현대시</span><span class="p-exam">2학기 수업 자료</span></div>
+    <h2 class="p-title"><span class="w-mark">(나)</span>밤은 영양이 풍부하다 <span class="w-author">김현승</span></h2>
+  </header>
+  <div class="sec"><div class="sec-h"><span class="sec-n">01</span>작품 해제</div>
+    <table class="facts"><tr><th>갈래</th><td>현대시, 자유시, 서정시</td></tr><tr><th>성격</th><td>사색적, 예찬적, 감각적</td></tr><tr><th>화자/어조</th><td>밤의 의미를 성찰하는 &#x27;나&#x27; / 차분하고 긍정적인 어조</td></tr><tr><th>주제</th><td>생명을 키우고 상상력을 북돋는 밤의 풍요로운 힘</td></tr><tr><th>특징</th><td>과실 &#x27;밤[栗]&#x27;과 시간 &#x27;밤[夜]&#x27;의 이미지 중첩 ; 공감각적·관능적 이미지 ; 낮(이성)과 밤(상상)의 대비 ; 말줄임표로 여운 형성</td></tr></table>
+    <div class="p-core"><span class="core-label">작품 개관</span>시간 &#x27;밤[夜]&#x27;을 과실 &#x27;밤[栗]&#x27;과 겹쳐 <strong>성장과 생명</strong>의 시간으로 형상화한 시임. 밤은 어린것들을 품어 키우고, 이성적 분석의 낮과 달리 시인에게 <strong>상상의 나래</strong>를 펼치게 하며, 마침내 껍질을 벗고 새벽으로 나아가는 <strong>재생과 창조</strong>의 시간으로 그려짐.</div>
+  </div>
+  <div class="sec"><div class="sec-h"><span class="sec-n">02</span>작품 분석</div>
+    <ol class="struct flow"><li><span class="st-label">1연</span><div class="st-body"><div class="fl-quote">밤의 내부는 달도록 고요하다</div>밤을 &#x27;무르익은 과실&#x27;에 빗대어 그 내부가 꽉 찬 풍요로운 시간임을 드러냄. &#x27;달도록 고요하다&#x27;는 미각과 청각을 결합한 <strong>공감각적</strong> 표현으로, 과실과 시간의 이미지를 <strong>중첩</strong>시킴.</div></li><li><span class="st-label">2~3연</span><div class="st-body"><div class="fl-quote">작은 벌레와 같이</div>잠든 어린것들의 숨소리가 고요 속에 파묻힌다는 것은 밤이 연약한 생명을 감싸 안아 <strong>성장</strong>시킴을 뜻함(소멸이 아님). 별들과 화자가 자연의 구조에 못을 박는다는 표현으로 밤의 질서와 생명력을 드러냄.</div></li><li><span class="st-label">4연</span><div class="st-body"><div class="fl-quote">상상으로 저들의 나래를</div>&#x27;해체나 분석&#x27;은 낮의 <strong>이성적 사유</strong>를, &#x27;상상&#x27;은 밤의 <strong>감성적 사유</strong>를 나타냄. 분석에 무딘 시인들에게 밤은 토의가 끝난 뒤 상상의 날개를 펼치게 하여 창작 능력을 북돋는 시간임.</div></li><li><span class="st-label">5연</span><div class="st-body"><div class="fl-quote">그 화려한 자태를 감추듯……</div>꽃이 떨어져 열매 속에 아름다움을 감추듯, 밤은 겉으로 드러나지 않게 생명을 내면에 갈무리함. 말줄임표로 여운을 줌.</div></li><li><span class="st-label">6연</span><div class="st-body"><div class="fl-quote">밤의 껍질을 / 서서히 탈피케</div>밤이 새벽으로 바뀌는 과정을 과실이 &#x27;껍질&#x27;을 벗는 일로 표현한 <strong>낯설게 하기</strong>임. 밤의 능동적 힘이 새벽을 여는 성장·재생의 의미를 완성함.</div></li></ol>
+  </div>
+</div></section>
+<section class="pg"><div class="fit"><div class="run"><span class="p-idx">06</span><span class="tag">현대시</span><span class="run-title">동물원의 오후 · 밤은 영양이 풍부하다</span><span class="p-exam">2학기 수업 자료</span></div><div class="sec"><div class="sec-h">감상 포인트 <span class="sec-work"><span class="w-mark">(가)</span>동물원의 오후</span></div><div class="kps"><div class="kp"><div class="kp-term">공간의 의미</div><div class="kp-desc">현실(시를 숨어 써야 하는 공간) → 동물원(위로를 구하는 공간) → 철책 안(구속된 처지)으로 연결되며, 화자는 동물원에 있으나 실질적으로 철책 안의 짐승과 같은 처지임.</div></div><div class="kp"><div class="kp-term">주객전도</div><div class="kp-desc">&#x27;철책 안에 갇힌 것은 나였다&#x27;에서 관찰자와 대상이 뒤바뀌어, 자유를 구속당한 식민지 지식인의 현실을 역설적으로 드러냄.</div></div><div class="kp"><div class="kp-term">구속의 이미지</div><div class="kp-desc">&#x27;쇠창살&#x27;, &#x27;철책&#x27;, &#x27;창살&#x27;이 이어지며 억압과 단절의 이미지를 집중시킴.</div></div><div class="kp"><div class="kp-term">&#x27;오후&#x27;와 &#x27;낙조&#x27;</div><div class="kp-desc">현실의 질서가 강요되어 시인의 정체성이 위협받는 시간이며, 낙조는 화자의 비통함을 환기함. 위로받는 시간이 아님에 유의.</div></div></div></div><div class="sec"><div class="sec-h">감상 포인트 <span class="sec-work"><span class="w-mark">(나)</span>밤은 영양이 풍부하다</span></div><div class="kps"><div class="kp"><div class="kp-term">이미지의 중첩</div><div class="kp-desc">과실 &#x27;밤[栗]&#x27;과 시간 &#x27;밤[夜]&#x27;을 겹쳐 &#x27;밀도&#x27;, &#x27;달도록&#x27;, &#x27;껍질&#x27;, &#x27;탈피&#x27; 등으로 신선감을 형성함.</div></div><div class="kp"><div class="kp-term">낮과 밤의 대비</div><div class="kp-desc">해체·분석·토의(이성, 낮)와 상상(감성, 밤)을 대비하여 밤을 시인의 감수성이 활성화되는 시간으로 그림.</div></div><div class="kp"><div class="kp-term">&#x27;밤&#x27;의 의미</div><div class="kp-desc">어린 생명과 시인을 성장시키는 생명과 창조의 시간이며, 위축·소멸의 시간이 아님.</div></div><div class="kp"><div class="kp-term">제목의 의미</div><div class="kp-desc">&#x27;영양이 풍부하다&#x27;는 밤이 생명을 기르고 상상력을 키우는 풍요로운 시간임을 압축함.</div></div></div></div><div class="sec"><div class="sec-h">작품 비교 <small>동물원의 오후 · 밤은 영양이 풍부하다</small></div>
+  <table class="cmp"><thead><tr><th>구분</th><th>(가) 동물원의 오후</th><th>(나) 밤은 영양이 풍부하다</th></tr></thead><tbody><tr><td>화자/주체</td><td>나라 잃은 식민지 시인 &#x27;나&#x27;</td><td>밤의 의미를 성찰하는 &#x27;나&#x27;(시인)</td></tr><tr><td>시간의 의미</td><td>&#x27;오후&#x27;(낙조): 정체성이 억압되는 비통한 시간</td><td>&#x27;밤&#x27;: 상상력이 확장되고 생명이 성장하는 시간</td></tr><tr><td>태도/정서</td><td>현실에 대한 비애, 통곡하고 싶은 심정</td><td>밤의 생명력에 대한 긍정과 예찬</td></tr><tr><td>표현</td><td>주객전도, 구속의 이미지, 하강 이미지(낙조)</td><td>과실·시간 &#x27;밤&#x27;의 중첩, 공감각, 낮과 밤의 대비</td></tr><tr class="merged"><td>공통점</td><td colspan="2">시인으로서의 처지·정체성을 시간적 배경과 연결함 ; 말줄임표로 끝맺는 시행으로 여운을 줌</td></tr></tbody></table></div></div></section>
+<section class="pg"><div class="fit">
+  <header class="p-head">
+    <div class="p-meta"><span class="p-idx">07</span><span class="tag">현대시</span><span class="p-exam">2학기 수업 자료</span></div>
+    <h2 class="p-title"><span class="w-mark">(가)</span>성에꽃 <span class="w-author">최두석</span></h2>
+  </header>
+  <div class="sec"><div class="sec-h"><span class="sec-n">01</span>작품 해제</div>
+    <table class="facts"><tr><th>갈래</th><td>현대시, 자유시, 서정시</td></tr><tr><th>성격</th><td>현실적, 비판적, 서정적, 애상적</td></tr><tr><th>화자/어조</th><td>새벽 시내버스에서 성에꽃을 바라보는 &#x27;나&#x27; / 애정 어린 관조에서 안타까움으로 바뀌는 어조</td></tr><tr><th>주제</th><td>힘겨운 현실을 살아가는 서민들의 삶에 대한 애정과 연민</td></tr><tr><th>특징</th><td>평범한 사물(성에)에 새로운 의미 부여 ; 역설적 표현(차가운 아름다움) ; 설의·영탄적 어조 ; 마지막 부분의 장면 전환</td></tr></table>
+    <div class="p-core"><span class="core-label">작품 개관</span>겨울 새벽 시내버스 차창의 성에를 서민들의 입김과 숨결이 피워 낸 <strong>꽃</strong>으로 인식한 시임. 화자는 성에꽃의 아름다움에 도취되어 서민들의 <strong>애환과 열정</strong>에 공감하고, 성에꽃을 지운 창에서 <strong>면회마저 금지된 친구</strong>를 떠올림. &#x27;엄동 혹한&#x27;과 친구의 처지를 통해 1980년대의 <strong>암울한 시대 현실</strong>을 함께 드러냄.</div>
+  </div>
+  <div class="sec"><div class="sec-h"><span class="sec-n">02</span>작품 분석</div>
+    <ol class="struct flow"><li><span class="st-label">[A] 1~4행</span><div class="st-body"><div class="fl-quote">엄동 혹한일수록 / 선연히 피는 성에꽃</div>새벽 시내버스 차창에 핀 성에를 &#x27;찬란한 치장&#x27;으로 표현함. &#x27;엄동 혹한&#x27;은 <strong>암울한 시대 상황</strong>을 암시하며, 추울수록 선명해지는 성에꽃은 시련 속에서 더 빛나는 서민들의 삶을 상징함.</div></li><li><span class="st-label">[B] 5~10행</span><div class="st-body"><div class="fl-quote">입김과 숨결이 / 간밤에 은밀히 만나</div>&#x27;처녀 총각 아이 어른 / 미용사 외판원 파출부 실업자&#x27;를 <strong>열거</strong>하여 평범한 서민들을 제시함. 이들의 입김과 숨결이 모여 피운 성에꽃에서 &#x27;기막힌 아름다움&#x27;을 발견하며 서민들에 대한 애정을 드러냄.</div></li><li><span class="st-label">[C] 11~16행</span><div class="st-body"><div class="fl-quote">차가운 아름다움에 취한다</div>&#x27;전람회에 온 듯&#x27; 자리를 옮겨 다니며 성에꽃에 심취함. &#x27;차가운 아름다움&#x27;은 성에꽃을 <strong>역설적</strong>으로 표현한 것이며, &#x27;막막한 한숨&#x27;(현실의 힘겨움)과 &#x27;정열의 숨결&#x27;(삶의 열정)을 묻는 <strong>설의</strong>로 서민의 삶에 공감함.</div></li><li><span class="st-label">[D] 17~19행</span><div class="st-body"><div class="fl-quote">성에꽃 한 잎 지우고 / 이마를 대고 본다</div>성에꽃을 정성스레 지우는 행위는 무력감이 아니라 서민들의 삶을 <strong>함께 느끼려는</strong> 태도이자, 창 너머를 보려는 행위임. 이를 계기로 장면이 전환됨.</div></li><li><span class="st-label">[E] 20~22행</span><div class="st-body"><div class="fl-quote">지금은 면회마저 금지된 친구여</div>창에 비친 &#x27;푸석한 얼굴&#x27;에서 민중을 위한 삶을 실천하다 갇힌 <strong>친구</strong>를 떠올리며 안타까움을 드러냄. <strong>돈호법</strong>으로 시를 맺으며 억압적 시대 현실을 간접적으로 비판함.</div></li></ol>
+  </div>
+</div></section>
+
+<section class="pg"><div class="fit">
+  <header class="p-head">
+    <div class="p-meta"><span class="p-idx">07</span><span class="tag">현대시</span><span class="p-exam">2학기 수업 자료</span></div>
+    <h2 class="p-title"><span class="w-mark">(나)</span>귀뚜라미 <span class="w-author">나희덕</span></h2>
+  </header>
+  <div class="sec"><div class="sec-h"><span class="sec-n">01</span>작품 해제</div>
+    <table class="facts"><tr><th>갈래</th><td>현대시, 자유시, 서정시</td></tr><tr><th>성격</th><td>상징적, 의지적, 성찰적, 소망적</td></tr><tr><th>화자/어조</th><td>의인화된 &#x27;귀뚜라미&#x27;(나) / 담담하면서도 간절한 소망의 어조</td></tr><tr><th>주제</th><td>자신의 노래가 누군가에게 감동을 줄 수 있기를 바라는 소망</td></tr><tr><th>특징</th><td>자연물(귀뚜라미)을 화자로 설정한 의인화 ; &#x27;매미&#x27;와 &#x27;귀뚜라미&#x27;, 여름과 가을의 대조 ; 의성어(청각적 이미지) ; 의문형 종결의 변주(8행·14행)</td></tr></table>
+    <div class="p-core"><span class="core-label">작품 개관</span>의인화된 <strong>귀뚜라미</strong>가 화자로 등장하여 현재의 처지와 소망을 노래한 시임. 여름의 <strong>매미 떼</strong> 소리에 묻힌 귀뚜라미의 &#x27;울음&#x27;은 아직 &#x27;노래&#x27;가 아니지만, 화자는 부정적 현실을 견디며 살아 있음을 알림. 맑은 가을이 오면 자신의 울음이 누군가의 가슴에 실려 가는 <strong>노래</strong>가 되기를 소망하며 마무리됨. 감동을 주는 시를 쓰고 싶은 시인의 소망으로도 읽힘.</div>
+  </div>
+  <div class="sec"><div class="sec-h"><span class="sec-n">02</span>작품 분석</div>
+    <ol class="struct flow"><li><span class="st-label">1~2행</span><div class="st-body"><div class="fl-quote">내 울음 아직은 노래 아니다</div>높은 가지의 <strong>매미</strong>는 주류적·지배적 존재로, 귀뚜라미의 소리를 묻어 버림. &#x27;아직은&#x27;이라는 부사에서 울음이 언젠가 노래가 되기를 바라는 소망이 드러남.</div></li><li><span class="st-label">3~6행</span><div class="st-body"><div class="fl-quote">그러나 나 여기 살아있다</div>&#x27;차가운 바닥&#x27;, &#x27;지하도 콘크리트 벽 좁은 틈&#x27;은 생명력이 없는 <strong>부정적 공간</strong>으로 &#x27;높은 가지&#x27;와 대조됨. &#x27;그러나&#x27;를 통해 고통을 견디며 소망을 포기하지 않는 의지를 보임.</div></li><li><span class="st-label">7~8행</span><div class="st-body"><div class="fl-quote">누구의 마음 하나 울릴 수 있을까</div>&#x27;귀뚜르르 뚜르르&#x27;의 <strong>의성어</strong>로 존재를 알리는 &#x27;타전소리&#x27;를 표현함. 의문형으로 누구의 마음도 울리지 못할 것 같은 <strong>회의적</strong> 태도를 드러냄.</div></li><li><span class="st-label">9~14행</span><div class="st-body"><div class="fl-quote">누군가의 가슴에 실려 가는 노래</div>&#x27;매미 떼가 하늘을 찌르는 시절&#x27;(부정적 현재)과 &#x27;맑은 가을&#x27;(밝은 미래)이 대조됨. 같은 의문형이지만 여기서는 울음이 감동을 주는 노래가 되기를 바라는 <strong>기대와 소망</strong>을 강조함.</div></li></ol>
+  </div>
+</div></section>
+<section class="pg"><div class="fit"><div class="run"><span class="p-idx">07</span><span class="tag">현대시</span><span class="run-title">성에꽃 · 귀뚜라미</span><span class="p-exam">2학기 수업 자료</span></div><div class="sec"><div class="sec-h">감상 포인트 <span class="sec-work"><span class="w-mark">(가)</span>성에꽃</span></div><div class="kps"><div class="kp"><div class="kp-term">성에꽃의 의미</div><div class="kp-desc">서민들의 입김과 숨결이 만든 꽃으로, 고단한 삶의 <strong>애환과 열정</strong>이 응축된 아름다움임.</div></div><div class="kp"><div class="kp-term">엄동 혹한</div><div class="kp-desc">계절적 배경이자 자유가 억압된 당대의 <strong>부정적 현실</strong>을 암시함. 성에꽃과 대비되어 의미를 드러냄.</div></div><div class="kp"><div class="kp-term">역설적 표현</div><div class="kp-desc">&#x27;차가운 아름다움&#x27;은 차가운 성에가 아름답게 느껴지는 모순을 통해 서민 삶의 가치를 부각함.</div></div><div class="kp"><div class="kp-term">감각적 표현</div><div class="kp-desc">&#x27;찬란한 치장&#x27;, &#x27;섬세하고도 차가운&#x27; 등 시각·촉각 이미지로 성에꽃의 속성을 드러냄.</div></div></div></div><div class="sec"><div class="sec-h">감상 포인트 <span class="sec-work"><span class="w-mark">(나)</span>귀뚜라미</span></div><div class="kps"><div class="kp"><div class="kp-term">울음과 노래</div><div class="kp-desc">&#x27;울음&#x27;은 아무에게도 닿지 못하는 현재의 소리, &#x27;노래&#x27;는 타인의 마음을 울리는 지향점임.</div></div><div class="kp"><div class="kp-term">매미와 귀뚜라미</div><div class="kp-desc">지배적인 매미 떼와 소외된 귀뚜라미의 <strong>대조</strong>로 화자의 처지와 의지를 부각함. 매미에 감정 이입이 된 것은 아님.</div></div><div class="kp"><div class="kp-term">계절의 대비</div><div class="kp-desc">여름은 소망 실현이 어려운 현재, 가을은 소망이 이루어질 미래로 기능함.</div></div><div class="kp"><div class="kp-term">의문형의 변주</div><div class="kp-desc">8행은 회의, 14행은 기대를 담아 같은 형식으로 다른 정서를 드러냄.</div></div><div class="kp"><div class="kp-term">시인의 소망</div><div class="kp-desc">귀뚜라미의 &#x27;노래&#x27;는 독자에게 <strong>감동을 주는 시</strong>로 읽을 수 있음. 소외된 자리에서도 타인과 소통하려는 시인의 바람이 담김.</div></div></div></div><div class="sec"><div class="sec-h">작품 비교 <small>성에꽃 · 귀뚜라미</small></div>
+  <table class="cmp"><thead><tr><th>구분</th><th>(가) 성에꽃</th><th>(나) 귀뚜라미</th></tr></thead><tbody><tr><td>화자/주체</td><td>새벽 버스에서 성에꽃을 바라보는 &#x27;나&#x27;</td><td>의인화된 귀뚜라미 &#x27;나&#x27;</td></tr><tr><td>배경/상황</td><td>엄동 혹한의 겨울 새벽, 시내버스 안</td><td>매미 떼가 울어 대는 여름, 지하도 벽 틈</td></tr><tr><td>태도/정서</td><td>서민의 삶에 대한 애정·연민, 친구에 대한 안타까움</td><td>부정적 현실을 견디며 감동을 주는 노래를 소망함</td></tr><tr><td>표현</td><td>역설(차가운 아름다움), 열거, 설의, 돈호법</td><td>의인화, 의성어, 시어·계절의 대조, 의문형 변주</td></tr><tr class="merged"><td>공통점</td><td colspan="2">감각적 표현으로 대상의 속성을 드러내고 계절적 배경을 바탕으로 시상을 전개함</td></tr></tbody></table></div></div></section>
+<section class="pg"><div class="fit">
+  <header class="p-head">
+    <div class="p-meta"><span class="p-idx">08</span><span class="tag">현대소설</span><span class="p-exam">2024학년도 6월 모의평가</span></div>
     <h2 class="p-title">무성격자 <span class="w-author">최명익</span></h2>
   </header>
   <div class="sec"><div class="sec-h"><span class="sec-n">01</span>작품 해제</div>
@@ -267,14 +417,14 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
   </div>
 </div></section>
 <section class="pg"><div class="fit">
-  <div class="run"><span class="p-idx">04</span><span class="tag">현대소설</span><span class="run-title">무성격자 <span class="w-author">최명익</span></span><span class="p-exam">2024학년도 6월 모의평가</span></div>
+  <div class="run"><span class="p-idx">08</span><span class="tag">현대소설</span><span class="run-title">무성격자 <span class="w-author">최명익</span></span><span class="p-exam">2024학년도 6월 모의평가</span></div>
   <div class="sec"><div class="sec-h">주요 인물</div><div class="chars"><div class="ch"><div class="ch-name">정일</div><div class="ch-desc">위독한 아버지를 보러 귀향한 지식인 아들. 속물적 욕망을 경멸하나 벗어나지 못하고, 행동을 주저하며 자신을 끊임없이 관찰·분석함.</div></div><div class="ch"><div class="ch-name">만수 노인(아버지)</div><div class="ch-desc">죽음에 가까운 고통 속에서도 물을 보고 싶어 할 만큼 삶에 강하게 집착함. 정일에게 삶의 의지를 새롭게 생각하게 함.</div></div><div class="ch"><div class="ch-name">용팔</div><div class="ch-desc">만수 노인의 사위. 상속세를 피할 방법을 제안하며 위임장에 도장을 받는 계산적·속물적 인물. 정일의 숨은 욕망을 자극함.</div></div></div></div>
   <div class="sec"><div class="sec-h">감상 포인트</div><div class="kps"><div class="kp"><div class="kp-term">서술 방식</div><div class="kp-desc">3인칭 서술자가 <strong>정일에 초점화</strong>하여 그의 시선과 내면 독백 중심으로 서술함. 사건은 정일이 보고 들은 범위로 제한적으로 제시됨(중문 안 대화는 고함 소리로만 전달).</div></div><div class="kp"><div class="kp-term">인간 심리의 중층적 구조</div><div class="kp-desc">대상을 관찰하고 반응하며, 그 반응을 분석하는 자신까지 다시 바라봄. &#x27;~자신을 의식하며&#x27;, &#x27;~자기를 발견하는&#x27; 같은 표현이 <strong>내면 대상화</strong>의 단서임.</div></div><div class="kp"><div class="kp-term">정일의 이중성</div><div class="kp-desc">속물적 욕망을 <strong>경멸</strong>하면서도 산판알에 눈길이 가고 도장을 내줌. 분노 뒤에 흐르는 웃음은 불쾌감 무마가 아니라 자신도 욕망에 구속되어 있음을 드러냄.</div></div><div class="kp"><div class="kp-term">용팔과의 대조</div><div class="kp-desc">상속세를 피하려는 계산적·적극적 생활인 용팔과, 행동을 <strong>주저</strong>하고 자신에게로 관심을 돌리는 정일이 대비됨.</div></div><div class="kp"><div class="kp-term">물의 의미</div><div class="kp-desc">㉡ &#x27;서늘한 감각&#x27;은 물을 못 마시는 아버지의 육체적 갈증 해소 욕구이자 <strong>생에 대한 갈망</strong>임. 물그릇·어항·물줄기로 점층되며 갈망의 심화를 보여 줌.</div></div><div class="kp"><div class="kp-term">아버지에 대한 인식 변화</div><div class="kp-desc">경멸하던 아버지에게서 처음 보는 &#x27;황홀한 눈&#x27;을 발견하고 눈물을 흘림. 살려는 의지가 없는 자신과 대비되며 아버지의 <strong>삶의 의지</strong>를 인정하게 됨.</div></div></div></div>
   
 </div></section>
 <section class="pg"><div class="fit">
   <header class="p-head">
-    <div class="p-meta"><span class="p-idx">05</span><span class="tag">현대소설</span><span class="p-exam">2학기 수업 자료</span></div>
+    <div class="p-meta"><span class="p-idx">09</span><span class="tag">현대소설</span><span class="p-exam">2학기 수업 자료</span></div>
     <h2 class="p-title">폐어인 <span class="w-author">최명익</span></h2>
   </header>
   <div class="sec"><div class="sec-h"><span class="sec-n">01</span>작품 해제</div>
@@ -286,14 +436,14 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
   </div>
 </div></section>
 <section class="pg"><div class="fit">
-  <div class="run"><span class="p-idx">05</span><span class="tag">현대소설</span><span class="run-title">폐어인 <span class="w-author">최명익</span></span><span class="p-exam">2학기 수업 자료</span></div>
+  <div class="run"><span class="p-idx">09</span><span class="tag">현대소설</span><span class="run-title">폐어인 <span class="w-author">최명익</span></span><span class="p-exam">2학기 수업 자료</span></div>
   <div class="sec"><div class="sec-h">주요 인물</div><div class="chars"><div class="ch"><div class="ch-name">현일</div><div class="ch-desc">폐병을 앓는 지식인이자 전직 교사. 의지와 패기를 강조하나 그것이 절망의 반동일 수 있음을 깨닫고, 자신을 죽어 가는 폐어로 인식함.</div></div><div class="ch"><div class="ch-name">병수</div><div class="ch-desc">현일의 옛 제자. 실생활을 두려워하는 청년 세대의 불안을 드러내며 현일의 말을 냉소적으로 반문하지만, 곧 후회하고 선생의 마음을 헤아리려 함.</div></div><div class="ch"><div class="ch-name">도영</div><div class="ch-desc">현일의 옛 동료 교사로 폐병 환자. 약으로 쓸 구렁이와 지렁이를 잡다 각혈하며, 병든 지식인의 비극을 보여 줌.</div></div></div></div>
   <div class="sec"><div class="sec-h">감상 포인트</div><div class="kps"><div class="kp"><div class="kp-term">서술 방식</div><div class="kp-desc">작품 밖 3인칭 서술자가 현일과 병수의 대화와 각자의 <strong>속마음</strong>을 번갈아 전달함. 병수의 후회, 현일의 자기 성찰이 함께 서술됨.</div></div><div class="kp"><div class="kp-term">내적 독백</div><div class="kp-desc">&#x27;나 역시 이 세상과는 벌써 인연이 멀어진 사람&#x27;, &#x27;무엇이 남았으랴&#x27; 등 현일의 <strong>내적 독백</strong>을 직접 제시해 절망적 내면 의식을 드러냄.</div></div><div class="kp"><div class="kp-term">&#x27;폐어&#x27;의 상징</div><div class="kp-desc">아가미와 폐 두 호흡을 하는 폐어가 두 기능을 다 잃은 모습은 <strong>패기도 잃고 절망조차 남지 않은</strong> 현일의 비극적 처지를 상징함. 제도 비판이 아닌 내면적 절망이 중심임.</div></div><div class="kp"><div class="kp-term">의지와 절망의 반복</div><div class="kp-desc">현일은 절망을 견디려 철학적 명상으로 낙관과 패기를 되찾았다가 죽음을 의식하며 다시 절망함. &#x27;마음의 탄력&#x27;은 심적 안정이 아니라 <strong>일시적 몸부림</strong>임.</div></div><div class="kp"><div class="kp-term">세대 간 의식</div><div class="kp-desc">기성세대 현일은 청년에게 실망하면서도 <strong>책임 의식</strong>과 더 나은 삶에 대한 바람을 지님. 청년 병수는 냉소적이면서도 선생의 생각을 이해하려 함(㉤).</div></div></div></div>
   
 </div></section>
 <section class="pg"><div class="fit">
   <header class="p-head">
-    <div class="p-meta"><span class="p-idx">06</span><span class="tag">고전소설</span><span class="p-exam">2024학년도 6월 모의평가</span></div>
+    <div class="p-meta"><span class="p-idx">10</span><span class="tag">고전소설</span><span class="p-exam">2024학년도 6월 모의평가</span></div>
     <h2 class="p-title">상사동기 <span class="w-author">작자 미상</span></h2>
   </header>
   <div class="sec"><div class="sec-h"><span class="sec-n">01</span>작품 해제</div>
@@ -305,14 +455,14 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
   </div>
 </div></section>
 <section class="pg"><div class="fit">
-  <div class="run"><span class="p-idx">06</span><span class="tag">고전소설</span><span class="run-title">상사동기 <span class="w-author">작자 미상</span></span><span class="p-exam">2024학년도 6월 모의평가</span></div>
+  <div class="run"><span class="p-idx">10</span><span class="tag">고전소설</span><span class="run-title">상사동기 <span class="w-author">작자 미상</span></span><span class="p-exam">2024학년도 6월 모의평가</span></div>
   <div class="sec"><div class="sec-h">주요 인물</div><div class="chars"><div class="ch"><div class="ch-name">김생</div><div class="ch-desc">재주가 뛰어난 선비. 길에서 본 영영을 사모해 상사병에 가까운 괴로움을 겪으며, 계책을 즉시 실행하는 감정에 충실하고 적극적인 인물.</div></div><div class="ch"><div class="ch-name">영영</div><div class="ch-desc">회산군 댁 시비이자 노파의 조카. 자색뿐 아니라 마음가짐·몸가짐, 음률과 문장까지 뛰어나나 신분적 제약으로 외출이 어려움.</div></div><div class="ch"><div class="ch-name">막동</div><div class="ch-desc">김생의 노비. 주인의 근심을 알아채고 노파의 환심을 사는 계책을 내는 영리한 조력자.</div></div><div class="ch"><div class="ch-name">노파</div><div class="ch-desc">영영의 이모. 김생의 후의를 입고 사연을 들은 뒤, 영영의 처지를 설명하고 단오 제사를 핑계로 만남을 주선하려는 조력자.</div></div><div class="ch"><div class="ch-name">회산군 부인</div><div class="ch-desc">질투가 심해 회산군이 영영을 소실로 맞지 못하게 하며, 영영의 외출을 제약하는 장애 인물.</div></div></div></div>
   <div class="sec"><div class="sec-h">감상 포인트</div><div class="kps"><div class="kp"><div class="kp-term">조력자(보조적 인물)의 적극적 개입</div><div class="kp-desc"><strong>막동</strong>은 노파에게 접근할 계책을, <strong>노파</strong>는 영영을 불러낼 방법을 제시함. 보조적 인물이 서사 진행을 주도해 전대 소설보다 <strong>현실성</strong>이 강화됨.</div></div><div class="kp"><div class="kp-term">㉠ 계책과 ㉡ 방법의 기능</div><div class="kp-desc">막동의 계책은 가상의 손님을 내세워 김생이 노파에게 <strong>속내를 드러낼 기회</strong>를 얻게 함. 노파의 방법은 제사를 명분으로 김생이 <strong>영영과 만날 기회</strong>를 얻게 함.</div></div><div class="kp"><div class="kp-term">신분적 한계와 사회적 관습</div><div class="kp-desc">영영은 궁에서 자란 <strong>시비(궁녀)</strong>로 바깥출입이 자유롭지 않음. 회산군과 부인이라는 <strong>권력적 장애</strong>가 애정 성취를 가로막는 갈등 요인임.</div></div><div class="kp"><div class="kp-term">일상적 배경</div><div class="kp-desc">길거리, 노파의 집, 한식·단오의 제사 등 <strong>일상에 밀착된 시공간</strong>에서 만남이 이루어짐. 환상적 요소 없이 현실적 방법으로 결연을 꾀함.</div></div><div class="kp"><div class="kp-term">표현상 특징</div><div class="kp-desc">막동의 계책에서 <strong>시간 표지</strong>로 사건 추이를 드러냄. ‘하동의 사자후’는 부인의 질투를 <strong>고사</strong>에 빗댄 표현이고, ‘천상의 7월 7일’은 견우·직녀 설화에 기대어 만남의 기쁨을 강조함.</div></div></div></div>
   
 </div></section>
 <section class="pg"><div class="fit">
   <header class="p-head">
-    <div class="p-meta"><span class="p-idx">07</span><span class="tag">고전소설</span><span class="p-exam">2학기 수업 자료</span></div>
+    <div class="p-meta"><span class="p-idx">11</span><span class="tag">고전소설</span><span class="p-exam">2학기 수업 자료</span></div>
     <h2 class="p-title"><span class="w-mark">(나)</span>금령전 <span class="w-author">작자 미상</span></h2>
   </header>
   <div class="sec"><div class="sec-h"><span class="sec-n">01</span>작품 해제</div>
@@ -326,7 +476,7 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
 
 <section class="pg"><div class="fit">
   <header class="p-head">
-    <div class="p-meta"><span class="p-idx">07</span><span class="tag">고전소설</span><span class="p-exam">2학기 수업 자료</span></div>
+    <div class="p-meta"><span class="p-idx">11</span><span class="tag">고전소설</span><span class="p-exam">2학기 수업 자료</span></div>
     <h2 class="p-title"><span class="w-mark">(다)</span>심청전 <span class="w-author">작자 미상</span></h2>
   </header>
   <div class="sec"><div class="sec-h"><span class="sec-n">01</span>작품 해제</div>
@@ -337,5 +487,5 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
     <ol class="struct flow"><li><span class="st-label">장면 1 [B]</span><div class="st-body"><div class="fl-quote">인당수로 돌려보내어</div>옥황상제가 사해용왕에게 명하자 용왕이 심 소저를 <strong>큰 꽃송이</strong>에 넣어 인당수로 보냄. <strong>상제 → 용왕</strong>으로 이어지는 환상계의 위계 속에서 현실계 귀환이 이루어짐.</div></li><li><span class="st-label">장면 2</span><div class="st-body"><div class="fl-quote">이승과 저승의 길이 다르기에</div>심 소저는 용왕의 은혜에 감사하며 수궁과 작별함. 환상계와 현실계가 각각 <strong>독립성</strong>을 지니면서도 연결된 공간임이 드러남.</div></li><li><span class="st-label">장면 3</span><div class="st-body"><div class="fl-quote">천신의 조화요 용왕의 신령이었다</div>꽃봉이 순식간에 인당수에 떠오름. 서술자가 직접 논평하며, 바람과 비에도 끄떡없는 꽃봉의 모습(ⓒ)으로 <strong>초월적 특성</strong>을 부각함.</div></li><li><span class="st-label">장면 4</span><div class="st-body"><div class="fl-quote">출천 효녀 심 소저는</div>큰 이익을 얻은 뱃사람들이 용왕에게 제를 지낸 뒤 심 소저의 혼을 위로함. 자신들의 이익과 심청의 희생을 대비하며 <strong>연민</strong>을 드러내고, 수레바퀴만 한 꽃을 건져 냄.</div></li><li><span class="st-label">장면 5</span><div class="st-body"><div class="fl-quote">너희가 귀신이냐 사람이냐</div>(중략 후) 밝은 달과 산들바람 속 <strong>강선화</strong>가 벌어지며 용녀가 내다보다 숨음. 꽃봉 속에서 심 소저와 용궁 시녀를 발견한 천자는 이를 <strong>상제가 보낸 인연</strong>으로 여김.</div></li><li><span class="st-label">장면 6</span><div class="st-body"><div class="fl-quote">천만고에 없는 일이니</div>천자가 소저를 황후로 봉하고 혼례를 특별히 마련하게 함. ‘위엄이 이 세상에서 처음’이라는 <strong>서술자의 개입</strong>으로 혼례의 성대함을 강조함.</div></li></ol>
   </div>
 </div></section>
-<section class="pg"><div class="fit"><div class="run"><span class="p-idx">07</span><span class="tag">고전소설</span><span class="run-title">금령전 · 심청전</span><span class="p-exam">2학기 수업 자료</span></div><div class="sec"><div class="sec-h">감상 포인트 <span class="sec-work"><span class="w-mark">(나)</span>금령전</span></div><div class="kps"><div class="kp"><div class="kp-term">기이성 <span class="cn">1</span> 비현실성</div><div class="kp-desc">금령이 스스로 길을 인도하고 해룡을 막아 주는 등 <strong>사물이 주체적 의지</strong>를 지님. 짐승의 변신, 구름 속 목소리 등 <strong>초현실적 존재</strong>가 현실 논리와 무관하게 활약함.</div></div><div class="kp"><div class="kp-term">기이성 <span class="cn">2</span> 극적 전개</div><div class="kp-desc">금령의 희생 → 짐승이 갑자기 피를 토함 → 미인의 보검 전달 → 요귀 처치로 <strong>위험에서 평온</strong>으로 급변함.</div></div><div class="kp"><div class="kp-term">조력자의 도움</div><div class="kp-desc">해룡은 <strong>금령</strong>과 <strong>금선 공주</strong>의 도움으로 위기를 극복함. 금령은 주인공이면서도 조력자의 모습을 강하게 지님.</div></div><div class="kp"><div class="kp-term">[A]의 성격</div><div class="kp-desc">구름 속 목소리는 근거가 제시되지 않은 채 해룡을 이끎. (가)의 17세기 소설처럼 설화의 흔적이 남은 <strong>비현실성 극대화</strong>의 예임.</div></div><div class="kp"><div class="kp-term">표현상 특징</div><div class="kp-desc">‘벽력같은 소리’, ‘주홍 같은 입’ 등 <strong>비유적·감각적 표현</strong> 사용. ‘차설’은 장면을 전환하는 <strong>상투적 표현</strong>임.</div></div></div></div><div class="sec"><div class="sec-h">감상 포인트 <span class="sec-work"><span class="w-mark">(다)</span>심청전</span></div><div class="kps"><div class="kp"><div class="kp-term">기이성 <span class="cn">1</span> 극단적 성격·극적 전개</div><div class="kp-desc">아버지 개안을 위해 죽음을 택한 <strong>극단적 효심</strong>과, 죽음에서 재생을 거쳐 <strong>황후</strong>가 되는 극적 전개가 기이성을 형성함.</div></div><div class="kp"><div class="kp-term">기이성 <span class="cn">2</span> 환상계의 위계질서</div><div class="kp-desc">옥황상제의 명이 현실계의 혼인으로 이어짐. 비현실성이 <strong>환상계의 질서</strong>에 귀속되어 독자가 <strong>큰 저항 없이</strong> 수용하게 함(㉠).</div></div><div class="kp"><div class="kp-term">기이성 <span class="cn">3</span> 이국정취</div><div class="kp-desc">중국 천자, 화청지, 황후 책봉 등 <strong>낯선 공간</strong>과 권위 있는 세계가 이국정취를 형성함.</div></div><div class="kp"><div class="kp-term">조력자와 감각적 표현</div><div class="kp-desc">옥황상제와 <strong>사해용왕</strong>의 도움으로 현실계에 돌아옴. ‘오색 무지개’, ‘밝은 달’, ‘산들바람’ 등 <strong>감각적 표현</strong>으로 환상적 장면을 구체화함.</div></div><div class="kp"><div class="kp-term">서술자의 개입</div><div class="kp-desc">‘천신의 조화요 용왕의 신령이었다’, ‘천고에 더욱 없는 일이었다’처럼 서술자가 <strong>평가적 논평</strong>을 덧붙이는 판소리계 소설의 특징이 나타남.</div></div></div></div><div class="sec"><div class="sec-h">작품 비교 <small>금령전 · 심청전</small></div>
+<section class="pg"><div class="fit"><div class="run"><span class="p-idx">11</span><span class="tag">고전소설</span><span class="run-title">금령전 · 심청전</span><span class="p-exam">2학기 수업 자료</span></div><div class="sec"><div class="sec-h">감상 포인트 <span class="sec-work"><span class="w-mark">(나)</span>금령전</span></div><div class="kps"><div class="kp"><div class="kp-term">기이성 <span class="cn">1</span> 비현실성</div><div class="kp-desc">금령이 스스로 길을 인도하고 해룡을 막아 주는 등 <strong>사물이 주체적 의지</strong>를 지님. 짐승의 변신, 구름 속 목소리 등 <strong>초현실적 존재</strong>가 현실 논리와 무관하게 활약함.</div></div><div class="kp"><div class="kp-term">기이성 <span class="cn">2</span> 극적 전개</div><div class="kp-desc">금령의 희생 → 짐승이 갑자기 피를 토함 → 미인의 보검 전달 → 요귀 처치로 <strong>위험에서 평온</strong>으로 급변함.</div></div><div class="kp"><div class="kp-term">조력자의 도움</div><div class="kp-desc">해룡은 <strong>금령</strong>과 <strong>금선 공주</strong>의 도움으로 위기를 극복함. 금령은 주인공이면서도 조력자의 모습을 강하게 지님.</div></div><div class="kp"><div class="kp-term">[A]의 성격</div><div class="kp-desc">구름 속 목소리는 근거가 제시되지 않은 채 해룡을 이끎. (가)의 17세기 소설처럼 설화의 흔적이 남은 <strong>비현실성 극대화</strong>의 예임.</div></div><div class="kp"><div class="kp-term">표현상 특징</div><div class="kp-desc">‘벽력같은 소리’, ‘주홍 같은 입’ 등 <strong>비유적·감각적 표현</strong> 사용. ‘차설’은 장면을 전환하는 <strong>상투적 표현</strong>임.</div></div></div></div><div class="sec"><div class="sec-h">감상 포인트 <span class="sec-work"><span class="w-mark">(다)</span>심청전</span></div><div class="kps"><div class="kp"><div class="kp-term">기이성 <span class="cn">1</span> 극단적 성격·극적 전개</div><div class="kp-desc">아버지 개안을 위해 죽음을 택한 <strong>극단적 효심</strong>과, 죽음에서 재생을 거쳐 <strong>황후</strong>가 되는 극적 전개가 기이성을 형성함.</div></div><div class="kp"><div class="kp-term">기이성 <span class="cn">2</span> 환상계의 위계질서</div><div class="kp-desc">옥황상제의 명이 현실계의 혼인으로 이어짐. 비현실성이 <strong>환상계의 질서</strong>에 귀속되어 독자가 <strong>큰 저항 없이</strong> 수용하게 함(㉠).</div></div><div class="kp"><div class="kp-term">기이성 <span class="cn">3</span> 이국정취</div><div class="kp-desc">중국 천자, 화청지, 황후 책봉 등 <strong>낯선 공간</strong>과 권위 있는 세계가 이국정취를 형성함.</div></div><div class="kp"><div class="kp-term">조력자와 감각적 표현</div><div class="kp-desc">옥황상제와 <strong>사해용왕</strong>의 도움으로 현실계에 돌아옴. ‘오색 무지개’, ‘밝은 달’, ‘산들바람’ 등 <strong>감각적 표현</strong>으로 환상적 장면을 구체화함.</div></div><div class="kp"><div class="kp-term">서술자의 개입</div><div class="kp-desc">‘천신의 조화요 용왕의 신령이었다’, ‘천고에 더욱 없는 일이었다’처럼 서술자가 <strong>평가적 논평</strong>을 덧붙이는 판소리계 소설의 특징이 나타남.</div></div></div></div><div class="sec"><div class="sec-h">작품 비교 <small>금령전 · 심청전</small></div>
   <table class="cmp"><thead><tr><th>구분</th><th>(나) 금령전</th><th>(다) 심청전</th></tr></thead><tbody><tr><td>갈래/시기</td><td>설화의 흔적이 남은 전기 소설(영웅 소설)</td><td>현실적 요소를 확대한 판소리계 소설</td></tr><tr><td>기이성(비현실적 요소)</td><td>사물의 주체적 의지, 요귀의 변신, 구름 속 목소리 등 비현실성 극대화</td><td>꽃송이에 담긴 재생, 용궁 시녀 등 환상계의 질서에 귀속된 비현실성</td></tr><tr><td>초월적 존재의 개입</td><td>근거가 드러나지 않은 구름 속 목소리가 해룡을 이끎([A])</td><td>옥황상제 → 사해용왕의 위계 속 명령으로 현실계 귀환([B])</td></tr><tr><td>극적 전개</td><td>위험에서 평온으로: 금령 희생 → 요귀 처치 → 공주 구출</td><td>죽음에서 재생으로, 가난에서 부귀로: 투신 → 귀환 → 황후 책봉</td></tr><tr class="merged"><td>공통점</td><td colspan="2">인물이 조력자의 도움으로 위기를 극복함 ; 감각적 표현으로 환상적 상황을 드러냄 ; 중국을 배경으로 한 이국정취</td></tr></tbody></table></div></div></section></body></html>
