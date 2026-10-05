@@ -167,6 +167,10 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
 .pcol .kp{padding:3mm 3.2mm}
 .pcol .kp-desc{font-size:9pt;line-height:1.6}
 
+/* summary labels wrap inside a fixed column so long ones ("(가) 대화 1 - 논의 시작") never run into the text */
+.struct li{grid-template-columns:22mm 1fr}
+.st-label{white-space:normal;word-break:keep-all;overflow-wrap:anywhere;line-height:1.45}
+
 /* ---------- combined booklet: cover parts + table of contents ---------- */
 .parts{margin-top:14mm;display:grid;grid-template-columns:1fr 1fr;gap:5mm}
 .part-card{border-top:3px solid var(--gold);background:var(--bg-soft);padding:6mm 6mm 7mm}

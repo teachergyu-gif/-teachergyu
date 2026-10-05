@@ -164,3 +164,7 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
 .pcol-h .w-mark{font-size:8pt;padding:0 5px;top:-1px;margin-right:5px}
 .pcol .kp{padding:3mm 3.2mm}
 .pcol .kp-desc{font-size:9pt;line-height:1.6}
+
+/* summary labels wrap inside a fixed column so long ones ("(가) 대화 1 - 논의 시작") never run into the text */
+.struct li{grid-template-columns:22mm 1fr}
+.st-label{white-space:normal;word-break:keep-all;overflow-wrap:anywhere;line-height:1.45}
