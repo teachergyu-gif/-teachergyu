@@ -124,6 +124,22 @@ def grammar_topic(t, idx):
 </section>"""
 
 
+def essay_page(e):
+    cards = "".join(
+        f'<div class="es-card keep"><div class="es-h"><span class="es-no">({i})</span>{md(it["title"])}<span class="tag tag-sm es-area">{md(it["area"])}</span></div>'
+        f'<ul class="g-pts">{"".join(f"<li>{md(x)}</li>" for x in it["points"])}</ul></div>'
+        for i, it in enumerate(e["items"], 1))
+    return f"""
+<section class="gtopic essay">
+  <header class="p-head">
+    <div class="p-meta"><span class="p-idx">05</span><span class="tag">서술형</span><span class="p-exam">참고 자료</span></div>
+    <h2 class="p-title">{md(e["title"])}</h2>
+    <div class="es-notice"><span class="es-warn">!</span>{md(e["notice"])}</div>
+  </header>
+  <div class="es-list">{cards}</div>
+</section>"""
+
+
 def cover(parts):
     cards = "".join(
         f'<div class="part-card"><div class="part-no">PART {i}</div><div class="part-name">{name}</div><div class="part-desc">{desc}</div></div>'
@@ -193,10 +209,17 @@ def build(pages):
                                           f'<td><span class="tag tag-sm">{md(p["field"])}</span></td><td class="toc-title">{md(p["title"])}</td>'))
         blocks.append((part, rows))
 
+    # PART 5 서술형 주제 정리
+    e = jload("essay.json")
+    body.append(mark(essay_page(e), "E1"))
+    blocks.append(("서술형 주제 정리", [("E1", '<td class="toc-no">01</td><td><span class="tag tag-sm">서술형</span></td>'
+                                             f'<td class="toc-title">{md(e["title"])} <span class="toc-au">(참고용)</span></td>')]))
+
     parts = [("문법", "문장 성분 · 서술어의 자릿수 · 높임 · 시간 · 피동 · 사동 · 부정 표현"),
              ("문학", "교과서 1-(1) · 1-(2) · 부교재 (해바라기 씨 · 낙타 · 모순)"),
              ("교과서 4단원", "주제 통합적 읽기 · 사회적 독서와 발표"),
-             ("모의고사", "2024 · 2025 9월 고1 화법과 작문 · 비문학")]
+             ("모의고사", "2024 · 2025 9월 고1 화법과 작문 · 비문학"),
+             ("서술형 주제 정리", "문법 · 문학 · 비문학 서술형 대비 (참고용)")]
     html_body = cover(parts) + toc(blocks, pages) + "".join(body)
 
     css = open(os.path.join(ROOT, "literature-summary/render/style.css"), encoding="utf-8").read()
@@ -219,7 +242,7 @@ def find_pages(pdf, anchors):
     found = {}
     for p in range(1, n + 1):
         txt = subprocess.run(["pdftotext", "-f", str(p), "-l", str(p), pdf, "-"], capture_output=True, text=True).stdout
-        for a in re.findall(r"QQ([GLUM]\d+)QQ", txt):
+        for a in re.findall(r"QQ([GLUME]\d+)QQ", txt):
             found.setdefault(a, p)
     missing = [a for a in anchors if a not in found]
     if missing:
