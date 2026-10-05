@@ -131,4 +131,5 @@ def build():
     print("passages:", idx)
 
 
-build()
+if __name__ == "__main__":
+    build()

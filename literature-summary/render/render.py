@@ -157,4 +157,5 @@ def build():
     print("sets:", len(sets), "works:", sum(len(s["works"]) for s in sets))
 
 
-build()
+if __name__ == "__main__":
+    build()
