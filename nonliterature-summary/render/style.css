@@ -115,3 +115,13 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
 .cover-author{font-size:8.5pt;color:var(--muted);white-space:nowrap;letter-spacing:.04em}
 .cover-author b{color:var(--navy);font-weight:600}
 .keep{break-inside:avoid;page-break-inside:avoid}
+/* ---------- fixed two-page passage layout ---------- */
+.pg{height:263mm;overflow:hidden;page-break-before:always;break-before:page}
+.pg .fit{transform-origin:top left}
+.run{display:flex;align-items:center;gap:7px;font-size:8.5pt;color:var(--muted);border-bottom:2px solid var(--navy);padding-bottom:3mm;margin-bottom:2mm}
+.run .p-idx{font-size:13pt}
+.run-title{font-family:"NSerif",serif;font-weight:700;font-size:12pt;color:var(--navy);margin-right:auto}
+.pg .sec:first-of-type{margin-top:5mm}
+.struct li{padding:2.4mm 0}
+.kps{gap:3mm}
+.kp{padding:3.2mm 3.8mm}

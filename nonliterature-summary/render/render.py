@@ -59,11 +59,6 @@ def cover(exams):
     <div class="toc-head">수록 지문</div>
     <table class="toc">{''.join(rows)}</table>
   </div>
-  <div class="cover-guide">
-    <div class="guide-item"><span class="gi-n">01</span><b>핵심 한 줄</b><span>지문 전체를 꿰는 한 문장과 키워드로 큰 그림을 잡습니다.</span></div>
-    <div class="guide-item"><span class="gi-n">02</span><b>문단별 요약</b><span>문단의 흐름을 따라 지문 구조를 다시 세웁니다.</span></div>
-    <div class="guide-item"><span class="gi-n">03</span><b>핵심 개념 정리</b><span>시험에 직결되는 개념과 비교표로 마무리합니다.</span></div>
-  </div>
 </section>"""
 
 
@@ -82,48 +77,29 @@ def passage(e, p, idx):
     if ct and ct.get("headers"):
         th = "".join(f"<th>{md(h)}</th>" for h in ct["headers"])
         trs = "".join("<tr>" + "".join(f"<td>{md(c)}</td>" for c in r) + "</tr>" for r in ct["rows"])
-        table = f'<div class="keep"><div class="sub-h">한눈에 비교</div><table class="cmp"><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table></div>'
-
-    qs = []
-    for q in p.get("questions", []):
-        trap = f'<div class="q-trap"><span>함정</span><div>{md(q["trap"])}</div></div>' if q.get("trap") else ""
-        qs.append(f"""
-<div class="q">
-  <div class="q-side"><div class="q-no">{md(q["no"])}</div><div class="q-ans">정답 {md(q["answer"])}</div></div>
-  <div class="q-main">
-    <div class="q-type">{md(q["type"])}</div>
-    <div class="q-ask">{md(q["ask"])}</div>
-    <div class="q-point"><span>출제 포인트</span><div>{md(q["point"])}</div></div>
-    <div class="q-why"><span>정답 근거</span><div>{md(q["why"])}</div></div>
-    {trap}
-  </div>
-</div>""")
-    ms = []
-    for i, m in enumerate(p.get("misconceptions", []), 1):
-        rel = f'<span class="mc-rel">{md(m["related"])}</span>' if m.get("related") else ""
-        ms.append(f"""
-<div class="mc">
-  <div class="mc-wrong"><span class="mc-ic x">✕</span><div><span class="mc-n">오해 {i}</span>{rel}<p>{md(m["wrong"])}</p></div></div>
-  <div class="mc-right"><span class="mc-ic o">✓</span><p>{md(m["correct"])}</p></div>
-</div>""")
+        table = f"""<div class="sec"><div class="sec-h">한눈에 비교</div>
+    <table class="cmp"><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table></div>"""
+    run = f'<div class="run"><span class="p-idx">{idx:02d}</span><span class="tag">{md(p["field"])}</span><span class="run-title">{md(p["title"])}</span><span class="p-exam">{md(e["exam"])}</span></div>'
 
     return f"""
-<section class="passage">
+<section class="pg"><div class="fit">
   <header class="p-head">
     <div class="p-meta"><span class="p-idx">{idx:02d}</span><span class="tag">{md(p["field"])}</span><span class="p-exam">{md(e["exam"])}</span></div>
     <h2 class="p-title">{md(p["title"])}</h2>
     <div class="p-core"><span class="core-label">핵심 한 줄</span>{md(p.get("one_line"))}</div>
     <div class="kws">{kw}</div>
   </header>
-
   <div class="sec"><div class="sec-h">지문 요약</div>
     <ol class="struct">{struct}</ol>
-    <div class="keep"><div class="sub-h">핵심 개념 정리</div>
-    <div class="kps">{kp}</div></div>
-    {table}
   </div>
-
-</section>"""
+</div></section>
+<section class="pg"><div class="fit">
+  {run}
+  <div class="sec"><div class="sec-h">핵심 개념 정리</div>
+    <div class="kps">{kp}</div>
+  </div>
+  {table}
+</div></section>"""
 
 
 def build():
