@@ -40,3 +40,6 @@
 .sb-tb th,.sb-tb td{padding:1.6mm 2.2mm;line-height:1.5}
 .sb-tb td.grp{background:var(--navy);color:#fff;font-weight:700;text-align:center;vertical-align:middle;white-space:nowrap}
 .sb-tb td.row-l{font-weight:700;color:var(--navy);background:var(--bg-soft);white-space:nowrap}
+.caution-pts{margin-top:2mm}
+.caution-tb td:nth-child(2){white-space:nowrap;text-align:center}
+.caution-tb td:first-child{font-weight:700;color:var(--navy);background:var(--bg-soft)}

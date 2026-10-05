@@ -94,11 +94,13 @@ def grammar_topic(t, idx):
             ctb = ""
             if c.get("table"):
                 th = "".join(f"<th>{md(h)}</th>" for h in c["table"]["headers"])
-                trs = "".join("<tr>" + "".join(f"<td>{md(x)}</td>" for x in r) + "</tr>" for r in c["table"]["rows"])
+                trs = "".join("<tr>" + "".join(f"<td>{md(x).replace(chr(10), '<br>')}</td>" for x in r) + "</tr>" for r in c["table"]["rows"])
                 ctb = f'<table class="cmp caution-tb"><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table>'
+            pts = "".join(f"<li>{md(x)}</li>" for x in c.get("points", []))
+            pts = f'<ul class="g-pts caution-pts">{pts}</ul>' if pts else ""
             items.append(f'<div class="caution-item keep"><div class="caution-q"><span class="caution-no">({n})</span>{md(c["title"])}</div>'
-                         f'<div class="caution-a">{md(c["desc"])}</div>{exs}{ctb}</div>')
-        cautions = f'<div class="caution"><div class="caution-h">주의할 유형 !</div>{"".join(items)}</div>'
+                         f'<div class="caution-a">{md(c["desc"])}</div>{exs}{ctb}{pts}</div>')
+        cautions = f'<div class="caution"><div class="caution-h">{md(t.get("cautions_title") or "주의할 유형 !")}</div>{"".join(items)}</div>'
     table = ""
     tb = t.get("table")
     if tb and tb.get("headers"):
