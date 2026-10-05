@@ -57,7 +57,7 @@ def cover(sets):
 </section>"""
 
 
-def work_html(st, w, idx):
+def work_html(st, w, idx, extra="", mode="both"):
     mark = f'<span class="w-mark">{md(w["mark"])}</span>' if w.get("mark") else ""
     facts = "".join(f'<tr><th>{md(f["k"])}</th><td>{md(f["v"])}</td></tr>' for f in w.get("facts", []))
     flow = "".join(
@@ -68,7 +68,7 @@ def work_html(st, w, idx):
     )
     chars = ""
     if w.get("characters"):
-        chars = '<div class="keep"><div class="sub-h">주요 인물</div><div class="chars">' + "".join(
+        chars = '<div class="sec"><div class="sec-h">주요 인물</div><div class="chars">' + "".join(
             f'<div class="ch"><div class="ch-name">{md(c["name"])}</div><div class="ch-desc">{md(c["desc"])}</div></div>'
             for c in w["characters"]
         ) + "</div></div>"
@@ -76,34 +76,57 @@ def work_html(st, w, idx):
         f'<div class="kp"><div class="kp-term">{md(k["term"])}</div><div class="kp-desc">{md(k["desc"])}</div></div>'
         for k in w.get("points", [])
     )
-    return f"""
-<section class="work">
+    run = (f'<div class="run"><span class="p-idx">{idx:02d}</span><span class="tag">{md(st["set_label"])}</span>'
+           f'<span class="run-title">{mark}{md(w["title"])} <span class="w-author">{md(w["author"])}</span></span><span class="p-exam">{EXAM}</span></div>')
+    page1 = f"""
+<section class="pg"><div class="fit">
   <header class="p-head">
     <div class="p-meta"><span class="p-idx">{idx:02d}</span><span class="tag">{md(st["set_label"])}</span><span class="p-exam">{EXAM}</span></div>
     <h2 class="p-title">{mark}{md(w["title"])} <span class="w-author">{md(w["author"])}</span></h2>
   </header>
-
-  <div class="sec keep"><div class="sec-h"><span class="sec-n">01</span>작품 해제</div>
+  <div class="sec"><div class="sec-h"><span class="sec-n">01</span>작품 해제</div>
     <table class="facts">{facts}</table>
     <div class="p-core"><span class="core-label">작품 개관</span>{md(w.get("overview"))}</div>
   </div>
-
   <div class="sec"><div class="sec-h"><span class="sec-n">02</span>작품 분석</div>
     <ol class="struct flow">{flow}</ol>
-    {chars}
-    <div class="keep"><div class="sub-h">감상 포인트</div><div class="kps">{pts}</div></div>
   </div>
-</section>"""
+</div></section>
+"""
+    page2 = f"""<section class="pg"><div class="fit">
+  {run}
+  {chars}
+  <div class="sec"><div class="sec-h">감상 포인트</div><div class="kps">{pts}</div></div>
+  {extra}
+</div></section>"""
+    return {"both": page1 + page2, "p1": page1, "p2": page2}[mode]
+
 
 
 def set_html(st, idx):
-    out = [work_html(st, w, idx) for w in st["works"]]
     ct = st.get("compare_table")
+    cmp = ""
     if ct and ct.get("headers"):
         th = "".join(f"<th>{md(h)}</th>" for h in ct["headers"])
         trs = "".join(row_html(r) for r in ct["rows"])
-        out.append(f"""<div class="sec keep cmp-sec"><div class="sec-h">작품 비교 <small>{md(st["set_title"])}</small></div>
-  <table class="cmp"><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table></div>""")
+        cmp = f"""<div class="sec"><div class="sec-h">작품 비교 <small>{md(st["set_title"])}</small></div>
+  <table class="cmp"><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table></div>"""
+    ws = st["works"]
+    if len(ws) == 1:
+        return work_html(st, ws[0], idx, cmp)
+    # multi-work set: each work's analysis page, then one shared page of points + comparison
+    out = [work_html(st, w, idx, mode="p1") for w in ws]
+    pts = []
+    for w in ws:
+        mark = f'<span class="w-mark">{md(w["mark"])}</span>' if w.get("mark") else ""
+        cards = "".join(
+            f'<div class="kp"><div class="kp-term">{md(k["term"])}</div><div class="kp-desc">{md(k["desc"])}</div></div>'
+            for k in w.get("points", [])
+        )
+        pts.append(f'<div class="sec"><div class="sec-h">감상 포인트 <span class="sec-work">{mark}{md(w["title"])}</span></div><div class="kps">{cards}</div></div>')
+    run = (f'<div class="run"><span class="p-idx">{idx:02d}</span><span class="tag">{md(st["set_label"])}</span>'
+           f'<span class="run-title">{md(st["set_title"])}</span><span class="p-exam">{EXAM}</span></div>')
+    out.append(f'<section class="pg"><div class="fit">{run}{"".join(pts)}{cmp}</div></section>')
     return "".join(out)
 
 

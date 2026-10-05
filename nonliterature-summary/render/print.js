@@ -15,7 +15,7 @@ const path = require('path');
       let z = 1;
       while (f.scrollHeight * z > pg.clientHeight && z > 0.8) {
         z = +(z - 0.01).toFixed(2);
-        f.style.zoom = z;
+        f.style.transform = `scale(${z})`;
         f.style.width = (100 / z) + '%';
         if (f.getBoundingClientRect().height <= pg.clientHeight) break;
       }

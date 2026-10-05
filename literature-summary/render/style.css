@@ -152,3 +152,8 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
 .ch:last-child:nth-child(odd){grid-column:1/-1}
 .cmp-sec{margin-top:9mm}
 .cmp-sec .sec-h small{margin-left:4px}
+.run-title .w-mark{font-size:8pt;padding:0 5px;top:-1px;margin-right:6px}
+.run-title .w-author{font-size:8.5pt}
+.pg .sec + .sec{margin-top:7mm}
+.sec-work{font-family:"Pretendard";font-size:10pt;font-weight:600;color:var(--navy2);margin-left:4px}
+.sec-work .w-mark{font-size:8pt;padding:0 5px;top:-1px;margin-right:5px}
