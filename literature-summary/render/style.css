@@ -157,3 +157,4 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
 .pg .sec + .sec{margin-top:7mm}
 .sec-work{font-family:"Pretendard";font-size:10pt;font-weight:600;color:var(--navy2);margin-left:4px}
 .sec-work .w-mark{font-size:8pt;padding:0 5px;top:-1px;margin-right:5px}
+.toc .toc-q{width:auto;white-space:nowrap}

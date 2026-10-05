@@ -3,7 +3,7 @@ import json, html, re, os
 R = os.path.dirname(os.path.abspath(__file__))
 S = os.path.dirname(R)
 TITLE = "부산외고 2학년 중간고사 대비 문학 요약자료"
-EXAM = "2024학년도 6월 모의평가"
+CAT_ORDER = ["고전시가", "현대시", "현대소설", "고전소설"]
 SAME = {"(좌동)", "좌동", "(동일)", "동일", "-", "—", ""}
 
 
@@ -19,7 +19,10 @@ def md(s):
 
 def load():
     d = os.path.join(S, "data")
-    return [json.load(open(os.path.join(d, f), encoding="utf-8")) for f in sorted(os.listdir(d)) if f.endswith(".json")]
+    sets = [json.load(open(os.path.join(d, f), encoding="utf-8")) for f in sorted(os.listdir(d)) if f.endswith(".json")]
+    cat = lambda st: next((i for i, c in enumerate(CAT_ORDER) if st["set_label"].startswith(c)), len(CAT_ORDER))
+    # stable sort: category order, then 6월 모평 before class materials, then file order
+    return sorted(sets, key=lambda st: (cat(st), "모의평가" not in st.get("source", "")))
 
 
 def row_html(r):
@@ -36,7 +39,7 @@ def cover(sets):
         works = " · ".join(f'{md(w["title"])} <span class="toc-au">{md(w["author"])}</span>' for w in st["works"])
         rows.append(
             f'<tr><td class="toc-no">{n:02d}</td><td><span class="tag tag-sm">{md(st["set_label"])}</span></td>'
-            f'<td class="toc-title">{works}</td></tr>'
+            f'<td class="toc-title">{works}</td><td class="toc-q">{md(st.get("source"))}</td></tr>'
         )
     return f"""
 <section class="cover">
@@ -48,7 +51,7 @@ def cover(sets):
   <div class="cover-main">
     <div class="cover-kicker">2학년 · 중간고사 대비</div>
     <h1 class="cover-title">부산외고 2학년<br>중간고사 대비<br><em>문학 요약자료</em></h1>
-    <div class="cover-sub">{EXAM} 문학 {len(sets)}세트 · 작품 해제 · 작품 분석</div>
+    <div class="cover-sub">문학 {len(sets)}세트 {sum(len(s["works"]) for s in sets)}작품 · 작품 해제 · 작품 분석</div>
   </div>
   <div class="cover-toc">
     <div class="toc-head">수록 작품</div>
@@ -77,11 +80,11 @@ def work_html(st, w, idx, extra="", mode="both"):
         for k in w.get("points", [])
     )
     run = (f'<div class="run"><span class="p-idx">{idx:02d}</span><span class="tag">{md(st["set_label"])}</span>'
-           f'<span class="run-title">{mark}{md(w["title"])} <span class="w-author">{md(w["author"])}</span></span><span class="p-exam">{EXAM}</span></div>')
+           f'<span class="run-title">{mark}{md(w["title"])} <span class="w-author">{md(w["author"])}</span></span><span class="p-exam">{md(st.get("source"))}</span></div>')
     page1 = f"""
 <section class="pg"><div class="fit">
   <header class="p-head">
-    <div class="p-meta"><span class="p-idx">{idx:02d}</span><span class="tag">{md(st["set_label"])}</span><span class="p-exam">{EXAM}</span></div>
+    <div class="p-meta"><span class="p-idx">{idx:02d}</span><span class="tag">{md(st["set_label"])}</span><span class="p-exam">{md(st.get("source"))}</span></div>
     <h2 class="p-title">{mark}{md(w["title"])} <span class="w-author">{md(w["author"])}</span></h2>
   </header>
   <div class="sec"><div class="sec-h"><span class="sec-n">01</span>작품 해제</div>
@@ -125,7 +128,7 @@ def set_html(st, idx):
         )
         pts.append(f'<div class="sec"><div class="sec-h">감상 포인트 <span class="sec-work">{mark}{md(w["title"])}</span></div><div class="kps">{cards}</div></div>')
     run = (f'<div class="run"><span class="p-idx">{idx:02d}</span><span class="tag">{md(st["set_label"])}</span>'
-           f'<span class="run-title">{md(st["set_title"])}</span><span class="p-exam">{EXAM}</span></div>')
+           f'<span class="run-title">{md(st["set_title"])}</span><span class="p-exam">{md(st.get("source"))}</span></div>')
     out.append(f'<section class="pg"><div class="fit">{run}{"".join(pts)}{cmp}</div></section>')
     return "".join(out)
 
