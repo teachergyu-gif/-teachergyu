@@ -1,0 +1,53 @@
+
+/* ---------- class textbook (HWPX → PDF) ---------- */
+.anchor-mark{position:absolute;font-size:3px;color:#fff;pointer-events:none}
+.toc-page{height:auto;min-height:263mm;page-break-before:always}
+.toc-page .toc td{padding:2mm 1.5mm;font-size:9.4pt}
+
+.tsec{page-break-before:always;break-before:page;position:relative}
+.t-head{display:flex;align-items:center;gap:9px;border-bottom:2px solid var(--navy);padding-bottom:3mm;margin-bottom:5mm;column-span:all}
+.t-title{font-family:"NSerif","Noto Serif CJK KR",serif;font-weight:700;font-size:17pt;color:var(--navy);margin:0;letter-spacing:-.01em}
+.t-body{font-size:9.8pt;line-height:1.75}
+.cols2 .t-body{column-count:2;column-gap:8mm;column-rule:1px solid var(--line);font-size:9.2pt;line-height:1.7}
+
+.p{margin:.4mm 0}
+.p.center{text-align:center}.p.right{text-align:right}
+.src{text-align:right;color:var(--muted);font-size:8.8pt;margin:1mm 0 3mm}
+.sub-h{margin:6mm 0 2.5mm}
+.t-body > .sub-h:first-child{margin-top:0}
+
+/* text styles carried over from the source */
+.b{font-weight:700;color:var(--navy)}
+.u{text-decoration:underline;text-decoration-color:var(--beige);text-decoration-thickness:1.5px;text-underline-offset:2px}
+.shade{background:var(--gold-l);padding:0 2px;border-radius:2px}
+.tc-red{color:#b4473f}.tc-blue{color:#2f4f8f}.tc-gold{color:var(--gold)}
+
+/* tables & boxes */
+.tb{width:100%;border-collapse:collapse;margin:2mm 0 4mm;font-size:9.2pt;line-height:1.6;break-inside:avoid}
+.tb th{background:var(--navy);color:#fff;font-weight:600;padding:2mm 3mm;text-align:left;border:1px solid var(--navy)}
+.tb td{border:1px solid var(--line);padding:2mm 3mm;vertical-align:top}
+.tb td.hc{background:var(--bg-soft);font-weight:700;color:var(--navy);white-space:nowrap;width:1%}
+.cp.center{text-align:center}.cp.right{text-align:right}
+.box{border:1px solid var(--line);border-left:3px solid var(--beige);background:var(--gold-xl);border-radius:2px;padding:2.5mm 4mm;margin:2mm 0 3.5mm;break-inside:avoid}
+
+/* annotated lines (복습용): text | notes */
+.ln{display:grid;grid-template-columns:57% 1fr;gap:4mm;padding:1.6mm 0;border-bottom:1px dashed #e7e9ee;break-inside:avoid}
+.ln-t{font-size:10pt}
+.ln-n{display:flex;flex-direction:column;gap:1mm}
+.ln-n.inline{flex-direction:row;flex-wrap:wrap;margin:0 0 1.5mm}
+.note{font-size:8.3pt;line-height:1.5;color:#4a4f5b;background:var(--bg-soft);border-left:2px solid var(--beige);padding:.8mm 2.2mm;border-radius:2px}
+.note-num{font-weight:700;color:var(--gold);letter-spacing:.05em}
+
+/* problem bank */
+.setq{font-weight:700;color:var(--navy);background:var(--gold-xl);border-left:3px solid var(--beige);padding:1.2mm 3mm;margin:3mm 0 2mm;break-after:avoid}
+.qn{display:grid;grid-template-columns:7mm 1fr;margin:4mm 0 1.2mm;font-weight:600;color:var(--navy);break-after:avoid}
+.qn-no{font-family:"NSerif","Noto Serif CJK KR",serif;font-weight:700;color:var(--gold);font-size:11pt;line-height:1.5}
+.lbl{display:inline-block;font-size:7.8pt;font-weight:700;color:var(--navy);background:var(--beige);border-radius:2px;padding:0 6px;margin:2mm 0 1mm}
+.lbl-ex{background:var(--gold-l)}
+.ans{margin:2.5mm 0 1mm;font-weight:600;color:var(--navy);break-after:avoid}
+.ans-no{font-family:"NSerif","Noto Serif CJK KR",serif;color:var(--gold);font-weight:700;margin-right:4px}
+.ans-tag{font-size:7.6pt;background:var(--navy);color:#fff;border-radius:2px;padding:0 5px;margin-right:2px;position:relative;top:-1px}
+.chc{padding-left:7mm;text-indent:-4mm;margin:.4mm 0 .4mm 4mm}
+.ans-h{column-span:none;margin:5mm 0 2mm;padding:1.4mm 3mm;background:var(--navy);color:#fff;font-weight:700;font-size:9pt;letter-spacing:.06em;border-radius:2px;break-after:avoid}
+.in-ans{font-size:8.6pt;color:#3b404b}
+.chc.in-ans{margin-left:2mm}
