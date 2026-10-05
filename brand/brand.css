@@ -1,0 +1,23 @@
+/* ---------- RICH ACADEMY brand (원안: navy #29334A + beige #BDA895) ----------
+   --gold is a deeper shade of the brand beige for small accent text on white;
+   --beige is the brand beige itself for rules, fills and the dark cover. */
+:root{--navy:#29334a;--navy2:#3e4a66;--gold:#9a8470;--beige:#bda895;--gold-l:#e6dccf;--gold-xl:#f6f2ec}
+.cover-rule,.toc-part{border-color:var(--navy)}
+.cover-rule{background:var(--beige)}
+.cover-school{color:var(--gold)}
+.cover-main:before,.cover-main:after{display:none}
+.cover-kicker{color:var(--gold-l)}
+.cover-title em{color:var(--beige)}
+.cover-logo{position:absolute;right:11mm;top:12mm;width:30mm}
+.cover-slogan{margin-top:auto;text-align:center;color:var(--navy);font-size:9.5pt;font-weight:600;line-height:1.8;letter-spacing:.02em;padding-bottom:4mm}
+.cover-slogan .cover-slogan-logo{display:block;width:22mm;margin:0 auto 4mm}
+.p-core{border-left-color:var(--beige)}
+.sec-n{background:var(--beige);color:var(--navy)}
+.w-mark{background:var(--beige);color:var(--navy)}
+.trend span{color:var(--beige)}
+.pcol-h{border-bottom-color:var(--beige)}
+.part-card{border-top-color:var(--beige)}
+.stars .on,.toc-note i,.toc-part-legend .on{color:var(--beige)}
+.g-sec-h{border-left-color:var(--beige)}
+.flow .fl-quote{border-left-color:var(--beige)}
+.ch-name:before{background:var(--beige)}

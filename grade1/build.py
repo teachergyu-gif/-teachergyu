@@ -93,11 +93,13 @@ def cover(parts):
     <div class="cover-author"><b>이재규T</b></div>
   </div>
   <div class="cover-main">
+    <img class="cover-logo" src="file://{ROOT}/brand/logo_beige.png" alt="RICH ACADEMY">
     <div class="cover-kicker">1학년 · 시험 대비</div>
     <h1 class="cover-title">{md(TITLE).replace(' 국어 ', '<br>국어 ').replace('요약 자료', '<em>요약 자료</em>')}</h1>
     <div class="cover-sub">{' · '.join(f'PART {i} {n}' for i, (n, _) in enumerate(parts, 1))}</div>
   </div>
   <div class="parts parts4">{cards}</div>
+<div class="cover-slogan"><img class="cover-slogan-logo" src="file://{ROOT}/brand/logo_navy.png" alt="">특별한 학생을 위한 특별한 교육<br>특목/자사고 전문 온라인 내신학원</div>
 </section>"""
 
 
@@ -157,6 +159,7 @@ def build(pages):
     css += open(os.path.join(ROOT, "combined/extra.css"), encoding="utf-8").read()
     css += open(os.path.join(G, "grade1.css"), encoding="utf-8").read()
     font_dir = os.environ.get("FONT_DIR", ROOT + "/node_modules")
+    css += open(os.path.join(ROOT, "brand/brand.css"), encoding="utf-8").read()
     css = css.replace("FONTDIR", "file://" + font_dir)
     out = f"""<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>{TITLE}</title>
 <link rel="stylesheet" href="file://{font_dir}/@fontsource/do-hyeon/index.css">

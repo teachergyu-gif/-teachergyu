@@ -45,6 +45,7 @@ def cover(n_pass, n_sets, n_works):
     <div class="cover-author"><b>이재규T</b></div>
   </div>
   <div class="cover-main">
+    <img class="cover-logo" src="file://{ROOT}/brand/logo_beige.png" alt="RICH ACADEMY">
     <div class="cover-kicker">2학년 · 중간고사 대비</div>
     <h1 class="cover-title">부산외고 2학년<br>중간고사<br><em>비문학, 문학 요약 자료</em></h1>
     <div class="cover-sub">PART 1 비문학 {n_pass}지문 · PART 2 문학 {n_sets}세트 {n_works}작품</div>
@@ -55,6 +56,7 @@ def cover(n_pass, n_sets, n_works):
     <div class="part-card"><div class="part-no">PART 2</div><div class="part-name">문학</div>
       <div class="part-desc">{n_sets}세트 {n_works}작품 (고전시가 · 현대시 · 현대소설 · 고전소설)<br>작품 해제 · 작품 분석 · 감상 포인트 · 작품 비교</div></div>
   </div>
+<div class="cover-slogan"><img class="cover-slogan-logo" src="file://{ROOT}/brand/logo_navy.png" alt="">특별한 학생을 위한 특별한 교육<br>특목/자사고 전문 온라인 내신학원</div>
 </section>"""
 
 
@@ -108,6 +110,7 @@ def build():
         css = f.read()
     with open(os.path.join(C, "extra.css"), encoding="utf-8") as f:
         css += f.read()
+    css += open(os.path.join(ROOT, "brand/brand.css"), encoding="utf-8").read()
     css = css.replace("FONTDIR", "file://" + os.environ.get("FONT_DIR", ROOT + "/node_modules"))
     font_dir = os.environ.get("FONT_DIR", ROOT + "/node_modules")
     out = f"""<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>{TITLE}</title>
