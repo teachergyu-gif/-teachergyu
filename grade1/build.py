@@ -50,6 +50,32 @@ def mark(html, anchor):
     return html[:j] + m + html[j:]
 
 
+def section_box(bx):
+    """A titled box attached under a concept section: a reference table or a caution list."""
+    if bx.get("kind") == "table":
+        tb = bx["table"]
+        hs = tb["headers"]
+        if len(hs) > 1 and hs[1] == "":  # "구분" spans the group and row-label columns
+            th = f'<th colspan="2">{md(hs[0])}</th>' + "".join(f"<th>{md(h)}</th>" for h in hs[2:])
+        else:
+            th = "".join(f"<th>{md(h)}</th>" for h in hs)
+        trs = []
+        for r in tb["rows"]:
+            cells, labeled = [], False
+            for c in r:
+                if isinstance(c, dict):
+                    cells.append(f'<td class="grp" rowspan="{c["rowspan"]}">{md(c["text"])}</td>')
+                else:
+                    cls = "" if labeled else ' class="row-l"'  # first plain cell is the row label (e.g. 하십시오체)
+                    labeled = True
+                    cells.append(f"<td{cls}>{md(c).replace(chr(10), '<br>')}</td>")
+            trs.append("<tr>" + "".join(cells) + "</tr>")
+        inner = f'<table class="cmp sb-tb"><thead><tr>{th}</tr></thead><tbody>{"".join(trs)}</tbody></table>'
+    else:
+        inner = '<ul class="g-pts">' + "".join(f"<li>{md(x)}</li>" for x in bx.get("points", [])) + "</ul>"
+    return f'<div class="caution sbox keep"><div class="caution-h">{md(bx["title"])}</div><div class="caution-item">{inner}</div></div>'
+
+
 def grammar_topic(t, idx):
     secs = []
     for s in t.get("sections", []):
@@ -57,6 +83,8 @@ def grammar_topic(t, idx):
         exs = "".join(f'<div class="g-ex">{md(e)}</div>' for e in s.get("examples", []))
         exs = f'<div class="g-exs"><span class="g-ex-label">예문</span><div class="g-ex-list">{exs}</div></div>' if exs else ""
         secs.append(f'<div class="g-sec keep"><div class="g-sec-h">{md(s["heading"])}</div><ul class="g-pts">{pts}</ul>{exs}</div>')
+        if s.get("box"):
+            secs.append(section_box(s["box"]))
     cautions = ""
     if t.get("cautions"):
         items = []

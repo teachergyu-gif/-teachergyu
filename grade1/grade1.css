@@ -34,3 +34,9 @@
 .caution-tb{margin-top:2.5mm;font-size:8.9pt}
 .caution-tb td:first-child{white-space:nowrap}
 .caution{break-inside:avoid;page-break-inside:avoid}
+/* boxes attached under a concept section */
+.sbox{margin:-1mm 0 3.5mm}
+.sb-tb{font-size:8.8pt;margin:0}
+.sb-tb th,.sb-tb td{padding:1.6mm 2.2mm;line-height:1.5}
+.sb-tb td.grp{background:var(--navy);color:#fff;font-weight:700;text-align:center;vertical-align:middle;white-space:nowrap}
+.sb-tb td.row-l{font-weight:700;color:var(--navy);background:var(--bg-soft);white-space:nowrap}
