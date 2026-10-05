@@ -66,7 +66,7 @@ def toc(nl_rows, lit_rows, nl_start, lit_start):
   <div class="toc-title-h">목차</div>
   <div class="toc-part"><span class="part-no">PART 1</span><span class="toc-part-name">비문학</span><span class="toc-part-pg">{nl_start}</span></div>
   {table(nl_rows)}
-  <div class="toc-note"><i class="on">★</i> 중요도는 지극히 저의 개인적인 주관일 뿐입니다. 제가 별표를 낮게 줬다고 해서 안 보는 일이 없기를..........</div>
+  <div class="toc-note"><i class="on">★</i> 중요도는 지극히 저의 개인적인 주관일 뿐입니다. 제가 중요도를 낮게 줬다고 해서 안 보는 일이 없기를..........</div>
   <div class="toc-part"><span class="part-no">PART 2</span><span class="toc-part-name">문학</span><span class="toc-part-pg">{lit_start}</span></div>
   {table(lit_rows)}
 </section>"""
