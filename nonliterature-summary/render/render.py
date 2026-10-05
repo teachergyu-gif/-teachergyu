@@ -52,16 +52,16 @@ def cover(exams):
   <div class="cover-main">
     <div class="cover-kicker">2학년 · 중간고사 대비</div>
     <h1 class="cover-title">부산외고 2학년<br>중간고사 대비<br><em>비문학 요약자료</em></h1>
-    <div class="cover-sub">평가원 기출 비문학 {n}지문 · 지문 요약 · 출제 유형 정리 · 오개념 바로잡기</div>
+    <div class="cover-sub">평가원 기출 비문학 {n}지문 · 핵심 한 줄 · 문단별 요약 · 핵심 개념 정리</div>
   </div>
   <div class="cover-toc">
     <div class="toc-head">수록 지문</div>
     <table class="toc">{''.join(rows)}</table>
   </div>
   <div class="cover-guide">
-    <div class="guide-item"><span class="gi-n">01</span><b>지문 요약</b><span>문단별 흐름과 핵심 개념으로 지문 구조를 다시 세웁니다.</span></div>
-    <div class="guide-item"><span class="gi-n">02</span><b>출제 유형 정리</b><span>문항별 유형·출제 포인트·정답 근거를 한눈에 봅니다.</span></div>
-    <div class="guide-item"><span class="gi-n">03</span><b>오개념 바로잡기</b><span>학생들이 자주 빠지는 함정과 바른 이해를 확인합니다.</span></div>
+    <div class="guide-item"><span class="gi-n">01</span><b>핵심 한 줄</b><span>지문 전체를 꿰는 한 문장과 키워드로 큰 그림을 잡습니다.</span></div>
+    <div class="guide-item"><span class="gi-n">02</span><b>문단별 요약</b><span>문단의 흐름을 따라 지문 구조를 다시 세웁니다.</span></div>
+    <div class="guide-item"><span class="gi-n">03</span><b>핵심 개념 정리</b><span>시험에 직결되는 개념과 비교표로 마무리합니다.</span></div>
   </div>
 </section>"""
 
@@ -115,21 +115,13 @@ def passage(e, p, idx):
     <div class="kws">{kw}</div>
   </header>
 
-  <div class="sec"><div class="sec-h"><span class="sec-n">01</span>지문 요약</div>
+  <div class="sec"><div class="sec-h">지문 요약</div>
     <ol class="struct">{struct}</ol>
     <div class="sub-h">핵심 개념 정리</div>
     <div class="kps">{kp}</div>
     {table}
   </div>
 
-  <div class="sec"><div class="sec-h"><span class="sec-n">02</span>출제 유형 정리</div>
-    <div class="trend"><span>출제 경향</span>{md(p.get("type_summary"))}</div>
-    {''.join(qs)}
-  </div>
-
-  <div class="sec"><div class="sec-h"><span class="sec-n">03</span>오개념 바로잡기 <small>학생들이 잘못 생각하기 쉬운 내용</small></div>
-    {''.join(ms)}
-  </div>
 </section>"""
 
 
@@ -143,7 +135,7 @@ def build():
             body.append(passage(e, p, idx))
     with open(os.path.join(R, "style.css"), encoding="utf-8") as f:
         css = f.read()
-    css = css.replace("FONTDIR", "file://" + S + "/node_modules")
+    css = css.replace("FONTDIR", "file://" + os.environ.get("FONT_DIR", S + "/node_modules"))
     out = f"""<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>{TITLE}</title>
 <style>{css}</style></head><body>{''.join(body)}</body></html>"""
     with open(os.path.join(R, "summary.html"), "w", encoding="utf-8") as f:
