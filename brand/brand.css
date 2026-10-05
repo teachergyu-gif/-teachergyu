@@ -21,3 +21,5 @@
 .g-sec-h{border-left-color:var(--beige)}
 .flow .fl-quote{border-left-color:var(--beige)}
 .ch-name:before{background:var(--beige)}
+/* cover-bottom logo + slogan removed at the teacher's request (logo stays in the cover banner) */
+.cover-slogan{display:none}
