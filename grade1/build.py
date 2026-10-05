@@ -1,0 +1,194 @@
+"""1학년 booklet: PART 1 문법 → PART 2 문학 → PART 3 교과서 4단원 → PART 4 모의고사(화법·작문, 비문학).
+
+Grammar topics flow over as many pages as they need, so the table of contents is filled in a
+second pass: build → print → find each section's start page in the PDF → build again.
+"""
+import importlib.util, json, os, re, subprocess, sys
+
+G = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(G)
+TITLE = os.environ.get("BOOK_TITLE", "부산외고 1학년 국어 요약 자료")
+
+
+def load_module(name, path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    return m
+
+
+nl = load_module("nl", os.path.join(ROOT, "nonliterature-summary/render/render.py"))
+lit = load_module("lit", os.path.join(ROOT, "literature-summary/render/render.py"))
+md = lit.md
+
+
+def jload(name):
+    with open(os.path.join(G, "data", name), encoding="utf-8") as f:
+        return json.load(f)
+
+
+# ---------- content order ----------
+GRAMMAR_FILES = ["gram_1.json", "gram_2.json", "gram_3.json", "gram_4.json"]
+LIT_FILES = ["lit_1.json", "lit_2.json", "lit_3.json", "lit_4.json"]
+UNIT4_FILES = ["unit4_1.json", "unit4_2.json"]
+MOCK_FILES = ["hj_2024.json", "hj_2025.json", "bm_2024.json", "bm_2025.json"]
+
+
+MARKS = False
+
+
+def mark(html, anchor):
+    """Put an invisible, extractable marker on the block's first page (pass 1 only)."""
+    if not MARKS:
+        return html
+    m = f'<span class="anchor-mark">⟦{anchor}⟧</span>'
+    i = html.find('<div class="fit">')
+    if i >= 0:
+        j = i + len('<div class="fit">')
+        return html[:j] + m + html[j:]
+    j = html.find(">", html.find("<section")) + 1
+    return html[:j] + m + html[j:]
+
+
+def grammar_topic(t, idx):
+    secs = []
+    for s in t.get("sections", []):
+        pts = "".join(f"<li>{md(p)}</li>" for p in s.get("points", []))
+        exs = "".join(f'<div class="g-ex">{md(e)}</div>' for e in s.get("examples", []))
+        exs = f'<div class="g-exs"><span class="g-ex-label">예문</span>{exs}</div>' if exs else ""
+        secs.append(f'<div class="g-sec keep"><div class="g-sec-h">{md(s["heading"])}</div><ul class="g-pts">{pts}</ul>{exs}</div>')
+    table = ""
+    tb = t.get("table")
+    if tb and tb.get("headers"):
+        th = "".join(f"<th>{md(h)}</th>" for h in tb["headers"])
+        trs = "".join(lit.row_html(r) for r in tb["rows"])
+        table = f'<div class="sec keep"><div class="sec-h">한눈에 정리</div><table class="cmp"><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table></div>'
+    tips = ""
+    if t.get("tips"):
+        cards = "".join(f'<div class="kp"><div class="kp-term">{md(k["term"])}</div><div class="kp-desc">{md(k["desc"])}</div></div>' for k in t["tips"])
+        tips = f'<div class="sec keep"><div class="sec-h">구별 포인트</div><div class="kps">{cards}</div></div>'
+    return f"""
+<section class="gtopic">
+  <header class="p-head">
+    <div class="p-meta"><span class="p-idx">{idx:02d}</span><span class="tag">문법</span><span class="p-exam">문법 개념</span></div>
+    <h2 class="p-title">{md(t["title"])}</h2>
+    <div class="p-core"><span class="core-label">핵심 한 줄</span>{md(t.get("one_line"))}</div>
+  </header>
+  <div class="sec"><div class="sec-h">개념 정리</div>{''.join(secs)}</div>
+  {table}
+  {tips}
+</section>"""
+
+
+def cover(parts):
+    cards = "".join(
+        f'<div class="part-card"><div class="part-no">PART {i}</div><div class="part-name">{name}</div><div class="part-desc">{desc}</div></div>'
+        for i, (name, desc) in enumerate(parts, 1)
+    )
+    return f"""
+<section class="cover">
+  <div class="cover-top">
+    <div class="cover-school">RICH ACADEMY</div>
+    <div class="cover-rule"></div>
+    <div class="cover-author"><b>이재규T</b></div>
+  </div>
+  <div class="cover-main">
+    <div class="cover-kicker">1학년 · 시험 대비</div>
+    <h1 class="cover-title">{md(TITLE).replace(' 국어 ', '<br>국어 ').replace('요약 자료', '<em>요약 자료</em>')}</h1>
+    <div class="cover-sub">{' · '.join(f'PART {i} {n}' for i, (n, _) in enumerate(parts, 1))}</div>
+  </div>
+  <div class="parts parts4">{cards}</div>
+</section>"""
+
+
+def toc(blocks, pages):
+    out = ['<section class="toc-page"><div class="toc-title-h">목차</div>']
+    for i, (name, rows) in enumerate(blocks, 1):
+        first = rows[0][0] if rows else None
+        out.append(f'<div class="toc-part"><span class="part-no">PART {i}</span><span class="toc-part-name">{name}</span>'
+                   f'<span class="toc-part-pg">{pages.get(first, "")}</span></div><table class="toc">')
+        for anchor, cells in rows:
+            out.append(f'<tr>{cells}<td class="toc-pg">{pages.get(anchor, "")}</td></tr>')
+        out.append("</table>")
+    out.append("</section>")
+    return "".join(out)
+
+
+def build(pages):
+    body, blocks = [], []
+
+    # PART 1 문법
+    topics = [t for f in GRAMMAR_FILES for t in jload(f)["topics"]]
+    rows = []
+    for i, t in enumerate(topics, 1):
+        body.append(mark(grammar_topic(t, i), f"G{i}"))
+        rows.append((f"G{i}", f'<td class="toc-no">{i:02d}</td><td><span class="tag tag-sm">문법</span></td><td class="toc-title">{md(t["title"])}</td>'))
+    blocks.append(("문법", rows))
+
+    # PART 2 문학
+    sets = [jload(f) for f in LIT_FILES]
+    rows = []
+    for i, st in enumerate(sets, 1):
+        body.append(mark(lit.set_html(st, i), f"L{i}"))
+        works = " · ".join(f'{md(w["title"])} <span class="toc-au">{md(w["author"])}</span>' for w in st["works"])
+        rows.append((f"L{i}", f'<td class="toc-no">{i:02d}</td><td><span class="tag tag-sm">{md(st["set_label"])}</span></td>'
+                              f'<td class="toc-title">{works}</td><td class="toc-exam">{md(st.get("source"))}</td>'))
+    blocks.append(("문학", rows))
+
+    # PART 3 교과서 4단원, PART 4 모의고사
+    for part, files, key in [("교과서 4단원", UNIT4_FILES, "U"), ("모의고사 · 화법과 작문, 비문학", MOCK_FILES, "M")]:
+        rows, i = [], 0
+        for f in files:
+            e = jload(f)
+            for p in e["passages"]:
+                i += 1
+                body.append(mark(nl.passage(e, p, i), f"{key}{i}"))
+                rows.append((f"{key}{i}", f'<td class="toc-no">{i:02d}</td><td class="toc-exam">{md(e["exam_short"])}</td>'
+                                          f'<td><span class="tag tag-sm">{md(p["field"])}</span></td><td class="toc-title">{md(p["title"])}</td>'))
+        blocks.append((part, rows))
+
+    parts = [("문법", "문장 성분 · 서술어의 자릿수 · 높임 · 시간 · 피동 · 사동 · 부정 표현"),
+             ("문학", "교과서 1-(1) · 1-(2) · 부교재 (해바라기 씨 · 낙타 · 모순)"),
+             ("교과서 4단원", "주제 통합적 읽기 · 사회적 독서와 발표"),
+             ("모의고사", "2024 · 2025 9월 고1 화법과 작문 · 비문학")]
+    html_body = cover(parts) + toc(blocks, pages) + "".join(body)
+
+    css = open(os.path.join(ROOT, "literature-summary/render/style.css"), encoding="utf-8").read()
+    css += open(os.path.join(ROOT, "combined/extra.css"), encoding="utf-8").read()
+    css += open(os.path.join(G, "grade1.css"), encoding="utf-8").read()
+    font_dir = os.environ.get("FONT_DIR", ROOT + "/node_modules")
+    css = css.replace("FONTDIR", "file://" + font_dir)
+    out = f"""<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>{TITLE}</title>
+<link rel="stylesheet" href="file://{font_dir}/@fontsource/do-hyeon/index.css">
+<style>{css}</style></head><body>{html_body}</body></html>"""
+    with open(os.path.join(G, "summary.html"), "w", encoding="utf-8") as f:
+        f.write(out)
+    return [a for _, rows in blocks for a, _ in rows]
+
+
+def find_pages(pdf, anchors):
+    """Locate each section's first page by the invisible anchor marker text."""
+    n = int(re.search(r"Pages:\s+(\d+)", subprocess.run(["pdfinfo", pdf], capture_output=True, text=True).stdout).group(1))
+    found = {}
+    for p in range(1, n + 1):
+        txt = subprocess.run(["pdftotext", "-f", str(p), "-l", str(p), pdf, "-"], capture_output=True, text=True).stdout
+        for a in re.findall(r"⟦([GLUM]\d+)⟧", txt):
+            found.setdefault(a, p)
+    missing = [a for a in anchors if a not in found]
+    if missing:
+        sys.exit(f"anchors not found: {missing}")
+    return found
+
+
+if __name__ == "__main__":
+    out_pdf = sys.argv[1]
+    # pass 1: render with marker text so we can find where each section lands
+    MARKS = True
+    anchors = build({})
+    subprocess.run(["node", os.path.join(G, "print.js"), out_pdf], check=True)
+    pages = find_pages(out_pdf, anchors)
+    # pass 2: final render with page numbers in the table of contents
+    MARKS = False
+    build(pages)
+    subprocess.run(["node", os.path.join(G, "print.js"), out_pdf], check=True)
+    print("pages:", pages)
