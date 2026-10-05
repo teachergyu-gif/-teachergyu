@@ -125,3 +125,10 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
 .struct li{padding:2.4mm 0}
 .kps{gap:3mm}
 .kp{padding:3.2mm 3.8mm}
+/* page 2: slightly larger, airier cards and table */
+.kp{padding:4mm 4.5mm}
+.kp-term{font-size:10.4pt;margin-bottom:1.2mm}
+.kp-desc{font-size:9.6pt;line-height:1.7}
+.cmp{font-size:9.4pt}
+.cmp th,.cmp td{padding:2.8mm 3mm}
+.pg .sec + .sec{margin-top:8mm}
