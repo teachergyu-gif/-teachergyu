@@ -134,6 +134,7 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
 .cmp th,.cmp td{padding:2.8mm 3mm}
 .pg .sec + .sec{margin-top:8mm}
 .cmp tr.merged td[colspan]{text-align:center;background:var(--gold-xl);font-weight:600;color:var(--navy)}
+.kp:last-child:nth-child(odd){grid-column:1/-1}
 </style></head><body>
 <section class="cover">
   <div class="cover-top">
@@ -317,7 +318,7 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
 <section class="pg"><div class="fit">
   <div class="run"><span class="p-idx">09</span><span class="tag">기술</span><span class="run-title">데이터에서 결측치와 이상치의 처리방법</span><span class="p-exam">2024학년도 대학수학능력시험</span></div>
   <div class="sec"><div class="sec-h">핵심 개념 정리</div>
-    <div class="kps"><div class="kp"><div class="kp-term">결측치 대체 기준</div><div class="kp-desc">연속적 수치→평균 / 순위 있는 값(석차)→중앙값 / 문자(직업)→최빈값. 최빈값은 수치가 아니어도 구할 수 있음.</div></div><div class="kp"><div class="kp-term">중앙값 구하는 법</div><div class="kp-desc">크기순 정렬 후 중앙의 값. 같은 값이 여러 개여도 순위를 매겨 찾고, 데이터 개수가 짝수면 중앙 두 값의 평균 → 데이터에 없는 값일 수도 있음.</div></div><div class="kp"><div class="kp-term">이상치의 정의</div><div class="kp-desc">&#x27;다른 값에 비해 유달리 크거나 작은 값&#x27;이 정의의 핵심. 원인(측정 오류)은 &#x27;주로&#x27;일 뿐 → 정상 수집 데이터에도 이상치 존재 가능, 측정 오류 값이라도 유달리 크거나 작지 않으면 이상치 아님.</div></div><div class="kp"><div class="kp-term">㉠ 중앙값을 대푯값으로 쓰는 이유</div><div class="kp-desc">평균은 극단의 이상치에 크게 끌려가지만, 중앙값은 순위상 중앙의 값이라 극단에 있는 이상치의 영향을 덜 받음.</div></div><div class="kp"><div class="kp-term">A 기법의 절차</div><div class="kp-desc">무작위 두 점 → 후보 직선 → 허용 범위 내 점을 정상치 집합에 추가 → &#x27;정상치 집합 점의 개수&#x27;를 문턱값과 비교 → 최종 후보군 중 정상치 집합 개수 최대인 직선 선택.</div></div><div class="kp"><div class="kp-term">A 기법의 한계 가능성</div><div class="kp-desc">허용 범위에 따라 이상치도 정상치 집합에 포함될 수 있음. 최종 직선은 이상치를 지나지 않을 &#x27;가능성이 높은&#x27; 것일 뿐.</div></div></div>
+    <div class="kps"><div class="kp"><div class="kp-term">결측치 대체 기준</div><div class="kp-desc">연속적 수치→평균 / 순위 있는 값(석차)→중앙값 / 문자(직업)→최빈값. 최빈값은 수치가 아니어도 구할 수 있음.</div></div><div class="kp"><div class="kp-term">중앙값 구하는 법</div><div class="kp-desc">크기순 정렬 후 중앙의 값. 같은 값이 여러 개여도 순위를 매겨 찾고, 데이터 개수가 짝수면 중앙 두 값의 평균 → 데이터에 없는 값일 수도 있음.</div></div><div class="kp"><div class="kp-term">이상치의 정의</div><div class="kp-desc">&#x27;다른 값에 비해 유달리 크거나 작은 값&#x27;이 정의의 핵심. 원인(측정 오류)은 &#x27;주로&#x27;일 뿐 → 정상 수집 데이터에도 이상치 존재 가능, 측정 오류 값이라도 유달리 크거나 작지 않으면 이상치 아님.</div></div><div class="kp"><div class="kp-term">㉠ 중앙값을 대푯값으로 쓰는 이유</div><div class="kp-desc">평균은 극단의 이상치에 크게 끌려가지만, 중앙값은 순위상 중앙의 값이라 극단에 있는 이상치의 영향을 덜 받음.</div></div><div class="kp"><div class="kp-term">A 기법의 절차</div><div class="kp-desc">무작위 두 점 → 후보 직선 → 허용 범위 내 점을 정상치 집합에 추가 → &#x27;정상치 집합 점의 개수&#x27;를 문턱값과 비교 → 최종 후보군 중 정상치 집합 개수 최대인 직선 선택.</div></div></div>
   </div>
   <div class="sec"><div class="sec-h">한눈에 비교</div>
     <table class="cmp"><thead><tr><th>구분</th><th>A 기법(지문)</th><th>B 기법(&lt;보기&gt;)</th></tr></thead><tbody><tr><td>후보 직선 설정</td><td>무작위로 고른 두 점을 지나는 직선</td><td>임의로 여러 개 가정</td></tr><tr><td>거리 계산</td><td>후보 직선과 나머지 점 사이 거리 → 허용 범위 내 점을 정상치 집합에 추가</td><td>모든 점에서 각 후보 직선까지 거리</td></tr><tr><td>이상치 처리</td><td>정상치 집합 개수가 문턱값 미만인 후보 직선을 버려 사실상 배제(단, 허용 범위에 따라 이상치가 정상치 집합에 들어갈 수 있음)</td><td>이상치를 배제하는 과정 없음</td></tr><tr><td>선택 기준</td><td>최종 후보군 중 정상치 집합 데이터 개수 최대</td><td>점들과 가장 가까운 직선</td></tr><tr><td>결과</td><td>이상치가 있어도 직선 L을 찾을 가능성 높음</td><td>대부분 최적 직선과 이상치 사이의 직선 → L로 부적합</td></tr></tbody></table></div>
