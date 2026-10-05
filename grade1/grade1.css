@@ -33,3 +33,4 @@
 .caution-a{font-size:9.3pt}
 .caution-tb{margin-top:2.5mm;font-size:8.9pt}
 .caution-tb td:first-child{white-space:nowrap}
+.caution{break-inside:avoid;page-break-inside:avoid}
