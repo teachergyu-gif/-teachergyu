@@ -90,7 +90,9 @@ def build():
     with open(os.path.join(C, "extra.css"), encoding="utf-8") as f:
         css += f.read()
     css = css.replace("FONTDIR", "file://" + os.environ.get("FONT_DIR", ROOT + "/node_modules"))
+    font_dir = os.environ.get("FONT_DIR", ROOT + "/node_modules")
     out = f"""<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>{TITLE}</title>
+<link rel="stylesheet" href="file://{font_dir}/@fontsource/jua/index.css">
 <style>{css}</style></head><body>{''.join(body)}</body></html>"""
     with open(os.path.join(C, "summary.html"), "w", encoding="utf-8") as f:
         f.write(out)

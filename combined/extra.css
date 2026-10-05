@@ -14,3 +14,6 @@
 .toc-part-pg{margin-left:auto;font-size:9pt;color:var(--muted)}
 .toc-page .toc td{padding:1.7mm 1.5mm;font-size:9pt}
 .toc-pg{text-align:right;width:12mm;color:var(--navy);font-weight:600;font-variant-numeric:tabular-nums}
+/* cover title: friendlier rounded face */
+.cover-title{font-family:"Jua","Pretendard",sans-serif;font-weight:400;font-size:33pt;line-height:1.3;letter-spacing:0}
+.cover-title em{font-weight:400}
