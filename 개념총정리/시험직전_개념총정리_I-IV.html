@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>시험 직전 개념 총정리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poor+Story&amp;family=Gaegu:wght@400;700&amp;family=Hi+Melody&amp;family=Gamja+Flower&amp;family=Nanum+Pen+Script&amp;family=Noto+Sans+KR:wght@400;700&amp;display=swap">
+<style>
+:root{
+  --paper:#fdfcf7;
+  --ink:#2b2824;
+  --sub:#756d62;
+  --rule:#e6dfd0;
+  --accent:#cf3a6c;
+  --accent-soft:#fbe4ec;
+  --accent-ink:#5b2238;
+  --ex:#2a5aa8;
+  --ok:#2f8a63;
+  --mk:rgba(255,220,70,.62);
+  --mk2:rgba(255,158,192,.42);
+  --body:'Poor Story';
+  --pen:'Nanum Pen Script';
+}
+html[data-font="gaegu"]{--body:'Gaegu'}
+html[data-font="gaegu"] .spread{font-size:16.5px;letter-spacing:-.015em}
+html[data-font="himelody"]{--body:'Hi Melody'}
+html[data-font="gamja"]{--body:'Gamja Flower'}
+
+@page{size:420mm 297mm;margin:0}
+html,body{margin:0;background:#e9e6df}
+
+/* ---------- 화면용 안내 (인쇄 안 됨) ---------- */
+.guide{font-family:'Noto Sans KR',sans-serif;max-width:1548px;margin:24px auto 0;padding:14px 20px;background:#fff;border:1px solid #d8d3c8;border-radius:8px;color:#333;font-size:14px;line-height:1.65}
+.guide p{margin:0}
+.fontbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px}
+.fontbar button{font:inherit;font-size:13px;padding:4px 12px;border:1px solid #cfc8bb;border-radius:999px;background:#faf8f3;color:#333;cursor:pointer}
+.fontbar button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.wrap{display:flex;flex-direction:column;align-items:center;gap:32px;padding:24px 0 48px}
+
+/* ---------- 펼침쪽 ---------- */
+.spread{position:relative;display:flex;flex-shrink:0;width:1588px;height:1123px;overflow:hidden;background:var(--paper);color:var(--ink);font-family:var(--body),'Gaegu',cursive;font-size:17px;line-height:1.48;word-break:keep-all;overflow-wrap:break-word;box-shadow:0 4px 18px rgba(0,0,0,.12)}
+.spread::after{content:"";position:absolute;left:764px;top:0;width:60px;height:100%;background:linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,.06) 50%,rgba(0,0,0,0));pointer-events:none}
+.page{position:relative;box-sizing:border-box;width:794px;height:1123px;display:flex;flex-direction:column;gap:17px;background-image:radial-gradient(circle,#e4dfd2 1px,transparent 1.2px);background-size:24px 24px;background-position:12px 12px}
+.page.pl{padding:46px 54px 72px 64px}
+.page.pr{padding:46px 64px 72px 54px}
+
+/* 머리말 */
+.tape{display:inline-block;background:rgba(244,143,177,.42);color:var(--accent-ink);font-family:var(--pen),cursive;font-size:28px;line-height:34px;padding:0 20px;transform:rotate(-1.5deg);clip-path:polygon(1.5% 0,98.5% 0,100% 25%,98.5% 50%,100% 75%,98.5% 100%,1.5% 100%,0 75%,1.5% 50%,0 25%)}
+.unit{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+.unit h1{margin:6px 0 0;display:flex;align-items:baseline;gap:16px;font-weight:400;white-space:nowrap}
+.unit h1 .ttl{font-family:var(--pen),cursive;font-size:66px;line-height:60px;color:var(--accent)}
+.unit h1 .kw{font-family:var(--pen),cursive;font-size:30px;line-height:30px;color:#4a443d}
+.unit svg{display:block}
+.runhead{align-self:flex-end;font-size:22px;line-height:30px;transform:rotate(1.2deg);margin-bottom:-6px}
+
+/* 꼬리말 */
+.folio{position:absolute;bottom:30px;font-size:15px;color:var(--sub)}
+.folio b{font-size:17px;color:var(--ink)}
+.pl .folio{left:64px}
+.pr .folio{right:64px}
+
+/* 대단원 안 소단원 */
+.sec{display:flex;flex-direction:column;gap:7px}
+.sh{display:flex;align-items:center;gap:10px;margin:0 0 3px;padding-bottom:5px;border-bottom:1.5px dashed #e2c3cf;font-weight:400;white-space:nowrap}
+.sh .sn{flex-shrink:0;width:34px;height:34px;border:2.5px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--pen),cursive;font-size:30px;line-height:1;color:var(--accent);box-sizing:border-box;padding-top:2px}
+.sh .st{font-family:var(--pen),cursive;font-size:42px;line-height:38px;color:var(--accent)}
+.sh small{margin-left:4px;font-size:16px;color:var(--sub);align-self:flex-end;padding-bottom:3px}
+
+/* 항목 */
+.it{display:grid;grid-template-columns:22px minmax(0,1fr);column-gap:10px}
+.no{width:22px;height:22px;margin-top:2px;border:1.5px solid var(--accent);border-radius:50%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;line-height:1;color:var(--accent);font-family:'Noto Sans KR',sans-serif}
+.it p{margin:0}
+.it p + p{margin-top:1px}
+.it .in{padding-left:1.1em}
+.t{font-weight:700;font-size:1.08em}
+
+/* 표시 체계: 노란 형광 = 핵심, 분홍 형광 = 대비·순서, 파랑 = 예시·발음 */
+.mk{background:linear-gradient(transparent 55%,var(--mk) 55%,var(--mk) 92%,transparent 92%);padding:0 2px}
+.mk2{background:linear-gradient(transparent 55%,var(--mk2) 55%,var(--mk2) 92%,transparent 92%);padding:0 2px}
+.b{font-weight:700}
+.nw{white-space:nowrap}
+.e{color:var(--ex)}
+.s{color:var(--sub);font-size:.94em}
+.r{color:var(--accent)}
+.rb{color:var(--accent);font-weight:700}
+.w{display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:.82em;line-height:1.45;padding:0 7px;border-radius:5px;margin-right:4px;vertical-align:1px}
+.ok{display:inline-block;border:1.5px solid var(--ok);color:var(--ok);font-weight:700;font-size:.8em;line-height:1.35;padding:0 6px;border-radius:5px;margin-left:4px;vertical-align:1px}
+.hang{display:inline-block;border:1px solid #b9b0a2;color:var(--sub);font-size:.76em;line-height:1.35;padding:0 5px;border-radius:4px;vertical-align:2px;margin:0 2px}
+.jm{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:.92em}
+.oh{height:1.2em;vertical-align:-.27em;opacity:.9}
+
+/* 표 */
+.tb{border-collapse:collapse;margin:5px 0 2px;background:#fffefa;font-size:.88em;line-height:1.35}
+.tb th,.tb td{border:1px solid #a39b8e;padding:2px 9px;text-align:center;font-weight:400}
+.tb th{background:var(--accent-soft);color:var(--accent-ink);font-weight:700;white-space:nowrap}
+.tb td.lf{text-align:left}
+
+/* 상자 */
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.card{border:1.5px solid #4a443d;border-radius:12px;padding:6px 12px 9px;background:#fffefa}
+.card .hd{display:flex;justify-content:space-between;align-items:baseline;white-space:nowrap}
+.card .hd span:first-child{font-family:var(--pen),cursive;font-size:34px;line-height:36px;color:var(--accent)}
+.card .hd span:last-child{font-weight:700;font-size:16px}
+.card p{margin:2px 0 0;font-size:15px;line-height:1.4}
+.lead{margin:0}
+.box{border:1.5px solid #4a443d;border-radius:12px;padding:10px 16px 12px;background:#fffefa}
+.box p{margin:0}
+.box .pen{font-family:var(--pen),cursive;font-size:32px;line-height:28px;color:var(--accent);margin-right:6px}
+.memo{background:#fff4ad;padding:10px 16px 12px;border-radius:2px;box-shadow:2px 3px 0 rgba(0,0,0,.07)}
+.memo h3{margin:0 0 2px;font-family:var(--pen),cursive;font-weight:400;font-size:32px;line-height:32px;color:var(--accent)}
+.memo p{margin:0}
+.memo p + p{margin-top:2px}
+.arrowline{display:flex;align-items:center;gap:6px;color:#4a443d;font-size:.95em}
+
+@media print{
+  html,body{background:#fff}
+  .guide{display:none}
+  .wrap{display:block;padding:0}
+  .spread{box-shadow:none;page-break-after:always;break-after:page;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .spread:last-child{page-break-after:auto;break-after:auto}
+}
+</style>
+</head>
+<body>
+<div class="guide">
+<p><b>PDF로 저장하는 법</b> — 인터넷이 연결된 상태에서 크롬(Chrome)으로 이 파일을 열고, 글꼴이 손글씨로 바뀐 것을 확인한 뒤 <b>Ctrl+P</b>(맥은 ⌘+P) → 대상: <b>PDF로 저장</b> → 더보기에서 <b>배경 그래픽</b>을 켜고 저장하세요. 펼침쪽 4개가 A4 두 쪽 크기(420×297mm) PDF 4쪽으로 저장됩니다. (이 안내문은 인쇄되지 않습니다.)</p>
+<div class="fontbar" role="group" aria-label="본문 글꼴 고르기"><span>본문 글꼴 비교:</span>
+<button type="button" data-font="poor" aria-pressed="true">푸어 스토리 (추천)</button>
+<button type="button" data-font="gaegu" aria-pressed="false">개구</button>
+<button type="button" data-font="himelody" aria-pressed="false">하이 멜로디</button>
+<button type="button" data-font="gamja" aria-pressed="false">감자꽃 (1차 원본)</button>
+</div>
+</div>
+
+<div class="wrap">
+
+<!-- ======================================================= I. 음운 변동 -->
+<div class="spread">
+<div class="page pl">
+
+<header class="unit">
+<span class="tape">시험 직전 개념 총정리</span>
+<h1><span class="ttl">I. 음운 변동</span><span class="kw">한눈에 끝!</span></h1>
+<svg width="440" height="14" viewBox="0 0 440 14" fill="none" aria-hidden="true"><path d="M3 9 C 40 3, 80 12, 120 7 S 200 3, 240 8 S 320 12, 360 6 S 420 5, 437 8" stroke="#cf3a6c" stroke-width="3" stroke-linecap="round"/></svg>
+</header>
+
+<div class="sec">
+<p class="lead">음운 변동 = <span class="mk b">이웃한 음운의 영향으로 소리가 바뀌는 것</span> <span class="s">(발음의 경제성!)</span></p>
+<div class="cards">
+<div class="card"><div class="hd"><span>교체</span><span>A → B</span></div><p>끝소리 규칙, 비음화, 유음화, 구개음화, 된소리되기, 반모음화</p></div>
+<div class="card"><div class="hd"><span>탈락</span><span>AB → A</span></div><p>자음군 단순화, ‘ㄹ’·‘ㅎ’·‘ㅡ’·‘ㅏ/ㅓ’ 탈락</p></div>
+<div class="card"><div class="hd"><span>축약</span><span>A+B → C</span></div><p>거센소리되기, 모음 축약</p></div>
+<div class="card"><div class="hd"><span>첨가</span><span>A → AB</span></div><p>‘ㄴ’ 첨가, 반모음 첨가</p></div>
+</div>
+<p class="arrowline"><svg width="36" height="16" viewBox="0 0 40 18" fill="none" stroke="#4a443d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12 C 12 4, 24 16, 36 8"/><path d="M29 5 L36 8 L31 14"/></svg><span>한 단어에서 두 가지 이상의 변동이 <span class="b">연쇄적으로</span> 일어나기도 함</span></p>
+</div>
+
+<section class="sec">
+<h2 class="sh"><span class="sn">1</span><span class="st">교체</span><small>한 음운 → 다른 음운 &nbsp;·&nbsp; 비음화·유음화·구개음화 = <b>동화</b>(이웃 소리를 닮아 감)</small></h2>
+
+<div class="it"><span class="no">1</span><div>
+<p><span class="t">음절의 끝소리 규칙</span> — 받침 소리는 <span class="mk b">ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅇ 7개뿐!</span></p>
+<p>ㄲ·ㅋ → <span class="e">[ㄱ]</span> / ㅅ·ㅆ·ㅈ·ㅊ·ㅌ·ㅎ → <span class="e">[ㄷ]</span> / ㅍ → <span class="e">[ㅂ]</span> &nbsp; 낫·낮·낯·낱 → 모두 <span class="e">[낟]</span></p>
+<p><span class="w">연음 주의</span>+ 형식 형태소(조사·어미·접미사) → 바로 연음 &nbsp;옷이<span class="e">[오시]</span>, 꽃이<span class="e">[꼬치]</span></p>
+<p class="in">+ 실질 형태소 → <span class="mk2">대표음 먼저</span>, 그다음 연음 &nbsp;옷 안<span class="e">[오단]</span>, 꽃 위<span class="e">[꼬뒤]</span></p>
+</div></div>
+
+<div class="it"><span class="no">2</span><div>
+<p><span class="t">비음화</span> — <span class="mk">ㄱ·ㄷ·ㅂ + ㄴ·ㅁ → [ㅇ·ㄴ·ㅁ]</span> &nbsp;국물<span class="e">[궁물]</span>, 닫는<span class="e">[단는]</span>, 밥물<span class="e">[밤물]</span></p>
+<p class="r">조음 위치는 그대로, 조음 방법만 바뀜 (유음화도 같음)</p>
+<p>‘ㄹ’의 비음화: ㅁ·ㅇ + ㄹ → <span class="e">[ㄴ]</span> &nbsp;종로<span class="e">[종노]</span>, 담력<span class="e">[담ː녁]</span></p>
+<p>ㄱ·ㄷ·ㅂ + ㄹ → <span class="mk2">ㄹ이 먼저 [ㄴ]</span>, 그다음 앞 받침도 비음화 &nbsp;독립<span class="e">[독닙→동닙]</span></p>
+</div></div>
+
+<div class="it"><span class="no">3</span><div>
+<p><span class="t">유음화</span> — <span class="mk">ㄴ + ㄹ, ㄹ + ㄴ → [ㄹㄹ]</span> &nbsp;신라<span class="nw"><span class="e">[실라]</span>(역행)</span>, 칼날<span class="nw"><span class="e">[칼랄]</span>(순행)</span></p>
+</div></div>
+
+<div class="it"><span class="no">4</span><div>
+<p><span class="t">구개음화</span> — 받침 <span class="mk">ㄷ·ㅌ + ‘ㅣ’로 시작하는 형식 형태소 → [ㅈ·ㅊ]</span></p>
+<p>굳이<span class="e">[구지]</span>, 밭이<span class="e">[바치]</span> / ㄷ + 접미사 ‘-히-’ → 닫히다<span class="e">[다티다→다치다]</span></p>
+<p class="r">조음 위치와 조음 방법이 모두 바뀜</p>
+<p><span class="rb">✕</span> 잔디·디디다(한 형태소 안), 곧이어<span class="nw"><span class="e">[고디어]</span>(뒤가 실질 형태소)</span></p>
+</div></div>
+
+<div class="it"><span class="no">5</span><div>
+<p><span class="t">된소리되기</span> — 예사소리 ㄱ·ㄷ·ㅂ·ㅅ·ㅈ → 된소리, <span class="mk b">환경 5가지</span></p>
+<p>① 받침 ㄱ·ㄷ·ㅂ 뒤: 국밥<span class="e">[국빱]</span>, 옷고름<span class="e">[옫꼬름]</span>, 입술<span class="e">[입쑬]</span></p>
+<p>② 어간 받침 ㄴ(ㄵ)·ㅁ(ㄻ) + 어미: 신고<span class="e">[신ː꼬]</span>, 앉고<span class="e">[안꼬]</span>, 삼고<span class="e">[삼ː꼬]</span> &nbsp;<span class="r">※ 안기다 ✕(접미사)</span></p>
+<p>③ 어간 받침 ㄼ·ㄾ + 어미: 넓게<span class="e">[널께]</span>, 핥다<span class="e">[할따]</span></p>
+<p>④ 관형사형 어미 ‘-(으)ㄹ’ 뒤: 할 것을<span class="e">[할꺼슬]</span>, 만날 사람<span class="e">[만날싸람]</span></p>
+<p>⑤ 한자어 ‘ㄹ’ 받침 뒤 ㄷ·ㅅ·ㅈ: 갈등<span class="e">[갈뜽]</span>, 일시<span class="e">[일씨]</span>, 발전<span class="e">[발쩐]</span></p>
+</div></div>
+
+<div class="it"><span class="no">6</span><div>
+<p><span class="t">반모음화</span> — 단모음 → 반모음 &nbsp;피- + -어서 → 펴서, 보- + -아 → <span class="nw">봐 <span class="ok">표기 O</span></span></p>
+</div></div>
+</section>
+
+<div class="folio"><b>00</b> &nbsp;다담 고1 공통국어 문법</div>
+</div>
+
+<div class="page pr">
+<span class="tape runhead">I. 음운 변동 · 시험 직전 개념 총정리</span>
+
+<section class="sec">
+<h2 class="sh"><span class="sn">2</span><span class="st">탈락</span><small>원래 있던 음운이 없어짐</small></h2>
+
+<div class="it"><span class="no">1</span><div>
+<p><span class="t">자음군 단순화</span> — 겹받침은 <span class="mk">어말·자음 앞에서 하나만 발음</span></p>
+<p>앞 자음 탈락 <span class="b">ㄺ·ㄻ·ㄿ</span>: 닭<span class="e">[닥]</span>, 삶<span class="e">[삼ː]</span>, 읊다<span class="e">[읍따]</span></p>
+<p>뒤 자음 탈락 <span class="b">ㄳ·ㄵ·ㄼ·ㄽ·ㄾ·ㅄ</span>: 넋<span class="e">[넉]</span>, 앉다<span class="e">[안따]</span>, 여덟<span class="e">[여덜]</span>, 값<span class="e">[갑]</span></p>
+<p><span class="w">예외 콕</span>맑게<span class="nw"><span class="e">[말께]</span>(용언 ㄺ + ㄱ)</span>, 밟다<span class="e">[밥ː따]</span>, 넓죽하다<span class="e">[넙쭈카다]</span></p>
+<p>+ 모음 <span class="mk2">형식</span> 형태소 → 단순화 없이 연음 &nbsp;닭을<span class="e">[달글]</span>, 넋이<span class="e">[넉씨]</span></p>
+<p>+ 모음 <span class="mk2">실질</span> 형태소 → 단순화 후 연음 &nbsp;닭 앞에<span class="e">[다가페]</span>, 넋 없다<span class="e">[너겁따]</span></p>
+<p>ㄶ·ㅀ + ㅅ·ㄴ → 자음군 단순화 &nbsp;많소<span class="e">[만ː쏘]</span>, 많니<span class="e">[만ː니]</span></p>
+<p class="in">+ 모음 형식 형태소 → ‘ㅎ’ 탈락 &nbsp;많아<span class="e">[마ː나]</span></p>
+</div></div>
+
+<div class="it"><span class="no">2</span><div>
+<p><span class="t">‘ㄹ’ 탈락</span> — 어간 끝 ㄹ + ㄴ·ㅂ·ㅅ 어미 &nbsp;살- + -니 → 사니, 알- + -시- + -고 → <span class="nw">아시고 <span class="ok">표기 O</span></span></p>
+</div></div>
+
+<div class="it"><span class="no">3</span><div>
+<p><span class="t">‘ㅎ’ 탈락</span> — 어간 끝 ㅎ + 모음 형식 형태소 &nbsp;놓아<span class="e">[노아]</span>, 좋은<span class="e">[조ː은]</span>, 끓이다<span class="e">[끄리다]</span></p>
+</div></div>
+
+<div class="it"><span class="no">4</span><div>
+<p><span class="t">‘ㅡ’ 탈락</span> — 어간 끝 ‘ㅡ’ + 모음 어미 &nbsp;쓰- + -어 → 써, 잠그- + -아 → <span class="nw">잠가 <span class="ok">표기 O</span></span></p>
+</div></div>
+
+<div class="it"><span class="no">5</span><div>
+<p><span class="t">‘ㅏ/ㅓ’ 탈락</span> — 어간 끝 ‘ㅏ/ㅓ’ + ‘ㅏ/ㅓ’ 어미 &nbsp;가- + -아서 → 가서, 서- + -어라 → <span class="nw">서라 <span class="ok">표기 O</span></span></p>
+</div></div>
+</section>
+
+<section class="sec">
+<h2 class="sh"><span class="sn">3</span><span class="st">축약</span><small>두 음운이 합쳐져 하나로</small></h2>
+
+<div class="it"><span class="no">1</span><div>
+<p><span class="t">거센소리되기</span> — <span class="mk">ㄱ·ㄷ·ㅂ·ㅈ + ㅎ → [ㅋ·ㅌ·ㅍ·ㅊ]</span> <span class="s">(ㅎ이 앞이든 뒤든 OK)</span></p>
+<p>국화<span class="e">[구콰]</span>, 잡히다<span class="e">[자피다]</span>, 놓다<span class="e">[노타]</span>, 많지<span class="e">[만ː치]</span></p>
+<p><span class="w">순서 주의</span>단어 사이에선 <span class="mk2">앞 단어 변동이 먼저</span> &nbsp;옷 한 벌<span class="e">[옫한벌→오탄벌]</span></p>
+<p class="in">닭 한 마리<span class="e">[닥한마리→다칸마리]</span> &nbsp;<span class="r">[달칸마리] ✕</span></p>
+<p>단, 용언 어간 + 접미사는 <span class="b">곧바로</span> 축약 &nbsp;꽂히다<span class="e">[꼬치다]</span>, 넓히다<span class="e">[널피다]</span></p>
+</div></div>
+
+<div class="it"><span class="no">2</span><div>
+<p><span class="t">모음 축약</span> — 단모음 + 단모음 → 다른 단모음 &nbsp;보이다 → 뵈다, 사이 → 새, 누이다 → <span class="nw">뉘다 <span class="ok">표기 O</span></span></p>
+</div></div>
+</section>
+
+<section class="sec">
+<h2 class="sh"><span class="sn">4</span><span class="st">첨가</span><small>없던 음운이 새로 생김</small></h2>
+
+<div class="it"><span class="no">1</span><div>
+<p><span class="t">‘ㄴ’ 첨가</span> — 합성어·파생어에서 <span class="mk">자음 + ‘이, 야, 여, 요, 유’</span></p>
+<p>맨입<span class="e">[맨닙]</span>, 솜이불<span class="e">[솜ː니불]</span>, 한여름<span class="e">[한녀름]</span>, 식용유<span class="e">[시굥뉴]</span></p>
+<p>첨가된 ㄴ 때문에 → <span class="mk2">비음화</span> &nbsp;색연필<span class="e">[색년필→생년필]</span>, 꽃잎<span class="e">[꼳닙→꼰닙]</span></p>
+<p>첨가된 ㄴ 때문에 → <span class="mk2">유음화</span> &nbsp;서울역<span class="e">[서울녁→서울력]</span>, 물엿<span class="e">[물녇→물렫]</span></p>
+<p class="in r">↳ ‘ㄹ’이 한 번에 첨가된 게 아님!</p>
+</div></div>
+
+<div class="it"><span class="no">2</span><div>
+<p><span class="t">반모음 첨가</span> — 되어<span class="e">[되어/되여]</span>, 피어<span class="e">[피어/피여]</span> <span class="s">(일부만 허용)</span></p>
+</div></div>
+</section>
+
+<div class="folio">I. 음운 변동 &nbsp;<b>00</b></div>
+</div>
+</div>
+
+<!-- ======================================================= II. 문법 요소 -->
+<div class="spread">
+<div class="page pl">
+
+<header class="unit">
+<span class="tape">시험 직전 개념 총정리</span>
+<h1><span class="ttl">II. 문법 요소</span><span class="kw">높임 · 시간 · 피동 · 인용</span></h1>
+<svg width="440" height="14" viewBox="0 0 440 14" fill="none" aria-hidden="true"><path d="M3 9 C 40 3, 80 12, 120 7 S 200 3, 240 8 S 320 12, 360 6 S 420 5, 437 8" stroke="#cf3a6c" stroke-width="3" stroke-linecap="round"/></svg>
+</header>
+
+<section class="sec">
+<h2 class="sh"><span class="sn">1</span><span class="st">높임 표현</span><small>높이는 대상에 따라 주체 · 객체 · 상대 높임</small></h2>
+
+<div class="it"><span class="no">1</span><div>
+<p><span class="t">주체 높임</span> — 서술의 주체(<span class="b">주어</span>)를 높임: <span class="mk">께서, -님, -(으)시-</span></p>
+<p>특수 어휘: 계시다, 주무시다, 잡수시다, 댁, 진지, 성함 &nbsp;<span class="e">할아버지께서 낮잠을 주무셔.</span></p>
+<p><span class="mk2">간접 높임</span>: 주체의 신체·소유물 등을 높여 주체를 높임 &nbsp;<span class="e">할머니께서는 귀가 밝으시다.</span></p>
+<p><span class="w">주의</span>‘계시다’는 주체를 직접 높일 때만 → 무슨 고민 계세요?(✕) / 고민 있으세요?(O)</p>
+</div></div>
+
+<div class="it"><span class="no">2</span><div>
+<p><span class="t">객체 높임</span> — <span class="b">목적어·부사어</span>의 대상을 높임: <span class="mk">조사 ‘께’</span>, 뵙다, 모시다, 드리다, 여쭙다</p>
+<p class="e">나는 아버지를 모시고 병원에 갔다. / 할머니께 인사를 드렸다.</p>
+</div></div>
+
+<div class="it"><span class="no">3</span><div>
+<p><span class="t">상대 높임</span> — 화자가 <span class="b">청자</span>를 높이거나 낮춤, 주로 <span class="mk">종결 어미</span>로 실현</p>
+<table class="tb">
+<tr><th colspan="2">구분</th><th>평서</th><th>의문</th><th>명령</th><th>청유</th></tr>
+<tr><td rowspan="4">격식체</td><td class="lf">하십시오체 (아주높임)</td><td>합니다</td><td>합니까?</td><td>하십시오</td><td>(하시지요)</td></tr>
+<tr><td class="lf">하오체 (예사높임)</td><td>하오</td><td>하오?</td><td>하오</td><td>합시다</td></tr>
+<tr><td class="lf">하게체 (예사낮춤)</td><td>하네</td><td>하는가?</td><td>하게</td><td>하세</td></tr>
+<tr><td class="lf">해라체 (아주낮춤)</td><td>한다</td><td>하냐?/하니?</td><td>해라</td><td>하자</td></tr>
+<tr><td rowspan="2">비격식체</td><td class="lf">해요체 (두루높임)</td><td>해요</td><td>해요?</td><td>해요</td><td>해요</td></tr>
+<tr><td class="lf">해체 (두루낮춤)</td><td>해</td><td>해?</td><td>해</td><td>해</td></tr>
+</table>
+</div></div>
+
+<div class="it"><span class="no">4</span><div>
+<p><span class="t">잘못된 높임</span> — 할머니께 선물을 줄 거야 → <span class="e">드릴</span> / 선생님께서 너 오시래 → <span class="e">오라셔</span></p>
+<p>피자 나오셨습니다 → <span class="e">나왔습니다</span> / 이 옷은 품절이십니다 → <span class="e">품절입니다</span></p>
+</div></div>
+</section>
+
+<section class="sec">
+<h2 class="sh"><span class="sn">2</span><span class="st">시간 표현</span><small>발화시(말하는 때) 기준, 사건시는 언제?</small></h2>
+
+<div class="it"><span class="no">1</span><div>
+<p><span class="t">과거</span> (사건시 &lt; 발화시) <span class="mk">-았/었-</span>, -았었/었었-(현재와 단절), -더-(회상), -(으)ㄴ(동사), -던</p>
+<p><span class="t">현재</span> (사건시 = 발화시) <span class="mk">-ㄴ/는-</span>(동사), 형용사는 기본형 / -는(동사), -(으)ㄴ(형용사)</p>
+<p><span class="t">미래</span> (사건시 &gt; 발화시) <span class="mk">-겠-</span>, -(으)ㄹ, -(으)ㄹ 것 &nbsp;<span class="s">+ 시간 부사어(어제·지금·내일)</span></p>
+</div></div>
+
+<div class="it"><span class="no">2</span><div>
+<p><span class="t">다른 뜻도 있어요</span> — -었-: 완결 지속 <span class="e">엄마를 닮았어요</span> / -는-: 진리 <span class="e">물은 0℃에서 언다</span></p>
+<p>-겠-: 추측 <span class="e">벌써 끝냈겠다</span>, 의지 <span class="e">시인이 되겠다</span>, 가능성, 완곡한 태도</p>
+</div></div>
+
+<div class="it"><span class="no">3</span><div>
+<p><span class="t">동작상</span> — 진행상: <span class="mk">-고 있다, -아/어 가다</span>, ‘중’ / 완료상: <span class="mk">-아/어 있다, -어 버리다</span>, ‘채’</p>
+<p><span class="w">중의성</span>나는 안경을 쓰고 있다 → 쓰는 중(진행) / 쓴 상태가 지속(완료)</p>
+</div></div>
+</section>
+
+<div class="folio"><b>00</b> &nbsp;다담 고1 공통국어 문법</div>
+</div>
+
+<div class="page pr">
+<span class="tape runhead">II. 문법 요소 · 시험 직전 개념 총정리</span>
+
+<section class="sec">
+<h2 class="sh"><span class="sn">3</span><span class="st">피동 표현</span><small>주어가 다른 대상에 의해 동작을 당함</small></h2>
+
+<div class="it"><span class="no">1</span><div>
+<p><span class="t">능동문 → 피동문</span> — 목적어 → <span class="b">주어</span>, 주어 → <span class="b">부사어</span>(에게/에, 한테, 에 의해)</p>
+<p class="e">명수가 도둑을 잡다. → 도둑이 명수에게 잡히다.</p>
+</div></div>
+
+<div class="it"><span class="no">2</span><div>
+<p><span class="t">파생적(단형) 피동</span> — 동사 어근 + <span class="mk">-이-, -히-, -리-, -기-</span> &nbsp;<span class="e">보이다, 업히다, 물리다, 쫓기다</span></p>
+<p>일부 명사 + <span class="mk">-되다</span>(‘-하다’ 대신) &nbsp;<span class="e">정리되다, 발견되다</span></p>
+<p class="s">※ 피동사는 새 단어! ‘보였다’의 기본형은 ‘보다’가 아니라 ‘보이다’</p>
+</div></div>
+
+<div class="it"><span class="no">3</span><div>
+<p><span class="t">통사적(장형) 피동</span> — 용언 어간 + <span class="mk">-아/어지다, -게 되다</span> &nbsp;<span class="e">구겨지다, 미뤄지다, 가게 되다</span></p>
+<p>형용사 + -아/어지다 = <span class="b">상태 변화</span> &nbsp;<span class="e">날씨가 따뜻해졌다</span></p>
+</div></div>
+
+<div class="it"><span class="no">4</span><div>
+<p><span class="t">더 알아 둘 것</span> — 짝이 되는 능동문이 없는 피동문도 있음 &nbsp;<span class="e">날씨가 풀리다</span></p>
+<p>행위 주체를 감추거나, 당한 대상·결과를 강조하고, 객관성을 높일 때 → 보도문·학술문에 많음</p>
+</div></div>
+
+<div class="it"><span class="no">5</span><div>
+<p><span class="t">이중 피동</span> <span class="rb">✕</span> — 피동 접미사·‘-되다’ + ‘-어지다’를 겹쳐 씀</p>
+<p>보여진다 → <span class="e">보인다</span>, 열려지지 → <span class="e">열리지</span>, 믿겨지지 → <span class="e">믿기지</span>, 생각되어진다 → <span class="e">생각된다</span></p>
+</div></div>
+
+<div class="it"><span class="no">6</span><div>
+<p><span class="t">사동과 헷갈리지 않기</span> — 사동: 주어가 남에게 어떤 행동을 <span class="b">하게 함</span></p>
+<p class="e">동생이 옷을 입다.(주동) → 어머니께서 동생에게 옷을 입힌다.(사동)</p>
+</div></div>
+</section>
+
+<section class="sec">
+<h2 class="sh"><span class="sn">4</span><span class="st">인용 표현</span><small>남의 말이나 글을 끌어다 씀</small></h2>
+
+<div class="it"><span class="no">1</span><div>
+<p><span class="t">직접 인용</span> — 원래 형식·내용 그대로, <span class="mk">큰따옴표(“ ”) + ‘라고’</span> <span class="s">(현장감, 발언 강조)</span></p>
+<p class="e">성규가 나에게 “도서관에 언제 갈 거야?”라고 물었다.</p>
+</div></div>
+
+<div class="it"><span class="no">2</span><div>
+<p><span class="t">간접 인용</span> — 자기 표현으로 바꿔서, 인용 부호 없이 <span class="mk">+ ‘고’</span></p>
+<p class="e">성규가 나에게 도서관에 언제 갈 거냐고 물었다.</p>
+</div></div>
+
+<div class="it"><span class="no">3</span><div>
+<p><span class="t">직접 → 간접으로 바꿀 때</span> — 맥락에 맞게 함께 바꿔요</p>
+<table class="tb">
+<tr><th>바꿀 것</th><th>직접 인용</th><th>간접 인용</th></tr>
+<tr><td>인칭</td><td class="lf">성규는 “<span class="r">내가</span> 그리고 싶다.”라고</td><td class="lf">성규는 <span class="e">자기가</span> 그리고 싶다고</td></tr>
+<tr><td>지시</td><td class="lf">(미국에서) “<span class="r">이곳이</span> 마음에 들어.”</td><td class="lf"><span class="e">그곳이</span> 마음에 든다고</td></tr>
+<tr><td>높임</td><td class="lf">(선생님께) “먼저 들어가<span class="r">겠습니다</span>.”</td><td class="lf">먼저 들어가<span class="e">겠다고</span></td></tr>
+<tr><td>시간</td><td class="lf">(어제) “<span class="r">내일</span> 떠나고 싶다.”</td><td class="lf"><span class="e">오늘</span> 떠나고 싶다고</td></tr>
+<tr><td>종결</td><td class="lf">“언제 갈 <span class="r">거야?</span>”</td><td class="lf">언제 갈 <span class="e">거냐고</span></td></tr>
+</table>
+</div></div>
+</section>
+
+<div class="folio">II. 문법 요소 &nbsp;<b>00</b></div>
+</div>
+</div>
+
+<!-- ======================================================= III. 중세 국어 -->
+<div class="spread">
+<div class="page pl">
+
+<header class="unit">
+<span class="tape">시험 직전 개념 총정리</span>
+<h1><span class="ttl">III. 중세 국어</span><span class="kw">음운 · 표기 · 문법 · 어휘</span></h1>
+<svg width="440" height="14" viewBox="0 0 440 14" fill="none" aria-hidden="true"><path d="M3 9 C 40 3, 80 12, 120 7 S 200 3, 240 8 S 320 12, 360 6 S 420 5, 437 8" stroke="#cf3a6c" stroke-width="3" stroke-linecap="round"/></svg>
+</header>
+
+<section class="sec">
+<h2 class="sh"><span class="sn">1</span><span class="st">중세 국어의 음운</span><small>지금과 무엇이 달랐을까?</small></h2>
+
+<div class="it"><span class="no">1</span><div>
+<p><span class="t">지금은 없는 글자</span> — <span class="mk"><span class="jm">ㅸ</span>(순경음 비읍), <span class="jm">ㅿ</span>(반치음), <span class="jm">ㆁ</span>(옛이응), <span class="jm">ㆆ</span>(여린히읗), <span class="jm">ㆍ</span>(아래아)</span></p>
+<p><span class="nw"><img class="oh" src="data:image/png;base64,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" alt="수ᄫᅵ">(쉽게)</span>, <span class="nw"><img class="oh" src="data:image/png;base64,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" alt="ᄆᆞᅀᆞᆷ">(마음)</span>, <span class="nw"><img class="oh" src="data:image/png;base64,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" alt="ᄆᆡᇰᄀᆞ노니">(만드니)</span></p>
+<p>소멸 순서: <span class="jm">ㆆ → ㅸ → ㅿ → ㆁ → ㆍ</span></p>
+<p class="in s"><span class="jm">ㆍ</span>는 둘째 음절 이하에서 ‘ㅡ’로(16세기), 첫째 음절에서 ‘ㅏ’로(18세기)</p>
+</div></div>
+
+<div class="it"><span class="no">2</span><div>
+<p><span class="t">어두 자음군</span> — 첫소리에 서로 다른 자음 둘 이상(<span class="jm">ㅳ, ㅄ, ㅵ</span>) &nbsp;<span class="nw"><img class="oh" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAACKCAYAAADIZoQRAAAEZklEQVR4nOzdv2tdZRzH8c/3JIWODk6i9iae3iildFRxUDc3QcWhgjg5ODh0EoV2cKgIalFUBP8AEZ0Ut1IFB38gCJKhyUlykuJPRCEI2jZ5Hk9ayNDaYG7v5+TmnPcLkmc4h5wM5819ODf53mkBsJkWABsCA4wIDDAiMMCIwAAjAgOMCAwwIjDAiMAAIwIDjAgMMCIwwIjAACMCA4wIDDAiMMCIwAAjAgOMCAwwIjDAiMAAIwLriWF56G0pnlOPJelEVdVvqEUEBhgRGGBEYIARgQFGYwvs8Oyh41HE3E7nXNrQ6bqu/9Ho13isucaxnc5JWn+tqv5Y/69jZXnnkULFk9ojeUOfLdb110JvjC2wiNi6cR/d6ZyU0plmGTmw5hpbP//pnc7J+eD7zbJ+g8NHmq+T2itT6ffmO4H1CFtEbEtJL+TI36izLldqGYFhW6H8w8LS6jlhbAgMMCIwwIjAACMCu0bOuWoeV/4ohxw/Cb1CYNfJby5Wq28JGAMCA4wIDDAiMMCIwAAjAgOMCAwwIjDAiMAAo1YDO3ggPjlcDjY0opx1dwguudBTw3Jwr7osbX66sHzhW7Wk3VewiAduKhDqsgrFcXVc0tQvzdLRwICeITDAiMAAIwIDjAgMMGo1sOYx+6sRo49t09WxcMeEXUspFqPQF+q5IvSzWtRqYBcvp1fW1tb+1IiGdw0GzbNkAhtBtVxvzaQ8I7SKLSJgRGCAEYEBRgQGGBEYYERggBGB7VOzs7cfnS6mnxBsFqr6lG4Sge1TU5o6qr38rLN+IDBgkhEYYERggBGBAUYEBhgR2D4Vyr9mRe///WTSEdg+tbC8drZZzgoTjcAAIwaPXieeb37Hx+WSVS8u1c8IvcDg0WsvEVE2SymTrHyr0BtsEQEjAgOMCAwwIjDAiMB6YFgOTmXpYfVc84Dpw6pafUctGltgSXk+FLdoz21evPGx4rfmRtvjv36IWm3LuidCD6rnIuk7tWxsgVVLqy9pwlVV/XmzPCSgJWwRASMCA4wIDDAiMMCIwHogRXo553hPHVbkmItC72rCEFgPVNXafLPMq8OGs3f8tTXMbtIQGGBEYIARgQFGBAYYERhgRGCAEYEBRgTWA2V56P5C8Yi6LOfbNIEIrBfiPnX9s8SihZFjIyAwwIjAAKNdBTYzMzNXFGki97pdEBF/V1X9ldAZuwpsusgnmpvgWcEiKy/JOFUY7WOLCBgRGK7IOZ9M0pfqsti8oJYRGK7Kml9aXj0njBWBAUYEBhgRGGC0q8A2UrzevA/2gWCx9T6Y0Cm7CmxlZeV8s5wXgP+FLSJgRGCAEYEBRgSGK6KIj4flQD3y4kJVn5YZgQFGBAYYERhgRGCAEYEBRgQGGBFYD+R86aNNHfhe2JZSsawWTOYwOaAjeAUDjAgMMCIwwIjAACMCA4wIDDAiMMCIwAAjAgOMCAwwIjDAiMAAIwIDjAgMMCIwwIjAACMCA4wIDDAiMMCIwAAjAgOM/gUAAP//6ZosRwAAAAZJREFUAwAjStdPUfJscQAAAABJRU5ErkJggg==" alt="ᄠᅳ들">(뜻을)</span>, <span class="nw"><img class="oh" src="data:image/png;base64,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" alt="ᄡᅮ메">(씀에)</span></p>
+<p>→ 현대 국어에서 <span class="b">된소리</span>로 바뀜 <span class="s">(자음들이 모두 발음되었을 것으로 추정)</span></p>
+</div></div>
+
+<div class="it"><span class="no">3</span><div>
+<p><span class="t">팔종성법</span> — 받침은 <span class="mk">ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅅ <span class="jm">ㆁ</span> 8개</span>만, ‘ㄷ’과 ‘ㅅ’을 구별해 발음</p>
+<p><span class="nw"><img class="oh" src="data:image/png;base64,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" alt="ᄉᆞᄆᆞᆺ디">(통하지)</span>: 원래 받침 ‘ㅊ’을 ‘ㅅ’으로 적음 &nbsp;<span class="s">※ ‘곶’처럼 안 지켜진 예도 있음</span></p>
+</div></div>
+
+<div class="it"><span class="no">4</span><div>
+<p><span class="t">성조와 방점</span> — 글자 왼쪽 점으로 소리의 높낮이 표시</p>
+<p>평성: 점 없음, 낮은 소리 <span class="e">활</span> / 거성: 1개, 높은 소리 <span class="e">·갈</span> / 상성: 2개, 낮다가 높아짐 <span class="e">:돌</span></p>
+</div></div>
+
+<div class="it"><span class="no">5</span><div>
+<p><span class="t">모음 조화</span> — 양성은 양성끼리, 음성은 음성끼리 <span class="b">잘 지켜짐</span> &nbsp;<img class="oh" src="data:image/png;base64,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" alt="나ᄂᆞᆫ"> / 너는, 자바 / 블거</p>
+</div></div>
+
+<div class="it"><span class="no">6</span><div>
+<p><span class="t">아직 안 일어난 현상</span> — 구개음화 <span class="rb">✕</span> <span class="e">펴디, 됴코, 어딜다</span> / 원순 모음화 <span class="rb">✕</span> <span class="e">믈, 스믈</span></p>
+<p>두음 법칙 <span class="rb">✕</span> <span class="e">니르고져, 너겨</span></p>
+</div></div>
+</section>
+
+<section class="sec">
+<h2 class="sh"><span class="sn">2</span><span class="st">표기 방법</span><small>세로쓰기, 띄어쓰기 없음</small></h2>
+
+<div class="it"><span class="no">1</span><div>
+<p><span class="t">이어 적기(연철)</span>가 일반적 — 받침을 다음 글자 첫소리로 내려 적음 &nbsp;<span class="nw"><img class="oh" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATgAAACKCAYAAAA+ClagAAANWUlEQVR4nOzdC5AT9R0H8N9vk+M4LCBYqz3usrnLJqjTjq0W22Kt7+n4wGortRbbKVYHq2BtbRWogrU+Wy2i0Dp1QBwcrJ0qVjva0fFJK2rrq1PqkOzmktxBZbAHQj3gjuy/vz1wCgibzV02ufvn+5k5Nnf5bbLkku/9H/uIEgCApqIEAKApBBwAaAsBBwDaQsABgLYQcACgLQQcAGgLAQcA2kLAAYC2EHAAoC0EHABoCwEHANpCwAGAthBwAKAtBBwAaAsBBwDaQsABgLYQcACgLQTcAFmW+Vml6GC/Guatr9t29xYCqGOJhDlZFo1+NY6Tf55CgIAbICZeYDCd6Ffj0mj5xXavJoA6Jp+T38vnZYJfTSwWG18oFDZRhSHgAEBbCDgA0BYCDgC0hYADAG0NKuCSidg1xMaZNIwoohtsO/cCAYD2BteCY57I5D+TONQocj9BAFAX0EWFfm1tbWY0oh7wr1JOxs5/j6oslTCvVsxT/GpUsXiL3dH5NAHsAQEH/aKuO4ojXKI1zgdTDSjiVKmeAhu8lAD2gYADCEmqPXaqMozraRhhpZ5IO/k7SRMIOICQSMvzsOE3Rs1rSSMIOADQVugB5yq1yGDupmpQapLM7J5BAABUlYAr3m07XRmqgmQiNosJAQcAu6CLCgDaQsABgLYQcAA1pBStYqZQTva4HyPkazbVEQQcQA0pUqsydn4+VcGhhx76sXFjD6qrgDMIQKgGVfq9oGrzfmEqvW2yaXgvw0egBQe7GR8vVaGIxlItMJd+XlWjbYMhDQEXImlSHJNImCOpTErtXJfNrktTVbmHlWrQy1jROKoFpcZ7T+6L1SEEsA8EXKh4UYSpfBz9tfx7BVUVl2zBidFUA4r5kFIvIysaTwD7wLgF9DNc1RKkLhmPf4aqTamJJWs4UEBDnUHAQT9lGJMDFUbo81RFqba2o5m5qWQh09EEsA8EHFA8Hh8pg/TBgovVcVRFbsT9XMDSIyxr/BgC2AMCDigSUV+UMfxgkyGKT6cqkrG34wMXFz82rE5NBOFDwAFFlAocWhKEram2lqq14mTy4NygtUYkYDcb6gYCDgxiY3o5K7hG5BtUBal280xJ1OC7pij6GgHsAbuJhErNLCr6F5XJ2w+OqiSVML8q/cDDy1lHEvF8WfyYQqaYp5a1lw1TKtUe+1I6W/gLARACLlQu0RuOk19NQ5iEyIyyd9VjMpOJ+HczTm4ZhWRia2uzYvoWlcvgGfIvAg76oYtax1Lx+BESbl+hgZlLISqOMObQrrNflIkvamlpwU6/0A8BV8dUlO6iAZLJhmQqEfsOhcBrvRnMM2mARo0wQu8+w/CAgKtTMvZ2XqnWmyJ6yfd+5pubm5tHUYW5I4w7/O5XpPzHKA1jjmW1JgjqHgKuTinihf73q3d2Ftm3hcbELaOaGn5KFZRsj53GzBf61bCiWbJ9jm8NRRYQ1D0EXB2yEuYd3v5sfjWs1IKOjo68BMmf/OqkKzm3Uq0l74SM8oD3+1ep9Wknv1JCzrd7La3TKRKWZxPUNQRcnUm2m2dJKF3tV6MUbegtGsu9267ixVSCtJaWUgWMG3PQYq9VSP7b9htvuWlLzzK5/b5fLRu8rL29OUZQtxBwdcSyJrTI7MCDpSvdm3O53HbvluPk/iyp4rvbhbSWvpxMmCtoEJKJ+Ax5oBKTFqpb8da7vVsbN278r7RCS0yS8CERblhpWVYjQV0KfT+4iBF9MGnFt1E1KDWB4ECihmp4VELkYL8i6ZJ2ZZzCvXv/0P0RceQ1v/W8cbNkIvaWrPsLKlMiETtWwuqeUnXK5RvtbPeWD79/f+u2X44dPXKmF2R04O06hlSf1+0tf586GPZCDzj56169s0/wQM4uWR9SVtxrYU0qVScB5+3f1rfnz9LZzr+lEvGH5Zd5gd+6zMbtyfZ4Zyabe4gC8rqQBhkr5WYD+W+Xk8nm95oY2bBhwwdjR5u3yM07yXe7vPA112Sc/M0EdQVdVP01pBLmk7KcWrJSqedsu7B8f3f1FumqUmNe/Vgtt6xYoGNVvR2Nozzi1VITHv0PW3T3e7xs1M4vkvAreTichNxNEnI/J6grCDiNtbS0NEm4PSWf7jNKV6sPaEfxgGNgMib3LpP7EypBgiTCileUCrlUe+skFaFXghwHK8G6LN3RuWp/90my9Sqii5RSxVKPI9t2nTeDTFA3EHCammiabU0jo8/Lp/rUIPWuS1emu7p8d6BNO4X7JEyeoRK8kJNu58MyJnfN/u6Xbux0xcaL0nILcLUs9e8dfTIG6MO282/Kdt1OAXgzyBL6v/XCn0B7CDgNWe3mxaqB35YRyUBn6fVaSHY2H2hXj55tfRdKfWeQ2v4xOSv+omman/S+94568Mby2KClgU5D7o0FusVzC4XCplKFtpO/Qf4jf6UgmC8d1Rh9J5EwTyHQGgJOI95B5knL/INh8BIKeAUsr0WWcXKBzwe3bt26/7hUPLO/SxuAtwtJY5TWSKvtBwc1NbwtPwh+LjlFl6Y7ul4LWN3Xs6N4TqkjHPbYMDPC/GzKMpenmptxwRpNDWoWVcZanpA3ShcNL2tIM153q6kxMlO6fNf67TLxEYr+0Veksk9e6Tid/5TWz9QI05OBVmAet2ufteCz3F6XU4L3ASpDV1dXd9I0p6govcwldofZY+MuUk0jpsgExD07+tSvgrQWYfgYVMClndxjsniMoCaOIhrR2x6/XD7Ms+XrsLJWlnDb3ueeJB/ozTQAjpN/KtVunqWYHwl8PYeAXKXulC7nbBqATD7/jmWZp7CiZ4OeDXjXWCBf19jAs1JWfOH2XvcuBJ0e0EUdxnZa5m2GQQvKDTeZcVzt8pYTBvshTmfzT8rsxDnyeD1UIfJYN0m4Dep0R96kg8vqBO+Qs3LW2z3pMa+xwfgjgRYQcMMYb/5gvrTE8mWtROrBjJOfbNv/PyJgMDIdhWfYLZ4syTToFo9L6hLZtuupAmy7sEZx8XgJzLKHJBS7lxFoAQE3jK19772t0lKRWU1pq5TWJyE0K23nv00V5k0EFKl4XOAB/n1453eTcDtWWl5LqIJsu9PZtqM4SZ7g4aDrKJeuknAs+zoaMDThmgwDJB/KH7rKfyCbeWvoExoSCqtT7bHb5MnmHKhG4q9AMpmQyeVfpZA4Tpcts5FfUKMaFjJx4OM+5XVc0bNt55Xe7CyFQCYevOOgvymzpavkN3Ir+cwuy1+JpzPZ3EICbSDgBsgb56EhIp0tzEsl4mfLJOWn973PC5DNW3pmeGffoJCl169/TxbTEon4coPVfX6nPpLtysofiEtlsuI5qgJpuS6W2eaHmhqj82Ss7fu07/UepItt9LplXT4Rhj50UfWws8/lvY417e8uKrowY+enVSPc9uSdYmnz+z1HehMG8u3Wve7cNVY3V7YrUa1w+5C3G0nGyV3lUvEoeX3u33uz6JK1nZ3rCbSCgNNER0fHWm+MTbpZL0iwnScBkkw7ud9RjXih6k0YbO91Tfn2Rm8yxHXd+Zu29MTSdu5WqiFvbE5en4tVr5vwjuKQeFuSyeYfJdAOuqgaSTv5RbJYREPI7l1R5u/+GlIyhUJWFuiWaqwqAZe04q8EPS5SJzIzONmbBCAAqAm04ABAWwg4ANAWAg4AtIWAAwBtIeAAQFsIOADQVlUCzlXuFUQ8hjRiEM1l5tMIAIasqgSc4xReJ80kLfMSAoAhDV1UANAWAg4AtIWAA6ghZjITCfNkqgJD0SiqMwg4gBpi4mkRpmlUDcEvaqYNBBwAaAsBBwDaQsBB6FJtrScUDSNquG4x09H5EgFUCQIOQmNZ5uWs+FoZ+4lFvB9EIpSyzPVKqdszTuFuAghZdU54mYjNIja+TjpRdGQ9DtoGlbTij8vLM+WjrxE3M/PCZMKcknHypxNAiKrUgjMseZ+fSDpBuB2Q1R6b1x9uPrzD3FJW/Na0nZtDACFBFxUqamJra7MyjJ8FLJ9tWRMW2/a6LtJQJptfIYsVBDWDq2pBRbkNkanl1BsqegEBhAQtOKgoNuhwKs8RBBASBBxU2pZyil2i7QQQEnRRoaKKSr1VTr1B/HcCCMmQacG5pI6x7fybBMOa4+SfSlrmOiaeULpadbu8dSUBhAQtOKi8ogp0tXiX3Om23V1WlxagHAg4qLhMR+EZ6aoeLy209fstUPSujL2dZNudjxNAiDDJAKGQrurLspiQbI9fJn9Gp5NSn2Kit1ympbaTX0IAVYCAg1Blsrl7ZXEvAdQAAg4AtIWAAwBtIeAAQFsIOADQFgIOALSFgAMAbQ2ZgDOI30hZcdKVIvVIxs6fTwBQNWjBAYC2EHAAoC0EHABoCwEHANpCwAGAthBwAKCtqgRcUe1cxBR5jOqau5EAoKqqEnDZbFdGFhkCgLrDihYQ0xi/GsMwtlEYz00AAJrCGBwAaAsBBwDaQsABgLYQcACgLQQcAGgLAQcA2kLAAYC2EHAAoC0EHABoCwEHANpCwAGAthBwAKAtBBwAaAsBBwDaQsABgLYQcACgLQQcAGgLAQcA2kLAAYC2EHAAoK3/AQAA///RGvDKAAAABklEQVQDAHSzCE1Vk6vJAAAAAElFTkSuQmCC" alt="말ᄊᆞ미">(말씀이)</span>, <span class="nw"><span class="e">기픈</span>(깊- + -은)</span></p>
+<p>→ 뒤에 <span class="mk2">끊어 적기(분철)</span> <img class="oh" src="data:image/png;base64,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" alt="말ᄊᆞᆷ이">, <span class="mk2">거듭 적기(중철)</span> <span class="e">님믈, 깁퍼</span>도 섞여 쓰임</p>
+</div></div>
+
+<div class="it"><span class="no">2</span><div>
+<p><span class="t">동국정운식 한자음</span> — 한자음을 중국 원음에 가깝게, 초성·중성·종성을 다 갖추어 적음</p>
+<p><span class="e">中國귁</span>, <img class="oh" src="data:image/png;base64,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" alt="文문字ᄍᆞᆼ">(소리 없는 ‘ㅇ’을 종성에) &nbsp;<span class="s">→ 창제 초기에만 쓰이다 사라짐</span></p>
+</div></div>
+</section>
+
+<div class="memo">
+<h3>문헌 속에서 콕!</h3>
+<p><span class="b">세종어제훈민정음</span> — <span class="nw"><span class="e">나랏</span>(무정 명사 + ㅅ)</span> &nbsp;<span class="nw"><img class="oh" src="data:image/png;base64,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" alt="말ᄊᆞ미">(이어 적기)</span> &nbsp;<span class="nw"><span class="e">中國귁에</span>(동국정운식)</span> &nbsp;<span class="nw"><span class="e">어린</span>(의미 이동)</span></p>
+<p class="in"><span class="e">노미 하니라</span>: ‘하다’ = 크다, 많다 → 사람이 많다</p>
+<p><span class="b">용비어천가</span> — <span class="nw"><span class="e">불휘</span>(주격 ∅)</span> &nbsp;<span class="nw"><span class="e">곶</span>(팔종성 ✕)</span> &nbsp;<span class="nw"><span class="e">됴코</span>(구개음화 ✕)</span> &nbsp;<span class="nw"><span class="e">내히</span>(ㅎ 종성 실현)</span></p>
+</div>
+
+<div class="folio"><b>00</b> &nbsp;다담 고1 공통국어 문법</div>
+</div>
+
+<div class="page pr">
+<span class="tape runhead">III. 중세 국어 · 시험 직전 개념 총정리</span>
+
+<section class="sec">
+<h2 class="sh"><span class="sn">3</span><span class="st">중세 국어의 문법</span><small>체언 · 조사 · 어미</small></h2>
+
+<div class="it"><span class="no">1</span><div>
+<p><span class="t">ㅎ 종성 체언</span> — ‘ㅎ’을 끝소리로 가진 체언</p>
+<p><span class="mk">모음이나 ‘ㄱ, ㄷ’으로 시작하는 조사 앞에서만 ㅎ 실현</span></p>
+<p><span class="e">나라ㅎ + 이 → 나라히, 나라ㅎ + 과 → 나라콰</span> / 단독·‘ㅅ’ 앞에선 ✕ <span class="e">나라, 나랏</span></p>
+<p>현대어에 남은 흔적: <span class="nw"><img class="oh" src="data:image/png;base64,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" alt="암ᄐᆞᆰ">(암탉)</span>, <span class="nw"><img class="oh" src="data:image/png;base64,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" alt="안ᄑᆞᆰ">(안팎)</span>, <span class="nw"><img class="oh" src="data:image/png;base64,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" alt="ᄉᆞᆯ코기">(살코기)</span></p>
+</div></div>
+
+<div class="it"><span class="no">2</span><div>
+<p><span class="t">주격 조사</span> — <span class="mk">‘이, ㅣ, ∅’</span> &nbsp;(주격 조사 ‘가’는 <span class="rb">없음!</span> → 근대 국어 이후 등장)</p>
+<table class="tb">
+<tr><th>형태</th><th>앞 체언의 끝소리</th><th>예</th></tr>
+<tr><td>이</td><td class="lf">자음</td><td class="lf"><span class="nw"><span class="e">노미</span>(놈 + 이)</span></td></tr>
+<tr><td>ㅣ</td><td class="lf">‘ㅣ’·반모음 ‘ㅣ’ 이외의 모음</td><td class="lf"><span class="nw"><span class="e">부톄</span>(부텨 + ㅣ)</span>, <span class="nw"><span class="e">배</span>(바 + ㅣ)</span></td></tr>
+<tr><td>∅</td><td class="lf">‘ㅣ’나 반모음 ‘ㅣ’</td><td class="lf"><span class="nw"><span class="e">불휘</span>(불휘 + ∅)</span> [뿌리가]</td></tr>
+</table>
+</div></div>
+
+<div class="it"><span class="no">3</span><div>
+<p><span class="t">목적격 조사</span> — 받침 O: <img class="oh" src="data:image/png;base64,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" alt="ᄋᆞᆯ">/을, 받침 X: <img class="oh" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHIAAACKCAYAAAB2HB4JAAADNklEQVR4nOzdP0iUYQDH8d9zdzW0mC5WGK/3x4yWoKDBySloaitqbHRubamWaLathmhqcIyoLYKGBKemO/9cEgQHhlZC4N3TU9FUYqGPJ9/7fUAF33eRL8/j8/h471VkCBUZgkNCOCSEQ0I4JIRDQjgkhENCOCSEQ0I4JIRDQjgkhENCOCSEQ0I4JIRDQjgkhENCOCREtpCnGsWsFGY04GLUenNx5agy84iEcEgIh4RwSAiHhAiyXZmoj38MQaPbXfeq1f6LQ0I4JIRDQjgkhENCZAtZFMXxSkWnBRcUDx+EXVy2kIfKulQK4aFsX3hqhXBICIeEcEiI/oaMWolBbaHFL9oHfQ0ZFR81W+07sl3z1ArhkBAOCeGQEA4J4ZAQDgmR7fylUStulEo+/fgt7Zk/pD3zmDLxiIRwSAiHhHBICIeEyBeypIX0+bbspxC1oYz8Ih4IT60QDgnhkBAOCeGQEMiQjcb4dFqO30sfF359J67FqAfNxfYtQeG2H41GMVNSmP3btRjjmxRzSkBlgdRqYxPlUH6+3fUQwsmR4aHu2qf1V4IpCSRFvLrjTUHXBMT6HRlU3fmWcEZAqBGpGD5rQKFCxl732Y73xDgnIFTI1vLqi1Tq9fZ3xK8x6K6AWFNrsvmtezHF/HNkRrW3er3pVqu9ICDsMVa1Wp08VI4/Vqihp967Vuv9U4H5PBLCf2uFcEgIh4RwSAiHhMgWcqJezKXjhhGZur3uzaWl1XlllHFEhqm0txmVqRzDsDLz1ArhkBAOCeGQENlCNhdXjmkApNX5fAjhvPrMIxLCISEcEsIhIRwSwiEhHBIi3+lHrbgeSmFSdDGe0AGQLWTaJF9JXy6LLhyM/1/z1ArhkBAOCeGQEH0OGZ+k1cKS4GI5Zv8Z+/tOPN34uLncfinbNU+tEA4J4ZAQDgnhkBAOCeGQEP0NWQpn6/ViSwNkY2PzbafT2fO36+1ryHTUdR/1MLx/MDR05Fynoz1/soinVgiHhHBICIeEcEgIP/kKwiMSwiEhHBLCISEcEsIhIRwSwiEhHBLCISEcEsIhIRwSwiEhHBLCISEcEsIhIRwSwiEhHBLCISG+AwAA//88zFo/AAAABklEQVQDADtyk8QAWHeAAAAAAElFTkSuQmCC" alt="ᄅᆞᆯ">/를 — <span class="mk2">모음 조화</span>에 따라</p>
+<p><span class="nw"><img class="oh" src="data:image/png;base64,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" alt="ᄆᆞᅀᆞᄆᆞᆯ">(마음을)</span>, <span class="nw"><img class="oh" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAACKCAYAAADIZoQRAAAEZklEQVR4nOzdv2tdZRzH8c/3JIWODk6i9iae3iildFRxUDc3QcWhgjg5ODh0EoV2cKgIalFUBP8AEZ0Ut1IFB38gCJKhyUlykuJPRCEI2jZ5Hk9ayNDaYG7v5+TmnPcLkmc4h5wM5819ODf53mkBsJkWABsCA4wIDDAiMMCIwAAjAgOMCAwwIjDAiMAAIwIDjAgMMCIwwIjAACMCA4wIDDAiMMCIwAAjAgOMCAwwIjDAiMAAIwLriWF56G0pnlOPJelEVdVvqEUEBhgRGGBEYIARgQFGYwvs8Oyh41HE3E7nXNrQ6bqu/9Ho13isucaxnc5JWn+tqv5Y/69jZXnnkULFk9ojeUOfLdb110JvjC2wiNi6cR/d6ZyU0plmGTmw5hpbP//pnc7J+eD7zbJ+g8NHmq+T2itT6ffmO4H1CFtEbEtJL+TI36izLldqGYFhW6H8w8LS6jlhbAgMMCIwwIjAACMCu0bOuWoeV/4ohxw/Cb1CYNfJby5Wq28JGAMCA4wIDDAiMMCIwAAjAgOMCAwwIjDAiMAAo1YDO3ggPjlcDjY0opx1dwguudBTw3Jwr7osbX66sHzhW7Wk3VewiAduKhDqsgrFcXVc0tQvzdLRwICeITDAiMAAIwIDjAgMMGo1sOYx+6sRo49t09WxcMeEXUspFqPQF+q5IvSzWtRqYBcvp1fW1tb+1IiGdw0GzbNkAhtBtVxvzaQ8I7SKLSJgRGCAEYEBRgQGGBEYYERggBGB7VOzs7cfnS6mnxBsFqr6lG4Sge1TU5o6qr38rLN+IDBgkhEYYERggBGBAUYEBhgR2D4Vyr9mRe///WTSEdg+tbC8drZZzgoTjcAAIwaPXieeb37Hx+WSVS8u1c8IvcDg0WsvEVE2SymTrHyr0BtsEQEjAgOMCAwwIjDAiMB6YFgOTmXpYfVc84Dpw6pafUctGltgSXk+FLdoz21evPGx4rfmRtvjv36IWm3LuidCD6rnIuk7tWxsgVVLqy9pwlVV/XmzPCSgJWwRASMCA4wIDDAiMMCIwHogRXo553hPHVbkmItC72rCEFgPVNXafLPMq8OGs3f8tTXMbtIQGGBEYIARgQFGBAYYERhgRGCAEYEBRgTWA2V56P5C8Yi6LOfbNIEIrBfiPnX9s8SihZFjIyAwwIjAAKNdBTYzMzNXFGki97pdEBF/V1X9ldAZuwpsusgnmpvgWcEiKy/JOFUY7WOLCBgRGK7IOZ9M0pfqsti8oJYRGK7Kml9aXj0njBWBAUYEBhgRGGC0q8A2UrzevA/2gWCx9T6Y0Cm7CmxlZeV8s5wXgP+FLSJgRGCAEYEBRgSGK6KIj4flQD3y4kJVn5YZgQFGBAYYERhgRGCAEYEBRgQGGBFYD+R86aNNHfhe2JZSsawWTOYwOaAjeAUDjAgMMCIwwIjAACMCA4wIDDAiMMCIwAAjAgOMCAwwIjDAiMAAIwIDjAgMMCIwwIjAACMCA4wIDDAiMMCIwAAjAgOM/gUAAP//6ZosRwAAAAZJREFUAwAjStdPUfJscQAAAABJRU5ErkJggg==" alt="ᄠᅳ들">(뜻을)</span>, <span class="nw"><span class="e">부텨를</span>(부처를)</span></p>
+</div></div>
+
+<div class="it"><span class="no">4</span><div>
+<p><span class="t">관형격 조사</span> — <img class="oh" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHIAAACKCAYAAAB2HB4JAAAJj0lEQVR4nOydbYwUdxnAn2dm9+CuvJXQUu6O29nbF4hSkUJrAzXGShFbtLYaSb9YvxhfEhuTarAVTWurrRitRoNfTIxGE6OhllaCabG+0GIULNRWKXs7d3svbLlyQnm5O+Bu5vGZu9NoCjezt7O7M889v2QZ9u6Zncv85v+fZ/5vmwBFBAlQRKAihaAihaAihaAihaAihaAihaAihaAihaAihaAihaAihaAihaAihaAihaAihaAihaAiQyDf2rrEaU5eP32Ue9K2+1+FGqEiQ8BtMdebgLuniyEwdvHmo1AjVKQQVKQQVKQQVKQQVKQQIiUym02t4c1aTvFWGwBrAGE1AM57aySd55iXXYDDHHPEcIxDhZ6el2EW01CR2eziBeguuAOQvLR8MwK2TPwC/fZkuQgbWPaGibcmQT5rnWO5e4ngqbPDo08PDg4OwyyiISIzGWuzCfQ5FnI7GN5PfM0FYT5/zMeQXwvnN8PCedZucp3vdPX0/wlmAQbUkVxHR2cua+02EfYCssRagnAnmuYf8xnrFyuWL28F4dRLpMlV3wOQxFe57H0I6gnCVneOeTTbaX0GQir6UaTmVavXDgnNSa/5aj1iY84jH3UBGrAzn0ltOX12ZOvJkyfPgzBqWiKz2Y63U0uSM0tcD1GAq/NFC1r+LLGqrZnIbNa62SDcz5loO8wQIholoOOcjb7Cb17k99x7QGXOTC/ADOFaYZU7x/hLZ2dbHgRRk6qVS+LbDKDn+KzNq2Q/FtTF//6WkPaPjeELvb29r18pNpVKLUsm6RYkfDe//QALykJAvIvLNBLPW5a1rlQqnQABhC6yo6PjaoOMPXy2KpBIPUD4cJdd+knQPaYk/2rqBZyd3subh/i4VpD9WWZbkwlP839vAgGEXrXOSRpPBD2ZHkTutkKxt7NQgcTL4e3PrzS39jwQeCeEG/PZ1IMggFBFZjKpWzkxvTdg+Gs0Dmu67L4dECLFYulxF+gGvq8eCxJPhF9ZkUqlIeaEKpJ7yb8bJM5LWs6cG13XVSodgRpQLPYexjPnb5xMjqaHL7y5lMDHIOaEJjLXad3DVdX1voEEJRcuvK/WbaHHhobOXRqHTXy8Xt9gbjRIp9vfATEmvBKJ9IUgYS66d9j24BtQB7yEyAFnS5DYhGl+HmJMKCLz6fabOP2/wS/OJfpGsdj3T6gj3sg1rmK/5RtIeI/XGwMxJZwSaSbu8g+i8oWLzqPQAIZHxx7iZ9TB6WK8eyXAvM0QU0IRyVf8bf5R+NOBgYFRaADlcnmEW4h+5hfHLVEbIaaEIdLk1zt9o5zxX0MDIYAnA8SshZhStci8ZeX4/mhOH0XlQs/AX6GB2HbvAf/qFXMQU6oWSQZlfGMACxABEHyfK+dns9ddAzEkjKp1jn8IDUEE4Auq3y/GcRLLIIZUXyKJ/D+DMBIiOTP1bRxIoHEtxJCqRfJ9JUgmWtexQVfCZfxiuFekCWJI9SLJPesbA7AUIgCi0eYX4yCdgRhStUjHgNN+MYRwHUQBJN8hHqZj/AtiSPUiHbPoF4NEkRhWgYSr/GIKpdJrEEOqFlkqlS5wq4k9bRDi1dms9R5oIPl0erVfhzcnbv+AmBJKEoIEBwLEBGiPrR1kuB/xj8IXIaaElE3SPr8ITni2tra2tkCD4Gz0475BRM9CTAlF5MhF9ze8GZs2iBOelubk16AB5DKpR/n4qemjaHjMxT0QU0IRyb0ap/j+8oxfnIF4vzdoGeqIN36Vn3W/7BfHDea/9O73EFPCe1An+mGQMAPwGcuy6vI4kk6nl5pGYm+QWBb5A4gxoYns6u7bxycjwBQ2TCdNem7p0qVXQQ1ZsWTJ/ITh/o7vjZ1+sVybPFks9r4EMSbUpjN0nUDjdrxh+wvnNx/KWZZ/P+YM6Oxcvo4WzjvIxwlUjbvgbIOYE6rIQnf/Qb6+dwYMX4kJOMyJyBchJLjKnsuftz1hmAc5uVkRZB8ujV+17QHfRo2oE3pjNr45/CVuIDgcOB5xRy5jDbKAR2baF5hvb2/jz/hmU4IG+PMeCbwj0fNddm/w+AgT+twPbzxpvqlpE7Q07ee3K4Psw91L3HWE2xHmbmeh+4hwz7gLT3EWWbrSPl42akDyLgNpC3/ALZMzLyuYf0n0wvnRsQ+CEGoyG6tQLg+lUqlb5yTwQCXzQDy4RG1ksRubDHiCpY7y/qe4jfQUn/kznEwt4t8tZtGLJ0e9TewBlcLV6UvGmeHby0NDIyCEms1Y9gYHZzLttxlg/n6mcyRZajNv2thV20TbzH9/DjOGL4YjODr2fq/mAEHUtMPXSyJwZGwNn72DEAUIdg+PXNrg1RggjJr33HsnrWCXvPVwHqxmpnF10CkX6JP8d3zYG+MKAqnXEIyxQrH0GKGzimVWNQ+yMmiYj7fDhYsr+YH/RyCYuo6lKRb77S679AmHLnV4J5jvV77DRGaCt+6AN4HWhXOtfLxtxeKJkyCchqx8Zdtlb1jiNu7WeviquU1bOXm5k0/+pqnkZkbwhfEmIu1yuS2XS99umGU0dC26qfvVj6deE01rJpprWWqO5S7jouUNTVzGaeq1nKheMzFSHOF17qQ+waV5EMktuwYc5Zi/Fe36zvKKGpFaHbK7u/8Qbw6BUjG6XqsQVKQQVKQQVKQQVKQQVKQQVKQQVKQQVKQQVKQQVKQQIi3SsqxFTQn6LBHex43oE7OevSl85OK3i92lQCPbZwuRmNt/OXKW9a6k6a25il//j0QPBMwYBuzMZVKvzIbv8whKJEVms23taNLeyWGSl2dykXlzFygTRFIkUuJ73ixn3ziAm3MZ61OgRE8k3xctLm13B94B4dOgRE9kAl3/VZj/F6LVoNl39ESSgeOVxHPpxfb29iTMcqInksYqWlmDH0e6G7UObJSInMju7nJfRSPTyX8d1tlANJ8jXef+IGFE8MbIhfHHQYmmyEJP/34i9z6fsHMuuHcfP348lkuOhU1kW3a67L7vuwDvJYBn/2/OCNFpvi/+3AVnjW33xXaBo7CJdNpeLJb+wBvvBd4XrJgmDhftfhuUtxCb56+enoG/g3JFtBtLCCpSCCpSCCpSCCpSCCpSCCpSCCpSCCpSCCpSCCpSCCpSCCpSCCpSCCpSCCpSCCpSCCpSCCpSCCoyBBwnccwwadovcEPCo1BDqljmXYkSWiKFoCKFoCKFoCKFoCKFoCKFoCKFoCKFoCKFoCKFoCKFoCKFoCKFoCKFoCKFoCKFoCKFoCKFoCKFoCKF8G8AAAD//7Pe4/oAAAAGSURBVAMApz/55Vz3pHwAAAAASUVORK5CYII=" alt="ᄋᆡ">/의: <span class="b">유정 명사</span>(사람·동물) &nbsp;<span class="nw"><img class="oh" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAACKCAYAAADIZoQRAAAE70lEQVR4nOzdz2vbdRzH8ff7m7Vai1MnTFi0zZY0KBMRh3Ne3E5eBS8bDBVFEbyJHhTBHydPKupB5sA/YOgOk4nMg9tpO4ggG8Ka9EdGOleZkzG32a7Jx8/YViwt2TeHV0M/eT4g/Zbk/YUe8uz3V/rtOgMgs84AyBAYIERggBCBAUIEBggRGCBEYIAQgQFCBAYIERggRGCAEIEBQgQGCBEYIERggBCBAUIEBggRGJJT3fzg9lZWGO40MzfXOtFsNq+aGIEhOSErfFNw39ppZnDQqnFRMzECA4QIDBAiMECIwAAhAgOECAwQIjBASBbYWHn0F3ff1mkmtNrP1qbO/GRAotiCJapaHn3L3NfbGrbQXvh2crJ50tYwAktUcHvTzYq2hhWscDouCAzAyggMECIwQIjAACECA4QIrI8Fs2PWIx6sZG6jljgC61vhcq3e2GU9Uq2UPoqL9y1xBAYIERggRGCAEIEBQgQGCBEYIERggBCBAUIEBggRGCBEYIAQgQFCBAYIERggRGCAEIEBQgQGCBEYIERggBCBAUIEBggRGCBEYIAQgfUtH755b8KeCGY73dJHYP2tZzf+7Ie4riMwQKingXkhOxJ3U6wP/DZen37c0HfYggFCBAYIERggRGCJ8mCfxVN1620Na1nrpK1xBJao8YnGJ4aeIzBASBiY749fDhus3bZzhr4kC6w2Mb3PgD7HLiIgRGCAEIEBQgQGCBEYIERggBCBAUIEhtwqlZGtbv5ufOy99VwI4WBw/6Jenz5mWCYzIIdKpfROZtmp/8d1nbs/H99ER6vl0f2GZQgMt1Utj7wY3ygfdxxyf7VaKX1oWILA0FGxWLw/WPZ5zvEPxkZGthgWERg6Grpj4AV3uzf3CgPZ64ZFSZ7kqGwZfcUz3xO/HYyP4Ba+v3jp332zs7OXDV2JcT3S1QoWthoWJRXYWKn0lBXsQHxTjCx9xXfdc/ed760fHn2tNtk4aMjPw7pu7mIYJ4cMi5LZRRzb/NAzVgg/L4/rFt8Qt2rfVcullwy5hXZodDXv1tV86pIJzLPCl/GU8e1/e3r4dNOmTXcZ8smyI92MBws/GhYlEVi8RrMj7ps8lm/aNwzfObjbkEu8gHwiVpMrmnjR+dd6/cwBw6IkAvPQ3t7dCrbTkNt8y16O9fzRcSiEv1uhtcewRBKBhbh/2NUKbvcZcpuenj5nc60ng9mhlV6//vx8y5+YnGzWDEskcRYxC3a2q3/XEQIH4l0abzZn4uK5cvmBje6DOzz4w7Gs36/MtY7PzMz8ZVhREoFda/vRgULIPe85jymw3MTE7J92Y0t2yHBbSewiTk1NzYZgX+eZjQfix8cnGz8YsAqSOU2fXfzn7RhPvfNUuJAt2F4DVkkygZ0+f/6SX732dDwuWPE0cYzv8PyCbzvdaEwZsEqS+qjU+Nmz5+Nid7FYfGNoaODRGFUWLz6H7Mr8qdqN14BVleSHfW+e1eIvbNFz3DIAECIwQIjAACECA4QIDBAiMECIwAAhAgOECAwQIjBAiMAAIQIDhAgMECIwQIjAACECA4QIDBAiMECIwJAcd/sqLjZ2mpmbCxdsNX4WAyDDFgwQIjBAiMAAIQIDhAgMECIwQIjAACECA4QIDBAiMECIwAAhAgOECAwQIjBAiMAAIQIDhAgMECIwQIjAACECA4T+AwAA//9HyucrAAAABklEQVQDAPzsAdU1iPyvAAAAAElFTkSuQmCC" alt="ᄂᆞᄆᆡ">(남의)</span>, <span class="nw"><span class="e">거부븨</span>(거북의)</span></p>
+<p>ㅅ: <span class="b">높임 대상인 유정 명사</span> <span class="nw"><span class="e">부텻</span>(부처의)</span>, <span class="b">무정 명사</span> <span class="nw"><span class="e">나랏</span>(나라의)</span>, <span class="nw"><span class="e">나못</span>(나무의)</span></p>
+</div></div>
+
+<div class="it"><span class="no">5</span><div>
+<p><span class="t">부사격 조사</span> — 애(양성) <span class="nw"><img class="oh" src="data:image/png;base64,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" alt="바ᄅᆞ래">(바다에)</span> / 에(음성) <span class="e">그르세</span> / 예(‘ㅣ’ 뒤) <span class="e">萬里예</span></p>
+</div></div>
+
+<div class="it"><span class="no">6</span><div>
+<p><span class="t">그 밖에</span> — 높임의 호격 조사 <span class="mk">‘하’</span> <span class="nw"><span class="e">님금하</span>(임금이시여)</span> / 명사형 어미 <span class="mk">‘-옴/-움’</span> <span class="nw"><span class="e">여룸</span>(열림)</span>, <span class="nw"><img class="oh" src="data:image/png;base64,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" alt="ᄡᅮ메">(씀에)</span></p>
+<p>ㄱ 종성 체언: 나모 + 이 → <span class="e">남기</span> / 선어말 어미 ‘-오-’: 주어가 1인칭임을 표시 <span class="e">내 ~</span> <img class="oh" src="data:image/png;base64,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" alt="ᄆᆡᇰᄀᆞ노니"></p>
+</div></div>
+</section>
+
+<section class="sec">
+<h2 class="sh"><span class="sn">4</span><span class="st">단어의 의미 변화</span><small>확대 · 축소 · 이동</small></h2>
+<table class="tb" style="font-size:.92em;margin-left:32px">
+<tr><th>유형</th><th>단어</th><th>중세 국어</th><th>현대 국어</th></tr>
+<tr><td class="b">확대</td><td>다리</td><td class="lf">사람·짐승의 다리</td><td class="lf">+ 무생물의 다리(책상 다리)</td></tr>
+<tr><td rowspan="3" class="b">축소</td><td>놈</td><td class="lf">일반적인 사람</td><td class="lf">남자를 낮잡아 이르는 말</td></tr>
+<tr><td>말씀</td><td class="lf">일반적인 말</td><td class="lf">높임말 또는 낮춤말</td></tr>
+<tr><td>얼굴</td><td class="lf">몸의 형체, 모습</td><td class="lf">눈·코·입이 있는 머리의 앞면</td></tr>
+<tr><td rowspan="2" class="b">이동</td><td>어리다</td><td class="lf">어리석다</td><td class="lf">나이가 적다</td></tr>
+<tr><td>어엿브다</td><td class="lf">불쌍하다</td><td class="lf">예쁘다, 아름답다</td></tr>
+</table>
+</section>
+
+<div class="folio">III. 중세 국어 &nbsp;<b>00</b></div>
+</div>
+</div>
+
+<!-- ======================================================= IV. 한글 맞춤법 -->
+<div class="spread">
+<div class="page pl">
+
+<header class="unit">
+<span class="tape">시험 직전 개념 총정리</span>
+<h1><span class="ttl">IV. 한글 맞춤법</span><span class="kw">소리 · 형태 · 띄어쓰기</span></h1>
+<svg width="440" height="14" viewBox="0 0 440 14" fill="none" aria-hidden="true"><path d="M3 9 C 40 3, 80 12, 120 7 S 200 3, 240 8 S 320 12, 360 6 S 420 5, 437 8" stroke="#cf3a6c" stroke-width="3" stroke-linecap="round"/></svg>
+</header>
+
+<div class="box">
+<p><span class="pen">총칙</span><span class="hang">제1항</span> 표준어를 <span class="mk b">소리대로 적되, 어법에 맞도록</span> 함을 원칙으로 한다. &nbsp;<span class="hang">제2항</span> 각 단어는 <span class="b">띄어 씀</span>.</p>
+<p class="s">소리대로 = 발음대로 / 어법에 맞도록 = 형태소 본모양을 밝혀 (꽃을·꽃도·꽃만)</p>
+</div>
+
+<section class="sec">
+<h2 class="sh"><span class="sn">1</span><span class="st">소리에 관한 것</span></h2>
+
+<div class="it"><span class="no">1</span><div>
+<p><span class="t">된소리</span><span class="hang">제5항</span> — 한 단어 안에서 까닭 없이 나는 된소리는 <span class="mk">된소리로</span></p>
+<p>모음 사이 <span class="e">어깨, 오빠, 기쁘다</span> / ㄴ·ㄹ·ㅁ·ㅇ 뒤 <span class="e">산뜻하다, 잔뜩, 살짝, 몽땅</span></p>
+<p><span class="w">다만</span>ㄱ·ㅂ 뒤는 예사소리 <span class="e">국수, 깍두기, 갑자기, 몹시</span> (반복 음절은 <span class="e">딱딱</span>)</p>
+</div></div>
+
+<div class="it"><span class="no">2</span><div>
+<p><span class="t">구개음화</span><span class="hang">제6항</span> — [ㅈ, ㅊ]으로 소리 나도 <span class="mk">ㄷ, ㅌ으로</span> &nbsp;<span class="e">맏이, 해돋이, 같이, 닫히다</span></p>
+</div></div>
+
+<div class="it"><span class="no">3</span><div>
+<p><span class="t">ㄷ 소리 받침</span><span class="hang">제7항</span> — ㄷ으로 적을 근거가 없으면 <span class="mk">ㅅ으로</span> &nbsp;<span class="e">돗자리, 웃어른, 옛, 첫, 헛</span></p>
+</div></div>
+
+<div class="it"><span class="no">4</span><div>
+<p><span class="t">모음</span><span class="hang">제8·9항</span> — 계·례·몌·폐·혜는 <span class="mk">ㅖ로</span> <span class="e">계시다, 폐품</span> (다만 <span class="e">게시판, 휴게실</span>)</p>
+<p>‘의’, 자음 뒤 ‘ㅢ’는 [ㅣ]로 소리 나도 <span class="mk">ㅢ로</span> <span class="e">무늬, 띄어쓰기, 희망</span></p>
+</div></div>
+
+<div class="it"><span class="no">5</span><div>
+<p><span class="t">두음 법칙</span><span class="hang">제10~12항</span> — 한자음이 <span class="b">단어 첫머리</span>에 올 때</p>
+<p>녀·뇨·뉴·니 → <span class="mk">여·요·유·이</span> <span class="e">여자, 연세</span></p>
+<p>랴·려·례·료·류·리 → <span class="mk">야·여·예·요·유·이</span> <span class="e">양심, 역사</span></p>
+<p>라·래·로·뢰·루·르 → <span class="mk">나·내·노·뇌·누·느</span> <span class="e">노인</span></p>
+<p>첫머리 아님·의존 명사는 본음 <span class="e">남녀, 몇 년</span></p>
+<p><span class="w">주의</span>모음·ㄴ 뒤 ‘렬, 률’ → <span class="mk2">열, 율</span> <span class="e">나열, 비율, 백분율</span> vs <span class="e">합격률, 능률</span></p>
+<p>접두사처럼 쓰인 한자·합성어는 두음 법칙대로 <span class="e">신여성, 공염불, 역이용, 해외여행</span></p>
+</div></div>
+</section>
+
+<section class="sec">
+<h2 class="sh"><span class="sn">2</span><span class="st">형태에 관한 것</span><small>원형을 밝혀 적을까, 소리대로 적을까?</small></h2>
+
+<div class="it"><span class="no">1</span><div>
+<p><span class="t">어간과 어미</span><span class="hang">제15항</span> — 구별하여 적음</p>
+<p>두 용언이 합쳐질 때 앞말 <span class="mk">본뜻 유지 → 원형</span> <span class="e">넘어지다, 돌아가다</span></p>
+<p>본뜻에서 멀어짐 → <span class="mk2">소리대로</span> <span class="e">드러나다, 사라지다, 쓰러지다</span></p>
+<p>종결 ‘-오’ <span class="e">책이오</span> / 연결 ‘이요’ <span class="e">책이요, 저것은</span> / 조사 ‘요’ <span class="e">읽어요</span></p>
+</div></div>
+</section>
+
+<div class="folio"><b>00</b> &nbsp;다담 고1 공통국어 문법</div>
+</div>
+
+<div class="page pr">
+<span class="tape runhead">IV. 한글 맞춤법 · 시험 직전 개념 총정리</span>
+
+<section class="sec">
+<h2 class="sh"><span class="sn">2</span><span class="st">형태에 관한 것</span><small>(이어서)</small></h2>
+
+<div class="it"><span class="no">2</span><div>
+<p><span class="t">명사·부사 만들기</span><span class="hang">제19항</span> — 어간 + -이·-음(명사), -이·-히(부사) → <span class="mk">원형</span></p>
+<p><span class="e">길이, 먹이, 얼음, 묶음, 많이, 익히</span> / 뜻이 멀어지면 소리대로 <span class="e">목거리(병), 노름</span></p>
+<p>그 밖의 모음 접미사가 붙으면 소리대로 <span class="e">마개, 무덤, 너무, 자주</span></p>
+</div></div>
+
+<div class="it"><span class="no">3</span><div>
+<p><span class="t">‘-하다’ 어근 + -이/-히</span><span class="hang">제23·25항</span> → <span class="mk">원형</span> <span class="e">꾸준히, 깨끗이, 반듯이</span>(바르게)</p>
+<p>‘-하다’가 안 붙으면 소리대로 <span class="nw"><span class="e">반드시</span>(꼭)</span>, <span class="e">갑자기</span> / 명사: <span class="e">오뚝이</span> vs <span class="e">개구리</span></p>
+</div></div>
+
+<div class="it"><span class="no">4</span><div>
+<p><span class="t">‘ㄹ’이 안 나는 말</span><span class="hang">제28항</span> — 안 나는 대로 <span class="e">다달이, 따님, 마소, 바느질, 여닫이</span></p>
+</div></div>
+
+<div class="it"><span class="no">5</span><div>
+<p><span class="t">사이시옷</span><span class="hang">제30항</span> — <span class="mk">합성어</span>, 앞말이 <span class="mk">모음으로 끝남</span>, 고유어 포함, 뒷말이 된소리·‘ㄴ’·‘ㄴㄴ’ 덧남</p>
+<p>고유어 + 고유어 <span class="e">나뭇가지, 햇볕, 잇몸, 깻잎</span> / 고유어 + 한자어 <span class="e">귓병, 전셋집, 훗날, 예삿일</span></p>
+<p><span class="rb">✕</span> 합성어가 아님 <span class="e">해님</span> / 뒷말이 된소리·거센소리 <span class="e">위층, 뒤편</span> / 한자어끼리 <span class="e">초점, 개수</span></p>
+<p><span class="w">예외</span>두 음절 한자어 6개만 사이시옷: <span class="mk2">곳간, 셋방, 숫자, 찻간, 툇간, 횟수</span></p>
+</div></div>
+
+<div class="it"><span class="no">6</span><div>
+<p><span class="t">준말</span><span class="hang">제35·40항</span> — <span class="e">쏘아 → 쏴, 두었다 → 뒀다, 놓아 → 놔, 뵈어 → 봬</span></p>
+<p>‘하’ 앞이 울림소리·모음 → ‘ㅎ’이 남아 거센소리 <span class="e">간편케, 다정타, 흔타</span></p>
+<p>‘하’ 앞 받침소리가 [ㄱ, ㄷ, ㅂ] → ‘하’가 통째로 줄어 <span class="e">생각건대, 넉넉지, 깨끗지</span></p>
+</div></div>
+</section>
+
+<section class="sec">
+<h2 class="sh"><span class="sn">3</span><span class="st">띄어쓰기</span></h2>
+
+<div class="it"><span class="no">1</span><div>
+<p><span class="t">조사</span>는 <span class="mk">붙여</span><span class="hang">제41항</span> <span class="e">꽃에서부터</span> / <span class="t">의존 명사</span>는 <span class="mk2">띄어</span><span class="hang">제42항</span> <span class="e">아는 것, 떠난 지</span></p>
+</div></div>
+
+<div class="it"><span class="no">2</span><div>
+<p><span class="t">단위 명사</span>는 띄어<span class="hang">제43항</span> <span class="e">차 한 대, 옷 한 벌</span> (순서·숫자와는 붙여도 됨 <span class="e">10개</span>)</p>
+</div></div>
+
+<div class="it"><span class="no">3</span><div>
+<p><span class="t">보조 용언</span><span class="hang">제47항</span> — 띄어 씀이 원칙, 붙여 씀도 허용 <span class="e">꺼져 간다(꺼져간다), 올 듯하다(올듯하다)</span></p>
+<p>앞말에 조사·앞말이 합성 용언·중간에 조사 → <span class="rb">띄어야</span> <span class="e">읽어도 보고, 덤벼들어 보아라, 올 듯도 하다</span></p>
+</div></div>
+</section>
+
+<section class="sec">
+<h2 class="sh"><span class="sn">4</span><span class="st">그 밖의 것</span></h2>
+
+<div class="it"><span class="no">1</span><div>
+<p><span class="t">-이 / -히</span><span class="hang">제51항</span> — ‘이’로만 나면 <span class="mk">-이</span> <span class="e">깨끗이, 가까이, 번번이</span></p>
+<p>‘히’나 ‘이·히’로 나면 <span class="mk">-히</span> <span class="e">급히, 솔직히, 꼼꼼히</span></p>
+</div></div>
+
+<div class="it"><span class="no">2</span><div>
+<p><span class="t">예사소리 어미</span><span class="hang">제53항</span> <span class="e">-(으)ㄹ걸, -(으)ㄹ게, -(으)ㄹ수록</span> / 의문은 된소리 <span class="e">-(으)ㄹ까?, -(으)ㄹ쏘냐?</span></p>
+</div></div>
+
+<div class="it"><span class="no">3</span><div>
+<p><span class="t">-던 vs -든지</span><span class="hang">제56항</span> — 지난 일 <span class="mk">-더라, -던</span> <span class="e">깊던 물</span> / 선택 <span class="mk">-든지</span> <span class="e">배든지 사과든지</span></p>
+</div></div>
+</section>
+
+<div class="folio">IV. 한글 맞춤법 &nbsp;<b>00</b></div>
+</div>
+</div>
+
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement, btns=document.querySelectorAll('.fontbar button');
+  function apply(f){
+    if(f==='poor') root.removeAttribute('data-font'); else root.setAttribute('data-font',f);
+    btns.forEach(function(b){b.setAttribute('aria-pressed', String(b.dataset.font===f));});
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){apply(b.dataset.font);});});
+  // 쪽마다 남는 세로 여백을 소단원 사이에 고르게 나눔 (최대 40px)
+  function balance(){
+    document.querySelectorAll('.page').forEach(function(pg){
+      pg.style.gap='';
+      var kids=[].filter.call(pg.children,function(c){return !c.classList.contains('folio');});
+      if(kids.length<2) return;
+      var limit=pg.getBoundingClientRect().bottom-parseFloat(getComputedStyle(pg).paddingBottom);
+      var free=limit-kids[kids.length-1].getBoundingClientRect().bottom;
+      var base=parseFloat(getComputedStyle(pg).rowGap)||0;
+      if(free>0) pg.style.gap=Math.min(base+free/(kids.length-1),40)+'px';
+    });
+  }
+  var _apply=apply; apply=function(f){_apply(f); document.fonts.ready.then(function(){setTimeout(balance,50);});};
+  document.fonts.ready.then(balance);
+  window.addEventListener('load',balance);
+  window.addEventListener('beforeprint',balance);
+})();
+</script>
+</body>
+</html>
