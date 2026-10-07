@@ -1,4 +1,4 @@
-"""부일고 2학년 독서 요약 자료 (상세판): PART 1 고정 수업 범위 기출 → PART 2 수능특강 독서.
+"""부일고 2학년 독서 요약 자료 (상세판): PART 1 평가원 기출 → PART 2 수능특강 독서.
 
 Each passage gets a flowing summary (핵심 한 줄 · 지문 요약 · 흐름 정리) and, from a fresh page,
 핵심 개념 정리 · 한눈에 비교 · 시험 직전 체크. The table of contents is filled in a second pass.
@@ -10,7 +10,7 @@ ROOT = os.path.dirname(B)
 TITLE = os.environ.get("BOOK_TITLE", "부일고 2학년 중간고사 독서 요약 자료")
 
 PARTS = [
-    ("고정 수업 범위 기출", "평가원 기출 3지문", ["bigdata", "digital", "trans"]),
+    ("평가원 기출", "2018 수능 · 2024 9월 · 2027 9월", ["bigdata", "digital", "trans"]),
     ("수능특강 독서", "수능특강 4지문", ["jaspers", "neo", "land", "embed"]),
 ]
 
