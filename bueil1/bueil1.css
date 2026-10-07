@@ -1,0 +1,8 @@
+
+/* ---------- 부일고 1학년 모의고사 파트 요약본 ---------- */
+.anchor-mark{position:absolute;font-size:3px;color:#fff;pointer-events:none}
+/* 2 parts, ~28 rows: compact, auto-height table of contents */
+.toc-page{height:auto;min-height:263mm}
+.toc-page .toc-title-h{font-size:18pt;padding-bottom:2mm;margin-bottom:3mm}
+.toc-page .toc-part{margin:4mm 0 .4mm;padding-bottom:1.4mm}
+.toc-page .toc td{padding:1.1mm 1.5mm;font-size:8.6pt}
