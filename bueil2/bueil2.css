@@ -30,3 +30,14 @@
 .dsec .kp{break-inside:avoid}
 .dsec .cmp{break-inside:auto}
 .dsec .cmp tr{break-inside:avoid}
+/* keep each 한눈에 비교 table whole (header + rows on one page) */
+.dsec .cmp-whole{break-inside:avoid}
+.dsec .cmp{break-inside:avoid}
+/* 핵심 개념 정리 · 비교 · 체크: a little denser so a passage's review part rarely spills a lone card */
+.dsec .kps{gap:2.5mm}
+.dsec .kp{padding:3mm 3.8mm}
+.dsec .kp-term{font-size:10pt;margin-bottom:.8mm}
+.dsec .kp-desc{font-size:9.1pt;line-height:1.62}
+.dsec .cmp{font-size:8.9pt}
+.dsec .cmp th,.dsec .cmp td{padding:2mm 2.6mm}
+.dsec .ck{padding:2.2mm 3.4mm}

@@ -62,9 +62,9 @@ def passage(p, idx, anchor):
     if ct and ct.get("headers"):
         th = "".join(f"<th>{md(h)}</th>" for h in ct["headers"])
         trs = "".join(nl.row_html(r) for r in ct["rows"])
-        table = f'<div class="sec"><div class="sec-h">한눈에 비교</div><table class="cmp"><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table></div>'
+        table = f'<div class="sec cmp-whole"><div class="sec-h">한눈에 비교</div><table class="cmp"><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table></div>'
     chk = "".join(
-        f'<div class="ck"><div class="ck-q"><span class="ck-mark">Q</span>{md(c["q"])}</div><div class="ck-a"><span class="ck-mark">A</span>{md(c["a"])}</div></div>'
+        f'<div class="ck"><div class="ck-q"><span class="ck-mark">Q</span><span>{md(c["q"])}</span></div><div class="ck-a"><span class="ck-mark">A</span><span>{md(c["a"])}</span></div></div>'
         for c in p.get("check_points", [])
     )
     checks = f'<div class="sec ck-sec"><div class="sec-h">시험 직전 체크</div><div class="cks">{chk}</div></div>' if chk else ""
