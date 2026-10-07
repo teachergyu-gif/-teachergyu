@@ -1,0 +1,32 @@
+
+/* ---------- 부일고 2학년 독서 요약 자료 (상세판) ---------- */
+.anchor-mark{position:absolute;font-size:3px;color:#fff;pointer-events:none}
+.toc-page{height:auto;min-height:263mm}
+/* flowing passage sections: summary flows over pages, 핵심 개념 정리 always opens a new page */
+.dsec{page-break-before:always;break-before:page;position:relative}
+.dsec .sec:first-of-type{margin-top:5mm}
+.dsec .struct li{padding:2.6mm 0}
+.dsec .st-body{font-size:9.6pt;line-height:1.78}
+.dsec .sec + .sec{margin-top:7mm}
+.run-src{margin-left:0}
+
+/* 흐름 정리 */
+.fl-sec{break-inside:avoid}
+.flow{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0}
+.flow li{display:grid;grid-template-columns:8mm 1fr;gap:3mm;align-items:start;position:relative;padding:0 0 3.2mm}
+.flow li:not(:last-child)::before{content:"";position:absolute;left:3.6mm;top:7mm;bottom:.6mm;width:1.5px;background:var(--beige)}
+.fl-no{width:7mm;height:7mm;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:9pt;display:flex;align-items:center;justify-content:center}
+.fl-name{font-weight:700;color:var(--navy);font-size:10pt;margin:.6mm 0 .4mm}
+.fl-desc{font-size:9.2pt;color:#3b404b;line-height:1.65}
+
+/* 시험 직전 체크 */
+.ck-sec{break-inside:auto}
+.cks{display:flex;flex-direction:column;gap:2.5mm}
+.ck{border:1px solid var(--line);border-left:3px solid var(--beige);border-radius:3px;padding:2.6mm 3.6mm;break-inside:avoid}
+.ck-q{font-weight:700;color:var(--navy);font-size:9.6pt;margin-bottom:1mm;display:flex;gap:2.2mm}
+.ck-a{font-size:9.2pt;color:#3b404b;display:flex;gap:2.2mm;line-height:1.65}
+.ck-mark{flex:none;width:4.6mm;height:4.6mm;border-radius:2px;background:var(--navy);color:#fff;font-size:7.6pt;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:.4mm}
+.ck-a .ck-mark{background:var(--beige);color:var(--navy)}
+.dsec .kp{break-inside:avoid}
+.dsec .cmp{break-inside:auto}
+.dsec .cmp tr{break-inside:avoid}
