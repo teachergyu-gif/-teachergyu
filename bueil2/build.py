@@ -1,7 +1,7 @@
 """부일고 2학년 독서 요약 자료 (상세판): PART 1 평가원 기출 → PART 2 수능특강 독서.
 
 Each passage gets a flowing summary (핵심 한 줄 · 지문 요약 · 흐름 정리) and, from a fresh page,
-핵심 개념 정리 · 한눈에 비교 · 시험 직전 체크. The table of contents is filled in a second pass.
+핵심 개념 정리 · 한눈에 비교. The table of contents is filled in a second pass.
 """
 import importlib.util, json, os, re, subprocess, sys
 
@@ -25,6 +25,7 @@ def load_module(name, path):
 nl = load_module("nl", os.path.join(ROOT, "nonliterature-summary/render/render.py"))
 md = nl.md
 MARKS = False
+SHOW_CHECKS = False  # 시험 직전 체크 removed at the teacher's request (data kept in check_points)
 
 
 def jload(name):
@@ -67,7 +68,7 @@ def passage(p, idx, anchor):
         f'<div class="ck"><div class="ck-q"><span class="ck-mark">Q</span><span>{md(c["q"])}</span></div><div class="ck-a"><span class="ck-mark">A</span><span>{md(c["a"])}</span></div></div>'
         for c in p.get("check_points", [])
     )
-    checks = f'<div class="sec ck-sec"><div class="sec-h">시험 직전 체크</div><div class="cks">{chk}</div></div>' if chk else ""
+    checks = f'<div class="sec ck-sec"><div class="sec-h">시험 직전 체크</div><div class="cks">{chk}</div></div>' if chk and SHOW_CHECKS else ""
     run = f'<div class="run">{meta.replace("p-exam", "p-exam run-src")}<span class="run-title">{md(p["title"])}</span></div>'
     return f"""
 <section class="dsec">{mark(anchor)}
@@ -80,12 +81,12 @@ def passage(p, idx, anchor):
   <div class="sec"><div class="sec-h">지문 요약</div><ol class="struct">{struct}</ol></div>
   {flow_html(p.get("flow"))}
 </section>
-<section class="dsec">
+<section class="pg dpg"><div class="fit">
   {run}
   <div class="sec"><div class="sec-h">핵심 개념 정리</div><div class="kps">{kp}</div></div>
   {table}
   {checks}
-</section>"""
+</div></section>"""
 
 
 def cover(n):
@@ -105,7 +106,7 @@ def cover(n):
     <img class="cover-logo" src="file://{ROOT}/brand/logo_beige.png" alt="RICH ACADEMY">
     <div class="cover-kicker">2학년 · 중간고사 대비</div>
     <h1 class="cover-title">부일고 2학년<br>중간고사<br><em>독서 요약 자료</em></h1>
-    <div class="cover-sub">독서 {n}지문 · 핵심 한 줄 · 문단별 상세 요약 · 핵심 개념 정리 · 시험 직전 체크</div>
+    <div class="cover-sub">독서 {n}지문 · 핵심 한 줄 · 문단별 상세 요약 · 핵심 개념 정리 · 한눈에 비교</div>
   </div>
   <div class="parts">{cards}</div>
 </section>"""

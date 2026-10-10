@@ -41,3 +41,11 @@
 .dsec .cmp{font-size:8.9pt}
 .dsec .cmp th,.dsec .cmp td{padding:2mm 2.6mm}
 .dsec .ck{padding:2.2mm 3.4mm}
+/* 핵심 개념 정리 + 한눈에 비교 share one fixed page (scaled to fit by print.js) */
+.dpg .kps{gap:2.5mm}
+.dpg .kp{padding:3mm 3.8mm}
+.dpg .kp-term{font-size:10pt;margin-bottom:.8mm}
+.dpg .kp-desc{font-size:9.1pt;line-height:1.62}
+.dpg .cmp{font-size:8.9pt}
+.dpg .cmp th,.dpg .cmp td{padding:2mm 2.6mm}
+.dpg .sec + .sec{margin-top:6mm}
