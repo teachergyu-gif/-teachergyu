@@ -1,6 +1,7 @@
 """11월 고1 전국연합학력평가 독서 분석서: 지문마다 (1) 원본 지문 및 문제 (2) 문제 해설 (3) 지문 분석서.
 
-Usage: python3 build.py <book> <out.pdf>   (book: a key of BOOKS, e.g. 2016, 2017-2018)
+Usage: python3 build.py all <out.pdf>          (every year under data/, one combined booklet)
+       python3 build.py 2017,2018 <out.pdf>    (selected years)
 
 Exam text and explanations are re-typeset from the original papers (data/*.json); passages, questions and
 explanation cards never split across pages. The table of contents is filled in a second pass.
@@ -9,11 +10,16 @@ import importlib.util, json, os, re, subprocess, sys, html
 
 B = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(B)
-BOOKS = {
-    "2016": {"title": "2016학년도 11월 고1 모의고사 독서 분석서", "cover": "2016학년도 11월", "years": ["2016"]},
-    "2017-2018": {"title": "2017·2018학년도 11월 고1 모의고사 독서 분석서", "cover": "2017·2018학년도 11월", "years": ["2017", "2018"]},
-}
-BOOK = BOOKS["2016"]
+def all_years():
+    return sorted(y for y in os.listdir(os.path.join(B, "data")) if y.isdigit())
+
+
+def make_book(years):
+    rng = years[0] if len(years) == 1 else f"{years[0]}~{years[-1]}"
+    return {"title": f"{rng}학년도 11월 고1 모의고사 독서 분석서", "cover": f"{rng}학년도", "years": years}
+
+
+BOOK = make_book(["2016"])
 TITLE = BOOK["title"]
 
 
@@ -77,7 +83,13 @@ def head(p, idx, part, anchor):
 def passage_block(items):
     out = []
     for it in items:
-        if isinstance(it, dict):
+        if isinstance(it, dict) and it.get("table"):
+            tb = it["table"]
+            trs = "".join("<tr>" + "".join((f"<th>{xmd(c)}</th>" if i == 0 and tb.get("header") else f"<td>{xmd(c)}</td>") for c in r) + "</tr>"
+                          for i, r in enumerate(tb["rows"]))
+            cap = f'<div class="fig-cap">{xmd(it.get("caption"))}</div>' if it.get("caption") else ""
+            out.append(f'<div class="x-figure">{cap}<table class="x-tb">{trs}</table></div>')
+        elif isinstance(it, dict):
             cap = f'<div class="fig-cap">{xmd(it.get("caption"))}</div>' if it.get("caption") else ""
             out.append(f'<div class="x-figure">{img(it["img"])}{cap}</div>')
         else:
@@ -180,7 +192,7 @@ def cover(ps):
   <div class="cover-main">
     <img class="cover-logo" src="file://{ROOT}/brand/logo_beige.png" alt="RICH ACADEMY">
     <div class="cover-kicker">고1 · 전국연합학력평가</div>
-    <h1 class="cover-title">{BOOK["cover"]}<br>고1 모의고사 독서<br><em>지문 분석서</em></h1>
+    <h1 class="cover-title">{BOOK["cover"]}<br>11월 고1 모의고사 독서<br><em>지문 분석서</em></h1>
     <div class="cover-sub">독서 {len(ps)}지문 · {names}</div>
   </div>
   <div class="parts parts3">{cards}</div>
@@ -239,7 +251,7 @@ def find_pages(pdf, anchors):
 
 
 if __name__ == "__main__":
-    BOOK = BOOKS[sys.argv[1]]
+    BOOK = make_book(all_years() if sys.argv[1] == "all" else sys.argv[1].split(","))
     TITLE = BOOK["title"]
     out_pdf = sys.argv[2]
     MARKS = True

@@ -69,3 +69,6 @@
 .x-title{flex:1 1 auto;min-width:0;line-height:1.35}
 /* never split a passage paragraph across pages */
 .x-p{break-inside:avoid;page-break-inside:avoid}
+.x-tb{margin:1mm auto 0;border-collapse:collapse;font-size:8.8pt;text-indent:0}
+.x-tb th,.x-tb td{border:1px solid #6d7381;padding:.8mm 3mm;text-align:center}
+.x-tb th{background:var(--bg-soft)}
