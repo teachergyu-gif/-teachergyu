@@ -1,4 +1,6 @@
-"""2016학년도 11월 고1 전국연합학력평가 독서: 지문마다 (1) 원본 지문 및 문제 (2) 문제 해설 (3) 지문 분석서.
+"""11월 고1 전국연합학력평가 독서 분석서: 지문마다 (1) 원본 지문 및 문제 (2) 문제 해설 (3) 지문 분석서.
+
+Usage: python3 build.py <book> <out.pdf>   (book: a key of BOOKS, e.g. 2016, 2017-2018)
 
 Exam text and explanations are re-typeset from the original papers (data/*.json); passages, questions and
 explanation cards never split across pages. The table of contents is filled in a second pass.
@@ -7,10 +9,20 @@ import importlib.util, json, os, re, subprocess, sys, html
 
 B = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(B)
-TITLE = os.environ.get("BOOK_TITLE", "2016학년도 11월 고1 모의고사 독서 분석서")
-EXAM = "2016학년도 11월 고1 전국연합학력평가"
-EXAM_SHORT = "2016 고1 11월"
-FILES = ["p1.json", "p2.json", "p3.json", "p4.json"]
+BOOKS = {
+    "2016": {"title": "2016학년도 11월 고1 모의고사 독서 분석서", "cover": "2016학년도 11월", "years": ["2016"]},
+    "2017-2018": {"title": "2017·2018학년도 11월 고1 모의고사 독서 분석서", "cover": "2017·2018학년도 11월", "years": ["2017", "2018"]},
+}
+BOOK = BOOKS["2016"]
+TITLE = BOOK["title"]
+
+
+def exam_name(y):
+    return f"{y}학년도 11월 고1 전국연합학력평가"
+
+
+def exam_short(y):
+    return f"{y} 고1 11월"
 
 
 def load_module(name, path):
@@ -24,9 +36,15 @@ nl = load_module("nl", os.path.join(ROOT, "nonliterature-summary/render/render.p
 MARKS = False
 
 
-def jload(name):
-    with open(os.path.join(B, "data", name), encoding="utf-8") as f:
-        return json.load(f)
+def load_year(y):
+    d = os.path.join(B, "data", y)
+    ps = []
+    for f in sorted(os.listdir(d)):
+        with open(os.path.join(d, f), encoding="utf-8") as fh:
+            p = json.load(fh)
+        p["year"] = y
+        ps.append(p)
+    return ps
 
 
 def xmd(s):
@@ -42,14 +60,17 @@ def mark(anchor):
     return f'<span class="anchor-mark">QQ{anchor}QQ</span>' if MARKS else ""
 
 
+YEAR = "2016"  # year whose img/ folder is being referenced while rendering
+
+
 def img(name, cls="fig"):
-    return f'<img class="{cls}" src="file://{B}/img/{name}" alt="">'
+    return f'<img class="{cls}" src="file://{B}/img/{YEAR}/{name}" alt="">'
 
 
 def head(p, idx, part, anchor):
     return (f'{mark(anchor)}<div class="x-head"><span class="p-idx">{idx:02d}</span><span class="tag">{nl.md(p["field"])}</span>'
             f'<span class="x-q">{nl.md(p["qrange"])}</span><span class="x-title">{nl.md(p["title"])}</span>'
-            f'<span class="x-part">{part}</span></div>')
+            f'<span class="x-exam">{exam_short(p["year"])}</span><span class="x-part">{part}</span></div>')
 
 
 def passage_block(items):
@@ -83,6 +104,8 @@ def bogi_html(bg):
 
 
 def question_html(q):
+    if "group_stem" in q:
+        return f'<div class="xq xg"><div class="xg-stem">{xmd(q["group_stem"])}</div>{bogi_html(q.get("bogi"))}</div>'
     ct = q.get("choices_table")
     if ct and ct.get("rows"):
         rows = ct["rows"]
@@ -96,6 +119,8 @@ def question_html(q):
 
 
 def exam_section(p, idx):
+    global YEAR
+    YEAR = p["year"]
     ex = p["exam"]
     qs = "".join(question_html(q) for q in ex["questions"])
     return f"""
@@ -128,7 +153,7 @@ def answer_section(p, idx):
 
 
 def analysis(p, idx):
-    e = {"exam": EXAM, "exam_short": EXAM_SHORT}
+    e = {"exam": exam_name(p["year"]), "exam_short": exam_short(p["year"])}
     h = nl.passage(e, dict(p, qrange=""), idx)
     if MARKS:
         h = h.replace('<div class="fit">', f'<div class="fit">{mark(f"X{idx}c")}', 1)
@@ -152,7 +177,7 @@ def cover(ps):
   <div class="cover-main">
     <img class="cover-logo" src="file://{ROOT}/brand/logo_beige.png" alt="RICH ACADEMY">
     <div class="cover-kicker">고1 · 전국연합학력평가</div>
-    <h1 class="cover-title">2016학년도 11월<br>고1 모의고사 독서<br><em>지문 분석서</em></h1>
+    <h1 class="cover-title">{BOOK["cover"]}<br>고1 모의고사 독서<br><em>지문 분석서</em></h1>
     <div class="cover-sub">독서 {len(ps)}지문 · {names}</div>
   </div>
   <div class="parts parts3">{cards}</div>
@@ -160,29 +185,33 @@ def cover(ps):
 
 
 def toc(ps, pages):
-    rows = "".join(
-        f'<tr><td class="toc-no">{i:02d}</td><td class="toc-exam">{nl.md(p["qrange"])}</td><td><span class="tag tag-sm">{nl.md(p["field"])}</span></td>'
-        f'<td class="toc-title">{nl.md(p["title"])}</td>'
-        + "".join(f'<td class="toc-sub"><span>{lab}</span>{pages.get(f"X{i}{k}", "")}</td>' for k, lab in (("a", "지문·문제"), ("b", "해설"), ("c", "분석서")))
-        + "</tr>"
-        for i, p in enumerate(ps, 1))
-    return f"""
+    parts = []
+    for y in BOOK["years"]:
+        rows = "".join(
+            f'<tr><td class="toc-no">{i:02d}</td><td class="toc-exam">{nl.md(p["qrange"])}</td><td><span class="tag tag-sm">{nl.md(p["field"])}</span></td>'
+            f'<td class="toc-title">{nl.md(p["title"])}</td>'
+            + "".join(f'<td class="toc-sub"><span>{lab}</span>{pages.get(f"X{i}{k}", "")}</td>' for k, lab in (("a", "지문·문제"), ("b", "해설"), ("c", "분석서")))
+            + "</tr>"
+            for i, p in enumerate(ps, 1) if p["year"] == y)
+        first = next(i for i, p in enumerate(ps, 1) if p["year"] == y)
+        parts.append(f'''<div class="toc-part"><span class="part-no">{exam_short(y)}</span><span class="toc-part-name">독서</span><span class="toc-part-pg">{pages.get(f"X{first}a", "")}</span></div>
+  <table class="toc">{rows}</table>''')
+    return f'''
 <section class="toc-page"><div class="toc-title-h">목차</div>
-  <div class="toc-part"><span class="part-no">{EXAM_SHORT}</span><span class="toc-part-name">독서</span><span class="toc-part-pg">{pages.get("X1a", "")}</span></div>
-  <table class="toc">{rows}</table>
+  {"".join(parts)}
   <div class="toc-note">지문마다 ① 원본 지문 및 문제 → ② 문제 해설 → ③ 지문 분석서 순서로 실려 있습니다.</div>
-</section>"""
+</section>'''
 
 
 def build(pages):
-    ps = [jload(f) for f in FILES]
+    ps = [p for y in BOOK["years"] for p in load_year(y)]
     body = [cover(ps), toc(ps, pages)]
     anchors = []
     for i, p in enumerate(ps, 1):
         body += [exam_section(p, i), answer_section(p, i), analysis(p, i)]
         anchors += [f"X{i}a", f"X{i}b", f"X{i}c"]
     css = "".join(open(os.path.join(ROOT, f), encoding="utf-8").read() for f in
-                  ["literature-summary/render/style.css", "combined/extra.css", "mock1611/mock1611.css", "brand/brand.css"])
+                  ["literature-summary/render/style.css", "combined/extra.css", "mock_nov/mock_nov.css", "brand/brand.css"])
     font_dir = os.environ.get("FONT_DIR", ROOT + "/node_modules")
     css = css.replace("FONTDIR", "file://" + font_dir)
     out = f"""<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>{TITLE}</title>
@@ -207,7 +236,9 @@ def find_pages(pdf, anchors):
 
 
 if __name__ == "__main__":
-    out_pdf = sys.argv[1]
+    BOOK = BOOKS[sys.argv[1]]
+    TITLE = BOOK["title"]
+    out_pdf = sys.argv[2]
     MARKS = True
     anchors = build({})
     subprocess.run(["node", os.path.join(B, "print.js"), out_pdf], check=True)

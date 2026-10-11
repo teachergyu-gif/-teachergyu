@@ -59,3 +59,6 @@
 .xq-ct td:first-child,.xq-ct th:first-child{padding-left:0;text-align:left}
 .x-figure .fig{max-height:55mm}
 .ak .cn,.an-ans .cn{transform:scale(1.15)}
+.x-exam{font-size:8pt;color:var(--muted);margin-right:2mm}
+.xg{column-span:none}
+.xg-stem{font-weight:700;color:var(--navy);margin-bottom:1.6mm;font-size:9.3pt}
