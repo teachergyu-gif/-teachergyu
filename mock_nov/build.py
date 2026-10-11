@@ -102,7 +102,12 @@ def bogi_html(bg):
     if not bg:
         return ""
     body = img(bg["img"], "fig bg-img") if bg.get("img") else ""
-    body += "".join(f'<p class="bg-p{" bg-c" if re.match(r"^-.*-$", t.strip()) else ""}">{xmd(t)}</p>' for t in bg.get("paras") or [])
+    if bg.get("imgs"):  # several captioned figures in a row (A · B · C)
+        body += '<div class="bg-imgs">' + "".join(
+            f'<figure>{img(f["img"], "fig")}<figcaption>{xmd(f.get("caption"))}</figcaption></figure>' for f in bg["imgs"]) + "</div>"
+    paras = "".join(f'<p class="bg-p{" bg-c" if re.match(r"^-.*-$", t.strip()) else ""}">{xmd(t)}</p>' for t in bg.get("paras") or [])
+    if not bg.get("imgs"):
+        body += paras  # text first, then tables (the usual layout)
     tbs = bg.get("tables")
     if tbs:  # several captioned tables side by side (e.g. [진리표 1] · [진리표 2])
         cells = []
@@ -120,6 +125,8 @@ def bogi_html(bg):
             "<tr>" + "".join((f"<th>{xmd(c)}</th>" if (hdr and i == 0) else f"<td>{xmd(c)}</td>") for c in r) + "</tr>"
             for i, r in enumerate(rows))
         body += f'<table class="bg-tb">{trs}</table>'
+    if bg.get("imgs"):
+        body += paras  # figure row → tables → notes, as on the paper
     if bg.get("note"):
         body += f'<div class="bg-note">{xmd(bg["note"])}</div>'
     label = bg.get("label", "< 보 기 >")
