@@ -208,7 +208,7 @@ def cover(ps):
     <img class="cover-logo" src="file://{ROOT}/brand/logo_beige.png" alt="RICH ACADEMY">
     <div class="cover-kicker">고1 · 전국연합학력평가</div>
     <h1 class="cover-title">{BOOK["cover"]}<br>11월 고1 모의고사 독서<br><em>지문 분석서</em></h1>
-    <div class="cover-sub">{" · ".join(f"{y} 고1 11월" for y in BOOK["years"])} · 독서 {len(ps)}지문</div>
+    <div class="cover-sub">{BOOK["cover"].replace("학년도", "")} 고1 11월 전국연합학력평가 · 독서 {len(ps)}지문</div>
   </div>
   <div class="parts parts3">{cards}</div>
 </section>"""
