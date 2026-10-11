@@ -103,6 +103,15 @@ def bogi_html(bg):
         return ""
     body = img(bg["img"], "fig bg-img") if bg.get("img") else ""
     body += "".join(f'<p class="bg-p{" bg-c" if re.match(r"^-.*-$", t.strip()) else ""}">{xmd(t)}</p>' for t in bg.get("paras") or [])
+    tbs = bg.get("tables")
+    if tbs:  # several captioned tables side by side (e.g. [진리표 1] · [진리표 2])
+        cells = []
+        for t in tbs:
+            trs = "".join("<tr>" + "".join((f"<th>{xmd(c)}</th>" if i == 0 and t.get("header") else f"<td>{xmd(c)}</td>") for c in r) + "</tr>"
+                          for i, r in enumerate(t["rows"]))
+            cap = f'<div class="bg-cap">{xmd(t.get("caption"))}</div>' if t.get("caption") else ""
+            cells.append(f'<div>{cap}<table class="bg-tb bg-tb-c">{trs}</table></div>')
+        body += f'<div class="bg-tbs">{"".join(cells)}</div>'
     tb = bg.get("table")
     if tb and tb.get("rows"):
         rows = tb["rows"]
