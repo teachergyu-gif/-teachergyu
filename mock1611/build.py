@@ -59,14 +59,16 @@ def passage_block(items):
             cap = f'<div class="fig-cap">{xmd(it.get("caption"))}</div>' if it.get("caption") else ""
             out.append(f'<div class="x-figure">{img(it["img"])}{cap}</div>')
         else:
-            out.append(f'<p class="x-p">{xmd(it)}</p>')
+            fn = it.lstrip().startswith("*")
+            out.append(f'<p class="{"x-fn" if fn else "x-p"}">{xmd(it)}</p>')
     return "".join(out)
 
 
 def bogi_html(bg):
     if not bg:
         return ""
-    body = "".join(f'<p class="bg-p">{xmd(t)}</p>' for t in bg.get("paras") or [])
+    body = img(bg["img"], "fig bg-img") if bg.get("img") else ""
+    body += "".join(f'<p class="bg-p{" bg-c" if re.match(r"^-.*-$", t.strip()) else ""}">{xmd(t)}</p>' for t in bg.get("paras") or [])
     tb = bg.get("table")
     if tb and tb.get("rows"):
         rows = tb["rows"]
@@ -75,17 +77,22 @@ def bogi_html(bg):
             "<tr>" + "".join((f"<th>{xmd(c)}</th>" if (hdr and i == 0) else f"<td>{xmd(c)}</td>") for c in r) + "</tr>"
             for i, r in enumerate(rows))
         body += f'<table class="bg-tb">{trs}</table>'
-    if bg.get("img"):
-        body += img(bg["img"], "fig bg-img")
     if bg.get("note"):
         body += f'<div class="bg-note">{xmd(bg["note"])}</div>'
     return f'<div class="bogi"><div class="bogi-h">&lt; 보 기 &gt;</div>{body}</div>'
 
 
 def question_html(q):
-    ch = "".join(f'<li>{xmd(c)}</li>' for c in q.get("choices", []))
-    return (f'<div class="xq"><div class="xq-stem"><span class="xq-no">{q["no"]}.</span>{xmd(q["stem"])}</div>'
-            f'{bogi_html(q.get("bogi"))}<ol class="xq-ch">{ch}</ol></div>')
+    ct = q.get("choices_table")
+    if ct and ct.get("rows"):
+        rows = ct["rows"]
+        trs = "".join("<tr>" + "".join((f"<th>{xmd(c)}</th>" if i == 0 and ct.get("header") else f"<td>{xmd(c)}</td>") for c in r) + "</tr>"
+                      for i, r in enumerate(rows))
+        chs = f'<table class="xq-ct">{trs}</table>'
+    else:
+        chs = '<ol class="xq-ch">' + "".join(f'<li>{xmd(c)}</li>' for c in q.get("choices", [])) + "</ol>"
+    return (f'<div class="xq"><div class="xq-stem"><span class="xq-no">{q["no"]}.</span><span>{xmd(q["stem"])}</span></div>'
+            f'{bogi_html(q.get("bogi"))}{chs}</div>')
 
 
 def exam_section(p, idx):
@@ -106,9 +113,9 @@ def split_others(s):
 
 
 def answer_section(p, idx):
-    strip = "".join(f'<span class="ak"><b>{a["no"]}</b>{xmd(a["answer"])}</span>' for a in p["answers"])
+    strip = "".join(f'<span class="ak"><b>{a["no"]}</b>{nl.md(a["answer"])}</span>' for a in p["answers"])
     cards = "".join(
-        f'<div class="an"><div class="an-h"><span class="an-no">{a["no"]}번</span><span class="an-ans">정답 {xmd(a["answer"])}</span>'
+        f'<div class="an"><div class="an-h"><span class="an-no">{a["no"]}번</span><span class="an-ans">정답 {nl.md(a["answer"])}</span>'
         f'<span class="an-int">출제의도 · {xmd(a.get("intent"))}</span></div>'
         f'<div class="an-e">{xmd(a["explain"])}</div>{split_others(a.get("others"))}</div>'
         for a in p["answers"])

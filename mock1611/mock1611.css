@@ -52,3 +52,10 @@
 .an-e{font-size:9.3pt;line-height:1.72;color:#2b303a;margin-bottom:1.6mm}
 .an-o{font-size:8.9pt;line-height:1.65;color:#3b404b;padding:.8mm 0 .8mm 4.4mm;text-indent:-4.4mm;border-top:1px dashed #e5e7ec}
 .an-src{font-size:8.2pt;color:var(--muted);text-align:right;margin-top:2mm}
+.x-fn{margin:2mm 0 0;font-size:8.2pt;line-height:1.55;color:#3b404b;padding-left:2.6mm;text-indent:-2.6mm}
+.bg-c{text-align:center;text-indent:0;font-weight:600}
+.xq-ct{border-collapse:collapse;margin:1mm 0 0 1.2mm;font-size:9pt}
+.xq-ct th,.xq-ct td{border-bottom:1px solid var(--line);padding:.6mm 4mm;text-align:center}
+.xq-ct td:first-child,.xq-ct th:first-child{padding-left:0;text-align:left}
+.x-figure .fig{max-height:55mm}
+.ak .cn,.an-ans .cn{transform:scale(1.15)}
