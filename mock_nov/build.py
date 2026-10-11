@@ -139,7 +139,7 @@ def question_html(q):
     else:
         chs = '<ol class="xq-ch">' + "".join(f'<li>{xmd(c)}</li>' for c in q.get("choices", [])) + "</ol>"
     return (f'<div class="xq"><div class="xq-stem"><span class="xq-no">{q["no"]}.</span><span>{xmd(q["stem"])}</span></div>'
-            f'{bogi_html(q.get("bogi"))}{chs}</div>')
+            f'{bogi_html(q.get("bogi"))}{bogi_html(q.get("bogi2"))}{chs}</div>')
 
 
 def exam_section(p, idx):
@@ -185,7 +185,6 @@ def analysis(p, idx):
 
 
 def cover(ps):
-    names = " · ".join(nl.md(p["title"]) for p in ps)
     cards = "".join(
         f'<div class="part-card"><div class="part-no">STEP {i}</div><div class="part-name">{n}</div><div class="part-desc">{d}</div></div>'
         for i, (n, d) in enumerate([("원본 지문 및 문제", "시험지 그대로 다시 편집 · 지문/문제 잘림 없음"),
@@ -202,7 +201,7 @@ def cover(ps):
     <img class="cover-logo" src="file://{ROOT}/brand/logo_beige.png" alt="RICH ACADEMY">
     <div class="cover-kicker">고1 · 전국연합학력평가</div>
     <h1 class="cover-title">{BOOK["cover"]}<br>11월 고1 모의고사 독서<br><em>지문 분석서</em></h1>
-    <div class="cover-sub">독서 {len(ps)}지문 · {names}</div>
+    <div class="cover-sub">{" · ".join(f"{y} 고1 11월" for y in BOOK["years"])} · 독서 {len(ps)}지문</div>
   </div>
   <div class="parts parts3">{cards}</div>
 </section>"""
