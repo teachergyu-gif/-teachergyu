@@ -262,6 +262,13 @@ sup{font-size:.68em;line-height:0;vertical-align:.55em}
 .x-exam{font-size:8pt;color:var(--muted);margin-right:2mm}
 .xg{column-span:none}
 .xg-stem{font-weight:700;color:var(--navy);margin-bottom:1.6mm;font-size:9.3pt}
+.bogi.plain{padding-top:2.6mm}
+.bx{border:1px solid #2b303a;padding:0 2px}
+/* header: keep the small labels on one line, let only the title wrap */
+.x-q,.x-exam,.x-part{white-space:nowrap;flex:none}
+.x-title{flex:1 1 auto;min-width:0;line-height:1.35}
+/* never split a passage paragraph across pages */
+.x-p{break-inside:avoid;page-break-inside:avoid}
 /* ---------- RICH ACADEMY brand (원안: navy #29334A + beige #BDA895) ----------
    --gold is a deeper shade of the brand beige for small accent text on white;
    --beige is the brand beige itself for rules, fills and the dark cover. */

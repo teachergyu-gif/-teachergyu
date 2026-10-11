@@ -52,6 +52,7 @@ def xmd(s):
     t = html.escape(str(s or ""))
     t = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", t)
     t = re.sub(r"__(.+?)__", r"<u>\1</u>", t)
+    t = re.sub(r"\{\{(.+?)\}\}", r'<span class="bx">\1</span>', t)  # boxed term (네모 표시)
     t = t.replace("[3점]", '<span class="pt3">[3점]</span>')
     return t
 
@@ -100,7 +101,9 @@ def bogi_html(bg):
         body += f'<table class="bg-tb">{trs}</table>'
     if bg.get("note"):
         body += f'<div class="bg-note">{xmd(bg["note"])}</div>'
-    return f'<div class="bogi"><div class="bogi-h">&lt; 보 기 &gt;</div>{body}</div>'
+    label = bg.get("label", "< 보 기 >")
+    h = f'<div class="bogi-h">{html.escape(label)}</div>' if label else ""
+    return f'<div class="bogi{"" if label else " plain"}">{h}{body}</div>'
 
 
 def question_html(q):
