@@ -220,6 +220,8 @@ def block_html(b):
         return box_html(b)
     if t == "img":
         return img_html(b["src"], b.get("w"))
+    if t == "addwrap":
+        return f'<div class="addbox"><div class="add-h">{html.escape(b["title"])}</div>{table_html(b["rows"])}</div>'
     if t == "heading":
         return f'<div class="hflag">{html.escape(b["text"])}</div>'
     return ""
@@ -357,9 +359,8 @@ def units(sec):
             out.append(cur)
             i += 1
             continue
-        if extra:
-            out.append({"cls": "u-t split", "html": [h]})
-            cur = {"cls": "u-t", "html": [extra]}
+        if extra:  # the paragraph and the box added under it stay on the same page
+            cur = {"cls": "u-t", "html": [h, extra]}
             out.append(cur)
             i += 1
             continue
@@ -392,6 +393,23 @@ def add_table(title, head, rows, intro=""):
 
 # Inserted right after the source paragraph that starts with the key.
 ADDITIONS = {
+    "• 단어의 첫머리에 둘 이상의 자음이 결합한": (
+        '<div class="addbox"><div class="add-h">합용 병서와 어두 자음군</div>'
+        '<p class="hp li1">• ‘합용 병서’에는 <b>‘ㅂ-’계</b>(ㅳ, ㅄ, ㅶ, ㅷ), <b>‘ㅄ-’계</b>(ㅴ, ㅵ), <b>‘ㅅ-’계</b>(ㅺ, ㅼ, ㅽ) 합용 병서가 존재했음. '
+        '‘ㅅ-’계는 지금의 된소리로 발음되었다고 보는 견해가 강하고, ‘ㅂ-’계·‘ㅄ-’계는 어두 자음군으로 발음되었다는 견해가 강함. '
+        '물론 학교 수업에 따라 이 둘을 구분하기도 하고, 모든 합용 병서를 통틀어 어두 자음군으로 설명하기도 하므로 <b>학교 수업을 잘 들어 봐야 함.</b></p>'
+        '<p class="hp li1">• 어두 자음군으로 발음되었다는 근거 : 현대 국어 합성어에 남은 <b>‘ㅂ’의 흔적</b></p>'
+        '<p class="hp li2">‧ 중세 국어 ‘ᄡᆞᆯ(쌀)’, ‘ᄡᅵ(씨)’, ‘ᄣᅢ(때)’의 ‘ㅂ’이 실제로 소리 났기 때문에, 앞말과 결합하여 합성어가 될 때 그 ‘ㅂ’이 앞 음절의 받침으로 옮겨 가 지금까지 남아 있음.</p>'
+        '<p class="hp ex">예 해＋ᄡᆞᆯ → <b>햅</b>쌀, 조＋ᄡᆞᆯ → <b>좁</b>쌀, 메＋ᄡᆞᆯ → <b>멥</b>쌀, 벼＋ᄡᅵ → <b>볍</b>씨, 이＋ᄣᅢ → <b>입</b>때, 저＋ᄣᅢ → <b>접</b>때</p>'
+        '<p class="hp li2">‧ ‘ㅂ’이 소리 나지 않았다면 이런 ‘ㅂ’ 받침이 생길 수 없으므로, ‘ㅂ’계·‘ㅄ’계 합용 병서의 ‘ㅂ’도 발음되었다(어두 자음군)는 증거가 됨.</p>'
+        '</div>'),
+    "• 각 음절의 왼쪽에 방점을 찍어": add_table(
+        "방점 체계",
+        ["방점", "성조", "소리의 높낮이", "예"],
+        [["없음 (0개)", "평성", "낮은 소리", "활[弓]"],
+         ["1개 ( ‧ )", "거성", "높은 소리", "‧갈[刀]"],
+         ["2개 ( : )", "상성", "낮다가 높아지는 소리", ":돌[石]"]],
+        "") + '<p class="hp note add-note">※ <b>입성</b> : 빨리 닫는 소리로, 소리의 높낮이와는 무관한 개념임. (방점은 평성·거성·상성과 같은 방식으로 찍음.)</p>',
     "※ 중성자 11개는": (
         '<p class="hp li1">• 종성자의 제자 원리</p>'
         '<p class="hp li2">‧ 종성부용초성(終聲復用初聲) : 종성자를 위한 글자를 따로 만들지 않고 초성자를 종성자에 사용하였음. '
@@ -492,6 +510,20 @@ def build(blocks_path, kicker, t1, t2, title, pages):
                 if old in ptext(b):
                     joined = ptext(b).replace(old, new)
                     b["runs"] = [dict(b["runs"][0], text=joined)]
+    # teacher's edits on the source text
+    for b in blocks:
+        if b["t"] == "para":
+            for i, r in enumerate(b["runs"]):
+                if "만을 사용하였으며, 종성에서" in r["text"]:
+                    a, z = r["text"].split("만을 사용하였으며,", 1)
+                    b["runs"][i:i + 1] = [dict(r, text=a + "만을 사용하였으며("), dict(r, text="8종성법", b=True), dict(r, text="),") , dict(r, text=z)]
+                    break
+    # '음운 소실 순서' moves up, right under the line about consonants that no longer exist
+    k = next(i for i, b in enumerate(blocks) if b["t"] == "para" and ptext(b).strip().startswith("○ 음운 소실 순서"))
+    moved = {"t": "addwrap", "title": "음운의 소실 순서", "rows": blocks[k + 1]["rows"]}
+    del blocks[k:k + 2]
+    j = next(i for i, b in enumerate(blocks) if b["t"] == "para" and ptext(b).strip().startswith("• 현대 국어에 없는 자음"))
+    blocks.insert(j + 1, moved)
     first_break = next(i for i, b in enumerate(blocks) if b["t"] == "pagebreak")
     blocks = merge_continuations(blocks[first_break + 1:])  # the source's own cover + 목차 are replaced
     secs = sections(blocks)

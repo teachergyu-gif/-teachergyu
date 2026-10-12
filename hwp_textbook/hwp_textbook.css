@@ -92,3 +92,5 @@
 .addtb td:first-child{background:var(--bg-soft);font-weight:700;color:var(--navy)}
 .addtb td:last-child{text-align:left}
 .addtb .tr{color:var(--muted);font-size:8.4pt}
+.addbox .htb{margin:0 0 2mm}
+.add-note{margin:-1mm 0 3mm}
