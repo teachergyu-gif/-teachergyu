@@ -351,6 +351,18 @@ def units(sec):
             i += 1
             continue
         h = block_html(b)
+        extra = addition_for(b)
+        if extra and kind(t) == "sub":  # heading with an inline example: keep heading + table together
+            cur = {"cls": "u-t", "html": [h, extra]}
+            out.append(cur)
+            i += 1
+            continue
+        if extra:
+            out.append({"cls": "u-t split", "html": [h]})
+            cur = {"cls": "u-t", "html": [extra]}
+            out.append(cur)
+            i += 1
+            continue
         if b["t"] == "para" and kind(t) == "sub" or b["t"] == "heading":
             cur = {"cls": "u-t glue", "html": [h]}  # heading glued to the next block
             out.append(cur)
@@ -362,6 +374,63 @@ def units(sec):
             out.append(cur)
         i += 1
     return out
+
+
+
+# ---------------------------------------------------------------- teacher's additions
+# Sections that continue on the same page as the previous one (no page break).
+JOIN_PREV = {"중세 국어 체언과 조사"}
+
+
+def add_table(title, head, rows, intro=""):
+    th = "".join(f"<th>{c}</th>" for c in head)
+    trs = "".join("<tr>" + "".join(f"<td>{c}</td>" for c in r) + "</tr>" for r in rows)
+    intro = f'<p class="hp add-intro">{intro}</p>' if intro else ""
+    return (f'<div class="addbox"><div class="add-h">{title}</div>{intro}'
+            f'<table class="htb addtb"><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table></div>')
+
+
+# Inserted right after the source paragraph that starts with the key.
+ADDITIONS = {
+    "예 암ㅎ＋ᄃᆞᆰ": add_table(
+        "‘ㅎ’ 종성 체언의 실현 양상",
+        ["뒤따르는 조사", "‘ㅎ’ 종성 체언의 실현 양상", "예"],
+        [["모음으로 시작하는 조사", "‘ㅎ’은 뒤따르는 모음에 이어 적는다.", "<b>ᄯᅡ히</b>(ᄯᅡᇂ＋이) 즐어늘<br><span class='tr'>(땅이 질거늘)</span>"],
+         ["‘ㄱ, ㄷ’으로 시작하는 조사", "‘ㅎ’은 뒤따르는 ‘ㄱ’, ‘ㄷ’과 어울려 ‘ㅋ’, ‘ㅌ’으로 나타난다.", "<b>ᄯᅡ토</b>(ᄯᅡᇂ＋도) 뮈더니<br><span class='tr'>(땅도 움직이더니)</span>"],
+         ["관형격 조사 ‘ㅅ’", "‘ㅎ’은 나타나지 않는다.", "다ᄅᆞᆫ <b>ᄯᅡᆺ</b>(ᄯᅡᇂ＋ㅅ) 風俗은<br><span class='tr'>(다른 땅의 풍속은)</span>"]],
+        "중세 국어 체언 중에는 ‘ㅎ’을 끝소리로 가진 것들이 있다. 이러한 체언을 ‘ㅎ’ 종성 체언이라고 하는데, 조사가 뒤따를 경우에 다음과 같이 나타난다."),
+    "※ 근대 국어에서부터 주격 조사": add_table(
+        "한눈에 보기 · 주격 조사",
+        ["앞 체언의 끝소리", "형태", "예"],
+        [["자음", "이", "ᄉᆡ미(ᄉᆡᆷ＋이) [샘이]"],
+         ["‘ㅣ’ 이외의 모음", "ㅣ", "부톄(부텨＋ㅣ) [부처가]"],
+         ["‘ㅣ’ 모음", "∅ (표시하지 않음)", "불휘(불휘＋∅) [뿌리가], ᄃᆞ리(ᄃᆞ리＋∅) [다리가]"]]),
+    "○ 중세 국어의 목적격 조사": add_table(
+        "한눈에 보기 · 목적격 조사",
+        ["앞 체언의 모음", "자음으로 끝날 때", "모음으로 끝날 때", "예"],
+        [["양성 모음", "ᄋᆞᆯ", "ᄅᆞᆯ", "ᄆᆞᅀᆞᄆᆞᆯ(ᄆᆞᅀᆞᆷ＋ᄋᆞᆯ)"],
+         ["음성 모음", "을", "를", "누ᇇ므를(누ᇇ믈＋을)"]]),
+    "• 무정 명사일 경우에는 관형격 조사로": add_table(
+        "한눈에 보기 · 관형격 조사",
+        ["앞 체언", "형태", "예"],
+        [["유정 명사 · 양성 모음", "ᄋᆡ", "ᄂᆞᄆᆡ(ᄂᆞᆷ＋ᄋᆡ) ᄠᅳᆮ [남의 뜻]"],
+         ["유정 명사 · 음성 모음", "의", "거부븨(거붑＋의) 털 [거북의 털]"],
+         ["높임의 유정 명사", "ㅅ", "大王ㅅ(대왕＋ㅅ) 말ᄊᆞᆷ [대왕의 말씀]"],
+         ["무정 명사", "ㅅ", "나못(나모＋ㅅ) 여름 [나무의 열매]"]]),
+    "• 앞 체언의 모음이 ‘ㅣ’일 경우에는 부사격 조사로": add_table(
+        "한눈에 보기 · 부사격 조사",
+        ["앞 체언의 모음", "형태", "예"],
+        [["양성 모음", "애", "바ᄅᆞ래(바ᄅᆞᆯ＋애) 가ᄂᆞ니 [바다에 가느니]"],
+         ["음성 모음", "에", "그르세(그릇＋에) 담아 [그릇에 담아]"],
+         ["‘ㅣ’", "예", "萬里예(만리＋예) 녀 가 [만리에 가서]"]]),
+}
+
+
+def addition_for(b):
+    if b["t"] != "para":
+        return None
+    t = ptext(b).strip()
+    return next((h for k, h in ADDITIONS.items() if t.startswith(k)), None)
 
 
 # ---------------------------------------------------------------- page assembly
@@ -422,7 +491,17 @@ def build(blocks_path, kicker, t1, t2, title, pages):
     first_break = next(i for i, b in enumerate(blocks) if b["t"] == "pagebreak")
     blocks = merge_continuations(blocks[first_break + 1:])  # the source's own cover + 목차 are replaced
     secs = sections(blocks)
-    body = cover(kicker, t1, t2, secs) + toc(secs, pages) + "".join(section_html(s, i) for i, s in enumerate(secs, 1))
+    parts = []
+    for i, sec in enumerate(secs, 1):
+        h = section_html(sec, i)
+        if sec["title"] in JOIN_PREV and parts:
+            inner = h[h.index('<div class="hs-units">') + len('<div class="hs-units">'):h.rindex("</div></section>")]
+            head = (f'<div class="hu u-t glue hs-inline">{mark(f"S{i}")}<span class="p-idx">{i:02d}</span>'
+                    f'<h2 class="hs-title">{html.escape(sec["title"])}</h2></div>')
+            parts[-1] = parts[-1][:parts[-1].rindex("</div></section>")] + head + inner + "</div></section>"
+        else:
+            parts.append(h)
+    body = cover(kicker, t1, t2, secs) + toc(secs, pages) + "".join(parts)
     css = "".join(open(os.path.join(ROOT, f), encoding="utf-8").read() for f in
                   ["literature-summary/render/style.css", "combined/extra.css", "textbook/textbook.css", "hwp_textbook/hwp_textbook.css", "brand/brand.css"])
     font_dir = os.environ.get("FONT_DIR", ROOT + "/node_modules")

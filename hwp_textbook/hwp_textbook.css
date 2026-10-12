@@ -79,3 +79,16 @@
 .hp-dir{font-weight:700;font-size:9.6pt;margin-bottom:2mm;color:#1f2430}
 .hpass{border:1px solid #9aa0ab;padding:3.2mm 4.5mm 2.4mm;margin-bottom:4.5mm;font-family:"NSerif","Noto Serif CJK KR",serif}
 .hpass .hp{margin:.3mm 0}
+/* joined section heading inside the previous section's flow */
+.hs-inline{display:flex;align-items:center;gap:9px;border-bottom:2px solid var(--navy);padding-bottom:2.6mm;margin-top:9mm !important}
+.hs-inline .p-idx{font-size:15pt}
+/* teacher's added summary tables */
+.addbox{border:1px solid var(--gold-l);border-radius:3px;background:#fff;padding:2.6mm 3.6mm 1mm;margin:2.4mm 0 3mm}
+.add-h{display:inline-block;font-weight:800;font-size:9pt;color:var(--navy);background:var(--gold-xl);border-left:3px solid var(--beige);padding:.6mm 3mm;margin-bottom:2mm}
+.add-intro{font-size:9pt;color:#2b303a;margin:0 0 1.6mm}
+.addtb{margin:0 0 2mm}
+.addtb th{background:var(--navy);color:#fff;font-weight:600;padding:1.5mm 2mm;border:1px solid var(--navy);text-align:center;font-size:8.8pt}
+.addtb td{text-align:center}
+.addtb td:first-child{background:var(--bg-soft);font-weight:700;color:var(--navy)}
+.addtb td:last-child{text-align:left}
+.addtb .tr{color:var(--muted);font-size:8.4pt}
