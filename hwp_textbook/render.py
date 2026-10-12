@@ -388,12 +388,22 @@ def units(sec):
 JOIN_PREV = {"중세 국어 체언과 조사"}
 
 
-def add_table(title, head, rows, intro=""):
+def add_table(title, head, rows, intro="", cls=""):
     th = "".join(f"<th>{c}</th>" for c in head)
     trs = "".join("<tr>" + "".join(f"<td>{c}</td>" for c in r) + "</tr>" for r in rows)
     intro = f'<p class="hp add-intro">{intro}</p>' if intro else ""
     return (f'<div class="addbox"><div class="add-h">{title}</div>{intro}'
-            f'<table class="htb addtb"><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table></div>')
+            f'<table class="htb addtb {cls}"><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table></div>')
+
+
+def tidy_diph(out):
+    """Give the source's 상향/하향 이중 모음 table even columns and breathing room."""
+    k = out.find("반모음 ‘ㅣ’ 계 상향 이중 모음")
+    t = out.rfind('<table class="htb">', 0, k)
+    if k < 0 or t < 0:
+        return out
+    out = out[:t] + '<table class="htb dtb"><colgroup><col style="width:46%"><col style="width:54%"></colgroup>' + out[t + len('<table class="htb">'):]
+    return out.replace("<b>ㅘ, ㅝ, </b>", "<b>ㅘ, ㅝ</b>").replace("ㆉ ㆌ</b>", "ㆉ, ㆌ</b>")
 
 
 # Inserted right after the source paragraph that starts with the key.
@@ -421,14 +431,14 @@ ADDITIONS = {
         add_table(
             "양성 모음 · 음성 모음 분류 (이중 · 삼중 모음 포함)",
             ["구분", "양성 모음", "음성 모음", "중성 모음"],
-            [["기본자", "ㆍ", "ㅡ", "ㅣ"],
+            [["기본자", '<span class="ar">ㆍ</span>', "ㅡ", "ㅣ"],
              ["초출자", "ㅗ, ㅏ", "ㅜ, ㅓ", "–"],
              ["재출자<br><span class='tr'>(‘ㅣ’계 상향 이중 모음)</span>", "ㅛ, ㅑ", "ㅠ, ㅕ", "–"],
              ["‘ㅗ/ㅜ’계 상향 이중 모음", "ㅘ", "ㅝ", "–"],
              ["‘ㅣ’계 하향 이중 모음", "ㆎ, ㅚ, ㅐ", "ㅢ, ㅟ, ㅔ", "–"],
              ["삼중 모음", "ㅒ, ㅙ, ㆉ", "ㅖ, ㅞ, ㆌ", "–"]],
-            "이중 · 삼중 모음은 <b>그 모음을 이루는 단모음의 성질</b>을 따름. 양성 모음에 ‘ㅣ’(중성)가 붙으면 양성, 음성 모음에 ‘ㅣ’가 붙으면 음성임. "
-            "<span class='tr'>(예: ㅐ = ㅏ＋ㅣ → 양성, ㅔ = ㅓ＋ㅣ → 음성, ㅙ = ㅗ＋ㅏ＋ㅣ → 양성)</span>"),
+            "이중 · 삼중 모음은 <b>그 모음을 이루는 단모음의 성질</b>을 따름. 양성 모음에 ‘ㅣ’(중성)가 붙으면 양성, 음성 모음에 ‘ㅣ’가 붙으면 음성임."
+            "</p><p class='hp add-ex'>예  ㅐ = ㅏ＋ㅣ → 양성  /  ㅔ = ㅓ＋ㅣ → 음성  /  ㅙ = ㅗ＋ㅏ＋ㅣ → 양성", "vtb3"),
         '<div class="addbox"><div class="add-h">중세 국어의 단모음 체계</div>'
         '<p class="hp add-intro">「훈민정음」 해례는 모음을 <b>혀의 오그림(설축)</b>과 <b>입 모양(구축 · 구장)</b>으로 설명함. '
         '15세기 국어의 단모음은 <b>ㆍ, ㅡ, ㅣ, ㅗ, ㅏ, ㅜ, ㅓ의 7개</b>였음.</p>'
@@ -586,6 +596,7 @@ def build(blocks_path, kicker, t1, t2, title, pages):
     out = f"""<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>{html.escape(title)}</title>
 <link rel="stylesheet" href="file://{font_dir}/@fontsource/do-hyeon/index.css">
 <style>{css}</style></head><body>{body}</body></html>"""
+    out = tidy_diph(out)
     open(os.path.join(H, "summary.html"), "w", encoding="utf-8").write(out)
     return [f"S{i}" for i in range(1, len(secs) + 1)]
 

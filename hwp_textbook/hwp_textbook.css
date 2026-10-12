@@ -111,3 +111,14 @@
 .vnote-f{margin:1.4mm 0 0;font-size:9pt}
 .vgrid b{white-space:nowrap}
 .ar{display:inline-block;transform:scale(1.9);font-weight:900}
+.add-ex{font-size:8.8pt;color:var(--muted);margin:-.6mm 0 2mm;white-space:pre-wrap}
+.vtb3{table-layout:fixed}
+.vtb3 th:first-child{width:34%}
+.vtb3 td{padding:2.1mm 2mm;text-align:center !important}
+.vtb3 td:not(:first-child){font-size:11pt;font-weight:500;letter-spacing:.4px}
+.vtb3 td:first-child{font-size:8.8pt}
+.dtb{table-layout:fixed;margin:1.8mm 0 3mm}
+.dtb td{padding:2.2mm 3mm}
+.dtb td:first-child{background:var(--bg-soft)}
+.dtb td:first-child .hp{color:var(--navy)}
+.dtb td:last-child .hp{font-size:11pt;letter-spacing:.4px}

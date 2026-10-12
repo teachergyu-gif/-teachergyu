@@ -41,7 +41,13 @@ const path = require('path');
           while (rest.firstChild) u.appendChild(rest.firstChild);  // could not split: undo
         }
         if (over() && body.children.length > 1) {
-          body.removeChild(u); body = newPage(false); body.appendChild(u);
+          body.removeChild(u);
+          // a short unit that opens with a sub-heading stays with what follows it
+          const prev = body.lastElementChild;
+          const lead = prev && body.children.length > 1 && prev.firstElementChild &&
+            prev.firstElementChild.classList.contains('hsub') && prev.offsetHeight < mm(30) ? prev : null;
+          if (lead) body.removeChild(lead);
+          body = newPage(false); if (lead) body.appendChild(lead); body.appendChild(u);
           if (over() && u.classList.contains('split') && u.children.length > 1) {
             const rest = u.cloneNode(false); rest.classList.add('cont');
             while (over() && u.children.length > 1) rest.insertBefore(u.lastElementChild, rest.firstChild);
