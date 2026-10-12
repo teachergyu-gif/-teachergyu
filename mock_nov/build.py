@@ -150,15 +150,17 @@ def question_html(q):
 
 
 def exam_section(p, idx):
+    """Raw blocks; print.js lays them out into fixed pages (passage full width, questions in two columns)."""
     global YEAR
     YEAR = p["year"]
     ex = p["exam"]
     qs = "".join(question_html(q) for q in ex["questions"])
     return f"""
-<section class="xsec">{head(p, idx, "원본 지문 및 문제", f"X{idx}a")}
-  <div class="x-direct">[{p["qrange"].replace("번", "").replace("~", " ~ ")}] 다음 글을 읽고 물음에 답하시오.</div>
-  <div class="x-passage">{passage_block(ex["passage"])}</div>
-  <div class="x-qs">{qs}</div>
+<section class="xsec xflow">
+  <div class="xf-head">{head(p, idx, "원본 지문 및 문제", f"X{idx}a")}
+  <div class="x-direct">[{p["qrange"].replace("번", "").replace("~", " ~ ")}] 다음 글을 읽고 물음에 답하시오.</div></div>
+  <div class="xf-pass">{passage_block(ex["passage"])}</div>
+  <div class="xf-qs">{qs}</div>
 </section>"""
 
 
@@ -191,10 +193,14 @@ def analysis(p, idx):
     return h
 
 
+def desc(d):
+    return f'<div class="part-desc">{d}</div>' if d else ""
+
+
 def cover(ps):
     cards = "".join(
-        f'<div class="part-card"><div class="part-no">STEP {i}</div><div class="part-name">{n}</div><div class="part-desc">{d}</div></div>'
-        for i, (n, d) in enumerate([("원본 지문 및 문제", "시험지 그대로 다시 편집 · 지문/문제 잘림 없음"),
+        f'<div class="part-card"><div class="part-no">STEP {i}</div><div class="part-name">{n}</div>{desc(d)}</div>'
+        for i, (n, d) in enumerate([("원본 지문 및 문제", ""),
                                     ("문제 해설", "문항별 정답 · 출제의도 · 선지 해설"),
                                     ("지문 분석서", "핵심 한 줄 · 지문 요약 · 핵심 개념 정리 · 한눈에 비교")], 1))
     return f"""

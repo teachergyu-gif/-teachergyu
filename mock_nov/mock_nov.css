@@ -87,3 +87,15 @@
 .toc-page .toc td{padding:.95mm 1.5mm}
 .toc-page .toc-part{margin:2.6mm 0 .2mm}
 .toc-page .toc-note{margin-top:2mm}
+/* fixed-page exam layout built by print.js */
+.xflow{page-break-before:always;break-before:page}
+.xpg{height:262mm;overflow:hidden;position:relative;break-after:page;page-break-after:always}
+.xpg:last-child{break-after:auto;page-break-after:auto}
+.xpg + .xpg{break-before:auto}
+.x-qs2{display:grid;grid-template-columns:1fr 1fr;column-gap:7mm;margin-top:5mm;position:relative}
+.x-qs2::before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px solid var(--line)}
+.xcol{overflow:hidden;min-width:0}
+.xunit{display:block}
+.xunit .xq{margin-bottom:0}
+.xunit .xq + .xq{margin-top:2mm}
+.xunit + .xunit{margin-top:5mm}
