@@ -94,3 +94,5 @@
 .addtb .tr{color:var(--muted);font-size:8.4pt}
 .addbox .htb{margin:0 0 2mm}
 .add-note{margin:-1mm 0 3mm}
+.add-warn{color:#b4473f;margin:0 0 3mm}
+.add-warn b{color:#b4473f}
