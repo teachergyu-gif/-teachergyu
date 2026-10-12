@@ -359,6 +359,11 @@ def units(sec):
             out.append(cur)
             i += 1
             continue
+        if isinstance(extra, list):  # several added boxes: may continue on the next page between boxes
+            cur = {"cls": "u-t split", "html": [h] + extra}
+            out.append(cur)
+            i += 1
+            continue
         if extra:  # the paragraph and the box added under it stay on the same page
             cur = {"cls": "u-t", "html": [h, extra]}
             out.append(cur)
@@ -412,10 +417,38 @@ ADDITIONS = {
         "") + '<p class="hp note add-note">※ <b>입성</b> : 빨리 닫는 소리로, 소리의 높낮이와는 무관한 개념임.</p>'
         '<p class="hp note add-warn">※ <b>방점이 찍혀 있지 않다고 해서 성조가 없는 것이 아니라 ‘평성’</b>이다. '
         '이 부분은 학교에서 함정 선지로 많이 만들기 때문에 반드시 인지하고 있을 것.</p>',
-    "※ 중성자 11개는": (
+    "※ 중성자 11개는": [  # several boxes: the unit may continue on the next page between them
+        add_table(
+            "양성 모음 · 음성 모음 분류 (이중 · 삼중 모음 포함)",
+            ["구분", "양성 모음", "음성 모음", "중성 모음"],
+            [["기본자", "ㆍ", "ㅡ", "ㅣ"],
+             ["초출자", "ㅗ, ㅏ", "ㅜ, ㅓ", "–"],
+             ["재출자<br><span class='tr'>(‘ㅣ’계 상향 이중 모음)</span>", "ㅛ, ㅑ", "ㅠ, ㅕ", "–"],
+             ["‘ㅗ/ㅜ’계 상향 이중 모음", "ㅘ", "ㅝ", "–"],
+             ["‘ㅣ’계 하향 이중 모음", "ㆎ, ㅚ, ㅐ", "ㅢ, ㅟ, ㅔ", "–"],
+             ["삼중 모음", "ㅒ, ㅙ, ㆉ", "ㅖ, ㅞ, ㆌ", "–"]],
+            "이중 · 삼중 모음은 <b>그 모음을 이루는 단모음의 성질</b>을 따름. 양성 모음에 ‘ㅣ’(중성)가 붙으면 양성, 음성 모음에 ‘ㅣ’가 붙으면 음성임. "
+            "<span class='tr'>(예: ㅐ = ㅏ＋ㅣ → 양성, ㅔ = ㅓ＋ㅣ → 음성, ㅙ = ㅗ＋ㅏ＋ㅣ → 양성)</span>"),
+        '<div class="addbox"><div class="add-h">중세 국어의 단모음 체계</div>'
+        '<p class="hp add-intro">「훈민정음」 해례는 모음을 <b>혀의 오그림(설축)</b>과 <b>입 모양(구축 · 구장)</b>으로 설명함. '
+        '15세기 국어의 단모음은 <b>ㆍ, ㅡ, ㅣ, ㅗ, ㅏ, ㅜ, ㅓ의 7개</b>였음.</p>'
+        '<table class="htb addtb vtb"><thead><tr><th>혀의 오그림 (소리의 깊이)</th><th>입 모양 보통</th><th>구축(口蹙)<br>입을 오므림</th><th>구장(口張)<br>입을 벌림</th></tr></thead><tbody>'
+        '<tr><td>설축(舌縮) · 소리가 깊음</td><td>ㆍ</td><td>ㅗ</td><td>ㅏ</td></tr>'
+        '<tr><td>설소축(舌小縮) · 깊지도 얕지도 않음</td><td>ㅡ</td><td>ㅜ</td><td>ㅓ</td></tr>'
+        '<tr><td>설불축(舌不縮) · 소리가 얕음</td><td>ㅣ</td><td>–</td><td>–</td></tr></tbody></table>'
+        '<p class="hp li1">• 현대어로 풀면</p>'
+        '<p class="hp li2">‧ <b>설축</b> : 혀를 뒤로 오그림 → 혀가 뒤쪽에 놓이는 소리(ㆍ, ㅗ, ㅏ) / <b>설소축</b> : 혀를 조금 오그림(ㅡ, ㅜ, ㅓ) / <b>설불축</b> : 혀를 오그리지 않음 → 혀가 앞쪽에 놓이는 소리(ㅣ)</p>'
+        '<p class="hp li2">‧ <b>구축</b> : 입술을 둥글게 오므림 → 오늘날의 <b>원순 모음</b>(ㅗ, ㅜ) / <b>구장</b> : 입을 벌림 → 평순 모음(ㅏ, ㅓ)</p>'
+        '<p class="hp li2">‧ 그래서 ‘ㆍ’와 ‘ㅗ’, ‘ㅡ’와 ‘ㅜ’는 혀의 위치는 같고 입술 모양만 다른 짝임.</p>'
+        '<table class="htb addtb vtb2"><thead><tr><th></th><th>전설 모음</th><th>중설 모음</th><th>후설 모음</th></tr></thead><tbody>'
+        '<tr><td>고모음</td><td>ㅣ</td><td>ㅡ</td><td>ㅜ</td></tr>'
+        '<tr><td>중모음</td><td></td><td>ㅓ</td><td>ㅗ</td></tr>'
+        '<tr><td>저모음</td><td></td><td>ㅏ</td><td>ㆍ</td></tr></tbody></table>'
+        '<p class="hp note">※ 오늘날의 기준으로 정리한 15세기 단모음 체계임. 학교나 교재에 따라 ‘중설’을 ‘후설’에 묶어 전설 / 후설로만 나누기도 하므로 수업 기준을 따를 것. '
+        '현대 국어의 단모음 ‘ㅐ, ㅔ, ㅚ, ㅟ’는 15세기에는 <b>하향 이중 모음</b>이었다가 근대 국어 이후 단모음이 되었음.</p></div>',
         '<p class="hp li1">• 종성자의 제자 원리</p>'
         '<p class="hp li2">‧ 종성부용초성(終聲復用初聲) : 종성자를 위한 글자를 따로 만들지 않고 초성자를 종성자에 사용하였음. '
-        '이를 <b>‘종성부용초성’</b>이라고 함.</p>'),
+        '이를 <b>‘종성부용초성’</b>이라고 함.</p>'],
     "예 암ㅎ＋ᄃᆞᆰ": add_table(
         "‘ㅎ’ 종성 체언의 실현 양상",
         ["뒤따르는 조사", "‘ㅎ’ 종성 체언의 실현 양상", "예"],

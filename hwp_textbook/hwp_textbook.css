@@ -96,3 +96,6 @@
 .add-note{margin:-1mm 0 3mm}
 .add-warn{color:#b4473f;margin:0 0 3mm}
 .add-warn b{color:#b4473f}
+.vtb td,.vtb2 td{text-align:center !important;font-size:10pt}
+.vtb td:first-child,.vtb2 td:first-child{font-size:8.8pt}
+.vtb2{width:70%;margin:1.6mm auto 2mm}
