@@ -1,0 +1,72 @@
+
+/* ---------- HWP 교재 (중세 문법 등) ---------- */
+.anchor-mark{position:absolute;font-size:3px;color:#fff;pointer-events:none}
+.parts3{grid-template-columns:1fr 1fr 1fr;gap:4mm}
+.parts3 .part-card{padding:5mm 4.5mm 5.5mm}
+.parts3 .part-name{font-size:14pt}
+.toc-page{height:auto;min-height:263mm}
+.toc-page .toc td{padding:1.6mm 1.5mm;font-size:9.2pt}
+
+.hsec{page-break-before:always;break-before:page}
+.hpg{height:262mm;overflow:hidden;position:relative;break-after:page;page-break-after:always}
+.hpg:last-child{break-after:auto;page-break-after:auto}
+.hs-head{display:flex;align-items:center;gap:9px;border-bottom:2px solid var(--navy);padding-bottom:3mm;margin-bottom:5mm}
+.hs-head .p-idx{font-size:15pt}
+.hs-title{font-family:"NSerif","Noto Serif CJK KR",serif;font-weight:700;font-size:16pt;color:var(--navy);margin:0}
+.hs-cont{font-size:8.4pt;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:1.6mm;margin-bottom:4mm}
+.hu{font-size:9.6pt;line-height:1.72;color:#1f2430}
+.hu + .hu{margin-top:2.6mm}
+.hk-quiz .hu + .hu,.hk-expl .hu + .hu{margin-top:6mm}
+
+/* paragraphs */
+.hp{margin:.5mm 0;text-align:justify}
+.hp.center{text-align:center}.hp.right{text-align:right}
+.hp.pre,.hgloss.pre{white-space:pre-wrap;text-align:left}
+.hsub{font-size:11.2pt;font-weight:800;color:var(--navy);margin:3mm 0 1.6mm;padding:1.2mm 0 1.2mm 3mm;border-left:4px solid var(--beige);background:var(--gold-xl)}
+.hp.li1{padding-left:4mm;text-indent:-4mm;font-weight:500}
+.hp.li2{padding-left:8mm;text-indent:-4mm}
+.hp.li3{padding-left:11mm;text-indent:-3mm;color:#2b303a}
+.hp.note{padding-left:4mm;text-indent:-4mm;color:#3b404b;font-size:9.1pt}
+.hp.ex{padding:1mm 3mm;margin:1mm 0 1.6mm 4mm;background:var(--bg-soft);border-radius:2px;font-size:9.2pt}
+.hp.ch{padding-left:5mm;text-indent:-5mm;margin:.6mm 0 .6mm 3mm}
+.hp.lab{font-weight:800;color:var(--navy);margin-top:2mm}
+.hp.ans{margin-top:2mm;font-weight:700;color:var(--navy)}
+.hgloss{margin:.5mm 0 2mm;color:#2b303a;font-size:9.2pt}
+.gl-tag{display:inline-block;font-size:7.6pt;font-weight:700;color:var(--navy);background:var(--beige);border-radius:2px;padding:0 5px;margin-right:5px}
+.circ{display:inline-flex;align-items:center;justify-content:center;width:1.25em;height:1.25em;border:1px solid currentColor;border-radius:50%;font-size:.8em;line-height:1;vertical-align:.08em;margin:0 1px}
+.hflag{display:inline-block;background:var(--navy);color:#fff;font-weight:700;font-size:8.6pt;padding:.6mm 3mm;border-radius:2px;margin-bottom:2mm}
+
+/* questions */
+.hsrc{display:inline-block;font-size:8.2pt;font-weight:700;color:var(--navy2);background:var(--gold-xl);border:1px solid var(--gold-l);border-radius:2px;padding:.3mm 2.6mm;margin-bottom:1.6mm}
+.hq{display:flex;gap:2mm;font-weight:600;margin:0 0 2mm;font-family:"NSerif","Noto Serif CJK KR",serif;font-size:10pt;line-height:1.65}
+.hq-no{flex:none;font-weight:800;color:var(--gold);font-size:12pt;line-height:1.35}
+.u-q .hp{font-family:"NSerif","Noto Serif CJK KR",serif}
+
+/* tables, boxes */
+.htb{width:100%;border-collapse:collapse;margin:1.6mm 0 2.4mm;font-size:9pt;line-height:1.55}
+.htb td{border:1px solid #9aa0ab;padding:1.4mm 2mm;vertical-align:middle}
+.htb td.hc{background:var(--bg-soft);font-weight:700;color:var(--navy)}
+.htb .hp{margin:0;text-align:inherit}
+.htb .hp.ch,.htb .hp.li1,.htb .hp.li2{padding-left:0;text-indent:0;margin-left:0}
+.bogi{border:1px solid #6d7381;padding:4.2mm 4mm 2.6mm;margin:3.4mm 0 2.6mm;position:relative;font-size:9.2pt;line-height:1.66}
+.bogi.plain{padding-top:3mm}
+.bogi-h{position:absolute;top:-2.5mm;left:50%;transform:translateX(-50%);background:#fff;padding:0 2.4mm;font-size:8.6pt;font-weight:700;white-space:nowrap;letter-spacing:.04em}
+.hbox{border:1px solid var(--line);border-left:3px solid var(--beige);background:var(--gold-xl);border-radius:2px;padding:2.6mm 4mm;margin:2mm 0}
+.hcard{border:1px solid var(--gold-l);border-radius:3px;padding:2.6mm 4mm;margin:2mm 0;background:#fff}
+.hcard-h{font-weight:800;color:var(--navy);margin-bottom:1mm}
+.hcard-h::before{content:"★ ";color:var(--gold)}
+.himg{text-align:center;margin:2mm 0}
+.himg img{max-width:100%;max-height:120mm}
+
+/* explanations */
+.hkey-h{font-weight:800;color:var(--navy);font-size:11pt;margin-bottom:2mm}
+.u-key .htb td{text-align:center;padding:1.2mm 1mm}
+.u-ex{border:1px solid var(--line);border-left:3px solid var(--beige);border-radius:3px;padding:2.6mm 4mm}
+.hex-h{font-weight:800;color:var(--navy);font-size:10pt;margin-bottom:1mm}
+.u-ex .htb{margin-top:0}
+.hu{overflow-wrap:anywhere}
+.htb td{overflow-wrap:anywhere;word-break:keep-all}
+.bogi .htb{width:100%}
+.u-ex.cont{border-top-style:dashed}
+.hp.orig{font-family:"NSerif","Noto Serif CJK KR",serif;font-size:11.4pt;line-height:1.9;color:#1b1f27;margin:1.2mm 0}
+.ibox{border:1px solid #2b303a;padding:0 4px;margin:0 2px;white-space:nowrap}
