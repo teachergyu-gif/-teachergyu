@@ -28,7 +28,7 @@
 .hp.li3{padding-left:11mm;text-indent:-3mm;color:#2b303a}
 .hp.note{padding-left:4mm;text-indent:-4mm;color:#3b404b;font-size:9.1pt}
 .hp.ex{padding:1mm 3mm;margin:1mm 0 1.6mm 4mm;background:var(--bg-soft);border-radius:2px;font-size:9.2pt}
-.hp.ch{padding-left:5mm;text-indent:-5mm;margin:.6mm 0 .6mm 3mm}
+.hp.hch{padding-left:5mm;text-indent:-5mm;margin:.6mm 0 .6mm 3mm}
 .hp.lab{font-weight:800;color:var(--navy);margin-top:2mm}
 .hp.ans{margin-top:2mm;font-weight:700;color:var(--navy)}
 .hgloss{margin:.5mm 0 2mm;color:#2b303a;font-size:9.2pt}
@@ -47,7 +47,7 @@
 .htb td{border:1px solid #9aa0ab;padding:1.4mm 2mm;vertical-align:middle}
 .htb td.hc{background:var(--bg-soft);font-weight:700;color:var(--navy)}
 .htb .hp{margin:0;text-align:inherit}
-.htb .hp.ch,.htb .hp.li1,.htb .hp.li2{padding-left:0;text-indent:0;margin-left:0}
+.htb .hp.hch,.htb .hp.li1,.htb .hp.li2{padding-left:0;text-indent:0;margin-left:0}
 .bogi{border:1px solid #6d7381;padding:4.2mm 4mm 2.6mm;margin:3.4mm 0 2.6mm;position:relative;font-size:9.2pt;line-height:1.66}
 .bogi.plain{padding-top:3mm}
 .bogi-h{position:absolute;top:-2.5mm;left:50%;transform:translateX(-50%);background:#fff;padding:0 2.4mm;font-size:8.6pt;font-weight:700;white-space:nowrap;letter-spacing:.04em}
@@ -76,3 +76,6 @@
 .ov i{position:absolute;left:50%;top:-.62em;transform:translateX(-50%);font-style:normal;font-size:.8em;line-height:1}
 .himg img{height:auto}
 .htb .himg{margin:.6mm 0}
+.hp-dir{font-weight:700;font-size:9.6pt;margin-bottom:2mm;color:#1f2430}
+.hpass{border:1px solid #9aa0ab;padding:3.2mm 4.5mm 2.4mm;margin-bottom:4.5mm;font-family:"NSerif","Noto Serif CJK KR",serif}
+.hpass .hp{margin:.3mm 0}

@@ -15,7 +15,10 @@ MARKS = False
 
 CIRC = "①②③④⑤⑥⑦⑧⑨⑩"
 SRC_RE = re.compile(r"^\s*[｜|]?\s*(\d{4}(학년도|년).*(번|문항))\s*[｜|]?\s*$")
+# typos in the source file, fixed in the output
+CORRECTIONS = [("⑭ ‘반설음’의 ‘불청불탁’", "⑤ ‘반설음’의 ‘불청불탁’")]
 SKIP_IMG = {"img01.png"}  # the source's '국어 영역' page-header banner, not content
+PASSAGE_RE = re.compile(r"^다음 글을 읽고 물음에 답하시오\.?$")
 GLOSS_RE = re.compile(r"→\s*\[현대어 풀이\]")
 FRAME_LABEL = re.compile(r"^\s*<\s*.+?\s*>\s*$|^\s*\[.+\]\s*$")
 
@@ -101,7 +104,7 @@ def kind(text, num=None):
         return "note"
     if re.match(r"^예\s", t):
         return "ex"
-    if t and t[0] in CIRC:
+    if t and t[0] in CIRC + "⑭":
         return "ch"
     if t.startswith("☞") or t in ("[오답풀이]", "[현대어 풀이]") or re.match(r"^\[[^\]]{2,12}\]$", t):
         return "lab"
@@ -131,7 +134,8 @@ def para_html(p, extra=""):
         tag = '<span class="gl-tag">현대어 풀이</span>'
         g = GLOSS_RE.sub(tag, body, count=1)
         return f'<p class="hgloss{pre}">{g}</p>'
-    return f'<p class="hp {k}{pre}{al}{extra}">{body}</p>'
+    cls = "hch" if k == "ch" else k  # '.ch' is taken by the literature character cards
+    return f'<p class="hp {cls}{pre}{al}{extra}">{body}</p>'
 
 
 # ---------------------------------------------------------------- tables & boxes
@@ -166,6 +170,8 @@ def _cell_html(paras):
             out.append(img_html(im["src"], im.get("w")))
         for t in p.get("tables", []):
             if len(t) == 1 and len(t[0]) == 1:  # one-cell table / text box inside a cell
+                if not "".join(ptext(q) for q in t[0][0]["paras"]).strip() and not any(q.get("imgs") or q.get("tables") for q in t[0][0]["paras"]):
+                    continue  # empty answer bubble
                 out.append(f'<div class="hbox">{cell_html(t[0][0]["paras"])}</div>')
             else:
                 out.append(table_html(t))
@@ -307,6 +313,19 @@ def units(sec):
             cur["html"].append(block_html(b))
             i += 1
             continue
+        if b["t"] == "para" and PASSAGE_RE.match(t.strip()) and k == "quiz":
+            inner = []
+            i += 1
+            while i < len(blocks):
+                nb = blocks[i]
+                if nb["t"] == "para" and (nb.get("num") and nb["num"] != "•" or SRC_RE.match(ptext(nb).strip())) or is_src_box(nb) or is_section_title(nb):
+                    break
+                inner.append(block_html(nb))
+                i += 1
+            cur = {"cls": "u-q", "html": [f'<div class="hp-dir">{html.escape(t.strip())}</div><div class="hpass">{"".join(inner)}</div>'],
+                   "src_only": True}  # the next numbered question joins this unit
+            out.append(cur)
+            continue
         if starts_q:
             # a source label (para or box) opens the question; the numbered stem that follows joins it
             if cur is not None and cur.get("src_only") and b["t"] == "para" and b.get("num"):
@@ -394,6 +413,12 @@ def toc(secs, pages):
 
 def build(blocks_path, kicker, t1, t2, title, pages):
     blocks = json.load(open(blocks_path, encoding="utf-8"))
+    for b in blocks:
+        if b["t"] == "para" and b["runs"]:
+            for old, new in CORRECTIONS:
+                if old in ptext(b):
+                    joined = ptext(b).replace(old, new)
+                    b["runs"] = [dict(b["runs"][0], text=joined)]
     first_break = next(i for i, b in enumerate(blocks) if b["t"] == "pagebreak")
     blocks = merge_continuations(blocks[first_break + 1:])  # the source's own cover + 목차 are replaced
     secs = sections(blocks)
