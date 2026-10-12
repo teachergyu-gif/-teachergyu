@@ -70,3 +70,9 @@
 .u-ex.cont{border-top-style:dashed}
 .hp.orig{font-family:"NSerif","Noto Serif CJK KR",serif;font-size:11.4pt;line-height:1.9;color:#1b1f27;margin:1.2mm 0}
 .ibox{border:1px solid #2b303a;padding:0 4px;margin:0 2px;white-space:nowrap}
+/* the paragraph's hanging indent must not shift the letter inside the circle */
+.circ,.ibox{text-indent:0}
+.ov{position:relative;display:inline-block;text-indent:0}
+.ov i{position:absolute;left:50%;top:-.62em;transform:translateX(-50%);font-style:normal;font-size:.8em;line-height:1}
+.himg img{height:auto}
+.htb .himg{margin:.6mm 0}

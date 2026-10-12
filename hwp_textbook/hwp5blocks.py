@@ -14,6 +14,16 @@ import olefile, zlib
 from lxml import etree
 import hypua2jamo
 
+# 한컴 private-use symbols that have a standard equivalent
+PUA = {"\U000f0854": "『", "\U000f0855": "』", "\U000f02eb": "口"}
+
+
+def fix_pua(t):
+    for k, v in PUA.items():
+        t = t.replace(k, v)
+    return t
+
+
 SKIP = {"MEMO", "제1교시", "이재규T", "RICH ACADEMY"}
 
 
@@ -66,10 +76,15 @@ class Doc:
                 continue
             cs = self.chars[int(node.get("charshape-id", 0))] if node.get("charshape-id") else {}
             if node.tag == "Text":
-                t = hypua2jamo.translate(node.text or "")
+                t = fix_pua(hypua2jamo.translate(node.text or ""))
             elif node.tag == "TCPSControl":  # 글자 겹치기 (circled letter)
                 s = node.get("textlength") or ""
-                out.append({"text": s.replace("◯", "").replace("○", ""), "circle": True})
+                if "◯" in s or "○" in s:
+                    out.append({"text": s.replace("◯", "").replace("○", ""), "circle": True})
+                elif set(s) == {"□", "V"}:
+                    out.append({"text": "☑"})
+                else:  # e.g. 'ㅗ' with a breve (반모음 ㅗ̆): base letter with a small mark above it
+                    out.append({"text": s[0], "overlay": s[1:]})
                 continue
             else:
                 name = node.get("name")
@@ -110,13 +125,32 @@ class Doc:
         own = "".join(t.text or "" for t in par.iter("Text") if not self._inside_object(t, par)).strip()
         return txt if own else None
 
+    def textbox(self, g):
+        """Text box drawn as a shape: returned as a one-cell table so it renders like a box."""
+        tl = g.find(".//TextboxParagraphList")
+        if tl is None:
+            return None
+        paras = self.cell_paras(tl)
+        return [[{"paras": paras, "cs": 1, "rs": 1, "fill": None}]] if paras else None
+
     def cell_paras(self, cell):
         out = []
         for p in cell.findall("Paragraph"):
             r = self.runs(p)
-            inner = [self.table(t) for t in self._objects(p, "TableControl")]
-            if "".join(x["text"] for x in r).strip() or inner:
-                out.append({"runs": r, "align": self.paras.get(p.get("parashape-id"), "justify"), "tables": inner})
+            inner = [self.table(t) for t in self._objects(p, "TableControl") if self._inline_box_text(t) is None]
+            imgs = []
+            for g in p.iter("GShapeObjectControl"):
+                if not self._direct(g, p):
+                    continue
+                for sp in g.iter("ShapePicture"):
+                    fn = self.picture(sp)
+                    if fn:
+                        imgs.append({"src": fn, "w": self.shape_width(sp, g)})
+                tb = self.textbox(g)
+                if tb:
+                    inner.append(tb)
+            if "".join(x["text"] for x in r).strip() or inner or imgs:
+                out.append({"runs": r, "align": self.paras.get(p.get("parashape-id"), "justify"), "tables": inner, "imgs": imgs})
         return out
 
     def _objects(self, p, tag):
@@ -140,6 +174,15 @@ class Doc:
                             "fill": self.fills[int(td.get("borderfill-id", 0))] if int(td.get("borderfill-id", 0)) < len(self.fills) else None})
             rows.append(row)
         return rows
+
+    @staticmethod
+    def shape_width(sp, ctrl):
+        """Printed width in mm (HWPUNIT = 1/7200 inch); a picture inside a group uses its own component width."""
+        comp = sp.getparent()
+        w = int(comp.get("width", 0)) if comp is not None and comp.tag == "ShapeComponent" and comp.get("width") else 0
+        if not w or len(list(ctrl.iter("ShapePicture"))) == 1:
+            w = int(ctrl.get("width", 0)) or w
+        return round(w * 25.4 / 7200, 1)
 
     def picture(self, sp):
         pi = sp.find(".//PictureInfo")
@@ -181,15 +224,29 @@ class Doc:
                         else:
                             inline.append({"t": "table", "rows": rows})
                     else:
-                        sp = o.find(".//ShapePicture")
-                        if sp is not None:
+                        # a shape may be a picture, a text box, or a group holding several of both
+                        pics = list(o.iter("ShapePicture"))
+                        has_text = any("".join(t.text or "" for t in tl.iter("Text")).strip() for tl in o.iter("TextboxParagraphList"))
+                        for sp in ([] if has_text else pics):  # a picture grouped under a text box is only its paper background
                             fn = self.picture(sp)
                             if fn:
-                                inline.append({"t": "img", "src": fn, "w": int(o.get("width", 0))})
+                                inline.append({"t": "img", "src": fn, "w": self.shape_width(sp, o)})
+                        if pics and len(list(o.iter("TextboxParagraphList"))) > 0:
+                            for tl in o.iter("TextboxParagraphList"):
+                                paras = self.cell_paras(tl)
+                                if paras:
+                                    inline.append({"t": "box", "paras": paras})
+                            continue
+                        if pics:
                             continue
                         txt = "".join(hypua2jamo.translate(t.text or "") for t in o.iter("Text")).strip()
-                        if txt and txt not in SKIP and not txt.isdigit():
+                        if not txt or txt in SKIP or txt.isdigit():
+                            continue
+                        tb = self.textbox(o)
+                        if len(txt) <= 30 and tb and len(tb[0][0]["paras"]) == 1:
                             inline.append({"t": "heading", "text": txt})
+                        elif tb:
+                            inline.append({"t": "box", "paras": tb[0][0]["paras"]})
                 r = self.runs(p)
                 shape, nid = self.heads.get(p.get("parashape-id"), (None, None))
                 num = None

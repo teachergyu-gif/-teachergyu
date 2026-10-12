@@ -15,6 +15,7 @@ MARKS = False
 
 CIRC = "①②③④⑤⑥⑦⑧⑨⑩"
 SRC_RE = re.compile(r"^\s*[｜|]?\s*(\d{4}(학년도|년).*(번|문항))\s*[｜|]?\s*$")
+SKIP_IMG = {"img01.png"}  # the source's '국어 영역' page-header banner, not content
 GLOSS_RE = re.compile(r"→\s*\[현대어 풀이\]")
 FRAME_LABEL = re.compile(r"^\s*<\s*.+?\s*>\s*$|^\s*\[.+\]\s*$")
 
@@ -24,6 +25,8 @@ def run_html(r):
     t = html.escape(r["text"])
     if r.get("circle"):
         return f'<span class="circ">{t}</span>'
+    if r.get("overlay"):
+        return f'<span class="ov">{t}<i>{html.escape(r["overlay"])}</i></span>'
     if r.get("boxed"):
         return f'<span class="ibox">{t}</span>'
     if r.get("b"):
@@ -75,6 +78,9 @@ def strip_lead(runs):
     return runs
 
 
+SUB_OK = [True]  # '○' lines are sub-headings only in theory text, never inside questions or boxes
+
+
 def kind(text, num=None):
     t = text.strip()
     if num and num != "•":
@@ -83,7 +89,7 @@ def kind(text, num=None):
         return "li1"
     if SRC_RE.match(t):
         return "src"
-    if t.startswith("○"):
+    if t.startswith("○") and SUB_OK[0]:
         return "sub"
     if t.startswith("•"):
         return "li1"
@@ -142,12 +148,27 @@ def is_plain_frame(rows):
 
 
 def cell_html(paras):
+    saved, SUB_OK[0] = SUB_OK[0], False
+    try:
+        return _cell_html(paras)
+    finally:
+        SUB_OK[0] = saved
+
+
+def _cell_html(paras):
     out = []
     for p in paras:
         if ptext(p).strip():
             out.append(para_html(p))
+        for im in p.get("imgs", []):
+            if im["src"] in SKIP_IMG:
+                continue
+            out.append(img_html(im["src"], im.get("w")))
         for t in p.get("tables", []):
-            out.append(table_html(t))
+            if len(t) == 1 and len(t[0]) == 1:  # one-cell table / text box inside a cell
+                out.append(f'<div class="hbox">{cell_html(t[0][0]["paras"])}</div>')
+            else:
+                out.append(table_html(t))
     return "".join(out)
 
 
@@ -178,6 +199,11 @@ def box_html(b):
     return f'<div class="hbox">{cell_html(ps)}</div>'
 
 
+def img_html(src, w_mm):
+    style = f' style="width:{w_mm}mm"' if w_mm else ""
+    return f'<div class="himg"><img src="file://{H}/img/{src}"{style} alt=""></div>'
+
+
 def block_html(b):
     t = b["t"]
     if t == "para":
@@ -187,7 +213,7 @@ def block_html(b):
     if t == "box":
         return box_html(b)
     if t == "img":
-        return f'<div class="himg"><img src="file://{H}/img/{b["src"]}" alt=""></div>'
+        return img_html(b["src"], b.get("w"))
     if t == "heading":
         return f'<div class="hflag">{html.escape(b["text"])}</div>'
     return ""
@@ -326,6 +352,7 @@ def mark(anchor):
 
 def section_html(sec, idx):
     k = section_kind(sec["title"])
+    SUB_OK[0] = k == "theory"
     if "분석" in sec["title"]:
         for b in sec["blocks"]:
             if b["t"] == "para" and kind(ptext(b), b.get("num")) == "p" and re.search("[\u1100-\u11ff\u4e00-\u9fff]", ptext(b)):
