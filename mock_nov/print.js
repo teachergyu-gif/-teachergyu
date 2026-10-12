@@ -49,7 +49,7 @@ const path = require('path');
         const a = document.createElement('div'), b = document.createElement('div'); a.className = b.className = 'xcol';
         w.append(a, b); pg.appendChild(w); return [a, b];
       };
-      if (avail < MINQ) { pg = newPage(); avail = PH; }
+      if (avail < MINQ) { pg = newPage(); avail = PH - GAP; }
       let cols = makeCols(avail), ci = 0;
       const allCols = [cols];
       const over = c => c.scrollHeight > c.clientHeight + 1;
@@ -60,7 +60,7 @@ const path = require('path');
         while (over(cols[ci]) && (cols[ci].children.length > 1 || !fullHeight(cols[ci]))) {
           cols[ci].removeChild(u);
           ci++;
-          if (ci > 1) { pg = newPage(); cols = makeCols(PH); allCols.push(cols); ci = 0; }
+          if (ci > 1) { pg = newPage(); cols = makeCols(PH - GAP); allCols.push(cols); ci = 0; }
           cols[ci].appendChild(u);
         }
         if (over(cols[ci])) {  // taller than a whole column: shrink just this question to fit
@@ -96,6 +96,7 @@ const path = require('path');
       // a page that ends with an empty question area loses its column wrapper height
       pages.forEach(p => p.querySelectorAll('.x-qs2').forEach(w => { if (!w.textContent.trim()) w.remove(); }));
       for (const pair of allCols) for (const c of pair) if (c.scrollHeight > c.clientHeight + 1) clipped.push(si + 1);
+      pages.forEach((p, k) => { if (p.scrollHeight > p.clientHeight + 1) clipped.push(`${si + 1}p${k + 1}`); });
       log.push([si + 1, pages.length]);
     });
     return { log, clipped, shrunk };
