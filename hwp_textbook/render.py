@@ -392,6 +392,10 @@ def add_table(title, head, rows, intro=""):
 
 # Inserted right after the source paragraph that starts with the key.
 ADDITIONS = {
+    "※ 중성자 11개는": (
+        '<p class="hp li1">• 종성자의 제자 원리</p>'
+        '<p class="hp li2">‧ 종성부용초성(終聲復用初聲) : 종성자를 위한 글자를 따로 만들지 않고 초성자를 종성자에 사용하였음. '
+        '이를 <b>‘종성부용초성’</b>이라고 함.</p>'),
     "예 암ㅎ＋ᄃᆞᆰ": add_table(
         "‘ㅎ’ 종성 체언의 실현 양상",
         ["뒤따르는 조사", "‘ㅎ’ 종성 체언의 실현 양상", "예"],
