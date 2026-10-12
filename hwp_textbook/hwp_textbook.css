@@ -68,7 +68,7 @@
 .htb td{overflow-wrap:anywhere;word-break:keep-all}
 .bogi .htb{width:100%}
 .u-ex.cont{border-top-style:dashed}
-.hp.orig{font-family:"NSerif","Noto Serif CJK KR",serif;font-size:11.4pt;line-height:1.9;color:#1b1f27;margin:1.2mm 0}
+.hp.orig{font-family:"NSerif","Noto Serif CJK KR",serif;font-size:11.4pt;line-height:2.3;color:#1b1f27;margin:4.2mm 0}
 .ibox{border:1px solid #2b303a;padding:0 4px;margin:0 2px;white-space:nowrap}
 /* the paragraph's hanging indent must not shift the letter inside the circle */
 .circ,.ibox{text-indent:0}
@@ -122,3 +122,31 @@
 .dtb td:first-child{background:var(--bg-soft)}
 .dtb td:first-child .hp{color:var(--navy)}
 .dtb td:last-child .hp{font-size:11pt;letter-spacing:.4px}
+.hp.ans-line{margin-top:3mm;padding-bottom:9mm;border-bottom:1px solid #c9ccd3}
+.cgrid{border-collapse:collapse;margin:1.2mm 0 0 1mm;font-size:9.6pt;line-height:1.7}
+.cgrid td{padding:.2mm 7mm .2mm 0;white-space:nowrap;vertical-align:baseline}
+.cgrid td:first-child{padding-right:4mm}
+.cgrid td.cg-h{font-weight:700;color:var(--navy)}
+.qtb td{text-align:left !important;padding:1.8mm 2.6mm;line-height:1.8}
+.qtb td:first-child,.qtb td:nth-child(2){text-align:center !important}
+.cgrid td.cg-gap{padding:0 5mm}
+.cgrid2{display:grid;column-gap:6mm;row-gap:1mm;margin:1.4mm 0 0 1mm;font-size:9.6pt;line-height:1.7;justify-content:start}
+.cgrid2.c2{grid-template-columns:repeat(2,minmax(0,1fr));justify-content:stretch}
+.cgrid2.c3{grid-template-columns:repeat(3,max-content)}
+.cgrid2.c4{grid-template-columns:repeat(4,max-content)}
+.cgrid2.c5{grid-template-columns:repeat(5,max-content)}
+.cg2{display:flex;gap:1.6mm}
+.cg2 .cn{flex:none}
+.atb{border-collapse:collapse;margin:.6mm 0;font-size:inherit}
+.atb td{padding:.3mm 8mm .3mm 0;vertical-align:baseline;line-height:1.7}
+.atb td.src{color:var(--muted);font-size:8.6pt;padding-left:6mm}
+.blank{display:inline-block;min-width:20mm;text-align:center;border-bottom:1px solid #8a8f99;padding:0 2mm;margin:0 1mm}
+.blankbox{border:1px dashed #9aa0ab;border-radius:2px;text-align:center;padding:4mm 0;margin:1.6mm 0;color:var(--navy);font-weight:600}
+.exrow{display:grid;grid-template-columns:58% 1fr;column-gap:3mm;align-items:baseline}
+.exrow .hp{margin:0}
+.exrow .exr{font-size:9pt;color:#2b303a}
+.u-q .cgrid,.u-q .cgrid2,.u-q .atb,.u-q .blankbox,.u-q .exrow{font-family:"NSerif","Noto Serif CJK KR",serif}
+.cg2{align-items:baseline}
+.hp.with-src{display:flex;justify-content:space-between;gap:6mm}
+.src-r{color:var(--muted);font-size:8.6pt;flex:none}
+.sep{color:var(--beige);margin:0 1.2mm}

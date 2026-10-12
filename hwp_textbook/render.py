@@ -406,8 +406,181 @@ def tidy_diph(out):
     return out.replace("<b>ㅘ, ㅝ, </b>", "<b>ㅘ, ㅝ</b>").replace("ㆉ ㆌ</b>", "ㆉ, ㆌ</b>")
 
 
+CHOICE_HEAD_RE = re.compile(r'<p class="hp p pre">((?:[^<]|</?u>){1,160})</p>((?:<p class="hp hch[^"]*">(?:[^<]|</?u>)*</p>)+)')
+CHOICE_ROW_RE = re.compile(r'<p class="hp hch[^"]*">((?:[^<]|</?u>)*)</p>')
+LABEL_RE = re.compile(r'[㉠-㉭ⓐ-ⓩ]|\([A-Z가-하]\)')
+BREAK_BEFORE = ["중세 국어의 주격 조사", "중세 국어의 의문문", "중세 국어의 높임법"]
+
+
+def choice_grid(m):
+    """㉠ ㉡ ㉢ column labels over ① 애 예 에 rows → an aligned grid (also two choices per line)."""
+    head = re.sub(r'</?u>', '', m.group(1)).split()
+    if not head or not all(LABEL_RE.fullmatch(h) for h in head):
+        return m.group(0)
+    lines = CHOICE_ROW_RE.findall(m.group(2))
+    rows = []
+    for ln in lines:
+        parts = re.split('([①②③④⑤])', ln)
+        cs = [[parts[i]] + [x for x in re.split(r'\s{2,}', parts[i + 1].strip()) if x] for i in range(1, len(parts) - 1, 2)]
+        rows.append(cs)
+    slots = max(len(r) for r in rows)
+    if len(head) % slots:
+        return m.group(0)
+    k = len(head) // slots
+    if any(len(c) != k + 1 for r in rows for c in r):
+        return m.group(0)
+    gap = '<td class="cg-gap"></td>'
+    th = '<tr>' + gap.join('<td></td>' + ''.join(f'<td class="cg-h">{h}</td>' for h in head[j * k:(j + 1) * k]) for j in range(slots)) + '</tr>'
+    trs = ''.join('<tr>' + gap.join(''.join(f'<td>{x}</td>' for x in c) for c in r) + '</tr>' for r in rows)
+    return f'<table class="cgrid">{th}{trs}</table>'
+
+
+PRE_P_RE = re.compile(r'<p class="hp ([a-z0-9 ]*?)pre">(.*?)</p>')
+NUMS = "①②③④⑤"
+LBL = r'(?:[㉠-㉭ⓐ-ⓩ]|\([가-하A-Z]\)|\[[가-하A-Z]\])'
+
+
+def _plain(h):
+    return re.sub(r'<[^>]+>', '', h).replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&")
+
+
+def _blanks(t):
+    """'(   ㉠   )', '학생 :     (가)     .' → a fill-in blank of fixed width."""
+    t = re.sub(r'\(\s{2,}(' + LBL + r')\s{2,}\)', r'( <span class="blank">\1</span> )', t)
+    t = re.sub(r'(?<=\S)\s{3,}(' + LBL + r')\s{3,}(?=\S|$)', r' <span class="blank">\1</span> ', t)
+    t = re.sub(r'(?<=\S)\s{3,}(' + LBL + r')\s*$', r' <span class="blank">\1</span>', t)
+    t = re.sub(r'^\s*(' + LBL + r')\s{3,}(?=[.。]?\s*$)', r'<span class="blank">\1</span>', t)
+    return t
+
+
+def _choices(line):
+    """split '① a     ② b' into [('①','a'), ('②','b')]"""
+    parts = re.split('([' + NUMS + '])', line)
+    return [(parts[i], parts[i + 1].strip()) for i in range(1, len(parts) - 1, 2)]
+
+
+def _cell(t):
+    return re.sub(r'\s{2,}', ' ', t).strip()
+
+
+def _choice_run(lines):
+    opts = [_choices(l) for l in lines]
+    cols = max(len(o) for o in opts)
+    cells = []
+    for o in opts:
+        for n, t in o:
+            cells.append(f'<div class="cg2"><span class="cn">{n}</span><span>{_cell(t)}</span></div>')
+        cells += ['<div></div>'] * (cols - len(o))
+    return f'<div class="cgrid2 c{cols}">{"".join(cells)}</div>'
+
+
+def _aligned_run(cls, rows):
+    """short lines laid out with space gaps → a borderless table so the columns really line up"""
+    n = max(len(r) for r in rows)
+    trs = []
+    for r in rows:
+        tds = "".join(f'<td class="{"src" if re.fullmatch(r"&lt;.*?&gt;", c) else ""}">{c}</td>' for c in r + [""] * (n - len(r)))
+        trs.append(f"<tr>{tds}</tr>")
+    return f'<table class="atb {cls}">{"".join(trs)}</table>'
+
+
+def _ex_row(cls, t):
+    """'• 설명 …        예 …' → explanation and example in two fixed columns"""
+    a, b = re.split(r'\s{3,}(?=<span class="circ">예</span>|예 )', t, maxsplit=1)
+    return f'<div class="exrow {cls}"><p class="hp {cls}">{a.strip()}</p><p class="hp exr">{_cell(b)}</p></div>'
+
+
+def tidy_pre(out):
+    """Space-aligned HWP lines (choices, glosses, blanks) never line up in another font: rebuild them."""
+    items = []  # (start, end, cls, text)
+    for m in PRE_P_RE.finditer(out):
+        items.append([m.start(), m.end(), m.group(1).strip(), m.group(2)])
+    res, pos, i = [], 0, 0
+    while i < len(items):
+        st, en, cls, t = items[i]
+        res.append(out[pos:st])
+        t = re.sub(r'학\s+생\s*:', '학생 :', t)
+        t = _blanks(t)
+        pl = _plain(t)
+        # several choices on one line: gather the consecutive choice lines into one grid
+        if cls.startswith("hch") and len(re.findall('[' + NUMS + ']', pl)) >= 2:
+            run, j = [t], i + 1
+            while j < len(items) and items[j][2].startswith("hch") and out[items[j - 1][1]:items[j][0]] == "" \
+                    and len(re.findall('[' + NUMS + ']', _plain(items[j][3]))) >= 1:
+                run.append(items[j][3]); j += 1
+            pos = items[j - 1][1]
+            # a last choice line without wide gaps (e.g. a lone '⑤ …') belongs to the same grid
+            while True:
+                m2 = re.match(r'<p class="hp hch">((?:(?!</p>).)*[①②③④⑤](?:(?!</p>).)*)</p>', out[pos:])
+                if not m2:
+                    break
+                run.append(m2.group(1)); pos += m2.end()
+            while j < len(items) and items[j][0] < pos:
+                j += 1
+            res.append(_choice_run(run)); i = j
+            continue
+        # bullet + example on one line
+        if cls.startswith("li") and re.search(r'\s{3,}(?:<span class="circ">예</span>|예 )', t) and len(pl) < 140:
+            res.append(_ex_row(cls, t)); pos = en; i += 1
+            continue
+        segs = [x for x in re.split(r'\s{3,}', t.strip()) if x]
+        # text followed by its source '<용비어천가>': put the source at the right edge
+        if len(segs) >= 2 and re.fullmatch(r'&lt;[^&]*&gt;', segs[-1].strip()):
+            left = _cell(" ".join(segs[:-1]))
+            res.append(f'<p class="hp {cls} with-src"><span>{left}</span><span class="src-r">{segs[-1].strip()}</span></p>'); pos = en; i += 1
+            continue
+        if 2 <= len(segs) <= 4 and len(pl) <= 70 and all(len(_plain(x)) <= 34 for x in segs):
+            run, j = [segs], i + 1
+            while j < len(items) and items[j][2] == cls and out[items[j - 1][1]:items[j][0]] == "":
+                s2 = [x for x in re.split(r'\s{3,}', _blanks(items[j][3]).strip()) if x]
+                if not (2 <= len(s2) <= 4 and len(_plain(items[j][3])) <= 70):
+                    break
+                run.append(s2); j += 1
+            if len(run[0]) == 2:
+                mprev = re.search(r'<p class="hp ' + re.escape(cls) + r'">((?:(?!</?p).)*?) (\([^()]*\)|\[[^\[\]]*\])</p>$', res[-1])
+                if mprev and re.match(r'\s*(?:[ㄱ-ㅎ]\.|[ⓐ-ⓩ]|\([가-하]\))', _plain(mprev.group(1))) \
+                        and re.match(r'\s*(?:[ㄱ-ㅎ]\.|[ⓐ-ⓩ]|\([가-하]\))', _plain(run[0][0])):
+                    res[-1] = res[-1][:mprev.start()]
+                    run.insert(0, [mprev.group(1), mprev.group(2)])
+            res.append(_aligned_run(cls, run)); pos = items[j - 1][1]; i = j
+            continue
+        # a whole-line blank box '(      [가]      )'
+        if re.fullmatch(r'\(\s*' + LBL + r'\s*\)', pl.strip()):
+            res.append(f'<div class="blankbox">{pl.strip()[1:-1].strip()}</div>'); pos = en; i += 1
+            continue
+        # anything else: the gaps were only line-wrap artefacts of the original page
+        res.append(f'<p class="hp {cls}">{_cell(t)}</p>'); pos = en; i += 1
+    res.append(out[pos:])
+    return "".join(res)
+
+
+def tidy_more(out):
+    out = CHOICE_HEAD_RE.sub(choice_grid, out)
+    # 서술형 answer line: drop the cramped ( ) and leave room to write
+    out = re.sub(r'<p class="hp ans pre">답 ?: ?\(\s*\)</p>', '<p class="hp ans ans-line">답 :</p>', out)
+    out = tidy_pre(out)
+    # source quirks: an example split over two paragraphs, a note glued to the next original line
+    out = out.replace('＋-아)</p></div><div class="hu u-t split"><p class="hp p">보ᅀᆞᆸ고', '＋-아)‖보ᅀᆞᆸ고')
+    out = re.sub(r'‖', ' <span class="sep">|</span> ', out)
+    out = re.sub(r'<p class="hp hch">(① 동국정운식 한자음 표기)\s*(?:<br>\s*)+(.*?)</p>', r'<p class="hp hch">\1</p><p class="hp p orig">\2</p>', out)
+    for t in BREAK_BEFORE:
+        out = out.replace(f'<div class="hu u-t"><h3 class="hsub">{t}', f'<div class="hu u-t pb"><h3 class="hsub">{t}')
+    return out
+
+
 # Inserted right after the source paragraph that starts with the key.
 ADDITIONS = {
+    "예 네 겨집 그려 가던다": (
+        '<div class="addbox"><div class="add-h">의문 보조사 : 체언 뒤에 바로 붙어 의문문을 만듦</div>'
+        '<p class="hp add-intro">중세 국어에서는 종결 어미뿐 아니라, <b>체언 뒤에 바로 붙는 의문 보조사</b>로도 의문문을 만들었음. '
+        '종결 어미와 마찬가지로 <b>판정 의문문은 ‘가’, ‘아’</b>, <b>설명 의문문은 ‘고’, ‘오’</b>가 쓰임.</p>'
+        '<table class="htb addtb qtb"><colgroup><col style="width:20%"><col style="width:16%"><col style="width:64%"></colgroup>'
+        '<thead><tr><th>구분</th><th>의문 보조사</th><th>예</th></tr></thead><tbody>'
+        '<tr><td>판정 의문문</td><td><b>가 / 아</b></td><td>이 ᄯᆞ리 너희 죵<u>가</u>[이 딸이 너희 종이냐?]<br>이ᄂᆞᆫ 賞<u>가</u> 罰<u>아</u>[이것은 상이냐, 벌이냐?]</td></tr>'
+        '<tr><td>설명 의문문</td><td><b>고 / 오</b></td><td>얻논 藥이 므스것<u>고</u>[얻는 약이 무엇이냐?]<br>이 ᄠᅳ디 엇뎨<u>오</u>[이 뜻이 무엇이냐?]</td></tr>'
+        '</tbody></table>'
+        '<p class="hp note">※ ‘아’, ‘오’는 ‘ㄹ’이나 반모음 ‘ㅣ’ 뒤에서 ‘가’, ‘고’의 ‘ㄱ’이 탈락한 형태임. (예: 罰<b>아</b>, 엇뎨<b>오</b>)</p>'
+        '<p class="hp note">※ 의문사(므스, 엇뎨, 어느, 누 …)가 있으면 ‘고 / 오’, 없으면 ‘가 / 아’ → 의문사의 유무로 구별하는 원리는 종결 어미와 같음.</p></div>'),
     "• 단어의 첫머리에 둘 이상의 자음이 결합한": (
         '<div class="addbox"><div class="add-h">합용 병서와 어두 자음군</div>'
         '<p class="hp li1">• ‘합용 병서’에는 <b>‘ㅂ-’계</b>(ㅳ, ㅄ, ㅶ, ㅷ), <b>‘ㅄ-’계</b>(ㅴ, ㅵ), <b>‘ㅅ-’계</b>(ㅺ, ㅼ, ㅽ) 합용 병서가 존재했음. '
@@ -596,7 +769,7 @@ def build(blocks_path, kicker, t1, t2, title, pages):
     out = f"""<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>{html.escape(title)}</title>
 <link rel="stylesheet" href="file://{font_dir}/@fontsource/do-hyeon/index.css">
 <style>{css}</style></head><body>{body}</body></html>"""
-    out = tidy_diph(out)
+    out = tidy_more(tidy_diph(out))
     open(os.path.join(H, "summary.html"), "w", encoding="utf-8").write(out)
     return [f"S{i}" for i in range(1, len(secs) + 1)]
 

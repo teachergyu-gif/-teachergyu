@@ -32,6 +32,8 @@ const path = require('path');
       const queue = [...us];
       while (queue.length) {
         const u = queue.shift();
+        if (u.classList.contains('pb') && body.lastElementChild &&
+            body.lastElementChild.offsetTop + body.lastElementChild.offsetHeight > mm(90)) body = newPage(false);  // forced page break, unless the page is still mostly empty
         body.appendChild(u);
         if (over() && u.classList.contains('split') && u.children.length > 1) {
           // long explanations may continue on the next page, but only between their own paragraphs
@@ -43,11 +45,16 @@ const path = require('path');
         if (over() && body.children.length > 1) {
           body.removeChild(u);
           // a short unit that opens with a sub-heading stays with what follows it
-          const prev = body.lastElementChild;
-          const lead = prev && body.children.length > 1 && prev.firstElementChild &&
-            prev.firstElementChild.classList.contains('hsub') && prev.offsetHeight < mm(30) ? prev : null;
-          if (lead) body.removeChild(lead);
-          body = newPage(false); if (lead) body.appendChild(lead); body.appendChild(u);
+          // an example, gloss or table goes with the short line it explains; a sub-heading goes with what follows
+          const dep = el => { const f = el.firstElementChild; return !!f && (f.matches('.ex, .hgloss, table.htb')); };
+          const leads = []; let cur = u;
+          while (leads.length < 4 && body.children.length > 1) {
+            const prev = body.lastElementChild; const f = prev.firstElementChild;
+            if (prev.offsetHeight >= mm(40) || prev.classList.contains('pb')) break;
+            if (!(dep(cur) || (f && f.classList.contains('hsub')))) break;
+            body.removeChild(prev); leads.unshift(prev); cur = prev;
+          }
+          body = newPage(false); leads.forEach(l => body.appendChild(l)); body.appendChild(u);
           if (over() && u.classList.contains('split') && u.children.length > 1) {
             const rest = u.cloneNode(false); rest.classList.add('cont');
             while (over() && u.children.length > 1) rest.insertBefore(u.lastElementChild, rest.firstChild);
@@ -62,14 +69,15 @@ const path = require('path');
           res.shrunk.push([title, +z.toFixed(2)]);
         }
       }
-      if (kind !== 'theory') {
+      {
+        const theory = kind === 'theory';  // theory pages get only a little air; quiz pages spread fully
         pages.forEach((p, k) => {
           const b = p.querySelector('.hbody'); const items = [...b.children];
           if (items.length < 2 || k === pages.length - 1) return;
           const last = items[items.length - 1];
           const free = PH - (last.offsetTop + last.offsetHeight);  // offsets are relative to .hpg
           if (free <= 0) return;
-          const add = Math.min(free / (items.length - 1) * 0.9, MAXADD);
+          const add = theory ? Math.min(free / (items.length - 1) * 0.6, mm(2.6)) : Math.min(free / (items.length - 1) * 0.9, MAXADD);
           items.slice(1).forEach(it => { it.style.marginTop = (parseFloat(getComputedStyle(it).marginTop) + add) + 'px'; });
         });
       }
