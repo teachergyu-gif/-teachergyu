@@ -432,10 +432,10 @@ ADDITIONS = {
         '<div class="addbox"><div class="add-h">중세 국어의 단모음 체계</div>'
         '<p class="hp add-intro">「훈민정음」 해례는 모음을 <b>혀의 오그림(설축)</b>과 <b>입 모양(구축 · 구장)</b>으로 설명함. '
         '15세기 국어의 단모음은 <b>ㆍ, ㅡ, ㅣ, ㅗ, ㅏ, ㅜ, ㅓ의 7개</b>였음.</p>'
-        '<table class="htb addtb vtb"><thead><tr><th>구분</th><th>설불축</th><th>설소축</th><th>설축</th></tr></thead><tbody>'
-        '<tr><td>-구축, -구장</td><td>ㅣ</td><td>ㅡ</td><td>ㆍ</td></tr>'
-        '<tr><td>+구축</td><td></td><td>ㅜ</td><td>ㅗ</td></tr>'
-        '<tr><td>+구장</td><td></td><td>ㅓ</td><td>ㅏ</td></tr></tbody></table>'
+        '<table class="htb addtb vtb"><thead><tr><th>구분</th><th>설불축<br><span class="tr">(전설 모음)</span></th><th>설소축<br><span class="tr">(중설 모음)</span></th><th>설축<br><span class="tr">(후설 모음)</span></th></tr></thead><tbody>'
+        '<tr><td>-구축, -구장<br><span class="tr">(평순 모음 · 입 모양 보통)</span></td><td>ㅣ</td><td>ㅡ</td><td>ㆍ</td></tr>'
+        '<tr><td>+구축<br><span class="tr">(원순 모음)</span></td><td></td><td>ㅜ</td><td>ㅗ</td></tr>'
+        '<tr><td>+구장<br><span class="tr">(평순 모음 · 입을 크게 벌림)</span></td><td></td><td>ㅓ</td><td>ㅏ</td></tr></tbody></table>'
         '<p class="hp li1">• 현대어로 풀면</p>'
         '<p class="hp li2">‧ <b>설축</b> : 혀를 뒤로 오그림 → 혀가 뒤쪽에 놓이는 소리(ㆍ, ㅗ, ㅏ) / <b>설소축</b> : 혀를 조금 오그림(ㅡ, ㅜ, ㅓ) / <b>설불축</b> : 혀를 오그리지 않음 → 혀가 앞쪽에 놓이는 소리(ㅣ)</p>'
         '<p class="hp li2">‧ <b>구축</b> : 입술을 둥글게 오므림 → 오늘날의 <b>원순 모음</b>(ㅗ, ㅜ) / <b>구장</b> : 입을 벌림 → 평순 모음(ㅏ, ㅓ)</p>'
@@ -445,7 +445,7 @@ ADDITIONS = {
         '<tr><td>중모음</td><td></td><td>ㅓ</td><td>ㅗ</td></tr>'
         '<tr><td>저모음</td><td></td><td>ㅏ</td><td>ㆍ</td></tr></tbody></table>'
         '<p class="hp note">※ 오늘날의 기준으로 정리한 15세기 단모음 체계임. 학교나 교재에 따라 ‘중설’을 ‘후설’에 묶어 전설 / 후설로만 나누기도 하므로 수업 기준을 따를 것. '
-        '현대 국어의 단모음 ‘ㅐ, ㅔ, ㅚ, ㅟ’는 15세기에는 <b>하향 이중 모음</b>이었다가 근대 국어 이후 단모음이 되었음.</p></div>',
+        '해례의 설축 · 설소축 · 설불축은 혀의 앞뒤 위치와 <b>대략</b> 대응하는 개념으로, 위 표의 괄호는 이해를 돕기 위한 현대 용어임(원순성까지 고려한 음가 추정에서는 ‘ㅜ’도 후설 모음으로 봄). 현대 국어의 단모음 ‘ㅐ, ㅔ, ㅚ, ㅟ’는 15세기에는 <b>하향 이중 모음</b>이었다가 근대 국어 이후 단모음이 되었음.</p></div>',
         '<p class="hp li1">• 종성자의 제자 원리</p>'
         '<p class="hp li2">‧ 종성부용초성(終聲復用初聲) : 종성자를 위한 글자를 따로 만들지 않고 초성자를 종성자에 사용하였음. '
         '이를 <b>‘종성부용초성’</b>이라고 함.</p>'],
