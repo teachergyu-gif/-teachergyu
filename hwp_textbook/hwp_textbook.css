@@ -100,3 +100,14 @@
 .vtb td,.vtb2 td{text-align:center !important;font-size:10pt}
 .vtb td:first-child,.vtb2 td:first-child{font-size:8.8pt}
 .vtb2{width:70%;margin:1.6mm auto 2mm}
+.addbox .vtb{table-layout:fixed}
+.vtb td:not(:first-child){font-size:12pt;font-weight:500}
+.addbox .htb.vtb2{width:72%;margin:1.4mm auto 2.4mm;table-layout:fixed}
+.vtb2 td:not(:first-child){font-size:12pt;font-weight:500}
+.vnote{background:var(--bg-soft);border-left:2px solid var(--gold-l);border-radius:2px;padding:2mm 3.4mm 1.6mm;margin:0 0 2.6mm;font-size:9pt;color:#2b303a}
+.vnote-h{font-weight:700;color:var(--navy);margin-bottom:1.2mm}
+.vgrid{display:grid;grid-template-columns:max-content 1fr max-content 1fr;column-gap:4mm;column-gap:2.4mm;row-gap:1mm;align-items:baseline}
+.vgrid b{color:var(--navy)}
+.vnote-f{margin:1.4mm 0 0;font-size:9pt}
+.vgrid b{white-space:nowrap}
+.ar{display:inline-block;transform:scale(1.9);font-weight:900}
