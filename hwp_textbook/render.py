@@ -1005,6 +1005,11 @@ def build(blocks_path, kicker, t1, t2, title, pages):
 <link rel="stylesheet" href="file://{font_dir}/@fontsource/do-hyeon/index.css">
 <style>{css}</style></head><body>{body}</body></html>"""
     out = tidy_more(tidy_diph(out))
+    if os.environ.get("NEUTRAL"):  # school-neutral edition: no school name, its exam sets become 내신 대표 기출
+        out = out.replace("부산외고 기출 · 대표 문제", "내신 대표 기출 · 대표 문제")
+        out = re.sub(r"부산외고 (?:중세국어 )?([^<\"]*?)기출 문제", lambda m: (("중세국어 " if "중세국어" in m.group(0) else "") + m.group(1) + "내신 대표 기출 문제"), out)
+        if "부산외고" in out:
+            print("school name left:", len(re.findall("부산외고", out)))
     open(os.path.join(H, "summary.html"), "w", encoding="utf-8").write(out)
     return [f"S{i}" for i in range(1, len(secs) + 1)]
 
