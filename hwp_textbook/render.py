@@ -711,6 +711,17 @@ def tidy_more(out):
     out = out.replace('＋-아)</p></div><div class="hu u-t split"><p class="hp p">보ᅀᆞᆸ고', '＋-아)‖보ᅀᆞᆸ고')
     out = re.sub(r'‖', ' <span class="sep">|</span> ', out)
     out = re.sub(r'<p class="hp hch">(① 동국정운식 한자음 표기)\s*(?:<br>\s*)+(.*?)</p>', r'<p class="hp hch">\1</p><p class="hp p orig">\2</p>', out)
+    from typo_fixes import CONTENT_FIXES, EX38_OLD_HEAD, EX38
+    k = out.find(EX38_OLD_HEAD)
+    if k < 0:
+        print("content fix not found: 38번 해설")
+    else:
+        e = out.find('</div>', out.find('<p class="hp hch">⑤ ㉤의 ‘ᄯᆞᄅᆡ’', k)) + len('</div>')
+        out = out[:k] + EX38 + out[e:]
+    for old, new in CONTENT_FIXES:
+        if old not in out:
+            print("content fix not found:", old[:40])
+        out = out.replace(old, new)
     for t in BREAK_BEFORE:
         out = out.replace(f'<div class="hu u-t"><h3 class="hsub">{t}', f'<div class="hu u-t pb"><h3 class="hsub">{t}')
     return out
