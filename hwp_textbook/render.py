@@ -934,7 +934,7 @@ def section_html(sec, idx):
 
 def cover(kicker, t1, t2, secs):
     """The academy's own series cover (ALL AROUND KOREAN artwork) with this book's lines on it."""
-    bg = f"file://{H}/cover/all_around_korean_bg.jpg"
+    bg = f"file://{ROOT}/brand/cover_all_around_korean_navy.jpg"  # series art recoloured to the academy navy
     return f"""
 <section class="bookcover aak" style="background-image:url('{bg}')">
   <div class="aak-lines"><div class="aak-l1">{html.escape(kicker.replace(" · ", " "))} 대비</div>
@@ -1017,6 +1017,7 @@ def build(blocks_path, kicker, t1, t2, title, pages):
     css += running_heads(t1)
     out = f"""<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>{html.escape(title)}</title>
 <link rel="stylesheet" href="file://{font_dir}/@fontsource/do-hyeon/index.css">
+<link rel="stylesheet" href="file://{font_dir}/@fontsource/nanum-myeongjo/800.css">
 <style>{css}</style></head><body>{body}</body></html>"""
     out = tidy_more(tidy_diph(out))
     if os.environ.get("NEUTRAL"):  # school-neutral edition: no school name, its exam sets become 내신 대표 기출

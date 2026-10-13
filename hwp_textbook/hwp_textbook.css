@@ -256,3 +256,12 @@ table.pitch td{width:12mm;height:9mm;text-align:center;vertical-align:middle;fon
 .aak-l1{font-size:19pt;font-weight:700;margin-bottom:5.5mm}
 .aak-l2{font-size:21pt;font-weight:700}
 .aak-tag{left:15mm;bottom:18.5mm;font-size:31pt;font-weight:700}
+/* series cover, brand version (white paper + academy navy, 나눔명조) */
+.bookcover.aak{background-color:#fff}
+.aak-lines{font-family:"Nanum Myeongjo",serif;font-weight:800;color:#29334A}
+.aak-l1,.aak-l2{font-weight:800}
+.aak-tag{font-family:"Nanum Myeongjo",serif;font-weight:800;color:#29334A}
+/* series cover, brand version (white paper + academy navy, 나눔명조) */
+.bookcover.aak{background-color:#fff}
+.aak-lines,.aak-tag{font-family:"Nanum Myeongjo",serif;font-weight:800;color:#29334A}
+.aak-l1,.aak-l2{font-weight:800}
