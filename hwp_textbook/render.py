@@ -446,6 +446,7 @@ def _plain(h):
 
 def _blanks(t):
     """'(   ㉠   )', '학생 :     (가)     .' → a fill-in blank of fixed width."""
+    t = re.sub(r'<u>(\s*' + LBL + r'\s*)</u>', r'\1', t)
     t = re.sub(r'\(\s{2,}(' + LBL + r')\s{2,}\)', r'( <span class="blank">\1</span> )', t)
     t = re.sub(r'(?<=\S)\s{3,}(' + LBL + r')\s{3,}(?=\S|$)', r' <span class="blank">\1</span> ', t)
     t = re.sub(r'(?<=\S)\s{3,}(' + LBL + r')\s*$', r' <span class="blank">\1</span>', t)
@@ -488,6 +489,23 @@ def _ex_row(cls, t):
     """'• 설명 …        예 …' → explanation and example in two fixed columns"""
     a, b = re.split(r'\s{3,}(?=<span class="circ">예</span>|예 )', t, maxsplit=1)
     return f'<div class="exrow {cls}"><p class="hp {cls}">{a.strip()}</p><p class="hp exr">{_cell(b)}</p></div>'
+
+
+EXROW_RE = re.compile(r'<p class="hp (li1)">((?:(?!</p>).)*?) (<span class="circ">예</span> (?:(?!</p>).)*)</p>')
+
+
+def join_exrows(out):
+    """'• 설명 … 예 …' paragraphs next to an aligned bullet/example row get the same columns."""
+    for _ in range(3):
+        def rep(m):
+            before, after = out[max(0, m.start() - 700):m.start()], out[m.end():m.end() + 120]
+            prev_ok = re.search(r'</p></div></div><div class="hu[^"]*">$', before) and '<div class="exrow li1">' in before
+            next_ok = re.match(r'</div><div class="hu[^"]*"><div class="exrow li1">', after)
+            if prev_ok or next_ok:
+                return f'<div class="exrow li1"><p class="hp li1">{m.group(2).strip()}</p><p class="hp exr">{m.group(3)}</p></div>'
+            return m.group(0)
+        out = EXROW_RE.sub(rep, out)
+    return out
 
 
 def tidy_pre(out):
@@ -559,6 +577,10 @@ def tidy_more(out):
     # 서술형 answer line: drop the cramped ( ) and leave room to write
     out = re.sub(r'<p class="hp ans pre">답 ?: ?\(\s*\)</p>', '<p class="hp ans ans-line">답 :</p>', out)
     out = tidy_pre(out)
+    # a blank is already a line; drop the underline the original drew around it
+    out = re.sub(r'<u>\s*(<span class="blank">[^<]*</span>)\s*(\.?)\s*(<br>)?\s*</u>', r'\1\2\3', out)
+    # bullet + example rows: neighbouring single-spaced rows join the same two-column layout
+    out = join_exrows(out)
     # source quirks: an example split over two paragraphs, a note glued to the next original line
     out = out.replace('＋-아)</p></div><div class="hu u-t split"><p class="hp p">보ᅀᆞᆸ고', '＋-아)‖보ᅀᆞᆸ고')
     out = re.sub(r'‖', ' <span class="sep">|</span> ', out)
@@ -589,7 +611,7 @@ ADDITIONS = {
         '<p class="hp li1">• 어두 자음군으로 발음되었다는 근거 : 현대 국어 합성어에 남은 <b>‘ㅂ’의 흔적</b></p>'
         '<p class="hp li2">‧ 중세 국어 ‘ᄡᆞᆯ(쌀)’, ‘ᄡᅵ(씨)’, ‘ᄣᅢ(때)’의 ‘ㅂ’이 실제로 소리 났기 때문에, 앞말과 결합하여 합성어가 될 때 그 ‘ㅂ’이 앞 음절의 받침으로 옮겨 가 지금까지 남아 있음.</p>'
         '<p class="hp ex">예 해＋ᄡᆞᆯ → <b>햅</b>쌀, 조＋ᄡᆞᆯ → <b>좁</b>쌀, 메＋ᄡᆞᆯ → <b>멥</b>쌀, 벼＋ᄡᅵ → <b>볍</b>씨, 이＋ᄣᅢ → <b>입</b>때, 저＋ᄣᅢ → <b>접</b>때</p>'
-        '<p class="hp li2">‧ ‘ㅂ’이 소리 나지 않았다면 이런 ‘ㅂ’ 받침이 생길 수 없으므로, ‘ㅂ’계·‘ㅄ’계 합용 병서의 ‘ㅂ’도 발음되었다(어두 자음군)는 증거가 됨.</p>'
+        '<p class="hp li2">‧ ‘ㅂ’이 소리 나지 않았다면 이런 ‘ㅂ’ 받침이 생길 수 없음.<br>→ ‘ㅂ’계·‘ㅄ’계 합용 병서의 ‘ㅂ’도 실제로 발음되었다(어두 자음군)는 증거가 됨.</p>'
         '</div>'),
     "• 각 음절의 왼쪽에 방점을 찍어": add_table(
         "방점 체계",
@@ -598,7 +620,7 @@ ADDITIONS = {
          ["1개 ( ‧ )", "거성", "높은 소리", "‧갈[刀]"],
          ["2개 ( : )", "상성", "낮다가 높아지는 소리", ":돌[石]"]],
         "") + '<p class="hp note add-note">※ <b>입성</b> : 빨리 닫는 소리로, 소리의 높낮이와는 무관한 개념임.</p>'
-        '<p class="hp note add-warn">※ <b>방점이 찍혀 있지 않다고 해서 성조가 없는 것이 아니라 ‘평성’</b>이다. '
+        '<p class="hp note add-warn">※ <b>방점이 찍혀 있지 않다고 해서 성조가 없는 것이 아니라 ‘평성’</b>이다.<br>'
         '이 부분은 학교에서 함정 선지로 많이 만들기 때문에 반드시 인지하고 있을 것.</p>',
     "※ 중성자 11개는": [  # several boxes: the unit may continue on the next page between them
         add_table(
@@ -636,8 +658,8 @@ ADDITIONS = {
         '<p class="hp note">※ 오늘날의 기준으로 정리한 15세기 단모음 체계임. 학교나 교재에 따라 ‘중설’을 ‘후설’에 묶어 전설 / 후설로만 나누기도 하므로 수업 기준을 따를 것. '
         '현대 국어의 단모음 ‘ㅐ, ㅔ, ㅚ, ㅟ’는 15세기에는 <b>하향 이중 모음</b>이었다가 근대 국어 이후 단모음이 되었음.</p></div>',
         '<p class="hp li1">• 종성자의 제자 원리</p>'
-        '<p class="hp li2">‧ 종성부용초성(終聲復用初聲) : 종성자를 위한 글자를 따로 만들지 않고 초성자를 종성자에 사용하였음. '
-        '이를 <b>‘종성부용초성’</b>이라고 함.</p>'],
+        '<p class="hp li2">‧ 종성부용초성(終聲復用初聲) : 종성자를 위한 글자를 따로 만들지 않고,<br>'
+        '초성자를 종성자에 그대로 사용하였음. 이를 <b>‘종성부용초성’</b>이라고 함.</p>'],
     "예 암ㅎ＋ᄃᆞᆰ": add_table(
         "‘ㅎ’ 종성 체언의 실현 양상",
         ["뒤따르는 조사", "‘ㅎ’ 종성 체언의 실현 양상", "예"],
