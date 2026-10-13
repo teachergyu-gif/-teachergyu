@@ -939,13 +939,11 @@ def cover(kicker, t1, t2, secs):
               ("문제 풀이", ("내신 대표 기출" if neutral else "부산외고 기출") + " · 대표 문제 · 교육청·사관학교 기출 · 해설")]
     parts = "".join(f'<div class="bc-part"><span class="bc-pno">PART {i}</span><span class="bc-pname">{n}</span><span class="bc-pdesc">{d}</span></div>'
                     for i, (n, d) in enumerate(groups, 1))
-    motif = "".join(f"<span>{c}</span>" for c in "訓民正音")
     return f"""
 <section class="bookcover">
   <div class="bc-left">
     <div class="bc-label"><i></i><span>RICH ACADEMY</span></div>
-    <div class="bc-motif">{motif}</div>
-    <div class="bc-author"><span class="bc-cap">AUTHOR</span><b>이재규T</b></div>
+    <div class="bc-author"><b>이재규T</b></div>
   </div>
   <div class="bc-right">
     <div class="bc-line"></div>
