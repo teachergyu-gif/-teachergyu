@@ -933,26 +933,13 @@ def section_html(sec, idx):
 
 
 def cover(kicker, t1, t2, secs):
-    neutral = bool(os.environ.get("NEUTRAL"))
-    groups = [("중세 국어 기본 이론", "음운 · 표기 · 체언과 조사 · 어휘 · 문법 요소"),
-              ("자료 분석", "세종어제 훈민정음 · 용비어천가 · 소학언해"),
-              ("문제 풀이", ("내신 대표 기출" if neutral else "부산외고 기출") + " · 대표 문제 · 교육청·사관학교 기출 · 해설")]
-    parts = "".join(f'<div class="bc-part"><span class="bc-pno">PART {i}</span><span class="bc-pname">{n}</span><span class="bc-pdesc">{d}</span></div>'
-                    for i, (n, d) in enumerate(groups, 1))
+    """The academy's own series cover (ALL AROUND KOREAN artwork) with this book's lines on it."""
+    bg = f"file://{H}/cover/all_around_korean_bg.jpg"
     return f"""
-<section class="bookcover">
-  <div class="bc-left">
-    <div class="bc-label"><i></i><span>RICH ACADEMY</span></div>
-    <div class="bc-author"><b>이재규T</b></div>
-  </div>
-  <div class="bc-right">
-    <div class="bc-line"></div>
-    <div class="bc-kicker">{html.escape(kicker)}</div>
-    <h1 class="bc-title">{html.escape(t1)}<br><em>{html.escape(t2)}</em></h1>
-    <div class="bc-en">MIDDLE KOREAN GRAMMAR</div>
-    <div class="bc-parts">{parts}</div>
-    <img class="bc-logo" src="file://{ROOT}/brand/logo_navy.png" alt="RICH ACADEMY">
-  </div>
+<section class="bookcover aak" style="background-image:url('{bg}')">
+  <div class="aak-lines"><div class="aak-l1">{html.escape(kicker.replace(" · ", " "))} 대비</div>
+  <div class="aak-l2">{html.escape(t1)}</div></div>
+  <div class="aak-tag">중세 문법</div>
 </section>"""
 
 

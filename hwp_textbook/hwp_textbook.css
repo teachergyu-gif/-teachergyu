@@ -246,3 +246,13 @@ table.pitch td{width:12mm;height:9mm;text-align:center;vertical-align:middle;fon
 .bc-en{top:162mm}.bc-parts{top:190mm}
 .bc-left{z-index:2}.bc-right{z-index:1}
 .bc-label span{white-space:nowrap}
+/* ---- series cover: ALL AROUND KOREAN ---- */
+.bookcover.aak{display:block;background-color:#f7f7f7;background-size:210mm 297mm;background-repeat:no-repeat}
+.aak-lines{position:absolute;right:17.5mm;bottom:20.5mm;text-align:right;font-family:"NSerif","Noto Serif CJK KR",serif;color:#231f20}
+.aak-l1{font-size:15.5pt;font-weight:700;letter-spacing:.01em;margin-bottom:5.2mm}
+.aak-l2{font-size:17pt;font-weight:800}
+.aak-tag{position:absolute;left:16mm;bottom:19.5mm;font-family:"NSerif","Noto Serif CJK KR",serif;font-weight:800;font-size:25pt;color:#46b89f;letter-spacing:.02em}
+.aak-lines{right:14mm;bottom:21mm}
+.aak-l1{font-size:19pt;font-weight:700;margin-bottom:5.5mm}
+.aak-l2{font-size:21pt;font-weight:700}
+.aak-tag{left:15mm;bottom:18.5mm;font-size:31pt;font-weight:700}
