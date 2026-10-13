@@ -415,7 +415,7 @@ MEANING_TYPES = (
     '<div class="mtype"><span class="mt-k">의미 축소</span><span>중세 국어 시절에 쓰이던 의미의 범위보다 현대로 오며 그 의미가 <b>축소</b>된 경우</span></div>'
     '<div class="mtype"><span class="mt-k">의미 이동</span><span>중세 국어 시절에 쓰이던 의미가 현대로 오며 <b>다른 의미로 바뀐</b> 경우</span></div>'
     '</div>')
-BREAK_BEFORE = ["중세 국어의 주격 조사", "중세 국어의 관형격 조사", "중세 국어의 의문문", "중세 국어의 높임법"]
+BREAK_BEFORE = ["중세 국어의 주격 조사", "중세 국어의 관형격 조사", "중세 국어의 의문문", "중세 국어의 높임법", "중세 국어의 시제"]
 
 
 def choice_grid(m):
@@ -603,6 +603,33 @@ def tidy_more(out):
 
 # Inserted right after the source paragraph that starts with the key.
 ADDITIONS = {
+    "예 아자비 쇼ᄅᆞᆯ 소아 주기": [
+        '<div class="addbox"><div class="add-h">상대 높임의 종결 어미 체계</div>'
+        '<table class="htb addtb hon"><colgroup><col style="width:23%"><col style="width:19%"><col style="width:24%"><col style="width:17%"><col style="width:17%"></colgroup>'
+        '<thead><tr><th>등급</th><th>평서형</th><th>의문형</th><th>명령형</th><th>청유형</th></tr></thead><tbody>'
+        '<tr><td>하쇼셔체 <span class="tr">(아주 높임)</span></td><td><b>-ᅌᅵ다</b> <span class="tr">주기ᅌᅵ다</span></td>'
+        '<td><b>-ᅌᅵᆺ가 / -ᅌᅵᆺ고</b><br><span class="tr">미드니ᅌᅵᆺ가, 오시니ᅌᅵᆺ고</span></td>'
+        '<td><b>-쇼셔</b> <span class="tr">아ᄅᆞ쇼셔</span></td><td><b>-사ᅌᅵ다</b> <span class="tr">ᄒᆞ사ᅌᅵ다</span></td></tr>'
+        '<tr><td>하야쎠체 <span class="tr">(예사 높임)</span></td><td>–</td><td>–</td>'
+        '<td><b>-야쎠</b> <span class="tr">ᄒᆞ야쎠</span></td><td>–</td></tr>'
+        '<tr><td>하라체 <span class="tr">(아주 낮춤)</span></td><td><b>-다 / -라</b> <span class="tr">주그니라</span></td>'
+        '<td><b>-녀 / -뇨, -ㄴ다</b><br><span class="tr">잇ᄂᆞ니여, 잇ᄂᆞ뇨</span></td>'
+        '<td><b>-라</b> <span class="tr">ᄒᆞ라</span></td><td><b>-져</b> <span class="tr">ᄒᆞ져</span></td></tr>'
+        '</tbody></table>'
+        '<div class="add-sub">상대 높임 선어말 어미 : 의문문이면 ‘-잇-’, 그 밖에는 ‘-이-’</div>'
+        '<table class="htb addtb hon2"><colgroup><col style="width:17%"><col style="width:21%"><col style="width:62%"></colgroup>'
+        '<thead><tr><th>문장 유형</th><th>선어말 어미</th><th>예</th></tr></thead><tbody>'
+        '<tr><td>평서문</td><td><b>-이- (-ᅌᅵ-)</b></td><td>아자비 쇼ᄅᆞᆯ 소아 주기<u>ᅌᅵ</u>다[아저씨가 소를 쏘아 죽였습니다.]</td></tr>'
+        '<tr><td>의문문</td><td><b>-잇- (-ᅌᅵᆺ-)</b></td><td>하나빌 미드니<u>ᅌᅵᆺ</u>가[할아버지를 믿었습니까?], 므스므라 오시니<u>ᅌᅵᆺ</u>고[무슨 까닭으로 오셨습니까?]</td></tr>'
+        '</tbody></table></div>',
+        '<div class="addbox"><div class="add-h">어휘적 높임 : 조사와 특수 어휘를 통한 높임</div>'
+        '<table class="htb addtb hon2"><colgroup><col style="width:16%"><col style="width:38%"><col style="width:46%"></colgroup>'
+        '<thead><tr><th>구분</th><th>내용</th><th>예</th></tr></thead><tbody>'
+        '<tr><td>주격 조사</td><td>높임의 주격 조사가 따로 없었음.</td><td>현대의 ‘께서’는 근대 국어 이후 등장</td></tr>'
+        '<tr><td>부사격 조사</td><td>높임의 대상에는 ‘ᄭᅴ’(＜ㅅ＋긔, 현대의 ‘께’)</td><td>내 아래브터 부텻<u>긔</u> 이런 마ᄅᆞᆯ 몯 듣ᄌᆞᄫᅩ며</td></tr>'
+        '<tr><td>관형격 · 호격</td><td>관형격 ‘ㅅ’(높임의 유정 명사), 호격 ‘하’</td><td>大王<u>ㅅ</u> 말ᄊᆞᆷ, 님금<u>하</u> 아ᄅᆞ쇼셔</td></tr>'
+        '<tr><td>특수 어휘</td><td>높임의 뜻을 가진 단어 자체를 씀.</td><td>겨시다, 좌시다, 뫼시다, 엳ᄌᆞᆸ다, 진지</td></tr>'
+        '</tbody></table></div>'],
     "예 네 겨집 그려 가던다": (
         '<div class="addbox"><div class="add-h">의문 보조사 : 체언 뒤에 바로 붙어 의문문을 만듦</div>'
         '<p class="hp add-intro">중세 국어에서는 종결 어미뿐 아니라, <b>체언 뒤에 바로 붙는 의문 보조사</b>로도 의문문을 만들었음. '

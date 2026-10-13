@@ -158,3 +158,11 @@
 .mvtb td[rowspan],.mvtb tr:nth-child(2) td:first-child{background:var(--bg-soft);text-align:center}
 .mvtb td[rowspan] .hp,.mvtb tr:nth-child(2) td:first-child .hp{font-weight:700;color:var(--navy);text-align:center}
 .mvtb td{padding:2mm 3mm}
+.hon td,.hon2 td{text-align:center;line-height:1.6;padding:1.6mm 1.6mm}
+.hon2 td:last-child{text-align:left}
+.hon .tr,.hon2 .tr{font-size:8.2pt}
+.add-sub{font-weight:700;color:var(--navy);font-size:9pt;margin:2.4mm 0 1.2mm;padding-left:2mm;border-left:3px solid var(--beige)}
+.hon td,.hon2 td{padding:1mm 1.6mm;line-height:1.5}
+.hon th,.hon2 th{padding:1.1mm 2mm}
+.hon td,.hon2 td{font-size:8.6pt;padding:.9mm 1.4mm}
+.hon td:first-child,.hon2 td:first-child{font-size:8.4pt}
