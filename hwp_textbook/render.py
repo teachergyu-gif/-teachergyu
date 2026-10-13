@@ -688,6 +688,11 @@ def tidy_more(out):
     out = out.replace('<p class="hp p">[272～273] ', '<p class="hp p">')  # stray workbook numbering
     # every 빠른 정답 table starts a new page; its explanations follow right after
     out = out.replace('<div class="hu u-key">', '<div class="hu u-key pb">')
+    from typo_fixes import FIXES
+    for old, new in FIXES:
+        if old not in out:
+            print("typo fix not found:", old)
+        out = out.replace(old, new)
     # a blank is already a line; drop the underline the original drew around it
     out = re.sub(r'<u>\s*(<span class="blank">[^<]*</span>)\s*(\.?)\s*(<br>)?\s*</u>', r'\1\2\3', out)
     # bullet + example rows: neighbouring single-spaced rows join the same two-column layout
@@ -975,7 +980,7 @@ def build(blocks_path, kicker, t1, t2, title, pages):
         h = section_html(sec, i)
         if sec["title"] in JOIN_PREV and parts:
             inner = h[h.index('<div class="hs-units">') + len('<div class="hs-units">'):h.rindex("</div></section>")]
-            head = (f'<div class="hu u-t glue hs-inline">{mark(f"S{i}")}<span class="p-idx">{i:02d}</span>'
+            head = (f'<div class="hu u-t glue hs-inline" data-title="{html.escape(sec["title"])}">{mark(f"S{i}")}<span class="p-idx">{i:02d}</span>'
                     f'<h2 class="hs-title">{html.escape(sec["title"])}</h2></div>')
             parts[-1] = parts[-1][:parts[-1].rindex("</div></section>")] + head + inner + "</div></section>"
         else:

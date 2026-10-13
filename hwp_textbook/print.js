@@ -16,7 +16,7 @@ const path = require('path');
     document.querySelectorAll('.hsec').forEach((sec, si) => {
       const kind = sec.dataset.kind;
       const head = sec.querySelector('.hs-head');
-      const title = sec.querySelector('.hs-title').textContent;
+      let title = sec.querySelector('.hs-title').textContent;
       const us = [...sec.querySelectorAll('.hs-units > .hu')];
       sec.innerHTML = '';
       const pages = [];
@@ -32,6 +32,7 @@ const path = require('path');
       const queue = [...us];
       while (queue.length) {
         const u = queue.shift();
+        if (u.dataset.title) title = u.dataset.title;  // a section joined inline names the pages after it
         if (u.classList.contains('pb') && body.lastElementChild &&
             (u.classList.contains('u-key') || body.lastElementChild.offsetTop + body.lastElementChild.offsetHeight > mm(90))) body = newPage(false);  // forced page break, unless the page is still mostly empty
         body.appendChild(u);
