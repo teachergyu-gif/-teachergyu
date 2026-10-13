@@ -234,6 +234,26 @@ def clean_rows(rows):
     return [r for r in res if r] or rows
 
 
+def pitch_html(rows):
+    """Syllables with a pitch contour drawn by thick cell borders and diagonals (방점 → 높낮이 선)."""
+    trs = []
+    for r in rows:
+        tds = []
+        for c in r:
+            ln = c.get("lines") or {}
+            st = ";".join(f"border-{side}:{'2px solid #1b1f27' if ln.get(k) else '0'}"
+                          for k, side in (("l", "left"), ("r", "right"), ("t", "top"), ("b", "bottom")))
+            for key, (y1, y2) in (("slash", (100, 0)), ("bslash", (0, 100))):  # '/' and '\\' as crisp vector lines
+                if ln.get(key):
+                    st += (";background:url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' "
+                           f"preserveAspectRatio='none'><line x1='0' y1='{y1}' x2='100' y2='{y2}' stroke='%231b1f27' stroke-width='2' "
+                           "vector-effect='non-scaling-stroke'/></svg>&quot;) no-repeat;background-size:100% 100%")
+            txt = html.escape(re.sub(r"\s", "", "".join(ptext(p) for p in c["paras"])))
+            tds.append(f'<td style="{st}">{txt}</td>')
+        trs.append("<tr>" + "".join(tds) + "</tr>")
+    return f'<table class="pitch">{"".join(trs)}</table>'
+
+
 def table_html(rows):
     if is_frame(rows):
         lab = "".join(ptext(p) for p in rows[0][1]["paras"]).strip()
@@ -241,6 +261,10 @@ def table_html(rows):
         return f'<div class="bogi"><div class="bogi-h">{html.escape(lab)}</div>{cell_html(rows[-1][0]["paras"])}</div>'
     if is_plain_frame(rows):
         return f'<div class="bogi plain">{cell_html(rows[1][0]["paras"])}</div>'
+    cells_all = [c for r in rows for c in r]
+    if (len(rows) <= 2 and any(c.get("lines") for c in cells_all)
+            and all(re.fullmatch(r"[가-힣\u1100-\u11ff]{1,3}", re.sub(r"\s", "", "".join(ptext(p) for p in c["paras"]))) for c in cells_all)):
+        return pitch_html(rows)
     rows = clean_rows(rows)
     if len(rows) > 1 and len(rows[0]) == 1:  # '<보 기>' title row over the rest → a 보기 frame
         lab = re.sub(r"\s+", " ", "".join(ptext(p) for p in rows[0][0]["paras"])).strip()

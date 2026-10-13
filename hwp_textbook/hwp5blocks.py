@@ -40,10 +40,22 @@ class Doc:
                 "shade": (c.get("shade-color") or "#ffffff").lower(),
             })
         self.fills = [None]  # borderfill ids are 1-based
+        self.lines = [None]  # thick borders / diagonals drawn on purpose (e.g. pitch contours over syllables)
         for bf in di.iter("BorderFill"):
             fc = bf.find("FillColorPattern")
             col = fc.get("background-color") if fc is not None else None
             self.fills.append(col.lower() if col and col.lower() not in ("#ffffff", "none") else None)
+            sides = {}
+            for bd in bf.findall("Border"):
+                w = float((bd.get("width") or "0mm").replace("mm", "") or 0)
+                sides[bd.get("attribute-name")] = bd.get("stroke-type") not in (None, "none") and w >= 0.3
+            slash = bf.get("slash", "0") != "0" and sides.get("diagonal")
+            bslash = bf.get("backslash", "0") != "0" and sides.get("diagonal")
+            if any(sides.get(k) for k in ("left", "right", "top", "bottom")) or slash or bslash:
+                self.lines.append({"l": sides.get("left", False), "r": sides.get("right", False), "t": sides.get("top", False),
+                                   "b": sides.get("bottom", False), "slash": bool(slash), "bslash": bool(bslash)})
+            else:
+                self.lines.append(None)
         self.paras, self.heads = {}, {}
         for i, p in enumerate(di.iter("ParaShape")):
             self.paras[str(i)] = p.get("align") or "justify"
@@ -171,7 +183,8 @@ class Doc:
             row = []
             for td in tr.findall("TableCell"):
                 row.append({"paras": self.cell_paras(td), "cs": int(td.get("colspan", 1)), "rs": int(td.get("rowspan", 1)),
-                            "fill": self.fills[int(td.get("borderfill-id", 0))] if int(td.get("borderfill-id", 0)) < len(self.fills) else None})
+                            "fill": self.fills[int(td.get("borderfill-id", 0))] if int(td.get("borderfill-id", 0)) < len(self.fills) else None,
+                            "lines": self.lines[int(td.get("borderfill-id", 0))] if int(td.get("borderfill-id", 0)) < len(self.lines) else None})
             rows.append(row)
         return rows
 
