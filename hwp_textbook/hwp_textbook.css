@@ -166,3 +166,9 @@
 .hon th,.hon2 th{padding:1.1mm 2mm}
 .hon td,.hon2 td{font-size:8.6pt;padding:.9mm 1.4mm}
 .hon td:first-child,.hon2 td:first-child{font-size:8.4pt}
+.hp.orig.lec{line-height:2.4;margin:0 0 23.5mm}
+.spirit td:nth-child(2){font-family:"NSerif","Noto Serif CJK KR",serif}
+.hon td,.hon2 td{font-size:8.3pt;padding:.55mm 1.3mm;line-height:1.42}
+.hon th,.hon2 th{padding:.8mm 1.6mm;font-size:8.4pt}
+.addbox:has(.hon){padding-top:2mm}
+.addbox:has(.hon) .add-h,.addbox:has(.hon2) .add-h{margin-bottom:1.2mm}

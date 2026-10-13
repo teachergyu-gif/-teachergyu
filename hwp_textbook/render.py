@@ -117,7 +117,7 @@ def kind(text, num=None):
 
 def para_html(p, extra=""):
     if p.get("orig"):
-        extra += " orig"
+        extra += " orig" + (" lec" if p.get("orig") == "lec" else "")
     text = ptext(p)
     k = kind(text, p.get("num"))
     runs = strip_lead(p["runs"])
@@ -409,6 +409,15 @@ def tidy_diph(out):
 CHOICE_HEAD_RE = re.compile(r'<p class="hp p pre">((?:[^<]|</?u>){1,160})</p>((?:<p class="hp hch[^"]*">(?:[^<]|</?u>)*</p>)+)')
 CHOICE_ROW_RE = re.compile(r'<p class="hp hch[^"]*">((?:[^<]|</?u>)*)</p>')
 LABEL_RE = re.compile(r'[㉠-㉭ⓐ-ⓩ]|\([A-Z가-하]\)')
+SPIRIT_BOX = (
+    '<div class="addbox"><div class="add-h">세종어제 훈민정음 서문에 나타난 창제 정신</div>'
+    '<table class="htb addtb hon2 spirit"><colgroup><col style="width:15%"><col style="width:45%"><col style="width:40%"></colgroup>'
+    '<thead><tr><th>정신</th><th>근거가 되는 구절</th><th>의미</th></tr></thead><tbody>'
+    '<tr><td>자주 정신</td><td>나랏 말ᄊᆞ미 中國에 달아 文字와로 서르 ᄉᆞᄆᆞᆺ디 아니ᄒᆞᆯᄊᆡ</td><td>우리말이 중국말과 다르다는 인식 → 우리말에 맞는 우리 글자가 필요함.</td></tr>'
+    '<tr><td>애민 정신</td><td>어린 百姓이 니르고져 호ᇙ 배 이셔도 ᄆᆞᄎᆞᆷ내 제 ᄠᅳ들 시러 펴디 몯ᄒᆞᇙ 노미 하니라 내 이ᄅᆞᆯ 爲ᄒᆞ야 어엿비 너겨</td><td>뜻을 펴지 못하는 백성을 불쌍히 여기는 마음</td></tr>'
+    '<tr><td>창제 정신<br><span class="tr">(창조 정신)</span></td><td>새로 스믈여듧 字ᄅᆞᆯ ᄆᆡᇰᄀᆞ노니</td><td>다른 문자를 빌리지 않고 새로운 글자 28자를 만듦.</td></tr>'
+    '<tr><td>실용 정신</td><td>사ᄅᆞᆷ마다 ᄒᆡᅇᅧ 수ᄫᅵ 니겨 날로 ᄡᅮ메 便安킈 ᄒᆞ고져 ᄒᆞᇙ ᄯᆞᄅᆞ미니라</td><td>누구나 쉽게 익혀 날마다 편하게 쓰도록 함.</td></tr>'
+    '</tbody></table></div>')
 MEANING_TYPES = (
     '<div class="addbox"><div class="add-h">의미 변동의 세 가지 유형</div>'
     '<div class="mtype"><span class="mt-k">의미 확대</span><span>중세 국어 시절에 쓰이던 의미의 범위보다 현대로 오며 그 의미가 <b>확대</b>된 경우</span></div>'
@@ -587,6 +596,11 @@ def tidy_more(out):
     out = re.sub(r'<u>\s*(<span class="blank">[^<]*</span>)\s*(\.?)\s*(<br>)?\s*</u>', r'\1\2\3', out)
     # bullet + example rows: neighbouring single-spaced rows join the same two-column layout
     out = join_exrows(out)
+    # 복습용 분석: the four founding spirits close the section
+    k = out.find('세종어제 훈민정음 분석(복습용)</h2>')
+    if k > 0:
+        e = out.find('</div></section>', k)
+        out = out[:e] + '<div class="hu u-t">' + SPIRIT_BOX + '</div>' + out[e:]
     # 어휘 의미 변동: the three types are defined before the table
     out = out.replace('중세 국어 어휘 의미 변동</h2></div><div class="hs-units">',
                       '중세 국어 어휘 의미 변동</h2></div><div class="hs-units"><div class="hu u-t">' + MEANING_TYPES + '</div>', 1)
@@ -603,32 +617,50 @@ def tidy_more(out):
 
 # Inserted right after the source paragraph that starts with the key.
 ADDITIONS = {
+    "• 관형사형의 수식을 받는 명사가": [
+        '<div class="addbox"><div class="add-h">더 알고 있으면 좋을 중세 문법 지식</div>'
+        '<p class="hp li1">• <b>(1) 차자 표기 : 한자의 음(音)과 뜻(訓)을 빌려 우리말을 적던 방법</b> (훈민정음 창제 이전)</p>'
+        '<table class="htb addtb hon2"><colgroup><col style="width:14%"><col style="width:50%"><col style="width:36%"></colgroup>'
+        '<thead><tr><th>종류</th><th>방법</th><th>예</th></tr></thead><tbody>'
+        '<tr><td>향찰</td><td>우리말 문장 전체를 한자로 적음. 실질 형태소는 뜻(訓)으로, 형식 형태소는 음(音)으로 적는 경향(훈주음종)</td><td>향가 표기</td></tr>'
+        '<tr><td>이두</td><td>한문을 <b>우리말 어순</b>으로 바꾸고 조사 · 어미를 차자로 덧붙여 적음. 주로 관청의 공문서에 쓰임.</td><td>爲去乙[ᄒᆞ거늘], 爲彌[ᄒᆞ며]</td></tr>'
+        '<tr><td>구결</td><td>한문 원문은 <b>그대로 두고</b> 구절 끝에 토(조사 · 어미)를 달아 읽기 쉽게 함. 한자의 일부를 딴 약자도 씀.</td><td>天地之間 萬物之中<u>厓</u> 唯人<u>伊</u> 最貴<u>爲尼</u></td></tr>'
+        '</tbody></table>'
+        '<p class="hp note">※ 이두와 구결의 차이 : 이두는 어순까지 우리말로 바꾸지만, 구결은 한문 어순을 그대로 두고 토만 붙임.</p>'
+        '<p class="hp li1">• <b>(2) 이영보래(以影補來) : ‘影(ㆆ)으로 來(ㄹ)를 보충한다’</b></p>'
+        '<p class="hp li2">‧ 우리 한자음에서 ‘ㄹ’로 끝나는 한자(본래 중국음은 입성 ‘ㄷ’)의 받침에 ‘ㆆ’을 덧붙여 ‘ㅭ’으로 적은 동국정운식 한자음 표기 규정 '
+        '→ 입성(빨리 닫는 소리)임을 나타내기 위함.</p>'
+        '<p class="hp ex"><span class="circ">예</span> 不[<b>붏</b>], 佛[<b>뿛</b>], 彆[<b>볋</b>], 戌[<b>슗</b>]</p>'
+        '</div>'],
     "예 아자비 쇼ᄅᆞᆯ 소아 주기": [
         '<div class="addbox"><div class="add-h">상대 높임의 종결 어미 체계</div>'
-        '<table class="htb addtb hon"><colgroup><col style="width:23%"><col style="width:19%"><col style="width:24%"><col style="width:17%"><col style="width:17%"></colgroup>'
+        '<table class="htb addtb hon"><colgroup><col style="width:19%"><col style="width:19%"><col style="width:27%"><col style="width:19%"><col style="width:16%"></colgroup>'
         '<thead><tr><th>등급</th><th>평서형</th><th>의문형</th><th>명령형</th><th>청유형</th></tr></thead><tbody>'
-        '<tr><td>하쇼셔체 <span class="tr">(아주 높임)</span></td><td><b>-ᅌᅵ다</b> <span class="tr">주기ᅌᅵ다</span></td>'
-        '<td><b>-ᅌᅵᆺ가 / -ᅌᅵᆺ고</b><br><span class="tr">미드니ᅌᅵᆺ가, 오시니ᅌᅵᆺ고</span></td>'
-        '<td><b>-쇼셔</b> <span class="tr">아ᄅᆞ쇼셔</span></td><td><b>-사ᅌᅵ다</b> <span class="tr">ᄒᆞ사ᅌᅵ다</span></td></tr>'
-        '<tr><td>하야쎠체 <span class="tr">(예사 높임)</span></td><td>–</td><td>–</td>'
-        '<td><b>-야쎠</b> <span class="tr">ᄒᆞ야쎠</span></td><td>–</td></tr>'
+        '<tr><td>하쇼셔체 <span class="tr">(아주 높임)</span></td><td><b>-ᅌᅵ다</b> <span class="tr">호리ᅌᅵ다</span></td>'
+        '<td><b>-니ᅌᅵᆺ가 / -니ᅌᅵᆺ고</b><br><span class="tr">ᄒᆞᄂᆞ니ᅌᅵᆺ가, 오시니ᅌᅵᆺ고</span></td>'
+        '<td><b>-쇼셔</b> <span class="tr">아ᄅᆞ쇼셔</span></td><td><b>-사ᅌᅵ다</b></td></tr>'
+        '<tr><td>하야쎠체 <span class="tr">(예사 높임)</span></td><td><b>-ㆁ다</b> <span class="tr">ᄒᆞ댕다</span></td>'
+        '<td><b>-닛가</b> <span class="tr">잇ᄂᆞ닛가</span></td><td><b>-아쎠 / -야쎠</b><br><span class="tr">ᄉᆞᆯᄫᅡ쎠</span></td><td>–</td></tr>'
+        '<tr><td>반말체 <span class="tr">(하라~하야쎠 사이)</span></td><td><b>-니 / -리</b> <span class="tr">가ᄂᆞ니</span></td>'
+        '<td><b>-니 / -리</b> <span class="tr">ᄡᅳ시리</span></td><td><b>-고라</b> <span class="tr">ᄒᆞ고라</span></td><td>–</td></tr>'
         '<tr><td>하라체 <span class="tr">(아주 낮춤)</span></td><td><b>-다 / -라</b> <span class="tr">주그니라</span></td>'
-        '<td><b>-녀 / -뇨, -ㄴ다</b><br><span class="tr">잇ᄂᆞ니여, 잇ᄂᆞ뇨</span></td>'
-        '<td><b>-라</b> <span class="tr">ᄒᆞ라</span></td><td><b>-져</b> <span class="tr">ᄒᆞ져</span></td></tr>'
+        '<td><b>-녀 / -뇨, -ㄴ다</b><br><span class="tr">잇ᄂᆞ니여, 잇ᄂᆞ뇨, 가던다</span></td>'
+        '<td><b>-라</b> <span class="tr">ᄡᅳ라</span></td><td><b>-져</b></td></tr>'
         '</tbody></table>'
         '<div class="add-sub">상대 높임 선어말 어미 : 의문문이면 ‘-잇-’, 그 밖에는 ‘-이-’</div>'
         '<table class="htb addtb hon2"><colgroup><col style="width:17%"><col style="width:21%"><col style="width:62%"></colgroup>'
         '<thead><tr><th>문장 유형</th><th>선어말 어미</th><th>예</th></tr></thead><tbody>'
-        '<tr><td>평서문</td><td><b>-이- (-ᅌᅵ-)</b></td><td>아자비 쇼ᄅᆞᆯ 소아 주기<u>ᅌᅵ</u>다[아저씨가 소를 쏘아 죽였습니다.]</td></tr>'
-        '<tr><td>의문문</td><td><b>-잇- (-ᅌᅵᆺ-)</b></td><td>하나빌 미드니<u>ᅌᅵᆺ</u>가[할아버지를 믿었습니까?], 므스므라 오시니<u>ᅌᅵᆺ</u>고[무슨 까닭으로 오셨습니까?]</td></tr>'
+        '<tr><td>평서문</td><td><b>-이- (-ᅌᅵ-)</b></td><td>니ᄅᆞ샨 야ᇰᄋᆞ로 호리<u>ᅌᅵ</u>다[말씀하신 대로 하겠습니다]</td></tr>'
+        '<tr><td>의문문</td><td><b>-잇- (-ᅌᅵᆺ-)</b></td><td>世尊이 ᄀᆞᆺ봄 내시게 아니 ᄒᆞᄂᆞ니<u>ᅌᅵᆺ</u>가[합니까?], 므스므라 오시니<u>ᅌᅵᆺ</u>고[오셨습니까?]</td></tr>'
         '</tbody></table></div>',
         '<div class="addbox"><div class="add-h">어휘적 높임 : 조사와 특수 어휘를 통한 높임</div>'
         '<table class="htb addtb hon2"><colgroup><col style="width:16%"><col style="width:38%"><col style="width:46%"></colgroup>'
         '<thead><tr><th>구분</th><th>내용</th><th>예</th></tr></thead><tbody>'
-        '<tr><td>주격 조사</td><td>높임의 주격 조사가 따로 없었음.</td><td>현대의 ‘께서’는 근대 국어 이후 등장</td></tr>'
-        '<tr><td>부사격 조사</td><td>높임의 대상에는 ‘ᄭᅴ’(＜ㅅ＋긔, 현대의 ‘께’)</td><td>내 아래브터 부텻<u>긔</u> 이런 마ᄅᆞᆯ 몯 듣ᄌᆞᄫᅩ며</td></tr>'
+        '<tr><td>주격 조사</td><td>주체 높임의 주격 조사(현대의 ‘께서’)는 쓰이지 않음.</td><td>주체 높임은 ‘-시- / -샤-’로만 실현</td></tr>'
+        '<tr><td>부사격 조사</td><td>높임의 대상에는 ‘ᄭᅴ(ㅅ긔), ㅅ그에’(현대의 ‘께’)</td><td>王<u>ᄭᅴ</u> 그 ᄭᅮ믈 ᄉᆞᆯᄫᅡ시ᄂᆞᆯ[왕께 그 꿈을 아뢰시니]</td></tr>'
         '<tr><td>관형격 · 호격</td><td>관형격 ‘ㅅ’(높임의 유정 명사), 호격 ‘하’</td><td>大王<u>ㅅ</u> 말ᄊᆞᆷ, 님금<u>하</u> 아ᄅᆞ쇼셔</td></tr>'
-        '<tr><td>특수 어휘</td><td>높임의 뜻을 가진 단어 자체를 씀.</td><td>겨시다, 좌시다, 뫼시다, 엳ᄌᆞᆸ다, 진지</td></tr>'
+        '<tr><td>특수 어휘<br><span class="tr">(주체 높임)</span></td><td>좌시다[잡수시다], 겨시다[계시다]</td><td>비론 바ᄇᆞᆯ 엇뎨 <u>좌시ᄂᆞᆫ가</u>, 舍衛國에 <u>겨실</u> 쩌긔</td></tr>'
+        '<tr><td>특수 어휘<br><span class="tr">(객체 높임)</span></td><td>ᄉᆞᆲ다[아뢰다], 뫼시다 · 뫼ᅀᆞᆸ다[모시다], 뵈다, 엳ᄌᆞᆸ다[여쭙다], 마ᄍᆞᄫᅵ[마중]</td><td>夫人ᄭᅴ <u>뫼셔</u> 오니, 王ᄭᅴ 가아 말ᄆᆡ <u>엳ᄌᆞᆸ고</u></td></tr>'
         '</tbody></table></div>'],
     "예 네 겨집 그려 가던다": (
         '<div class="addbox"><div class="add-h">의문 보조사 : 체언 뒤에 바로 붙어 의문문을 만듦</div>'
@@ -768,7 +800,7 @@ def section_html(sec, idx):
     if "분석" in sec["title"]:
         for b in sec["blocks"]:
             if b["t"] == "para" and kind(ptext(b), b.get("num")) == "p" and re.search("[\u1100-\u11ff\u4e00-\u9fff]", ptext(b)):
-                b["orig"] = True
+                b["orig"] = "lec" if "강의용" in sec["title"] else True
     us = "".join(f'<div class="hu {u["cls"]}">{"".join(u["html"])}</div>' for u in units(sec))
     return (f'<section class="hsec hk-{k}" data-kind="{k}"><div class="hs-head">{mark(f"S{idx}")}'
             f'<span class="p-idx">{idx:02d}</span><h2 class="hs-title">{html.escape(sec["title"])}</h2></div>'
