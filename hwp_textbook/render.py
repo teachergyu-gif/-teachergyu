@@ -951,9 +951,29 @@ def cover(kicker, t1, t2, secs):
     <h1 class="bc-title">{html.escape(t1)}<br><em>{html.escape(t2)}</em></h1>
     <div class="bc-en">MIDDLE KOREAN GRAMMAR</div>
     <div class="bc-parts">{parts}</div>
-    <img class="bc-logo" src="file://{ROOT}/brand/logo_beige.png" alt="RICH ACADEMY">
+    <img class="bc-logo" src="file://{ROOT}/brand/logo_navy.png" alt="RICH ACADEMY">
   </div>
 </section>"""
+
+
+def running_heads(t1):
+    """Book-style running heads in the page margins (reference: 학원 내신 교재):
+    even pages carry the academy, odd pages the school; page numbers sit on the outer edge."""
+    school = re.sub(r"\s*\d학년$", "", t1).strip()
+    label = f"{school} 내신대비".replace('"', "")
+    logo = f"file://{ROOT}/brand/logo_navy.png"
+    box = 'font-family:Pretendard,"Noto Sans CJK KR",sans-serif;font-size:7.4pt;color:#8a8f9b;letter-spacing:.04em'
+    return f"""
+@page :left {{
+  @top-right {{ content:""; background:url("{logo}") no-repeat right 9mm / auto 7.2mm; width:40mm; }}
+  @bottom-left {{ content:counter(page) "\\00a0\\00a0\\00a0RICH ACADEMY"; {box}; vertical-align:top; padding-top:5mm; }}
+}}
+@page :right {{
+  @top-right {{ content:"{label}"; {box}; color:#29334A; font-weight:600; vertical-align:bottom; padding-bottom:5mm; }}
+  @bottom-right {{ content:"{label}\\00a0\\00a0·\\00a0\\00a0" counter(page); {box}; vertical-align:top; padding-top:5mm; }}
+}}
+@page :first {{ margin:0; @top-right {{ content:none; background:none; }} @bottom-right {{ content:none; }} @bottom-left {{ content:none; }} }}
+"""
 
 
 KIND_LABEL = {"theory": "이론", "quiz": "문제", "expl": "해설"}
@@ -1007,6 +1027,7 @@ def build(blocks_path, kicker, t1, t2, title, pages):
                   ["literature-summary/render/style.css", "combined/extra.css", "textbook/textbook.css", "hwp_textbook/hwp_textbook.css", "brand/brand.css"])
     font_dir = os.environ.get("FONT_DIR", ROOT + "/node_modules")
     css = css.replace("FONTDIR", "file://" + font_dir)
+    css += running_heads(t1)
     out = f"""<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>{html.escape(title)}</title>
 <link rel="stylesheet" href="file://{font_dir}/@fontsource/do-hyeon/index.css">
 <style>{css}</style></head><body>{body}</body></html>"""

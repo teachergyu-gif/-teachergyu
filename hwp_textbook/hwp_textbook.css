@@ -225,3 +225,24 @@ table.pitch td{width:12mm;height:9mm;text-align:center;vertical-align:middle;fon
 .bc-pname{font-size:12.5pt;font-weight:700;color:#fff}
 .bc-pdesc{font-size:8.2pt;color:rgba(255,255,255,.62);margin-top:1mm}
 .bc-logo{position:absolute;right:16mm;bottom:18mm;width:30mm}
+/* cover: all-white background (brand: navy titles and logo on white) */
+.bc-right{background:#fff;color:#29334A}
+.bc-line{background:#29334A;opacity:.35}
+.bc-title{color:#29334A}
+.bc-title em{color:#BDA895}
+.bc-kicker{color:#a08b77}
+.bc-en{color:#8a8f9b;border-top-color:#BDA895}
+.bc-part{border-top-color:rgba(41,51,74,.18)}
+.bc-part:last-child{border-bottom-color:rgba(41,51,74,.18)}
+.bc-pno{color:#a08b77}
+.bc-pname{color:#29334A}
+.bc-pdesc{color:#6b7180}
+.bc-left{width:0}
+.bc-left::after{display:none}
+.bc-line{left:14mm;right:16mm}
+.bc-kicker,.bc-title,.bc-en,.bc-parts{left:14mm}
+.bc-parts{right:16mm}
+.bc-kicker{top:80mm}.bc-title{top:92mm;font-size:44pt}.bc-title em{font-size:50pt}
+.bc-en{top:162mm}.bc-parts{top:190mm}
+.bc-left{z-index:2}.bc-right{z-index:1}
+.bc-label span{white-space:nowrap}

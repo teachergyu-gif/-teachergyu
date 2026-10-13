@@ -124,8 +124,8 @@ const path = require('path');
   const foot = `<div style="width:100%;font-size:7pt;color:#8a8f9b;padding:0 15mm;display:flex;justify-content:space-between;font-family:Pretendard,sans-serif">
     <span>${title}</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>`;
   await page.pdf({ path: out, format: 'A4', printBackground: true, preferCSSPageSize: true,
-    displayHeaderFooter: true, headerTemplate: '<div></div>', footerTemplate: foot });
-  if (await page.$('.bookcover')) {  // the book cover carries no running footer: reprint page 1 without it
+    displayHeaderFooter: false });  // running heads come from CSS @page margin boxes
+  if (false && await page.$('.bookcover')) {  // (old footer template needed a reprinted cover)
     const fs = require('fs'), os = require('os'), path = require('path'), { execSync } = require('child_process');
     const d = fs.mkdtempSync(path.join(os.tmpdir(), 'cov-'));
     await page.pdf({ path: d + '/cover.pdf', format: 'A4', printBackground: true, preferCSSPageSize: true, displayHeaderFooter: false, pageRanges: '1' });
