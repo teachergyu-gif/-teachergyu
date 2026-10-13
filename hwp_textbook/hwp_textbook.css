@@ -265,3 +265,5 @@ table.pitch td{width:12mm;height:9mm;text-align:center;vertical-align:middle;fon
 .bookcover.aak{background-color:#fff}
 .aak-lines,.aak-tag{font-family:"Nanum Myeongjo",serif;font-weight:800;color:#29334A}
 .aak-l1,.aak-l2{font-weight:800}
+
+.aak-lines,.aak-tag{font-family:"나눔스퀘어",sans-serif;font-weight:800}

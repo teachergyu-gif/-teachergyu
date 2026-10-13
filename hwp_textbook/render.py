@@ -1017,7 +1017,7 @@ def build(blocks_path, kicker, t1, t2, title, pages):
     css += running_heads(t1)
     out = f"""<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>{html.escape(title)}</title>
 <link rel="stylesheet" href="file://{font_dir}/@fontsource/do-hyeon/index.css">
-<link rel="stylesheet" href="file://{font_dir}/@fontsource/nanum-myeongjo/800.css">
+<link rel="stylesheet" href="file://{font_dir}/@kfonts/nanum-square/index.css">
 <style>{css}</style></head><body>{body}</body></html>"""
     out = tidy_more(tidy_diph(out))
     if os.environ.get("NEUTRAL"):  # school-neutral edition: no school name, its exam sets become 내신 대표 기출
