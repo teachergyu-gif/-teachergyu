@@ -933,20 +933,28 @@ def section_html(sec, idx):
 
 
 def cover(kicker, t1, t2, secs):
+    neutral = bool(os.environ.get("NEUTRAL"))
     groups = [("중세 국어 기본 이론", "음운 · 표기 · 체언과 조사 · 어휘 · 문법 요소"),
               ("자료 분석", "세종어제 훈민정음 · 용비어천가 · 소학언해"),
-              ("문제 풀이", "부산외고 기출 · 대표 문제 · 교육청·사관학교 기출 · 해설")]
-    cards = "".join(f'<div class="part-card"><div class="part-no">PART {i}</div><div class="part-name">{n}</div><div class="part-desc">{d}</div></div>'
+              ("문제 풀이", ("내신 대표 기출" if neutral else "부산외고 기출") + " · 대표 문제 · 교육청·사관학교 기출 · 해설")]
+    parts = "".join(f'<div class="bc-part"><span class="bc-pno">PART {i}</span><span class="bc-pname">{n}</span><span class="bc-pdesc">{d}</span></div>'
                     for i, (n, d) in enumerate(groups, 1))
+    motif = "".join(f"<span>{c}</span>" for c in "訓民正音")
     return f"""
-<section class="cover">
-  <div class="cover-top"><div class="cover-school">RICH ACADEMY</div><div class="cover-rule"></div><div class="cover-author"><b>이재규T</b></div></div>
-  <div class="cover-main">
-    <img class="cover-logo" src="file://{ROOT}/brand/logo_beige.png" alt="RICH ACADEMY">
-    <div class="cover-kicker">{html.escape(kicker)}</div>
-    <h1 class="cover-title">{html.escape(t1)}<br><em>{html.escape(t2)}</em></h1>
+<section class="bookcover">
+  <div class="bc-left">
+    <div class="bc-label"><i></i><span>RICH ACADEMY</span></div>
+    <div class="bc-motif">{motif}</div>
+    <div class="bc-author"><span class="bc-cap">AUTHOR</span><b>이재규T</b></div>
   </div>
-  <div class="parts parts3">{cards}</div>
+  <div class="bc-right">
+    <div class="bc-line"></div>
+    <div class="bc-kicker">{html.escape(kicker)}</div>
+    <h1 class="bc-title">{html.escape(t1)}<br><em>{html.escape(t2)}</em></h1>
+    <div class="bc-en">MIDDLE KOREAN GRAMMAR</div>
+    <div class="bc-parts">{parts}</div>
+    <img class="bc-logo" src="file://{ROOT}/brand/logo_beige.png" alt="RICH ACADEMY">
+  </div>
 </section>"""
 
 

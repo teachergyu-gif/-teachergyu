@@ -125,6 +125,15 @@ const path = require('path');
     <span>${title}</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>`;
   await page.pdf({ path: out, format: 'A4', printBackground: true, preferCSSPageSize: true,
     displayHeaderFooter: true, headerTemplate: '<div></div>', footerTemplate: foot });
+  if (await page.$('.bookcover')) {  // the book cover carries no running footer: reprint page 1 without it
+    const fs = require('fs'), os = require('os'), path = require('path'), { execSync } = require('child_process');
+    const d = fs.mkdtempSync(path.join(os.tmpdir(), 'cov-'));
+    await page.pdf({ path: d + '/cover.pdf', format: 'A4', printBackground: true, preferCSSPageSize: true, displayHeaderFooter: false, pageRanges: '1' });
+    execSync(`pdfseparate -f 2 "${out}" "${d}/p-%04d.pdf"`);
+    const rest = fs.readdirSync(d).filter(f => f.startsWith('p-')).sort().map(f => `"${d}/${f}"`).join(' ');
+    execSync(`pdfunite "${d}/cover.pdf" ${rest} "${out}"`);
+    fs.rmSync(d, { recursive: true, force: true });
+  }
   await browser.close();
   console.log('wrote', out);
 })();
