@@ -618,9 +618,9 @@ def tidy_more(out):
 # Inserted right after the source paragraph that starts with the key.
 ADDITIONS = {
     "• 관형사형의 수식을 받는 명사가": [
-        '<div class="addbox"><div class="add-h">더 알고 있으면 좋을 중세 문법 지식</div>'
+        '<div class="addbox roomy"><div class="add-h">더 알고 있으면 좋을 중세 문법 지식</div>'
         '<p class="hp li1">• <b>(1) 차자 표기 : 한자의 음(音)과 뜻(訓)을 빌려 우리말을 적던 방법</b> (훈민정음 창제 이전)</p>'
-        '<table class="htb addtb hon2"><colgroup><col style="width:14%"><col style="width:50%"><col style="width:36%"></colgroup>'
+        '<table class="htb addtb kntb"><colgroup><col style="width:13%"><col style="width:52%"><col style="width:35%"></colgroup>'
         '<thead><tr><th>종류</th><th>방법</th><th>예</th></tr></thead><tbody>'
         '<tr><td>향찰</td><td>우리말 문장 전체를 한자로 적음. 실질 형태소는 뜻(訓)으로, 형식 형태소는 음(音)으로 적는 경향(훈주음종)</td><td>향가 표기</td></tr>'
         '<tr><td>이두</td><td>한문을 <b>우리말 어순</b>으로 바꾸고 조사 · 어미를 차자로 덧붙여 적음. 주로 관청의 공문서에 쓰임.</td><td>爲去乙[ᄒᆞ거늘], 爲彌[ᄒᆞ며]</td></tr>'
@@ -653,14 +653,14 @@ ADDITIONS = {
         '<tr><td>평서문</td><td><b>-이- (-ᅌᅵ-)</b></td><td>니ᄅᆞ샨 야ᇰᄋᆞ로 호리<u>ᅌᅵ</u>다[말씀하신 대로 하겠습니다]</td></tr>'
         '<tr><td>의문문</td><td><b>-잇- (-ᅌᅵᆺ-)</b></td><td>世尊이 ᄀᆞᆺ봄 내시게 아니 ᄒᆞᄂᆞ니<u>ᅌᅵᆺ</u>가[합니까?], 므스므라 오시니<u>ᅌᅵᆺ</u>고[오셨습니까?]</td></tr>'
         '</tbody></table></div>',
-        '<div class="addbox"><div class="add-h">어휘적 높임 : 조사와 특수 어휘를 통한 높임</div>'
-        '<table class="htb addtb hon2"><colgroup><col style="width:16%"><col style="width:38%"><col style="width:46%"></colgroup>'
-        '<thead><tr><th>구분</th><th>내용</th><th>예</th></tr></thead><tbody>'
-        '<tr><td>주격 조사</td><td>주체 높임의 주격 조사(현대의 ‘께서’)는 쓰이지 않음.</td><td>주체 높임은 ‘-시- / -샤-’로만 실현</td></tr>'
+        '<div class="addbox"><div class="add-h">조사와 특수 어휘를 통한 높임</div>'
+        '<table class="htb addtb hon2 hon3"><colgroup><col style="width:13%"><col style="width:13%"><col style="width:34%"><col style="width:40%"></colgroup>'
+        '<thead><tr><th>유형</th><th>구분</th><th>내용</th><th>예</th></tr></thead><tbody>'
+        '<tr><td rowspan="3" class="grp">문법적 높임<br><span class="tr">(조사)</span></td><td>주격 조사</td><td>주체 높임의 주격 조사(현대의 ‘께서’)는 쓰이지 않음.</td><td>주체 높임은 ‘-시- / -샤-’로만 실현</td></tr>'
         '<tr><td>부사격 조사</td><td>높임의 대상에는 ‘ᄭᅴ(ㅅ긔), ㅅ그에’(현대의 ‘께’)</td><td>王<u>ᄭᅴ</u> 그 ᄭᅮ믈 ᄉᆞᆯᄫᅡ시ᄂᆞᆯ[왕께 그 꿈을 아뢰시니]</td></tr>'
         '<tr><td>관형격 · 호격</td><td>관형격 ‘ㅅ’(높임의 유정 명사), 호격 ‘하’</td><td>大王<u>ㅅ</u> 말ᄊᆞᆷ, 님금<u>하</u> 아ᄅᆞ쇼셔</td></tr>'
-        '<tr><td>특수 어휘<br><span class="tr">(주체 높임)</span></td><td>좌시다[잡수시다], 겨시다[계시다]</td><td>비론 바ᄇᆞᆯ 엇뎨 <u>좌시ᄂᆞᆫ가</u>, 舍衛國에 <u>겨실</u> 쩌긔</td></tr>'
-        '<tr><td>특수 어휘<br><span class="tr">(객체 높임)</span></td><td>ᄉᆞᆲ다[아뢰다], 뫼시다 · 뫼ᅀᆞᆸ다[모시다], 뵈다, 엳ᄌᆞᆸ다[여쭙다], 마ᄍᆞᄫᅵ[마중]</td><td>夫人ᄭᅴ <u>뫼셔</u> 오니, 王ᄭᅴ 가아 말ᄆᆡ <u>엳ᄌᆞᆸ고</u></td></tr>'
+        '<tr><td rowspan="2" class="grp">어휘적 높임<br><span class="tr">(특수 어휘)</span></td><td>주체 높임</td><td>좌시다[잡수시다], 겨시다[계시다]</td><td>비론 바ᄇᆞᆯ 엇뎨 <u>좌시ᄂᆞᆫ가</u>, 舍衛國에 <u>겨실</u> 쩌긔</td></tr>'
+        '<tr><td>객체 높임</td><td>ᄉᆞᆲ다[아뢰다], 뫼시다 · 뫼ᅀᆞᆸ다[모시다], 뵈다, 엳ᄌᆞᆸ다[여쭙다], 마ᄍᆞᄫᅵ[마중]</td><td>夫人ᄭᅴ <u>뫼셔</u> 오니, 王ᄭᅴ 가아 말ᄆᆡ <u>엳ᄌᆞᆸ고</u></td></tr>'
         '</tbody></table></div>'],
     "예 네 겨집 그려 가던다": (
         '<div class="addbox"><div class="add-h">의문 보조사 : 체언 뒤에 바로 붙어 의문문을 만듦</div>'

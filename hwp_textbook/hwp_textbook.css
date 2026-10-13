@@ -172,3 +172,18 @@
 .hon th,.hon2 th{padding:.8mm 1.6mm;font-size:8.4pt}
 .addbox:has(.hon){padding-top:2mm}
 .addbox:has(.hon) .add-h,.addbox:has(.hon2) .add-h{margin-bottom:1.2mm}
+.hon3 td:nth-child(2){background:var(--bg-soft);font-weight:700;color:var(--navy)}
+.hon3 tr td.grp+td{background:var(--bg-soft)}
+.hon3 td.grp{background:var(--gold-xl) !important;color:var(--navy);font-weight:800}
+.hon3 tr:not(:has(td.grp)) td:first-child{background:var(--bg-soft)}
+.hon3 tr:not(:has(td.grp)) td:nth-child(2){background:#fff;font-weight:400;color:inherit}
+.roomy{padding:3.4mm 4.4mm 2.4mm}
+.roomy .add-h{margin-bottom:3mm}
+.roomy > .hp.li1{margin:3.2mm 0 2mm;line-height:1.75}
+.roomy > .hp.li2{margin:1.6mm 0;line-height:1.85}
+.roomy > .hp.note{margin:2.6mm 0;padding-top:1.4mm;padding-bottom:1.4mm}
+.roomy > .hp.ex{margin:2.4mm 0 2.6mm}
+.kntb{margin:2mm 0 3mm !important}
+.kntb td{padding:2.4mm 3mm;line-height:1.75;font-size:9.2pt;vertical-align:middle}
+.kntb td:nth-child(2){text-align:left}
+.kntb th{padding:1.6mm 2mm}
