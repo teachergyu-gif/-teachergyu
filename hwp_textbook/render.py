@@ -356,6 +356,7 @@ def units(sec):
     blocks = sec["blocks"]
     i = 0
     explain_mode = False
+    ex_no = 0  # explanations after a 빠른 정답 table follow the question order
     while i < len(blocks):
         b = blocks[i]
         t = ptext(b) if b["t"] == "para" else ""
@@ -374,7 +375,8 @@ def units(sec):
                 cur = {"cls": "u-ex", "html": []}
                 out.append(cur)
                 if bare:
-                    cur["html"].append(f'<div class="hex-h"><span class="hex-n"></span>정답 {html.escape(t.strip())}</div>')
+                    ex_no += 1
+                    cur["html"].append(f'<div class="hex-h"><span class="hex-n">{ex_no}번</span>정답 {html.escape(t.strip())}</div>')
                     i += 1
                     continue
             cur["html"].append(block_html(b))

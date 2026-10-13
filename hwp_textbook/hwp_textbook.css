@@ -192,3 +192,4 @@
 .abrk::before{top:0}.abrk::after{bottom:0}
 .abrk-l{position:absolute;right:1.6mm;top:50%;transform:translateY(-50%);font-weight:700;color:var(--navy);font-size:9.4pt}
 .amark{font-weight:700;color:var(--navy);margin:1mm 0}
+.hex-n{display:inline-block;background:var(--navy);color:#fff;font-weight:700;border-radius:2px;padding:.2mm 2.2mm;margin-right:2.4mm;font-size:9pt}
