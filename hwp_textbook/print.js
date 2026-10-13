@@ -129,9 +129,7 @@ const path = require('path');
     const fs = require('fs'), os = require('os'), path = require('path'), { execSync } = require('child_process');
     const d = fs.mkdtempSync(path.join(os.tmpdir(), 'cov-'));
     await page.pdf({ path: d + '/cover.pdf', format: 'A4', printBackground: true, preferCSSPageSize: true, displayHeaderFooter: false, pageRanges: '1' });
-    execSync(`pdfseparate -f 2 "${out}" "${d}/p-%04d.pdf"`);
-    const rest = fs.readdirSync(d).filter(f => f.startsWith('p-')).sort().map(f => `"${d}/${f}"`).join(' ');
-    execSync(`pdfunite "${d}/cover.pdf" ${rest} "${out}"`);
+    execSync(`python3 "${__dirname}/merge_cover.py" "${out}" "${d}/cover.pdf"`);
     fs.rmSync(d, { recursive: true, force: true });
   }
   await browser.close();
