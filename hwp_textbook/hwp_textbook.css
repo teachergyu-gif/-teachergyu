@@ -195,3 +195,5 @@
 .hex-n{display:inline-block;background:var(--navy);color:#fff;font-weight:700;border-radius:2px;padding:.2mm 2.2mm;margin-right:2.4mm;font-size:9pt}
 table.pitch{border-collapse:collapse;margin:1.2mm 0;font-family:"NSerif","Noto Serif CJK KR",serif}
 table.pitch td{width:12mm;height:9mm;text-align:center;vertical-align:middle;font-size:11pt;padding:0}
+.u-ex .hp.hch{margin:1.3mm 0 1.3mm 3mm}
+.u-ex .hp.lab{margin-top:2.4mm}
