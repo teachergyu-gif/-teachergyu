@@ -33,7 +33,7 @@ const path = require('path');
       while (queue.length) {
         const u = queue.shift();
         if (u.classList.contains('pb') && body.lastElementChild &&
-            body.lastElementChild.offsetTop + body.lastElementChild.offsetHeight > mm(90)) body = newPage(false);  // forced page break, unless the page is still mostly empty
+            (u.classList.contains('u-key') || body.lastElementChild.offsetTop + body.lastElementChild.offsetHeight > mm(90))) body = newPage(false);  // forced page break, unless the page is still mostly empty
         body.appendChild(u);
         if (over() && u.classList.contains('split') && u.children.length > 1) {
           // long explanations may continue on the next page, but only between their own paragraphs

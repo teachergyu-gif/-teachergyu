@@ -659,6 +659,9 @@ def tidy_more(out):
     out = tidy_pre(out)
     out = re.sub(r'(<p class="hp [^"]*">(?:(?!</p>).)*</p>)<div class="amark">(\[[^\]]+\])</div>',
                  r'<div class="abrk">\1<span class="abrk-l">\2</span></div>', out)
+    out = out.replace('<p class="hp p">[272～273] ', '<p class="hp p">')  # stray workbook numbering
+    # every 빠른 정답 table starts a new page; its explanations follow right after
+    out = out.replace('<div class="hu u-key">', '<div class="hu u-key pb">')
     # a blank is already a line; drop the underline the original drew around it
     out = re.sub(r'<u>\s*(<span class="blank">[^<]*</span>)\s*(\.?)\s*(<br>)?\s*</u>', r'\1\2\3', out)
     # bullet + example rows: neighbouring single-spaced rows join the same two-column layout
