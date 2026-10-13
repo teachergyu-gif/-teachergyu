@@ -371,7 +371,7 @@ def units(sec):
             bare = b["t"] == "para" and re.fullmatch(r"\s*[①②③④⑤]\s*", t or "")
             ktab = b["t"] == "table" and b["rows"] and "".join(ptext(p) for p in b["rows"][0][0]["paras"]).strip() == "문항 번호"
             if bare or ktab or cur is None or cur.get("cls") == "u-key" and b["t"] != "table":
-                cur = {"cls": "u-ex split", "html": []}
+                cur = {"cls": "u-ex", "html": []}
                 out.append(cur)
                 if bare:
                     cur["html"].append(f'<div class="hex-h"><span class="hex-n"></span>정답 {html.escape(t.strip())}</div>')

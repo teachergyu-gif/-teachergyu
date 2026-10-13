@@ -55,10 +55,11 @@ const path = require('path');
             body.removeChild(prev); leads.unshift(prev); cur = prev;
           }
           body = newPage(false); leads.forEach(l => body.appendChild(l)); body.appendChild(u);
-          if (over() && u.classList.contains('split') && u.children.length > 1) {
+          // an explanation stays whole; only one taller than a full page continues between its paragraphs
+          if (over() && (u.classList.contains('split') || u.classList.contains('u-ex')) && u.children.length > 1) {
             const rest = u.cloneNode(false); rest.classList.add('cont');
             while (over() && u.children.length > 1) rest.insertBefore(u.lastElementChild, rest.firstChild);
-            if (rest.children.length) queue.unshift(rest);
+            if (rest.children.length) { queue.unshift(rest); if (u.classList.contains('u-ex')) res.shrunk.push([title, 'split-ex']); }
           }
         }
         if (over()) {  // a single unit taller than a page: scale it down to fit
