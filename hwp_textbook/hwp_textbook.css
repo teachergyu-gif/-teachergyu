@@ -150,3 +150,11 @@
 .hp.with-src{display:flex;justify-content:space-between;gap:6mm}
 .src-r{color:var(--muted);font-size:8.6pt;flex:none}
 .sep{color:var(--beige);margin:0 1.2mm}
+.mtype{display:flex;gap:4mm;align-items:baseline;font-size:9.4pt;padding:1.4mm 0;border-bottom:1px dashed var(--gold-l)}
+.mtype:last-child{border-bottom:0;margin-bottom:1.4mm}
+.mt-k{flex:none;width:20mm;font-weight:700;color:var(--navy)}
+.mvtb tr:first-child td{background:var(--navy);border-color:var(--navy);text-align:center}
+.mvtb tr:first-child td .hp{color:#fff;font-weight:600;text-align:center}
+.mvtb td[rowspan],.mvtb tr:nth-child(2) td:first-child{background:var(--bg-soft);text-align:center}
+.mvtb td[rowspan] .hp,.mvtb tr:nth-child(2) td:first-child .hp{font-weight:700;color:var(--navy);text-align:center}
+.mvtb td{padding:2mm 3mm}

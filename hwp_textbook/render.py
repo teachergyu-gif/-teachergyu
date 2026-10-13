@@ -409,6 +409,12 @@ def tidy_diph(out):
 CHOICE_HEAD_RE = re.compile(r'<p class="hp p pre">((?:[^<]|</?u>){1,160})</p>((?:<p class="hp hch[^"]*">(?:[^<]|</?u>)*</p>)+)')
 CHOICE_ROW_RE = re.compile(r'<p class="hp hch[^"]*">((?:[^<]|</?u>)*)</p>')
 LABEL_RE = re.compile(r'[㉠-㉭ⓐ-ⓩ]|\([A-Z가-하]\)')
+MEANING_TYPES = (
+    '<div class="addbox"><div class="add-h">의미 변동의 세 가지 유형</div>'
+    '<div class="mtype"><span class="mt-k">의미 확대</span><span>중세 국어 시절에 쓰이던 의미의 범위보다 현대로 오며 그 의미가 <b>확대</b>된 경우</span></div>'
+    '<div class="mtype"><span class="mt-k">의미 축소</span><span>중세 국어 시절에 쓰이던 의미의 범위보다 현대로 오며 그 의미가 <b>축소</b>된 경우</span></div>'
+    '<div class="mtype"><span class="mt-k">의미 이동</span><span>중세 국어 시절에 쓰이던 의미가 현대로 오며 <b>다른 의미로 바뀐</b> 경우</span></div>'
+    '</div>')
 BREAK_BEFORE = ["중세 국어의 주격 조사", "중세 국어의 관형격 조사", "중세 국어의 의문문", "중세 국어의 높임법"]
 
 
@@ -581,6 +587,11 @@ def tidy_more(out):
     out = re.sub(r'<u>\s*(<span class="blank">[^<]*</span>)\s*(\.?)\s*(<br>)?\s*</u>', r'\1\2\3', out)
     # bullet + example rows: neighbouring single-spaced rows join the same two-column layout
     out = join_exrows(out)
+    # 어휘 의미 변동: the three types are defined before the table
+    out = out.replace('중세 국어 어휘 의미 변동</h2></div><div class="hs-units">',
+                      '중세 국어 어휘 의미 변동</h2></div><div class="hs-units"><div class="hu u-t">' + MEANING_TYPES + '</div>', 1)
+    out = out.replace(MEANING_TYPES + '</div><div class="hu u-t split"><table class="htb">',
+                      MEANING_TYPES + '</div><div class="hu u-t split"><table class="htb mvtb">', 1)
     # source quirks: an example split over two paragraphs, a note glued to the next original line
     out = out.replace('＋-아)</p></div><div class="hu u-t split"><p class="hp p">보ᅀᆞᆸ고', '＋-아)‖보ᅀᆞᆸ고')
     out = re.sub(r'‖', ' <span class="sep">|</span> ', out)
