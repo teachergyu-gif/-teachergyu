@@ -178,6 +178,62 @@ def _cell_html(paras):
     return "".join(out)
 
 
+def _cell_empty(c):
+    h = cell_html(c["paras"])
+    if "<img" in h or "<table" in h:
+        return False
+    return re.sub(r"<[^>]+>|&nbsp;|\s|\u3000", "", h) == ""
+
+
+def clean_rows(rows):
+    """HWP draws brackets and gaps with empty spacer rows/columns: drop every row or column made only of empty cells."""
+    grid, pos, cells = {}, [], []
+    for r, row in enumerate(rows):
+        c = 0
+        for cell in row:
+            while (r, c) in grid:
+                c += 1
+            pos.append((r, c))
+            cells.append(cell)
+            for dr in range(cell["rs"]):
+                for dc in range(cell["cs"]):
+                    grid[(r + dr, c + dc)] = len(cells) - 1
+    if not grid:
+        return rows
+    nr, nc = max(r for r, _ in grid) + 1, max(c for _, c in grid) + 1
+    empty = [_cell_empty(c) for c in cells]
+
+    def lines(axis):
+        n, m = (nr, nc) if axis == 0 else (nc, nr)
+        drop = set()
+        for i in range(n):
+            ks = {grid.get((i, j) if axis == 0 else (j, i)) for j in range(m)} - {None}
+            span = (lambda k: cells[k]["rs"]) if axis == 0 else (lambda k: cells[k]["cs"])
+            if all(empty[k] or span(k) > 1 for k in ks):
+                drop.add(i)
+        # a cell with content must keep at least one of its rows / columns
+        for k, (r0, c0) in enumerate(pos):
+            if empty[k]:
+                continue
+            st, ln = (r0, cells[k]["rs"]) if axis == 0 else (c0, cells[k]["cs"])
+            if all(x in drop for x in range(st, st + ln)):
+                drop.discard(st)
+        return drop
+
+    drop_r, drop_c = lines(0), lines(1)
+    if not (drop_r or drop_c) or len(drop_r) >= nr or len(drop_c) >= nc:
+        return rows
+    out = {r: [] for r in range(nr) if r not in drop_r}
+    for k, (r0, c0) in sorted(enumerate(pos), key=lambda kv: (kv[1][0], kv[1][1])):
+        kr = [x for x in range(r0, r0 + cells[k]["rs"]) if x not in drop_r]
+        kc = [x for x in range(c0, c0 + cells[k]["cs"]) if x not in drop_c]
+        if not kr or not kc:
+            continue
+        out[kr[0]].append((c0, dict(cells[k], rs=len(kr), cs=len(kc))))
+    res = [[c for _, c in sorted(v, key=lambda t: t[0])] for _, v in sorted(out.items())]
+    return [r for r in res if r] or rows
+
+
 def table_html(rows):
     if is_frame(rows):
         lab = "".join(ptext(p) for p in rows[0][1]["paras"]).strip()
@@ -185,6 +241,15 @@ def table_html(rows):
         return f'<div class="bogi"><div class="bogi-h">{html.escape(lab)}</div>{cell_html(rows[-1][0]["paras"])}</div>'
     if is_plain_frame(rows):
         return f'<div class="bogi plain">{cell_html(rows[1][0]["paras"])}</div>'
+    rows = clean_rows(rows)
+    if len(rows) > 1 and len(rows[0]) == 1:  # '<보 기>' title row over the rest → a 보기 frame
+        lab = re.sub(r"\s+", " ", "".join(ptext(p) for p in rows[0][0]["paras"])).strip()
+        if re.fullmatch(r"<\s*보\s*기\s*\d?\s*>", lab):
+            return f'<div class="bogi"><div class="bogi-h">{html.escape(lab)}</div>{table_html(rows[1:])}</div>'
+    if len(rows) == 1 and len(rows[0]) == 1:
+        only = re.sub(r"\s+", "", "".join(ptext(p) for p in rows[0][0]["paras"]))
+        if re.fullmatch(r"\[[A-Z가-하]\]", only):
+            return f'<div class="amark">{only}</div>'
     trs = []
     for r in rows:
         tds = []
@@ -592,6 +657,8 @@ def tidy_more(out):
     # 서술형 answer line: drop the cramped ( ) and leave room to write
     out = re.sub(r'<p class="hp ans pre">답 ?: ?\(\s*\)</p>', '<p class="hp ans ans-line">답 :</p>', out)
     out = tidy_pre(out)
+    out = re.sub(r'(<p class="hp [^"]*">(?:(?!</p>).)*</p>)<div class="amark">(\[[^\]]+\])</div>',
+                 r'<div class="abrk">\1<span class="abrk-l">\2</span></div>', out)
     # a blank is already a line; drop the underline the original drew around it
     out = re.sub(r'<u>\s*(<span class="blank">[^<]*</span>)\s*(\.?)\s*(<br>)?\s*</u>', r'\1\2\3', out)
     # bullet + example rows: neighbouring single-spaced rows join the same two-column layout

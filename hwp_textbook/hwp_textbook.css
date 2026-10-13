@@ -187,3 +187,8 @@
 .kntb td{padding:2.4mm 3mm;line-height:1.75;font-size:9.2pt;vertical-align:middle}
 .kntb td:nth-child(2){text-align:left}
 .kntb th{padding:1.6mm 2mm}
+.abrk{position:relative;border-right:1.6px solid var(--navy);padding-right:10mm;margin:1mm 0}
+.abrk::before,.abrk::after{content:"";position:absolute;right:0;width:2.2mm;border-top:1.6px solid var(--navy)}
+.abrk::before{top:0}.abrk::after{bottom:0}
+.abrk-l{position:absolute;right:1.6mm;top:50%;transform:translateY(-50%);font-weight:700;color:var(--navy);font-size:9.4pt}
+.amark{font-weight:700;color:var(--navy);margin:1mm 0}
