@@ -122,7 +122,7 @@ def main(out_html):
         toc.append(f'{src["source"]} ············ {a0}～{n}번')
     head = ('<div class="u toc"><div class="tt">&lt;목 차&gt;</div><div class="t1">[진달래꽃 문제 은행]</div>'
             '<div class="t2">김소월, ｢진달래꽃｣</div>' + ''.join(f'<div class="t3">{esc(t)}</div>' for t in toc) + '</div>')
-    units = [head, '<div class="u brk"></div>', '<div class="u title2">｢진달래꽃｣ 문제 은행</div>'] + units
+    units = [head, '<div class="u brk"></div>'] + units
     units += ['<div class="u brk"></div>', '<div class="u extitle"><span>정답 및 해설</span></div>']
     units += [explanation(k, e) for k, e in exs]
     units.append('<div class="u memo"></div>')

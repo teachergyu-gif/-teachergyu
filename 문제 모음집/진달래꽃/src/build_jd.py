@@ -165,7 +165,6 @@ def main(out_path):
     d.replace_text('문제 은행', '진달래꽃 문제 은행')          # 1쪽 머리 표
     d.replace_text('[문제 은행]', '[진달래꽃 문제 은행]')        # 목차 제목 (먼저 나오는 '[' 포함 문단)
     d.replace_text(' , ｢｣', ' 김소월, ｢진달래꽃｣')
-    d.replace_text('｢｣ 문제 은행', '｢진달래꽃｣ 문제 은행')
     add_toc(d, toc)
     d.save(out_path, body, prvtext='진달래꽃 문제 은행')
     print('questions', n)

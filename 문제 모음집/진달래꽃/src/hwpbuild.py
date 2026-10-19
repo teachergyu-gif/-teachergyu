@@ -134,7 +134,8 @@ class Doc:
         """body: 문단 레코드 목록. 양식의 '다음 글을 읽고…' 문단 자리에 넣고, 마지막 MEMO 쪽은 유지."""
         tops = [i for i, r in enumerate(self.sec) if r[0] == T_PARA and r[1] == 0]
         # 양식: [0]=구역·바탕쪽·1쪽 머리·목차, [1]=빈 문단, [2]=쪽 나눔+제목 상자, [3]='다음 글을 읽고…', [4]=MEMO
-        head = self.sec[:tops[3]]
+        head = self.sec[:tops[2]]   # 2쪽 제목 상자(｢｣ 문제 은행)는 넣지 않음
+        h = bytearray(body[0][2]); h[11] = 4; body[0][2] = bytes(h)   # 첫 문단에서 쪽 나눔
         memo = self.sec[tops[4]:]
         sec = head + body + memo
         self.s['BodyText/Section0'] = deflate(dump_records(sec))
