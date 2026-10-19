@@ -147,7 +147,7 @@ def main(out_html):
     js = open(f'{D}/paginate.js').read()
     doc = f'''<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>
 <div id="src">{"".join(units)}</div>
-<script>window.HEAD="국제고 1학년 진달래꽃 교재";window.SUB="";window.HEAD_INFO={json.dumps(HEAD_INFO)};window.FOOT_TEXT={json.dumps(FOOT_TEXT)};window.LOGO="file://{J}/logo2.jpg";</script>
+<script>window.HEAD="국제고 1학년 진달래꽃 추가 문제집";window.SUB="";window.HEAD_INFO={json.dumps(HEAD_INFO)};window.FOOT_TEXT={json.dumps(FOOT_TEXT)};window.LOGO="file://{J}/logo2.jpg";</script>
 <script>{js}</script></body></html>'''
     open(out_html, 'w').write(doc)
     print('questions', n)
