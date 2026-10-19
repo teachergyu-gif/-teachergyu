@@ -7,6 +7,7 @@
 - 심벌 `KA` + 워드마크 `RICH ACADEMY` (세로 조합)
 - `logo_navy.png` — 흰 배경용 (남색, 투명 배경)
 - `logo_beige.png` — 남색 배경용 (베이지, 투명 배경)
+- `logo_slogan_navy.png` — 가로형(슬로건 + RICH ACADEMY + KA), 남색, 투명 배경. 문제집 1쪽 머리 왼쪽 등에 사용
 - 로고는 원본 비율 그대로 쓰고, 색을 임의로 바꾸지 않는다.
 
 ## 색상
