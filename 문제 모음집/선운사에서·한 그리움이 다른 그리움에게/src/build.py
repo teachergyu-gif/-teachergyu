@@ -156,6 +156,9 @@ def main(work_dir, out_path):
         exmap = {e['orig']: e for e in src['ex']}
         exs = []
         first = True
+        # '｢작품｣ 문제 은행' 제목: 1단 영역(둘째 작품부터는 새 쪽), 그 아래부터 다시 2단
+        body += cold_para(B.runs(f'<b>{label.split(", ")[1]} 문제 은행</b>', B.cs(3, size=1400)), 1, 0, B.ps_exl, brk=(4 | 2) if wi else 2)
+        body += cold_para([('', 3)], 2, 0, B.ps_exl, brk=2)
         for s in src['sets']:
             qs = s['questions']
             if not qs:
@@ -164,8 +167,8 @@ def main(work_dir, out_path):
             rng = f'{a}' if a == b else f'{a}～{b}'
             dec = DEC[si] if si < len(DEC) else {'top': True}
             si += 1
-            if first and wi:
-                hps, hbrk = B.d.ps(33, bottom=400), 4                      # 둘째 작품: 새 쪽
+            if first:
+                hps, hbrk = B.d.ps(33, bottom=400), 0                      # 제목 바로 아래
             elif not body or dec.get('top') or not dec.get('mid'):
                 hps, hbrk = B.d.ps(33, bottom=400), (8 if body else 0)       # 새 단 첫머리
             else:   # PDF판과 같이: 단에 남은 공간의 절반을 띄우고 시작
@@ -209,7 +212,7 @@ def main(work_dir, out_path):
         if r[0] == T_PARA:
             h = bytearray(r[2]); ps = struct.unpack_from('<H', h, 8)[0]
             struct.pack_into('<H', h, 8, d.ps_word(ps)); r[2] = bytes(h)
-    d.save(out_path, body, prvtext=render.HEAD, first_brk=0)
+    d.save(out_path, body, prvtext=render.HEAD, first_brk=2)
     print('questions', n)
 
 

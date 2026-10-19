@@ -153,6 +153,7 @@ def main(work_dir, out_html):
         exs = []
         if wi:
             body.append('<div class="u brk"></div>')
+        body.append(f'<div class="u qtitle"><span>{label.split(", ")[1]} 문제 은행</span></div>')
         for s in src['sets']:
             qs = s.get('questions') or []
             if not qs:
