@@ -34,7 +34,7 @@
     const lines = [...u.querySelector('.box').children];
     const make = (first) => {
       const w = document.createElement('div'); w.className = 'u set';
-      if (first) w.appendChild(hd);
+      if (first) { w.appendChild(hd); if (u.dataset.mid) { w.style.marginTop = u.style.marginTop; w.dataset.mid = 1; } }
       const b = document.createElement('div'); b.className = 'box' + (first ? '' : ' cont');
       w.appendChild(b); col.appendChild(w); return [w, b];
     };
@@ -73,7 +73,17 @@
   function place(u) {
     if (u.classList.contains('brk')) { colIdx = 2; col = null; nextCol(); return; }
     if (u.classList.contains('memo')) { colIdx = 2; col = null; nextCol(); const pg = pages[pages.length - 1]; pg.querySelector('.cols').innerHTML = '<div class="memo"><span>MEMO</span></div>'; pg.querySelector('.cols').classList.add('one'); return; }
-    if (u.classList.contains('set')) { if (!empty()) nextCol(); return placeSet(u); }
+    if (u.classList.contains('set')) {
+      if (!empty()) {
+        // 단에 공간이 많이 남으면(1/3 이상) 남는 공간의 절반을 띄우고 그 자리에서 지문 시작, 아니면 다음 단
+        const last = col.lastElementChild;
+        const used = last.offsetTop + last.offsetHeight + parseFloat(getComputedStyle(last).marginBottom);
+        const left = col.clientHeight - used;
+        if (left >= col.clientHeight / 3) { u.style.marginTop = (left / 2 - parseFloat(getComputedStyle(last).marginBottom)) + 'px'; u.dataset.mid = 1; }
+        else nextCol();
+      }
+      return placeSet(u);
+    }
     if (u.classList.contains('ex')) return placeSplittable(u);
     col.appendChild(u);
     if (over() && col.children.length > 1) { col.removeChild(u); nextCol(); col.appendChild(u); }
@@ -103,7 +113,7 @@
     const kids = [...c.children];
     if (!kids.length) return;
     if (!kids[0].classList.contains('toc')) kids[0].style.marginTop = '0';
-    if (c.querySelector('.ex, .toc, .extitle')) return;
+    if (c.querySelector('.ex, .toc, .extitle, [data-mid]')) return;
     const used = kids[kids.length - 1].offsetTop + kids[kids.length - 1].offsetHeight - kids[0].offsetTop;
     const left = c.clientHeight - used;
     const gaps = kids.length - 1;

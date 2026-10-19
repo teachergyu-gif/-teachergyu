@@ -139,6 +139,9 @@ def main(out_path):
     fixes_jd.apply(data, log)
     open(f'{D}/fixlog.txt', 'w').write('\n'.join(log) + '\n')
     body, exs, toc = [], [], []
+    dp = f'{D}/pdf/decisions.json'
+    DEC = json.load(open(dp)) if os.path.exists(dp) else []
+    si = 0
     n = 0
     for src in data:
         exmap = {e['orig']: e for e in src['ex']}
@@ -149,7 +152,13 @@ def main(out_path):
                 continue
             a, b = n + 1, n + len(qs)
             rng = f'{a}' if a == b else f'{a}～{b}'
-            body += B.P(5, B.d.ps(33, bottom=400), f'<b>【{rng}】 다음 글을 읽고 물음에 답하시오.</b>', 17, brk=8 if body else 0)   # 지문 묶음은 새 단에서 시작
+            dec = DEC[si] if si < len(DEC) else {'top': True}
+            si += 1
+            if not body or dec.get('top') or not dec.get('mid'):
+                hps, hbrk = B.d.ps(33, bottom=400), (8 if body else 0)       # 새 단 첫머리
+            else:   # PDF판과 같이: 단에 남은 공간의 절반을 띄우고 시작
+                hps, hbrk = B.d.ps(33, bottom=400, top=int(dec['gap'] * 150)), 0
+            body += B.P(5, hps, f'<b>【{rng}】 다음 글을 읽고 물음에 답하시오.</b>', 17, brk=hbrk)
             body += B.passage(s)
             for q in qs:
                 n += 1
