@@ -149,7 +149,7 @@ def main(out_path):
                 continue
             a, b = n + 1, n + len(qs)
             rng = f'{a}' if a == b else f'{a}～{b}'
-            body += B.P(5, 33, '<b>다음 글을 읽고 물음에 답하시오.</b>', 17)
+            body += B.P(5, B.d.ps(33, bottom=400), f'<b>【{rng}】 다음 글을 읽고 물음에 답하시오.</b>', 17)
             body += B.passage(s)
             for q in qs:
                 n += 1

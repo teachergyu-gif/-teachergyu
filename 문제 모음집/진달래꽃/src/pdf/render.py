@@ -16,7 +16,7 @@ def esc(s):
     return s.replace('&lt;box&gt;', '<span class="bx">').replace('&lt;/box&gt;', '</span>')
 
 
-def passage(s):
+def passage(s, rng=''):
     out = []
     for wi, w in enumerate(s['works']):
         if wi:
@@ -43,7 +43,7 @@ def passage(s):
             out.append(f'<div class="ln au">{esc(w["author"])}</div>')
     for n in s.get('notes') or []:
         out.append(f'<div class="ln note">{esc(n)}</div>')
-    return f'<div class="u set"><div class="sethd">다음 글을 읽고 물음에 답하시오.</div><div class="box">{"".join(out)}</div></div>'
+    return f'<div class="u set"><div class="sethd">【{rng}】 다음 글을 읽고 물음에 답하시오.</div><div class="box">{"".join(out)}</div></div>'
 
 
 def bogi(b):
@@ -116,7 +116,8 @@ def main(out_html):
             qs = s.get('questions') or []
             if not qs:
                 continue
-            units.append(passage(s))
+            rng = f'{n + 1}' if len(qs) == 1 else f'{n + 1}～{n + len(qs)}'
+            units.append(passage(s, rng))
             for q in qs:
                 n += 1
                 units.append(question(n, q)); exs.append((n, exm[q['orig']]))
