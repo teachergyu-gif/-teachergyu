@@ -1,4 +1,4 @@
-"""「선운사에서」·「한 그리움이 다른 그리움에게」 교재 PDF판: 진달래꽃 교재와 같은 양식 HTML을 만든다.
+"""「선운사에서」·「한 그리움이 다른 그리움에게」 교재 PDF판(문제 은행 양식): 진달래꽃 render.py와 같은 함수로 HTML을 만든다.
 사용: python3 render.py 데이터폴더(work/{sw1,sw2,hg1,hg2}/out.json) 출력.html"""
 import json, html, re, sys, os
 D = os.path.dirname(os.path.abspath(__file__))
@@ -17,9 +17,17 @@ def esc(s):
     s = html.escape(s, quote=False)
     for t in ('u', 'b'):
         s = s.replace(f'&lt;{t}&gt;', f'<{t}>').replace(f'&lt;/{t}&gt;', f'</{t}>')
-    s = re.sub(r'([㐀-鿿豈-﫿]+)', lambda m: '<span class="hj">' + m.group(1) + '</span>', s)
-    # 한자 묶음 앞뒤에서 줄이 바뀌지 않게(괄호·조사와 붙임)
-    s = re.sub(r'[^\s<>]*(?:<span class="hj">[^<]*</span>[^\s<>]*)+', lambda m: '<span class="nb">' + m.group(0) + '</span>', s)
+    s = re.sub(r'([\u3400-\u9fff\uf900-\ufaff]+)', lambda m: '<span class="hj">' + m.group(1) + '</span>', s)
+    # 한자 묶음 앞뒤에서 줄이 바뀌지 않게(괄호·조사와 붙임): 단어 결합자 U+2060
+    def nb(m):
+        t = m.group(0)
+        # 한자어 앞 한글이 4음절 이상이면(산화공덕 등) 가운데에서 끊길 수 있게(줄 간격이 지나치게 벌어지는 것 방지)
+        k = re.search(r'([가-힣]{4,})\(?<span class="hj">', t)
+        if k:
+            h = k.group(1); cut = k.start(1) + len(h) // 2
+            return '<span class="nb">' + t[:cut] + '</span>\u200b<span class="nb">' + t[cut:] + '</span>'
+        return '<span class="nb">' + t + '</span>'
+    s = re.sub(r'[^\s<>]*(?:<span class="hj">[^<]*</span>[^\s<>]*)+', nb, s)
     return s.replace('&lt;box&gt;', '<span class="bx">').replace('&lt;/box&gt;', '</span>')
 
 
@@ -32,10 +40,10 @@ def passage(s, rng=''):
             out.append(f'<div class="ln tag">{esc(w["label"])}</div>')
         group = None
         for l in w['lines'].split('\n'):
-            m = re.match(r'^\{([^{}/]+)\}', l)
+            m = re.match(r'^\{(\w+)\}', l)
             if m:
                 group = [m.group(1), []]; l = l[m.end():]
-            end = re.search(r'\{/[^{}]+\}$', l)
+            end = re.search(r'\{/\w+\}$', l)
             if end:
                 l = l[:end.start()]
             cell = '<div class="ln sp"></div>' if l.strip() == '' else f'<div class="ln">{esc(l)}</div>'
@@ -158,13 +166,11 @@ def main(work_dir, out_html):
                 body.append(question(n, q)); exs.append((n, exm[q['orig']]))
         body += ['<div class="u brk"></div>', f'<div class="u extitle"><span>{label.split(", ")[1]} 정답 및 해설</span></div>']
         body += [explanation(k, e) for k, e in exs]
-        toc.append(f'<div class="t2">{label}</div>'
-                   f'<div class="t2 tl sub"><span>문제</span><i></i><span>{a0}～{n}번</span></div>'
-                   f'<div class="t2 tl sub"><span>정답 및 해설</span><i></i><span>{a0}～{n}번</span></div>')
+        toc.append(f'<div class="t2">{label}</div>')
     head = '<div class="u toc"><div class="tt">&lt;목 차&gt;</div><div class="t1">[문제 은행]</div>' + ''.join(toc) + '</div>'
     units = [head] + body
     units.append('<div class="u memo"></div>')
-    css = open(f'{D}/exam.css').read() + '.toc .tl{display:flex;align-items:flex-end;gap:2mm}.toc .tl i{flex:1;border-bottom:2px dotted #555;margin-bottom:2.2mm;min-width:8mm}.toc .tl span:last-child{flex:none}.toc .tl.sub{margin:1.5mm 0 1.5mm 6mm}.toc .t2+.t2:not(.sub){margin-top:8mm}'
+    css = open(f'{D}/exam.css').read() 
     js = open(f'{D}/paginate.js').read()
     doc = f'''<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>
 <div id="src">{"".join(units)}</div>
