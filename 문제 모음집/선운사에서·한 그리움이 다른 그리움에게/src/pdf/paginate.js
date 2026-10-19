@@ -26,7 +26,7 @@
     col = pages[pages.length - 1].querySelectorAll('.col')[colIdx];
     // 정답 및 해설 첫 쪽: 오른쪽 단 첫 해설을 왼쪽 단 첫 해설과 같은 높이에서 시작
     if (colIdx === 1) {
-      const ext = pages[pages.length - 1].querySelector('.col .extitle, .col .qtitle');   // 이 교재: 문제 은행 제목 쪽도 같은 높이로
+      const ext = pages[pages.length - 1].querySelector('.col .extitle');   // 문제 쪽(｢작품｣ 문제 은행 제목)은 맞추지 않음: 오른쪽 단은 맨 위부터
       if (ext) {
         const cs = getComputedStyle(ext);
         const sp = document.createElement('div'); sp.className = 'u exsp';
