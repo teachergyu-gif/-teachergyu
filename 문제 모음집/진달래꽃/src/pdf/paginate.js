@@ -98,6 +98,19 @@
   document.querySelectorAll('.tot').forEach(t => t.textContent = pages.length);
   // 단 끝의 여백 margin 제거
   document.querySelectorAll('.col').forEach(c => { const l = c.lastElementChild; if (l) l.style.marginBottom = '0'; });
+  // 문제 쪽: 단 첫머리는 첫 줄부터, 남는 공간의 절반을 문항 사이에 고르게 나눔
+  document.querySelectorAll('.col').forEach(c => {
+    const kids = [...c.children];
+    if (!kids.length) return;
+    kids[0].style.marginTop = '0';
+    if (c.querySelector('.ex, .toc, .extitle')) return;
+    const used = kids[kids.length - 1].offsetTop + kids[kids.length - 1].offsetHeight - kids[0].offsetTop;
+    const left = c.clientHeight - used;
+    const gaps = kids.length - 1;
+    if (gaps < 1 || left <= 0) return;
+    const add = left / 2 / gaps;
+    kids.slice(0, -1).forEach(k => { k.style.marginBottom = (parseFloat(getComputedStyle(k).marginBottom) + add) + 'px'; });
+  });
   window.PAGES = pages.length;
   document.body.dataset.done = '1';
 })();
