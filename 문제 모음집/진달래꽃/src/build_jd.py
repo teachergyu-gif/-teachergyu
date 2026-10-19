@@ -176,6 +176,10 @@ def main(out_path):
         while sec[j][0] != 72: j -= 1
         del sec[prev:h]
         p = bytearray(sec[j][2]); struct.pack_into('<h', p, 0, struct.unpack_from('<h', p, 0)[0] - 1); sec[j][2] = bytes(p)
+    # 바닥쪽 쪽 상자 전체 쪽수(양식 '33') → PDF판 쪽수
+    tot = os.environ.get('TOTAL_PAGES')
+    if tot:
+        d.replace_text('33\r', tot + '\r')
     # 1쪽 '국어 영역(A형)' 그림 → '국어 영역'
     from hwplib import deflate
     d.s['BinData/BIN0001.jpg'] = deflate(open(f'{D}/logo2.jpg', 'rb').read())
