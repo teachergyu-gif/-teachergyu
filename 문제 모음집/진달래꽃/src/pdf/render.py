@@ -143,7 +143,6 @@ def main(out_html):
     units = [head, '<div class="u brk"></div>'] + units
     units += ['<div class="u brk"></div>', '<div class="u extitle"><span>정답 및 해설</span></div>']
     units += [explanation(k, e) for k, e in exs]
-    units.append('<div class="u memo"></div>')
     css = open(f'{D}/exam.css').read()
     js = open(f'{D}/paginate.js').read()
     doc = f'''<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>
