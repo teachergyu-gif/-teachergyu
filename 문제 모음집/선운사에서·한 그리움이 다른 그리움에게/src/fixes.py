@@ -134,6 +134,7 @@ def apply(data, log):
                 raise SystemExit(f'수정 대상 없음: {name} {key} {a}')
             log.append(f'{name} {key}번: {a} → {b}')
 
+    drop_marks(data, log)
 
 def straight(s):
     """곧은 따옴표 쌍 → 둥근 따옴표"""
@@ -144,13 +145,13 @@ def straight(s):
 AUTHORS = {'어느 날 당신과 내가': '- 정희성, 「한 그리움이 다른 그리움에게」',
            '당신이 맑은 새벽에': '- 한용운, 「나의 꿈」',
            '피는 건 힘들어도': '- 최영미, 「선운사에서」'}
-PLAIN = lambda l: re.sub(r'</?\w+>|[㉠-㉭㉮-㉻ⓐ-ⓩ]', '', l).strip()
+PLAIN = lambda l: re.sub(r' +', ' ', re.sub(r'</?\w+>|[㉠-㉭㉮-㉻ⓐ-ⓩ]', '', l)).strip()
 
 
 def poem(w, log):
     """원본이 묶음마다 다르게 찍은 시 모양을 시의 원래 모양으로 맞춘다."""
     t = w['lines']
-    if t.startswith('어느 날') and '그윽한 눈' in t:
+    if PLAIN(t).startswith('어느 날') and '그윽한 눈' in t:
         # 정희성 시: 4연 15행(문항·해설이 '1연·4연', '마지막 연'을 전제함)
         t = t.replace('춥게하리', '춥게 하리').replace('춥게 하리 외롭고', '춥게 하리\n외롭고')
         L = [l for l in t.split('\n') if l.strip()]
@@ -176,3 +177,64 @@ def poem(w, log):
         if not a:
             a = next((v[2:] for k, v in AUTHORS.items() if k in t), '')
         w['author'] = ('- ' + a) if a else None
+
+
+# ---- 문항에서 쓰지 않는 지문 기호 삭제 ----
+SYMS = '㉠㉡㉢㉣㉤㉥㉦㉧㉨㉩㉪㉫㉬㉭' + '㉮㉯㉰㉱㉲㉳㉴㉵㉶㉷㉸㉹㉺㉻' + ''.join(chr(c) for c in range(0x24D0, 0x24EA)) + ''.join(chr(c) for c in range(0x24B6, 0x24D0))
+SERIES = ['㉠㉡㉢㉣㉤㉥㉦㉧㉨㉩㉪㉫㉬㉭', '㉮㉯㉰㉱㉲㉳㉴㉵㉶㉷㉸㉹㉺㉻',
+          ''.join(chr(c) for c in range(0x24D0, 0x24EA)), ''.join(chr(c) for c in range(0x24B6, 0x24D0))]
+
+
+def used_marks(qs):
+    """문항(발문·<보기>·선지·조건)에 나오는 기호. ‘㉠~㉤’ 같은 범위는 펼친다."""
+    t = json_text(qs)
+    used = set(ch for ch in t if ch in SYMS)
+    for a, b in re.findall(r'([' + SYMS + r'])\s*[~～∼\-]\s*([' + SYMS + r'])', t):
+        for ser in SERIES:
+            if a in ser and b in ser and ser.index(a) <= ser.index(b):
+                used |= set(ser[ser.index(a):ser.index(b) + 1])
+    used |= set(re.findall(r'\[([A-Z])\]', t))
+    return used
+
+
+def json_text(qs):
+    import json
+    return json.dumps([{k: q.get(k) for k in ('stem', 'bogi', 'choices', 'extra')} for q in qs], ensure_ascii=False)
+
+
+def drop_marks(data, log):
+    S = '[' + SYMS + ']'
+    for src in data:
+        for s in src['sets']:
+            used = used_marks(s.get('questions') or [])
+            for w in s.get('works', []):
+                L = w['lines'].split('\n')
+                gone = []
+                i = 0
+                while i < len(L):
+                    l = L[i]
+                    # [A]·{Ⓐ} 묶음 표시
+                    m = re.match(r'^\{([^{}/]+)\}', l)
+                    if m and m.group(1) not in used:
+                        lab = m.group(1); gone.append(lab)
+                        L[i] = l = l[m.end():]
+                        for j in range(i, len(L)):
+                            if re.search(r'\{/' + re.escape(lab) + r'\}$', L[j]):
+                                L[j] = re.sub(r'\{/' + re.escape(lab) + r'\}$', '', L[j]); break
+                    # 기호(+ 그 기호의 밑줄)
+                    def sub(mm):
+                        if mm.group(1) in used:
+                            return mm.group(0)
+                        gone.append(mm.group(1))
+                        return (mm.group(2) or '') + (mm.group(3) if mm.group(3) is not None else '') + (mm.group(4) or '')
+                    new = re.sub(r'(' + S + r') ?(<b>)?(?:<u>(.*?)</u>)?(</b>)?', lambda mm: sub(mm) if mm.group(3) is not None else (mm.group(0) if mm.group(1) in used else (gone.append(mm.group(1)) or (mm.group(2) or '') + (mm.group(4) or ''))), l)
+                    # 지운 기호의 밑줄이 줄 끝까지 가면 다음 줄들의 이어진 밑줄도 지움
+                    if new != l and re.search(r'</u>$', l) and not re.search(r'</u>$', new):
+                        k = i + 1
+                        while k < len(L) and re.match(r'^<u>[^<]*</u>$', L[k]):
+                            L[k] = L[k][3:-4]; k += 1
+                    L[i] = new
+                    i += 1
+                if gone:
+                    w['lines'] = '\n'.join(L)
+                    log.append(f'{src["source"]} 지문(문항 {[q["orig"] for q in s["questions"]]}): 문항에 없는 기호 삭제 {"".join(dict.fromkeys(gone))}')
