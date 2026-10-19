@@ -165,7 +165,7 @@
     const last = c.lastElementChild;
     const left = c.clientHeight - (last.offsetTop + last.offsetHeight);
     if (left <= 0) return;
-    const add = left * 0.9 / (kids.length - 1);
+    const add = left * 0.45 / (kids.length - 1);
     kids.slice(0, -1).forEach(k => { k.style.marginBottom = (parseFloat(getComputedStyle(k).marginBottom) + add) + 'px'; });
   });
   window.PAGES = pages.length;
