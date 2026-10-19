@@ -234,3 +234,39 @@ def remove_toc(d):
             if arr[q] > pos:
                 arr[q] = max(pos, arr[q] - 8)
         sec[c][2] = struct.pack('<%dI' % len(arr), *arr)
+
+
+def remove_page1(d, keep=(b'secd', b'cold', b'foot')):
+    """구역 첫 문단의 1쪽 전용 개체(1쪽 머리 표·국어 영역 그림·1쪽 쪽 상자·쪽 감추기·목차)를 모두 지운다.
+    구역·단·꼬리말 정의(keep)만 남긴다. 레코드, 문단 글자 속 부호(8자), 글자 수, 글자 모양 위치를 함께 고친다."""
+    sec = d.sec
+    tops = [i for i, r in enumerate(sec) if r[0] == T_PARA and r[1] == 0]
+    a, b = tops[0], tops[1]
+    ctl = [i for i in range(a, b) if sec[i][0] == 71 and sec[i][1] == 1]
+    spans = [(k, (ctl[j + 1] if j + 1 < len(ctl) else b), sec[k][2][:4][::-1]) for j, k in enumerate(ctl)]
+    ti = a + 1
+    t = sec[ti][2].decode('utf-16le', 'surrogatepass')
+    # 글자 속 확장 조판 부호(8자) 위치, 레코드 순서와 같음
+    pos, i = [], 0
+    while i < len(t):
+        if ord(t[i]) < 32 and ord(t[i]) not in (0, 10, 13) and ord(t[i]) < 24:
+            pos.append(i); i += 8
+        else:
+            i += 1
+    assert len(pos) == len(spans), (len(pos), len(spans))
+    drop = [j for j, (_, _, cid) in enumerate(spans) if cid not in keep]
+    for j in reversed(drop):
+        k, e, _ = spans[j]
+        del sec[k:e]
+    cut = sorted(pos[j] for j in drop)
+    t2 = ''.join(ch for q, ch in enumerate(t) if not any(c <= q < c + 8 for c in cut))
+    sec[ti][2] = t2.encode('utf-16le', 'surrogatepass')
+    h = bytearray(sec[a][2]); n, = struct.unpack_from('<I', h, 0)
+    struct.pack_into('<I', h, 0, (n & 0x80000000) | ((n & 0x7FFFFFFF) - 8 * len(cut))); sec[a][2] = bytes(h)
+    c = ti + 1
+    if sec[c][0] == T_CS:
+        arr = list(struct.unpack('<%dI' % (len(sec[c][2]) // 4), sec[c][2]))
+        for q in range(0, len(arr), 2):
+            arr[q] -= 8 * sum(1 for x in cut if x < arr[q])
+        sec[c][2] = struct.pack('<%dI' % len(arr), *arr)
+    return [spans[j][2] for j in drop]

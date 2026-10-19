@@ -2,7 +2,7 @@
 사용: TOTAL_PAGES=<PDF 쪽수-MEMO> python3 build.py 데이터폴더 출력.hwp"""
 import json, re, struct, sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from hwpbuild import Doc, T_PARA, T_TEXT, T_CS, table_records, cold_para, remove_toc
+from hwpbuild import Doc, T_PARA, T_TEXT, T_CS, table_records, cold_para, remove_page1
 
 D = os.path.dirname(os.path.abspath(__file__))
 TPL = D + '/tpl/t.hwp'
@@ -194,9 +194,8 @@ def main(work_dir, out_path):
         body += cold_para([('', 3)], 2, 0, B.ps_exl, brk=2)
         for k, e in exs:
             body += B.explanation(k, e)
-    # 1쪽 머리(목차 없음: 머리 아래부터 바로 문제)
-    d.replace_text('문제 은행', render.HEAD)    # 1쪽 머리 표
-    remove_toc(d)
+    # 1쪽 머리 표·목차·1쪽 전용 개체 삭제: 1쪽도 다른 쪽과 같은 머리말(쪽 번호·RICH ACADEMY·이재규T)로
+    print('1쪽 개체 삭제', remove_page1(d))
     # MEMO 쪽: 바탕쪽·머리말·꼬리말·쪽 번호·테두리를 모두 감춤(MEMO 상자만 보이게)
     for r in d.sec:
         if r[0] == 71 and r[2][:4] == b'dhgp' and r[2][4:8] == b'\x02\0\0\0':
