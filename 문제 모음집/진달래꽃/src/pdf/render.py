@@ -15,7 +15,15 @@ def esc(s):
         s = s.replace(f'&lt;{t}&gt;', f'<{t}>').replace(f'&lt;/{t}&gt;', f'</{t}>')
     s = re.sub(r'([\u3400-\u9fff\uf900-\ufaff]+)', lambda m: '<span class="hj">' + m.group(1) + '</span>', s)
     # 한자 묶음 앞뒤에서 줄이 바뀌지 않게(괄호·조사와 붙임): 단어 결합자 U+2060
-    s = re.sub(r'[^\s<>]*(?:<span class="hj">[^<]*</span>[^\s<>]*)+', lambda m: '<span class="nb">' + m.group(0) + '</span>', s)
+    def nb(m):
+        t = m.group(0)
+        # 한자어 앞 한글이 4음절 이상이면(산화공덕 등) 가운데에서 끊길 수 있게(줄 간격이 지나치게 벌어지는 것 방지)
+        k = re.search(r'([가-힣]{4,})\(?<span class="hj">', t)
+        if k:
+            h = k.group(1); cut = k.start(1) + len(h) // 2
+            return '<span class="nb">' + t[:cut] + '</span>\u200b<span class="nb">' + t[cut:] + '</span>'
+        return '<span class="nb">' + t + '</span>'
+    s = re.sub(r'[^\s<>]*(?:<span class="hj">[^<]*</span>[^\s<>]*)+', nb, s)
     return s.replace('&lt;box&gt;', '<span class="bx">').replace('&lt;/box&gt;', '</span>')
 
 
