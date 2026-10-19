@@ -154,6 +154,43 @@ def apply(data, log):
                     t = t.replace('{' + lab + '}', '').replace('{/' + lab + '}', '')
                     log.append(f'{tag}: 문항에 없는 [{lab}] 묶음 표시 삭제')
                 w['lines'] = t
+        # 넣은 문항이 다루지 않는 작품은 지문에서 삭제. 하나만 남으면 표지를 지우고 문항의 (나) 등을 '윗글'로,
+        # 여럿 남으면 (가)(나)… 순서로 다시 매김.
+        LAB = '(가)(나)(다)(라)(마)(바)'
+        for s in src['sets']:
+            qs = s.get('questions') or []
+            if not qs or len(s.get('works', [])) < 2:
+                continue
+            ex_ = [exm[q['orig']] for q in qs]
+            txt = json.dumps([qs, ex_], ensure_ascii=False)
+            keep = [w for w in s['works'] if not w.get('label') or w['label'] in txt]
+            if len(keep) == len(s['works']) or not keep:
+                continue
+            tag = f'{i}회 지문({qs[0]["orig"]}번 묶음)'
+            for w in s['works']:
+                if w not in keep:
+                    log.append(f'{tag}: 문항에 쓰이지 않는 작품 {w["label"]} 삭제')
+            if len(keep) == 1:
+                old = keep[0]['label']; keep[0]['label'] = ''
+                JO = {'와': '과', '는': '은', '가': '이', '를': '을', '랑': '이랑'}
+                def one(t):
+                    t = re.sub(re.escape(old) + r'([와는가를])', lambda m: '윗글' + JO[m.group(1)], t)
+                    return t.replace(old, '윗글')
+                mapping = one
+                log.append(f'{tag}: 작품 표지 {old} 삭제, 문항·해설의 {old} → 윗글')
+            else:
+                ren = {w['label']: LAB[3 * k:3 * k + 3] for k, w in enumerate(keep)}
+                for w in keep:
+                    w['label'] = ren[w['label']]
+                def mapping(t, ren=ren):
+                    return re.sub(r'\([가-바]\)', lambda m: ren.get(m.group(0), m.group(0)), t)
+                log.append(f'{tag}: 작품 표지 다시 매김 ' + ', '.join(f'{a}→{b}' for a, b in ren.items()))
+            s['works'] = keep
+            for qi, q in enumerate(qs):
+                qs[qi] = walk(q, mapping)
+            for e in src['ex']:
+                if e['orig'] in [q['orig'] for q in qs]:
+                    e.update(walk(e, mapping))
         # 지문 속 밑줄 앞 기호(㉠ ⓐ Ⓐ ㉮ 등)와 밑줄 사이 한 칸
         SYM = r'([㉠-㉭㉮-㉻ⓐ-ⓩⒶ-Ⓩ])'
         for s in src['sets']:
