@@ -98,7 +98,7 @@ class Builder:
             cs43 = 43
             def dp(t, last, lvl):
                 return self.d.para(self.runs(t, cs43), 26, self.ps_tc, level=lvl, last=last)
-            out += table_records(dp, rows, [4200, 12300, 15200], bf=6, ps=self.ps_tbl, cs=3)
+            out += table_records(dp, rows, [3900, 11420, 14112], bf=6, ps=self.ps_tbl, cs=3)
             b = None
         if b:
             title = '<보기>' if b.get('title') is None else b['title']

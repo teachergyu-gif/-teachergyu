@@ -152,3 +152,4 @@ body{font-size:11.2pt}
 .ln.brk.open-b .br2{border-bottom:none;margin-bottom:0}
 .ln.brk.open-t .br2{border-top:none;margin-top:0}
 .nb{white-space:nowrap}
+.ctab.grid{width:calc(100% - 8mm);margin:2mm 4mm 3mm}
