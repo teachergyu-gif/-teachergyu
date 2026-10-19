@@ -226,6 +226,15 @@ def main(out_path):
     h = bytearray(sec[0][2]); nc, = struct.unpack_from('<I', h, 0); struct.pack_into('<I', h, 0, nc - 8); sec[0][2] = bytes(h)
     arr = list(struct.unpack('<%dI' % (len(sec[2][2]) // 4), sec[2][2]))
     sec[2][2] = struct.pack('<%dI' % len(arr), *[(v - 8 if (k % 2 == 0 and v > pos) else v) for k, v in enumerate(arr)])
+    # 1쪽 머리의 '제1교시' 상자 감춤(글자 지우고 테두리 없앰)
+    sec = d.sec
+    ki = [i for i, r in enumerate(sec) if r[0] == T_TEXT and '교시' in r[2].decode('utf-16le', 'ignore')][0]
+    t = sec[ki][2].decode('utf-16le', 'surrogatepass')
+    sec[ki][2] = (' ' * (len(t) - 1) + '\r').encode('utf-16le')
+    si = max(i for i in range(ki) if sec[i][0] == 76 and sec[i][2][:4] == b'cer$')
+    p = bytearray(sec[si][2]); cnt = struct.unpack_from('<H', p, 46)[0]; off = 48 + 48 + cnt * 96
+    struct.pack_into('<I', p, off + 4, 0); a_ = struct.unpack_from('<I', p, off + 8)[0]
+    struct.pack_into('<I', p, off + 8, a_ & ~0x3F); sec[si][2] = bytes(p)
     # 바탕쪽 머리말에 학원 이름·학교 학년, 꼬리말에 교재 이름
     from layout_overrides import HEAD_INFO, FOOT_TEXT
     small = d.cs(16, size=1000, color=0x4A3329)        # 남색 #29334A (BGR)
