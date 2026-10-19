@@ -36,7 +36,7 @@ def passage(s, rng=''):
             if group:
                 group[1].append(cell)
                 if end:
-                    out.append(f'<div class="ln brk"><div class="bx2"><span class="lab">[{group[0]}]</span><div>{"".join(group[1])}</div></div></div>')
+                    out.append(f'<div class="ln brk"><div class="bx2"><span class="lab2">[{group[0]}]</span><span class="br2"></span><div>{"".join(group[1])}</div></div></div>')
                     group = None
             else:
                 out.append(cell)

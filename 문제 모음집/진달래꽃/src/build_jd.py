@@ -51,17 +51,23 @@ class Builder:
         st, cs = 4, 3
         for wi, w in enumerate(s['works']):
             lines = w['lines'].split('\n')
+            # [A] 묶음: 표지는 묶음 가운데 줄 앞에, 나머지 줄은 같은 폭만큼 들여 씀
+            i = 0
+            while i < len(lines):
+                m = re.match(r'^\{(\w+)\}', lines[i])
+                if not m:
+                    i += 1; continue
+                lab = m.group(1); lines[i] = lines[i][m.end():]
+                j = i
+                while not re.search(r'\{/\w+\}$', lines[j]):
+                    j += 1
+                lines[j] = re.sub(r'\{/\w+\}$', '', lines[j])
+                mid = i + (j - i) // 2
+                for k in range(i, j + 1):
+                    lines[k] = (f'<b>[{lab}]</b> ' if k == mid else '\u3000\u2002 ') + lines[k]
+                i = j + 1
             first = True
-            open_lab = None
             for l in lines:
-                m = re.match(r'^\{(\w+)\}', l)
-                if m:
-                    open_lab = m.group(1); l = l[m.end():]
-                    l = f'<b>[{open_lab}]</b> ' + l
-                elif open_lab:
-                    l = '　  ' + l
-                if re.search(r'\{/\w+\}$', l):
-                    l = re.sub(r'\{/\w+\}$', '', l); open_lab = None
                 if first and w.get('label'):
                     out += self.P(st, self.ps_poem_lab if wi else self.ps_poem, f'<b>{w["label"]}</b>', cs)
                 first = False
