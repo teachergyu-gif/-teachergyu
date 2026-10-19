@@ -7,6 +7,7 @@ data = render.load(sys.argv[1]); fixes.apply(data, [])
 n = 0
 exs = []
 for src in data:
+    n = 0   # 작품마다 1번부터
     exm = {e['orig']: e for e in src['ex']}
     for s in src['sets']:
         qs = s.get('questions') or []

@@ -155,6 +155,7 @@ def main(work_dir, out_path):
     for wi, ((name, label, _), src) in enumerate(zip(render.WORKS, data)):
         exmap = {e['orig']: e for e in src['ex']}
         exs = []
+        n = 0   # 작품마다 1번부터
         first = True
         # '｢작품｣ 문제 은행' 제목: 1단 영역(둘째 작품부터는 새 쪽), 그 아래부터 다시 2단
         body += cold_para(B.runs(f'<b>{label.split(", ")[1]} 문제 은행</b>', B.cs(3, size=1400)), 1, 0, B.ps_exl, brk=(4 | 2) if wi else 2)
@@ -173,8 +174,8 @@ def main(work_dir, out_path):
                 hps, hbrk = B.d.ps(33, bottom=400), (8 if body else 0)       # 새 단 첫머리
             else:   # PDF판과 같이: 단에 남은 공간의 절반을 띄우고 시작
                 hps, hbrk = B.d.ps(33, bottom=400, top=int(dec['gap'] * 150)), 0
-            if SET_BREAK.get(a) == 'page': hps, hbrk = B.d.ps(33, bottom=400), 4
-            elif SET_BREAK.get(a) == 'col': hps, hbrk = B.d.ps(33, bottom=400), 8
+            if SET_BREAK.get((name, a)) == 'page': hps, hbrk = B.d.ps(33, bottom=400), 4
+            elif SET_BREAK.get((name, a)) == 'col': hps, hbrk = B.d.ps(33, bottom=400), 8
             first = False
             body += B.P(5, hps, f'<b>【{rng}】 다음 글을 읽고 물음에 답하시오.</b>', 17, brk=hbrk)
             body += B.passage(s)
@@ -184,8 +185,8 @@ def main(work_dir, out_path):
                 if not q.get('choices'):   # 서술형: 답안 쓸 여백
                     for _ in range(ANSWER_LINES):
                         qr += B.P(0, B.ps_exl, '', 3)
-                if Q_BREAK.get(n):
-                    h = bytearray(qr[0][2]); h[11] = 8 if Q_BREAK[n] == 'col' else 4; qr[0][2] = bytes(h)
+                if Q_BREAK.get((name, n)):
+                    h = bytearray(qr[0][2]); h[11] = 8 if Q_BREAK[(name, n)] == 'col' else 4; qr[0][2] = bytes(h)
                 body += qr
                 exs.append((n, exmap[q['orig']]))
         # 정답 및 해설: 제목은 1단 영역, 그 아래부터 다시 2단
