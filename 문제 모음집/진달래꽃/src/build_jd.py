@@ -162,10 +162,11 @@ def main(out_path):
     for k, e in exs:
         body += B.explanation(k, e)
     # 1쪽 머리·목차·제목 상자
-    d.replace_text('문제 은행', '진달래꽃 문제 은행')          # 1쪽 머리 표
-    d.replace_text('[문제 은행]', '[진달래꽃 문제 은행]')        # 목차 제목 (먼저 나오는 '[' 포함 문단)
+    d.replace_text('문제 은행', '국제고 1학년 진달래꽃 교재')    # 1쪽 머리 표
     d.replace_text(' , ｢｣', ' 김소월, ｢진달래꽃｣')
-    add_toc(d, toc)
+    # 1쪽 '국어 영역(A형)' 그림 → '국어 영역'
+    from hwplib import deflate
+    d.s['BinData/BIN0001.jpg'] = deflate(open(f'{D}/logo2.jpg', 'rb').read())
     # 본문 전체 한글 줄 나눔을 어절 단위로(<보기>·선지·해설 낱말이 줄 끝에서 끊기지 않게)
     for r in body:
         if r[0] == T_PARA:

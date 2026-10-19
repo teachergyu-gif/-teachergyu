@@ -121,8 +121,8 @@ def main(out_html):
                 n += 1
                 units.append(question(n, q)); exs.append((n, exm[q['orig']]))
         toc.append(f'{src["source"]} ············ {a0}～{n}번')
-    head = ('<div class="u toc"><div class="tt">&lt;목 차&gt;</div><div class="t1">[진달래꽃 문제 은행]</div>'
-            '<div class="t2">김소월, ｢진달래꽃｣</div>' + ''.join(f'<div class="t3">{esc(t)}</div>' for t in toc) + '</div>')
+    head = ('<div class="u toc"><div class="tt">&lt;목 차&gt;</div><div class="t1">[문제 은행]</div>'
+            '<div class="t2">김소월, ｢진달래꽃｣</div></div>')
     units = [head, '<div class="u brk"></div>'] + units
     units += ['<div class="u brk"></div>', '<div class="u extitle"><span>정답 및 해설</span></div>']
     units += [explanation(k, e) for k, e in exs]
@@ -131,7 +131,7 @@ def main(out_html):
     js = open(f'{D}/paginate.js').read()
     doc = f'''<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>
 <div id="src">{"".join(units)}</div>
-<script>window.HEAD="진달래꽃 문제 은행";window.SUB="";window.LOGO="file://{J}/logo.jpg";</script>
+<script>window.HEAD="국제고 1학년 진달래꽃 교재";window.SUB="";window.LOGO="file://{J}/logo2.jpg";</script>
 <script>{js}</script></body></html>'''
     open(out_html, 'w').write(doc)
     print('questions', n)
