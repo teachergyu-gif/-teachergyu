@@ -166,7 +166,7 @@ def main(work_dir, out_html):
                 if Q_BREAK.get(n) == 'col': body.append('<div class="u colbrk"></div>')
                 elif Q_BREAK.get(n) == 'page': body.append('<div class="u brk"></div>')
                 body.append(question(n, q)); exs.append((n, exm[q['orig']]))
-        body += ['<div class="u brk"></div>', f'<div class="u extitle"><span>{label.split(", ")[1]} 정답 및 해설</span></div>']
+        body += ['<div class="u brk"></div>', f'<div class="u extitle"><span>정답 및 해설</span></div>']
         body += [explanation(k, e) for k, e in exs]
     units = body   # 1쪽 목차 없음: 머리 아래부터 바로 문제
     units.append('<div class="u memo"></div>')

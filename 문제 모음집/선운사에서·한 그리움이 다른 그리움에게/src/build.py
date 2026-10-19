@@ -186,7 +186,7 @@ def main(work_dir, out_path):
                 body += qr
                 exs.append((n, exmap[q['orig']]))
         # 정답 및 해설: 제목은 1단 영역, 그 아래부터 다시 2단
-        body += cold_para(B.runs(f'<b>{label.split(", ")[1]} 정답 및 해설</b>', B.cs(3, size=1400)), 1, 0, B.ps_exl, brk=4 | 2)
+        body += cold_para(B.runs('<b>정답 및 해설</b>', B.cs(3, size=1400)), 1, 0, B.ps_exl, brk=4 | 2)
         body += cold_para([('', 3)], 2, 0, B.ps_exl, brk=2)
         for k, e in exs:
             body += B.explanation(k, e)
