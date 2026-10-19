@@ -65,14 +65,15 @@ class Doc:
             self._psmap[key] = self._clone(DI_PS, base, mod, 13)
         return self._psmap[key]
 
-    def ps(self, base, indent=None, left=None, align=None, top=None, bottom=None):
-        key = (base, indent, left, align, top, bottom)
+    def ps(self, base, indent=None, left=None, align=None, top=None, bottom=None, right=None):
+        key = (base, indent, left, align, top, bottom, right)
         if key not in self._psmap:
             def mod(p):
                 a, = struct.unpack_from('<I', p, 0)
                 if align is not None:  # 0 both,1 left,2 right,3 center
                     a = (a & ~(0x7 << 2)) | (align << 2); struct.pack_into('<I', p, 0, a)
                 if left is not None: struct.pack_into('<i', p, 4, left)
+                if right is not None: struct.pack_into('<i', p, 8, right)
                 if indent is not None: struct.pack_into('<i', p, 12, indent)
                 if top is not None: struct.pack_into('<i', p, 16, top)
                 if bottom is not None: struct.pack_into('<i', p, 20, bottom)

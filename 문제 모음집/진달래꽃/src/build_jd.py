@@ -17,9 +17,10 @@ class Builder:
         self.ps_poem = d.ps(7, indent=0)                      # 지문(테두리 연결) 들여쓰기 없음
         self.ps_poem_r = d.ps(7, indent=0, align=2)           # 지문 안 출처(오른쪽)
         self.ps_poem_lab = d.ps(7, indent=0, top=600)         # 작품 표지 (가)(나) 앞 여백
-        self.ps_box_c = d.ps(42, align=3)                     # <보기> 제목(가운데)
-        self.ps_box = d.ps(42, indent=0)
-        self.ps_box_i = d.ps(42, indent=-1700, left=1700)     # ㄱ. ㄴ. 항목
+        M = 2268   # <보기>·조건 상자 좌우 여백 4mm(값은 2배 단위)
+        self.ps_box_c = d.ps(42, align=3, left=M, right=M)    # <보기> 제목(가운데)
+        self.ps_box = d.ps(42, indent=0, left=M, right=M)
+        self.ps_box_i = d.ps(42, indent=-1700, left=1700 + M, right=M)     # ㄱ. ㄴ. 항목
         self.ps_ex_t = d.ps(42, align=3)                      # '정답 및 해설' 제목
         self.ps_exn = d.ps(3, indent=0, top=1400)             # 해설 '1. ①'
         self.ps_exh = d.ps(8)                                 # 해설 ① 내어쓰기(선지 모양)
