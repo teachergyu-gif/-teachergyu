@@ -1,0 +1,102 @@
+
+/* ---------- 2016 고1 11월 독서: 원본 지문·문제 / 해설 / 분석서 ---------- */
+.anchor-mark{position:absolute;font-size:3px;color:#fff;pointer-events:none}
+.parts3{grid-template-columns:1fr 1fr 1fr;gap:4mm}
+.parts3 .part-card{padding:5mm 4.5mm 5.5mm}
+.parts3 .part-name{font-size:14pt}
+.toc-page{height:auto;min-height:263mm}
+.toc .toc-sub{white-space:nowrap;font-size:8.6pt;color:var(--navy);font-weight:700;text-align:right;padding-left:3mm}
+.toc .toc-sub span{font-weight:500;color:var(--muted);font-size:7.6pt;margin-right:1.6mm}
+
+.xsec{page-break-before:always;break-before:page;position:relative}
+.x-head{display:flex;align-items:center;gap:7px;border-bottom:2px solid var(--navy);padding-bottom:3mm;margin-bottom:4mm;font-size:8.5pt;color:var(--muted)}
+.x-head .p-idx{font-size:13pt}
+.x-q{font-weight:700;color:var(--navy2)}
+.x-title{font-family:"NSerif","Noto Serif CJK KR",serif;font-weight:700;font-size:12pt;color:var(--navy);margin-right:auto}
+.x-part{background:var(--navy);color:#fff;font-weight:700;font-size:8.4pt;padding:.6mm 3mm;border-radius:2px;letter-spacing:.04em}
+
+/* exam text */
+.x-direct{font-weight:700;font-size:9.6pt;margin:0 0 2.5mm;color:#1f2430}
+.x-passage{border:1px solid #9aa0ab;padding:4mm 5mm 3mm;font-family:"NSerif","Noto Serif CJK KR",serif;font-size:9.7pt;line-height:1.82;color:#1b1f27}
+.x-p{margin:0 0 1.2mm;text-indent:1em;text-align:justify;orphans:3;widows:3}
+.x-p u,.xq u,.bogi u,.an u{text-decoration:underline;text-underline-offset:2px}
+.x-figure{text-align:center;margin:2mm 0 3mm;break-inside:avoid}
+.fig{max-width:100%;max-height:85mm}
+.fig-cap{font-size:8.4pt;color:#3b404b;margin-top:1mm}
+.x-qs{margin-top:6mm;column-count:2;column-gap:7mm;column-rule:1px solid var(--line)}
+.xq{break-inside:avoid;page-break-inside:avoid;margin:0 0 5mm;font-family:"NSerif","Noto Serif CJK KR",serif;font-size:9.3pt;line-height:1.68;color:#1b1f27}
+.xq-stem{font-weight:600;margin-bottom:1.6mm;display:flex;gap:1.6mm}
+.xq-no{font-weight:800;color:var(--navy);flex:none}
+.pt3{font-weight:700;color:var(--gold)}
+.xq-ch{list-style:none;margin:0;padding:0 0 0 1.2mm}
+.xq-ch li{padding-left:4.2mm;text-indent:-4.2mm;margin:.5mm 0}
+.bogi{border:1px solid #6d7381;padding:4mm 3.6mm 2.6mm;margin:3mm 0 2.4mm;position:relative;font-size:8.9pt;line-height:1.66}
+.bogi-h{position:absolute;top:-2.4mm;left:50%;transform:translateX(-50%);background:#fff;padding:0 2mm;font-size:8.4pt;font-weight:700;white-space:nowrap;letter-spacing:.06em}
+.bg-p{margin:0 0 1mm;text-indent:.6em}
+.bg-img{display:block;margin:1mm auto 1.5mm;max-height:70mm}
+.bg-note{font-size:8pt;color:#3b404b}
+.bg-tb{width:100%;border-collapse:collapse;margin:1mm 0 1.5mm;font-size:8.6pt}
+.bg-tb th,.bg-tb td{border:1px solid #9aa0ab;padding:1.2mm 1.8mm;vertical-align:top}
+.bg-tb th{background:var(--bg-soft)}
+
+/* 문제 해설 */
+.akey{display:flex;flex-wrap:wrap;align-items:center;gap:2.4mm;background:var(--gold-xl);border:1px solid var(--gold-l);border-radius:3px;padding:2.6mm 4mm;margin-bottom:5mm}
+.akey-h{font-weight:800;color:var(--navy);margin-right:2mm}
+.ak{display:inline-flex;align-items:center;gap:1.4mm;background:#fff;border:1px solid var(--line);border-radius:2px;padding:.6mm 2.6mm;font-size:9.4pt}
+.ak b{color:var(--navy)}
+.an{border:1px solid var(--line);border-left:3px solid var(--beige);border-radius:3px;padding:3.2mm 4.2mm 2.8mm;margin-bottom:4mm;break-inside:avoid;page-break-inside:avoid}
+.an-h{display:flex;align-items:center;gap:2.4mm;margin-bottom:2mm}
+.an-no{font-weight:800;color:#fff;background:var(--navy);border-radius:2px;padding:.3mm 2.4mm;font-size:9.4pt}
+.an-ans{font-weight:800;color:var(--navy);font-size:10pt}
+.an-int{margin-left:auto;font-size:8.2pt;color:var(--muted)}
+.an-e{font-size:9.3pt;line-height:1.72;color:#2b303a;margin-bottom:1.6mm}
+.an-o{font-size:8.9pt;line-height:1.65;color:#3b404b;padding:.8mm 0 .8mm 4.4mm;text-indent:-4.4mm;border-top:1px dashed #e5e7ec}
+.an-src{font-size:8.2pt;color:var(--muted);text-align:right;margin-top:2mm}
+.x-fn{margin:2mm 0 0;font-size:8.2pt;line-height:1.55;color:#3b404b;padding-left:2.6mm;text-indent:-2.6mm}
+.bg-c{text-align:center;text-indent:0;font-weight:600}
+.xq-ct{border-collapse:collapse;margin:1mm 0 0 1.2mm;font-size:9pt}
+.xq-ct th,.xq-ct td{border-bottom:1px solid var(--line);padding:.6mm 4mm;text-align:center}
+.xq-ct td:first-child,.xq-ct th:first-child{padding-left:0;text-align:left}
+.x-figure .fig{max-height:55mm}
+.ak .cn,.an-ans .cn{transform:scale(1.15)}
+.x-exam{font-size:8pt;color:var(--muted);margin-right:2mm}
+.xg{column-span:none}
+.xg-stem{font-weight:700;color:var(--navy);margin-bottom:1.6mm;font-size:9.3pt}
+.bogi.plain{padding-top:2.6mm}
+.bx{border:1px solid #2b303a;padding:0 2px}
+/* header: keep the small labels on one line, let only the title wrap */
+.x-q,.x-exam,.x-part{white-space:nowrap;flex:none}
+.x-title{flex:1 1 auto;min-width:0;line-height:1.35}
+/* never split a passage paragraph across pages */
+.x-p{break-inside:avoid;page-break-inside:avoid}
+.x-tb{margin:1mm auto 0;border-collapse:collapse;font-size:8.8pt;text-indent:0}
+.x-tb th,.x-tb td{border:1px solid #6d7381;padding:.8mm 3mm;text-align:center}
+.x-tb th{background:var(--bg-soft)}
+.bg-tbs{display:flex;gap:4mm;justify-content:center;flex-wrap:wrap}
+.bg-cap{text-align:center;font-weight:700;font-size:8.4pt;margin-bottom:.8mm}
+.bg-tb-c{width:auto}
+.bg-tb-c th,.bg-tb-c td{text-align:center;padding:.6mm 3mm}
+.bg-imgs{display:flex;justify-content:center;gap:3mm;margin:1mm 0 2mm}
+.bg-imgs figure{margin:0;text-align:center;flex:1 1 0}
+.bg-imgs .fig{max-height:38mm;max-width:100%}
+.bg-imgs figcaption{font-size:8.4pt;font-weight:700}
+/* 7 years × 3 passages: keep the 목차 on one page */
+.toc-page .toc-title-h{font-size:18pt;padding-bottom:2mm;margin-bottom:2mm}
+.toc-page .toc-part{margin:3mm 0 .2mm;padding-bottom:1.2mm}
+.toc-page .toc td{padding:1.15mm 1.5mm;font-size:8.6pt}
+.toc-page .toc td{padding:.95mm 1.5mm}
+.toc-page .toc-part{margin:2.6mm 0 .2mm}
+.toc-page .toc-note{margin-top:2mm}
+/* fixed-page exam layout built by print.js */
+.xflow{page-break-before:always;break-before:page}
+.xpg{height:262mm;overflow:hidden;position:relative;break-after:page;page-break-after:always}
+.xpg:last-child{break-after:auto;page-break-after:auto}
+.xpg + .xpg{break-before:auto}
+.x-qs2{display:grid;grid-template-columns:1fr 1fr;column-gap:7mm;margin-top:5mm;position:relative}
+.x-qs2::before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px solid var(--line)}
+.xcol{overflow:hidden;min-width:0}
+.xunit{display:block}
+.xunit .xq{margin-bottom:0}
+.xunit .xq + .xq{margin-top:2mm}
+.xunit + .xunit{margin-top:5mm}
+.toc-src{font-size:7.5pt;color:#8a8f99;font-weight:400;margin-top:1px}
