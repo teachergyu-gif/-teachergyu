@@ -2,7 +2,7 @@
 사용: TOTAL_PAGES=<PDF 쪽수-MEMO> python3 build.py 데이터폴더 출력.hwp"""
 import json, re, struct, sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from hwpbuild import Doc, T_PARA, T_TEXT, T_CS, table_records, cold_para
+from hwpbuild import Doc, T_PARA, T_TEXT, T_CS, table_records, cold_para, remove_toc
 
 D = os.path.dirname(os.path.abspath(__file__))
 TPL = D + '/tpl/t.hwp'
@@ -190,22 +190,9 @@ def main(work_dir, out_path):
         body += cold_para([('', 3)], 2, 0, B.ps_exl, brk=2)
         for k, e in exs:
             body += B.explanation(k, e)
-    # 1쪽 머리·목차
+    # 1쪽 머리(목차 없음: 머리 아래부터 바로 문제)
     d.replace_text('문제 은행', render.HEAD)    # 1쪽 머리 표
-    d.replace_text(' , ｢｣', ' ' + render.WORKS[0][1])
-    add_toc(d, [w[1] for w in render.WORKS[1:]])
-    # 목차 칸 맨 위 빈 문단 삭제 → '[문제 은행]'이 칸 첫 줄부터
-    sec = d.sec
-    k = [i for i, r in enumerate(sec) if r[0] == T_TEXT and r[2].decode('utf-16le', 'ignore').startswith('[문제 은행]')][0]
-    h = k - 1; lvl = sec[h][1]
-    prev = h - 1
-    while not (sec[prev][0] == T_PARA and sec[prev][1] == lvl) and sec[prev][0] != 72:
-        prev -= 1
-    if sec[prev][0] == T_PARA:   # 바로 앞 빈 문단
-        j = prev
-        while sec[j][0] != 72: j -= 1
-        del sec[prev:h]
-        p = bytearray(sec[j][2]); struct.pack_into('<h', p, 0, struct.unpack_from('<h', p, 0)[0] - 1); sec[j][2] = bytes(p)
+    remove_toc(d)
     # MEMO 쪽: 바탕쪽·머리말·꼬리말·쪽 번호·테두리를 모두 감춤(MEMO 상자만 보이게)
     for r in d.sec:
         if r[0] == 71 and r[2][:4] == b'dhgp' and r[2][4:8] == b'\x02\0\0\0':
@@ -222,32 +209,8 @@ def main(work_dir, out_path):
         if r[0] == T_PARA:
             h = bytearray(r[2]); ps = struct.unpack_from('<H', h, 8)[0]
             struct.pack_into('<H', h, 8, d.ps_word(ps)); r[2] = bytes(h)
-    d.save(out_path, body, prvtext=render.HEAD)
+    d.save(out_path, body, prvtext=render.HEAD, first_brk=0)
     print('questions', n)
-
-
-def add_toc(d, lines):
-    """목차 표 마지막 칸(‘최영미, ｢선운사에서｣’ 문단 뒤)에 목차 줄을 넣는다."""
-    sec = d.sec
-    k = [i for i, r in enumerate(sec) if r[0] == T_TEXT and '최영미' in r[2].decode('utf-16le', 'ignore')][0]
-    h = k - 1
-    lvl = sec[h][1]
-    # 이 문단이 속한 셀의 LIST_HEADER 찾기
-    j = h
-    while not (sec[j][0] == 72 and sec[j][1] == lvl):
-        j -= 1
-    st, ps = sec[h][2][10], struct.unpack_from('<H', sec[h][2], 8)[0]
-    cs = struct.unpack_from('<I', sec[k + 1][2], 4)[0]
-    # 끼울 위치: 그 문단 레코드 묶음 끝
-    e = k + 1
-    while e < len(sec) and not (sec[e][0] == T_PARA and sec[e][1] <= lvl):
-        e += 1
-    new = []
-    for t in [''] + lines:
-        new += Doc.para([(t, cs)], st, ps, level=lvl)
-    sec[e:e] = new
-    cnt = struct.unpack_from('<h', sec[j][2], 0)[0] + len(lines) + 1
-    p = bytearray(sec[j][2]); struct.pack_into('<h', p, 0, cnt); sec[j][2] = bytes(p)
 
 
 

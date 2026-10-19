@@ -145,12 +145,13 @@ def main(work_dir, out_html):
     fixes.apply(data, log)
     open(f'{J}/fixlog.txt', 'w').write('\n'.join(log) + '\n')
     # 작품마다: 문제 모음 → 정답 및 해설
-    body, toc, n = [], [], 0
-    for (name, label, _), src in zip(WORKS, data):
+    body, n = [], 0
+    for wi, ((name, label, _), src) in enumerate(zip(WORKS, data)):
         exm = {e['orig']: e for e in src['ex']}
         a0 = n + 1
         exs = []
-        body.append('<div class="u brk"></div>')
+        if wi:
+            body.append('<div class="u brk"></div>')
         for s in src['sets']:
             qs = s.get('questions') or []
             if not qs:
@@ -166,9 +167,7 @@ def main(work_dir, out_html):
                 body.append(question(n, q)); exs.append((n, exm[q['orig']]))
         body += ['<div class="u brk"></div>', f'<div class="u extitle"><span>{label.split(", ")[1]} 정답 및 해설</span></div>']
         body += [explanation(k, e) for k, e in exs]
-        toc.append(f'<div class="t2">{label}</div>')
-    head = '<div class="u toc"><div class="tt">&lt;목 차&gt;</div><div class="t1">[문제 은행]</div>' + ''.join(toc) + '</div>'
-    units = [head] + body
+    units = body   # 1쪽 목차 없음: 머리 아래부터 바로 문제
     units.append('<div class="u memo"></div>')
     css = open(f'{D}/exam.css').read() 
     js = open(f'{D}/paginate.js').read()
