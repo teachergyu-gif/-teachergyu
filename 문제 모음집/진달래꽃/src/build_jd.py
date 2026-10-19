@@ -232,6 +232,15 @@ def main(out_path):
     t = sec[ki][2].decode('utf-16le', 'surrogatepass')
     sec[ki][2] = (' ' * (len(t) - 1) + '\r').encode('utf-16le')
     si = max(i for i in range(ki) if sec[i][0] == 76 and sec[i][2][:4] == b'cer$')
+    # 1쪽 머리의 '이재규T' 상자도 감춤
+    kj = [i for i, r in enumerate(sec) if i > ki and r[0] == T_TEXT and '이재규' in r[2].decode('utf-16le', 'ignore')]
+    if kj:
+        kj = kj[0]; tt = sec[kj][2].decode('utf-16le', 'surrogatepass')
+        sec[kj][2] = (' ' * (len(tt) - 1) + '\r').encode('utf-16le')
+        sj = max(i for i in range(kj) if sec[i][0] == 76 and sec[i][2][:4] == b'cer$')
+        q = bytearray(sec[sj][2]); sh = 4 if q[4:8] == q[0:4] else 0
+        c2 = struct.unpack_from('<H', q, 46 + sh)[0]; o2 = 48 + sh + 48 + c2 * 96
+        struct.pack_into('<I', q, o2 + 4, 0); struct.pack_into('<I', q, o2 + 8, struct.unpack_from('<I', q, o2 + 8)[0] & ~0x3F); sec[sj][2] = bytes(q)
     p = bytearray(sec[si][2]); cnt = struct.unpack_from('<H', p, 46)[0]; off = 48 + 48 + cnt * 96
     struct.pack_into('<I', p, off + 4, 0); a_ = struct.unpack_from('<I', p, off + 8)[0]
     struct.pack_into('<I', p, off + 8, a_ & ~0x3F); sec[si][2] = bytes(p)

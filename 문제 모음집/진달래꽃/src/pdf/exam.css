@@ -172,3 +172,8 @@ body{font-size:11.2pt}
 .h1row .h1brand{position:static;height:10.5mm;flex:none}
 .h1row .h1title{position:static;transform:none;flex:1;text-align:center;font-size:25pt}
 .h1row .kt{position:static;flex:none}
+.h1row{display:block;top:0;bottom:0;height:auto}
+.h1row .h1title{position:absolute;left:50%;top:22mm;transform:translateX(-50%);font-size:30pt;white-space:nowrap}
+.h1row .h1brand{position:absolute;left:0;bottom:3mm;height:10mm}
+.h1row .h1brand{top:auto;bottom:4mm;height:9.5mm}
+.h1row .h1title{top:15mm}
