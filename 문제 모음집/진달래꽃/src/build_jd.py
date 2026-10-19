@@ -203,6 +203,10 @@ def main(out_path):
         while sec[j][0] != 72: j -= 1
         del sec[prev:h]
         p = bytearray(sec[j][2]); struct.pack_into('<h', p, 0, struct.unpack_from('<h', p, 0)[0] - 1); sec[j][2] = bytes(p)
+    # MEMO 쪽: 바탕쪽·머리말·꼬리말·쪽 번호·테두리를 모두 감춤(MEMO 상자만 보이게)
+    for r in d.sec:
+        if r[0] == 71 and r[2][:4] == b'dhgp' and r[2][4:8] == b'\x02\0\0\0':
+            r[2] = b'dhgp' + struct.pack('<I', 0x3F)
     # 바닥쪽 쪽 상자 전체 쪽수(양식 '33') → PDF판 쪽수
     tot = os.environ.get('TOTAL_PAGES')
     if tot:

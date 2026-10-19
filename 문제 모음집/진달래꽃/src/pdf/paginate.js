@@ -108,7 +108,8 @@
   function place(u) {
     if (u.classList.contains('brk')) { colIdx = 2; col = null; nextCol(); return; }
     if (u.classList.contains('colbrk')) { if (!empty()) nextCol(); col.dataset.forced = 1; return; }
-    if (u.classList.contains('memo')) { colIdx = 2; col = null; nextCol(); const pg = pages[pages.length - 1]; pg.querySelector('.cols').innerHTML = '<div class="memo"><span>MEMO</span></div>'; pg.querySelector('.cols').classList.add('one'); return; }
+    if (u.classList.contains('memo')) { colIdx = 2; col = null; nextCol(); const pg = pages[pages.length - 1];
+      pg.classList.add('memopage'); pg.innerHTML = '<div class="memo"><span>MEMO</span></div>'; return; }
     if (u.classList.contains('set')) {
       if (!empty()) {
         // 단에 공간이 많이 남으면(1/3 이상) 남는 공간의 절반을 띄우고 그 자리에서 지문 시작, 아니면 다음 단
@@ -141,7 +142,7 @@
     place(u);
   }
   src.remove();
-  document.querySelectorAll('.tot').forEach(t => t.textContent = pages.length);
+  document.querySelectorAll('.tot').forEach(t => t.textContent = pages.filter(p => !p.classList.contains('memopage')).length);
   // 단 끝의 여백 margin 제거
   document.querySelectorAll('.col').forEach(c => { const l = c.lastElementChild; if (l) l.style.marginBottom = '0'; });
   // 문제 쪽: 단 첫머리는 첫 줄부터, 남는 공간의 절반을 문항 사이에 고르게 나눔
