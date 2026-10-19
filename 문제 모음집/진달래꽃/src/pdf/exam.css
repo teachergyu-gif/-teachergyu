@@ -1,0 +1,139 @@
+@page{size:A4;margin:0}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:#111;font-family:"Noto Serif CJK KR",serif;font-size:9.4pt;line-height:1.6}
+#src{position:absolute;left:-9999px;top:0;width:88mm}
+.page{width:210mm;height:297mm;position:relative;overflow:hidden;page-break-after:always;padding:11mm 13mm 0;background:#fff}
+.top1{position:relative;height:9mm;text-align:center;font-family:"Noto Sans CJK KR",sans-serif;font-size:13pt;color:#29334A;letter-spacing:-.01em;padding-top:1mm}
+.top1 .pn{position:absolute;right:0;top:-2mm;font-family:"Noto Serif CJK KR",serif;font-weight:900;font-size:24pt;color:#111}
+.row1{display:flex;align-items:center;justify-content:space-between;height:15mm}
+.kyo{border:1.4px solid #111;border-radius:50%/50%;padding:.6mm 4.2mm;font-family:"Noto Serif CJK KR",serif;font-weight:700;font-size:15pt}
+.subt{font-family:"Noto Sans CJK KR",sans-serif;font-weight:900;font-size:27pt;letter-spacing:-.01em;margin-left:9mm}
+.logo{height:11.5mm}
+.rule{border-top:2.6px solid #111;border-bottom:.8px solid #111;height:4px;margin:1mm 0 0}
+.topn{display:flex;align-items:flex-end;justify-content:space-between;height:15mm;padding-bottom:1.2mm}
+.topn .pn{font-family:"Noto Serif CJK KR",serif;font-weight:900;font-size:24pt;line-height:1;width:30mm}
+.topn .ra{font-family:"Noto Serif CJK KR",serif;font-size:17pt;letter-spacing:.06em;color:#29334A}
+.topn .lg{width:30mm;display:flex}
+.topn .lg img{height:9mm}
+.even .topn .lg{justify-content:flex-end}
+.odd .topn{flex-direction:row-reverse}
+.odd .topn .pn{text-align:right}
+.cols{position:absolute;left:13mm;right:13mm;top:var(--top);bottom:20mm;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:minmax(0,1fr);column-gap:8mm}
+.cols:before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1.2px solid #111}
+.col{position:relative;overflow:hidden;min-height:0}
+.foot{position:absolute;bottom:8mm;left:0;right:0;text-align:center}
+.fr{display:inline-block;position:relative;width:15mm;height:9mm;border:1px solid #111;font-family:"Noto Serif CJK KR",serif;font-weight:700;font-size:8pt;line-height:1}
+.fr:after{content:"";position:absolute;left:0;top:0;width:100%;height:100%;background:linear-gradient(to bottom right,transparent calc(50% - .5px),#111 calc(50% - .5px),#111 calc(50% + .5px),transparent calc(50% + .5px))}
+.fr i{position:absolute;left:1.6mm;top:.9mm;font-style:normal;font-size:9pt}
+.fr s{position:absolute;right:1.2mm;bottom:.8mm;text-decoration:none}
+
+/* 단위 */
+.u{margin-bottom:8mm}
+.u.set{margin-bottom:5mm}
+.sethd{font-family:"Noto Sans CJK KR",sans-serif;font-weight:700;font-size:9.3pt;margin:0 0 2mm}
+.box{border:1px solid #111;padding:3mm 3.6mm}
+.box.open{border-bottom:none;padding-bottom:0}
+.box.cont{border-top:none;padding-top:1mm}
+.ln{line-height:1.6;font-size:9.2pt}
+.ln.sp{height:1.9mm}
+.ln.tag{font-family:"Noto Sans CJK KR",sans-serif;font-weight:700}
+.ln.au{text-align:right}
+.ln:not(.au):not(.shp):not(.pr):not(.ind):not(.note){padding-left:1em;text-indent:-1em}
+.ln.ind{padding-left:2em;text-indent:-1em}
+.ln.pr{text-indent:.7em;text-align:justify;line-height:1.66}
+.ln.shp{text-align:center;padding:0;text-indent:0;letter-spacing:-.03em;line-height:1.45;font-size:9pt}
+.ln.note{font-size:8.6pt;line-height:1.5;padding-left:.9em;text-indent:-.9em}
+.ln.note:first-of-type{margin-top:1mm}
+u{text-underline-offset:2px}
+.qh{display:flex;gap:1.6mm;font-weight:700;margin-bottom:1.6mm;line-height:1.55}
+.qh .n{flex:none;font-family:"Noto Sans CJK KR",sans-serif;font-weight:900}
+.qh .s{text-align:justify}
+.ch{display:flex;gap:1.2mm;margin:.6mm 0 .6mm 1mm;text-align:justify;line-height:1.55}
+.ch .c{flex:none}
+.bogi{border:1px solid #111;padding:3mm 3.4mm 2.4mm;margin:2.8mm 0 2.4mm;position:relative;line-height:1.6}
+.bogi .bt{position:absolute;top:-2.2mm;left:0;right:0;text-align:center;line-height:1}
+.bogi .bt span{background:#fff;padding:0 1.6mm;font-size:8.8pt}
+.bogi .bl{text-align:justify}
+.bogi .bl.bi{padding-left:1.3em;text-indent:-1.3em}
+.extra{border:1px dashed #555;padding:2mm 3mm;margin:2mm 0;line-height:1.6}
+.brk{margin:0}
+.extitle{margin-bottom:4mm}
+.extitle span{display:inline-block;background:#29334A;color:#fff;font-family:"Noto Sans CJK KR",sans-serif;font-weight:700;font-size:11pt;padding:1.2mm 5mm}
+.quick table{border-collapse:collapse;width:100%;font-size:9pt;text-align:center}
+.quick td{border:1px solid #888;padding:.8mm 0}
+.quick td:nth-child(odd){background:#eef0f4;width:8%}
+.u.ex{margin-bottom:6mm;font-size:9pt;line-height:1.6}
+.eh{display:flex;align-items:center;gap:1.5mm;margin-bottom:1mm}
+.eh .n{font-family:"Noto Sans CJK KR",sans-serif;font-weight:900}
+.eh .jd{border:1px solid #111;border-radius:1mm;font-size:7.2pt;line-height:1;padding:.5mm 1.2mm;font-family:"Noto Sans CJK KR",sans-serif}
+.eh .a{font-weight:700}
+.model{border:1px solid #29334A;background:#f3f4f7;padding:1.6mm 2.4mm;margin:1mm 0 1.6mm}
+.model:before{content:"모범 답안";display:block;font-family:"Noto Sans CJK KR",sans-serif;font-weight:700;font-size:8pt;color:#29334A}
+.ep{text-align:justify;padding-left:1em}
+.ep.hang{display:flex;gap:1mm;padding-left:0}
+.ep.hang .c{flex:none}
+.bx{border:1px solid #111;padding:0 .4mm}
+.il{font-family:"Noto Sans CJK KR",sans-serif}
+.ctab{border-collapse:collapse;width:100%;margin-top:1mm;text-align:center;line-height:1.5}
+.ctab th{border-bottom:1px solid #111;font-weight:400;padding:.6mm 0}
+.ctab td{padding:.5mm 0}
+.ctab td:first-child,.ctab th:first-child{width:8mm;text-align:left}
+.nw{white-space:nowrap}
+.bogi .bl.bi{text-align:left}
+.bogi .bl.au{text-align:right}
+
+/* ---- 진달래꽃 문제 은행 (양식 HWP 모양, A3) ---- */
+@page{size:297mm 420mm;margin:0}
+body{font-size:11.2pt}
+#src{width:113.5mm}
+.page{width:297mm;height:420mm;padding:16mm 31mm 0}
+.cols{left:31mm;right:31mm;bottom:30mm;column-gap:8mm}
+.topn{height:22mm;padding-bottom:2mm;margin-top:6mm}
+.topn .pn{font-family:"Times New Roman","Noto Serif CJK KR",serif;font-size:34pt;width:40mm;color:#333}
+.topn .ra{font-family:"Nanum Square Round","나눔스퀘어라운드","Noto Sans CJK KR",sans-serif;font-weight:400;font-size:26pt;letter-spacing:.06em;color:#555}
+.topn .lg{width:40mm}
+.kt{display:inline-block;border:1.6px solid #444;border-radius:2mm;padding:.6mm 1.6mm;font-family:"Noto Sans CJK KR",sans-serif;font-weight:900;font-size:17pt;line-height:1.1;color:#333}
+.rule{border-top:1px solid #777;border-bottom:none;height:0;margin:0}
+.h1box{position:relative;margin-top:22mm;height:56mm;border-top:3px solid #111;border-bottom:3px solid #111}
+.h1t{position:absolute;top:4mm;left:0;right:0;text-align:center;font-family:"Noto Serif CJK KR",serif;font-size:17pt}
+.h1box .kyo{position:absolute;left:0;top:28mm;border:1.4px solid #111;border-radius:6mm;padding:1mm 5mm;font-family:"Noto Serif CJK KR",serif;font-weight:700;font-size:16pt}
+.h1logo{position:absolute;left:50%;transform:translateX(-50%);top:22mm;height:19mm}
+.h1box .kt{position:absolute;right:0;top:27mm;font-size:20pt}
+.pn1{position:absolute;right:0;top:4mm;font-family:"Times New Roman",serif;font-weight:700;font-size:30pt}
+.fr{width:17mm;height:11mm;font-size:10pt}
+.fr i{font-size:12pt}
+.sethd{font-family:"Noto Serif CJK KR",serif;font-weight:700;font-size:11.5pt;margin-bottom:2.5mm}
+.box{border:1px solid #111;padding:3mm 4mm}
+.ln{font-size:11.2pt;line-height:1.75}
+.qh{font-weight:400;font-size:11.2pt;margin-bottom:2mm}
+.qh .n{font-family:"Noto Serif CJK KR",serif;font-weight:700;font-size:13pt}
+.ch{font-size:11.2pt;line-height:1.65;margin:.8mm 0 .8mm 4mm}
+.u{margin-bottom:12mm}
+.bogi{font-size:10.5pt}
+.brk-lab{font-weight:700}
+.ln.brk{padding-left:0}
+.bx2{display:flex}
+.bx2 .lab{flex:none;width:9mm;font-weight:700;display:flex;align-items:center;border-left:1.2px solid #111;border-top:1.2px solid #111;border-bottom:1.2px solid #111;margin:1.2mm 1.6mm 1.2mm 0;padding-left:.6mm;font-size:10.5pt}
+.toc{border:1.2px solid #111;min-height:280mm;padding:6mm 6mm}
+.toc .tt{text-align:center;font-size:14.5pt;margin:-9mm auto 8mm;background:#fff;width:30mm}
+.toc .t1{font-weight:700;margin-top:60mm}
+.toc .t2{margin:3mm 0 14mm}
+.toc .t3{margin:4mm 0}
+.title2{display:inline-block;background:#e6e6e6;border:1px solid #888;padding:2mm 6mm;font-size:13pt;margin-bottom:6mm}
+.cols.one{display:block}
+.cols.one:before{display:none}
+.memo{border:3px solid #111;height:100%;display:flex;justify-content:center;padding-top:6mm;font-family:"Noto Sans CJK KR",sans-serif;font-size:18pt;letter-spacing:.1em}
+.extitle span{background:#f7c9a9;color:#111;border-radius:2.5mm;font-size:15pt;padding:1.6mm 6mm}
+.u.ex{font-size:11pt;line-height:1.75;margin-bottom:14mm}
+.eh{font-size:12pt}
+.ep{padding-left:0}
+.ep.hang .c{width:1.2em}
+.ep.wr{font-weight:700;margin-top:.5mm}
+.ctab.grid{border-collapse:collapse;width:100%;margin:2mm 0 3mm;font-size:10.5pt;text-align:left;table-layout:fixed}
+.ctab.grid td{border:1px solid #333;padding:1.2mm 2mm;width:auto;vertical-align:middle}
+.ctab.grid td:first-child{width:auto}
+.ctab.grid tr:first-child td{text-align:center;background:#f2f2f2}
+.ctab.grid col.a{width:14%}.ctab.grid col.b{width:36%}
+.toc{position:relative;margin-top:6mm}
+.toc .tt{position:absolute;top:-3.6mm;left:50%;transform:translateX(-50%);margin:0;width:auto;padding:0 3mm;font-size:13pt;line-height:1}
+.toc .t1{margin-top:50mm}
