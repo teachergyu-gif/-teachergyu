@@ -190,3 +190,22 @@ def table_records(d_para, rows, widths, level=0, bf=6, cs=3, ps=3, spans=None, i
         for i, l in enumerate(lines):
             recs += d_para(l, i == len(lines) - 1, level + 2)
     return recs
+
+
+def cold_para(runs, ncols, style, ps, brk, level=0, spacing=2268):
+    """다단 설정을 바꾸는 문단: 문단 앞에 '단 정의'(cold) 조판 부호를 넣는다(brk에 0x02 포함)."""
+    ctrl = '\x02' + b'dloc'.decode('utf-16le') + '\0' * 4 + '\x02'
+    body = ''.join(t for t, _ in runs)
+    text = ctrl + body + '\r'
+    css, pos = [(0, runs[0][1] if runs else 3)], len(ctrl)
+    for t, c in runs:
+        if not t: continue
+        if css[-1][1] != c:
+            css.append((pos, c))
+        pos += len(t)
+    hdr = struct.pack('<IIHBBHHHIH', len(text), 0x4, ps, style, brk, len(css), 0, 1, 0, 0)
+    attr = (ncols << 2) | 0x1000   # 단 너비 동일
+    cold = b'dloc' + struct.pack('<HH', attr, spacing if ncols > 1 else 0) + b'\0' * 8
+    return [[T_PARA, level, hdr], [T_TEXT, level + 1, text.encode('utf-16le')],
+            [T_CS, level + 1, b''.join(struct.pack('<II', a, b) for a, b in css)],
+            [T_SEG, level + 1, LINESEG], [71, level + 1, cold]]

@@ -1,7 +1,7 @@
 """진달래꽃 문제 모음집: work/s*/out.json → 양식 HWP."""
 import json, re, struct, sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from hwpbuild import Doc, T_PARA, T_TEXT, T_CS, table_records
+from hwpbuild import Doc, T_PARA, T_TEXT, T_CS, table_records, cold_para
 
 D = os.path.dirname(os.path.abspath(__file__))
 TPL = D + '/tpl/t.hwp'
@@ -183,7 +183,9 @@ def main(out_path):
         if n >= first_n:
             toc.append(f'{src["source"]} ············ {first_n}～{n}번')
     # 정답 및 해설
-    body += d.para(B.runs('<b>정답 및 해설</b>', B.cs(3, size=1400)), 26, B.ps_ex_t, brk=4)
+    # '정답 및 해설' 제목은 1단 영역에 두고, 그 아래부터 다시 2단 → 왼쪽·오른쪽 단의 첫 해설이 같은 높이에서 시작
+    body += cold_para(B.runs('<b>정답 및 해설</b>', B.cs(3, size=1400)), 1, 0, B.ps_exl, brk=4 | 2)
+    body += cold_para([('', 3)], 2, 0, B.ps_exl, brk=2)
     for k, e in exs:
         body += B.explanation(k, e)
     # 1쪽 머리·목차·제목 상자

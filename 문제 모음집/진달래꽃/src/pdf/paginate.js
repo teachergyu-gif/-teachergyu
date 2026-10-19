@@ -24,6 +24,16 @@
     if (colIdx >= 1 || !col) { newPage(); colIdx = 0; }
     else colIdx++;
     col = pages[pages.length - 1].querySelectorAll('.col')[colIdx];
+    // 정답 및 해설 첫 쪽: 오른쪽 단 첫 해설을 왼쪽 단 첫 해설과 같은 높이에서 시작
+    if (colIdx === 1) {
+      const ext = pages[pages.length - 1].querySelector('.col .extitle');
+      if (ext) {
+        const cs = getComputedStyle(ext);
+        const sp = document.createElement('div'); sp.className = 'u exsp';
+        sp.style.height = (ext.offsetHeight + parseFloat(cs.marginTop) + parseFloat(cs.marginBottom)) + 'px';
+        sp.style.margin = '0'; col.appendChild(sp);
+      }
+    }
   }
   const over = () => col.scrollHeight > col.clientHeight + 0.5;
   const empty = () => col.children.length === 0;
