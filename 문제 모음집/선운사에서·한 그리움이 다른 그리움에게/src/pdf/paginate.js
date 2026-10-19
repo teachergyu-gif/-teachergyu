@@ -11,7 +11,7 @@
     return `<div class="topn"><span class="pn">${n}</span><span class="ra">RICH ACADEMY</span><span class="lg">${box}</span></div><div class="rule"></div>`;
   }
   function newPage() {
-    const n = pages.length + 1;
+    const n = pages.length + 1 + (window.P0 || 0);   // 이 교재: 앞 문서 뒤에 붙일 때 쪽 번호를 이어서(P0 = 앞 문서 쪽수)
     const p = document.createElement('div');
     p.className = 'page ' + (n % 2 ? 'odd' : 'even');
     p.innerHTML = header(n) + `<div class="cols" style="--top:50mm"><div class="col"></div><div class="col"></div></div>
@@ -215,7 +215,7 @@
     }
     if (moved && moved.dataset.key) window.BALANCED.push(moved.dataset.key);
   });
-  document.querySelectorAll('.tot').forEach(t => t.textContent = pages.filter(p => !p.classList.contains('memopage')).length);
+  document.querySelectorAll('.tot').forEach(t => t.textContent = pages.filter(p => !p.classList.contains('memopage')).length + (window.P0 || 0));
   // 단 끝의 여백 margin 제거
   document.querySelectorAll('.col').forEach(c => { const l = c.lastElementChild; if (l) l.style.marginBottom = '0'; });
   // 문제 쪽: 단 첫머리는 첫 줄부터, 남는 공간의 절반을 문항 사이에 고르게 나눔
