@@ -4,7 +4,7 @@ D = os.path.dirname(os.path.abspath(__file__))
 J = os.path.dirname(D)
 sys.path.insert(0, J)
 import fixes_jd
-from layout_overrides import Q_BREAK, SET_BREAK
+from layout_overrides import Q_BREAK, SET_BREAK, ANSWER_LINES
 
 CIRC = '①②③④⑤'
 
@@ -81,8 +81,9 @@ def question(n, q):
     elif ex:
         extra = bogi({'title': '', 'text': ex})
     ch = ''.join(f'<div class="ch"><span class="c">{CIRC[i]}</span><span class="t">{esc(t)}</span></div>' for i, t in enumerate(q.get('choices') or []))
+    ans = '' if q.get('choices') else f'<div class="ans" style="height:{ANSWER_LINES * 1.75 * 11.2}pt"></div>'
     return (f'<div class="u q"><div class="qh"><span class="n">{n}.</span><span class="s">{esc(q["stem"])}</span></div>'
-            f'{bogi(q.get("bogi"))}{extra}{ch}</div>')
+            f'{bogi(q.get("bogi"))}{extra}{ch}{ans}</div>')
 
 
 def explanation(n, e):

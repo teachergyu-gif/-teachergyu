@@ -142,7 +142,7 @@ def main(out_path):
     B = Builder(); d = B.d
     data = [json.load(open(f'{D}/work/s{i}/out.json')) for i in range(1, 5)]
     import fixes_jd
-    from layout_overrides import Q_BREAK, SET_BREAK
+    from layout_overrides import Q_BREAK, SET_BREAK, ANSWER_LINES
     log = []
     fixes_jd.apply(data, log)
     open(f'{D}/fixlog.txt', 'w').write('\n'.join(log) + '\n')
@@ -173,6 +173,9 @@ def main(out_path):
             for q in qs:
                 n += 1
                 qr = B.question(q)
+                if not q.get('choices'):   # 서술형: 답안 쓸 여백
+                    for _ in range(ANSWER_LINES):
+                        qr += B.P(0, B.ps_exl, '', 3)
                 if Q_BREAK.get(n):
                     h = bytearray(qr[0][2]); h[11] = 8 if Q_BREAK[n] == 'col' else 4; qr[0][2] = bytes(h)
                 body += qr
