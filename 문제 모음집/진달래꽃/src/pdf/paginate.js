@@ -136,6 +136,57 @@
     }
     l.style.letterSpacing = '';
   });
+  // 양쪽 정렬로 글 간격이 지나치게 벌어지는 줄: 다음 줄 첫 어절을 어간/어미 경계에서 나눠 앞줄로 당김(변조/했으므로)
+  (function loosen() {
+    const PRI = ['했','하','되','된','될','한','할','함','해','시키','시킨','시켜'];
+    const SEC = ['을','를','은','는','이','가','의','에서','에게','에','와','과','으로','로','도','만','까지','부터','처럼','보다','이라','라는','라고'];
+    const sel = '.ep, .ch .t, .bogi .bl, .qh .s, .ln.pr';
+    const wrapWords = (el) => {
+      const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentElement.closest('.nb, .w') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+      const nodes = []; while (tw.nextNode()) nodes.push(tw.currentNode);
+      nodes.forEach(n => {
+        const parts = n.textContent.split(/(\s+)/); if (parts.length < 2 && !parts[0]) return;
+        const f = document.createDocumentFragment();
+        parts.forEach(p => { if (!p) return; if (/^\s+$/.test(p)) f.appendChild(document.createTextNode(p)); else { const s = document.createElement('span'); s.className = 'w'; s.textContent = p; f.appendChild(s); } });
+        n.replaceWith(f);
+      });
+    };
+    document.querySelectorAll('#src ' + sel).forEach(el => {
+      wrapWords(el);
+      for (let pass = 0; pass < 4; pass++) {
+        const fs = parseFloat(getComputedStyle(el).fontSize);
+        const ta = el.style.textAlign; el.style.textAlign = 'left';
+        const r = el.getBoundingClientRect(), cs = getComputedStyle(el);
+        const right = r.right - parseFloat(cs.paddingRight);
+        const ws = [...el.querySelectorAll('.w, .nb')].filter(w => !w.parentElement.closest('.nb'));
+        const lines = [];
+        ws.forEach(w => { const t = w.getClientRects()[0]; if (!t) return; const L = lines[lines.length - 1];
+          if (!L || Math.abs(L.top - t.top) > 2) lines.push({ top: t.top, items: [w], end: t.right }); else { L.items.push(w); L.end = Math.max(L.end, t.right); } });
+        let changed = false;
+        for (let k = 0; k + 1 < lines.length; k++) {
+          const slack = right - lines[k].end;
+          if (slack < fs * 2.2) continue;
+          const nw = lines[k + 1].items[0];
+          if (!nw.classList.contains('w')) continue;
+          const txt = nw.textContent; if (txt.includes('​') || txt.length < 4) continue;
+          // 들어갈 수 있는 가장 긴 앞부분(2음절 이상, 뒷부분 2음절 이상, 뒷부분이 어미·조사로 시작)
+          let best = -1, bestCls = 9;
+          for (let c = 2; c <= txt.length - 2; c++) {
+            const rest = txt.slice(c);
+            const cls = PRI.some(e => rest.startsWith(e)) ? 0 : (SEC.some(e => rest.startsWith(e)) ? 1 : 9);
+            if (cls === 9 || !/[가-힣]/.test(txt[c - 1]) || !/[가-힣]/.test(txt[c])) continue;
+            if (/[가-힣]/.test(rest[1] || '') === false && rest.length < 2) continue;
+            const m = document.createElement('span'); m.style.visibility = 'hidden'; m.style.position = 'absolute'; m.textContent = ' ' + txt.slice(0, c); el.appendChild(m);
+            const wpx = m.getBoundingClientRect().width; m.remove();
+            if (wpx <= slack - fs * 0.3 && (cls < bestCls || (cls === bestCls && c > best))) { best = c; bestCls = cls; }
+          }
+          if (best > 0) { nw.textContent = txt.slice(0, best) + '​' + txt.slice(best); changed = true; }
+        }
+        el.style.textAlign = ta;
+        if (!changed) break;
+      }
+    });
+  })();
   nextCol();
   let pendingKeep = null;
   for (const u of units) {

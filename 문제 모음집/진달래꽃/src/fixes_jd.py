@@ -113,6 +113,28 @@ def apply(data, log):
                 if t != w['lines']:
                     w['lines'] = t
         log.append(f'{i}회 지문: 밑줄 앞 기호 뒤 한 칸 띄움')
+        # 해설 문장 끝 마침표 보완(원본에 빠진 곳)
+        END = (r'(?:하다|않다|있다|이다|한다|된다|없다|같다|는다|진다|난다|낸다|렵다|준다|친다|린다|춘다|였다|었다|았다|했다|'
+               r'보인다|든다|운다|룬다|간다|온다|본다|싶다|아니다|가깝다|멀다|띤다|맞다|틀리다)')
+        def dot(t):
+            out = []
+            for para in t.split('\n'):
+                p2 = re.sub(END + r'(?=\s+\S)', lambda m: m.group(0) + '.', para)
+                if re.search(r'[가-힣ᄀ-ᇿ0-9)\]]$', p2.rstrip()):
+                    p2 = p2.rstrip() + '.'
+                out.append(p2)
+            return '\n'.join(out)
+        nd = 0
+        for e in src['ex']:
+            for k in ('correct', 'plain'):
+                if e.get(k):
+                    t = dot(e[k]); nd += t != e[k]; e[k] = t
+            for w in e.get('wrong') or []:
+                t = dot(w[1]); nd += t != w[1]; w[1] = t
+            if len(e['answer']) >= 12:
+                t = dot(e['answer']); nd += t != e['answer']; e['answer'] = t
+        if nd:
+            log.append(f'{i}회 해설: 문장 끝 마침표 보완 {nd}곳')
         before = repr(src)
         src['sets'] = walk(src['sets'], quotes); src['ex'] = walk(src['ex'], quotes)
         if repr(src) != before:
