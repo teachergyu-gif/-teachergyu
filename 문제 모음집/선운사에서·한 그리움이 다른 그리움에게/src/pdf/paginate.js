@@ -193,6 +193,28 @@
     place(u);
   }
   src.remove();
+  // 문제 은행 기준: 오른쪽 단 아래가 많이 비면 왼쪽 단 끝 문항을 오른쪽 단 위로 옮겨 두 단 여백을 고르게
+  // (오른쪽 단이 같은 지문의 문항으로 이어질 때만, 사용자가 단을 지정한 곳·해설 쪽은 제외, 왼쪽에 지문 + 문항 하나는 남김)
+  window.BALANCED = [];
+  pages.forEach(pg => {
+    const cs = pg.querySelectorAll('.col'); if (cs.length < 2) return;
+    const [L, R] = cs;
+    if (R.dataset.forced || L.querySelector('.ex, .extitle') || !R.firstElementChild) return;
+    if (![...R.children].every(k => k.classList.contains('q') || k.classList.contains('exsp'))) return;
+    const free = c => { const l = c.lastElementChild; return c.clientHeight - (l ? l.offsetTop + l.offsetHeight : 0); };
+    let moved = null;
+    for (;;) {
+      const q = L.lastElementChild, prev = q && q.previousElementSibling;
+      if (!q || !q.classList.contains('q') || !prev || !prev.classList.contains('q')) break;
+      const before = Math.abs(free(L) - free(R));
+      const anchor = R.querySelector(':scope > .q');
+      R.insertBefore(q, anchor);
+      const over = R.scrollHeight > R.clientHeight + 0.5;
+      if (over || Math.abs(free(L) - free(R)) >= before) { L.appendChild(q); break; }
+      moved = q;
+    }
+    if (moved && moved.dataset.key) window.BALANCED.push(moved.dataset.key);
+  });
   document.querySelectorAll('.tot').forEach(t => t.textContent = pages.filter(p => !p.classList.contains('memopage')).length);
   // 단 끝의 여백 margin 제거
   document.querySelectorAll('.col').forEach(c => { const l = c.lastElementChild; if (l) l.style.marginBottom = '0'; });

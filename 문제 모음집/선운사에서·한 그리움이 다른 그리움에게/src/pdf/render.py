@@ -95,6 +95,7 @@ def question(n, q, key=None):
     ch = ''.join(f'<div class="ch"><span class="c">{CIRC[i]}</span><span class="t">{esc(t)}</span></div>' for i, t in enumerate(q.get('choices') or []))
     ans = '' if q.get('choices') else f'<div class="ans" style="height:{ANSWER_LINES * 1.75 * 11.2}pt"></div>'
     close = ' data-close="1"' if key in CLOSE else ''
+    if key: close += f' data-key="{key[0]}|{key[1]}"'
     return (f'<div class="u q"{close}><div class="qh"><span class="n">{n}.</span><span class="s">{esc(q["stem"])}</span></div>'
             f'{bogi(q.get("bogi"))}{extra}{ch}{ans}</div>')
 

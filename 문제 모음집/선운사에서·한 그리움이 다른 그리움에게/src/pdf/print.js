@@ -10,6 +10,8 @@ const { chromium } = pw;
   await p.waitForFunction(() => document.body.dataset.done === '1', null, { timeout: 60000 });
   await p.evaluate(() => document.fonts.ready);
   console.log('pages', await p.evaluate(() => window.PAGES));
+  // 단 균형으로 오른쪽 단 첫머리가 된 문항 → 한글 파일에서도 그 문항 앞에서 단 나눔
+  if (process.argv[4]) require('fs').writeFileSync(process.argv[4], JSON.stringify(await p.evaluate(() => window.BALANCED || [])));
   await p.pdf({ path: process.argv[3], preferCSSPageSize: true, printBackground: true });
   await b.close();
 })();

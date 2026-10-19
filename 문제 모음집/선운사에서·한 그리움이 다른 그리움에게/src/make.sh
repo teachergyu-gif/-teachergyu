@@ -6,7 +6,7 @@ H=$(cd "$(dirname "$0")" && pwd); W=$(cd "${1:-$H/data}" && pwd); OUT="$H/.."
 NAME="국제고 1학년 선운사에서·한 그리움이 다른 그리움에게 교재"
 export NODE_PATH=${NODE_PATH:-$(npm root -g)}
 python3 -I "$H/pdf/render.py" "$W" "$H/pdf/out.html"
-node "$H/pdf/print.js" "$H/pdf/out.html" "$OUT/$NAME.pdf"
+node "$H/pdf/print.js" "$H/pdf/out.html" "$OUT/$NAME.pdf" "$H/pdf/balanced.json"
 node "$H/pdf/decide.js" "$H/pdf/out.html" "$H/pdf/decisions.json"
 P=$(pdfinfo "$OUT/$NAME.pdf" | awk '/^Pages/{print $2}')
 TOTAL_PAGES=$((P - 1)) python3 -I "$H/build.py" "$W" "$OUT/$NAME.hwp"
