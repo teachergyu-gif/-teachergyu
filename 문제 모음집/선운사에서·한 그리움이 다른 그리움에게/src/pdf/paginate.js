@@ -7,14 +7,14 @@
 
   function header(n) {
     const box = '<span class="kt">이재규T</span>';
-    if (n === 1) return `<div class="h1box"><div class="h1t">${HEAD}</div><span class="kyo">제1교시</span><img class="h1logo" src="${LOGO}">${box}<span class="pn1">1</span></div>`;
+    if (false && n === 1) return `<div class="h1box"><div class="h1t">${HEAD}</div><span class="kyo">제1교시</span><img class="h1logo" src="${LOGO}">${box}<span class="pn1">1</span></div>`;
     return `<div class="topn"><span class="pn">${n}</span><span class="ra">RICH ACADEMY</span><span class="lg">${box}</span></div><div class="rule"></div>`;
   }
   function newPage() {
     const n = pages.length + 1;
     const p = document.createElement('div');
     p.className = 'page ' + (n % 2 ? 'odd' : 'even');
-    p.innerHTML = header(n) + `<div class="cols" style="--top:${n === 1 ? '102mm' : '50mm'}"><div class="col"></div><div class="col"></div></div>
+    p.innerHTML = header(n) + `<div class="cols" style="--top:50mm"><div class="col"></div><div class="col"></div></div>
 <div class="foot"><span class="fr"><i>${n}</i><s class="tot"></s></span></div>`;
     document.body.appendChild(p);
     pages.push(p);
@@ -26,7 +26,7 @@
     col = pages[pages.length - 1].querySelectorAll('.col')[colIdx];
     // 정답 및 해설 첫 쪽: 오른쪽 단 첫 해설을 왼쪽 단 첫 해설과 같은 높이에서 시작
     if (colIdx === 1) {
-      const ext = pages[pages.length - 1].querySelector('.col .extitle');
+      const ext = pages[pages.length - 1].querySelector('.col .extitle, .col .qtitle');   // 이 교재: 문제 은행 제목 쪽도 같은 높이로
       if (ext) {
         const cs = getComputedStyle(ext);
         const sp = document.createElement('div'); sp.className = 'u exsp';
@@ -111,7 +111,7 @@
     if (u.classList.contains('memo')) { colIdx = 2; col = null; nextCol(); const pg = pages[pages.length - 1];
       pg.classList.add('memopage'); pg.innerHTML = '<div class="memo"><span>MEMO</span></div>'; return; }
     if (u.classList.contains('set')) {
-      if (!empty()) {
+      if (!empty() && !col.lastElementChild.classList.contains('qtitle')) {   /* 이 교재: 문제 은행 제목 바로 아래는 그대로 이어서 */
         // 단에 공간이 많이 남으면(1/3 이상) 남는 공간의 절반을 띄우고 그 자리에서 지문 시작, 아니면 다음 단
         const last = col.lastElementChild;
         const used = last.offsetTop + last.offsetHeight + parseFloat(getComputedStyle(last).marginBottom);
@@ -198,7 +198,7 @@
   document.querySelectorAll('.col').forEach(c => { const l = c.lastElementChild; if (l) l.style.marginBottom = '0'; });
   // 문제 쪽: 단 첫머리는 첫 줄부터, 남는 공간의 절반을 문항 사이에 고르게 나눔
   document.querySelectorAll('.col').forEach(c => {
-    const kids = [...c.children];
+    const kids = [...c.children].filter(k => !k.classList.contains('qtitle') && !k.classList.contains('exsp'));   // 이 교재: 제목 상자는 간격 나눔에서 뺌
     if (!kids.length) return;
     if (!kids[0].classList.contains('toc')) kids[0].style.marginTop = '0';
     if (c.querySelector('.ex, .toc, .extitle, [data-mid]')) return;
@@ -208,7 +208,9 @@
     if (gaps < 1 || left <= 0) return;
     const add = left / 2 / gaps;
     // 이 교재: data-close 문항은 바로 앞(지문) 과의 간격을 1/4만 늘림
-    kids.slice(0, -1).forEach((k, i) => { const f = kids[i + 1].dataset.close ? 0.25 : 1; k.style.marginBottom = (parseFloat(getComputedStyle(k).marginBottom) + add * f) + 'px'; });
+    // 문제 은행 기준: 한 단에 지문 하나·문항 하나뿐이면 둘 사이 간격을 1/4만 늘림
+    const pair = kids.length === 2 && kids[0].classList.contains('set') && kids[1].classList.contains('q');
+    kids.slice(0, -1).forEach((k, i) => { const f = (pair || kids[i + 1].dataset.close) ? 0.25 : 1; k.style.marginBottom = (parseFloat(getComputedStyle(k).marginBottom) + add * f) + 'px'; });
   });
   // 정답 및 해설: 단 아래에 공간이 많이 남지 않게 해설 사이를 더 띄움(마지막 해설 단 제외)
   const exCols = [...document.querySelectorAll('.col')].filter(c => c.querySelector('.u.ex'));

@@ -11,6 +11,7 @@ def warn(n, src, q, msg): P.append(f'{n:>2}번 [{src} {q["orig"]}번] {msg}')
 plain = lambda t: re.sub(r'</?\w+>', '', t or '')
 n = 0
 for src in data:
+    n = 0   # 작품마다 1번부터
     exm = {e['orig']: e for e in src['ex']}
     for s in src['sets']:
         ptxt = plain('\n'.join(w['lines'] for w in s['works']) + '\n'.join(s.get('notes') or []))

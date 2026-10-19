@@ -2,7 +2,7 @@
 사용: TOTAL_PAGES=<PDF 쪽수-MEMO> python3 build.py 데이터폴더 출력.hwp"""
 import json, re, struct, sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from hwpbuild import Doc, T_PARA, T_TEXT, T_CS, table_records, cold_para, remove_toc
+from hwpbuild import Doc, T_PARA, T_TEXT, T_CS, table_records, cold_para, remove_page1
 
 D = os.path.dirname(os.path.abspath(__file__))
 TPL = D + '/tpl/t.hwp'
@@ -155,7 +155,11 @@ def main(work_dir, out_path):
     for wi, ((name, label, _), src) in enumerate(zip(render.WORKS, data)):
         exmap = {e['orig']: e for e in src['ex']}
         exs = []
+        n = 0   # 작품마다 1번부터
         first = True
+        # '｢작품｣ 문제 은행' 제목: 1단 영역(둘째 작품부터는 새 쪽), 그 아래부터 다시 2단
+        body += cold_para(B.runs(f'<b>{label.split(", ")[1]} 문제 은행</b>', B.cs(3, size=1400)), 1, 0, B.ps_exl, brk=(4 | 2) if wi else 2)
+        body += cold_para([('', 3)], 2, 0, B.ps_exl, brk=2)
         for s in src['sets']:
             qs = s['questions']
             if not qs:
@@ -164,14 +168,14 @@ def main(work_dir, out_path):
             rng = f'{a}' if a == b else f'{a}～{b}'
             dec = DEC[si] if si < len(DEC) else {'top': True}
             si += 1
-            if first and wi:
-                hps, hbrk = B.d.ps(33, bottom=400), 4                      # 둘째 작품: 새 쪽
+            if first:
+                hps, hbrk = B.d.ps(33, bottom=400), 0                      # 제목 바로 아래
             elif not body or dec.get('top') or not dec.get('mid'):
                 hps, hbrk = B.d.ps(33, bottom=400), (8 if body else 0)       # 새 단 첫머리
             else:   # PDF판과 같이: 단에 남은 공간의 절반을 띄우고 시작
                 hps, hbrk = B.d.ps(33, bottom=400, top=int(dec['gap'] * 150)), 0
-            if SET_BREAK.get(a) == 'page': hps, hbrk = B.d.ps(33, bottom=400), 4
-            elif SET_BREAK.get(a) == 'col': hps, hbrk = B.d.ps(33, bottom=400), 8
+            if SET_BREAK.get((name, a)) == 'page': hps, hbrk = B.d.ps(33, bottom=400), 4
+            elif SET_BREAK.get((name, a)) == 'col': hps, hbrk = B.d.ps(33, bottom=400), 8
             first = False
             body += B.P(5, hps, f'<b>【{rng}】 다음 글을 읽고 물음에 답하시오.</b>', 17, brk=hbrk)
             body += B.passage(s)
@@ -181,8 +185,8 @@ def main(work_dir, out_path):
                 if not q.get('choices'):   # 서술형: 답안 쓸 여백
                     for _ in range(ANSWER_LINES):
                         qr += B.P(0, B.ps_exl, '', 3)
-                if Q_BREAK.get(n):
-                    h = bytearray(qr[0][2]); h[11] = 8 if Q_BREAK[n] == 'col' else 4; qr[0][2] = bytes(h)
+                if Q_BREAK.get((name, n)):
+                    h = bytearray(qr[0][2]); h[11] = 8 if Q_BREAK[(name, n)] == 'col' else 4; qr[0][2] = bytes(h)
                 body += qr
                 exs.append((n, exmap[q['orig']]))
         # 정답 및 해설: 제목은 1단 영역, 그 아래부터 다시 2단
@@ -190,9 +194,8 @@ def main(work_dir, out_path):
         body += cold_para([('', 3)], 2, 0, B.ps_exl, brk=2)
         for k, e in exs:
             body += B.explanation(k, e)
-    # 1쪽 머리(목차 없음: 머리 아래부터 바로 문제)
-    d.replace_text('문제 은행', render.HEAD)    # 1쪽 머리 표
-    remove_toc(d)
+    # 1쪽 머리 표·목차·1쪽 전용 개체 삭제: 1쪽도 다른 쪽과 같은 머리말(쪽 번호·RICH ACADEMY·이재규T)로
+    print('1쪽 개체 삭제', remove_page1(d))
     # MEMO 쪽: 바탕쪽·머리말·꼬리말·쪽 번호·테두리를 모두 감춤(MEMO 상자만 보이게)
     for r in d.sec:
         if r[0] == 71 and r[2][:4] == b'dhgp' and r[2][4:8] == b'\x02\0\0\0':
@@ -209,7 +212,7 @@ def main(work_dir, out_path):
         if r[0] == T_PARA:
             h = bytearray(r[2]); ps = struct.unpack_from('<H', h, 8)[0]
             struct.pack_into('<H', h, 8, d.ps_word(ps)); r[2] = bytes(h)
-    d.save(out_path, body, prvtext=render.HEAD, first_brk=0)
+    d.save(out_path, body, prvtext=render.HEAD, first_brk=2)
     print('questions', n)
 
 
