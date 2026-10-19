@@ -166,6 +166,11 @@ def main(out_path):
     d.replace_text('[문제 은행]', '[진달래꽃 문제 은행]')        # 목차 제목 (먼저 나오는 '[' 포함 문단)
     d.replace_text(' , ｢｣', ' 김소월, ｢진달래꽃｣')
     add_toc(d, toc)
+    # 본문 전체 한글 줄 나눔을 어절 단위로(<보기>·선지·해설 낱말이 줄 끝에서 끊기지 않게)
+    for r in body:
+        if r[0] == T_PARA:
+            h = bytearray(r[2]); ps = struct.unpack_from('<H', h, 8)[0]
+            struct.pack_into('<H', h, 8, d.ps_word(ps)); r[2] = bytes(h)
     d.save(out_path, body, prvtext='진달래꽃 문제 은행')
     print('questions', n)
 

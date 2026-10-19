@@ -55,6 +55,16 @@ class Doc:
             self._csmap[key] = self._clone(DI_CS, base, mod, 9)
         return self._csmap[key]
 
+    def ps_word(self, base):
+        """같은 문단 모양에 한글 줄 나눔을 '어절' 단위로(글자 단위 끊김 방지)."""
+        key = ('word', base)
+        if key not in self._psmap:
+            def mod(p):
+                a, = struct.unpack_from('<I', p, 0)
+                struct.pack_into('<I', p, 0, a & ~0x80)
+            self._psmap[key] = self._clone(DI_PS, base, mod, 13)
+        return self._psmap[key]
+
     def ps(self, base, indent=None, left=None, align=None, top=None, bottom=None):
         key = (base, indent, left, align, top, bottom)
         if key not in self._psmap:
