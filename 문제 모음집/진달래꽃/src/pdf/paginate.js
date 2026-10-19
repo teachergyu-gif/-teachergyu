@@ -8,14 +8,14 @@
   function header(n) {
     const box = '<span class="kt">이재규T</span>';
     if (n === 1) return `<div class="h1box"><div class="h1t">${HEAD}</div><span class="kyo">제1교시</span><img class="h1logo" src="${LOGO}">${box}<span class="pn1">1</span></div>`;
-    return `<div class="topn"><span class="pn">${n}</span><span class="ra">RICH ACADEMY</span><span class="lg">${box}</span></div><div class="rule"></div>`;
+    return `<div class="topn"><span class="pn">${n}<small class="hinfo">${window.HEAD_INFO || ''}</small></span><span class="ra">RICH ACADEMY</span><span class="lg">${box}</span></div><div class="rule"></div>`;
   }
   function newPage() {
     const n = pages.length + 1;
     const p = document.createElement('div');
     p.className = 'page ' + (n % 2 ? 'odd' : 'even');
     p.innerHTML = header(n) + `<div class="cols" style="--top:${n === 1 ? '102mm' : '50mm'}"><div class="col"></div><div class="col"></div></div>
-<div class="foot"><span class="fr"><i>${n}</i><s class="tot"></s></span></div>`;
+<div class="foot"><span class="ftxt">${window.FOOT_TEXT || ''}</span><span class="fr"><i>${n}</i><s class="tot"></s></span></div>`;
     document.body.appendChild(p);
     pages.push(p);
     return p;

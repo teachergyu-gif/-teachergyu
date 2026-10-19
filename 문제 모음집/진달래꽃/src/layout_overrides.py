@@ -4,3 +4,6 @@ Q_BREAK = {6: 'col'}
 SET_BREAK = {8: 'page', 15: 'col', 27: 'col', 29: 'col', 32: 'col'}
 # 서술형(선지 없는 문항) 아래 답안 여백: 빈 줄 수
 ANSWER_LINES = 8
+# 바탕쪽 머리말·꼬리말 문구
+HEAD_INFO = '리치아카데미 | 국제고 1학년'
+FOOT_TEXT = '국제고 1학년 진달래꽃 추가 문제집'

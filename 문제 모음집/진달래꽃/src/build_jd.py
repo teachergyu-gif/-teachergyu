@@ -1,7 +1,7 @@
 """진달래꽃 문제 모음집: work/s*/out.json → 양식 HWP."""
 import json, re, struct, sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from hwpbuild import Doc, T_PARA, T_TEXT, T_CS, table_records, cold_para
+from hwpbuild import Doc, T_PARA, T_TEXT, T_CS, table_records, cold_para, insert_text, add_para_after
 
 D = os.path.dirname(os.path.abspath(__file__))
 TPL = D + '/tpl/t.hwp'
@@ -203,6 +203,22 @@ def main(out_path):
         while sec[j][0] != 72: j -= 1
         del sec[prev:h]
         p = bytearray(sec[j][2]); struct.pack_into('<h', p, 0, struct.unpack_from('<h', p, 0)[0] - 1); sec[j][2] = bytes(p)
+    # 바탕쪽 머리말에 학원 이름·학교 학년, 꼬리말에 교재 이름
+    from layout_overrides import HEAD_INFO, FOOT_TEXT
+    small = d.cs(16, size=1000, color=0x4A3329)        # 남색 #29334A (BGR)
+    gray = d.cs(14, size=850, color=0x777777)
+    sec = d.sec
+    atno = [i for i, r in enumerate(sec) if r[0] == 71 and r[2][:4] == b'onta' and r[1] == 5]   # 바탕쪽 쪽 번호
+    for k in atno:
+        hi = k - 4
+        assert sec[hi][0] == T_PARA
+        right = struct.unpack_from('<H', sec[hi][2], 8)[0] == 26    # 홀수쪽(오른쪽 정렬)
+        if right:
+            insert_text(sec, hi, 0, HEAD_INFO + '   ', small)
+        else:
+            insert_text(sec, hi, 9, '   ' + HEAD_INFO, small)
+    foot = [i for i, r in enumerate(sec) if r[0] == 71 and r[2][:4] == b'toof'][0]
+    add_para_after(sec, foot + 2, FOOT_TEXT, gray, d.ps(20, align=1, top=0, bottom=0))
     # MEMO 쪽: 바탕쪽·머리말·꼬리말·쪽 번호·테두리를 모두 감춤(MEMO 상자만 보이게)
     for r in d.sec:
         if r[0] == 71 and r[2][:4] == b'dhgp' and r[2][4:8] == b'\x02\0\0\0':

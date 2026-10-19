@@ -37,9 +37,9 @@ class Doc:
         im[2] = struct.pack('<%di' % len(cnt), *cnt)
         return new
 
-    def cs(self, base, underline=False, bold=False, size=None):
-        key = (base, underline, bold, size)
-        if key == (base, False, False, None):
+    def cs(self, base, underline=False, bold=False, size=None, color=None):
+        key = (base, underline, bold, size, color)
+        if key == (base, False, False, None, None):
             return base
         if key not in self._csmap:
             def mod(p):
@@ -52,6 +52,8 @@ class Doc:
                 if bold:
                     a |= 0x2
                 struct.pack_into('<I', p, off + 4, a)
+                if color is not None:
+                    struct.pack_into('<I', p, 52, color)
             self._csmap[key] = self._clone(DI_CS, base, mod, 9)
         return self._csmap[key]
 
@@ -209,3 +211,44 @@ def cold_para(runs, ncols, style, ps, brk, level=0, spacing=2268):
     return [[T_PARA, level, hdr], [T_TEXT, level + 1, text.encode('utf-16le')],
             [T_CS, level + 1, b''.join(struct.pack('<II', a, b) for a, b in css)],
             [T_SEG, level + 1, LINESEG], [71, level + 1, cold]]
+
+
+def insert_text(sec, hi, pos, text, cs):
+    """sec[hi] 문단(PARA_HEADER)의 pos 글자 위치에 text를 글자모양 cs로 끼워 넣는다."""
+    lvl = sec[hi][1]
+    ti = hi + 1; assert sec[ti][0] == T_TEXT
+    ci = hi + 2; assert sec[ci][0] == T_CS
+    s = sec[ti][2].decode('utf-16le', 'surrogatepass')
+    s2 = s[:pos] + text + s[pos:]
+    sec[ti][2] = s2.encode('utf-16le', 'surrogatepass')
+    n = len(text)
+    h = bytearray(sec[hi][2]); nc, = struct.unpack_from('<I', h, 0)
+    struct.pack_into('<I', h, 0, (nc & 0x80000000) | ((nc & 0x7FFFFFFF) + n))
+    arr = list(struct.unpack('<%dI' % (len(sec[ci][2]) // 4), sec[ci][2]))
+    runs = [(arr[k], arr[k + 1]) for k in range(0, len(arr), 2)]
+    before = [r for r in runs if r[0] <= pos][-1][1]
+    new = [r for r in runs if r[0] < pos] + [(pos, cs)] + [(pos + n, before)] + [(r[0] + n, r[1]) for r in runs if r[0] > pos]
+    # 같은 위치 중복 정리
+    out = []
+    for p_, c_ in new:
+        if out and out[-1][0] == p_: out[-1] = (p_, c_)
+        elif not out or out[-1][1] != c_: out.append((p_, c_))
+    if out[-1][0] >= len(s2): out.pop()
+    sec[ci][2] = b''.join(struct.pack('<II', a, b) for a, b in out)
+    struct.pack_into('<H', h, 12, len(out))
+    sec[hi][2] = bytes(h)
+
+
+def add_para_after(sec, hi, text, cs, ps, style=0):
+    """sec[hi] 문단 묶음 바로 뒤(같은 목록)에 문단 하나 추가. 목록 머리(LIST_HEADER) 문단 수 +1."""
+    lvl = sec[hi][1]
+    e = hi + 1
+    while e < len(sec) and sec[e][1] > lvl:
+        e += 1
+    # 앞 문단의 '마지막 문단' 표시 해제, 새 문단에 부여
+    h = bytearray(sec[hi][2]); nc, = struct.unpack_from('<I', h, 0); struct.pack_into('<I', h, 0, nc & 0x7FFFFFFF); sec[hi][2] = bytes(h)
+    sec[e:e] = Doc.para([(text, cs)], style, ps, level=lvl, last=True)
+    j = hi - 1
+    while not (sec[j][0] == 72 and sec[j][1] == lvl):
+        j -= 1
+    p = bytearray(sec[j][2]); struct.pack_into('<h', p, 0, struct.unpack_from('<h', p, 0)[0] + 1); sec[j][2] = bytes(p)
