@@ -157,6 +157,17 @@
     const add = left / 2 / gaps;
     kids.slice(0, -1).forEach(k => { k.style.marginBottom = (parseFloat(getComputedStyle(k).marginBottom) + add) + 'px'; });
   });
+  // 정답 및 해설: 단 아래에 공간이 많이 남지 않게 해설 사이를 더 띄움(마지막 해설 단 제외)
+  const exCols = [...document.querySelectorAll('.col')].filter(c => c.querySelector('.u.ex'));
+  exCols.slice(0, -1).forEach(c => {
+    const kids = [...c.children].filter(k => k.classList.contains('ex'));
+    if (kids.length < 2) return;
+    const last = c.lastElementChild;
+    const left = c.clientHeight - (last.offsetTop + last.offsetHeight);
+    if (left <= 0) return;
+    const add = left * 0.9 / (kids.length - 1);
+    kids.slice(0, -1).forEach(k => { k.style.marginBottom = (parseFloat(getComputedStyle(k).marginBottom) + add) + 'px'; });
+  });
   window.PAGES = pages.length;
   document.body.dataset.done = '1';
 })();
