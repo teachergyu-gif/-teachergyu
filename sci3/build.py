@@ -118,6 +118,10 @@ def question_html(q):
         trs = "".join("<tr>" + "".join((f"<th>{xmd(c)}</th>" if i == 0 and ct.get("header") else f"<td>{xmd(c)}</td>") for c in r) + "</tr>"
                       for i, r in enumerate(rows))
         chs = f'<table class="xq-ct">{trs}</table>'
+    elif q.get("choices_imgs"):  # choices drawn as graphs: ① img ② img …
+        chs = '<div class="xq-ci">' + "".join(
+            f'<figure><figcaption>{xmd(c)}</figcaption>{img(f, "fig")}</figure>'
+            for c, f in zip(q.get("choices") or "①②③④⑤", q["choices_imgs"])) + "</div>"
     else:
         chs = '<ol class="xq-ch">' + "".join(f'<li>{xmd(c)}</li>' for c in q.get("choices", [])) + "</ol>"
     return (f'<div class="xq"><div class="xq-stem"><span class="xq-no">{q["no"]:03d}</span><span>{xmd(q["stem"])}</span></div>'

@@ -100,3 +100,7 @@
 .xunit .xq + .xq{margin-top:2mm}
 .xunit + .xunit{margin-top:5mm}
 .toc-src{font-size:7.5pt;color:#8a8f99;font-weight:400;margin-top:1px}
+.xq-ci{display:grid;grid-template-columns:1fr 1fr;gap:2mm 3mm;margin-top:1.5mm}
+.xq-ci figure{margin:0;display:flex;gap:1.5mm;align-items:flex-start}
+.xq-ci figcaption{font-size:9pt}
+.xq-ci img.fig{width:calc(100% - 5mm);max-width:none}
