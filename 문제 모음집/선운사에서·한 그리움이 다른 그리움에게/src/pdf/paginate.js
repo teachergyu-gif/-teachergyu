@@ -207,7 +207,8 @@
     const gaps = kids.length - 1;
     if (gaps < 1 || left <= 0) return;
     const add = left / 2 / gaps;
-    kids.slice(0, -1).forEach(k => { k.style.marginBottom = (parseFloat(getComputedStyle(k).marginBottom) + add) + 'px'; });
+    // 이 교재: data-close 문항은 바로 앞(지문) 과의 간격을 1/4만 늘림
+    kids.slice(0, -1).forEach((k, i) => { const f = kids[i + 1].dataset.close ? 0.25 : 1; k.style.marginBottom = (parseFloat(getComputedStyle(k).marginBottom) + add * f) + 'px'; });
   });
   // 정답 및 해설: 단 아래에 공간이 많이 남지 않게 해설 사이를 더 띄움(마지막 해설 단 제외)
   const exCols = [...document.querySelectorAll('.col')].filter(c => c.querySelector('.u.ex'));
