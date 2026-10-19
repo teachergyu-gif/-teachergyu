@@ -104,3 +104,7 @@
 .xq-ci figure{margin:0;display:flex;gap:1.5mm;align-items:flex-start}
 .xq-ci figcaption{font-size:9pt}
 .xq-ci img.fig{width:calc(100% - 5mm);max-width:none}
+.tag{white-space:nowrap}
+.vec{position:relative;display:inline-block;padding-top:.15em}
+.vec::before{content:"";position:absolute;left:5%;right:12%;top:.05em;border-top:.07em solid currentColor}
+.vec::after{content:"";position:absolute;right:5%;top:-.11em;border:.17em solid transparent;border-left:.3em solid currentColor;border-right:0}

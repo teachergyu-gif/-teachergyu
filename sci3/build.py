@@ -231,6 +231,7 @@ def build(pages):
         anchors += [f"X{i}a", f"X{i}b", f"X{i}c"]
     css = "".join(open(os.path.join(ROOT, f), encoding="utf-8").read() for f in
                   ["literature-summary/render/style.css", "combined/extra.css", "sci3/mock_nov.css", "brand/brand.css"])
+    body = [re.sub(r"([A-Za-z]{1,3})\u20d7", r'<span class="vec">\1</span>', b) for b in body]  # vector arrow over letters
     font_dir = os.environ.get("FONT_DIR", ROOT + "/node_modules")
     css = css.replace("FONTDIR", "file://" + font_dir)
     out = f"""<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>{TITLE}</title>
