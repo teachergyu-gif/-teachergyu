@@ -1,6 +1,7 @@
 // render.py가 만든 HTML → PDF (paginate.js가 쪽 나눔을 끝낼 때까지 기다림)
 // 사용: NODE_PATH=$(npm root -g) node print.js 입력.html 출력.pdf
-const { chromium } = require('playwright');
+let pw; try { pw = require('playwright-core'); } catch (e) { pw = require('playwright'); }
+const { chromium } = pw;
 (async () => {
   const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--allow-file-access-from-files'] });
   const p = await b.newPage();
