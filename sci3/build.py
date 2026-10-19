@@ -27,7 +27,17 @@ def load_all():
     ps = []
     for f in sorted(os.listdir(d)):
         with open(os.path.join(d, f), encoding="utf-8") as fh:
-            ps.append(json.load(fh))
+            p = json.load(fh)
+        # question numbers follow the book (001~099), whatever the data file used
+        start = int(p["qrange"][:3])
+        old = [q["no"] for q in p["exam"]["questions"] if "no" in q]
+        ren = {o: start + i for i, o in enumerate(old)}
+        for q in p["exam"]["questions"]:
+            if "no" in q:
+                q["no"] = ren[q["no"]]
+        for a in p["answers"]:
+            a["no"] = ren[a["no"]]
+        ps.append(p)
     return ps
 
 
