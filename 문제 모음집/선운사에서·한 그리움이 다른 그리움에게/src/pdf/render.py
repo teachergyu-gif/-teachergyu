@@ -5,6 +5,7 @@ D = os.path.dirname(os.path.abspath(__file__))
 J = os.path.dirname(D)
 sys.path.insert(0, J)
 import fixes
+from layout_overrides import Q_BREAK, SET_BREAK, ANSWER_LINES
 
 CIRC = '①②③④⑤'
 HEAD = '국제고 1학년 선운사에서 · 한 그리움이 다른 그리움에게 교재'
@@ -17,6 +18,8 @@ def esc(s):
     for t in ('u', 'b'):
         s = s.replace(f'&lt;{t}&gt;', f'<{t}>').replace(f'&lt;/{t}&gt;', f'</{t}>')
     s = re.sub(r'([㐀-鿿豈-﫿]+)', lambda m: '<span class="hj">' + m.group(1) + '</span>', s)
+    # 한자 묶음 앞뒤에서 줄이 바뀌지 않게(괄호·조사와 붙임)
+    s = re.sub(r'[^\s<>]*(?:<span class="hj">[^<]*</span>[^\s<>]*)+', lambda m: '<span class="nb">' + m.group(0) + '</span>', s)
     return s.replace('&lt;box&gt;', '<span class="bx">').replace('&lt;/box&gt;', '</span>')
 
 
@@ -39,7 +42,7 @@ def passage(s, rng=''):
             if group:
                 group[1].append(cell)
                 if end:
-                    out.append(f'<div class="ln brk"><div class="bx2"><span class="lab">[{group[0]}]</span><div>{"".join(group[1])}</div></div></div>')
+                    out.append(f'<div class="ln brk"><div class="bx2"><span class="lab2">[{group[0]}]</span><span class="br2"></span><div>{"".join(group[1])}</div></div></div>')
                     group = None
             else:
                 out.append(cell)
@@ -82,8 +85,9 @@ def question(n, q):
     elif ex:
         extra = bogi({'title': '', 'text': ex})
     ch = ''.join(f'<div class="ch"><span class="c">{CIRC[i]}</span><span class="t">{esc(t)}</span></div>' for i, t in enumerate(q.get('choices') or []))
+    ans = '' if q.get('choices') else f'<div class="ans" style="height:{ANSWER_LINES * 1.75 * 11.2}pt"></div>'
     return (f'<div class="u q"><div class="qh"><span class="n">{n}.</span><span class="s">{esc(q["stem"])}</span></div>'
-            f'{bogi(q.get("bogi"))}{extra}{ch}</div>')
+            f'{bogi(q.get("bogi"))}{extra}{ch}{ans}</div>')
 
 
 def explanation(n, e):
@@ -132,26 +136,35 @@ def main(work_dir, out_html):
     log = []
     fixes.apply(data, log)
     open(f'{J}/fixlog.txt', 'w').write('\n'.join(log) + '\n')
-    units, exs, toc, n = [], [], [], 0
+    # 작품마다: 문제 모음 → 정답 및 해설
+    body, toc, n = [], [], 0
     for (name, label, _), src in zip(WORKS, data):
         exm = {e['orig']: e for e in src['ex']}
         a0 = n + 1
+        exs = []
+        body.append('<div class="u brk"></div>')
         for s in src['sets']:
             qs = s.get('questions') or []
             if not qs:
                 continue
             rng = f'{n + 1}' if len(qs) == 1 else f'{n + 1}～{n + len(qs)}'
-            units.append(passage(s, rng))
+            if SET_BREAK.get(n + 1) == 'page': body.append('<div class="u brk"></div>')
+            elif SET_BREAK.get(n + 1) == 'col': body.append('<div class="u colbrk"></div>')
+            body.append(passage(s, rng))
             for q in qs:
                 n += 1
-                units.append(question(n, q)); exs.append((n, exm[q['orig']]))
-        toc.append(f'<div class="t2 tl"><span>{label}</span><i></i><span>{a0}～{n}번</span></div>')
+                if Q_BREAK.get(n) == 'col': body.append('<div class="u colbrk"></div>')
+                elif Q_BREAK.get(n) == 'page': body.append('<div class="u brk"></div>')
+                body.append(question(n, q)); exs.append((n, exm[q['orig']]))
+        body += ['<div class="u brk"></div>', f'<div class="u extitle"><span>{label.split(", ")[1]} 정답 및 해설</span></div>']
+        body += [explanation(k, e) for k, e in exs]
+        toc.append(f'<div class="t2">{label}</div>'
+                   f'<div class="t2 tl sub"><span>문제</span><i></i><span>{a0}～{n}번</span></div>'
+                   f'<div class="t2 tl sub"><span>정답 및 해설</span><i></i><span>{a0}～{n}번</span></div>')
     head = '<div class="u toc"><div class="tt">&lt;목 차&gt;</div><div class="t1">[문제 은행]</div>' + ''.join(toc) + '</div>'
-    units = [head, '<div class="u brk"></div>'] + units
-    units += ['<div class="u brk"></div>', '<div class="u extitle"><span>정답 및 해설</span></div>']
-    units += [explanation(k, e) for k, e in exs]
+    units = [head] + body
     units.append('<div class="u memo"></div>')
-    css = open(f'{D}/exam.css').read() + '.toc .tl{display:flex;align-items:flex-end;gap:2mm}.toc .tl i{flex:1;border-bottom:2px dotted #555;margin-bottom:2.2mm;min-width:8mm}.toc .tl span:last-child{flex:none}'
+    css = open(f'{D}/exam.css').read() + '.toc .tl{display:flex;align-items:flex-end;gap:2mm}.toc .tl i{flex:1;border-bottom:2px dotted #555;margin-bottom:2.2mm;min-width:8mm}.toc .tl span:last-child{flex:none}.toc .tl.sub{margin:1.5mm 0 1.5mm 6mm}.toc .t2+.t2:not(.sub){margin-top:8mm}'
     js = open(f'{D}/paginate.js').read()
     doc = f'''<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>
 <div id="src">{"".join(units)}</div>

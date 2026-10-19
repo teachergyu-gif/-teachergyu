@@ -45,6 +45,31 @@
     while (i < lines.length) {
       const l = lines[i];
       b.appendChild(l);
+      if (over() && l.classList.contains('brk')) {
+        // [A] 묶음이 단 끝에 걸리면 괄호를 둘로 나눠 다음 단으로 이어지게(위쪽은 아래 끝 열림, 아래쪽은 위 끝 열림)
+        const inner = [...l.querySelector('.bx2 > div').children];
+        const lab = l.querySelector('.lab2').textContent;
+        b.removeChild(l);
+        const mk = (cls) => { const g = document.createElement('div'); g.className = 'ln brk ' + cls;
+          g.innerHTML = '<div class="bx2"><span class="lab2"></span><span class="br2"></span><div></div></div>'; return g; };
+        const g1 = mk('open-b'); b.appendChild(g1);
+        const box1 = g1.querySelector('.bx2 > div');
+        let k = 0;
+        while (k < inner.length) { box1.appendChild(inner[k]); if (over()) { box1.removeChild(inner[k]); break; } k++; }
+        if (k >= 2 && k < inner.length) {
+          b.classList.add('open'); nextCol(); [w, b] = make(false);
+          const g2 = mk('open-t'); b.appendChild(g2);
+          const box2 = g2.querySelector('.bx2 > div');
+          inner.slice(k).forEach(x => box2.appendChild(x));
+          const big = (inner.length - k) >= k ? g2 : g1, small = big === g1 ? g2 : g1;
+          big.querySelector('.lab2').textContent = lab;
+          small.querySelector('.lab2').textContent = lab; small.querySelector('.lab2').style.visibility = 'hidden';
+          i++; continue;
+        }
+        // 나눌 수 없으면 원래대로 묶음째 다음 단으로
+        b.removeChild(g1); inner.forEach(x => l.querySelector('.bx2 > div').appendChild(x));
+        b.appendChild(l);
+      }
       if (over()) {
         b.removeChild(l);
         while (b.lastChild && b.lastChild.classList.contains('sp')) b.removeChild(b.lastChild);
@@ -72,6 +97,7 @@
   }
   function place(u) {
     if (u.classList.contains('brk')) { colIdx = 2; col = null; nextCol(); return; }
+    if (u.classList.contains('colbrk')) { if (!empty()) nextCol(); col.dataset.forced = 1; return; }
     if (u.classList.contains('memo')) { colIdx = 2; col = null; nextCol(); const pg = pages[pages.length - 1]; pg.querySelector('.cols').innerHTML = '<div class="memo"><span>MEMO</span></div>'; pg.querySelector('.cols').classList.add('one'); return; }
     if (u.classList.contains('set')) {
       if (!empty()) {
@@ -79,7 +105,7 @@
         const last = col.lastElementChild;
         const used = last.offsetTop + last.offsetHeight + parseFloat(getComputedStyle(last).marginBottom);
         const left = col.clientHeight - used;
-        if (left >= col.clientHeight / 3) { u.style.marginTop = (left / 2 - parseFloat(getComputedStyle(last).marginBottom)) + 'px'; u.dataset.mid = 1; }
+        if (left >= col.clientHeight / 3 && u.offsetHeight + left / 2 <= left) { /* 지문이 남은 자리에 다 들어갈 때만, 쪼개지면 다음 단으로 */ u.style.marginTop = (left / 2 - parseFloat(getComputedStyle(last).marginBottom)) + 'px'; u.dataset.mid = 1; }
         else nextCol();
       }
       return placeSet(u);
