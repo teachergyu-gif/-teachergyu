@@ -189,7 +189,7 @@ def main(out_path):
     for k, e in exs:
         body += B.explanation(k, e)
     # 1쪽 머리·목차·제목 상자
-    d.replace_text('문제 은행', '')    # 1쪽 머리 위 문구 없음(제목은 그림 자리에)
+    d.replace_text('문제 은행', 'RICH ACADEMY')    # 1쪽 머리 위 문구
     d.replace_text(' , ｢｣', ' 김소월, ｢진달래꽃｣')
     # 목차 칸 맨 위 빈 문단 삭제 → '[문제 은행]'이 칸 첫 줄부터
     sec = d.sec
