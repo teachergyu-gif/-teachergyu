@@ -5,7 +5,7 @@ D = os.path.dirname(os.path.abspath(__file__))
 J = os.path.dirname(D)
 sys.path.insert(0, J)
 import fixes
-from layout_overrides import Q_BREAK, SET_BREAK, ANSWER_LINES
+from layout_overrides import Q_BREAK, SET_BREAK, ANSWER_LINES, CLOSE
 
 CIRC = '①②③④⑤'
 HEAD = '국제고 1학년 선운사에서 · 한 그리움이 다른 그리움에게 교재'
@@ -94,7 +94,8 @@ def question(n, q):
         extra = bogi({'title': '', 'text': ex})
     ch = ''.join(f'<div class="ch"><span class="c">{CIRC[i]}</span><span class="t">{esc(t)}</span></div>' for i, t in enumerate(q.get('choices') or []))
     ans = '' if q.get('choices') else f'<div class="ans" style="height:{ANSWER_LINES * 1.75 * 11.2}pt"></div>'
-    return (f'<div class="u q"><div class="qh"><span class="n">{n}.</span><span class="s">{esc(q["stem"])}</span></div>'
+    close = ' data-close="1"' if n in CLOSE else ''
+    return (f'<div class="u q"{close}><div class="qh"><span class="n">{n}.</span><span class="s">{esc(q["stem"])}</span></div>'
             f'{bogi(q.get("bogi"))}{extra}{ch}{ans}</div>')
 
 
@@ -165,7 +166,7 @@ def main(work_dir, out_html):
                 if Q_BREAK.get(n) == 'col': body.append('<div class="u colbrk"></div>')
                 elif Q_BREAK.get(n) == 'page': body.append('<div class="u brk"></div>')
                 body.append(question(n, q)); exs.append((n, exm[q['orig']]))
-        body += ['<div class="u brk"></div>', f'<div class="u extitle"><span>{label.split(", ")[1]} 정답 및 해설</span></div>']
+        body += ['<div class="u brk"></div>', f'<div class="u extitle"><span>정답 및 해설</span></div>']
         body += [explanation(k, e) for k, e in exs]
     units = body   # 1쪽 목차 없음: 머리 아래부터 바로 문제
     units.append('<div class="u memo"></div>')
