@@ -12,9 +12,9 @@ html,body{margin:0;padding:0}
 .top{display:flex;align-items:center;justify-content:space-between}
 .ra{font-family:Montserrat,sans-serif;font-size:12px;font-weight:800;letter-spacing:5px;color:#2A3B4C}
 .kt{font-size:13px;font-weight:700;border:1.5px solid #1C2631;border-radius:6px;padding:1px 8px}
-h1{margin:40px 0 0;font-size:15px;font-weight:700;letter-spacing:-0.5px;white-space:nowrap}
+h1{margin:40px 0 0;font-size:19px;font-weight:700;letter-spacing:-0.5px;white-space:nowrap}
 .rule{margin-top:20px;height:3px;background:#2A3B4C}
-.parts{margin-top:26px;display:flex;flex-direction:column;gap:40px}
+.parts{margin-top:26px;display:flex;flex-direction:column;gap:56px}
 .part{display:flex;flex-direction:column;gap:8px}
 .ph{display:flex;align-items:baseline;gap:12px}
 .ph .no{font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;color:#2A3B4C}
@@ -52,6 +52,6 @@ h1{margin:40px 0 0;font-size:15px;font-weight:700;letter-spacing:-0.5px;white-sp
 </div>
 <script>
 // 제목이 한 줄에 들어가도록 글자 크기를 30px에서 필요한 만큼만 줄임
-document.fonts.ready.then(() => { const h = document.getElementById('h'); let s = 15; while (h.scrollWidth > 483 && s > 18) { s -= 0.5; h.style.fontSize = s + 'px'; } document.body.dataset.done = '1'; });
+document.fonts.ready.then(() => { const h = document.getElementById('h'); let s = 19; while (h.scrollWidth > 483 && s > 18) { s -= 0.5; h.style.fontSize = s + 'px'; } document.body.dataset.done = '1'; });
 </script>
 </body></html>
