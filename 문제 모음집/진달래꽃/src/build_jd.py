@@ -135,6 +135,7 @@ def main(out_path):
     B = Builder(); d = B.d
     data = [json.load(open(f'{D}/work/s{i}/out.json')) for i in range(1, 5)]
     import fixes_jd
+    from layout_overrides import Q_BREAK, SET_BREAK
     log = []
     fixes_jd.apply(data, log)
     open(f'{D}/fixlog.txt', 'w').write('\n'.join(log) + '\n')
@@ -158,11 +159,16 @@ def main(out_path):
                 hps, hbrk = B.d.ps(33, bottom=400), (8 if body else 0)       # 새 단 첫머리
             else:   # PDF판과 같이: 단에 남은 공간의 절반을 띄우고 시작
                 hps, hbrk = B.d.ps(33, bottom=400, top=int(dec['gap'] * 150)), 0
+            if SET_BREAK.get(a) == 'page': hps, hbrk = B.d.ps(33, bottom=400), 4
+            elif SET_BREAK.get(a) == 'col': hps, hbrk = B.d.ps(33, bottom=400), 8
             body += B.P(5, hps, f'<b>【{rng}】 다음 글을 읽고 물음에 답하시오.</b>', 17, brk=hbrk)
             body += B.passage(s)
             for q in qs:
                 n += 1
-                body += B.question(q)
+                qr = B.question(q)
+                if Q_BREAK.get(n):
+                    h = bytearray(qr[0][2]); h[11] = 8 if Q_BREAK[n] == 'col' else 4; qr[0][2] = bytes(h)
+                body += qr
                 exs.append((n, exmap[q['orig']]))
         if n >= first_n:
             toc.append(f'{src["source"]} ············ {first_n}～{n}번')

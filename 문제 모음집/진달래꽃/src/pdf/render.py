@@ -4,6 +4,7 @@ D = os.path.dirname(os.path.abspath(__file__))
 J = os.path.dirname(D)
 sys.path.insert(0, J)
 import fixes_jd
+from layout_overrides import Q_BREAK, SET_BREAK
 
 CIRC = '①②③④⑤'
 
@@ -117,9 +118,13 @@ def main(out_html):
             if not qs:
                 continue
             rng = f'{n + 1}' if len(qs) == 1 else f'{n + 1}～{n + len(qs)}'
+            if SET_BREAK.get(n + 1) == 'page': units.append('<div class="u brk"></div>')
+            elif SET_BREAK.get(n + 1) == 'col': units.append('<div class="u colbrk"></div>')
             units.append(passage(s, rng))
             for q in qs:
                 n += 1
+                if Q_BREAK.get(n) == 'col': units.append('<div class="u colbrk"></div>')
+                elif Q_BREAK.get(n) == 'page': units.append('<div class="u brk"></div>')
                 units.append(question(n, q)); exs.append((n, exm[q['orig']]))
         toc.append(f'{src["source"]} ············ {a0}～{n}번')
     head = ('<div class="u toc"><div class="tt">&lt;목 차&gt;</div><div class="t1">[문제 은행]</div>'

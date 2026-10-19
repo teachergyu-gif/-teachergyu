@@ -72,6 +72,7 @@
   }
   function place(u) {
     if (u.classList.contains('brk')) { colIdx = 2; col = null; nextCol(); return; }
+    if (u.classList.contains('colbrk')) { if (!empty()) nextCol(); col.dataset.forced = 1; return; }
     if (u.classList.contains('memo')) { colIdx = 2; col = null; nextCol(); const pg = pages[pages.length - 1]; pg.querySelector('.cols').innerHTML = '<div class="memo"><span>MEMO</span></div>'; pg.querySelector('.cols').classList.add('one'); return; }
     if (u.classList.contains('set')) {
       if (!empty()) {
