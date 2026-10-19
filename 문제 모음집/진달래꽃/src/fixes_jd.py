@@ -1,5 +1,6 @@
 """원본 오류 수정(회차, 문항 orig 또는 'P'=지문, 바꿀 글, 새 글). 문항은 그 문항(발문·보기·선지)과 해설 모두에서 찾는다."""
-import re
+import re, json
+SYMS = r'[㉠-㉭㉮-㉻ⓐ-ⓩⒶ-Ⓩ]'
 
 FIX = [
     # 1회
@@ -104,6 +105,55 @@ def apply(data, log):
             for w in s.get('works', []):
                 if '<u>보오</u>' in w['lines']:
                     w['lines'] = w['lines'].replace('<u>보오</u>', '보오'); log.append(f'{i}회 지문: 문항에서 쓰지 않는 ‘보오’ 밑줄 삭제')
+        # 문항(넣은 문항·해설)에서 쓰지 않는 지문 속 기호·[A] 묶음·밑줄은 삭제(풀이 때 헷갈리지 않게)
+        exm = {e['orig']: e for e in src['ex']}
+        for s in src['sets']:
+            qs = s.get('questions') or []
+            if not qs:
+                continue
+            used_txt = json.dumps([qs, [exm.get(q['orig']) for q in qs]], ensure_ascii=False)
+            used = set(re.findall(SYMS, used_txt))
+            for a_, b_ in re.findall('(' + SYMS + r')\s*[~～∼\-]\s*(' + SYMS + ')', used_txt):
+                used |= {chr(c) for c in range(ord(a_), ord(b_) + 1)}
+            labs = set(re.findall(r'\[([A-Z])\]', used_txt))
+            for a_, b_ in re.findall(r'\[([A-Z])\]\s*[~～∼\-]\s*\[([A-Z])\]', used_txt):
+                labs |= {chr(c) for c in range(ord(a_), ord(b_) + 1)}
+            plain_txt = re.sub(r'\(.*?\)|[^가-힣ᄀ-ᇿ]', '', used_txt)
+            tag = f'{i}회 지문({qs[0]["orig"]}번 묶음)'
+            for w in s.get('works', []):
+                out_lines, carry = [], None   # carry: 앞 줄 끝에서 이어지는 밑줄을 남길지(True)/지울지(False)
+                for line in w['lines'].split('\n'):
+                    pos, res, last_keep = 0, '', None
+                    pat = re.compile('(' + SYMS + r')?\s*((?:<b>)?<u>.*?</u>(?:</b>)?|<b>.*?</b>)|(' + SYMS + ')')
+                    for m in pat.finditer(line):
+                        res += line[pos:m.start()]; pos = m.end()
+                        sym = m.group(1) or m.group(3); seg = m.group(2)
+                        if seg is None:          # 밑줄 없는 기호
+                            if sym in used: res += m.group(0)
+                            else: log.append(f'{tag}: 문항에 없는 기호 {sym} 삭제')
+                            continue
+                        if sym:
+                            keep = sym in used
+                        elif m.start() == 0 and carry is not None:
+                            keep = carry         # 앞 줄에서 이어진 밑줄
+                        else:
+                            inner = re.sub(r'</?[bu]>', '', seg)
+                            key = re.sub(r'\(.*?\)|[^가-힣ᄀ-ᇿ]', '', inner)[:4]
+                            keep = bool(key) and key in plain_txt
+                        if keep:
+                            res += m.group(0)
+                        else:
+                            res += re.sub(r'</?[bu]>', '', seg)
+                            log.append(f'{tag}: 문항에 없는 ' + (f'기호 {sym}와 밑줄' if sym else f'밑줄·굵게 ‘{re.sub(r"</?[bu]>", "", seg)[:10]}’') + ' 삭제')
+                        last_keep = keep if m.end() >= len(line.rstrip()) - len(re.search(r'\{/\w+\}$', line).group(0) if re.search(r'\{/\w+\}$', line) else '') else None
+                    res += line[pos:]
+                    carry = last_keep if re.search(r'</u>(</b>)?(\{/\w+\})?\s*[.,]?$', line) else None
+                    out_lines.append(res)
+                t = '\n'.join(out_lines)
+                for lab in set(re.findall(r'\{([A-Z])\}', t)) - labs:
+                    t = t.replace('{' + lab + '}', '').replace('{/' + lab + '}', '')
+                    log.append(f'{tag}: 문항에 없는 [{lab}] 묶음 표시 삭제')
+                w['lines'] = t
         # 지문 속 밑줄 앞 기호(㉠ ⓐ Ⓐ ㉮ 등)와 밑줄 사이 한 칸
         SYM = r'([㉠-㉭㉮-㉻ⓐ-ⓩⒶ-Ⓩ])'
         for s in src['sets']:
