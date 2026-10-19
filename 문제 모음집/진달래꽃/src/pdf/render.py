@@ -145,7 +145,7 @@ def main(out_html):
     units += [explanation(k, e) for k, e in exs]
     css = open(f'{D}/exam.css').read()
     js = open(f'{D}/paginate.js').read()
-    doc = f'''<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>
+    doc = f'''<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="file:///tmp/claude-0/-home-user--teachergyu/ccaedf91-0008-5bf5-a455-13038ab5cfd7/scratchpad/node_modules/@kfonts/nanum-square/index.css"><style>{css}</style></head><body>
 <div id="src">{"".join(units)}</div>
 <script>window.HEAD="국제고 1학년 진달래꽃 추가 문제집";window.SUB="";window.HEAD_INFO={json.dumps(HEAD_INFO)};window.FOOT_TEXT={json.dumps(FOOT_TEXT)};window.LOGO="file://{J}/logo2.jpg";</script>
 <script>{js}</script></body></html>'''

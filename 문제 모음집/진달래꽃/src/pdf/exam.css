@@ -166,3 +166,4 @@ body{font-size:11.2pt}
 .topn .ra{position:absolute;left:50%;transform:translateX(-50%);bottom:1.2mm;white-space:nowrap}
 .h1title{position:absolute;left:50%;transform:translateX(-50%);top:24mm;font-family:"Noto Sans CJK KR",sans-serif;font-weight:700;font-size:30pt;letter-spacing:-.01em;white-space:nowrap;color:#111}
 .h1t{font-family:"Nanum Square Round","나눔스퀘어라운드","Noto Sans CJK KR",sans-serif;font-weight:400;font-size:20pt;letter-spacing:.06em;color:#555;top:5mm}
+.h1title{font-family:'나눔스퀘어',sans-serif;font-weight:800;color:#29334A;font-size:31pt;letter-spacing:-.005em}
