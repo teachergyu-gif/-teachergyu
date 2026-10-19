@@ -104,6 +104,15 @@ def apply(data, log):
             for w in s.get('works', []):
                 if '<u>보오</u>' in w['lines']:
                     w['lines'] = w['lines'].replace('<u>보오</u>', '보오'); log.append(f'{i}회 지문: 문항에서 쓰지 않는 ‘보오’ 밑줄 삭제')
+        # 지문 속 밑줄 앞 기호(㉠ ⓐ Ⓐ ㉮ 등)와 밑줄 사이 한 칸
+        SYM = r'([㉠-㉭㉮-㉻ⓐ-ⓩⒶ-Ⓩ])'
+        for s in src['sets']:
+            for w in s.get('works', []):
+                t = re.sub(r'<u>' + SYM + r'\s*', r'\1 <u>', w['lines'])
+                t = re.sub(SYM + r'(<b>)?<u>', r'\1 \2<u>', t).replace(' None<u>', ' <u>')
+                if t != w['lines']:
+                    w['lines'] = t
+        log.append(f'{i}회 지문: 밑줄 앞 기호 뒤 한 칸 띄움')
         before = repr(src)
         src['sets'] = walk(src['sets'], quotes); src['ex'] = walk(src['ex'], quotes)
         if repr(src) != before:
