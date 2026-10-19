@@ -147,6 +147,8 @@ def main(work_dir, out_path):
     data = render.load(work_dir)
     fixes.apply(data, [])
     body = []
+    bp = f'{D}/pdf/balanced.json'   # PDF판에서 단 균형으로 오른쪽 단 첫머리가 된 문항
+    BAL = {tuple([k.split('|')[0], int(k.split('|')[1])]) for k in json.load(open(bp))} if os.path.exists(bp) else set()
     dp = f'{D}/pdf/decisions.json'
     DEC = json.load(open(dp)) if os.path.exists(dp) else []
     si = 0
@@ -187,6 +189,8 @@ def main(work_dir, out_path):
                         qr += B.P(0, B.ps_exl, '', 3)
                 if Q_BREAK.get((name, n)):
                     h = bytearray(qr[0][2]); h[11] = 8 if Q_BREAK[(name, n)] == 'col' else 4; qr[0][2] = bytes(h)
+                elif (name, n) in BAL:
+                    h = bytearray(qr[0][2]); h[11] = 8; qr[0][2] = bytes(h)
                 body += qr
                 exs.append((n, exmap[q['orig']]))
         # 정답 및 해설: 제목은 1단 영역, 그 아래부터 다시 2단
