@@ -134,6 +134,7 @@ def apply(data, log):
                 raise SystemExit(f'수정 대상 없음: {name} {key} {a}')
             log.append(f'{name} {key}번: {a} → {b}')
 
+    drop_works(data, log)
     drop_marks(data, log)
 
 def straight(s):
@@ -238,3 +239,29 @@ def drop_marks(data, log):
                 if gone:
                     w['lines'] = '\n'.join(L)
                     log.append(f'{src["source"]} 지문(문항 {[q["orig"] for q in s["questions"]]}): 문항에 없는 기호 삭제 {"".join(dict.fromkeys(gone))}')
+
+
+# ---- 문항에서 쓰지 않는 지문(작품) 삭제: (작품, 묶음 첫 문항 원번호) → 지울 표지 ----
+# 표지 (가)(나)(다)는 문항이 그대로 가리키므로 바꾸지 않는다.
+DROP_WORKS = {
+    (SW, 6): ['(가)'],    # 황인숙 「봄눈 오는 밤」 — 6번은 (나)·(다)만 물음
+    (SW, 7): ['(다)'],    # 서정주 「추천사」 — 7번은 (가)·(나)만 물음
+    (HG, 16): ['(나)'],   # 한용운 「나의 꿈」 — 16번은 (가)만 물음
+    (HG, 19): ['(나)'],   # 한용운 「나의 꿈」 — 19번은 (가)만 물음
+}
+
+
+def drop_works(data, log):
+    for src in data:
+        for s in src['sets']:
+            qs = s.get('questions') or []
+            if not qs:
+                continue
+            labs = DROP_WORKS.get((src['source'], qs[0]['orig']))
+            if not labs:
+                continue
+            before = len(s['works'])
+            gone = [w for w in s['works'] if w.get('label') in labs]
+            s['works'] = [w for w in s['works'] if w.get('label') not in labs]
+            assert len(s['works']) == before - len(labs), (src['source'], qs[0]['orig'])
+            log.append(f'{src["source"]} 지문(문항 {[q["orig"] for q in qs]}): 문항에 쓰지 않는 지문 삭제 ' + ', '.join(f'{w["label"]} {(w.get("author") or "").lstrip("- ")}' for w in gone))

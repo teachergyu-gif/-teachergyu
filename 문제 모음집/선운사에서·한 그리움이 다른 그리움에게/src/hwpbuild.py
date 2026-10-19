@@ -141,12 +141,12 @@ class Doc:
             return True
         raise KeyError(old)
 
-    def save(self, out, body, prvtext=''):
+    def save(self, out, body, prvtext='', first_brk=4):
         """body: 문단 레코드 목록. 양식의 '다음 글을 읽고…' 문단 자리에 넣고, 마지막 MEMO 쪽은 유지."""
         tops = [i for i, r in enumerate(self.sec) if r[0] == T_PARA and r[1] == 0]
         # 양식: [0]=구역·바탕쪽·1쪽 머리·목차, [1]=빈 문단, [2]=쪽 나눔+제목 상자, [3]='다음 글을 읽고…', [4]=MEMO
         head = self.sec[:tops[2]]   # 2쪽 제목 상자(｢｣ 문제 은행)는 넣지 않음
-        h = bytearray(body[0][2]); h[11] = 4; body[0][2] = bytes(h)   # 첫 문단에서 쪽 나눔
+        h = bytearray(body[0][2]); h[11] = first_brk; body[0][2] = bytes(h)   # 첫 문단에서 쪽 나눔(0이면 1쪽에서 바로 시작)
         memo = self.sec[tops[4]:]
         sec = head + body + memo
         self.s['BodyText/Section0'] = deflate(dump_records(sec))
@@ -209,3 +209,28 @@ def cold_para(runs, ncols, style, ps, brk, level=0, spacing=2268):
     return [[T_PARA, level, hdr], [T_TEXT, level + 1, text.encode('utf-16le')],
             [T_CS, level + 1, b''.join(struct.pack('<II', a, b) for a, b in css)],
             [T_SEG, level + 1, LINESEG], [71, level + 1, cold]]
+
+
+def remove_toc(d):
+    """1쪽 목차 표(구역 첫 문단의 마지막 표 조판 부호)를 지운다: 표 레코드, 문단 글자 속 부호 8자, 글자 수·글자 모양 위치."""
+    sec = d.sec
+    tops = [i for i, r in enumerate(sec) if r[0] == T_PARA and r[1] == 0]
+    a, b = tops[0], tops[1]
+    k = max(i for i in range(a, b) if sec[i][0] == 71 and sec[i][1] == 1 and sec[i][2][:4] == b' lbt')
+    assert any(r[0] == T_TEXT and '[문제 은행]' in r[2].decode('utf-16le', 'ignore') for r in sec[k:b]), '목차 표가 아님'
+    del sec[k:b]
+    ti = a + 1
+    t = sec[ti][2].decode('utf-16le', 'surrogatepass')
+    mark = '\x0b' + b' lbt'.decode('utf-16le')
+    pos = t.rfind(mark)
+    assert pos >= 0 and t[pos + 7] == '\x0b'
+    sec[ti][2] = (t[:pos] + t[pos + 8:]).encode('utf-16le', 'surrogatepass')
+    h = bytearray(sec[a][2]); n, = struct.unpack_from('<I', h, 0)
+    struct.pack_into('<I', h, 0, (n & 0x80000000) | ((n & 0x7FFFFFFF) - 8)); sec[a][2] = bytes(h)
+    c = ti + 1
+    if sec[c][0] == T_CS:
+        arr = list(struct.unpack('<%dI' % (len(sec[c][2]) // 4), sec[c][2]))
+        for q in range(0, len(arr), 2):
+            if arr[q] > pos:
+                arr[q] = max(pos, arr[q] - 8)
+        sec[c][2] = struct.pack('<%dI' % len(arr), *arr)
