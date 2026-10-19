@@ -140,7 +140,7 @@ def main(out_html):
         toc.append(f'{src["source"]} ············ {a0}～{n}번')
     head = ('<div class="u toc"><div class="tt">&lt;목 차&gt;</div><div class="t1">[문제 은행]</div>'
             '<div class="t2">김소월, ｢진달래꽃｣</div></div>')
-    units = [head, '<div class="u brk"></div>'] + units
+    units = units   # 목차 없이 1쪽부터 문제
     units += ['<div class="u brk"></div>', '<div class="u extitle"><span>정답 및 해설</span></div>']
     units += [explanation(k, e) for k, e in exs]
     css = open(f'{D}/exam.css').read()

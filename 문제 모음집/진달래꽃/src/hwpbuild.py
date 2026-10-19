@@ -148,7 +148,7 @@ class Doc:
         tops = [i for i, r in enumerate(self.sec) if r[0] == T_PARA and r[1] == 0]
         # 양식: [0]=구역·바탕쪽·1쪽 머리·목차, [1]=빈 문단, [2]=쪽 나눔+제목 상자, [3]='다음 글을 읽고…', [4]=MEMO
         head = self.sec[:tops[2]]   # 2쪽 제목 상자(｢｣ 문제 은행)는 넣지 않음
-        h = bytearray(body[0][2]); h[11] = 4; body[0][2] = bytes(h)   # 첫 문단에서 쪽 나눔
+        h = bytearray(body[0][2]); h[11] = 0; body[0][2] = bytes(h)   # 목차 없이 1쪽부터 바로 문제
         # 양식 끝의 MEMO 쪽은 넣지 않음. 본문 마지막 최상위 문단에 '마지막 문단' 표시
         last = [k for k, r in enumerate(body) if r[0] == T_PARA and r[1] == 0][-1]
         h = bytearray(body[last][2]); nc, = struct.unpack_from('<I', h, 0)

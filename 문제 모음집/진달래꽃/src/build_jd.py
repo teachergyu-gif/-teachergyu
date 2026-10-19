@@ -203,6 +203,29 @@ def main(out_path):
         while sec[j][0] != 72: j -= 1
         del sec[prev:h]
         p = bytearray(sec[j][2]); struct.pack_into('<h', p, 0, struct.unpack_from('<h', p, 0)[0] - 1); sec[j][2] = bytes(p)
+    # 1쪽 목차 표 삭제(문제가 1쪽부터 바로 시작)
+    sec = d.sec
+    top1 = [i for i, r in enumerate(sec) if r[0] == T_PARA and r[1] == 0][1]
+    tbls = [i for i in range(top1) if sec[i][0] == 71 and sec[i][1] == 1 and sec[i][2][:4] == b' lbt']
+    toc = [i for i in tbls if any(r[0] == T_TEXT and '목 차' in r[2].decode('utf-16le', 'ignore')
+                                  for r in sec[i:next((j for j in range(i + 1, top1) if sec[j][1] <= 1), top1)])][0]
+    end = next((j for j in range(toc + 1, top1) if sec[j][1] <= 1), top1)
+    nth = tbls.index(toc)
+    del sec[toc:end]
+    t = sec[1][2].decode('utf-16le', 'surrogatepass')
+    pos, seen, i_ = None, -1, 0
+    while i_ < len(t):
+        if ord(t[i_]) in (1, 2, 3, 11, 12, 14, 15, 16, 17, 18, 21, 22, 23):
+            if t[i_ + 1:i_ + 3].encode('utf-16le') == b' lbt':
+                seen += 1
+                if seen == nth: pos = i_; break
+            i_ += 8
+        else:
+            i_ += 1
+    sec[1][2] = (t[:pos] + t[pos + 8:]).encode('utf-16le', 'surrogatepass')
+    h = bytearray(sec[0][2]); nc, = struct.unpack_from('<I', h, 0); struct.pack_into('<I', h, 0, nc - 8); sec[0][2] = bytes(h)
+    arr = list(struct.unpack('<%dI' % (len(sec[2][2]) // 4), sec[2][2]))
+    sec[2][2] = struct.pack('<%dI' % len(arr), *[(v - 8 if (k % 2 == 0 and v > pos) else v) for k, v in enumerate(arr)])
     # 바탕쪽 머리말에 학원 이름·학교 학년, 꼬리말에 교재 이름
     from layout_overrides import HEAD_INFO, FOOT_TEXT
     small = d.cs(16, size=1000, color=0x4A3329)        # 남색 #29334A (BGR)
