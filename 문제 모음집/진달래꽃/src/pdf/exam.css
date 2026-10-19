@@ -151,3 +151,4 @@ body{font-size:11.2pt}
 .bogi{margin-left:4mm;margin-right:4mm;padding-left:5mm;padding-right:5mm}
 .ln.brk.open-b .br2{border-bottom:none;margin-bottom:0}
 .ln.brk.open-t .br2{border-top:none;margin-top:0}
+.nb{white-space:nowrap}
