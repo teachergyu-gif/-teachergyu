@@ -162,3 +162,5 @@ body{font-size:11.2pt}
 .topn .lg{width:auto}
 .foot .ftxt{position:absolute;left:31mm;bottom:2.5mm;font-family:"Noto Sans CJK KR",sans-serif;font-size:8.5pt;color:#777}
 .odd .foot .ftxt{left:auto;right:31mm}
+.topn{position:relative}
+.topn .ra{position:absolute;left:50%;transform:translateX(-50%);bottom:1.2mm;white-space:nowrap}
