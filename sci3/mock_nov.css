@@ -105,6 +105,8 @@
 .xq-ci figcaption{font-size:9pt}
 .xq-ci img.fig{width:calc(100% - 5mm);max-width:none}
 .tag{white-space:nowrap}
-.vec{position:relative;display:inline-block;padding-top:.15em}
-.vec::before{content:"";position:absolute;left:5%;right:12%;top:.05em;border-top:.07em solid currentColor}
-.vec::after{content:"";position:absolute;right:5%;top:-.11em;border:.17em solid transparent;border-left:.3em solid currentColor;border-right:0}
+.vec{display:inline-block;padding-top:.32em;line-height:1;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M2 5H94' stroke='%23222' stroke-width='1.6'/%3E%3Cpath d='M86 1L99 5L86 9' fill='none' stroke='%23222' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat top center/92% .34em}
+.toc-page .toc{font-size:8.8pt}
+.toc-page .toc td{padding:1.15mm 1.5mm}
+.toc-page .toc tr{break-inside:avoid}
+.toc-src{font-size:7pt;margin-top:0}
