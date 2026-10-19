@@ -102,7 +102,7 @@
   document.querySelectorAll('.col').forEach(c => {
     const kids = [...c.children];
     if (!kids.length) return;
-    kids[0].style.marginTop = '0';
+    if (!kids[0].classList.contains('toc')) kids[0].style.marginTop = '0';
     if (c.querySelector('.ex, .toc, .extitle')) return;
     const used = kids[kids.length - 1].offsetTop + kids[kids.length - 1].offsetHeight - kids[0].offsetTop;
     const left = c.clientHeight - used;

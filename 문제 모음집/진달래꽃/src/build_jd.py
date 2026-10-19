@@ -164,6 +164,18 @@ def main(out_path):
     # 1쪽 머리·목차·제목 상자
     d.replace_text('문제 은행', '국제고 1학년 진달래꽃 교재')    # 1쪽 머리 표
     d.replace_text(' , ｢｣', ' 김소월, ｢진달래꽃｣')
+    # 목차 칸 맨 위 빈 문단 삭제 → '[문제 은행]'이 칸 첫 줄부터
+    sec = d.sec
+    k = [i for i, r in enumerate(sec) if r[0] == T_TEXT and r[2].decode('utf-16le', 'ignore').startswith('[문제 은행]')][0]
+    h = k - 1; lvl = sec[h][1]
+    prev = h - 1
+    while not (sec[prev][0] == T_PARA and sec[prev][1] == lvl) and sec[prev][0] != 72:
+        prev -= 1
+    if sec[prev][0] == T_PARA:   # 바로 앞 빈 문단
+        j = prev
+        while sec[j][0] != 72: j -= 1
+        del sec[prev:h]
+        p = bytearray(sec[j][2]); struct.pack_into('<h', p, 0, struct.unpack_from('<h', p, 0)[0] - 1); sec[j][2] = bytes(p)
     # 1쪽 '국어 영역(A형)' 그림 → '국어 영역'
     from hwplib import deflate
     d.s['BinData/BIN0001.jpg'] = deflate(open(f'{D}/logo2.jpg', 'rb').read())
