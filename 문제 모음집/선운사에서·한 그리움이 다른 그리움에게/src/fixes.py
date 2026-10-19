@@ -2,7 +2,22 @@
 진달래꽃 교재의 fixes_jd.py와 같은 방식."""
 import re
 
+HG = '한 그리움이 다른 그리움에게'
+SW = '선운사에서'
 FIX = [
+    # 한 그리움이 다른 그리움에게
+    (HG, 1, '배려의 태도로 , 표면적으로는', '배려의 태도로, 표면적으로는'),
+    (HG, 8, '수미 상관의 구조를 통해', '수미상관의 구조를 통해'),
+    (HG, 12, '13행에서 ‘어느 날’', '14행에서 ‘어느 날’'),           # 15행 중 ‘어느 날’은 1·14행
+    (HG, 18, '종결 어미 ‘-리’를 사용하여 시상을 마무리하고 있다.', '종결 어미 ‘-리’를 사용하여 화자의 의지를 드러내고 있다.'),   # 시는 ‘있다면’으로 끝남 → 정답 둘
+    (HG, 18, '종결 어미 ‘-리’를 사용하여 시상을 마무리하는 부분 ‘어느 겨울인들/우리들의 사랑을 춥게 하리’ 부분에서 확인할 수 있다.', '종결 어미 ‘-리’를 사용하여 화자의 의지를 드러내는 부분은 ‘나는 기다리리’, ‘어느 겨울인들/우리들의 사랑을 춥게 하리’에서 확인할 수 있다.'),
+    (HG, 32, '마지막 부분인 13~15행에', '마지막 부분인 14~15행에'),
+    (HG, 36, '추위도 이겨낼 수 있다는', '추위도 이겨 낼 수 있다는'),
+    # 창작 시기: 1991년 시집 수록작 — 다른 문항(25번)과 같이 1980년대로 통일
+    (HG, 16, '1970년대', '1980년대'),
+    (HG, 20, '1970년대', '1980년대'),
+    (HG, 28, '1970년대', '1980년대'),
+    (HG, 43, '1970년대', '1980년대'),
 ]
 
 
@@ -26,6 +41,25 @@ def walk(o, f):
 def apply(data, log):
     for src in data:
         name = src['source']
+        for e in src['ex']:   # 정답 선지가 [오답풀이]에 또 들어간 것 삭제
+            if e.get('wrong') and e['answer'][:1] in '①②③④⑤':
+                e['wrong'] = [w for w in e['wrong'] if w[0].strip() != e['answer'][:1]]
+            for w in e.get('wrong') or []:
+                if w[1].startswith(w[0]):
+                    w[0] = ''
+        # 지문 속 밑줄 앞 기호(㉠ ⓐ Ⓐ ㉮ 등)와 밑줄 사이 한 칸
+        SYM = r'([㉠-㉭㉮-㉻ⓐ-ⓩⒶ-Ⓩ])'
+        for s in src['sets']:
+            for w in s.get('works', []):
+                t = re.sub(r'<u>' + SYM + r'\s*', r'\1 <u>', w['lines'])
+                t = re.sub(SYM + r'(<b>)?<u>', r'\1 \2<u>', t).replace(' None<u>', ' <u>')
+                w['lines'] = t
+        for s in src['sets']:
+            for w in s.get('works', []):
+                poem(w, log)
+        src['sets'] = walk(src['sets'], straight); src['ex'] = walk(src['ex'], straight)
+        src['sets'] = walk(src['sets'], quotes); src['ex'] = walk(src['ex'], quotes)
+        # 원본 오류 수정은 표기를 맞춘 뒤에
         for work, key, a, b in FIX:
             if work != name:
                 continue
@@ -51,22 +85,6 @@ def apply(data, log):
             if not hit:
                 raise SystemExit(f'수정 대상 없음: {name} {key} {a}')
             log.append(f'{name} {key}번: {a} → {b}')
-        for e in src['ex']:
-            for w in e.get('wrong') or []:
-                if w[1].startswith(w[0]):
-                    w[0] = ''
-        # 지문 속 밑줄 앞 기호(㉠ ⓐ Ⓐ ㉮ 등)와 밑줄 사이 한 칸
-        SYM = r'([㉠-㉭㉮-㉻ⓐ-ⓩⒶ-Ⓩ])'
-        for s in src['sets']:
-            for w in s.get('works', []):
-                t = re.sub(r'<u>' + SYM + r'\s*', r'\1 <u>', w['lines'])
-                t = re.sub(SYM + r'(<b>)?<u>', r'\1 \2<u>', t).replace(' None<u>', ' <u>')
-                w['lines'] = t
-        for s in src['sets']:
-            for w in s.get('works', []):
-                poem(w, log)
-        src['sets'] = walk(src['sets'], straight); src['ex'] = walk(src['ex'], straight)
-        src['sets'] = walk(src['sets'], quotes); src['ex'] = walk(src['ex'], quotes)
 
 
 def straight(s):
