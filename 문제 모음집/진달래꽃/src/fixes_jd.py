@@ -226,3 +226,22 @@ def apply(data, log):
         src['sets'] = walk(src['sets'], quotes); src['ex'] = walk(src['ex'], quotes)
         if repr(src) != before:
             log.append(f'{i}회: 방향이 뒤집힌 작은따옴표 바로잡음')
+    # 최종 검토(2차) 수정: 전체 치환 + 해설 항목 앞 공백 정리
+    from review_fixes import R
+    hit = {a: 0 for a, _ in R}
+    def rf(t):
+        for a, b in R:
+            if a in t:
+                hit[a] += t.count(a); t = t.replace(a, b)
+        return t
+    for src in data:
+        src['sets'] = walk(src['sets'], rf); src['ex'] = walk(src['ex'], rf)
+        for e in src['ex']:
+            for w in e.get('wrong') or []:
+                w[1] = w[1].strip()
+    miss = [a for a, c in hit.items() if not c]
+    if miss:
+        raise SystemExit('검토 수정 대상 없음: ' + ' | '.join(miss))
+    for a, b in R:
+        log.append(f'최종 검토 수정({hit[a]}곳): {a[:40]} → {b[:40]}')
+
