@@ -50,6 +50,8 @@ def xmd(s):
     t = t.replace("[3점]", '<span class="pt3">[3점]</span>')
     # 기호(ⓐ ㉠ ㉮ Ⓐ)와 바로 뒤 말은 한 줄에: 사이를 줄 바꿈 없는 공백으로
     t = re.sub(r"([㉠-㉭ⓐ-ⓩ㉮-㉻Ⓐ-Ⓩ]) ", "\\1\u00a0", t)
+    # 빈칸 괄호 ‘( ㉠ )’, ‘( [가] )’는 끊지 않음
+    t = re.sub(r"\((\s+)([^()\s]{1,16})(\s+)\)", lambda m: "(" + "\u00a0" * len(m.group(1)) + m.group(2) + "\u00a0" * len(m.group(3)) + ")", t)
     return t
 
 

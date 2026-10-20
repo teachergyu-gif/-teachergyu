@@ -105,7 +105,7 @@ const path = require('path');
   // 기호(ⓐ ㉠ …)가 뒤 말과 함께 다음 줄로 넘어가 앞줄 끝이 비면, 그 문단 자간을 조금 좁혀(최대 -0.04em) 앞줄에 함께 들어가게 함
   const symfit = await page.evaluate(() => {
     let n = 0;
-    const SYM = /[㉠-㉭ⓐ-ⓩ㉮-㉻Ⓐ-Ⓩ] /g;
+    const SYM = /(?:[㉠-㉭ⓐ-ⓩ㉮-㉻Ⓐ-Ⓩ]|\()\u00a0/g;   // 기호, 빈칸 괄호 ‘( ㉠ )’의 여는 괄호
     document.querySelectorAll('.bogi .bg-p, .x-p, .xq-stem, .xq-ch li').forEach(el => {
       const syms = [];
       const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
