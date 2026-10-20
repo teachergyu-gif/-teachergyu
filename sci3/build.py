@@ -138,7 +138,8 @@ def question_html(q):
             for c, f in zip(q.get("choices") or "①②③④⑤", q["choices_imgs"])) + "</div>"
     else:
         chs = '<ol class="xq-ch">' + "".join(f'<li>{xmd(c)}</li>' for c in q.get("choices", [])) + "</ol>"
-    return (f'<div class="xq"><div class="xq-stem"><span class="xq-no">{q["no"]:03d}</span><span>{xmd(q["stem"])}</span></div>'
+    cb = ' data-colbreak="1"' if q.get("colbreak") else ""   # 손 배치: 이 문항은 다음 단에서 시작
+    return (f'<div class="xq"{cb}><div class="xq-stem"><span class="xq-no">{q["no"]:03d}</span><span>{xmd(q["stem"])}</span></div>'
             f'{bogi_html(q.get("bogi"))}{bogi_html(q.get("bogi2"))}{chs}</div>')
 
 

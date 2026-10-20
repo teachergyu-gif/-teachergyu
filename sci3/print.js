@@ -55,6 +55,10 @@ const path = require('path');
       const over = c => c.scrollHeight > c.clientHeight + 1;
       const fullHeight = c => c.clientHeight > PH - mm(20);
       for (const u of units) {
+        if (u.querySelector('[data-colbreak]') && cols[ci].children.length) {   // 손 배치: 다음 단에서 시작
+          ci++;
+          if (ci > 1) { pg = newPage(); cols = makeCols(PH - GAP); allCols.push(cols); ci = 0; }
+        }
         cols[ci].appendChild(u);
         // move on while it doesn't fit, unless it is already alone in a full-height column
         while (over(cols[ci]) && (cols[ci].children.length > 1 || !fullHeight(cols[ci]))) {
@@ -198,6 +202,34 @@ const path = require('path');
     return n;
   });
   console.log('보기 어간·어미 끊기:', bsplit);
+  // <보기> 문단: 줄 끝이 크게 비는 줄이 남아 있으면 문단 자간을 조금씩(최대 -0.05em) 좁혀 가장 고르게 되는 값으로
+  const btight = await page.evaluate(() => {
+    let n = 0;
+    document.querySelectorAll('.bogi .bg-p').forEach(el => {
+      const fs = parseFloat(getComputedStyle(el).fontSize);
+      const stat = () => {
+        const ta = el.style.textAlign; el.style.textAlign = 'left';
+        const r = document.createRange(); r.selectNodeContents(el);
+        const L = [];
+        [...r.getClientRects()].forEach(q => { if (q.width <= 0) return; const l = L.find(x => Math.abs(x.top - q.top) < 3); if (l) l.end = Math.max(l.end, q.right); else L.push({ top: q.top, end: q.right }); });
+        el.style.textAlign = ta;
+        const right = el.getBoundingClientRect().right - parseFloat(getComputedStyle(el).paddingRight);
+        const slack = L.slice(0, -1).map(l => right - l.end);
+        return { n: L.length, max: slack.length ? Math.max(...slack) : 0 };
+      };
+      const s0 = stat(); if (s0.n < 2 || s0.max < fs * 2) return;
+      let best = null;
+      for (const ls of [-0.01, -0.02, -0.03, -0.04, -0.05]) {
+        el.style.letterSpacing = ls + 'em';
+        const s1 = stat();
+        if (s1.n <= s0.n && s1.max < s0.max - fs && (!best || s1.max < best[1] - 0.5)) best = [ls, s1.max];
+      }
+      el.style.letterSpacing = best ? best[0] + 'em' : '';
+      if (best) n++;
+    });
+    return n;
+  });
+  console.log('보기 자간 조정:', btight);
   const fits = await page.evaluate(() => {
     const res = [];
     document.querySelectorAll('.pg').forEach((pg, i) => {
