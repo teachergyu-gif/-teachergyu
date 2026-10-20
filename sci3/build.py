@@ -242,7 +242,6 @@ def toc(ps, pages):
 <section class="toc-page"><div class="toc-title-h">목차</div>
   <div class="toc-part"><span class="part-no">Ⅲ</span><span class="toc-part-name">과학</span><span class="toc-part-pg">{pages.get("X1a", "")}</span></div>
   <table class="toc">{rows}</table>
-  <div class="toc-note">지문마다 ① 원본 지문 및 문제 → ② 문제 해설 → ③ 지문 분석서 순서로 실려 있습니다.</div>
 </section>'''
 
 
