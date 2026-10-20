@@ -132,6 +132,17 @@ def explanation(n, e):
 def main(out_html):
     data = [json.load(open(f'{JDSRC}/data/s{i}.json')) for i in range(1, 5)]
     fixes_jd.apply(data, [])
+    # 함께 실린 「선운사에서」·「한 그리움이 다른 그리움에게」·「산유화」 지문은 앞 문제 은행과 같은 모양(교과서 수록본)으로
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('swfixes', os.path.join(J, 'fixes.py')); swfixes = importlib.util.module_from_spec(spec); spec.loader.exec_module(swfixes)
+    for src in data:
+        for s in src['sets']:
+            for w in s.get('works', []):
+                tmp = dict(w); swfixes.poem(tmp, [])
+                w['lines'] = tmp['lines']
+        for e in src['ex']:
+            for k in ('correct', 'plain'):
+                if e.get(k): e[k] = e[k].replace('‘산 넘어 가는 그대여’', '‘산 넘어가는 그대여’')
     body, exs, n = [], [], 0
     body.append(f'<div class="u qtitle"><span>｢{NAME}｣ 추가 문제 은행</span></div>')
     for src in data:

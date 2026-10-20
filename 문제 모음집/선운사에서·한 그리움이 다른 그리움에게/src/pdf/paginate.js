@@ -123,6 +123,12 @@
     }
     if (u.classList.contains('ex')) return placeSplittable(u);
     col.appendChild(u);
+    if (over() && col.children.length > 1 && u.classList.contains('q') && u.previousElementSibling.classList.contains('set')) {
+      // 지문 바로 뒤 문항이 지문 아래 여백 때문에만 넘치면 그 여백을 줄여 같은 단에(남는 공간은 뒤에서 다시 고르게 나눔)
+      const pv = u.previousElementSibling, mb = pv.style.marginBottom;
+      pv.style.marginBottom = '0px';
+      if (over()) pv.style.marginBottom = mb;
+    }
     if (over() && col.children.length > 1) { col.removeChild(u); nextCol(); col.appendChild(u); }
     if (u.classList.contains('extitle')) u.dataset.keep = 1;
   }
@@ -168,7 +174,7 @@
           if (slack < fs * 2.2) continue;
           const nw = lines[k + 1].items[0];
           if (!nw.classList.contains('w')) continue;
-          const txt = nw.textContent; if (txt.includes('​') || txt.length < 4) continue;
+          const txt = nw.textContent; if (txt.includes('​') || txt.length < 4 || /[∨/]/.test(txt)) continue;   // 끊어 읽기 표시(∨·/)가 든 시구는 쪼개지 않음
           // 들어갈 수 있는 가장 긴 앞부분(2음절 이상, 뒷부분 2음절 이상, 뒷부분이 어미·조사로 시작)
           let best = -1, bestCls = 9;
           for (let c = 2; c <= txt.length - 2; c++) {
@@ -185,6 +191,8 @@
         el.style.textAlign = ta;
         if (!changed) break;
       }
+      // 넣은 끊김 자리(​)에서 실제로 줄이 바뀌지 않은 곳은 되돌림(글을 복사할 때 '때에 는'처럼 보이지 않게)
+      el.querySelectorAll('.w').forEach(w => { if (w.textContent.includes('​') && w.getClientRects().length < 2) w.textContent = w.textContent.replace(/​/g, ''); });
     });
   })();
   nextCol();
