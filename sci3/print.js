@@ -129,6 +129,25 @@ const path = require('path');
     return n;
   });
   console.log('기호 앞줄로:', symfit);
+  // 선지: 첫 줄 끝이 크게 비면(다음 말이 통째로 넘어감) 자간을 조금 좁혀(최대 -0.05em) 다음 말을 첫 줄로 올림
+  const chfit = await page.evaluate(() => {
+    let n = 0;
+    document.querySelectorAll('.xq-ch li').forEach(el => {
+      const lines = () => { const r = document.createRange(); r.selectNodeContents(el); const tops = []; [...r.getClientRects()].forEach(q => { if (q.width > 0 && !tops.some(t => Math.abs(t - q.top) < 3)) tops.push(q.top); }); return tops.length; };
+      const firstEnd = () => { const r = document.createRange(); r.selectNodeContents(el); const qs = [...r.getClientRects()].filter(q => q.width > 0); const t0 = Math.min(...qs.map(q => q.top)); return Math.max(...qs.filter(q => Math.abs(q.top - t0) < 3).map(q => q.right)); };
+      const fs = parseFloat(getComputedStyle(el).fontSize);
+      const right = el.getBoundingClientRect().right;
+      const n0 = lines(); if (n0 < 2) return;
+      const e0 = firstEnd(); if (right - e0 < fs * 2.2) return;
+      for (const ls of [-0.01, -0.02, -0.03, -0.04, -0.05]) {
+        el.style.letterSpacing = ls + 'em';
+        if (lines() <= n0 && firstEnd() > e0 + fs) { n++; return; }
+      }
+      el.style.letterSpacing = '';
+    });
+    return n;
+  });
+  console.log('선지 첫 줄 채움:', chfit);
   // <보기> 문단: 한 단어가 통째로 다음 줄로 넘어가 줄 끝이 크게 비는 곳은 어간·어미(조사) 경계에서 끊어 앞줄을 채움.
   // 실제로 줄이 바뀐 곳에만 끊김 자리(​)를 남김(글을 복사할 때 띄어쓰기처럼 보이지 않게).
   const bsplit = await page.evaluate(() => {
