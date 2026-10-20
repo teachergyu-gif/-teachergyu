@@ -155,12 +155,20 @@ const path = require('path');
   // <보기> 문단: 한 단어가 통째로 다음 줄로 넘어가 줄 끝이 크게 비는 곳은 어간·어미(조사) 경계에서 끊어 앞줄을 채움.
   // 실제로 줄이 바뀐 곳에만 끊김 자리(​)를 남김(글을 복사할 때 띄어쓰기처럼 보이지 않게).
   const bsplit = await page.evaluate(() => {
-    const ENDS = ['하였','하여','하는','하고','하면','하지','하게','하기','하던','했','하','되었','되어','되는','되고','되지','된','될','되','시키','시킨','시켜','한','할','함','해',
-      '에서는','에게서','으로는','으로도','에서','에게','으로','까지','부터','처럼','보다','이라는','이라고','라는','라고','이며','이고','이다','이나','이면',
-      '았','었','였','겠','으며','으면','으나','지만','는데','은데','면서','도록','더니','어서','아서','여서','니까',
-      '을','를','은','는','이','가','의','에','와','과','로','도','만','고','며','면','서','게','지','기','다','니','아','어','여','던','된','든'];
+    // 끊어도 되는 뒷부분: 조사 전체, 어미 전체, 또는 ‘하다·되다·시키다’ 꼴(5음절 이하). 앞부분은 2음절 이상(어미면 1음절도)
+    const JOSA = ['을','를','은','는','이','가','의','에','에서','에게','와','과','로','으로','도','만','까지','부터','처럼','보다','이다','이며','이고','이나','이면','에는','에서는','으로는','으로서','로서','에도','과는','와는','이라는','라는','이란','이라고','라고','에서도','에게는','만큼','마다','과의','와의','에서의','으로의','이었다','였다'];
+    const EOMI = ['었다','았다','였다','었고','았고','였고','었으며','았으며','였으며','었는데','았는데','였는데','었던','았던','였던','는다','어서','아서','여서','으며','으면','으나','지만','는데','도록','더니','었을','았을','였을','겠다','겠군','었다고','았다고'];
+    const VERB = ['하','되','했','된','될','한','할','함','해','시키','시킨','시켜','되었','하였','되어','하여'];
+    const okSplit = (pre, rest) => {
+      const core = rest.replace(/[.,?!’”)\]]+$/, '');
+      if (!core || !/^[가-힣]+$/.test(core)) return false;
+      if (EOMI.includes(core)) return pre.length >= 1;
+      if (pre.length < 2) return false;
+      if (JOSA.includes(core)) return true;
+      return VERB.some(v => core.startsWith(v)) && core.length <= 5;
+    };
     let n = 0;
-    document.querySelectorAll('.bogi .bg-p').forEach(el => {
+    document.querySelectorAll('.bogi .bg-p, .xq-stem > span:last-child, .xq-ch li').forEach(el => {
       // 글자 노드 → 단어 단위 span
       const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
       const nodes = []; while (tw.nextNode()) nodes.push(tw.currentNode);
@@ -187,7 +195,7 @@ const path = require('path');
           for (let c = 1; c <= txt.length - 1; c++) {
             const rest = txt.slice(c);
             if (!/[가-힣]/.test(txt[c - 1]) || !/[가-힣]/.test(txt[c])) continue;
-            if (!ENDS.some(e => rest.startsWith(e))) continue;
+            if (!okSplit(txt.slice(0, c).replace(/^[‘“(\[]+/, ''), rest)) continue;
             const m = document.createElement('span'); m.style.cssText = 'visibility:hidden;position:absolute;white-space:nowrap'; m.textContent = ' ' + txt.slice(0, c); el.appendChild(m);
             const wpx = m.getBoundingClientRect().width; m.remove();
             if (wpx <= slack - fs * 0.2 && c > best) best = c;
@@ -205,7 +213,7 @@ const path = require('path');
   // <보기> 문단: 줄 끝이 크게 비는 줄이 남아 있으면 문단 자간을 조금씩(최대 -0.05em) 좁혀 가장 고르게 되는 값으로
   const btight = await page.evaluate(() => {
     let n = 0;
-    document.querySelectorAll('.bogi .bg-p').forEach(el => {
+    document.querySelectorAll('.bogi .bg-p, .xq-stem > span:last-child').forEach(el => {
       const fs = parseFloat(getComputedStyle(el).fontSize);
       const stat = () => {
         const ta = el.style.textAlign; el.style.textAlign = 'left';
