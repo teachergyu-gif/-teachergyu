@@ -149,7 +149,10 @@ const path = require('path');
       const right = el.getBoundingClientRect().right;
       const n0 = lines(); if (n0 < 2) return;
       // 마지막 줄이 짧게 넘어간 선지(‘겠군.’만 남는 등): 자간을 좁혀(최대 -0.08em) 줄 수를 줄일 수 있으면 그렇게
-      for (const ls of [-0.01, -0.02, -0.03, -0.04, -0.05, -0.06, -0.07, -0.08]) {
+      // 마지막 줄이 아주 짧으면(5글자 남짓) -0.12em까지
+      const lastW = (() => { const r = document.createRange(); r.selectNodeContents(el); const qs = [...r.getClientRects()].filter(q => q.width > 0); const tb = Math.max(...qs.map(q => q.top)); return qs.filter(q => Math.abs(q.top - tb) < 3).reduce((a, q) => a + q.width, 0); })();
+      const steps = [-0.01, -0.02, -0.03, -0.04, -0.05, -0.06, -0.07, -0.08].concat(lastW < fs * 5.5 ? [-0.09, -0.1, -0.11, -0.12] : []);
+      for (const ls of steps) {
         el.style.letterSpacing = ls + 'em';
         if (lines() < n0) { n++; return; }
       }
