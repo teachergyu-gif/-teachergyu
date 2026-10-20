@@ -233,10 +233,12 @@ const path = require('path');
       };
       const s0 = stat(); if (s0.n < 2 || s0.max < fs * 2) return;
       let best = null;
-      for (const ls of [-0.01, -0.02, -0.03, -0.04, -0.05]) {
+      for (const ls of [-0.01, -0.02, -0.03, -0.04, -0.05, -0.06, -0.07, -0.08]) {
         el.style.letterSpacing = ls + 'em';
         const s1 = stat();
-        if (s1.n <= s0.n && s1.max < s0.max - fs && (!best || s1.max < best[1] - 0.5)) best = [ls, s1.max];
+        // -0.05em까지는 줄 끝 여백이 1글자 이상 줄면, 그보다 더 좁힐 때는 줄 수가 줄어들 때만
+        const good = ls >= -0.05 ? (s1.n <= s0.n && s1.max < s0.max - fs) : (s1.n < s0.n && s1.max < s0.max);
+        if (good && (!best || s1.n < best[2] || s1.max < best[1] - 0.5)) best = [ls, s1.max, s1.n];
       }
       el.style.letterSpacing = best ? best[0] + 'em' : '';
       if (best) n++;
