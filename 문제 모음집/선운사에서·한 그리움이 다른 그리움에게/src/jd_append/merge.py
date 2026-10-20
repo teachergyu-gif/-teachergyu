@@ -11,6 +11,8 @@ SRC = os.path.dirname(H)
 base, out = sys.argv[1], sys.argv[2]
 N_FRONT = 11   # PART 01 작품 분석(목차 포함) 쪽수
 MEMO = '7'     # 7쪽 MEMO(머리말·꼬리말 없음)
+FOOT = '국제고 1학년 2주차 교재'        # 꼬리말 교재 이름(짝수 쪽 왼쪽·홀수 쪽 오른쪽 아래)
+OLD_FOOT = '국제고 1학년 문학 교재'   # 기존 합본 PART 01 쪽에 찍혀 있던 이름
 
 
 def run(*a, **kw):
@@ -42,11 +44,21 @@ with tempfile.TemporaryDirectory() as t:
         w.add_page(p)
     for p in list(sw) + list(jd):
         w.add_page(a4(p))
-    w.write(f'{t}/m0.pdf')
+    w.write(f'{t}/m00.pdf')
     total = len(w.pages)
+    # PART 01 쪽에 이미 찍혀 있던 꼬리말 교재 이름은 지우고, 아래에서 모든 쪽에 새 이름으로 다시 넣음
+    import pymupdf
+    doc = pymupdf.open(f'{t}/m00.pdf')
+    for pg in doc[:N_FRONT]:
+        hits = [r for r in pg.search_for(OLD_FOOT) if r.y0 > pg.rect.height * 0.85]
+        for r in hits:
+            pg.add_redact_annot(r, fill=False)
+        if hits:
+            pg.apply_redactions(images=pymupdf.PDF_REDACT_IMAGE_NONE, graphics=pymupdf.PDF_REDACT_LINE_ART_NONE, text=pymupdf.PDF_REDACT_TEXT_REMOVE)
+    doc.save(f'{t}/m0.pdf')
     front = ','.join(str(i) for i in range(1, N_FRONT + 1))
     run('python3', '-I', f'{SRC}/header_phrase.py', f'{t}/m0.pdf', f'{t}/m1.pdf', '리치아카데미 | 국제고 1학년', str(N_FRONT), front)
-    run('python3', '-I', f'{SRC}/footer_text.py', f'{t}/m1.pdf', f'{t}/m2.pdf', '국제고 1학년 문학 교재', str(N_FRONT), front)
+    run('python3', '-I', f'{SRC}/footer_text.py', f'{t}/m1.pdf', f'{t}/m2.pdf', FOOT, str(N_FRONT), '1,' + MEMO)
     run('python3', '-I', f'{SRC}/footer_box.py', f'{t}/m2.pdf', f'{t}/m3.pdf', str(total), str(N_FRONT), MEMO + ',1')
     run('python3', '-I', f'{H}/patch_part1.py', f'{t}/m3.pdf', f'{t}/m4.pdf')
     # 목차(1쪽): 쪽 번호는 실제 시작 쪽으로
