@@ -221,7 +221,7 @@ def cover(ps):
   <div class="cover-main">
     <img class="cover-logo" src="file://{ROOT}/brand/logo_beige.png" alt="RICH ACADEMY">
     <div class="cover-kicker">수능 · 평가원 모의평가 기출</div>
-    <h1 class="cover-title">Ⅲ. 과학<br>평가원 기출 독서<br><em>지문 분석서</em></h1>
+    <h1 class="cover-title">기말고사 마더텅 과학<br><em>지문 분석서</em></h1>
     <div class="cover-sub">수능 · 6월/9월 모의평가 과학 독서 {len(ps)}지문 · {sum(len(p["exam"]["questions"]) for p in ps)}문항</div>
   </div>
   <div class="parts parts3">{cards}</div>
