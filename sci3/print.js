@@ -8,13 +8,18 @@ const path = require('path');
   await page.emulateMedia({ media: 'print' });
   await page.goto('file://' + path.join(S, 'summary.html'), { waitUntil: 'networkidle' });
   await page.evaluate(() => document.fonts.ready);
+  // <보기> 항목(ⓐ, ㉠, (가), ㄱ. 등으로 시작): 기호 폭만큼 내어쓰기
+  await page.evaluate(() => document.querySelectorAll('.bg-hang').forEach(p => {
+    const w = p.querySelector('.hl').getBoundingClientRect().width;
+    p.style.textIndent = (-w) + 'px'; p.style.paddingLeft = w + 'px';
+  }));
   // Lay out each 원본 지문 및 문제 section into fixed pages: passage at full width, questions in two
   // columns. Questions never split; a shared <보기> stays with the question after it; spare space in a
   // column is spread between its questions.
   const xlay = await page.evaluate(() => {
     const clipped = [], shrunk = [];
     const mm = v => v * 96 / 25.4;
-    const PH = mm(262), GAP = mm(5), MINQ = mm(55), MAXADD = mm(16);
+    const PH = mm(262), GAP = mm(5), MINQ = mm(55), MAXADD = mm(24);
     const log = [];
     document.querySelectorAll('.xflow').forEach((sec, si) => {
       const head = sec.querySelector('.xf-head');

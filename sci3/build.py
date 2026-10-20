@@ -95,7 +95,16 @@ def bogi_html(bg):
     if bg.get("imgs"):  # several captioned figures in a row (A · B · C)
         body += '<div class="bg-imgs">' + "".join(
             f'<figure>{img(f["img"], "fig")}<figcaption>{xmd(f.get("caption"))}</figcaption></figure>' for f in bg["imgs"]) + "</div>"
-    paras = "".join(f'<p class="bg-p{" bg-c" if re.match(r"^-.*-$|^[⇩↓⇓]$", t.strip()) else ""}">{xmd(t)}</p>' for t in bg.get("paras") or [])
+    HANG = re.compile(r"^((?:\*\*)?(?:\([가-힣A-Za-z]\)|[ⓐ-ⓩ㉠-㉭㉮-㉻Ⓐ-Ⓩ]|[ㄱ-ㅎ]\.|\[[가-힣]+ ?\d*\]|[◦•※∘▪])(?:\*\*)?)\s+")
+
+    def para(t):
+        if re.match(r"^-.*-$|^[⇩↓⇓]$", t.strip()):
+            return f'<p class="bg-p bg-c">{xmd(t)}</p>'
+        m = HANG.match(t.strip())
+        if m:   # 기호로 시작하는 항목: 내어쓰기(기호 다음 글자에 둘째 줄을 맞춤)
+            return f'<p class="bg-p bg-hang"><span class="hl">{xmd(m.group(1))}\u00a0</span>{xmd(t.strip()[m.end():])}</p>'
+        return f'<p class="bg-p">{xmd(t)}</p>'
+    paras = "".join(para(t) for t in bg.get("paras") or [])
     if not bg.get("imgs"):
         body += paras  # text first, then tables (the usual layout)
     tbs = bg.get("tables")
