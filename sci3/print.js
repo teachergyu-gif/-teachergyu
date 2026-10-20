@@ -102,6 +102,33 @@ const path = require('path');
     return { log, clipped, shrunk };
   });
   console.log('exam layout (section, pages):', JSON.stringify(xlay));
+  // 기호(ⓐ ㉠ …)가 뒤 말과 함께 다음 줄로 넘어가 앞줄 끝이 비면, 그 문단 자간을 조금 좁혀(최대 -0.04em) 앞줄에 함께 들어가게 함
+  const symfit = await page.evaluate(() => {
+    let n = 0;
+    const SYM = /[㉠-㉭ⓐ-ⓩ㉮-㉻Ⓐ-Ⓩ] /g;
+    document.querySelectorAll('.bogi .bg-p, .x-p, .xq-stem, .xq-ch li').forEach(el => {
+      const syms = [];
+      const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      while (tw.nextNode()) { const t = tw.currentNode; let m; SYM.lastIndex = 0; while ((m = SYM.exec(t.textContent))) syms.push([t, m.index]); }
+      if (!syms.length) return;
+      const top = ([t, i]) => { const r = document.createRange(); r.setStart(t, i); r.setEnd(t, i + 1); return r.getClientRects()[0]; };
+      const lineLeft = el.getBoundingClientRect().left + parseFloat(getComputedStyle(el).paddingLeft);
+      for (const sm of syms) {
+        const r0 = top(sm); if (!r0) continue;
+        if (r0.left - lineLeft > 20) continue;                       // 줄 첫머리가 아님
+        const h0 = el.getBoundingClientRect().height;
+        let ok = false;
+        for (const ls of [-0.01, -0.02, -0.03, -0.04]) {
+          el.style.letterSpacing = ls + 'em';
+          const r1 = top(sm);
+          if (r1 && r1.top < r0.top - 2 && el.getBoundingClientRect().height <= h0 + 0.5) { ok = true; n++; break; }
+        }
+        if (!ok) el.style.letterSpacing = '';
+      }
+    });
+    return n;
+  });
+  console.log('기호 앞줄로:', symfit);
   // <보기> 문단: 한 단어가 통째로 다음 줄로 넘어가 줄 끝이 크게 비는 곳은 어간·어미(조사) 경계에서 끊어 앞줄을 채움.
   // 실제로 줄이 바뀐 곳에만 끊김 자리(​)를 남김(글을 복사할 때 띄어쓰기처럼 보이지 않게).
   const bsplit = await page.evaluate(() => {
