@@ -50,6 +50,7 @@ def xmd(s):
     t = t.replace("[3점]", '<span class="pt3">[3점]</span>')
     # 기호(ⓐ ㉠ ㉮ Ⓐ)와 바로 뒤 말은 한 줄에: 사이를 줄 바꿈 없는 공백으로
     t = re.sub(r"([㉠-㉭ⓐ-ⓩ㉮-㉻Ⓐ-Ⓩ]) ", "\\1\u00a0", t)
+    t = re.sub(r"&lt;보기( \d)?&gt;", lambda m: '<span class="nw">' + m.group(0) + '</span>', t)   # ‘<보기 2>’를 끊지 않음
     # 빈칸 괄호 ‘( ㉠ )’, ‘( [가] )’는 끊지 않음
     t = re.sub(r"\((\s+)([^()\s]{1,16})(\s+)\)", lambda m: "(" + "\u00a0" * len(m.group(1)) + m.group(2) + "\u00a0" * len(m.group(3)) + ")", t)
     return t
@@ -94,7 +95,7 @@ def bogi_html(bg):
     if bg.get("imgs"):  # several captioned figures in a row (A · B · C)
         body += '<div class="bg-imgs">' + "".join(
             f'<figure>{img(f["img"], "fig")}<figcaption>{xmd(f.get("caption"))}</figcaption></figure>' for f in bg["imgs"]) + "</div>"
-    paras = "".join(f'<p class="bg-p{" bg-c" if re.match(r"^-.*-$", t.strip()) else ""}">{xmd(t)}</p>' for t in bg.get("paras") or [])
+    paras = "".join(f'<p class="bg-p{" bg-c" if re.match(r"^-.*-$|^[⇩↓⇓]$", t.strip()) else ""}">{xmd(t)}</p>' for t in bg.get("paras") or [])
     if not bg.get("imgs"):
         body += paras  # text first, then tables (the usual layout)
     tbs = bg.get("tables")
