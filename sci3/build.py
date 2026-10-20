@@ -153,7 +153,8 @@ def exam_section(p, idx):
 
 def split_others(s):
     """'① … ② …' → one line per choice"""
-    parts = re.split(r"\s*(?=[①②③④⑤])", s or "")
+    # 묶인 번호(‘①, ④, ⑤는’)는 나누지 않음: 앞이 쉼표·가운뎃점이거나 뒤에 쉼표·가운뎃점이 오는 번호에서는 줄을 나누지 않음
+    parts = re.split(r"(?<![,·])(?<![,·] )\s*(?=[①②③④⑤](?![,·]))(?<![①②③④⑤][,·] )(?<![①②③④⑤][,·])", s or "")
     return "".join(f'<div class="an-o">{xmd(t)}</div>' for t in parts if t.strip())
 
 
