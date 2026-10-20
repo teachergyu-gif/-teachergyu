@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>목차</title>
+<style>
+/* '목차 디자인 샘플' 문학 1(갈래별 리스트) 디자인. 단위는 pt와 같은 595×842 좌표(화면 1.3333배로 A4에 맞춤) */
+@font-face{font-family:Montserrat;font-weight:600;src:url(fonts/montserrat-latin-600-normal.woff2)}
+@font-face{font-family:Montserrat;font-weight:700;src:url(fonts/montserrat-latin-700-normal.woff2)}
+@font-face{font-family:Montserrat;font-weight:800;src:url(fonts/montserrat-latin-800-normal.woff2)}
+@page{size:595pt 841pt;margin:0}
+html,body{margin:0;padding:0}
+.pg{zoom:1.33333;width:595px;height:841px;position:relative;overflow:hidden}
+.in{width:595px;height:841px;box-sizing:border-box;padding:56px 56px 48px;background:#FFFFFF;font-family:'Noto Sans CJK KR','Noto Sans KR',sans-serif;color:#1C2631;display:flex;flex-direction:column}
+.top{display:flex;align-items:center;justify-content:space-between}
+.ra{font-family:Montserrat,sans-serif;font-size:12px;font-weight:800;letter-spacing:5px;color:#5E7189}   /* 회색+파랑(슬레이트 블루) */
+.kt{font-size:13px;font-weight:700;border:1.5px solid #1C2631;border-radius:6px;padding:1px 8px}
+h1{margin:40px 0 0;font-size:19px;font-weight:700;letter-spacing:-0.5px;white-space:nowrap}
+.rule{margin-top:20px;height:3px;background:#2A3B4C}
+.parts{margin-top:26px;display:flex;flex-direction:column;gap:122px}
+.part{display:flex;flex-direction:column;gap:22px}
+.ph{display:flex;align-items:baseline;gap:12px}
+.ph .no{font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;color:#D9822B}   /* 주황 */
+.ph .nm{font-size:17px;font-weight:700}
+.it{display:flex;align-items:baseline;gap:10px;font-size:14px;padding-left:4px}
+.it .k{color:#6B7785;width:40px}
+.it .t{font-weight:500}
+.it .a{font-size:13px;color:#6B7785}
+.it .d{flex:1;border-bottom:1.5px dotted #C3CAD3}
+.it .p{font-family:Montserrat,sans-serif;font-weight:600}
+/* 쪽 상자: 다른 쪽과 같은 자리·모양 */
+.fr{position:absolute;left:265px;top:749.5px;width:36.5px;height:16px;box-sizing:border-box;border:0.6px solid #000;font-family:'Liberation Serif','Times New Roman',serif;font-size:8.6px;line-height:1}
+.fr svg{position:absolute;left:0;top:0;width:100%;height:100%}
+.fr i{position:absolute;left:3.2px;top:1.2px;font-style:normal}
+.fr s{position:absolute;right:3.2px;bottom:1.2px;text-decoration:none}
+</style></head><body>
+<div class="pg"><div class="in">
+  <div class="top"><span class="ra">RICH ACADEMY</span><span class="kt">이재규T</span></div>
+  <h1 id="h">국제고 1학년 기말고사 교과서 문학 교재</h1>
+  <div class="rule"></div>
+  <div class="parts">
+    <div class="part">
+      <div class="ph"><span class="no">PART 01</span><span class="nm">작품 분석</span></div>
+      <div class="it"><span class="t">「선운사에서」</span><span class="a">최영미</span><span class="d"></span><span class="p">p. 2</span></div>
+      <div class="it"><span class="t">「한 그리움이 다른 그리움에게」</span><span class="a">정희성</span><span class="d"></span><span class="p">p. 8</span></div>
+    </div>
+    <div class="part">
+      <div class="ph"><span class="no">PART 02</span><span class="nm">문제 은행</span></div>
+      <div class="it"><span class="t">「선운사에서」</span><span class="a">최영미</span><span class="d"></span><span class="p">p. 12</span></div>
+      <div class="it"><span class="t">「한 그리움이 다른 그리움에게」</span><span class="a">정희성</span><span class="d"></span><span class="p">p. 42</span></div>
+      <div class="it"><span class="t">「진달래꽃」 추가 문제 은행</span><span class="a">김소월</span><span class="d"></span><span class="p">p. 64</span></div>
+    </div>
+  </div>
+</div>
+<div class="fr"><svg viewBox="0 0 36.5 16" preserveAspectRatio="none"><line x1="0" y1="16" x2="36.5" y2="0" stroke="#000" stroke-width="0.4"/></svg><i>1</i><s>TOTAL</s></div>
+</div>
+<script>
+// 제목이 한 줄에 들어가도록 글자 크기를 30px에서 필요한 만큼만 줄임
+document.fonts.ready.then(() => { const h = document.getElementById('h'); let s = 19; while (h.scrollWidth > 483 && s > 18) { s -= 0.5; h.style.fontSize = s + 'px'; } document.body.dataset.done = '1'; });
+</script>
+</body></html>
