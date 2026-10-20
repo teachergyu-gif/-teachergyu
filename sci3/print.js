@@ -266,7 +266,7 @@ const path = require('path');
       const base = parseFloat(ls0) || 0;
       w.textContent = txt.replace(/​/g, '');
       for (const d of [-0.01, -0.02, -0.03, -0.04, -0.05, -0.06, -0.07, -0.08, -0.09, -0.1, -0.11, -0.12, -0.13, -0.14, -0.15]) {
-        if (base + d < (el.classList.contains('bg-p') ? -0.15 : -0.12)) break;
+        if (base + d < (el.closest('.xq-ch') ? -0.12 : -0.15)) break;
         el.style.letterSpacing = (base + d) + 'em';
         const r = w.getClientRects();
         if (r.length === 1 && Math.abs(r[0].top - top0) < 3 && el.getBoundingClientRect().height <= h0 + 0.5) { n++; return; }
