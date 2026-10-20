@@ -12,7 +12,6 @@ base, out = sys.argv[1], sys.argv[2]
 N_FRONT = 11   # PART 01 작품 분석(목차 포함) 쪽수
 MEMO = '7'     # 7쪽 MEMO(머리말·꼬리말 없음)
 FOOT = '국제고 1학년 2주차 교재'        # 꼬리말 교재 이름(짝수 쪽 왼쪽·홀수 쪽 오른쪽 아래)
-OLD_FOOT = '국제고 1학년 문학 교재'   # 기존 합본 PART 01 쪽에 찍혀 있던 이름
 
 
 def run(*a, **kw):
@@ -49,12 +48,14 @@ with tempfile.TemporaryDirectory() as t:
     # PART 01 쪽에 이미 찍혀 있던 꼬리말 교재 이름은 지우고, 아래에서 모든 쪽에 새 이름으로 다시 넣음
     import pymupdf
     doc = pymupdf.open(f'{t}/m00.pdf')
-    for pg in doc[:N_FRONT]:
-        hits = [r for r in pg.search_for(OLD_FOOT) if r.y0 > pg.rect.height * 0.85]
-        for r in hits:
-            pg.add_redact_annot(r, fill=False)
-        if hits:
-            pg.apply_redactions(images=pymupdf.PDF_REDACT_IMAGE_NONE, graphics=pymupdf.PDF_REDACT_LINE_ART_NONE, text=pymupdf.PDF_REDACT_TEXT_REMOVE)
+    for i, pg in enumerate(doc[:N_FRONT]):
+        if str(i + 1) in ('1', MEMO):
+            continue
+        # footer_text.py가 PART 01 쪽에 넣었던 자리(짝수 쪽 왼쪽 48pt~, 홀수 쪽 오른쪽 ~518.7pt, 글자 아래끝 764.5pt, 6.5pt)
+        r = pymupdf.Rect(46.5, 757.5, 116, 766.5) if (i + 1) % 2 == 0 else pymupdf.Rect(450, 757.5, 520.2, 766.5)
+        pg.add_redact_annot(r, fill=False)
+        pg.apply_redactions(images=pymupdf.PDF_REDACT_IMAGE_NONE, graphics=pymupdf.PDF_REDACT_LINE_ART_NONE, text=pymupdf.PDF_REDACT_TEXT_REMOVE)
+        pg.draw_rect(r, color=None, fill=(1, 1, 1), width=0, overlay=True)   # 덧씌운 층 안에 있어 안 지워지는 쪽도 덮음
     doc.save(f'{t}/m0.pdf')
     front = ','.join(str(i) for i in range(1, N_FRONT + 1))
     run('python3', '-I', f'{SRC}/header_phrase.py', f'{t}/m0.pdf', f'{t}/m1.pdf', '리치아카데미 | 국제고 1학년', str(N_FRONT), front)
