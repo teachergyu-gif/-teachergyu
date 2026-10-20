@@ -147,7 +147,10 @@
      "table": null,
      "img": null,
      "note": null,
-     "label": "< 보 기 >"
+     "label": "< 보 기 >",
+     "para_ls": {
+      "0": "-0.16em|0.14em"
+     }
     },
     "bogi2": null,
     "choices": [

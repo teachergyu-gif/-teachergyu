@@ -233,6 +233,7 @@ const path = require('path');
     document.querySelectorAll('.bogi .bg-p, .xq-stem > span:last-child').forEach(el => {
       const fs = parseFloat(getComputedStyle(el).fontSize);
       // <보기> 문단: 어간·어미(조사) 경계마다 끊을 수 있는 자리를 열어 두고(실제로 줄이 바뀐 곳만 남김) 자간과 함께 줄을 고름
+      if (el.dataset.fixed) return;   // 손으로 정한 자간
       if (el.classList.contains('bg-p')) el.querySelectorAll('.bw').forEach(w => {
         const t = w.textContent; if (t.includes('\u200b')) return;
         let out = t[0];
@@ -249,7 +250,6 @@ const path = require('path');
         const slack = L.slice(0, -1).map(l => Math.max(0, right - l.end) / fs);
         return { n: L.length, max: slack.length ? Math.max(...slack) * fs : 0, rag: slack.reduce((x, v) => x + v * v, 0) };
       };
-      if (el.dataset.fixed) return;   // 손으로 정한 자간
       const s0 = stat(); if (s0.n < 2) return;
       // 줄 끝 들쭉날쭉함(줄 끝 여백 제곱 합)이 가장 작아지는 자간을 고름. 좁힐수록 감점(0.01em마다 0.5), 줄 수가 늘면 제외, -0.08em보다 더 좁히는 것은 줄 수가 줄 때만
       let best = null, bestScore = s0.rag;

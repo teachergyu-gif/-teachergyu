@@ -108,7 +108,10 @@ def bogi_html(bg):
     paras = ""
     for i, t in enumerate(bg.get("paras") or []):
         ls = (bg.get("para_ls") or {}).get(str(i))
-        fix = f' style="letter-spacing:{ls}" data-fixed="1"' if ls else ""
+        if ls and "|" in ls:   # "자간|띄어쓰기 폭"
+            a, b = ls.split("|"); fix = f' style="letter-spacing:{a};word-spacing:{b}" data-fixed="1"'
+        else:
+            fix = f' style="letter-spacing:{ls}" data-fixed="1"' if ls else ""
         paras += para(t)
     if not bg.get("imgs"):
         body += paras  # text first, then tables (the usual layout)
