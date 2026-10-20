@@ -242,11 +242,12 @@ const path = require('path');
       };
       const s0 = stat(); if (s0.n < 2 || s0.max < fs * 2) return;
       let best = null;
-      for (const ls of [-0.01, -0.02, -0.03, -0.04, -0.05, -0.06, -0.07, -0.08]) {
+      for (const ls of [-0.01, -0.02, -0.03, -0.04, -0.05, -0.06, -0.07, -0.08, -0.09, -0.1]) {
         el.style.letterSpacing = ls + 'em';
         const s1 = stat();
-        // -0.05em까지는 줄 끝 여백이 1글자 이상 줄면, 그보다 더 좁힐 때는 줄 수가 줄어들 때만
-        const good = ls >= -0.05 ? (s1.n <= s0.n && s1.max < s0.max - fs) : (s1.n < s0.n && s1.max < s0.max);
+        // -0.05em까지는 줄 끝 여백이 1글자 이상 줄면 / -0.08em까지는 줄 수가 줄거나 가장 큰 줄 끝 여백이 2글자 이상 줄면 / -0.1em까지는 줄 수가 줄 때만
+        const good = ls >= -0.05 ? (s1.n <= s0.n && s1.max < s0.max - fs)
+          : ls >= -0.08 ? (s1.n <= s0.n && (s1.n < s0.n || s1.max < s0.max - 2 * fs)) : (s1.n < s0.n);
         if (good && (!best || s1.n < best[2] || s1.max < best[1] - 0.5)) best = [ls, s1.max, s1.n];
       }
       el.style.letterSpacing = best ? best[0] + 'em' : '';
