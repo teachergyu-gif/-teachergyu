@@ -215,7 +215,7 @@ const path = require('path');
             const wpx = m.getBoundingClientRect().width; m.remove();
             if (wpx <= slack - fs * 0.2 && c > best) best = c;
           }
-          if (best > 0) { nw.textContent = txt.slice(0, best) + '​' + txt.slice(best); changed = true; n++; }
+          if (best > 0) { nw.textContent = txt.slice(0, best) + '​' + txt.slice(best); nw.classList.add('bs'); changed = true; n++; }
         }
         el.style.textAlign = ta;
         if (!changed) break;
@@ -255,6 +255,27 @@ const path = require('path');
     return n;
   });
   console.log('보기 자간 조정:', btight);
+  // 어간·어미에서 끊긴 말(‘활용/한다고’)은 자간을 조금 좁혀(최대 -0.08em) 통째로 앞줄에 들어가면 그렇게
+  const joinfit = await page.evaluate(() => {
+    let n = 0;
+    document.querySelectorAll('.bw.bs').forEach(w => {   // 자동으로 끊은 말만(데이터에서 정한 끊김 ‘암/세포’는 그대로)
+      if (!w.textContent.includes('​')) return;
+      const qs = w.getClientRects(); if (qs.length < 2) return;
+      const el = w.closest('.bg-p, .xq-ch li, .xq-stem > span:last-child'); if (!el) return;
+      const top0 = qs[0].top, h0 = el.getBoundingClientRect().height, ls0 = el.style.letterSpacing, txt = w.textContent;
+      const base = parseFloat(ls0) || 0;
+      w.textContent = txt.replace(/​/g, '');
+      for (const d of [-0.01, -0.02, -0.03, -0.04, -0.05, -0.06, -0.07, -0.08, -0.09, -0.1, -0.11, -0.12, -0.13, -0.14, -0.15]) {
+        if (base + d < (el.classList.contains('bg-p') ? -0.15 : -0.12)) break;
+        el.style.letterSpacing = (base + d) + 'em';
+        const r = w.getClientRects();
+        if (r.length === 1 && Math.abs(r[0].top - top0) < 3 && el.getBoundingClientRect().height <= h0 + 0.5) { n++; return; }
+      }
+      el.style.letterSpacing = ls0; w.textContent = txt;
+    });
+    return n;
+  });
+  console.log('끊긴 말 앞줄로:', joinfit);
   const fits = await page.evaluate(() => {
     const res = [];
     document.querySelectorAll('.pg').forEach((pg, i) => {
