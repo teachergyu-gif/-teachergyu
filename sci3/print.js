@@ -148,6 +148,12 @@ const path = require('path');
       const fs = parseFloat(getComputedStyle(el).fontSize);
       const right = el.getBoundingClientRect().right;
       const n0 = lines(); if (n0 < 2) return;
+      // 마지막 줄이 짧게 넘어간 선지(‘겠군.’만 남는 등): 자간을 좁혀(최대 -0.08em) 줄 수를 줄일 수 있으면 그렇게
+      for (const ls of [-0.01, -0.02, -0.03, -0.04, -0.05, -0.06, -0.07, -0.08]) {
+        el.style.letterSpacing = ls + 'em';
+        if (lines() < n0) { n++; return; }
+      }
+      el.style.letterSpacing = '';
       const e0 = firstEnd(); if (right - e0 < fs * 2.2) return;
       for (const ls of [-0.01, -0.02, -0.03, -0.04, -0.05]) {
         el.style.letterSpacing = ls + 'em';
