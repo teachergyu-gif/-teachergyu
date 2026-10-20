@@ -99,7 +99,8 @@ const path = require('path');
         const last = items[items.length - 1];
         const free = c.clientHeight - (last.offsetTop - c.offsetTop + last.offsetHeight);
         if (free <= 0) continue;
-        const add = Math.min(free / (items.length - 1) * 0.9, MAXADD);
+        // 한 단에 두 문항뿐이면 남는 공간의 절반까지(최대 60mm) 띄워 넉넉하게
+        const add = items.length === 2 ? Math.min(free * 0.5, mm(60)) : Math.min(free / (items.length - 1) * 0.9, MAXADD);
         items.slice(1).forEach(it => { it.style.marginTop = (parseFloat(getComputedStyle(it).marginTop) + add) + 'px'; });
       }
       // a page that ends with an empty question area loses its column wrapper height
