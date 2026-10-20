@@ -102,6 +102,56 @@ const path = require('path');
     return { log, clipped, shrunk };
   });
   console.log('exam layout (section, pages):', JSON.stringify(xlay));
+  // <보기> 문단: 한 단어가 통째로 다음 줄로 넘어가 줄 끝이 크게 비는 곳은 어간·어미(조사) 경계에서 끊어 앞줄을 채움.
+  // 실제로 줄이 바뀐 곳에만 끊김 자리(​)를 남김(글을 복사할 때 띄어쓰기처럼 보이지 않게).
+  const bsplit = await page.evaluate(() => {
+    const ENDS = ['하였','하여','하는','하고','하면','하지','하게','하기','하던','했','하','되었','되어','되는','되고','되지','된','될','되','시키','시킨','시켜','한','할','함','해',
+      '에서는','에게서','으로는','으로도','에서','에게','으로','까지','부터','처럼','보다','이라는','이라고','라는','라고','이며','이고','이다','이나','이면',
+      '았','었','였','겠','으며','으면','으나','지만','는데','은데','면서','도록','더니','어서','아서','여서','니까',
+      '을','를','은','는','이','가','의','에','와','과','로','도','만','고','며','면','서','게','지','기','다','니','아','어','여','던','된','든'];
+    let n = 0;
+    document.querySelectorAll('.bogi .bg-p').forEach(el => {
+      // 글자 노드 → 단어 단위 span
+      const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      const nodes = []; while (tw.nextNode()) nodes.push(tw.currentNode);
+      nodes.forEach(t => {
+        const parts = t.textContent.split(/(\s+)/); if (parts.length < 2 && !/[가-힣]{3,}/.test(t.textContent)) return;
+        const f = document.createDocumentFragment();
+        parts.forEach(x => { if (!x) return; if (/^\s+$/.test(x)) f.appendChild(document.createTextNode(x)); else { const sp = document.createElement('span'); sp.className = 'bw'; sp.textContent = x; f.appendChild(sp); } });
+        t.replaceWith(f);
+      });
+      const fs = parseFloat(getComputedStyle(el).fontSize);
+      for (let pass = 0; pass < 6; pass++) {
+        const ta = el.style.textAlign; el.style.textAlign = 'left';
+        const r = el.getBoundingClientRect(), right = r.right - parseFloat(getComputedStyle(el).paddingRight);
+        const lines = [];
+        el.querySelectorAll('.bw').forEach(w => { const q = w.getClientRects(); if (!q.length) return; const t = q[0], L = lines[lines.length - 1];
+          if (!L || Math.abs(L.top - t.top) > 2) lines.push({ top: t.top, first: w, end: q[q.length - 1].right }); else L.end = Math.max(L.end, q[q.length - 1].right);
+          if (q.length > 1) lines.push({ top: q[q.length - 1].top, first: null, end: q[q.length - 1].right }); });
+        let changed = false;
+        for (let k = 0; k + 1 < lines.length; k++) {
+          const slack = right - lines[k].end, nw = lines[k + 1].first;
+          if (slack < fs * 1.6 || !nw) continue;
+          const txt = nw.textContent; if (txt.includes('​') || txt.length < 3) continue;
+          let best = -1;
+          for (let c = 1; c <= txt.length - 1; c++) {
+            const rest = txt.slice(c);
+            if (!/[가-힣]/.test(txt[c - 1]) || !/[가-힣]/.test(txt[c])) continue;
+            if (!ENDS.some(e => rest.startsWith(e))) continue;
+            const m = document.createElement('span'); m.style.cssText = 'visibility:hidden;position:absolute;white-space:nowrap'; m.textContent = ' ' + txt.slice(0, c); el.appendChild(m);
+            const wpx = m.getBoundingClientRect().width; m.remove();
+            if (wpx <= slack - fs * 0.2 && c > best) best = c;
+          }
+          if (best > 0) { nw.textContent = txt.slice(0, best) + '​' + txt.slice(best); changed = true; n++; }
+        }
+        el.style.textAlign = ta;
+        if (!changed) break;
+      }
+      el.querySelectorAll('.bw').forEach(w => { if (w.textContent.includes('​') && w.getClientRects().length < 2) { w.textContent = w.textContent.replace(/​/g, ''); n--; } });
+    });
+    return n;
+  });
+  console.log('보기 어간·어미 끊기:', bsplit);
   const fits = await page.evaluate(() => {
     const res = [];
     document.querySelectorAll('.pg').forEach((pg, i) => {
