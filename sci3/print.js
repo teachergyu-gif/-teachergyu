@@ -182,6 +182,7 @@ const path = require('path');
       if (JOSA.includes(core)) return true;
       return VERB.some(v => core.startsWith(v)) && core.length <= 5;
     };
+    window.__ok = okSplit;
     let n = 0;
     document.querySelectorAll('.bogi .bg-p, .xq-stem > span:last-child, .xq-ch li').forEach(el => {
       // 글자 노드 → 단어 단위 span
@@ -225,11 +226,19 @@ const path = require('path');
     return n;
   });
   console.log('보기 어간·어미 끊기:', bsplit);
+  if (process.env.DBG) console.log('DBG-A', await page.evaluate(k => { const p = [...document.querySelectorAll('.bg-p')].find(x => x.textContent.includes(k)); if (!p) return null; const L = []; p.querySelectorAll('.bw').forEach(w => { const r = w.getClientRects(); [...r].forEach((q, i) => { let l = L.find(x => Math.abs(x.t - q.top) < 3); if (!l) { l = { t: q.top, s: '' }; L.push(l); } l.s += (r.length > 1 ? (i ? '…' + w.textContent.split('\u200b').pop() : w.textContent + '…') : w.textContent) + ' '; }); }); return [p.style.letterSpacing, L.map(x => x.s)]; }, process.env.DBG));
   // <보기> 문단: 줄 끝이 크게 비는 줄이 남아 있으면 문단 자간을 조금씩(최대 -0.05em) 좁혀 가장 고르게 되는 값으로
   const btight = await page.evaluate(() => {
     let n = 0;
     document.querySelectorAll('.bogi .bg-p, .xq-stem > span:last-child').forEach(el => {
       const fs = parseFloat(getComputedStyle(el).fontSize);
+      // <보기> 문단: 어간·어미(조사) 경계마다 끊을 수 있는 자리를 열어 두고(실제로 줄이 바뀐 곳만 남김) 자간과 함께 줄을 고름
+      if (el.classList.contains('bg-p')) el.querySelectorAll('.bw').forEach(w => {
+        const t = w.textContent; if (t.includes('\u200b')) return;
+        let out = t[0];
+        for (let c = 1; c < t.length; c++) { if (/[가-힣]/.test(t[c - 1]) && /[가-힣]/.test(t[c]) && window.__ok(t.slice(0, c).replace(/^[‘“(\[]+/, ''), t.slice(c))) out += '\u200b'; out += t[c]; }
+        if (out !== t) { w.textContent = out; w.classList.add('bs'); }
+      });
       const stat = () => {
         const ta = el.style.textAlign; el.style.textAlign = 'left';
         const r = document.createRange(); r.selectNodeContents(el);
@@ -237,32 +246,35 @@ const path = require('path');
         [...r.getClientRects()].forEach(q => { if (q.width <= 0) return; const l = L.find(x => Math.abs(x.top - q.top) < 3); if (l) l.end = Math.max(l.end, q.right); else L.push({ top: q.top, end: q.right }); });
         el.style.textAlign = ta;
         const right = el.getBoundingClientRect().right - parseFloat(getComputedStyle(el).paddingRight);
-        const slack = L.slice(0, -1).map(l => right - l.end);
-        return { n: L.length, max: slack.length ? Math.max(...slack) : 0 };
+        const slack = L.slice(0, -1).map(l => Math.max(0, right - l.end) / fs);
+        return { n: L.length, max: slack.length ? Math.max(...slack) * fs : 0, rag: slack.reduce((x, v) => x + v * v, 0) };
       };
-      const s0 = stat(); if (s0.n < 2 || s0.max < fs * 2) return;
-      let best = null;
+      if (el.dataset.fixed) return;   // 손으로 정한 자간
+      const s0 = stat(); if (s0.n < 2) return;
+      // 줄 끝 들쭉날쭉함(줄 끝 여백 제곱 합)이 가장 작아지는 자간을 고름. 좁힐수록 감점(0.01em마다 0.5), 줄 수가 늘면 제외, -0.08em보다 더 좁히는 것은 줄 수가 줄 때만
+      let best = null, bestScore = s0.rag;
       for (const ls of [-0.01, -0.02, -0.03, -0.04, -0.05, -0.06, -0.07, -0.08, -0.09, -0.1]) {
         el.style.letterSpacing = ls + 'em';
         const s1 = stat();
-        // -0.05em까지는 줄 끝 여백이 1글자 이상 줄면 / -0.08em까지는 줄 수가 줄거나 가장 큰 줄 끝 여백이 2글자 이상 줄면 / -0.1em까지는 줄 수가 줄 때만
-        const good = ls >= -0.05 ? (s1.n <= s0.n && s1.max < s0.max - fs)
-          : ls >= -0.08 ? (s1.n <= s0.n && (s1.n < s0.n || s1.max < s0.max - 2 * fs)) : (s1.n < s0.n);
-        if (good && (!best || s1.n < best[2] || s1.max < best[1] - 0.5)) best = [ls, s1.max, s1.n];
+        if (s1.n > s0.n || (ls < -0.08 && s1.n >= s0.n)) continue;
+        const score = s1.rag + (-ls) * 50 - (s0.n - s1.n) * 6;
+        if (score < bestScore - 1.5) { best = [ls]; bestScore = score; }
       }
       el.style.letterSpacing = best ? best[0] + 'em' : '';
       if (best) n++;
     });
     return n;
   });
+  await page.evaluate(() => document.querySelectorAll('.bg-p .bw.bs').forEach(w => { if (w.getClientRects().length < 2) w.textContent = w.textContent.replace(/\u200b/g, ''); }));
   console.log('보기 자간 조정:', btight);
+  if (process.env.DBG) console.log('DBG-B', await page.evaluate(k => { const p = [...document.querySelectorAll('.bg-p')].find(x => x.textContent.includes(k)); if (!p) return null; const L = []; p.querySelectorAll('.bw').forEach(w => { const r = w.getClientRects(); [...r].forEach((q, i) => { let l = L.find(x => Math.abs(x.t - q.top) < 3); if (!l) { l = { t: q.top, s: '' }; L.push(l); } l.s += (r.length > 1 ? (i ? '…' + w.textContent.split('\u200b').pop() : w.textContent + '…') : w.textContent) + ' '; }); }); return [p.style.letterSpacing, L.map(x => x.s)]; }, process.env.DBG));
   // 어간·어미에서 끊긴 말(‘활용/한다고’)은 자간을 조금 좁혀(최대 -0.08em) 통째로 앞줄에 들어가면 그렇게
   const joinfit = await page.evaluate(() => {
     let n = 0;
     document.querySelectorAll('.bw.bs').forEach(w => {   // 자동으로 끊은 말만(데이터에서 정한 끊김 ‘암/세포’는 그대로)
       if (!w.textContent.includes('​')) return;
       const qs = w.getClientRects(); if (qs.length < 2) return;
-      const el = w.closest('.bg-p, .xq-ch li, .xq-stem > span:last-child'); if (!el) return;
+      const el = w.closest('.bg-p, .xq-ch li, .xq-stem > span:last-child'); if (!el || el.dataset.fixed) return;
       const top0 = qs[0].top, h0 = el.getBoundingClientRect().height, ls0 = el.style.letterSpacing, txt = w.textContent;
       const base = parseFloat(ls0) || 0;
       w.textContent = txt.replace(/​/g, '');
@@ -277,6 +289,7 @@ const path = require('path');
     return n;
   });
   console.log('끊긴 말 앞줄로:', joinfit);
+  if (process.env.DBG) console.log('DBG', await page.evaluate(k => { const p = [...document.querySelectorAll('.bg-p')].find(x => x.textContent.includes(k)); return p ? [p.style.letterSpacing, p.innerHTML.slice(0, 900)] : null; }, process.env.DBG));
   const fits = await page.evaluate(() => {
     const res = [];
     document.querySelectorAll('.pg').forEach((pg, i) => {

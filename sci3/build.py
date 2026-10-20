@@ -102,9 +102,14 @@ def bogi_html(bg):
             return f'<p class="bg-p bg-c">{xmd(t)}</p>'
         m = HANG.match(t.strip())
         if m:   # 기호로 시작하는 항목: 내어쓰기(기호 다음 글자에 둘째 줄을 맞춤)
-            return f'<p class="bg-p bg-hang"><span class="hl">{xmd(m.group(1))}\u00a0</span>{xmd(t.strip()[m.end():])}</p>'
-        return f'<p class="bg-p">{xmd(t)}</p>'
-    paras = "".join(para(t) for t in bg.get("paras") or [])
+            return f'<p class="bg-p bg-hang"{fix}><span class="hl">{xmd(m.group(1))}\u00a0</span>{xmd(t.strip()[m.end():])}</p>'
+        return f'<p class="bg-p"{fix}>{xmd(t)}</p>'
+    # 손으로 정한 문단 자간(para_ls: {"문단 번호": "-0.05em"}) — 자동 조정에서 제외
+    paras = ""
+    for i, t in enumerate(bg.get("paras") or []):
+        ls = (bg.get("para_ls") or {}).get(str(i))
+        fix = f' style="letter-spacing:{ls}" data-fixed="1"' if ls else ""
+        paras += para(t)
     if not bg.get("imgs"):
         body += paras  # text first, then tables (the usual layout)
     tbs = bg.get("tables")

@@ -198,7 +198,10 @@
      "table": null,
      "img": null,
      "note": null,
-     "label": "< 보 기 >"
+     "label": "< 보 기 >",
+     "para_ls": {
+      "0": "-0.04em"
+     }
     },
     "bogi2": null,
     "choices": [
