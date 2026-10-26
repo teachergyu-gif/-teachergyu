@@ -196,7 +196,10 @@ def main(work_dir, out_html):
             rng = f'{n + 1}' if len(qs) == 1 else f'{n + 1}～{n + len(qs)}'
             if SET_BREAK.get((name, n + 1)) == 'page': body.append('<div class="u brk"></div>')
             elif SET_BREAK.get((name, n + 1)) == 'col': body.append('<div class="u colbrk"></div>')
-            body.append(passage(s, rng))
+            ps = passage(s, rng)
+            if SET_BREAK.get((name, n + 1)) == 'here':   # 앞 문항 바로 아래 같은 단에서 시작(들어갈 때)
+                ps = ps.replace('<div class="u set">', '<div class="u set" data-here="1">', 1)
+            body.append(ps)
             for q in qs:
                 n += 1
                 if Q_BREAK.get((name, n)) == 'col': body.append('<div class="u colbrk"></div>')
