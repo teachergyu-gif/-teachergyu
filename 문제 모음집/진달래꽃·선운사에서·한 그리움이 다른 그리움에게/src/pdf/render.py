@@ -95,7 +95,14 @@ def question(n, q, key=None):
         extra = bogi({'title': ex.get('title') or '', 'text': ex.get('text') or ''})
     elif ex:
         extra = bogi({'title': '', 'text': ex})
-    ch = ''.join(f'<div class="ch"><span class="c">{CIRC[i]}</span><span class="t">{esc(t)}</span></div>' for i, t in enumerate(q.get('choices') or []))
+    def chtext(t):
+        # 선지가 인용 시 + 작가 줄(‘\n- 작가, 「제목」’)이면 작가 줄은 따로 오른쪽 맞춤
+        m = re.match(r'^(.*?)\s*\n\s*(-\s*[^\n]+)$', t, re.S)
+        if not m:
+            return f'<span class="t">{esc(t)}</span>'
+        au = re.sub(r'^-\s*', '- ', m.group(2)).replace('<', '「').replace('>', '」')
+        return f'<span class="t"><span class="ct">{esc(m.group(1))}</span><span class="cau">{esc(au)}</span></span>'
+    ch = ''.join(f'<div class="ch"><span class="c">{CIRC[i]}</span>{chtext(t)}</div>' for i, t in enumerate(q.get('choices') or []))
     ans = '' if q.get('choices') else f'<div class="ans" style="height:{ANSWER_LINES * 1.75 * 11.2}pt"></div>'
     close = ' data-close="1"' if key in CLOSE else ''
     if key: close += f' data-key="{key[0]}|{key[1]}"'
