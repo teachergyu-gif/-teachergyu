@@ -168,7 +168,9 @@ body{font-size:11.2pt}
 .qat-t td.qn{background:#DCEBFA;font-family:"Noto Sans CJK KR",sans-serif;font-weight:500;color:#333}
 .qat-t td.qv{font-size:11.5pt}
 .qat-t td.qv.sm{font-size:9pt;letter-spacing:-.02em}
-.ln.pr.nd{text-indent:0}   /* (중략) */
+.ln.pr.nd{text-indent:0;text-align:center}   /* (중략) */
+.ln.pr.split{text-align-last:justify}   /* 단 끝에서 나뉜 문단: 앞부분 마지막 줄도 꽉 채움 */
+.ln.pr.cont{text-indent:0}   /* 나뉜 문단의 뒷부분: 들여쓰기 없음 */
 .ch .ct{display:block;text-align:justify}
 .ch .cau{display:block;text-align:right;margin-top:.4mm}   /* 선지 속 인용 시의 작가·작품명 */
 .bogi .bl.bau{text-align:right}

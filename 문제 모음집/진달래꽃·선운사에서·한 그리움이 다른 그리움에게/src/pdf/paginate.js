@@ -80,6 +80,18 @@
         b.removeChild(g1); inner.forEach(x => l.querySelector('.bx2 > div').appendChild(x));
         b.appendChild(l);
       }
+      if (over() && l.classList.contains('pr') && !l.classList.contains('nd')) {
+        // 산문 문단: 단 끝까지 채우고 남는 말은 다음 단으로(문단을 어절 단위로 나눔)
+        const rest = l.cloneNode(false); rest.classList.add('cont');
+        while (over() && l.lastChild) rest.insertBefore(l.lastChild, rest.firstChild);
+        while (l.lastChild && l.lastChild.nodeType === 3 && !l.lastChild.textContent.trim()) rest.insertBefore(l.lastChild, rest.firstChild);
+        if (l.textContent.trim() && rest.textContent.trim()) {
+          l.classList.add('split');
+          b.classList.add('open'); nextCol(); [w, b] = make(false);
+          lines[i] = rest; continue;
+        }
+        while (rest.firstChild) l.appendChild(rest.firstChild);
+      }
       if (over()) {
         b.removeChild(l);
         // 작품 표지((가)(나)…)만 단 끝에 남지 않게: 표지도 다음 단으로
