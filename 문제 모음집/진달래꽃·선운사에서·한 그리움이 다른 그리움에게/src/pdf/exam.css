@@ -171,3 +171,6 @@ body{font-size:11.2pt}
 .ln.pr.nd{text-indent:0}   /* (중략) */
 .ch .ct{display:block;text-align:justify}
 .ch .cau{display:block;text-align:right;margin-top:.4mm}   /* 선지 속 인용 시의 작가·작품명 */
+.bogi .bl.bau{text-align:right}
+.bogi .bl.bnote{font-size:.85em;line-height:1.5;padding-left:.9em;text-indent:-.9em}
+.bogi .bl.bau + .bl.bnote{margin-top:1mm}
