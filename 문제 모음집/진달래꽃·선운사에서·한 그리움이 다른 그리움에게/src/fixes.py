@@ -42,6 +42,9 @@ def apply(data, log):
         for e in src['ex']:   # 정답 선지가 [오답풀이]에 또 들어간 것 삭제
             if e.get('wrong') and e['answer'][:1] in '①②③④⑤':
                 e['wrong'] = [w for w in e['wrong'] if w[0].strip() != e['answer'][:1]]
+            c = e['answer'][:1]
+            if e.get('correct') and c in '①②③④⑤' and e['correct'].startswith(c):   # 정답 기호가 해설 앞에 또 붙은 것
+                e['correct'] = e['correct'][1:].lstrip()
             for w in e.get('wrong') or []:
                 if w[1].startswith(w[0]):
                     w[0] = ''
@@ -124,9 +127,39 @@ AUTHORS = {'어느 날 당신과 내가': '- 정희성, 「한 그리움이 다�
 PLAIN = lambda l: re.sub(r' +', ' ', re.sub(r'</?\w+>|[㉠-㉭㉮-㉻ⓐ-ⓩ]', '', l)).strip()
 
 
+def unslash(t, extra=()):
+    """빗금(/)·겹빗금(//)·두 칸 띄움으로 줄여 찍은 시를 행·연으로 편다. 행을 넘는 밑줄·굵게는 행마다 닫고 다시 연다.
+    extra: 한 행에 붙어 찍힌 것을 더 나눌 자리(정규식, 그 자리에서 줄바꿈)"""
+    t = re.sub(r'\s*//\s*(?=\n|$)', '\n', t)                 # 행 끝 // → 연 구분(뒤 줄바꿈과 합쳐 빈 줄)
+    t = re.sub(r'(?<=\S)\s*//\s*', '\n\n', t)
+    t = re.sub(r'\s*//\s*', '\n\n', t)
+    t = re.sub(r'\s+/\s*|(?<=[가-힣.])  +(?=\S)', '\x00', t)
+    for rx in extra:
+        t = re.sub(rx, '\x00', t)
+    out = []
+    for line in t.split('\n'):
+        opened = []
+        pieces = []
+        for pc in line.split('\x00'):
+            pre = ''.join(f'<{x}>' for x in opened)
+            for tag in re.findall(r'<(/?)(u|b)>', pc):
+                if tag[0]:
+                    if tag[1] in opened: opened.remove(tag[1])
+                else:
+                    opened.append(tag[1])
+            pieces.append(pre + pc.strip() + ''.join(f'</{x}>' for x in reversed(opened)))
+        out.append('\n'.join(re.sub(r'<(u|b)></\1>', '', p) for p in pieces))
+    t = '\n'.join(out)
+    return re.sub(r'\n{3,}', '\n\n', t).strip('\n')
+
+
 def poem(w, log):
     """원본이 묶음마다 다르게 찍은 시 모양을 시의 원래 모양으로 맞춘다."""
     t = w['lines']
+    if re.search(r' / |//|[가-힣]  [가-힣]', t) and ('피는 건 힘들어도' in PLAIN(t) or '갈 봄 여름 없이' in t):
+        # 「산유화」: 한 행에 붙어 찍힌 곳도 나눔
+        ex = (r'(?<=피네\.) (?=꽃이)', r'(?<=지네\.) (?=꽃이)', r'(?<=없이) (?=꽃이)', r'(?<=산에) (?=산에)', r'(?<=산에) (?=피는)', r'(?<=좋아) (?=산에서)', r'(?<=산에서) (?=사노라네)') if '갈 봄 여름 없이' in t else ()
+        t = unslash(t, ex)
     if PLAIN(t).startswith('어느 날') and '그윽한 눈' in t:
         # 정희성 시: 4연 15행(문항·해설이 '1연·4연', '마지막 연'을 전제함)
         t = t.replace('춥게하리', '춥게 하리').replace('춥게 하리 외롭고', '춥게 하리\n외롭고')

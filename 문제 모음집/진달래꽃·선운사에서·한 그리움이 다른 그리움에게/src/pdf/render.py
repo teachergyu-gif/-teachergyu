@@ -41,10 +41,10 @@ def passage(s, rng=''):
             out.append(f'<div class="ln tag">{esc(w["label"])}</div>')
         group = None
         for l in w['lines'].split('\n'):
-            m = re.match(r'^\{(\w+)\}', l)
+            m = re.match(r'^\{([^{}/]+)\}', l)
             if m:
                 group = [m.group(1), []]; l = l[m.end():]
-            end = re.search(r'\{/\w+\}$', l)
+            end = re.search(r'\{/[^{}]+\}$', l)
             if end:
                 l = l[:end.start()]
             cell = '<div class="ln sp"></div>' if l.strip() == '' else f'<div class="ln">{esc(l)}</div>'
@@ -129,7 +129,7 @@ def qlabel(q, e):
     a = e['answer'].strip()
     if q.get('choices'):
         return ' '.join(re.findall(r'[①②③④⑤]', a)) or a
-    return '서술형' if ('서술' in q['stem'] or len(a) >= 12) else '주관식'
+    return '서술형' if '서술' in q['stem'] else '주관식'
 
 
 def quick(exs, per=5):
