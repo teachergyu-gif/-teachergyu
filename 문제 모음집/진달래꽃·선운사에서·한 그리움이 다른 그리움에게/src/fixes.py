@@ -338,9 +338,20 @@ def drop_works(data, log):
 EX_ADD = {(w, a['orig']): {k: v for k, v in a.items() if k != 'orig'} for w, r in _REV.items() for a in r.get('ex_add', [])}
 
 
+WRONG_ADD = {(w, a['orig']): a['wrong'] for w, r in _REV.items() for a in r.get('wrong_add', [])}
+ORDER = lambda k: min(['①②③④⑤'.find(c) for c in k[0] if c in '①②③④⑤'] or [9])
+
+
 def add_ex(data, log):
     for src in data:
         for e in src['ex']:
+            wa = WRONG_ADD.get((src['source'], e['orig']))
+            if wa:   # 원본에 없는 오답풀이 보충(선지 순서대로 끼워 넣음)
+                assert not e.get('plain'), ('해설이 통째(plain)라 오답풀이를 끼울 수 없음', src['source'], e['orig'])
+                have = ''.join(w[0] for w in e.get('wrong') or [])
+                new = [w for w in wa if w[0] not in have and w[0] != e['answer'][:1]]
+                e['wrong'] = sorted((e.get('wrong') or []) + new, key=ORDER)
+                log.append(f'{src["source"]} {e["orig"]}번: 원본에 없는 오답풀이 {"".join(w[0] for w in new)} 새로 씀')
             add = EX_ADD.get((src['source'], e['orig']))
             if add:
                 for k, v in add.items():
