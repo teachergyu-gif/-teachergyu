@@ -85,7 +85,9 @@
         // 작품 표지((가)(나)…)만 단 끝에 남지 않게: 표지도 다음 단으로
         // 작품 표지((가)(나)…)와 그 첫 두 행 이하만 단 끝에 남으면, 그 작품을 통째로 다음 단에서 시작
         { const kids = [...b.children]; const t = kids.map(k => k.classList.contains('tag')).lastIndexOf(true);
-          if (t > 0 && kids.slice(t + 1).filter(k => !k.classList.contains('sp')).length <= 2) {
+          const lh = t > 0 ? (parseFloat(getComputedStyle(kids[t]).lineHeight) || 20) : 0;
+          const rest = t > 0 ? kids.slice(t + 1).reduce((h, k) => h + k.offsetHeight, 0) : 0;   // 표지 뒤에 남은 높이(산문 문단은 줄 수로)
+          if (t > 0 && rest < lh * 2.6) {
             kids.slice(t).forEach(k => b.removeChild(k)); i -= kids.length - t; } }
         while (b.lastChild && b.lastChild.classList.contains('sp')) b.removeChild(b.lastChild);
         b.classList.add('open');
