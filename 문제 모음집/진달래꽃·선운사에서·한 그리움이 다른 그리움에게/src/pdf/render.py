@@ -41,7 +41,7 @@ def passage(s, rng=''):
             out.append(f'<div class="ln tag">{esc(w["label"])}</div>')
         group = None
         # 산문(설명문·수필 등, 한 문단이 아주 긴 글): 문단 첫 줄 들여쓰기(시처럼 내어쓰지 않음)
-        pr = ' pr' if max(len(re.sub(r'<[^>]+>', '', x)) for x in w['lines'].split('\n')) > 100 else ''
+        pr = ' pr' if (max(len(re.sub(r'<[^>]+>', '', x)) for x in w['lines'].split('\n')) > 100 or '나의 꿈' in (w.get('author') or '')) else ''   # 「나의 꿈」: 산문시
         for l in w['lines'].split('\n'):
             m = re.match(r'^\{([^{}/]+)\}', l)
             if m:
