@@ -6,6 +6,7 @@ JD = '진달래꽃'
 HG = '한 그리움이 다른 그리움에게'
 SW = '선운사에서'
 FIX = [
+    (JD, 'P22', '<box>달</box>', '달'),   # 「황계사」 ‘달’ 네모: 문항에서 쓰지 않음
 ]
 # 검수·해설 보충 결과(review/*.json: fix = 원본 오류 수정, ex_add = 원본에 없는 해설)
 import json as _json, os as _os
