@@ -204,10 +204,10 @@
         return { n: L.length, gap: Math.max(0, ...L.slice(0, -1).map(l => right - l.end)) };
       };
       const fs0 = parseFloat(getComputedStyle(el).fontSize), base = lineInfo();
-      if (el.matches('.bogi .bl') && base.n > 1 && base.gap > fs0 * 1.6) {   // <보기> 칸 안의 줄만
+      if (el.matches('.bogi .bl, .ch .t') && base.n > 1 && base.gap > fs0 * 1.6) {   // <보기> 칸 안의 줄·선지만
         let ok = false;
         for (const ls of ['-0.02em', '-0.04em']) { el.style.letterSpacing = ls; if (lineInfo().n < base.n) { ok = true; break; } }
-        if (!ok) { el.style.letterSpacing = ''; el.style.textAlign = 'left'; }   // 자간을 조금 좁혀도 안 되면 그 줄을 늘이지 않고 왼쪽 맞춤
+        if (!ok) { el.style.letterSpacing = ''; if (el.matches('.bogi .bl')) el.style.textAlign = 'left'; }   // 자간을 조금 좁혀도 안 되면 그 줄을 늘이지 않고 왼쪽 맞춤
       }
     });
   })();
