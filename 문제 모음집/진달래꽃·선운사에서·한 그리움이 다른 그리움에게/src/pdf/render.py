@@ -40,6 +40,8 @@ def passage(s, rng=''):
         if w.get('label'):
             out.append(f'<div class="ln tag">{esc(w["label"])}</div>')
         group = None
+        # 산문(설명문·수필 등, 한 문단이 아주 긴 글): 문단 첫 줄 들여쓰기(시처럼 내어쓰지 않음)
+        pr = ' pr' if max(len(re.sub(r'<[^>]+>', '', x)) for x in w['lines'].split('\n')) > 100 else ''
         for l in w['lines'].split('\n'):
             m = re.match(r'^\{([^{}/]+)\}', l)
             if m:
@@ -47,7 +49,7 @@ def passage(s, rng=''):
             end = re.search(r'\{/[^{}]+\}$', l)
             if end:
                 l = l[:end.start()]
-            cell = '<div class="ln sp"></div>' if l.strip() == '' else f'<div class="ln">{esc(l)}</div>'
+            cell = '<div class="ln sp"></div>' if l.strip() == '' else f'<div class="ln{pr if l.strip() != "(중략)" else " pr nd"}">{esc(l)}</div>'
             if group:
                 group[1].append(cell)
                 if end:
