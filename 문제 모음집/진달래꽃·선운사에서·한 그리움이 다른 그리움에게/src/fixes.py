@@ -249,8 +249,11 @@ def drop_marks(data, log):
                     # 지운 기호의 밑줄이 줄 끝까지 가면 다음 줄들의 이어진 밑줄도 지움
                     if new != l and re.search(r'</u>$', l) and not re.search(r'</u>$', new):
                         k = i + 1
-                        while k < len(L) and re.match(r'^<u>[^<]*</u>$', L[k]):
-                            L[k] = L[k][3:-4]; k += 1
+                        while k < len(L) and re.match(r'^<u>[^<]*</u>', L[k]):   # 이어진 밑줄(줄 앞부분까지만 이어진 것 포함)
+                            whole = re.match(r'^<u>[^<]*</u>$', L[k])
+                            L[k] = re.sub(r'^<u>([^<]*)</u>', r'\1', L[k]); k += 1
+                            if not whole:
+                                break
                     L[i] = new
                     i += 1
                 if gone:
