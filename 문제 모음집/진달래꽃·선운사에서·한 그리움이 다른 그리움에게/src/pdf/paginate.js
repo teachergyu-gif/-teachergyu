@@ -211,7 +211,9 @@
       const fs0 = parseFloat(getComputedStyle(el).fontSize), base = lineInfo();
       if (el.matches('.bogi .bl, .ch .t') && base.n > 1 && base.gap > fs0 * 1.6) {   // <보기> 칸 안의 줄·선지만
         let ok = false;
-        for (const ls of ['-0.02em', '-0.04em']) { el.style.letterSpacing = ls; if (lineInfo().n < base.n) { ok = true; break; } }
+        // 줄 수가 줄거나, 다음 말이 앞줄로 올라와 줄 끝 빈 곳이 없어지면 그 자간으로(<보기> 항목 줄은 -0.08em까지, 그 밖은 -0.04em까지)
+        const steps = el.matches('.bogi .bl.bi') ? ['-0.02em', '-0.04em', '-0.06em', '-0.08em'] : ['-0.02em', '-0.04em'];
+        for (const ls of steps) { el.style.letterSpacing = ls; const li = lineInfo(); if (li.n < base.n || (li.n === base.n && li.gap < fs0 * 1.6)) { ok = true; break; } }
         if (!ok) { el.style.letterSpacing = ''; if (el.matches('.bogi .bl.bi')) el.style.textAlign = 'left'; }   // 왼쪽 맞춤은 ㉠·ⓐ 같은 항목 줄만(문단 글은 양쪽 정렬 유지)   // 자간을 조금 좁혀도 안 되면 그 줄을 늘이지 않고 왼쪽 맞춤
       }
     });
