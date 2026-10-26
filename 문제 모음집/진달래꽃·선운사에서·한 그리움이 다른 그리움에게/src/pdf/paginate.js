@@ -193,6 +193,22 @@
       }
       // 넣은 끊김 자리(​)에서 실제로 줄이 바뀌지 않은 곳은 되돌림(글을 복사할 때 '때에 는'처럼 보이지 않게)
       el.querySelectorAll('.w').forEach(w => { if (w.textContent.includes('​') && w.getClientRects().length < 2) w.textContent = w.textContent.replace(/​/g, ''); });
+      // 그래도 줄 끝이 크게 비어(양쪽 정렬로 글 간격이 벌어짐) 보이면 자간을 조금 좁혀 다음 말을 앞줄로(줄 수가 줄 때만)
+      const lineInfo = () => {
+        const ta = el.style.textAlign; el.style.textAlign = 'left';
+        const r = el.getBoundingClientRect(), cs = getComputedStyle(el), right = r.right - parseFloat(cs.paddingRight);
+        const L = [];
+        [...el.querySelectorAll('.w, .nb')].filter(w => !w.parentElement.closest('.nb')).forEach(w => { [...w.getClientRects()].forEach(t => {
+          const l = L[L.length - 1]; if (!l || Math.abs(l.top - t.top) > 2) L.push({ top: t.top, end: t.right }); else l.end = Math.max(l.end, t.right); }); });
+        el.style.textAlign = ta;
+        return { n: L.length, gap: Math.max(0, ...L.slice(0, -1).map(l => right - l.end)) };
+      };
+      const fs0 = parseFloat(getComputedStyle(el).fontSize), base = lineInfo();
+      if (el.matches('.bogi .bl') && base.n > 1 && base.gap > fs0 * 1.6) {   // <보기> 칸 안의 줄만
+        let ok = false;
+        for (const ls of ['-0.02em', '-0.04em']) { el.style.letterSpacing = ls; if (lineInfo().n < base.n) { ok = true; break; } }
+        if (!ok) { el.style.letterSpacing = ''; el.style.textAlign = 'left'; }   // 자간을 조금 좁혀도 안 되면 그 줄을 늘이지 않고 왼쪽 맞춤
+      }
     });
   })();
   nextCol();
