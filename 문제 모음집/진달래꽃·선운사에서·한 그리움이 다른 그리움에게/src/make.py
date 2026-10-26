@@ -9,7 +9,7 @@ from pypdf import PdfReader, PdfWriter, Transformation
 H = os.path.dirname(os.path.abspath(__file__))
 DATA = sys.argv[1] if len(sys.argv) > 1 else H + '/data'
 TITLE = '국제고 1학년 기말고사 대비 문제 은행'
-FOOT = '국제고 1학년 기말고사 문제 은행'
+FOOT = '국제고 1학년 현대시 문제 은행'
 OUT = os.path.join(H, '..', '국제고 1학년 기말고사 문제 은행 (진달래꽃·선운사에서·한 그리움이 다른 그리움에게).pdf')
 WORKS = [('JD', '진달래꽃'), ('SW', '선운사에서'), ('HG', '한 그리움이 다른 그리움에게')]
 
