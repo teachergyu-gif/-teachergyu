@@ -191,7 +191,7 @@ def poem(w, log):
     a = (w.get('author') or '').strip()
     if a or w.get('label') != '(나)' or not t.startswith('이 작품'):
         a = re.sub(r'^-\s*|\s*-$', '', a)
-        a = re.sub(r'<([^<>]+)>|‘([^’]+)’', lambda m: '「' + (m.group(1) or m.group(2)) + '」', a)
+        a = re.sub(r'<(?!/?[ub]>)([^<>]+)>|‘([^’]+)’', lambda m: '「' + (m.group(1) or m.group(2)) + '」', a)
         if not a:
             a = next((v[2:] for k, v in AUTHORS.items() if k in t), '')
         w['author'] = ('- ' + a) if a else None
