@@ -112,7 +112,14 @@ def bogi(b):
         if re.match(r'^-\s*\S', x): return ' bau'     # 작가 줄: 오른쪽 맞춤
         if re.match(r'^\*', x): return ' bnote'       # 주석: 작은 글씨
         return ' bi' if ITEM.match(x) else ''
-    body = ''.join('<div class="bl' + kind(x) + '">' + (hbr(esc(x)) if x.strip() else '&nbsp;') + '</div>' for x in b['text'].split('\n'))
+    def line(x):
+        if not x.strip():
+            return '<div class="bl">&nbsp;</div>'
+        m = re.match(r'^([가-힣](?: ?[가-힣]){0,5}):\s*(.*)$', x)   # ‘학 생: …’, ‘말뚝이: …’ 같은 대사: 이름 뒤로 내어쓰기
+        if m:
+            return f'<div class="bl bsp"><span class="spk">{esc(m.group(1))}:</span><span class="spt">{hbr(esc(m.group(2)))}</span></div>'
+        return '<div class="bl' + kind(x) + '">' + hbr(esc(x)) + '</div>'
+    body = ''.join(line(x) for x in b['text'].split('\n'))
     t = f'<div class="bt"><span>{esc(title)}</span></div>' if title else ''
     return f'<div class="bogi">{t}{body}</div>'
 

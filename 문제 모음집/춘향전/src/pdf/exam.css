@@ -187,3 +187,6 @@ u, u .hj, u .nb, u .w{text-decoration:underline;text-decoration-thickness:.07em;
 .bogi.open{border-bottom:none;padding-bottom:0;margin-bottom:0}
 .bogi.cont{border-top:none;padding-top:0;margin-top:0}
 .u.q.cont{margin-top:0}
+.bogi .bl.bsp{display:flex;gap:.35em}
+.bogi .bl.bsp .spk{flex:none;white-space:nowrap}
+.bogi .bl.bsp .spt{flex:1;text-align:justify}
