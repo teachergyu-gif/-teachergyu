@@ -124,7 +124,31 @@
       if (over()) { w.removeChild(k); nextCol(); w = u.cloneNode(false); w.classList.add('cont'); col.appendChild(w); w.appendChild(k); }
     }
   }
+  // 한 단보다 긴 문항: 지금 단에 들어가는 데까지(<보기> 줄 단위) 넣고 나머지는 다음 단으로
+  function splitQ(u) {
+    const w = u.cloneNode(false); w.classList.add('cont');
+    const moved = []; let bg2 = null;
+    while (over()) {
+      const last = u.lastElementChild;
+      if (!last || last.classList.contains('qh')) break;
+      if (last.classList.contains('bogi')) {
+        const lines = [...last.querySelectorAll(':scope > .bl')];
+        if (lines.length <= 2) { if (bg2) { while (bg2.firstChild) last.appendChild(bg2.firstChild); moved.shift(); last.classList.remove('open'); bg2 = null; } moved.unshift(last); u.removeChild(last); continue; }
+        if (!bg2) { bg2 = last.cloneNode(false); bg2.classList.add('cont'); last.classList.add('open'); moved.unshift(bg2); }
+        bg2.insertBefore(lines[lines.length - 1], bg2.firstChild);
+        continue;
+      }
+      moved.unshift(last); u.removeChild(last);
+    }
+    nextCol(); moved.forEach(m => w.appendChild(m)); col.appendChild(w);
+  }
   function place(u) {
+    if (u.classList.contains('q') && col) {
+      col.appendChild(u);
+      const tooTall = over() && u.offsetHeight > col.clientHeight - 10;
+      if (tooTall) return splitQ(u);
+      col.removeChild(u);
+    }
     if (u.classList.contains('brk')) { colIdx = 2; col = null; nextCol(); return; }
     if (u.classList.contains('colbrk')) { if (!empty()) nextCol(); col.dataset.forced = 1; return; }
     if (u.classList.contains('memo')) { colIdx = 2; col = null; nextCol(); const pg = pages[pages.length - 1];

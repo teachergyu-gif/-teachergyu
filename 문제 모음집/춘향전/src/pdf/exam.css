@@ -184,3 +184,6 @@ u, u .hj, u .nb, u .w{text-decoration:underline;text-decoration-thickness:.07em;
 .dgrid{display:grid;justify-content:center;align-items:center;column-gap:7mm;row-gap:2.5mm;margin:2mm 0 1mm;font-size:10.5pt}
 .dgrid .gc{text-align:center;white-space:nowrap}
 .dgrid .bx{padding:.4mm 1.6mm}
+.bogi.open{border-bottom:none;padding-bottom:0;margin-bottom:0}
+.bogi.cont{border-top:none;padding-top:0;margin-top:0}
+.u.q.cont{margin-top:0}

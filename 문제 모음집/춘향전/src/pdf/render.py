@@ -29,6 +29,7 @@ def esc(s):
             return '<span class="nb">' + t[:cut] + '</span><wbr><span class="nb">' + t[cut:] + '</span>'
         return '<span class="nb">' + t + '</span>'
     s = re.sub(r'[^\s<>\u200b]*(?:<span class="hj">[^<]*</span>[^\s<>\u200b]*)+', nb, s)   # \u200b(줄 바꿀 수 있는 자리)에서는 묶지 않음
+    s = re.sub(r'&lt;보기 ?\d?&gt;', lambda m: '<span class="nb">' + m.group(0) + '</span>', s)   # ‘<보기2>’가 줄 끝에서 갈라지지 않게
     return s.replace('&lt;box&gt;', '<span class="bx">').replace('&lt;/box&gt;', '</span>')
 
 
