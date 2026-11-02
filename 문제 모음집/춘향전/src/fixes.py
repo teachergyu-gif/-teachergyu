@@ -90,8 +90,12 @@ def apply(data, log):
                 if isinstance(key, str) and key.startswith('P'):  # 지문: 그 문항이 든 묶음('P'+원번호)
                     if key[1:] in [str(x) for x in ids]:
                         for w in s['works']:
-                            if a in w['lines']:
-                                w['lines'] = w['lines'].replace(a, b); hit = True
+                            for k in ('lines', 'author'):
+                                if w.get(k) and a in w[k]:
+                                    w[k] = w[k].replace(a, b); hit = True
+                        if s.get('notes'):
+                            nn = [t.replace(a, b) for t in s['notes']]
+                            if nn != s['notes']: s['notes'] = nn; hit = True
                     continue
                 for qi, q in enumerate(s.get('questions', [])):
                     if q['orig'] == key:
