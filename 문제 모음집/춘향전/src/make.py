@@ -11,7 +11,7 @@ DATA = sys.argv[1] if len(sys.argv) > 1 else H + '/data'
 TITLE = '국제고 1학년 기말고사 대비 「춘향전」 문제 은행'
 FOOT = '국제고 1학년 「춘향전」 문제 은행'
 OUT = os.path.join(H, '..', '국제고 1학년 기말고사 대비 「춘향전」 문제 은행.pdf')
-WORKS = [('CH', '춘향전')]
+WORKS = [('CH', '｢춘향전｣ 문제'), ('CH2', '추가 문제')]
 
 
 def run(*a, **kw):
