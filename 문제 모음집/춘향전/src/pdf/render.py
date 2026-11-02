@@ -161,6 +161,12 @@ def load(work_dir):
         src = {'source': name, 'sets': [], 'ex': [], 'issues': []}
         for p in parts:
             d = json.load(open(f'{work_dir}/{p}/out.json'))
+            # 여러 파일의 원번호가 겹치므로 '파일-원번호'(예: s02-15)로 구별
+            for s in d['sets']:
+                for q in s.get('questions') or []:
+                    q['orig'] = f"{p}-{q['orig']}"
+            for e in d['ex']:
+                e['orig'] = f"{p}-{e['orig']}"
             for s in d['sets']:
                 if src['sets'] and src['sets'][-1]['works'] == s['works']:
                     src['sets'][-1]['questions'] += s.get('questions') or []

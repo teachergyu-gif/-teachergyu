@@ -87,8 +87,8 @@ def apply(data, log):
             hit = False
             for s in src['sets']:
                 ids = [q['orig'] for q in s.get('questions', [])]
-                if isinstance(key, str):  # 지문: 그 문항이 든 묶음
-                    if int(key[1:]) in ids:
+                if isinstance(key, str) and key.startswith('P'):  # 지문: 그 문항이 든 묶음('P'+원번호)
+                    if key[1:] in [str(x) for x in ids]:
                         for w in s['works']:
                             if a in w['lines']:
                                 w['lines'] = w['lines'].replace(a, b); hit = True
