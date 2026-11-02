@@ -28,7 +28,7 @@ def esc(s):
             h = k.group(1); cut = k.start(1) + len(h) // 2
             return '<span class="nb">' + t[:cut] + '</span><wbr><span class="nb">' + t[cut:] + '</span>'
         return '<span class="nb">' + t + '</span>'
-    s = re.sub(r'[^\s<>]*(?:<span class="hj">[^<]*</span>[^\s<>]*)+', nb, s)
+    s = re.sub(r'[^\s<>\u200b]*(?:<span class="hj">[^<]*</span>[^\s<>\u200b]*)+', nb, s)   # \u200b(줄 바꿀 수 있는 자리)에서는 묶지 않음
     return s.replace('&lt;box&gt;', '<span class="bx">').replace('&lt;/box&gt;', '</span>')
 
 
@@ -83,6 +83,10 @@ def bogi(b):
         return ''
     if isinstance(b, list):   # <보기 1>·<보기 2>처럼 상자가 여럿
         return ''.join(bogi(x) for x in b)
+    if b.get('grid'):   # 인물 관계 도식: 칸마다 가운데 정렬
+        t = f'<div class="bt"><span>{esc(b.get("title") or "<보기>")}</span></div>'
+        cells = ''.join(f'<div class="gc">{esc(c)}</div>' for r in b['grid'] for c in r)
+        return f'<div class="bogi">{t}<div class="dgrid" style="grid-template-columns:repeat({len(b["grid"][0])},auto)">{cells}</div></div>'
     if b.get('table'):
         rows = [list(r) for r in b['table']]
         trs = []

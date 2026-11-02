@@ -181,3 +181,6 @@ u, u .hj, u .nb, u .w{text-decoration:underline;text-decoration-thickness:.07em;
 .ctab.grid.two{margin:1mm 0}
 .ctab.grid.two tr:first-child td{text-align:left;background:none}
 .ctab.grid.two td{padding:.6mm 1.6mm;line-height:1.5}
+.dgrid{display:grid;justify-content:center;align-items:center;column-gap:7mm;row-gap:2.5mm;margin:2mm 0 1mm;font-size:10.5pt}
+.dgrid .gc{text-align:center;white-space:nowrap}
+.dgrid .bx{padding:.4mm 1.6mm}
