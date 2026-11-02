@@ -135,7 +135,7 @@
         const last = col.lastElementChild;
         const used = last.offsetTop + last.offsetHeight + parseFloat(getComputedStyle(last).marginBottom);
         const left = col.clientHeight - used;
-        if (u.dataset.here) { u.style.marginTop = '70px'; u.dataset.mid = 1; }   // 손 배치: 앞 문항 바로 아래에서 시작(넘치면 다음 단으로 이어짐)
+        if (u.dataset.here) { u.style.marginTop = (parseFloat(u.dataset.here) || 70) + 'px'; u.dataset.mid = 1; }   // 손 배치: 앞 문항 바로 아래에서 시작(넘치면 다음 단으로 이어짐)
         else if (left >= col.clientHeight / 3 && u.offsetHeight + left / 2 <= left) { /* 이 교재: 지문이 남은 자리에 다 들어갈 때만, 쪼개지면 다음 단으로 */ u.style.marginTop = (left / 2 - parseFloat(getComputedStyle(last).marginBottom)) + 'px'; u.dataset.mid = 1; }
         else nextCol();
       }

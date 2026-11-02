@@ -218,8 +218,9 @@ def main(work_dir, out_html):
             if SET_BREAK.get((name, n + 1)) == 'page': body.append('<div class="u brk"></div>')
             elif SET_BREAK.get((name, n + 1)) == 'col': body.append('<div class="u colbrk"></div>')
             ps = passage(s, rng)
-            if SET_BREAK.get((name, n + 1)) == 'here':   # 앞 문항 바로 아래 같은 단에서 시작(들어갈 때)
-                ps = ps.replace('<div class="u set">', '<div class="u set" data-here="1">', 1)
+            sb = SET_BREAK.get((name, n + 1))
+            if isinstance(sb, str) and sb.startswith('here'):   # 앞 문항 바로 아래 같은 단에서 시작('here:NN' = 그 위 간격 px)
+                ps = ps.replace('<div class="u set">', f'<div class="u set" data-here="{sb[5:] or 70}">', 1)
             body.append(ps)
             for q in qs:
                 n += 1
