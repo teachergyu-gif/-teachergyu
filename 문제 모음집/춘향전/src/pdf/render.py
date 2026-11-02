@@ -9,7 +9,7 @@ from layout_overrides import Q_BREAK, SET_BREAK, ANSWER_LINES, CLOSE
 
 CIRC = '①②③④⑤'
 HEAD = '국제고 1학년 기말고사 대비 춘향전 문제 은행'
-WORKS = [('춘향전', '작자 미상, ｢춘향전｣', ['s01', 's02', 's03', 's04', 's05'])]
+WORKS = [('춘향전', '작자 미상, ｢춘향전｣', ['s01', 's02', 's03', 's04', 's05', 's06', 's07', 's08', 's09'])]
 
 
 def esc(s):
