@@ -10,7 +10,8 @@ from layout_overrides import Q_BREAK, SET_BREAK, ANSWER_LINES, CLOSE
 CIRC = '①②③④⑤'
 HEAD = '국제고 1학년 기말고사 대비 춘향전 문제 은행'
 WORKS = [('춘향전', '작자 미상, ｢춘향전｣', ['s01', 's02', 's03', 's04', 's05']),
-         ('춘향전 추가', '작자 미상, ｢춘향전｣ 추가', ['s06', 's07', 's08', 's09'])]
+         ('춘향전 추가', '작자 미상, ｢춘향전｣ 추가', ['s06', 's07', 's08', 's09']),
+         ('춘향전 심화', '작자 미상, ｢춘향전｣ 심화', ['s10', 's11', 's12'])]
 
 
 def esc(s):
@@ -66,6 +67,8 @@ def passage(s, rng=''):
 def bogi(b):
     if not b:
         return ''
+    if isinstance(b, list):   # <보기 1>·<보기 2>처럼 상자가 여럿
+        return ''.join(bogi(x) for x in b)
     if b.get('table'):
         rows = [list(r) for r in b['table']]
         trs = []

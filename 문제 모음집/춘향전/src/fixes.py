@@ -117,6 +117,7 @@ def apply(data, log):
                 raise SystemExit(f'수정 대상 없음: {name} {key} {a}')
             log.append(f'{name} {key}번: {a} → {b}')
 
+    add_choices(data, log)
     drop_works(data, log)
     drop_marks(data, log)
     add_ex(data, log)
@@ -326,6 +327,19 @@ def drop_works(data, log):
 
 # ---- 원본에 해설이 없는 문항: 새로 쓴 해설(정답 선지 해설 + 오답풀이) ----
 EX_ADD = {(w, a['orig']): {k: v for k, v in a.items() if k != 'orig'} for w, r in _REV.items() for a in r.get('ex_add', [])}
+
+
+CHOICE_ADD = {a['orig']: a['add_choice'] for r in _REV.values() for a in r.get('add_choice', [])}   # 원본에서 빠진 선지(⑤ 등) 보충
+
+
+def add_choices(data, log):
+    for src in data:
+        for s in src['sets']:
+            for q in s.get('questions') or []:
+                c = CHOICE_ADD.get(q['orig'])
+                if c:
+                    q['choices'].append(c)
+                    log.append(f'{src["source"]} {q["orig"]}번: 원본에서 빠진 선지 {"①②③④⑤"[len(q["choices"]) - 1]} 보충')
 
 
 WRONG_ADD = {(w, a['orig']): a['wrong'] for w, r in _REV.items() for a in r.get('wrong_add', [])}
