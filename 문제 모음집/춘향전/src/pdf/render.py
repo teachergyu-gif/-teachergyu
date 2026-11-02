@@ -26,7 +26,7 @@ def esc(s):
         k = re.search(r'([가-힣]{4,})\(?<span class="hj">', t)
         if k:
             h = k.group(1); cut = k.start(1) + len(h) // 2
-            return '<span class="nb">' + t[:cut] + '</span>\u200b<span class="nb">' + t[cut:] + '</span>'
+            return '<span class="nb">' + t[:cut] + '</span><wbr><span class="nb">' + t[cut:] + '</span>'
         return '<span class="nb">' + t + '</span>'
     s = re.sub(r'[^\s<>]*(?:<span class="hj">[^<]*</span>[^\s<>]*)+', nb, s)
     return s.replace('&lt;box&gt;', '<span class="bx">').replace('&lt;/box&gt;', '</span>')
