@@ -84,7 +84,8 @@
         // 산문 문단: 단 끝까지 채우고 남는 말은 다음 단으로(문단을 어절 단위로 나눔)
         const rest = l.cloneNode(false); rest.classList.add('cont');
         while (over() && l.lastChild) rest.insertBefore(l.lastChild, rest.firstChild);
-        while (l.lastChild && l.lastChild.nodeType === 3 && !l.lastChild.textContent.trim()) rest.insertBefore(l.lastChild, rest.firstChild);
+        // 단 끝에 기호(㉡ 등)나 빈칸만 남지 않게 함께 넘김
+        while (l.lastChild && /^[\s\u00a0]*[㉠-㉭㉮-㉻ⓐ-ⓩⒶ-Ⓩ]?[\s\u00a0]*$/.test(l.lastChild.textContent)) rest.insertBefore(l.lastChild, rest.firstChild);
         if (l.textContent.trim() && rest.textContent.trim()) {
           l.classList.add('split');
           b.classList.add('open'); nextCol(); [w, b] = make(false);
@@ -276,6 +277,19 @@
       if (Math.round(el.offsetHeight / lh) < n0) return;
     }
     el.style.letterSpacing = ''; el.style.wordSpacing = '';
+  });
+  // <보기> 줄: 마지막 줄에 한두 글자(‘것.’ 등)만 넘어가면 자간을 조금 좁혀 한 줄로
+  document.querySelectorAll('#src .bogi .bl, #src .ch .t').forEach(el => {
+    const lh = parseFloat(getComputedStyle(el).lineHeight); const n0 = Math.round(el.offsetHeight / lh);
+    if (n0 < 2) return;
+    const r = document.createRange(); r.selectNodeContents(el);
+    const rects = [...r.getClientRects()]; if (!rects.length) return;
+    const lastTop = Math.max(...rects.map(x => x.top));
+    const lastW = rects.filter(x => Math.abs(x.top - lastTop) < 2).reduce((w, x) => w + x.width, 0);
+    if (lastW > parseFloat(getComputedStyle(el).fontSize) * 3.2) return;
+    const ls0 = el.style.letterSpacing;
+    for (const ls of ['-0.02em', '-0.04em', '-0.06em', '-0.08em']) { el.style.letterSpacing = ls; if (Math.round(el.offsetHeight / lh) < n0) return; }
+    el.style.letterSpacing = ls0;
   });
   nextCol();
   let pendingKeep = null;
