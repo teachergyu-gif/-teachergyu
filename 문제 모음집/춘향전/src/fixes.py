@@ -133,6 +133,7 @@ def apply(data, log):
             log.append(f'{name} {key}번: {a} → {b}')
 
     add_choices(data, log)
+    relabel_items(data, log)
     drop_works(data, log)
     drop_marks(data, log)
     add_ex(data, log)
@@ -345,6 +346,33 @@ EX_ADD = {(w, a['orig']): {k: v for k, v in a.items() if k != 'orig'} for w, r i
 
 
 CHOICE_ADD = {a['orig']: a['add_choice'] for r in _REV.values() for a in r.get('add_choice', [])}   # 원본에서 빠진 선지(⑤ 등) 보충
+
+
+# <보기> 항목 기호가 지문 기호와 겹치는 문항: ㉠~㉣ → ㄱ~ㄹ(발문·<보기>·선지·해설 모두)
+RELABEL = {('춘향전 추가', 's08-14')}
+_CIRC_TO_JAMO = dict(zip('㉠㉡㉢㉣㉤', 'ㄱㄴㄷㄹㅁ'))
+
+
+def relabel_items(data, log):
+    for src in data:
+        exm = {e['orig']: e for e in src['ex']}
+        for s in src['sets']:
+            for q in s.get('questions') or []:
+                if (src['source'], q['orig']) not in RELABEL:
+                    continue
+                item = lambda t: re.sub(r'(^|\n)([㉠-㉤]) ', lambda m: m.group(1) + _CIRC_TO_JAMO[m.group(2)] + '. ', t)
+                bare = lambda t: re.sub(r'[㉠-㉤]', lambda m: _CIRC_TO_JAMO[m.group(0)], t)
+                if q.get('bogi') and q['bogi'].get('text'):
+                    q['bogi']['text'] = item(q['bogi']['text'])
+                q['choices'] = [bare(c) for c in q['choices']]
+                q['stem'] = bare(q['stem'])
+                e = exm.get(q['orig'])
+                if e:
+                    for k in ('correct', 'plain'):
+                        if e.get(k):
+                            e[k] = re.sub(r'([㉠-㉤]) ', lambda m: _CIRC_TO_JAMO[m.group(1)] + '. ', e[k])
+                    e['wrong'] = [[bare(w[0]) + ('.' if w[0] in _CIRC_TO_JAMO else ''), re.sub(r'([㉠-㉤]) ', lambda m: _CIRC_TO_JAMO[m.group(1)] + '. ', w[1])] for w in e.get('wrong') or []]
+                log.append(f'{src["source"]} {q["orig"]}번: <보기> 기호 ㉠~㉣ → ㄱ~ㄹ')
 
 
 def add_choices(data, log):
