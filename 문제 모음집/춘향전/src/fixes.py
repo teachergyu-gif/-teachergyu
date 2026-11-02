@@ -34,6 +34,9 @@ def walk(o, f):
     return o
 
 
+MISS = []
+
+
 def apply(data, log):
     for src in data:
         name = src['source']
