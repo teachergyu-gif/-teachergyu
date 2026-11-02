@@ -349,7 +349,7 @@ CHOICE_ADD = {a['orig']: a['add_choice'] for r in _REV.values() for a in r.get('
 
 
 # <보기> 항목 기호가 지문 기호와 겹치는 문항: ㉠~㉣ → ㄱ~ㄹ(발문·<보기>·선지·해설 모두)
-RELABEL = {('춘향전 추가', 's08-14')}
+RELABEL = {('춘향전 추가', 's08-14'), ('춘향전', 's04-16')}
 _CIRC_TO_JAMO = dict(zip('㉠㉡㉢㉣㉤', 'ㄱㄴㄷㄹㅁ'))
 
 
@@ -360,7 +360,7 @@ def relabel_items(data, log):
             for q in s.get('questions') or []:
                 if (src['source'], q['orig']) not in RELABEL:
                     continue
-                item = lambda t: re.sub(r'(^|\n)([㉠-㉤]) ', lambda m: m.group(1) + _CIRC_TO_JAMO[m.group(2)] + '. ', t)
+                item = lambda t: re.sub(r'(^|\n)([㉠-㉤]) ?:? ', lambda m: m.group(1) + _CIRC_TO_JAMO[m.group(2)] + '. ', t)
                 bare = lambda t: re.sub(r'[㉠-㉤]', lambda m: _CIRC_TO_JAMO[m.group(0)], t)
                 if q.get('bogi') and q['bogi'].get('text'):
                     q['bogi']['text'] = item(q['bogi']['text'])
@@ -370,9 +370,9 @@ def relabel_items(data, log):
                 if e:
                     for k in ('correct', 'plain'):
                         if e.get(k):
-                            e[k] = re.sub(r'([㉠-㉤]) ', lambda m: _CIRC_TO_JAMO[m.group(1)] + '. ', e[k])
-                    e['wrong'] = [[bare(w[0]) + ('.' if w[0] in _CIRC_TO_JAMO else ''), re.sub(r'([㉠-㉤]) ', lambda m: _CIRC_TO_JAMO[m.group(1)] + '. ', w[1])] for w in e.get('wrong') or []]
-                log.append(f'{src["source"]} {q["orig"]}번: <보기> 기호 ㉠~㉣ → ㄱ~ㄹ')
+                            e[k] = bare(re.sub(r'(^|(?<=[.] ))([㉠-㉤]) (?=[^은는이가을를의에])', lambda m: m.group(1) + _CIRC_TO_JAMO[m.group(2)] + '. ', e[k]))
+                    e['wrong'] = [[bare(w[0]) + ('.' if w[0] in _CIRC_TO_JAMO else ''), bare(re.sub(r'(^|(?<=[.] ))([㉠-㉤]) (?=[^은는이가을를의에])', lambda m: m.group(1) + _CIRC_TO_JAMO[m.group(2)] + '. ', w[1]))] for w in e.get('wrong') or []]
+                log.append(f'{src["source"]} {q["orig"]}번: <보기> 기호 ㉠~ → ㄱ~')
 
 
 def add_choices(data, log):
