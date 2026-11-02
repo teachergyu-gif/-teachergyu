@@ -194,6 +194,7 @@
           if (slack < fs * 2.2) continue;
           const nw = lines[k + 1].items[0];
           if (!nw.classList.contains('w')) continue;
+          if (k + 2 === lines.length && lines[k + 1].items.length === 1) continue;   // 마지막 줄에 그 말 하나뿐이면 나누지 않음(‘염려/로다’처럼 끝말만 남지 않게)
           const txt = nw.textContent; if (txt.includes('​') || txt.length < 4 || /[∨/]/.test(txt)) continue;   // 끊어 읽기 표시(∨·/)가 든 시구는 쪼개지 않음
           // 들어갈 수 있는 가장 긴 앞부분(2음절 이상, 뒷부분 2음절 이상, 뒷부분이 어미·조사로 시작)
           let best = -1, bestCls = 9;
