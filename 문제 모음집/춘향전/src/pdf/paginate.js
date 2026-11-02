@@ -233,6 +233,25 @@
       }
     });
   })();
+  // 지문 문단(산문)의 마지막 줄에 한두 어절(5글자 이하)만 넘어가면 자간을 조금 좁혀(최대 -0.07em) 앞줄로 당김
+  document.querySelectorAll('#src .ln.pr').forEach(el => {
+    const lh = parseFloat(getComputedStyle(el).lineHeight);
+    const n0 = Math.round(el.offsetHeight / lh);
+    if (n0 < 2) return;
+    // (마지막 줄이 짧을 때만 줄 수가 줄어든다: 자간을 조금 좁혀서 한 줄이 줄어드는 경우만 적용)
+    const steps = n0 <= 2 ? ['-0.01em', '-0.02em', '-0.03em', '-0.04em', '-0.05em', '-0.06em', '-0.07em'] : ['-0.01em', '-0.02em'];   // 긴 문단은 아주 조금만
+    for (const ls of steps) {
+      el.style.letterSpacing = ls;
+      if (Math.round(el.offsetHeight / lh) < n0) return;
+    }
+    if (n0 > 2) { el.style.letterSpacing = ''; return; }
+    el.style.letterSpacing = '-0.04em';   // 그래도 안 되면 낱말 사이도 조금 좁힘
+    for (const ws of ['-0.05em', '-0.1em', '-0.15em']) {
+      el.style.wordSpacing = ws;
+      if (Math.round(el.offsetHeight / lh) < n0) return;
+    }
+    el.style.letterSpacing = ''; el.style.wordSpacing = '';
+  });
   nextCol();
   let pendingKeep = null;
   for (const u of units) {

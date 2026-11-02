@@ -49,6 +49,7 @@ def passage(s, rng=''):
             end = re.search(r'\{/[^{}]+\}$', l)
             if end:
                 l = l[:end.start()]
+            l = re.sub(r'([㉠-㉭㉮-㉻ⓐ-ⓩⒶ-Ⓩ]) (?=\S)', '\\1\u00a0', l)   # 기호와 뒤 말이 줄 끝에서 떨어지지 않게
             cell = '<div class="ln sp"></div>' if l.strip() == '' else f'<div class="ln{pr if l.strip() != "(중략)" else " pr nd"}">{esc(l)}</div>'
             if group:
                 group[1].append(cell)
