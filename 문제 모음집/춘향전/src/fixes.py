@@ -4,6 +4,7 @@ import re
 
 CH = '춘향전'
 CH2 = '춘향전 추가'   # 추가 4개 파일(s06~s09): 번호를 1번부터 다시, 해설도 따로
+CH3 = '춘향전 심화'   # 세 번째 3개 파일(s10~s12, 최상위 공략): 번호를 1번부터 다시, 해설도 따로
 FIX = [
 ]
 # 검수·해설 보충 결과(review/*.json: fix = 원본 오류 수정, ex_add = 원본에 없는 해설)
@@ -16,7 +17,7 @@ for _k, _w in (('ch', CH),):
         _REV[_w] = _json.load(open(_p))
         for _f in _REV[_w].get('fix', []):
             _o = str(_f['orig']).lstrip('P')
-            FIX.append((CH2 if _o[:3] in ('s06', 's07', 's08', 's09') else _w, _f['orig'], _f['old'], _f['new']))
+            FIX.append((CH2 if _o[:3] in ('s06', 's07', 's08', 's09') else CH3 if _o[:3] in ('s10', 's11', 's12') else _w, _f['orig'], _f['old'], _f['new']))
 
 
 def quotes(s):
