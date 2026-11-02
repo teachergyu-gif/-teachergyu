@@ -32,6 +32,11 @@ def esc(s):
     return s.replace('&lt;box&gt;', '<span class="bx">').replace('&lt;/box&gt;', '</span>')
 
 
+def hbr(h):
+    """지문: 한글 말 뒤 (漢字) 앞에서도 줄이 바뀔 수 있게(차운/(次韻), 이화춘풍/(李花春風)) — 글 간격이 크게 벌어지는 것 방지"""
+    return re.sub(r'([가-힣])\((<span class="hj">)', r'\1</span><wbr><span class="nb">(\2', h)
+
+
 def passage(s, rng=''):
     out = []
     for wi, w in enumerate(s['works']):
@@ -58,7 +63,7 @@ def passage(s, rng=''):
                 if not mt.group(2):
                     continue
                 l = mt.group(2)
-            cell = '<div class="ln sp"></div>' if l.strip() == '' else f'<div class="ln{pr if l.strip() != "(중략)" else " pr nd"}">{esc(l)}</div>'
+            cell = '<div class="ln sp"></div>' if l.strip() == '' else f'<div class="ln{pr if l.strip() != "(중략)" else " pr nd"}">{hbr(esc(l))}</div>'
             if group:
                 group[1].append(cell)
                 if end:
