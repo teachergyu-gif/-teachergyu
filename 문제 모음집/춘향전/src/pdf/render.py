@@ -50,6 +50,14 @@ def passage(s, rng=''):
             if end:
                 l = l[:end.start()]
             l = re.sub(r'([㉠-㉭㉮-㉻ⓐ-ⓩⒶ-Ⓩ]) (?=\S)', '\\1\u00a0', l)   # 기호와 뒤 말이 줄 끝에서 떨어지지 않게
+            mt = re.match(r'^\s*(\([가-사]\))\s*(.*)$', l) if not w.get('label') else None
+            if mt:   # 글 안의 (가)·(나)·(다) 표지: 앞 글과 한 칸 띄우고 굵게 따로 한 줄, 이어지는 글은 다음 줄부터
+                if out and 'ln sp' not in out[-1] and 'ln tag' not in out[-1]:
+                    out.append('<div class="ln sp"></div>')
+                out.append(f'<div class="ln tag">{esc(mt.group(1))}</div>')
+                if not mt.group(2):
+                    continue
+                l = mt.group(2)
             cell = '<div class="ln sp"></div>' if l.strip() == '' else f'<div class="ln{pr if l.strip() != "(중략)" else " pr nd"}">{esc(l)}</div>'
             if group:
                 group[1].append(cell)
