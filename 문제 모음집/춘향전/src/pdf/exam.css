@@ -178,3 +178,6 @@ body{font-size:11.2pt}
 .bogi .bl.bau + .bl.bnote{margin-top:1mm}
 /* 밑줄: 한자(inline-block)·문장부호도 끊김 없이, 글꼴이 달라도 같은 위치·굵기로 */
 u, u .hj, u .nb, u .w{text-decoration:underline;text-decoration-thickness:.07em;text-underline-offset:.2em;text-decoration-skip-ink:none}
+.ctab.grid.two{margin:1mm 0}
+.ctab.grid.two tr:first-child td{text-align:left;background:none}
+.ctab.grid.two td{padding:.6mm 1.6mm;line-height:1.5}
