@@ -10,7 +10,7 @@ import render   # esc, bogi, explanation, quick 등 문제 은행 양식 함수
 from render import esc, hbr, bogi, CIRC
 
 PARTS = ['A', 'B', 'C', 'D', 'E']
-TITLES = {'lecture': '강의용 교재', 'analysis': '지문 분석지', 'answer': '정답 및 해설'}
+TITLES = {'lecture': '강의용 교재', 'analysis': '지문 분석지', 'answer': '정답 및 해설', 'perset': ''}
 HEAD = '2026년 2학기 공통국어2 기말고사 대비'
 
 
@@ -111,7 +111,7 @@ def explanation(q, e):
     return '<div class="u ex">' + ''.join(out) + '</div>'
 
 
-def quick(sets, ans, per=5):
+def quick(sets, ans, per=5, note='서답형 1~4는 해설의 모범 답안 참고'):
     cells = []
     for s in sets:
         for q in s['questions']:
@@ -121,7 +121,7 @@ def quick(sets, ans, per=5):
     for i in range(0, len(cells), per):
         r = cells[i:i + per] + [('', '')] * (per - len(cells[i:i + per]))
         rows.append('<tr>' + ''.join(f'<td class="qn">{n}</td><td class="qv">{esc(v)}</td>' for n, v in r) + '</tr>')
-    return f'<div class="u qa"><div class="qat">빠른 정답</div><table class="qat-t">{"".join(rows)}</table><div class="qanote">서답형 1~4는 해설의 모범 답안 참고</div></div>'
+    return f'<div class="u qa"><div class="qat">빠른 정답</div><table class="qat-t">{"".join(rows)}</table>' + (f'<div class="qanote">{note}</div>' if note else '') + '</div>'
 
 
 def analysis_units(s, a):
@@ -167,6 +167,28 @@ def main(work_dir, out_html):
             body.append(passage(s, numbered=True))
             body.append('<div class="u colbrk"></div>')
             body += analysis_units(s, ana.get(str(s['no'])))
+    elif mode == 'perset':   # 지문마다 강의용 → 지문 분석 → 정답 및 해설
+        body = []
+        for i, s in enumerate(sets):
+            no = f'{i + 1:02d}'
+            for k, name in enumerate(('강의용', '지문 분석', '정답 및 해설')):
+                if body:
+                    body.append('<div class="u brk"></div>')
+                body.append(f'<div class="u qtitle"><span>{no} {name}</span></div>')
+                if k == 0:
+                    body.append(passage(s))
+                    body += [question(q) for q in s['questions']]
+                elif k == 1:
+                    body.append(passage(s, numbered=True))
+                    body.append('<div class="u colbrk"></div>')
+                    body += analysis_units(s, ana.get(str(s['no'])))
+                else:
+                    sd = [q for q in s['questions'] if q.get('label')]
+                    body.append(quick([s], ans, note=('서답형은 해설의 모범 답안 참고' if sd else '')))
+                    for q in s['questions']:
+                        e = ans.get(qkey(q))
+                        if e:
+                            body.append(explanation(q, e))
     else:
         body.append(quick(sets, ans))
         for s in sets:

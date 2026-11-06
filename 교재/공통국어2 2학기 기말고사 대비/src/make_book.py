@@ -58,7 +58,9 @@ def toc_html(title, parts, total):
                   f'{rows}    </div>\n')
     block += '  </div>\n</div>\n'
     t = t[:i] + block + t[j:]
-    if len(parts) > 1:   # 세 파트가 한 쪽에 들어가게 간격을 줄임
+    if len(parts) > 3:   # 지문별 파트(7개): 2단 격자
+        t = t.replace('</style>', 'h1{margin-top:28px!important}.parts{display:grid!important;grid-template-columns:1fr 1fr;column-gap:36px;row-gap:34px!important;margin-top:26px!important}.part{gap:9px!important}.ph{margin-bottom:4px}.ph .nm{font-size:15px!important}.it{font-size:13px!important}</style>', 1)
+    elif len(parts) > 1:   # 세 파트가 한 쪽에 들어가게 간격을 줄임
         t = t.replace('</style>', 'h1{margin-top:28px!important}.parts{gap:18px!important;margin-top:14px!important}.part{gap:2px!important}.ph{margin-bottom:4px}.it{font-size:12.5px!important;line-height:16px}</style>', 1)
     return t.replace('TOTAL', str(total)).replace('TITLE', title)
 
@@ -155,7 +157,61 @@ def build_all(modes=('lecture', 'analysis', 'answer')):
         print('ok all', total, 'pages', [(n, [i[2] for i in it]) for n, it in parts])
 
 
+def build_perset():
+    """지문마다 강의용 → 지문 분석 → 정답 및 해설 순서로 한 PDF"""
+    out = os.path.join(OUTDIR, f'{NAME}.pdf')
+    info = sets_info()
+    with tempfile.TemporaryDirectory() as t:
+        env = dict(os.environ, START_PAGE='2', MODE='perset')
+        run('python3', '-I', f'{H}/pdf/render_book.py', DATA, f'{t}/b.html', env=env)
+        run('node', f'{H}/pdf/print.js', f'{t}/b.html', f'{t}/b.pdf')
+        w = PdfWriter(); w.add_blank_page(595, 841)
+        for p in PdfReader(f'{t}/b.pdf').pages:
+            w.add_page(a4(p))
+        w.write(f'{t}/m0.pdf')
+        total = len(w.pages)
+        run('python3', '-I', f'{H}/header_phrase.py', f'{t}/m0.pdf', f'{t}/m1.pdf', PHRASE, '1', '1')
+        run('python3', '-I', f'{H}/footer_text.py', f'{t}/m1.pdf', f'{t}/m2.pdf', NAME, '1', '1')
+        run('python3', '-I', f'{H}/footer_box.py', f'{t}/m2.pdf', f'{t}/m3.pdf', str(total), '1', '1')
+        texts = [re.sub(r'\s+', '', p.extract_text() or '') for p in PdfReader(f'{t}/m3.pdf').pages]
+        parts, start = [], 1
+        for i, s in enumerate(info):
+            items = []
+            for name in ('강의용', '지문 분석', '정답 및 해설'):
+                key = f'{i + 1:02d}' + name.replace(' ', '')
+                pg = next((k for k in range(start, total) if key in texts[k]), None)
+                assert pg is not None, key
+                items.append(({'강의용': '강의용 교재', '지문 분석': '지문 분석지'}.get(name, name), '', pg + 1))
+                start = pg
+            parts.append((s, items))
+        tmp = f'{H}/toc/_toc_out.html'
+        html = toc_html(NAME, [('', [])], total)
+        rows = ''.join(
+            f'    <div class="part"><div class="ph"><span class="no">PART {k:02d}</span><span class="nm">{s["title"]}</span><span class="nm2">{s["rng"]}</span></div>\n'
+            f'      <div class="row">' + ''.join(f'<span class="it2"><span class="t">{n}</span><span class="d"></span><span class="p">p. {p}</span></span>' for n, _, p in items) + '</div></div>\n'
+            for k, (s, items) in enumerate(parts, 1))
+        html = re.sub(r'<div class="parts">.*?</div>\s*</div>\s*</div>\n', '<div class="parts">\n' + rows + '  </div>\n', html, count=1, flags=re.S)
+        html = html.replace('</style>', '.parts{gap:30px!important;margin-top:30px!important}.part{gap:10px!important}.ph .nm{font-size:15.5px!important}'
+                            '.ph .nm2{font-size:12.5px;color:#6B7785}.row{display:flex;gap:26px;padding-left:4px}'
+                            '.it2{flex:1;display:flex;align-items:baseline;gap:8px;font-size:13px}.it2 .d{flex:1;border-bottom:1.5px dotted #C3CAD3}'
+                            '.it2 .p{font-family:Montserrat,sans-serif;font-weight:600}</style>', 1)
+        open(tmp, 'w').write(html)
+        try:
+            run('node', f'{H}/toc/print_toc.js', f'{t}/toc.pdf', '_toc_out.html')
+        finally:
+            os.remove(tmp)
+        w = PdfWriter()
+        w.add_page(PdfReader(f'{t}/toc.pdf').pages[0])
+        for p in PdfReader(f'{t}/m3.pdf').pages[1:]:
+            w.add_page(p)
+        w.write(out)
+        print('ok perset', total, 'pages', [[i[2] for i in it] for n, it in parts])
+
+
 if __name__ == '__main__':
+    if sys.argv[1:] == ['perset']:
+        build_perset()
+        sys.exit()
     if sys.argv[1:] == ['all']:
         build_all()
         sys.exit()

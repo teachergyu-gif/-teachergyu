@@ -1,6 +1,6 @@
 """2026년 2학기 공통국어2 기말고사 대비 교재 → HWPX 세 권(강의용·분석지·해설지).
 PDF판(make_book.py)과 같은 데이터·순서. 양식: 국제고 교재 HWPX의 글꼴·스타일, A4 2단, 1쪽 표지·목차.
-사용: python3 make_hwpx.py [lecture analysis answer]"""
+지문마다 강의용 → 지문 분석 → 정답 및 해설 순서의 한 파일. 사용: python3 make_hwpx.py"""
 import os, re, sys, zipfile
 from xml.sax.saxutils import escape
 
@@ -208,7 +208,7 @@ class W:
             out += [self.P('ans') for _ in range(9)]
         return out
 
-    def quick(self, sets, ans):
+    def quick(self, sets, ans, note='서답형 1~4는 해설의 모범 답안 참고'):
         cells = [(RB.qnum(q), ' '.join(re.findall('[①-⑤]', (ans.get(RB.qkey(q)) or {}).get('answer', '')))) for s in sets for q in s['questions'] if q.get('choices')]
         rows = []
         for i in range(0, len(cells), 5):
@@ -220,7 +220,7 @@ class W:
         w1 = CW * 9 // 100; w2 = (CW - 5 * w1) // 5
         out = [self.P('head', '<b>빠른 정답</b>', base='head'),
                self.P('plain', pre=self.table(rows, [w1, w2] * 5, 1700, margin=(141, 141, 141, 141))),
-               self.P('plain', '서답형 1~4는 해설의 모범 답안 참고', base='sm'), self.P('after')]
+               self.P('plain', note, base='sm') if note else self.P('plain'), self.P('after')]
         return out
 
     def explanation(self, q, e):
@@ -270,46 +270,45 @@ class W:
         return out
 
 
-def build(Wr, secpr, modes):
+def build(Wr, secpr):
+    """지문마다 강의용 → 지문 분석 → 정답 및 해설"""
     sets, ans, ana = RB.load(H0 + '/data')
     info = sets_info()
     out = [('<hp:p id="0" paraPrIDRef="%d" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">'
             '<hp:run charPrIDRef="%d">%s%s</hp:run><hp:run charPrIDRef="%d">%s%s<hp:t/></hp:run>%s</hp:p>'
             % (Wr.p['title'], Wr.c['n'], secpr, Wr.cols(1), Wr.c['n'], Wr.footer('EVEN', 'foot_l'), Wr.footer('ODD', 'foot_r'),
                Wr.runs(NAME, 'title')))]
-    for k, mode in enumerate(modes, 1):
-        out.append(Wr.P('sub', 'PART %02d　%s' % (k, BOOKS[mode]), base='sub'))
-        for i, s in enumerate(info, 1):
-            out.append(Wr.P('toc', '%d. %s　(%s)' % (i, s['title'], s['rng']), base='toc'))
+    for k, s in enumerate(info, 1):
+        out.append(Wr.P('sub', 'PART %02d　%s　(%s)' % (k, s['title'], s['rng']), base='toc'))
+        out.append(Wr.P('toc', '강의용 교재　·　지문 분석지　·　정답 및 해설', base='sm'))
     two = '<hp:run charPrIDRef="%d">%s</hp:run>' % (Wr.c['n'], Wr.cols(2))
-    for mode in modes:
-        out.append(Wr.P('qt', '<b>%s</b>' % BOOKS[mode], base='sub', page=True, pre=two))
-        if mode == 'answer':
-            out += Wr.quick(sets, ans)
-            for s in sets:
-                for q in s['questions']:
-                    e = ans.get(RB.qkey(q))
-                    if e:
-                        out += Wr.explanation(q, e)
-            continue
-        for i, s in enumerate(sets):
-            blk = Wr.passage(s, numbered=(mode == 'analysis'))
-            if i:
-                blk[0] = blk[0].replace('pageBreak="0" columnBreak="0"', 'pageBreak="0" columnBreak="1"', 1)
-            out += blk
-            if mode == 'lecture':
-                for q in s['questions']:
-                    out += Wr.question(q)
-            else:
-                a = ana.get(str(s['no']))
-                if a:
-                    x = Wr.analysis(a)
-                    x[0] = x[0].replace('columnBreak="0"', 'columnBreak="1"', 1)
-                    out += x
+    for i, s in enumerate(sets):
+        no = '%02d' % (i + 1)
+        # 강의용
+        out.append(Wr.P('qt', '<b>%s 강의용</b>' % no, base='sub', page=True, pre=two))
+        out += Wr.passage(s)
+        for q in s['questions']:
+            out += Wr.question(q)
+        # 지문 분석
+        out.append(Wr.P('qt', '<b>%s 지문 분석</b>' % no, base='sub', page=True))
+        out += Wr.passage(s, numbered=True)
+        a = ana.get(str(s['no']))
+        if a:
+            x = Wr.analysis(a)
+            x[0] = x[0].replace('columnBreak="0"', 'columnBreak="1"', 1)
+            out += x
+        # 정답 및 해설
+        out.append(Wr.P('qt', '<b>%s 정답 및 해설</b>' % no, base='sub', page=True))
+        sd = any(q.get('label') for q in s['questions'])
+        out += Wr.quick([s], ans, note='서답형은 해설의 모범 답안 참고' if sd else '')
+        for q in s['questions']:
+            e = ans.get(RB.qkey(q))
+            if e:
+                out += Wr.explanation(q, e)
     return ''.join(out)
 
 
-def make(modes):
+def make():
     out = os.path.join(H0, '..', NAME + '.hwpx')
     zin = zipfile.ZipFile(BASE)
     files = {k: zin.read(k) for k in zin.namelist()}
@@ -325,7 +324,7 @@ def make(modes):
     secpr = re.sub(r'hideFirstFooter="\d"', 'hideFirstFooter="1"', secpr)
     secpr = re.sub(r'hideFirstPageNum="\d"', 'hideFirstPageNum="1"', secpr)
     secpr = re.sub(r'<hp:pageBorderFill type="BOTH" borderFillIDRef="\d+"', '<hp:pageBorderFill type="BOTH" borderFillIDRef="1"', secpr)
-    body = build(Wr, secpr, modes)
+    body = build(Wr, secpr)
     files['Contents/section0.xml'] = (root + body + '</hs:sec>').encode('utf-8')
     files['Contents/header.xml'] = H.x.encode('utf-8')
     hpf = files['Contents/content.hpf'].decode('utf-8')
@@ -347,4 +346,4 @@ def make(modes):
 
 
 if __name__ == '__main__':
-    make(sys.argv[1:] or ['lecture', 'analysis', 'answer'])
+    make()
