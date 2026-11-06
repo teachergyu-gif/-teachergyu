@@ -125,28 +125,30 @@ def quick(sets, ans, per=5, note='서답형 1~4는 해설의 모범 답안 참�
 
 
 def analysis_units(s, a):
-    """지문 분석: 주제·구조·문단 요약·핵심 어휘·출제 포인트 (해설처럼 단 끝에서 나뉨)"""
+    """지문 분석: 주제·글의 구조 / 문단 요약 / 핵심 어휘 / 출제 포인트를 따로 묶어 넉넉한 간격으로 (단 끝에서 나뉨)"""
     if not a:
         return []
     units = []
+    sec = lambda t: f'<div class="ansec"><span>{t}</span></div>'
     for part in a.get('works', [a]):
-        rows = []
         lab = part.get('label')
-        if lab:
-            rows.append(f'<div class="eh"><span>{esc(lab)} {esc(part.get("title", ""))}</span></div>')
+        head = f'<div class="eh anh"><span>{esc(lab)} {esc(part.get("title", ""))}</span></div>' if lab else ''
+        rows = []
         if part.get('topic'):
-            rows.append(f'<div class="ep"><b class="ak">주제</b> {esc(part["topic"])}</div>')
+            rows += [sec('주제'), f'<div class="ep anp">{esc(part["topic"])}</div>']
         if part.get('structure'):
-            rows.append(f'<div class="ep"><b class="ak">글의 구조</b> {esc(part["structure"])}</div>')
-        for p in part.get('paras', []):
-            rows.append(f'<div class="ep hang"><span class="c pno">{esc(str(p["n"]))}</span><span>{esc(p["summary"])}</span></div>')
+            rows += [sec('글의 구조'), f'<div class="ep anp">{esc(part["structure"])}</div>']
+        if rows or head:
+            units.append('<div class="u ex an">' + head + ''.join(rows) + '</div>')
+        if part.get('paras'):
+            units.append('<div class="u ex an">' + sec('문단 요약') + ''.join(
+                f'<div class="ep hang anp"><span class="c pno">{esc(str(p["n"]))}</span><span>{esc(p["summary"])}</span></div>' for p in part['paras']) + '</div>')
         if part.get('vocab'):
-            rows.append('<div class="ep wr">[핵심 어휘]</div>')
-            rows += [f'<div class="ep hang"><span class="c">·</span><span><b>{esc(w)}</b>: {esc(m)}</span></div>' for w, m in part['vocab']]
+            units.append('<div class="u ex an">' + sec('핵심 어휘') + ''.join(
+                f'<div class="ep hang anp"><span class="c">·</span><span><b>{esc(w)}</b>: {esc(m)}</span></div>' for w, m in part['vocab']) + '</div>')
         if part.get('points'):
-            rows.append('<div class="ep wr">[출제 포인트]</div>')
-            rows += [f'<div class="ep hang"><span class="c">✔</span><span>{esc(x)}</span></div>' for x in part['points']]
-        units.append('<div class="u ex an">' + ''.join(rows) + '</div>')
+            units.append('<div class="u ex an">' + sec('출제 포인트') + ''.join(
+                f'<div class="ep hang anp"><span class="c">✔</span><span>{esc(x)}</span></div>' for x in part['points']) + '</div>')
     return units
 
 

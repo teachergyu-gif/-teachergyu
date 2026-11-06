@@ -95,6 +95,8 @@ class W:
             'eh': P(prev=1400, nxt=200, keep_next=True), 'ep': P(), 'ep_h': P(intent=-1100, left=1100),
             'foot_l': P(align='LEFT'), 'foot_r': P(align='RIGHT'),
             'qt': P(align='CENTER', nxt=600),
+            'ansec': P(align='LEFT', prev=1300, nxt=350, keep_next=True),
+            'anp': P(line=175, nxt=250), 'anp_h': P(intent=-1100, left=1100, line=175, nxt=250),
         }
 
     def id(self):
@@ -250,22 +252,25 @@ class W:
         return out
 
     def analysis(self, a):
+        """주제·글의 구조 / 문단 요약 / 핵심 어휘 / 출제 포인트: 묶음마다 띄워서"""
         out = []
+        sec = lambda t: self.P('ansec', '<b>[%s]</b>' % t)
         for part in a.get('works', [a]):
             if part.get('label'):
                 out.append(self.P('eh', '<b>%s %s</b>' % (part['label'], part.get('title', ''))))
             if part.get('topic'):
-                out.append(self.P('ep', '<b>[주제]</b> ' + part['topic']))
+                out += [sec('주제'), self.P('anp', part['topic'])]
             if part.get('structure'):
-                out.append(self.P('ep', '<b>[글의 구조]</b> ' + part['structure']))
-            for p in part.get('paras', []):
-                out.append(self.P('ep_h', '<b>[%s]</b> %s' % (p['n'], p['summary'])))
+                out += [sec('글의 구조'), self.P('anp', part['structure'])]
+            if part.get('paras'):
+                out.append(sec('문단 요약'))
+                out += [self.P('anp_h', '<b>[%s]</b> %s' % (p['n'], p['summary'])) for p in part['paras']]
             if part.get('vocab'):
-                out.append(self.P('ep', '<b>[핵심 어휘]</b>'))
-                out += [self.P('ep_h', '· <b>%s</b>: %s' % (w, m)) for w, m in part['vocab']]
+                out.append(sec('핵심 어휘'))
+                out += [self.P('anp_h', '· <b>%s</b>: %s' % (w, m)) for w, m in part['vocab']]
             if part.get('points'):
-                out.append(self.P('ep', '<b>[출제 포인트]</b>'))
-                out += [self.P('ep_h', '✔ ' + x) for x in part['points']]
+                out.append(sec('출제 포인트'))
+                out += [self.P('anp_h', '✔ ' + x) for x in part['points']]
             out.append(self.P('after'))
         return out
 
