@@ -46,14 +46,20 @@ def sets_info():
     return out
 
 
-def toc_html(title, part_name, items, total):
+def toc_html(title, parts, total):
+    """parts = [(파트 이름, [(제목, 범위, 쪽), …]), …]"""
     t = open(f'{H}/toc/toc.html').read()
     i = t.index('  <div class="parts">'); j = t.index('<div class="fr">')
-    rows = ''.join(f'      <div class="it"><span class="t">{n}. {tt}</span><span class="a">{r}</span><span class="d"></span><span class="p">p. {p}</span></div>\n'
-                   for n, (tt, r, p) in enumerate(items, 1))
-    block = (f'  <div class="parts">\n    <div class="part">\n      <div class="ph"><span class="no">PART 01</span><span class="nm">{part_name}</span></div>\n'
-             f'{rows}    </div>\n  </div>\n</div>\n')
+    block = '  <div class="parts">\n'
+    for k, (part_name, items) in enumerate(parts, 1):
+        rows = ''.join(f'      <div class="it"><span class="t">{n}. {tt}</span><span class="a">{r}</span><span class="d"></span><span class="p">p. {p}</span></div>\n'
+                       for n, (tt, r, p) in enumerate(items, 1))
+        block += (f'    <div class="part">\n      <div class="ph"><span class="no">PART {k:02d}</span><span class="nm">{part_name}</span></div>\n'
+                  f'{rows}    </div>\n')
+    block += '  </div>\n</div>\n'
     t = t[:i] + block + t[j:]
+    if len(parts) > 1:   # 세 파트가 한 쪽에 들어가게 간격을 줄임
+        t = t.replace('</style>', 'h1{margin-top:28px!important}.parts{gap:18px!important;margin-top:14px!important}.part{gap:2px!important}.ph{margin-bottom:4px}.it{font-size:12.5px!important;line-height:16px}</style>', 1)
     return t.replace('TOTAL', str(total)).replace('TITLE', title)
 
 
@@ -88,7 +94,7 @@ def build(mode):
             start = pg
         part = {'lecture': '지문별 문제', 'analysis': '지문별 분석', 'answer': '문항별 정답 및 해설'}[mode]
         tmp = f'{H}/toc/_toc_out.html'
-        open(tmp, 'w').write(toc_html(f'{NAME} {BOOKS[mode]}', part, items, total))
+        open(tmp, 'w').write(toc_html(f'{NAME} {BOOKS[mode]}', [(part, items)], total))
         try:
             run('node', f'{H}/toc/print_toc.js', f'{t}/toc.pdf', '_toc_out.html')
         finally:
@@ -101,6 +107,57 @@ def build(mode):
         print('ok', mode, total, 'pages', [(i[0], i[2]) for i in items])
 
 
+def build_all(modes=('lecture', 'analysis', 'answer')):
+    """세 권을 한 PDF로: 1쪽 목차(PART 01~03) + 이어지는 쪽 번호"""
+    out = os.path.join(OUTDIR, f'{NAME}.pdf')
+    info = sets_info()
+    with tempfile.TemporaryDirectory() as t:
+        w = PdfWriter(); w.add_blank_page(595, 841)
+        starts = {}
+        for m in modes:
+            starts[m] = len(w.pages)
+            env = dict(os.environ, START_PAGE=str(len(w.pages) + 1), MODE=m)
+            run('python3', '-I', f'{H}/pdf/render_book.py', DATA, f'{t}/{m}.html', env=env)
+            run('node', f'{H}/pdf/print.js', f'{t}/{m}.html', f'{t}/{m}.pdf')
+            for p in PdfReader(f'{t}/{m}.pdf').pages:
+                w.add_page(a4(p))
+        w.write(f'{t}/m0.pdf')
+        total = len(w.pages)
+        run('python3', '-I', f'{H}/header_phrase.py', f'{t}/m0.pdf', f'{t}/m1.pdf', PHRASE, '1', '1')
+        run('python3', '-I', f'{H}/footer_text.py', f'{t}/m1.pdf', f'{t}/m2.pdf', NAME, '1', '1')
+        run('python3', '-I', f'{H}/footer_box.py', f'{t}/m2.pdf', f'{t}/m3.pdf', str(total), '1', '1')
+        texts = [re.sub(r'\s+', '', p.extract_text() or '').replace('〜', '～').replace(f'ACADEMY{k + 1}', 'ACADEMY|', 1)
+                 for k, p in enumerate(PdfReader(f'{t}/m3.pdf').pages)]
+        parts = []
+        for m in modes:
+            items, start = [], starts[m]
+            for s in info:
+                if m == 'answer':
+                    key = (s['first_mc'] + '.') if s['first_mc'] else f'[{s["first"]}]'
+                    pat = re.compile(r'(?<![0-9])' + re.escape(key))
+                else:
+                    pat = re.compile(re.escape('【' + s['head'].replace(' ', '')) + r'[】,]')
+                pg = next((k for k in range(start, total) if pat.search(texts[k])), start)
+                items.append((s['title'], s['rng'], pg + 1))
+                start = pg
+            parts.append((BOOKS[m], items))
+        tmp = f'{H}/toc/_toc_out.html'
+        open(tmp, 'w').write(toc_html(NAME, parts, total))
+        try:
+            run('node', f'{H}/toc/print_toc.js', f'{t}/toc.pdf', '_toc_out.html')
+        finally:
+            os.remove(tmp)
+        w = PdfWriter()
+        w.add_page(PdfReader(f'{t}/toc.pdf').pages[0])
+        for p in PdfReader(f'{t}/m3.pdf').pages[1:]:
+            w.add_page(p)
+        w.write(out)
+        print('ok all', total, 'pages', [(n, [i[2] for i in it]) for n, it in parts])
+
+
 if __name__ == '__main__':
+    if sys.argv[1:] == ['all']:
+        build_all()
+        sys.exit()
     for m in (sys.argv[1:] or ['lecture', 'analysis', 'answer']):
         build(m)

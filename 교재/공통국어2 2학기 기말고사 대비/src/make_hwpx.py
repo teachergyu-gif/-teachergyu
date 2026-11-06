@@ -270,50 +270,47 @@ class W:
         return out
 
 
-def build(Wr, secpr, mode):
+def build(Wr, secpr, modes):
     sets, ans, ana = RB.load(H0 + '/data')
     info = sets_info()
-    title = '%s %s' % (NAME, BOOKS[mode])
     out = [('<hp:p id="0" paraPrIDRef="%d" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">'
             '<hp:run charPrIDRef="%d">%s%s</hp:run><hp:run charPrIDRef="%d">%s%s<hp:t/></hp:run>%s</hp:p>'
             % (Wr.p['title'], Wr.c['n'], secpr, Wr.cols(1), Wr.c['n'], Wr.footer('EVEN', 'foot_l'), Wr.footer('ODD', 'foot_r'),
-               Wr.runs(NAME, 'title'))),
-           Wr.P('sub', BOOKS[mode], base='sub')]
-    for i, s in enumerate(info, 1):
-        out.append(Wr.P('toc', '%d. %s　(%s)' % (i, s['title'], s['rng']), base='toc'))
+               Wr.runs(NAME, 'title')))]
+    for k, mode in enumerate(modes, 1):
+        out.append(Wr.P('sub', 'PART %02d　%s' % (k, BOOKS[mode]), base='sub'))
+        for i, s in enumerate(info, 1):
+            out.append(Wr.P('toc', '%d. %s　(%s)' % (i, s['title'], s['rng']), base='toc'))
     two = '<hp:run charPrIDRef="%d">%s</hp:run>' % (Wr.c['n'], Wr.cols(2))
-    started = False
-    if mode == 'answer':
-        out.append(Wr.P('qt', '<b>정답 및 해설</b>', base='sub', page=True, pre=two)); started = True
-        out += Wr.quick(sets, ans)
-        for s in sets:
-            for q in s['questions']:
-                e = ans.get(RB.qkey(q))
-                if e:
-                    out += Wr.explanation(q, e)
-        return ''.join(out)
-    for i, s in enumerate(sets):
-        blk = Wr.passage(s, numbered=(mode == 'analysis'))
-        first = blk[0]
-        if not started:
-            first = first.replace('pageBreak="0"', 'pageBreak="1"', 1).replace('merged="0">', 'merged="0">' + two, 1); started = True
-        else:
-            first = first.replace(('pageBreak="0" columnBreak="0"'), ('pageBreak="1" columnBreak="0"' if mode == 'analysis' else 'pageBreak="0" columnBreak="1"'), 1)
-        out.append(first); out += blk[1:]
-        if mode == 'lecture':
-            for q in s['questions']:
-                out += Wr.question(q)
-        else:
-            a = ana.get(str(s['no']))
-            if a:
-                x = Wr.analysis(a)
-                x[0] = x[0].replace('columnBreak="0"', 'columnBreak="1"', 1)
-                out += x
+    for mode in modes:
+        out.append(Wr.P('qt', '<b>%s</b>' % BOOKS[mode], base='sub', page=True, pre=two))
+        if mode == 'answer':
+            out += Wr.quick(sets, ans)
+            for s in sets:
+                for q in s['questions']:
+                    e = ans.get(RB.qkey(q))
+                    if e:
+                        out += Wr.explanation(q, e)
+            continue
+        for i, s in enumerate(sets):
+            blk = Wr.passage(s, numbered=(mode == 'analysis'))
+            if i:
+                blk[0] = blk[0].replace('pageBreak="0" columnBreak="0"', 'pageBreak="0" columnBreak="1"', 1)
+            out += blk
+            if mode == 'lecture':
+                for q in s['questions']:
+                    out += Wr.question(q)
+            else:
+                a = ana.get(str(s['no']))
+                if a:
+                    x = Wr.analysis(a)
+                    x[0] = x[0].replace('columnBreak="0"', 'columnBreak="1"', 1)
+                    out += x
     return ''.join(out)
 
 
-def make(mode):
-    out = os.path.join(H0, '..', '%s %s.hwpx' % (NAME, BOOKS[mode]))
+def make(modes):
+    out = os.path.join(H0, '..', NAME + '.hwpx')
     zin = zipfile.ZipFile(BASE)
     files = {k: zin.read(k) for k in zin.namelist()}
     H = Header(files['Contents/header.xml'].decode('utf-8'))
@@ -328,17 +325,17 @@ def make(mode):
     secpr = re.sub(r'hideFirstFooter="\d"', 'hideFirstFooter="1"', secpr)
     secpr = re.sub(r'hideFirstPageNum="\d"', 'hideFirstPageNum="1"', secpr)
     secpr = re.sub(r'<hp:pageBorderFill type="BOTH" borderFillIDRef="\d+"', '<hp:pageBorderFill type="BOTH" borderFillIDRef="1"', secpr)
-    body = build(Wr, secpr, mode)
+    body = build(Wr, secpr, modes)
     files['Contents/section0.xml'] = (root + body + '</hs:sec>').encode('utf-8')
     files['Contents/header.xml'] = H.x.encode('utf-8')
     hpf = files['Contents/content.hpf'].decode('utf-8')
     hpf = re.sub(r'<opf:item id="(masterpage\d+|image\d+)"[^>]*/>', '', hpf)
-    hpf = re.sub(r'<opf:title>.*?</opf:title>', '<opf:title>%s</opf:title>' % escape('%s %s' % (NAME, BOOKS[mode])), hpf)
+    hpf = re.sub(r'<opf:title>.*?</opf:title>', '<opf:title>%s</opf:title>' % escape(NAME), hpf)
     files['Contents/content.hpf'] = hpf.encode('utf-8')
     for k in [k for k in files if k.startswith('Contents/masterpage') or k.startswith('BinData/')]:
         del files[k]
     files['settings.xml'] = re.sub(rb'<ha:CaretPosition [^>]*/>', b'<ha:CaretPosition listIDRef="0" paraIDRef="0" pos="0"/>', files['settings.xml'])
-    files['Preview/PrvText.txt'] = ('%s %s' % (NAME, BOOKS[mode])).encode('utf-8')
+    files['Preview/PrvText.txt'] = NAME.encode('utf-8')
     files.pop('Preview/PrvImage.png', None)
     order = [k for k in zin.namelist() if k in files] + [k for k in files if k not in zin.namelist()]
     with zipfile.ZipFile(out, 'w') as z:
@@ -350,5 +347,4 @@ def make(mode):
 
 
 if __name__ == '__main__':
-    for m in (sys.argv[1:] or ['lecture', 'analysis', 'answer']):
-        make(m)
+    make(sys.argv[1:] or ['lecture', 'analysis', 'answer'])
