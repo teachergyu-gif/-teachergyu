@@ -9,7 +9,8 @@ DATA = H + '/data'
 OUTDIR = os.path.join(H, '..')
 NAME = '2026년 2학기 공통국어2 기말고사 대비'
 BOOKS = {'lecture': '강의용 교재', 'analysis': '지문 분석지', 'answer': '정답 및 해설'}
-PHRASE = '리치아카데미 | 공통국어2'
+PHRASE = '리치아카데미 | 김T 비문학 프린트물'
+FOOT = '2026년 2학기 기말고사 대비'   # 쪽 아래 글귀
 # 지문 묶음 제목(목차)
 SET_TITLES = ['매체의 발달과 의사소통', '사이버 레커와 악성 댓글', '사랑천 산책로를 둘러싼 협상', '청소년의 금융 이해력',
               '마녀사냥은 사라졌나', '매카시즘의 유래와 언론', '제정신이라는 착각']
@@ -171,7 +172,7 @@ def build_perset():
         w.write(f'{t}/m0.pdf')
         total = len(w.pages)
         run('python3', '-I', f'{H}/header_phrase.py', f'{t}/m0.pdf', f'{t}/m1.pdf', PHRASE, '1', '1')
-        run('python3', '-I', f'{H}/footer_text.py', f'{t}/m1.pdf', f'{t}/m2.pdf', NAME, '1', '1')
+        run('python3', '-I', f'{H}/footer_text.py', f'{t}/m1.pdf', f'{t}/m2.pdf', FOOT, '1', '1')
         run('python3', '-I', f'{H}/footer_box.py', f'{t}/m2.pdf', f'{t}/m3.pdf', str(total), '1', '1')
         texts = [re.sub(r'\s+', '', p.extract_text() or '') for p in PdfReader(f'{t}/m3.pdf').pages]
         parts, start = [], 1
