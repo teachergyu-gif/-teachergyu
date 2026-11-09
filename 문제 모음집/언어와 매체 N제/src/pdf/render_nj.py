@@ -12,7 +12,8 @@ BOOK = '청운고 2학년 문법 2차 N제 모의고사'
 
 
 def hbox(title, inner):
-    return f'<div class="bogi"><div class="bt"><span>{esc(title)}</span></div>{inner}</div>'
+    t = f'<div class="bt"><span>{esc(title)}</span></div>' if title else ''
+    return f'<div class="bogi">{t}{inner}</div>'
 
 
 def question(q):
