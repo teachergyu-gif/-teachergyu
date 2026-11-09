@@ -59,7 +59,9 @@ def build(out_name):
             pa = next(i for i in range(pq, total) if f'문법N제제{k}회해설' in texts[i])
             items.append((f'N제 {k}회', '1~5번', pq + 1, pa + 1)); start = pa
         tmp = f'{H}/toc/_toc_out.html'
-        open(tmp, 'w').write(toc_html(NAME, '문법 모의고사', items, total))
+        sys.path.insert(0, f'{H}/toc')
+        import toc_exam
+        open(tmp, 'w').write(toc_exam.page(f'{NAME} {len(rounds)}회', '문법 모의고사', [(f'N제 {k}회', p1) for k, (n, r, p1, p2) in enumerate(items, 1)], total))
         try:
             run('node', f'{H}/toc/print_toc.js', f'{t}/toc.pdf', '_toc_out.html')
         finally:
