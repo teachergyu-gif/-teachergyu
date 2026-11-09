@@ -25,7 +25,7 @@ def question(q):
                        for i, t in enumerate(q['choices']))
         ch = '<table class="pairch3"><tr><td></td>' + ''.join(f'<th>{esc(h)}</th>' for h in q['pair_head']) + f'</tr>{rows}</table>'
     else:
-        ch = ''.join(f'<div class="ch"><span class="c">{CIRC[i]}</span><span class="t">{esc(t)}</span></div>' for i, t in enumerate(q['choices']))
+        ch = ''.join(f'<div class="ch"><span class="c">{CIRC[i]}</span><span class="t">{esc(t).replace(chr(10), "<br>")}</span></div>' for i, t in enumerate(q['choices']))
     return (f'<div class="u q"><div class="qh"><span class="n">{q["orig"]}.</span><span class="s">{esc(q["stem"])}</span></div>'
             f'{bogi(q.get("bogi"))}{boxes}{extra}{ch}</div>')
 
