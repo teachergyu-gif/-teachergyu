@@ -22,14 +22,19 @@ def a4(p):
     return p
 
 
-def toc_html(title, part_name, items, total):
+def toc_html(title, part_name, rows, total):
+    """rows = [(회 이름, 범위, 문제 쪽, 해설 쪽)] — 회 하나를 한 줄로"""
     t = open(f'{H}/toc/toc.html').read()
     i = t.index('  <div class="parts">'); j = t.index('<div class="fr">')
-    rows = ''.join(f'      <div class="it{" ex" if e else ""}"><span class="t">{tt}</span><span class="a">{r}</span><span class="d"></span><span class="p">p. {p}</span></div>\n'
-                   for tt, r, p, e in items)
+    body = ''.join(f'      <div class="it"><span class="t">{tt}</span><span class="a">{r}</span><span class="d"></span>'
+                   f'<span class="p"><span class="k2">문제</span> p. {p1}</span><span class="p"><span class="k2">해설</span> p. {p2}</span></div>\n'
+                   for tt, r, p1, p2 in rows)
     block = (f'  <div class="parts">\n    <div class="part">\n      <div class="ph"><span class="no">PART 01</span><span class="nm">{part_name}</span></div>\n'
-             f'{rows}    </div>\n  </div>\n</div>\n')
+             f'{body}    </div>\n  </div>\n</div>\n')
     t = t[:i] + block + t[j:]
+    css = ('.parts{margin-top:18px!important}.part{gap:6.5px!important}.it{font-size:13px!important}'
+           '.it .p{min-width:62px;text-align:right}.it .k2{font-family:"Noto Sans CJK KR",sans-serif;font-weight:500;font-size:11px;color:#6B7785;margin-right:3px}')
+    t = t.replace('</style>', css + '</style>', 1)
     return t.replace('TOTAL', str(total)).replace('TITLE', title)
 
 
@@ -50,9 +55,9 @@ def build(out_name):
         texts = [re.sub(r'\s+', '', p.extract_text() or '') for p in PdfReader(f'{t}/m3.pdf').pages]
         items, start = [], 1
         for k, r in enumerate(rounds, 1):
-            for key, label, rng, e in ((f'문법모의고사N제{k}회', f'N제 {k}회', '35~39번', False), (f'문법N제제{k}회해설', f'N제 {k}회 해설', '', True)):
-                pg = next(i for i in range(start, total) if key in texts[i])
-                items.append((label, rng, pg + 1, e)); start = pg
+            pq = next(i for i in range(start, total) if f'문법모의고사N제{k}회' in texts[i])
+            pa = next(i for i in range(pq, total) if f'문법N제제{k}회해설' in texts[i])
+            items.append((f'N제 {k}회', '35~39번', pq + 1, pa + 1)); start = pa
         tmp = f'{H}/toc/_toc_out.html'
         open(tmp, 'w').write(toc_html(NAME, '문법 모의고사', items, total))
         try:
