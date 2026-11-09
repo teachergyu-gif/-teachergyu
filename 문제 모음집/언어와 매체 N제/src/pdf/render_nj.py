@@ -22,6 +22,21 @@ def rng_no(r):
     return re.sub(r'\d+', lambda m: str(int(m.group()) - OFFSET), r)
 
 
+# 옛이응(ㆁ): 글꼴이 음절 속 옛이응을 일반 ㅇ 모양으로 그리므로, ㅇ으로 조합한 뒤 꼭지를 덧그린다
+_VERT = set('\u1161\u1162\u1163\u1164\u1165\u1166\u1167\u1168\u1175')
+_HORZ = set('\u1169\u116D\u116E\u1172\u1173\u119E')
+
+
+def yesieung(h):
+    def ini(m):
+        v = m.group(1)
+        k = 'v' if v[0] in _VERT else 'h' if v in _HORZ else 'c'
+        return f'<span class="ng ng{k}">\u110B{v}{m.group(2)}<span class="tk"></span></span>'
+    h = re.sub(r'\u114C([\u1160-\u11A7]+)([\u11A8-\u11FF]?)', ini, h)
+    h = re.sub(r'([\uAC00-\uD7A3]|[\u1100-\u115F][\u1160-\u11A7]+)\u11F0', lambda m: f'<span class="ng ngf">{m.group(1)}\u11BC<span class="tk"></span></span>', h)
+    return h
+
+
 def hbox(title, inner):
     t = f'<div class="bt"><span>{esc(title)}</span></div>' if title else ''
     return f'<div class="bogi">{t}{inner}</div>'
@@ -79,7 +94,7 @@ def main(data_dir, out_html):
     css = open(f'{D}/exam.css').read() + open(f'{D}/book.css').read() + open(f'{D}/nj.css').read()
     js = open(f'{D}/paginate.js').read()
     doc = f'''<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>
-<div id="src">{"".join(body)}</div>
+<div id="src">{yesieung("".join(body))}</div>
 <script>window.P0={int(os.environ.get("START_PAGE", "1")) - 1};window.HEAD="{BOOK}";window.SUB="";window.LOGO="file://{J}/logo2.jpg";</script>
 <script>{js}</script></body></html>'''
     open(out_html, 'w').write(doc)

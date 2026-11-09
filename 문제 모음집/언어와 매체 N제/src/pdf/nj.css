@@ -24,3 +24,11 @@ table.pairch3 td.c{width:6%;text-align:left}
 .bx{margin-right:.35em}
 .bogi .bsp .spk{font-weight:700}
 table.pairch3 td.l{text-align:left;padding:.8mm 1.5mm;line-height:1.55}
+/* 옛이응 꼭지: 글자 '뒤'에 폭 0인 작은 막대를 넣고(PDF에서 옛한글 글자가 흰 바탕 그림으로 찍혀 앞에 그리면 덮임)
+   왼쪽으로 1em 되돌려 ㅇ 위에 올림. 위치는 Noto Serif CJK KR 글자 모양에서 잰 값 */
+.ng{display:inline;text-indent:0}
+.ng .tk{display:inline-block;width:0;height:.21em;border-left:.11em solid #111;margin-right:-.11em;position:relative;z-index:1;line-height:0}
+.ngv .tk{left:calc(.27em - 1em);vertical-align:.655em}
+.ngh .tk{left:calc(.425em - 1em);vertical-align:.79em}
+.ngc .tk{left:calc(.305em - 1em);vertical-align:.765em}
+.ngf .tk{left:calc(.428em - 1em);vertical-align:.215em;height:.15em}
