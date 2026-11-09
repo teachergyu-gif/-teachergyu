@@ -51,7 +51,11 @@ def main(data_dir, out_html):
         body.append(f'<div class="u qtitle"><span>문법 모의고사 N제 {k}회</span></div>')
         for s in r['sets']:
             if s.get('works'):
-                body.append(render.passage(s, s['rng']))
+                ph = render.passage(s, s['rng'])
+                for w in s['works']:   # 지문 속 그림(도식): '@@FIG@@' 줄 자리에 html
+                    if w.get('fig_html'):
+                        ph = re.sub(r'<div class="ln[^"]*">@@FIG@@</div>', lambda m: w['fig_html'], ph, count=1)
+                body.append(ph)
             for q in s['questions']:
                 if q.get('colbrk'):   # 단 나눔 지정(두 단 여백 고르게)
                     body.append('<div class="u colbrk"></div>')
