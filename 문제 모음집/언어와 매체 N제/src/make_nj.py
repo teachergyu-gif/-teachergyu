@@ -57,7 +57,7 @@ def build(out_name):
         for k, r in enumerate(rounds, 1):
             pq = next(i for i in range(start, total) if f'문법모의고사N제{k}회' in texts[i])
             pa = next(i for i in range(pq, total) if f'문법N제제{k}회해설' in texts[i])
-            items.append((f'N제 {k}회', '35~39번', pq + 1, pa + 1)); start = pa
+            items.append((f'N제 {k}회', '1~5번', pq + 1, pa + 1)); start = pa
         tmp = f'{H}/toc/_toc_out.html'
         open(tmp, 'w').write(toc_html(NAME, '문법 모의고사', items, total))
         try:

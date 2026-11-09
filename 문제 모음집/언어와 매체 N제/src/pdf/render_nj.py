@@ -11,6 +11,17 @@ from render import esc, hbr, bogi, CIRC
 BOOK = '청운고 2학년 문법 2차 N제 모의고사'
 
 
+OFFSET = 34   # 원본 35~39번 → 교재 1~5번
+
+
+def qno(q):
+    return int(q['orig']) - OFFSET
+
+
+def rng_no(r):
+    return re.sub(r'\d+', lambda m: str(int(m.group()) - OFFSET), r)
+
+
 def hbox(title, inner):
     t = f'<div class="bt"><span>{esc(title)}</span></div>' if title else ''
     return f'<div class="bogi">{t}{inner}</div>'
@@ -26,13 +37,13 @@ def question(q):
         ch = '<table class="pairch3"><tr><td></td>' + ''.join(f'<th>{esc(h)}</th>' for h in q['pair_head']) + f'</tr>{rows}</table>'
     else:
         ch = ''.join(f'<div class="ch"><span class="c">{CIRC[i]}</span><span class="t">{esc(t).replace(chr(10), "<br>")}</span></div>' for i, t in enumerate(q['choices']))
-    return (f'<div class="u q"><div class="qh"><span class="n">{q["orig"]}.</span><span class="s">{esc(q["stem"])}</span></div>'
+    return (f'<div class="u q"><div class="qh"><span class="n">{qno(q)}.</span><span class="s">{esc(q["stem"])}</span></div>'
             f'{bogi(q.get("bogi"))}{boxes}{extra}{ch}</div>')
 
 
 def explanation(q, e):
     hang = lambda k, t: f'<div class="ep hang"><span class="c">{k}</span><span>{esc(t)}</span></div>'
-    out = [f'<div class="njh"><span class="no">{int(q["orig"]):03d}</span><span class="an">답 {esc(e["answer"])}</span></div>',
+    out = [f'<div class="njh"><span class="no">{qno(q):02d}</span><span class="an">답 {esc(e["answer"])}</span></div>',
            '<div class="njl ok"><span>이게 정답!</span></div>', f'<div class="ep">{esc(e["correct"])}</div>',
            '<div class="njl no"><span>왜 답이 아니지?</span></div>']
     out += [hang(k, t) for k, t in e['wrong']]
@@ -51,7 +62,7 @@ def main(data_dir, out_html):
         body.append(f'<div class="u qtitle"><span>문법 모의고사 N제 {k}회</span></div>')
         for s in r['sets']:
             if s.get('works'):
-                ph = render.passage(s, s['rng'])
+                ph = render.passage(s, rng_no(s['rng']))
                 for w in s['works']:   # 지문 속 그림(도식): '@@FIG@@' 줄 자리에 html
                     if w.get('fig_html'):
                         ph = re.sub(r'<div class="ln[^"]*">@@FIG@@</div>', lambda m: w['fig_html'], ph, count=1)
