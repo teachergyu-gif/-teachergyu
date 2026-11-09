@@ -21,7 +21,7 @@ def question(q):
     extra = bogi({'title': ex.get('title') or '', 'text': ex.get('text') or ''}) if isinstance(ex, dict) else ''
     boxes = ''.join(hbox(t, h) for t, h in q.get('html') or [])
     if q.get('pair_head'):
-        rows = ''.join(f'<tr><td class="c">{CIRC[i]}</td>' + ''.join(f'<td>{esc(x.strip())}</td>' for x in t.split(' / ')) + '</tr>'
+        rows = ''.join(f'<tr><td class="c">{CIRC[i]}</td>' + ''.join(f'<td{" class=l" if len(x.strip()) > 14 else ""}>{esc(x.strip()).replace(chr(10), "<br>")}</td>' for x in t.split(' / ')) + '</tr>'
                        for i, t in enumerate(q['choices']))
         ch = '<table class="pairch3"><tr><td></td>' + ''.join(f'<th>{esc(h)}</th>' for h in q['pair_head']) + f'</tr>{rows}</table>'
     else:

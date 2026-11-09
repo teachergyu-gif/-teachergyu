@@ -125,6 +125,16 @@ ex = {
             ['③', '(다)의 ‘출발할’은 ‘-ㄹ’로 미래를, (라)의 ‘준비한’은 ‘-ㄴ’으로 과거를 나타내므로 같은 시제를 나타내는 ⓑ의 사례가 아니다.'],
             ['④', '(나)와 (다)는 각각 ‘-었-’과 ‘-ㄹ’로 과거와 미래를 나타낼 뿐, 같은 형태의 어미가 다른 시제를 나타내는 ⓐ의 사례가 아니다. (다), (라)도 시제가 달라 ⓑ의 사례가 아니다.'],
             ['⑤', '(다)의 ‘-ㄹ’은 미래를 나타내 ⓐ의 사례가 아니고, (가)의 ‘-ㄴ’(현재)과 (나)의 ‘-었-’(과거)은 시제가 달라 ⓑ의 사례가 아니다.']]}}
+# 글자 칸(선지·해설)은 조판 때 한자를 자동으로 감싸므로 직접 넣은 hj span은 벗긴다(상자 html은 그대로)
+import re as _re
+_strip = lambda t: _re.sub(r'<span class="hj">(.*?)</span>', r'\1', t)
+for _s in sets:
+    for _q in _s['questions']:
+        _q['stem'] = _strip(_q['stem'])
+        _q['choices'] = [_strip(c) for c in _q.get('choices') or []]
+for _e in ex.values():
+    _e['correct'] = _strip(_e['correct'])
+    _e['wrong'] = [[a, _strip(t)] for a, t in _e['wrong']]
 json.dump({'title': '언어와 매체 N제 8회', 'source': '2026년 11월 고3 THE PREMIUM 모의고사 언어와 매체 35~39번', 'sets': sets, 'ex': ex},
           open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'r08.json'), 'w'), ensure_ascii=False, indent=1)
 print('ok')
