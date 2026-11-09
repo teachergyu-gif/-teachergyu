@@ -6,8 +6,8 @@ from pypdf import PdfReader, PdfWriter, Transformation
 H = os.path.dirname(os.path.abspath(__file__))
 DATA = H + '/data'
 OUTDIR = os.path.join(H, '..')
-NAME = '언어와 매체 N제 모의고사'
-PHRASE = '리치아카데미 | 언어와 매체 N제'
+NAME = '청운고 2학년 문법 2차 N제 모의고사'
+PHRASE = '리치아카데미 | 청운고 2학년'
 
 
 def run(*a, **kw):
@@ -50,11 +50,11 @@ def build(out_name):
         texts = [re.sub(r'\s+', '', p.extract_text() or '') for p in PdfReader(f'{t}/m3.pdf').pages]
         items, start = [], 1
         for k, r in enumerate(rounds, 1):
-            for key, label, rng, e in ((f'언어와매체N제{k}회', f'N제 {k}회', '35~39번', False), (f'언어와매체N제제{k}회해설', f'N제 {k}회 해설', '', True)):
+            for key, label, rng, e in ((f'문법모의고사N제{k}회', f'N제 {k}회', '35~39번', False), (f'문법N제제{k}회해설', f'N제 {k}회 해설', '', True)):
                 pg = next(i for i in range(start, total) if key in texts[i])
                 items.append((label, rng, pg + 1, e)); start = pg
         tmp = f'{H}/toc/_toc_out.html'
-        open(tmp, 'w').write(toc_html(NAME, '언어와 매체 N제', items, total))
+        open(tmp, 'w').write(toc_html(NAME, '문법 모의고사', items, total))
         try:
             run('node', f'{H}/toc/print_toc.js', f'{t}/toc.pdf', '_toc_out.html')
         finally:
@@ -68,4 +68,4 @@ def build(out_name):
 
 
 if __name__ == '__main__':
-    build(sys.argv[1] if len(sys.argv) > 1 else f'{NAME} (샘플 1회).pdf')
+    build(sys.argv[1] if len(sys.argv) > 1 else f'{NAME}.pdf')

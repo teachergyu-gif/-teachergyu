@@ -8,7 +8,7 @@ sys.path.insert(0, J)
 import render
 from render import esc, hbr, bogi, CIRC
 
-BOOK = '언어와 매체 N제 모의고사'
+BOOK = '청운고 2학년 문법 2차 N제 모의고사'
 
 
 def hbox(title, inner):
@@ -47,7 +47,7 @@ def main(data_dir, out_html):
     for k, r in enumerate(rounds(data_dir), 1):
         if body:
             body.append('<div class="u brk"></div>')
-        body.append(f'<div class="u qtitle"><span>언어와 매체 N제 {k}회</span></div>')
+        body.append(f'<div class="u qtitle"><span>문법 모의고사 N제 {k}회</span></div>')
         for s in r['sets']:
             if s.get('works'):
                 body.append(render.passage(s, s['rng']))
@@ -56,7 +56,7 @@ def main(data_dir, out_html):
                     body.append('<div class="u colbrk"></div>')
                 body.append(question(q))
         body.append('<div class="u brk"></div>')
-        body.append(f'<div class="u qtitle ans"><span>언어와 매체 N제 제{k}회 해설</span></div>')
+        body.append(f'<div class="u qtitle ans"><span>문법 N제 제{k}회 해설</span></div>')
         for s in r['sets']:
             for q in s['questions']:
                 body.append(explanation(q, r['ex'][str(q['orig'])]))
