@@ -1,0 +1,25 @@
+/* 언어와 매체 N제 */
+.bogi .bl.dot{padding-left:1.05em;text-indent:-1.05em}
+.bogi .bl.pi{text-indent:1em;margin-bottom:2mm}
+.bogi .bl.bnote2{font-size:.88em;padding-left:1.2em;text-indent:-1.2em;margin-top:1.5mm}
+.bx{display:inline-block;border:.8px solid #111;line-height:1.05;padding:0 .3mm;font-size:.9em;text-indent:0}
+table.jr{width:100%;border-collapse:collapse;margin:1.2mm 0;font-size:.92em;line-height:1.45;text-align:center}
+table.jr td,table.jr th{border:.8px solid #111;padding:.8mm .6mm;vertical-align:middle}
+table.jr small{font-size:.86em;white-space:nowrap}
+table.jr.ph th{background:#e6e6e6;font-weight:400}
+table.pairch3{border-collapse:collapse;margin:1.5mm 0 0 1mm;width:96%;line-height:1.6}
+table.pairch3 th{font-weight:400;text-align:center;padding:0 0 .6mm}
+table.pairch3 td{text-align:center;padding:.5mm .5mm}
+table.pairch3 td.c{width:6%;text-align:left}
+/* 해설 */
+.njh{display:flex;align-items:baseline;gap:3mm;margin:0 0 1.6mm;border-bottom:1.2px solid #29334A;padding-bottom:.8mm}
+.njh .no{font-family:"Noto Sans CJK KR",sans-serif;font-weight:900;font-size:14pt;color:#29334A;letter-spacing:.5px}
+.njh .an{font-family:"Noto Sans CJK KR",sans-serif;font-weight:700;font-size:10.5pt}
+.njl{margin:1.6mm 0 .8mm}
+.njl span{display:inline-block;font-family:"Noto Sans CJK KR",sans-serif;font-weight:700;font-size:8.6pt;border-radius:1mm;padding:.3mm 2mm;color:#fff}
+.njl.ok span{background:#D9822B}
+.njl.no span{background:#29334A}
+.u.ex.nj .ep{padding-left:0}
+.u.ex.nj{margin-bottom:7mm}
+.bx{margin-right:.35em}
+.bogi .bsp .spk{font-weight:700}

@@ -1,0 +1,20 @@
+/* 공통국어2 교재 공통 */
+.n.sd{font-size:.92em;white-space:nowrap;margin-right:1.2mm}
+.ln.subh{text-align:center;margin:1.4mm 0 .6mm;text-indent:0;padding-left:0}
+.ln.itm{padding-left:1.4em;text-indent:-1.4em}
+.pno{display:inline-block;min-width:1.25em;height:1.25em;line-height:1.25em;border-radius:50%;background:#29334A;color:#fff;font-family:"Noto Sans CJK KR",sans-serif;font-size:.72em;font-weight:700;text-align:center;text-indent:0;margin-right:.35em;vertical-align:.12em}
+.ep .c.pno{margin-right:1.2mm}
+.ep b.ak{display:inline-block;background:#DCEBFA;color:#29334A;border-radius:1mm;padding:0 1.6mm;margin-right:1.2mm;font-family:"Noto Sans CJK KR",sans-serif;font-size:.9em}
+table.pairch{border-collapse:collapse;margin:1mm 0 0 1mm;line-height:1.55}
+table.pairch th{font-weight:400;text-align:left;padding:0 3mm .4mm 0}
+table.pairch td{padding:.4mm 3mm .4mm 0;vertical-align:top}
+table.pairch td.c{padding-right:1.2mm}
+.qanote{font-size:9pt;color:#555;margin-top:1.5mm}
+/* 지문 분석: 넉넉한 간격 */
+.u.ex.an{margin-bottom:6.5mm}
+.ansec{margin:0 0 2.2mm}
+.ansec span{display:inline-block;background:#29334A;color:#fff;border-radius:1mm;padding:.5mm 2.6mm;font-family:"Noto Sans CJK KR",sans-serif;font-weight:700;font-size:.95em}
+.ep.anp{line-height:1.75;margin-bottom:1.6mm}
+.ep.anp:last-child{margin-bottom:0}
+.ansec + .ep.anp + .ansec{margin-top:4.5mm}
+.eh.anh{margin-bottom:3mm;font-weight:700;color:#29334A;font-size:1.05em}
