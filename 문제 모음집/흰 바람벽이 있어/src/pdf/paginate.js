@@ -317,6 +317,17 @@
       if (over || Math.abs(free(L) - free(R)) >= before) { L.appendChild(q); break; }
       moved = q;
     }
+    // 이 교재(사용자 지정): 왼쪽 단이 지문 + 문항이고 오른쪽 단에 자리가 넉넉하면 왼쪽 단 문항을 모두 오른쪽 단 위로(왼쪽에는 지문만)
+    const lk = [...L.children].filter(k => !k.classList.contains('qtitle') && !k.classList.contains('exsp'));
+    if (lk.length >= 2 && lk[0].classList.contains('set') && lk.slice(1).every(k => k.classList.contains('q'))) {
+      for (;;) {
+        const q = L.lastElementChild;
+        if (!q || !q.classList.contains('q')) break;
+        R.insertBefore(q, R.querySelector(':scope > .q'));
+        if (R.scrollHeight > R.clientHeight + 0.5) { L.appendChild(q); break; }
+        moved = q;
+      }
+    }
     if (moved && moved.dataset.key) window.BALANCED.push(moved.dataset.key);
   });
   document.querySelectorAll('.tot').forEach(t => t.textContent = pages.filter(p => !p.classList.contains('memopage')).length + (window.P0 || 0));
