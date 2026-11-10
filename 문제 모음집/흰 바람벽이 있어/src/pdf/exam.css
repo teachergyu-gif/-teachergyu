@@ -191,3 +191,6 @@ u, u .hj, u .nb, u .w{text-decoration:underline;text-decoration-thickness:.07em;
 .bogi .bl.bsp .spk{flex:none;white-space:nowrap}
 .bogi .bl.bsp .spt{flex:1;text-align:justify}
 .ctab td.lab,.ctab.grid.two tr:first-child td.lab{text-align:center;vertical-align:middle}
+/* 두 칸 표: <보기> 상자와 같은 좌우 위치(단 너비보다 4mm씩 좁게), 칸 안 ㄱ. ㄴ. 항목 내어쓰기 */
+.ctab.grid.two{margin:1.5mm 4mm 2mm;width:calc(100% - 8mm)}
+.ctab td .ci.hi{padding-left:1.3em;text-indent:-1.3em}

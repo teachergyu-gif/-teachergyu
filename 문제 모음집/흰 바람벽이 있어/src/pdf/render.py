@@ -102,7 +102,8 @@ def bogi(b):
                 if r + 1 < len(rows) and rows[r + 1][c] == '' and c < 2 and v:
                     rs = 2
                 lab = c == 0 and len(re.sub(r'<[^>]+>', '', v)) <= 5   # [A] 같은 짧은 표지 칸: 가운데 정렬
-                tds.append(f'<td rowspan="{rs}"{" class=lab" if lab else ""}>{esc(v).replace(chr(10), "<br>")}</td>')
+                cell = ''.join(f'<div class="ci{" hi" if re.match(r"^[ㄱ-ㅎ]\.|^[㉠-㉭ⓐ-ⓩ①-⑤]", x) else ""}">{esc(x)}</div>' for x in v.split(chr(10))) if not lab else esc(v)   # ㄱ. ㄴ. 항목은 줄마다 내어쓰기
+                tds.append(f'<td rowspan="{rs}"{" class=lab" if lab else ""}>{cell}</td>')
             trs.append('<tr>' + ''.join(tds) + '</tr>')
         if max(len(r) for r in rows) == 2:   # 번역·원문 두 칸 표: 첫 줄도 머리 줄이 아님
             t = (f'<div class="bt"><span>{esc(b.get("title") or "")}</span></div>' if b.get('title') else '')
