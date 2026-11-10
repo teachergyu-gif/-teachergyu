@@ -121,6 +121,7 @@ def apply(data, log):
     add_choices(data, log)
     relabel_items(data, log)
     drop_works(data, log)
+    if not _os.environ.get("NO_MERGE"): merge_sets(data, log)
     drop_marks(data, log)
     add_ex(data, log)
 
@@ -391,3 +392,71 @@ def add_ex(data, log):
                     assert not e.get(k), ('원본에 해설이 있음', src['source'], e['orig'], k)
                     e[k] = v
                 log.append(f'{src["source"]} {e["orig"]}번: 원본에 없는 해설 새로 씀')
+
+
+# ---- 이어진 두 묶음의 지문이 사실상 같으면 하나로(【5～6】처럼) ----
+import difflib
+
+
+def _plain_works(ws):
+    t = '\n'.join((w.get('label') or '') + w['lines'] + (w.get('author') or '') for w in ws)
+    t = re.sub(r'</?\w+>|\{/?[^{}]+\}|\[[A-Zㄱ-ㅎ가-하ⓐ-ⓩ]\]', '', t)
+    t = re.sub('[' + SYMS + r']', '', t)
+    return re.sub(r'[\s\-—―‘’“”\'".,]', '', t)
+
+
+def _marks_in(ws):
+    t = json_text([]) if False else '\n'.join(w['lines'] for w in ws)
+    have = set(ch for ch in t if ch in SYMS)
+    have |= set(re.findall(r'\{([^{}/]+)\}', t)) | set(re.findall(r'\[([A-Z])\]', t))
+    return have
+
+
+def _mark_map(ws):
+    """기호 → 그 기호가 가리키는 글(밑줄 구절, [A] 묶음 내용) — 기호 비교용"""
+    t = '\n'.join(w['lines'] for w in ws)
+    m = {}
+    for sym, body in re.findall(r'([' + SYMS + r']) ?(?:<b>)?<u>(.*?)</u>', t):
+        m.setdefault(sym, re.sub(r'\W', '', re.sub(r'</?\w+>', '', body)))
+    for sym in set(ch for ch in t if ch in SYMS) - set(m):
+        i = t.index(sym); m[sym] = re.sub(r'\W', '', re.sub(r'</?\w+>', '', t[i + 1:i + 12]))
+    for lab, body in re.findall(r'\{([^{}/]+)\}(.*?)\{/\1\}', t, flags=re.S):
+        m[lab] = re.sub(r'\W', '', re.sub(r'</?\w+>', '', body))
+    return m
+
+
+def _same_marks(keep, other, qs):
+    """other 묶음 문항이 쓰는 기호가 keep 지문에서도 같은 글을 가리키는가"""
+    mk, mo = _mark_map(keep['works']), _mark_map(other['works'])
+    for sym in used_marks(qs):
+        if sym in mo and mk.get(sym) != mo[sym]:
+            return False
+        if sym not in mo and sym in mk:
+            return False
+    return True
+
+
+def merge_sets(data, log):
+    for src in data:
+        out = []
+        for s in src['sets']:
+            qs = s.get('questions') or []
+            if out and qs and out[-1].get('questions'):
+                a = out[-1]
+                if len(a['works']) == len(s['works']):
+                    r = difflib.SequenceMatcher(None, _plain_works(a['works']), _plain_works(s['works']), autojunk=False).ratio()
+                    if r >= 0.97:
+                        need = used_marks(a['questions'] + qs)
+                        keep = next((x for x in (a, s) if need <= (_marks_in(x['works']) | {m for m in need if m not in SYMS and not re.match(r'^[A-Z]$', m)})), None)
+                        if keep is not None:
+                            other = s if keep is a else a
+                            if not (_same_marks(keep, other, other['questions']) and _same_marks(keep, keep, keep['questions'])):
+                                keep = None
+                        if keep is not None:
+                            # 다른 쪽 지문에만 있는 기호를 묻는 문항이 없을 때만 합침
+                            merged = dict(keep, questions=a['questions'] + qs, notes=keep.get('notes') or a.get('notes') or s.get('notes'))
+                            out[-1] = merged
+                            log.append(f"{src['source']} 지문 묶음 합침({r:.3f}): {[q['orig'] for q in a['questions']]} + {[q['orig'] for q in qs]}")
+                            continue
+            out.append(s)
+        src['sets'] = out

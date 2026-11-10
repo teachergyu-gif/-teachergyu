@@ -37,6 +37,9 @@ for key, folder in (('기본', 'L1'), ('실전', 'L2'), ('고난도', 'L3')):
 tg = {'source': 'TG', 'sets': [], 'ex': [], 'issues': []}
 for part in ('t01', 't02'):
     d = load(part)
+    exf = f'{W}/{part}/ex.json'   # 원본에 해설이 없어 새로 쓴 정답·해설
+    if os.path.exists(exf):
+        tg['ex'] += [dict(e, orig=f'{part}-{e["orig"]}') for e in json.load(open(exf))]
     for s in d['sets']:
         qs = s.get('questions') or []
         if not qs:
