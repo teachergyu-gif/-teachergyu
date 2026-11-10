@@ -2,7 +2,7 @@
 selection.json = {"기본": [["s01", 4], ...], "실전": [...], "고난도": [...]}  — 목록 순서 = 교재에 실리는 순서
 (최근 연도부터: s01·s02 2025 → s03 2024(01) → s04 2024(02) → s05·s06 2022, 같은 파일은 원래 순서)
 사용: python3 select.py 작업폴더(work) 데이터폴더(data)"""
-import json, os, sys
+import json, os, re, sys
 
 W, D = sys.argv[1], sys.argv[2]
 sel = json.load(open(f'{D}/selection.json'))
@@ -42,7 +42,8 @@ for part in ('t01', 't02'):
         if not qs:
             continue
         s = dict(s, questions=[dict(q, orig=f'{part}-{q["orig"]}') for q in qs])
-        if tg['sets'] and tg['sets'][-1]['works'] == s['works']:
+        same = lambda a, b: [(w.get('label'), (w.get('author') or '').strip(), re.sub(r'\W', '', w['lines'])[:15]) for w in a] == [(w.get('label'), (w.get('author') or '').strip(), re.sub(r'\W', '', w['lines'])[:15]) for w in b]
+        if tg['sets'] and (tg['sets'][-1]['works'] == s['works'] or same(tg['sets'][-1]['works'], s['works'])):
             tg['sets'][-1]['questions'] += s['questions']
         else:
             tg['sets'].append(s)
