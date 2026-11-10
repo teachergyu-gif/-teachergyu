@@ -167,6 +167,13 @@ def explanation(n, e):
     if not short:
         out.append(f'<div class="ep"><b>[모범 답안]</b> {esc(a)}</div>')
     def hang(t):
+        g = re.match(r'^((?:[①②③④⑤][\s,·]*){2,})(.*)$', t, re.S)
+        if g:   # 여러 선지를 한꺼번에 설명: 번호 묶음은 한 줄, 설명은 들여 쓴 문단(ㄱ: ㄴ. 항목은 줄마다 내어쓰기)
+            lab = ''.join(re.findall(r'[①②③④⑤]', g.group(1)))
+            body = g.group(2).strip()
+            parts = [x.strip() for x in re.split(r'\s+(?=[ㄱ-ㅎ]\s?[:.]\s)', body) if x.strip()]
+            items = ''.join(f'<div class="gi{" hi" if re.match(r"^[ㄱ-ㅎ]\s?[:.]", x) else ""}">{esc(x)}</div>' for x in parts)
+            return f'<div class="ep grp"><div class="gl">{lab}</div><div class="gb">{items}</div></div>'
         m = re.match(r'^([①②③④⑤])\s*(.*)$', t, re.S)
         if m:
             return f'<div class="ep hang"><span class="c">{m.group(1)}</span><span>{esc(m.group(2))}</span></div>'
