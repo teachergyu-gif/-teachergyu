@@ -59,7 +59,7 @@ def passage(s, rng=''):
         group = None
         # 산문(설명문·수필 등, 한 문단이 아주 긴 글): 문단 첫 줄 들여쓰기(시처럼 내어쓰지 않음)
         pr = ' pr' if (max(len(re.sub(r'<[^>]+>', '', x)) for x in w['lines'].split('\n')) > 100 or '나의 꿈' in (w.get('author') or '')) else ''   # 「나의 꿈」: 산문시
-        for l in w['lines'].split('\n'):
+        for l in re.sub(r'(?<=\S)\s+([<(]중략[>)])\s*(?=\n|$)', r'\n\1', w['lines']).split('\n'):   # 줄 끝에 붙은 <중략>은 따로 한 줄
             m = re.match(r'^\{([^{}/]+)\}', l)
             if m:
                 group = [m.group(1), []]; l = l[m.end():]
@@ -77,6 +77,8 @@ def passage(s, rng=''):
                 l = mt.group(2)
             fi = ' fi' if ('흰 바람벽이 있어' in (w.get('author') or '') or '좁다란 방의 흰 바람' in re.sub(r'<[^>]+>|[㉠-㉭ⓐ-ⓩ]\s?', '', w['lines'])) else ''   # 「흰 바람벽이 있어」: 행 첫머리를 들여 써서 새 행과 이어지는 줄을 구별
             cell = '<div class="ln sp"></div>' if l.strip() == '' else f'<div class="ln{pr if l.strip() != "(중략)" else " pr nd"}{fi}">{hbr(esc(l))}</div>'
+            if re.fullmatch(r'\s*[.…·]*\s*[<〈(（\[]\s*중\s*략\s*[>〉)）\]]\s*[.…·]*\s*', l):   # (중략)·<중략>: 가운데 정렬
+                cell = f'<div class="ln mid">{esc(l.strip())}</div>'
             if re.fullmatch(r'\s*[<〈(（]\s*제?\s*\d+\s*수\s*[>〉)）]\s*', l):   # <1수>, <제19수> 같은 수 표시: 오른쪽 정렬
                 cell = f'<div class="ln au">{esc(l.strip())}</div>'
             if group:
