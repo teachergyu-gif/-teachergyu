@@ -227,7 +227,7 @@ def main(work_dir, out_html):
         exs = []
         n = 0   # 작품마다 1번부터
         if wi:
-            body.append('<div class="u brk"></div>')
+            body.append('<div class="u brk evenbrk"></div>')   # 문제 은행은 짝수 쪽에서 시작(홀수면 MEMO 쪽을 끼움)
         body.append(f'<div class="u qtitle"><span>{label.split(", ")[1]} 문제 은행</span></div>')
         for s in src['sets']:
             qs = s.get('questions') or []

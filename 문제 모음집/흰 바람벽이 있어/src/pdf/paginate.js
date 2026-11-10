@@ -150,8 +150,17 @@
       if (tooTall) return splitQ(u);
       col.removeChild(u);
     }
-    if (u.classList.contains('brk')) { colIdx = 2; col = null; nextCol(); return; }
+    if (u.classList.contains('brk') && !u.classList.contains('evenbrk')) { colIdx = 2; col = null; nextCol(); return; }
     if (u.classList.contains('colbrk')) { if (!empty()) nextCol(); col.dataset.forced = 1; return; }
+    if (u.classList.contains('evenbrk')) {   // 이 교재: 다음 문제 은행을 짝수 쪽에서 시작(새 쪽이 홀수면 그 쪽을 MEMO로)
+      colIdx = 2; col = null; nextCol();
+      if ((pages.length + (window.P0 || 0)) % 2 === 1) {
+        const pg = pages[pages.length - 1];
+        pg.classList.add('memopage'); pg.innerHTML = '<div class="memo"><span>MEMO</span></div>';
+        colIdx = 2; col = null; nextCol();
+      }
+      return;
+    }
     if (u.classList.contains('memo')) { colIdx = 2; col = null; nextCol(); const pg = pages[pages.length - 1];
       pg.classList.add('memopage'); pg.innerHTML = '<div class="memo"><span>MEMO</span></div>'; return; }
     if (u.classList.contains('set')) {

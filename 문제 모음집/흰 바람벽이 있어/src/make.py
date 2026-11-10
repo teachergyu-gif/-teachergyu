@@ -36,9 +36,12 @@ with tempfile.TemporaryDirectory() as t:
         w.add_page(a4(p))
     w.write(f'{t}/m0.pdf')
     total = len(w.pages)
-    run('python3', '-I', f'{H}/header_phrase.py', f'{t}/m0.pdf', f'{t}/m1.pdf', '리치아카데미 | 국제고 1학년', '1', '1')
-    run('python3', '-I', f'{H}/footer_text.py', f'{t}/m1.pdf', f'{t}/m2.pdf', FOOT, '1', '1')
-    run('python3', '-I', f'{H}/footer_box.py', f'{t}/m2.pdf', f'{t}/m3.pdf', str(total), '1', '1')
+    memo = [i + 1 for i, p in enumerate(PdfReader(f'{t}/m0.pdf').pages) if (p.extract_text() or '').strip() == 'MEMO']
+    skip = ','.join(str(x) for x in [1] + memo)   # 1쪽(목차)·MEMO 쪽은 머리말·꼬리말 없음
+    print('MEMO 쪽', memo)
+    run('python3', '-I', f'{H}/header_phrase.py', f'{t}/m0.pdf', f'{t}/m1.pdf', '리치아카데미 | 국제고 1학년', '1', skip)
+    run('python3', '-I', f'{H}/footer_text.py', f'{t}/m1.pdf', f'{t}/m2.pdf', FOOT, '1', skip)
+    run('python3', '-I', f'{H}/footer_box.py', f'{t}/m2.pdf', f'{t}/m3.pdf', str(total), '1', skip)
     # 목차 쪽 번호: 작품별 '문제 은행' 제목 쪽, 그 뒤 첫 '빠른 정답' 쪽
     texts = [(p.extract_text() or '') for p in PdfReader(f'{t}/m3.pdf').pages]
     toc = open(f'{H}/toc/toc.html').read().replace('TOTAL', str(total)).replace('TITLE', TITLE)
