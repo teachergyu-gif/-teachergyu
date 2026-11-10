@@ -128,6 +128,17 @@ def bogi(b):
             return f'<div class="bogi tbl">{t}{body}</div>' if t else body
         return '<table class="ctab grid"><colgroup><col class="a"><col class="b"><col></colgroup>' + ''.join(trs) + '</table>'
     title = '<보기>' if b.get('title') is None else b['title']
+    if '조건' in (title or ''):   # <조건>: 항목을 (1), (2)…로 다시 매기고 줄마다 내어쓰기
+        items = []
+        for x in b['text'].split('\n'):
+            m = re.match(r'^\s*(?:[-•·]|\d+\s*[.)]|\(\d+\)|[①-⑩])\s*(.*)$', x)
+            if m or not items:
+                items.append((m.group(1) if m else x).strip())
+            elif x.strip():
+                items[-1] += ' ' + x.strip()
+        items = [re.sub(r'것$', '것.', t) for t in items if t]
+        body = ''.join(f'<div class="bl bi cj"><span class="no">({k})</span> {hbr(esc(t))}</div>' for k, t in enumerate(items, 1))
+        return f'<div class="bogi cond"><div class="bt"><span>{esc(title)}</span></div>{body}</div>'
     ITEM = re.compile(r'^([ㄱ-ㅎ]\.|[㉠-㉭]|[ⓐ-ⓩ]|\(\S\))')
     def kind(x):
         if re.match(r'^[-―—]\s*\S', x) and re.search(r'[「『｢<]|, ', x): return ' bau'     # 작가 줄(‘- 백석, 「…」’): 오른쪽 맞춤

@@ -207,3 +207,7 @@ u, u .hj, u .nb, u .w{text-decoration:underline;text-decoration-thickness:.07em;
 /* <보기>·<조건> 제목 글씨를 본문과 같은 크기로 */
 .bogi .bt{top:-.62em}
 .bogi .bt span{font-size:1em}
+/* <보기>와 <조건> 등 상자가 이어질 때 간격, <조건> 항목 (1)(2) 내어쓰기·양쪽 정렬 */
+.bogi + .bogi{margin-top:5mm}
+.bogi.cond .bl.cj{text-align:justify;padding-left:1.75em;text-indent:-1.75em}
+.bogi.cond .bl.cj{letter-spacing:0!important;word-spacing:normal!important}
