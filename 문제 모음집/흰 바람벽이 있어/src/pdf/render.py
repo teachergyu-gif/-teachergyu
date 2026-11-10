@@ -77,6 +77,8 @@ def passage(s, rng=''):
                 l = mt.group(2)
             fi = ' fi' if ('흰 바람벽이 있어' in (w.get('author') or '') or '좁다란 방의 흰 바람' in re.sub(r'<[^>]+>|[㉠-㉭ⓐ-ⓩ]\s?', '', w['lines'])) else ''   # 「흰 바람벽이 있어」: 행 첫머리를 들여 써서 새 행과 이어지는 줄을 구별
             cell = '<div class="ln sp"></div>' if l.strip() == '' else f'<div class="ln{pr if l.strip() != "(중략)" else " pr nd"}{fi}">{hbr(esc(l))}</div>'
+            if re.fullmatch(r'\s*[<〈(（]\s*제?\s*\d+\s*수\s*[>〉)）]\s*', l):   # <1수>, <제19수> 같은 수 표시: 오른쪽 정렬
+                cell = f'<div class="ln au">{esc(l.strip())}</div>'
             if group:
                 group[1].append(cell)
                 if end:
