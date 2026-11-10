@@ -137,7 +137,8 @@ def bogi(b):
             elif x.strip():
                 items[-1] += ' ' + x.strip()
         items = [re.sub(r'것$', '것.', t) for t in items if t]
-        body = ''.join(f'<div class="bl bi cj"><span class="no">({k})</span> {hbr(esc(t))}</div>' for k, t in enumerate(items, 1))
+        keep = lambda h: re.sub(r'\(\s*[\u3000 ]+\s*\)', lambda m: '<span class="nb">' + m.group(0) + '</span>', h)   # 빈칸 ( )이 줄 끝에서 갈라지지 않게
+        body = ''.join(f'<div class="bl bi cj"><span class="no">({k})</span> {keep(hbr(esc(t)))}</div>' for k, t in enumerate(items, 1))
         return f'<div class="bogi cond"><div class="bt"><span>{esc(title)}</span></div>{body}</div>'
     ITEM = re.compile(r'^([ㄱ-ㅎ]\.|[㉠-㉭]|[ⓐ-ⓩ]|\(\S\))')
     def kind(x):
