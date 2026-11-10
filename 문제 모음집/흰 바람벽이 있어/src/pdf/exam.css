@@ -199,3 +199,8 @@ u, u .hj, u .nb, u .w{text-decoration:underline;text-decoration-thickness:.07em;
 .ep.gi.hi{padding-left:1.4em;text-indent:-1.4em}
 .box .ln.fi.fi.fi:not(.au):not(.shp):not(.pr):not(.ind):not(.note){padding-left:0;text-indent:1em}
 .box .ln.mid.mid.mid.mid.mid.mid{text-align:center;padding-left:0;text-indent:0}
+/* <보기> 관계 도식(두 상자 ↔) */
+.bogi .rel{display:flex;align-items:center;justify-content:center;gap:9mm;margin:1.5mm 0 .5mm}
+.bogi .relbox{border-collapse:collapse;min-width:30mm;text-align:center}
+.bogi .relbox td{border:1px solid #333;padding:1mm 3mm}
+.bogi .rel .arr{font-size:1.1em}

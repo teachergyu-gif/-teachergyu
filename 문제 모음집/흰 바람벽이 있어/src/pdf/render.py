@@ -100,6 +100,8 @@ def bogi(b):
         return ''
     if isinstance(b, list):   # <보기 1>·<보기 2>처럼 상자가 여럿
         return ''.join(bogi(x) for x in b)
+    if b.get('html'):   # 도식(관계도 등): 미리 짠 html
+        return f'<div class="bogi"><div class="bt"><span>{esc(b.get("title") or "<보기>")}</span></div>{b["html"]}</div>'
     if b.get('grid'):   # 인물 관계 도식: 칸마다 가운데 정렬
         t = f'<div class="bt"><span>{esc(b.get("title") or "<보기>")}</span></div>'
         cells = ''.join(f'<div class="gc">{esc(c)}</div>' for r in b['grid'] for c in r)

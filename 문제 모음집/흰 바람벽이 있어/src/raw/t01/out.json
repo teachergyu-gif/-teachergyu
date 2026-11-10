@@ -547,19 +547,7 @@
      "stem": "<보기>는 (라)의 화자와 [A]에서 나타난 소재의 관계를 정리한 자료이다. 제시된 작품 중 <보기>와 가장 유사한 내용을 형상화한 것은?",
      "bogi": {
       "title": "<보기>",
-      "text": "",
-      "table": [
-       [
-        "화자",
-        "",
-        "장초"
-       ],
-       [
-        "근심이 많음",
-        "↔",
-        "무지(無知)함"
-       ]
-      ]
+      "html": "<div class=rel><table class=relbox><tr><td>화자</td></tr><tr><td>근심이 많음</td></tr></table><span class=arr>↔</span><table class=relbox><tr><td>장초</td></tr><tr><td>무지(無知)함</td></tr></table></div>"
      },
      "choices": [
       "방 안에 켜 놓은 촛불은 누구와 이별을 하였기에 / 겉으로 눈물을 흘리면서 속이 타 들어가는 줄을 모르는가 / 저 촛불도 나와 같아서 속이 타는 줄을 모르는구나",
