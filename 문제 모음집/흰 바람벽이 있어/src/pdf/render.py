@@ -101,11 +101,13 @@ def bogi(b):
                 rs = 1
                 if r + 1 < len(rows) and rows[r + 1][c] == '' and c < 2 and v:
                     rs = 2
-                tds.append(f'<td rowspan="{rs}">{esc(v)}</td>')
+                lab = c == 0 and len(re.sub(r'<[^>]+>', '', v)) <= 5   # [A] 같은 짧은 표지 칸: 가운데 정렬
+                tds.append(f'<td rowspan="{rs}"{" class=lab" if lab else ""}>{esc(v).replace(chr(10), "<br>")}</td>')
             trs.append('<tr>' + ''.join(tds) + '</tr>')
         if max(len(r) for r in rows) == 2:   # 번역·원문 두 칸 표: 첫 줄도 머리 줄이 아님
             t = (f'<div class="bt"><span>{esc(b.get("title") or "")}</span></div>' if b.get('title') else '')
-            body = '<table class="ctab grid two"><colgroup><col style="width:62%"><col></colgroup>' + ''.join(trs) + '</table>'
+            short = all(len(re.sub(r'<[^>]+>', '', r[0])) <= 5 for r in rows)
+            body = f'<table class="ctab grid two"><colgroup><col style="width:{"15%" if short else "62%"}"><col></colgroup>' + ''.join(trs) + '</table>'
             return f'<div class="bogi tbl">{t}{body}</div>' if t else body
         return '<table class="ctab grid"><colgroup><col class="a"><col class="b"><col></colgroup>' + ''.join(trs) + '</table>'
     title = '<보기>' if b.get('title') is None else b['title']

@@ -190,3 +190,4 @@ u, u .hj, u .nb, u .w{text-decoration:underline;text-decoration-thickness:.07em;
 .bogi .bl.bsp{display:flex;gap:.35em}
 .bogi .bl.bsp .spk{flex:none;white-space:nowrap}
 .bogi .bl.bsp .spt{flex:1;text-align:justify}
+.ctab td.lab,.ctab.grid.two tr:first-child td.lab{text-align:center;vertical-align:middle}
