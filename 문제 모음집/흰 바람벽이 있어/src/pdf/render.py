@@ -75,7 +75,8 @@ def passage(s, rng=''):
                 if not mt.group(2):
                     continue
                 l = mt.group(2)
-            cell = '<div class="ln sp"></div>' if l.strip() == '' else f'<div class="ln{pr if l.strip() != "(중략)" else " pr nd"}">{hbr(esc(l))}</div>'
+            fi = ' fi' if ('흰 바람벽이 있어' in (w.get('author') or '') or '좁다란 방의 흰 바람' in re.sub(r'<[^>]+>|[㉠-㉭ⓐ-ⓩ]\s?', '', w['lines'])) else ''   # 「흰 바람벽이 있어」: 행 첫머리를 들여 써서 새 행과 이어지는 줄을 구별
+            cell = '<div class="ln sp"></div>' if l.strip() == '' else f'<div class="ln{pr if l.strip() != "(중략)" else " pr nd"}{fi}">{hbr(esc(l))}</div>'
             if group:
                 group[1].append(cell)
                 if end:

@@ -197,3 +197,4 @@ u, u .hj, u .nb, u .w{text-decoration:underline;text-decoration-thickness:.07em;
 /* 오답풀이: 여러 선지를 묶은 문단(둘째 줄부터 들여쓰기), ㄱ~ㄹ 항목 해설(항목마다 내어쓰기) */
 .ep.gp{padding-left:1.2em;text-indent:-1.2em}
 .ep.gi.hi{padding-left:1.4em;text-indent:-1.4em}
+.box .ln.fi.fi.fi:not(.au):not(.shp):not(.pr):not(.ind):not(.note){padding-left:0;text-indent:1em}
