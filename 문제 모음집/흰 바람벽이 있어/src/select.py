@@ -40,16 +40,18 @@ for part in ('t01', 't02'):
     exf = f'{W}/{part}/ex.json'   # 원본에 해설이 없어 새로 쓴 정답·해설
     if os.path.exists(exf):
         tg['ex'] += [dict(e, orig=f'{part}-{e["orig"]}') for e in json.load(open(exf))]
+    first = True
     for s in d['sets']:
         qs = s.get('questions') or []
         if not qs:
             continue
         s = dict(s, questions=[dict(q, orig=f'{part}-{q["orig"]}') for q in qs])
         same = lambda a, b: [(w.get('label'), (w.get('author') or '').strip(), re.sub(r'\W', '', w['lines'])[:15]) for w in a] == [(w.get('label'), (w.get('author') or '').strip(), re.sub(r'\W', '', w['lines'])[:15]) for w in b]
-        if tg['sets'] and (tg['sets'][-1]['works'] == s['works'] or same(tg['sets'][-1]['works'], s['works'])):
+        if tg['sets'] and (tg['sets'][-1]['works'] == s['works'] or (first and same(tg['sets'][-1]['works'], s['works']))):   # 파일 경계에서 같은 지문이 두 번 옮겨진 것
             tg['sets'][-1]['questions'] += s['questions']
         else:
             tg['sets'].append(s)
+        first = False
 os.makedirs(f'{D}/TG', exist_ok=True)
 json.dump(tg, open(f'{D}/TG/out.json', 'w'), ensure_ascii=False, indent=1)
 print('TG', sum(len(s['questions']) for s in tg['sets']), '문항', len(tg['sets']), '묶음')
