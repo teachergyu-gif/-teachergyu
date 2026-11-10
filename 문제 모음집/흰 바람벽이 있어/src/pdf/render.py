@@ -152,7 +152,8 @@ def question(n, q, key=None):
     if isinstance(ex, dict):
         extra = bogi({'title': ex.get('title') or '', 'text': ex.get('text') or ''})
     elif ex:
-        extra = bogi({'title': '', 'text': ex})
+        m = re.match(r'^\s*(<[^<>\n]{1,8}>)\s*\n', ex)   # 첫 줄이 ‘<조건>’ 같은 제목이면 <보기>처럼 테두리 가운데 제목으로
+        extra = bogi({'title': m.group(1), 'text': ex[m.end():]}) if m else bogi({'title': '', 'text': ex})
     def chtext(t):
         # 선지가 인용 시 + 작가 줄(‘\n- 작가, 「제목」’)이면 작가 줄은 따로 오른쪽 맞춤
         m = re.match(r'^(.*?)\s*\n\s*(-\s*[^\n]+)$', t, re.S)

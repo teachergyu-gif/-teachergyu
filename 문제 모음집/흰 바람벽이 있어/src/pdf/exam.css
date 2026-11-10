@@ -204,3 +204,6 @@ u, u .hj, u .nb, u .w{text-decoration:underline;text-decoration-thickness:.07em;
 .bogi .relbox{border-collapse:collapse;min-width:30mm;text-align:center}
 .bogi .relbox td{border:1px solid #333;padding:1mm 3mm}
 .bogi .rel .arr{font-size:1.1em}
+/* <보기>·<조건> 제목 글씨를 본문과 같은 크기로 */
+.bogi .bt{top:-.62em}
+.bogi .bt span{font-size:1em}
