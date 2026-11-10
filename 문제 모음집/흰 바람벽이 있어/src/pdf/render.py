@@ -166,17 +166,22 @@ def explanation(n, e):
     out = [f'<div class="eh"><span>{n}. {esc(a) if short else ""}</span></div>']
     if not short:
         out.append(f'<div class="ep"><b>[모범 답안]</b> {esc(a)}</div>')
+    ITEM = r'[ㄱ-ㅎ]\s?[:.]\s'
+    def items(body):
+        parts = [x.strip() for x in re.split(r'\s+(?=' + ITEM + ')', body) if x.strip()]
+        return ''.join(f'<div class="ep gi{" hi" if re.match(ITEM, x) else ""}">{esc(x)}</div>' for x in parts)
     def hang(t):
-        g = re.match(r'^((?:[①②③④⑤][\s,·]*){2,})(.*)$', t, re.S)
-        if g:   # 여러 선지를 한꺼번에 설명: 번호 묶음은 한 줄, 설명은 들여 쓴 문단(ㄱ: ㄴ. 항목은 줄마다 내어쓰기)
-            lab = ''.join(re.findall(r'[①②③④⑤]', g.group(1)))
-            body = g.group(2).strip()
-            parts = [x.strip() for x in re.split(r'\s+(?=[ㄱ-ㅎ]\s?[:.]\s)', body) if x.strip()]
-            items = ''.join(f'<div class="gi{" hi" if re.match(r"^[ㄱ-ㅎ]\s?[:.]", x) else ""}">{esc(x)}</div>' for x in parts)
-            return f'<div class="ep grp"><div class="gl">{lab}</div><div class="gb">{items}</div></div>'
+        m = re.match(r'^((?:[①②③④⑤][\s,·]*)+)(.*)$', t, re.S)
+        if m and re.match(ITEM, m.group(2).strip()):   # ㄱ~ㄹ 항목 해설: 선지 번호는 빼고 항목만 줄마다(내어쓰기)
+            return items(m.group(2).strip())
+        if m and len(re.findall(r'[①②③④⑤]', m.group(1))) > 1:   # 여러 선지를 묶은 해설: ‘②, ③, ④, ⑤ …’ 한 문단, 둘째 줄부터 들여쓰기
+            lab = ', '.join(re.findall(r'[①②③④⑤]', m.group(1)))
+            return f'<div class="ep gp">{lab} {esc(m.group(2).strip())}</div>'
         m = re.match(r'^([①②③④⑤])\s*(.*)$', t, re.S)
         if m:
             return f'<div class="ep hang"><span class="c">{m.group(1)}</span><span>{esc(m.group(2))}</span></div>'
+        if re.match(ITEM, t.strip()):
+            return items(t.strip())
         return f'<div class="ep">{esc(t)}</div>'
     if e.get('plain'):
         out += [hang(p) for p in e['plain'].split('\n') if p.strip()]

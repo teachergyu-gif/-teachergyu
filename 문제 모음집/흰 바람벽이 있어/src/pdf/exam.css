@@ -194,8 +194,6 @@ u, u .hj, u .nb, u .w{text-decoration:underline;text-decoration-thickness:.07em;
 /* 두 칸 표: <보기> 상자와 같은 좌우 위치(단 너비보다 4mm씩 좁게), 칸 안 ㄱ. ㄴ. 항목 내어쓰기 */
 .ctab.grid.two{margin:1.5mm 4mm 2mm;width:calc(100% - 8mm)}
 .ctab td .ci.hi{padding-left:1.3em;text-indent:-1.3em}
-/* 오답풀이: 여러 선지를 묶어 설명한 문단 — 번호 묶음 한 줄 + 들여 쓴 설명(ㄱ: 항목은 내어쓰기) */
-.ep.grp .gl{letter-spacing:.05em}
-.ep.grp .gb{padding-left:1.2em}
-.ep.grp .gi{text-align:justify}
-.ep.grp .gi.hi{padding-left:1.4em;text-indent:-1.4em}
+/* 오답풀이: 여러 선지를 묶은 문단(둘째 줄부터 들여쓰기), ㄱ~ㄹ 항목 해설(항목마다 내어쓰기) */
+.ep.gp{padding-left:1.2em;text-indent:-1.2em}
+.ep.gi.hi{padding-left:1.4em;text-indent:-1.4em}
