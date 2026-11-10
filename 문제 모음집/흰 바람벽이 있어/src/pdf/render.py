@@ -123,7 +123,8 @@ def bogi(b):
     title = '<보기>' if b.get('title') is None else b['title']
     ITEM = re.compile(r'^([ㄱ-ㅎ]\.|[㉠-㉭]|[ⓐ-ⓩ]|\(\S\))')
     def kind(x):
-        if re.match(r'^-\s*\S', x): return ' bau'     # 작가 줄: 오른쪽 맞춤
+        if re.match(r'^[-―—]\s*\S', x) and re.search(r'[「『｢<]|, ', x): return ' bau'     # 작가 줄(‘- 백석, 「…」’): 오른쪽 맞춤
+        if re.match(r'^[-―—]\s*\S', x): return ' bi'      # ‘- …할 것.’ 같은 조건 항목: 왼쪽 맞춤·내어쓰기
         if re.match(r'^\*', x): return ' bnote'       # 주석: 작은 글씨
         return ' bi' if ITEM.match(x) else ''
     def line(x):
