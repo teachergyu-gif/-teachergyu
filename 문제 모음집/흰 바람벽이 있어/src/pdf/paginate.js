@@ -43,7 +43,7 @@
     const hd = u.querySelector('.sethd');
     const lines = [...u.querySelector('.box').children];
     const make = (first) => {
-      const w = document.createElement('div'); w.className = 'u set';
+      const w = document.createElement('div'); w.className = 'u set'; if (u.dataset.keepq) w.dataset.keepq = 1;
       if (first) { w.appendChild(hd); if (u.dataset.mid) { w.style.marginTop = u.style.marginTop; w.dataset.mid = 1; } }
       const b = document.createElement('div'); b.className = 'box' + (first ? '' : ' cont');
       w.appendChild(b); col.appendChild(w); return [w, b];
@@ -312,7 +312,7 @@
   pages.forEach(pg => {
     const cs = pg.querySelectorAll('.col'); if (cs.length < 2) return;
     const [L, R] = cs;
-    if (R.dataset.forced || L.querySelector('.ex, .extitle') || !R.firstElementChild) return;
+    if (R.dataset.forced || L.querySelector('.ex, .extitle, [data-keepq]') || !R.firstElementChild) return;
     if (![...R.children].every(k => k.classList.contains('q') || k.classList.contains('exsp'))) return;
     const free = c => { const l = c.lastElementChild; return c.clientHeight - (l ? l.offsetTop + l.offsetHeight : 0); };
     let moved = null;

@@ -6,6 +6,14 @@ J = os.path.dirname(D)
 sys.path.insert(0, J)
 import fixes
 from layout_overrides import Q_BREAK, SET_BREAK, ANSWER_LINES, CLOSE
+try:
+    from layout_overrides import SPLIT_CH
+except ImportError:
+    SPLIT_CH = set()
+try:
+    from layout_overrides import KEEP_Q
+except ImportError:
+    KEEP_Q = set()
 
 CIRC = '①②③④⑤'
 HEAD = '국제고 1학년 기말고사 대비 「흰 바람벽이 있어」·「탄궁가」 문제 은행'
@@ -240,6 +248,8 @@ def main(work_dir, out_html):
             if SET_BREAK.get((name, n + 1)) == 'page': body.append('<div class="u brk"></div>')
             elif SET_BREAK.get((name, n + 1)) == 'col': body.append('<div class="u colbrk"></div>')
             ps = passage(s, rng)
+            if (name, n + 1) in KEEP_Q:   # 사용자 지정: 지문 아래 문항을 그 자리에(오른쪽 단으로 옮기지 않음)
+                ps = ps.replace('<div class="u set"', '<div class="u set" data-keepq="1"', 1)
             sb = SET_BREAK.get((name, n + 1))
             if isinstance(sb, str) and sb.startswith('here'):   # 앞 문항 바로 아래 같은 단에서 시작('here:NN' = 그 위 간격 px)
                 ps = ps.replace('<div class="u set">', f'<div class="u set" data-here="{sb[5:] or 70}">', 1)
@@ -248,7 +258,12 @@ def main(work_dir, out_html):
                 n += 1
                 if Q_BREAK.get((name, n)) == 'col': body.append('<div class="u colbrk"></div>')
                 elif Q_BREAK.get((name, n)) == 'page': body.append('<div class="u brk"></div>')
-                body.append(question(n, q, (name, n)))
+                qh = question(n, q, (name, n))
+                if (name, n) in SPLIT_CH and '<div class="ch">' in qh:   # 사용자 지정: 발문·<보기>는 이 단, 선지 ①~⑤는 다음 단
+                    i = qh.index('<div class="ch">')
+                    body += [qh[:i] + '</div>', '<div class="u colbrk"></div>', '<div class="u q cont">' + qh[i:]]
+                else:
+                    body.append(qh)
                 if q['orig'] in exm: exs.append((n, q, exm[q['orig']]))
         if exs:   # 해설이 없는 묶음(탄궁가)은 정답 및 해설 쪽 없음
             body += ['<div class="u brk"></div>', f'<div class="u extitle"><span>정답 및 해설</span></div>', quick(exs)]
