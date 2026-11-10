@@ -158,24 +158,30 @@ def build_all(modes=('lecture', 'analysis', 'answer')):
         print('ok all', total, 'pages', [(n, [i[2] for i in it]) for n, it in parts])
 
 
-def build_perset():
-    """지문마다 강의용 → 지문 분석 → 정답 및 해설 순서로 한 PDF"""
-    out = os.path.join(OUTDIR, f'{NAME}.pdf')
+def build_perset(prefix=None, out_name=None):
+    """지문마다 강의용 → 지문 분석 → 정답 및 해설 순서로 한 PDF.
+    prefix: 맨 앞에 붙일 PDF(그 쪽 수만큼 목차·본문 쪽 번호를 뒤로 미룸)"""
+    out = os.path.join(OUTDIR, out_name or f'{NAME}.pdf')
+    pre = PdfReader(prefix).pages if prefix else []
+    k = len(pre)   # 앞에 붙는 쪽 수 → 목차는 k+1쪽, 본문은 k+2쪽부터
+    skip = ','.join(str(i) for i in range(1, k + 2))
     info = sets_info()
     with tempfile.TemporaryDirectory() as t:
-        env = dict(os.environ, START_PAGE='2', MODE='perset')
+        env = dict(os.environ, START_PAGE=str(k + 2), MODE='perset')
         run('python3', '-I', f'{H}/pdf/render_book.py', DATA, f'{t}/b.html', env=env)
         run('node', f'{H}/pdf/print.js', f'{t}/b.html', f'{t}/b.pdf')
-        w = PdfWriter(); w.add_blank_page(595, 841)
+        w = PdfWriter()
+        for _ in range(k + 1):
+            w.add_blank_page(595, 841)
         for p in PdfReader(f'{t}/b.pdf').pages:
             w.add_page(a4(p))
         w.write(f'{t}/m0.pdf')
         total = len(w.pages)
-        run('python3', '-I', f'{H}/header_phrase.py', f'{t}/m0.pdf', f'{t}/m1.pdf', PHRASE, '1', '1')
-        run('python3', '-I', f'{H}/footer_text.py', f'{t}/m1.pdf', f'{t}/m2.pdf', FOOT, '1', '1')
-        run('python3', '-I', f'{H}/footer_box.py', f'{t}/m2.pdf', f'{t}/m3.pdf', str(total), '1', '1')
+        run('python3', '-I', f'{H}/header_phrase.py', f'{t}/m0.pdf', f'{t}/m1.pdf', PHRASE, '1', skip)
+        run('python3', '-I', f'{H}/footer_text.py', f'{t}/m1.pdf', f'{t}/m2.pdf', FOOT, '1', skip)
+        run('python3', '-I', f'{H}/footer_box.py', f'{t}/m2.pdf', f'{t}/m3.pdf', str(total), '1', skip)
         texts = [re.sub(r'\s+', '', p.extract_text() or '') for p in PdfReader(f'{t}/m3.pdf').pages]
-        parts, start = [], 1
+        parts, start = [], k + 1
         for i, s in enumerate(info):
             items = []
             for name in ('강의용', '지문 분석', '정답 및 해설'):
@@ -196,14 +202,17 @@ def build_perset():
                             '.ph .nm2{font-size:12.5px;color:#6B7785}.row{display:flex;gap:26px;padding-left:4px}'
                             '.it2{flex:1;display:flex;align-items:baseline;gap:8px;font-size:13px}.it2 .d{flex:1;border-bottom:1.5px dotted #C3CAD3}'
                             '.it2 .p{font-family:Montserrat,sans-serif;font-weight:600}</style>', 1)
+        html = html.replace('<i>1</i>', f'<i>{k + 1}</i>')
         open(tmp, 'w').write(html)
         try:
             run('node', f'{H}/toc/print_toc.js', f'{t}/toc.pdf', '_toc_out.html')
         finally:
             os.remove(tmp)
         w = PdfWriter()
+        for p in pre:
+            w.add_page(p)
         w.add_page(PdfReader(f'{t}/toc.pdf').pages[0])
-        for p in PdfReader(f'{t}/m3.pdf').pages[1:]:
+        for p in PdfReader(f'{t}/m3.pdf').pages[k + 1:]:
             w.add_page(p)
         w.write(out)
         print('ok perset', total, 'pages', [[i[2] for i in it] for n, it in parts])
@@ -212,6 +221,10 @@ def build_perset():
 if __name__ == '__main__':
     if sys.argv[1:] == ['perset']:
         build_perset()
+        sys.exit()
+    if sys.argv[1:2] == ['combined']:   # 부산국제고 님의 침묵·나룻배와 행인(2쪽) + 김T 비문학 프린트물
+        build_perset(prefix=f'{H}/prefix/부산국제고 1학년 님의 침묵·나룻배와 행인.pdf',
+                     out_name='부산국제고 1학년 김T 님의 침묵·나룻배와 행인·비문학.pdf')
         sys.exit()
     if sys.argv[1:] == ['all']:
         build_all()
