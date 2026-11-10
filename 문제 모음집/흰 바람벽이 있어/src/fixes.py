@@ -72,7 +72,7 @@ def apply(data, log):
             out = []
             for para in t.split('\n'):
                 p2 = re.sub(END + r'(?=\s+\S)', lambda m: m.group(0) + '.', para)
-                if re.search(r'[가-힣ᄀ-ᇿ0-9)\]]$', p2.rstrip()):
+                if re.search(r'[가-힣ᄀ-ᇿ0-9)\]]$', p2.rstrip()) and not re.fullmatch(r'\s*\[[^\]]+\]\s*', p2):   # ‘[오답풀이]’ 같은 제목 줄 제외
                     p2 = p2.rstrip() + '.'
                 out.append(p2)
             return '\n'.join(out)
@@ -123,6 +123,7 @@ def apply(data, log):
     drop_works(data, log)
     if not _os.environ.get("NO_MERGE"): merge_sets(data, log)
     drop_marks(data, log)
+    relabel_marks(data, log)
     add_ex(data, log)
 
 def straight(s):
@@ -460,3 +461,48 @@ def merge_sets(data, log):
                             continue
             out.append(s)
         src['sets'] = out
+
+
+# ---- 남은 기호를 처음부터 차례대로(㉡만 있으면 ㉠, [D]만 있으면 [A]) — 지문·문항·해설 모두 ----
+_CIRC_SERIES = ['㉠㉡㉢㉣㉤㉥㉦㉧㉨㉩㉪㉫㉬㉭', '㉮㉯㉰㉱㉲㉳㉴㉵㉶㉷㉸㉹㉺㉻',
+                ''.join(chr(c) for c in range(0x24D0, 0x24EA)), ''.join(chr(c) for c in range(0x24B6, 0x24D0))]
+_LET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+
+def relabel_marks(data, log):
+    for src in data:
+        exm = {e['orig']: e for e in src['ex']}
+        for s in src['sets']:
+            qs = s.get('questions') or []
+            text = '\n'.join(w['lines'] for w in s.get('works', []))
+            cmap = {}
+            for ser in _CIRC_SERIES:
+                seen = list(dict.fromkeys(ch for ch in text if ch in ser))
+                for k, ch in enumerate(seen):
+                    if ch != ser[k]:
+                        cmap[ch] = ser[k]
+            lets = list(dict.fromkeys(re.findall(r'(?:\{|\[)([A-Z])(?:\}|\])', text)))
+            lmap = {a: _LET[k] for k, a in enumerate(lets) if a != _LET[k]}
+            if not cmap and not lmap:
+                continue
+            tr = str.maketrans(cmap)
+            def fix_passage(t):
+                t = t.translate(tr)
+                if lmap:
+                    t = re.sub(r'(\{/?|\[)([A-Z])(\}|\])', lambda m: m.group(1) + lmap.get(m.group(2), m.group(2)) + m.group(3), t)
+                return t
+            def fix_text(t):
+                t = t.translate(tr)
+                if lmap:
+                    t = re.sub(r'\[([A-Z])\]', lambda m: '[' + lmap.get(m.group(1), m.group(1)) + ']', t)
+                return t
+            for w in s['works']:
+                w['lines'] = fix_passage(w['lines'])
+            for i, q in enumerate(qs):
+                qs[i] = {k: (walk(v, fix_text) if k in ('stem', 'bogi', 'choices', 'extra') else v) for k, v in q.items()}
+                e = exm.get(q['orig'])
+                if e:
+                    for k in ('answer', 'correct', 'wrong', 'plain'):
+                        if e.get(k):
+                            e[k] = walk(e[k], fix_text)
+            log.append(f"{src['source']} 지문(문항 {[q['orig'] for q in qs]}): 기호를 처음부터 차례대로 " + ', '.join(f'{a}→{b}' for a, b in {**cmap, **{f'[{a}]': f'[{b}]' for a, b in lmap.items()}}.items()))

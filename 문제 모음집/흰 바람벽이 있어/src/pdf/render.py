@@ -185,7 +185,7 @@ def explanation(n, e):
             return items(t.strip())
         return f'<div class="ep">{esc(t)}</div>'
     if e.get('plain'):
-        out += [hang(p) for p in e['plain'].split('\n') if p.strip()]
+        out += [('<div class="ep wr">[오답풀이]</div>' if p.strip() == '[오답풀이]' else hang(p)) for p in e['plain'].split('\n') if p.strip()]
     else:
         if e.get('correct'):
             c = a[:1] if a[:1] in CIRC else ''
