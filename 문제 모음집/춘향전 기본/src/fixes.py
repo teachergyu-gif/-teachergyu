@@ -3,11 +3,20 @@
 import re
 
 CH = '춘향전'
+CH2 = '춘향전 추가'   # 두 번째 묶음(s06~s09): 번호를 1번부터 다시, 해설도 따로
 FIX = [
     # ‘…삼남삼녀(三男三女)를 두었/으니’로 줄이 나뉠 수 있게(글 간격이 벌어지는 줄 방지)
     (CH, 'Ps01-18', '를 두었으니', '를 두었\u200b으니'),
     (CH, 'Ps02-18', '를 두었으니', '를 두었\u200b으니'),
     (CH, 'Ps05-14', '를 두었으니', '를 두었\u200b으니'),
+    (CH2, 'Ps06-15', '를 두었으니', '를 두었\u200b으니'),
+    (CH2, 'Ps07-18', '를 두었으니', '를 두었\u200b으니'),
+    (CH2, 'Ps08-14', '를 두었으니', '를 두었\u200b으니'),
+    (CH2, 'Ps09-16', '를 두었으니', '를 두었\u200b으니'),
+    (CH2, 's06-19', '추초(秋草)ㅣ로다', '추초(秋草)\u200bㅣ로다'),
+    (CH2, 's06-17', '<box>Ⓐ</box>', 'ⓐ'),
+    (CH2, 's06-17', '[ Ⓐ ]', '[ ⓐ ]'),
+    (CH2, 's06-17', '(책을 읽는 학생 그림의 말풍선) ', '학 생: '),
 ]
 # 검수·해설 보충 결과(review/*.json: fix = 원본 오류 수정, ex_add = 원본에 없는 해설)
 import json as _json, os as _os
@@ -19,8 +28,9 @@ for _k, _w in (('ch', CH),):
         _REV[_w] = _json.load(open(_p))
         for _f in _REV[_w].get('fix', []):
             _o = str(_f['orig']).lstrip('P')
-            if str(_f['orig']).lstrip('P')[:3] in ('s01', 's02', 's03', 's04', 's05'):   # 이 교재는 기본(s01~s05)만
-                FIX.append((_w, _f['orig'], _f['old'], _f['new']))
+            _o = str(_f['orig']).lstrip('P')[:3]
+            if _o in ('s01', 's02', 's03', 's04', 's05', 's06', 's07', 's08', 's09'):
+                FIX.append((CH2 if _o in ('s06', 's07', 's08', 's09') else _w, _f['orig'], _f['old'], _f['new']))
 
 
 def quotes(s):
@@ -339,7 +349,7 @@ CHOICE_ADD = {a['orig']: a['add_choice'] for r in _REV.values() for a in r.get('
 
 
 # <보기> 항목 기호가 지문 기호와 겹치는 문항: ㉠~㉣ → ㄱ~ㄹ(발문·<보기>·선지·해설 모두)
-RELABEL = set()
+RELABEL = {('춘향전 추가', 's08-14'), ('춘향전', 's04-16')}
 _CIRC_TO_JAMO = dict(zip('㉠㉡㉢㉣㉤', 'ㄱㄴㄷㄹㅁ'))
 
 
