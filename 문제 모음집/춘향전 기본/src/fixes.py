@@ -4,6 +4,7 @@ import re
 
 CH = '춘향전'
 CH2 = '춘향전 추가'
+CH4 = '춘향전 서술'
 CH3 = '춘향전 심화'   # 세 번째 묶음(s10~s12): 번호를 1번부터 다시, 해설도 따로   # 두 번째 묶음(s06~s09): 번호를 1번부터 다시, 해설도 따로
 FIX = [
     # ‘…삼남삼녀(三男三女)를 두었/으니’로 줄이 나뉠 수 있게(글 간격이 벌어지는 줄 방지)
@@ -33,8 +34,8 @@ for _k, _w in (('ch', CH),):
         for _f in _REV[_w].get('fix', []):
             _o = str(_f['orig']).lstrip('P')
             _o = str(_f['orig']).lstrip('P')[:3]
-            if _o in ('s01', 's02', 's03', 's04', 's05', 's06', 's07', 's08', 's09', 's10', 's11', 's12'):
-                FIX.append((CH2 if _o in ('s06', 's07', 's08', 's09') else CH3 if _o in ('s10', 's11', 's12') else _w, _f['orig'], _f['old'], _f['new']))
+            if _o in ('s01', 's02', 's03', 's04', 's05', 's06', 's07', 's08', 's09', 's10', 's11', 's12', 's13', 's14', 's15'):
+                FIX.append((CH2 if _o in ('s06', 's07', 's08', 's09') else CH3 if _o in ('s10', 's11', 's12') else CH4 if _o in ('s13', 's14', 's15') else _w, _f['orig'], _f['old'], _f['new']))
 
 
 def quotes(s):

@@ -11,7 +11,7 @@ DATA = sys.argv[1] if len(sys.argv) > 1 else H + '/data'
 TITLE = '부산외고 1학년 기말고사 대비 「춘향전」 문제 은행'
 FOOT = '부산외고 1학년 「춘향전」 문제 은행'
 OUT = os.path.join(H, '..', '부산외고 1학년 기말고사 대비 「춘향전」 문제 은행.pdf')
-WORKS = [('CH', '｢춘향전｣ 문제 은행', True), ('CH2', '｢춘향전｣ 실전 문제 은행', True), ('CH3', '｢춘향전｣ 고난도 문제 은행', True)]
+WORKS = [('CH', '｢춘향전｣ 기본 문제 은행', True), ('CH2', '｢춘향전｣ 실전 문제 은행', True), ('CH3', '｢춘향전｣ 고난도 문제 은행', True), ('CH4', '｢춘향전｣ 서술형 문제 은행', True)]
 
 
 def run(*a, **kw):
@@ -55,9 +55,10 @@ with tempfile.TemporaryDirectory() as t:
     print(pages)
     sys.path.insert(0, f'{H}/toc')
     import toc_exam   # 1쪽: 시험지 머리 + <목 차> 상자(N제 모의고사와 같은 양식)
-    secs = [('「춘향전」 문제 은행', [('문제', pages['Q_CH']), ('정답 및 해설', pages['E_CH']),
+    secs = [('「춘향전」 문제 은행', [('기본 문제', pages['Q_CH']), ('기본 정답 및 해설', pages['E_CH']),
                                   ('실전 문제', pages['Q_CH2']), ('실전 정답 및 해설', pages['E_CH2']),
-                                  ('고난도 문제', pages['Q_CH3']), ('고난도 정답 및 해설', pages['E_CH3'])])]
+                                  ('고난도 문제', pages['Q_CH3']), ('고난도 정답 및 해설', pages['E_CH3']),
+                                  ('서술형 문제', pages['Q_CH4']), ('서술형 정답 및 해설', pages['E_CH4'])])]
     toc = toc_exam.page(TITLE, secs, None, total)
     tmp = f'{H}/toc/_toc_out.html'
     open(tmp, 'w').write(toc)
