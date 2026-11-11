@@ -576,12 +576,34 @@ def _rename_map(have, need):
     return m
 
 
+MERGE_INTO = {('흰 바람벽 고난도', 'L3-s06-22')}   # 앞 묶음의 같은 작품에 합칠 묶음(사용자 지정)
+
+
 def union_merge(data, log):
     for src in data:
         exm = {e['orig']: e for e in src['ex']}
         out = []
         for s in src['sets']:
             qs = s.get('questions') or []
+            if out and qs and (src['source'], qs[0]['orig']) in MERGE_INTO and len(s['works']) == 1:
+                # 작품 하나짜리 지문을 앞 묶음의 같은 작품((가) 등)에 합침: 빈칸이 있는 이쪽 지문을 바탕으로, 발문의 ‘윗글’은 그 표지로
+                a = out[-1]; aq = a.get('questions') or []
+                y = s['works'][0]
+                k = next(i for i, x in enumerate(a['works']) if re.sub(r'\W', '', x.get('author') or '')[-8:] == re.sub(r'\W', '', y.get('author') or '')[-8:])
+                lab = a['works'][k]['label']
+                works = [dict(x, lines=_union_lines(y['lines'], x['lines'])) if i == k else x for i, x in enumerate(a['works'])]
+                back = {'을': '를', '은': '는', '이': '가', '과': '와', '의': '의', '에': '에', '에서': '에서', '': ''}
+                fx = lambda t: re.sub(r'윗글(에서|을|은|이|과|의|에|)', lambda m: lab + back[m.group(1)], t)
+                qs = [{kk: (walk(v, fx) if kk in ('stem', 'bogi', 'choices', 'extra') else v) for kk, v in q.items()} for q in qs]
+                for q in qs:
+                    e = exm.get(q['orig'])
+                    if e:
+                        for kk in ('answer', 'correct', 'wrong', 'plain'):
+                            if e.get(kk):
+                                e[kk] = walk(e[kk], fx)
+                out[-1] = dict(a, works=works, questions=aq + qs)
+                log.append(f"{src['source']} 지문 합침: {[q['orig'] for q in aq]} + {[q['orig'] for q in qs]} → {lab}")
+                continue
             if out and qs:
                 a = out[-1]; aq = a.get('questions') or []
                 same = (len(a['works']) == len(s['works']) and all(
