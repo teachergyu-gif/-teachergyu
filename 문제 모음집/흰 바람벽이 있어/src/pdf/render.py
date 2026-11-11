@@ -227,7 +227,7 @@ def qlabel(q, e):
     a = e['answer'].strip()
     if q.get('choices'):
         return ' '.join(re.findall(r'[①②③④⑤]', a)) or a
-    return '서술형' if '서술' in q['stem'] else '주관식'
+    return '서술형'
 
 
 def quick(exs, per=5):
