@@ -211,3 +211,4 @@ u, u .hj, u .nb, u .w{text-decoration:underline;text-decoration-thickness:.07em;
 .bogi + .bogi{margin-top:5mm}
 .bogi.cond .bl.cj{text-align:justify;padding-left:1.75em;text-indent:-1.75em}
 .bogi.cond .bl.cj{letter-spacing:0!important;word-spacing:normal!important}
+.bogi .bl.bsp .slab{flex:none;align-self:flex-end;margin-left:.6em;font-weight:700}.bogi .bl.bsp + .bl.bsp{margin-top:.5mm}

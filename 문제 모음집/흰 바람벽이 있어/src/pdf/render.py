@@ -149,9 +149,13 @@ def bogi(b):
     def line(x):
         if not x.strip():
             return '<div class="bl">&nbsp;</div>'
-        m = re.match(r'^([가-힣](?: ?[가-힣]){0,5}):\s*(.*)$', x)   # ‘학 생: …’, ‘말뚝이: …’ 같은 대사: 이름 뒤로 내어쓰기
+        m = re.match(r'^([가-힣](?: ?[가-힣]){0,5}) ?:\s*(.*)$', x)   # ‘학 생: …’, ‘교사 : …’ 같은 대사: 이름 뒤로 내어쓰기
         if m:
-            return f'<div class="bl bsp"><span class="spk">{esc(m.group(1))}:</span><span class="spt">{hbr(esc(m.group(2)))}</span></div>'
+            body, lab = m.group(2), ''
+            k = re.match(r'^(.*?)\s*[…‥.·]+\s*([ㄱ-ㅎ])$', body)   # 끝의 ‘……… ㄱ’ 표지: 점선은 빼고 오른쪽 끝에 따로
+            if k:
+                body, lab = k.group(1), f'<span class="slab">{k.group(2)}</span>'
+            return f'<div class="bl bsp"><span class="spk">{esc(m.group(1))} :</span><span class="spt">{hbr(esc(body))}</span>{lab}</div>'
         return '<div class="bl' + kind(x) + '">' + hbr(esc(x)) + '</div>'
     body = ''.join(line(x) for x in b['text'].split('\n'))
     t = f'<div class="bt"><span>{esc(title)}</span></div>' if title else ''
