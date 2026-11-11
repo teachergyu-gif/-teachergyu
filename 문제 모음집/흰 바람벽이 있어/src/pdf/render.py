@@ -90,6 +90,8 @@ def passage(s, rng=''):
                 out.append(cell)
         if w.get('author'):
             out.append(f'<div class="ln au">{esc(w["author"])}</div>')
+        for n in w.get('notes') or []:   # 작품별 주석
+            out.append(f'<div class="ln note">{esc(n)}</div>')
     for n in s.get('notes') or []:
         out.append(f'<div class="ln note">{esc(n)}</div>')
     return f'<div class="u set"><div class="sethd">【{rng}】 다음 글을 읽고 물음에 답하시오.</div><div class="box">{"".join(out)}</div></div>'

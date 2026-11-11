@@ -629,9 +629,18 @@ def union_merge(data, log):
                 for n in s.get('notes') or []:
                     if not any(nk(n) == nk(x) for x in notes):
                         notes.append(n)
-                notes = [re.sub(r'^\*\s*([^:]+?)\s*:\s*', r'*\1: ', n) for n in notes]   # 두 묶음 주석 표기 통일(*낱말: 뜻)
+                notes = [re.sub(r'^\*\s*([^:]+?)\s*:\s*', r'*\1: ', n).rstrip('.') + '.' for n in notes]   # 두 묶음 주석 표기 통일(*낱말: 뜻)
                 for q in qs:   # ‘(다)와 (가)’처럼 뒤바뀐 순서는 앞 표지부터
                     q['stem'] = re.sub(r'\((다|라)\)와 \((가|나)\)', lambda mm: f'({mm.group(2)})와 ({mm.group(1)})', q['stem'])
+                # 주석은 그 낱말이 나오는 작품 바로 아래에 따로(작품마다)
+                pl = lambda t: re.sub(r'<[^>]+>|\s|\*', '', t)
+                works = [dict(w, notes=[]) for w in works]
+                rest = []
+                for n in notes:
+                    term = re.sub(r'\s', '', n.lstrip('*').split(':')[0])
+                    k = next((i for i, w in enumerate(works) if term and term in pl(w['lines'])), None)
+                    (works[k]['notes'] if k is not None else rest).append(n)
+                notes = rest
                 out[-1] = dict(a, works=works, notes=notes, questions=aq + qs)
                 log.append(f"{src['source']} 지문 묶음 합침: {[q['orig'] for q in aq]} + {[q['orig'] for q in qs]} 표지 {m}")
                 continue
