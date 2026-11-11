@@ -8,9 +8,9 @@ from pypdf import PdfReader, PdfWriter, Transformation
 
 H = os.path.dirname(os.path.abspath(__file__))
 DATA = sys.argv[1] if len(sys.argv) > 1 else H + '/data'
-TITLE = '부산외고 1학년 기말고사 대비 「춘향전」 문제 은행'
-FOOT = '부산외고 1학년 「춘향전」 문제 은행'
-OUT = os.path.join(H, '..', '부산외고 1학년 기말고사 대비 「춘향전」 문제 은행.pdf')
+TITLE = '국제고 1학년 기말고사 대비 「춘향전」 문제 은행'
+FOOT = '국제고 1학년 「춘향전」 문제 은행'
+OUT = os.path.join(H, '..', '국제고 1학년 기말고사 대비 「춘향전」 문제 은행.pdf')
 WORKS = [('CH', '｢춘향전｣ 기본 문제 은행', True), ('CH2', '｢춘향전｣ 실전 문제 은행', True), ('CH3', '｢춘향전｣ 고난도 문제 은행', True), ('CH4', '｢춘향전｣ 서술형 문제 은행', True)]
 
 
@@ -39,7 +39,7 @@ with tempfile.TemporaryDirectory() as t:
     memo = [i + 1 for i, p in enumerate(PdfReader(f'{t}/m0.pdf').pages) if (p.extract_text() or '').strip() == 'MEMO']
     skip = ','.join(str(x) for x in [1] + memo)   # 1쪽(목차)·MEMO 쪽은 머리말·꼬리말 없음
     print('MEMO 쪽', memo)
-    run('python3', '-I', f'{H}/header_phrase.py', f'{t}/m0.pdf', f'{t}/m1.pdf', '리치아카데미 | 부산외고 1학년', '1', skip)
+    run('python3', '-I', f'{H}/header_phrase.py', f'{t}/m0.pdf', f'{t}/m1.pdf', '리치아카데미 | 국제고 1학년', '1', skip)
     run('python3', '-I', f'{H}/footer_text.py', f'{t}/m1.pdf', f'{t}/m2.pdf', FOOT, '1', skip)
     run('python3', '-I', f'{H}/footer_box.py', f'{t}/m2.pdf', f'{t}/m3.pdf', str(total), '1', skip)
     # 목차 쪽 번호: 작품별 '문제 은행' 제목 쪽, 그 뒤 첫 '빠른 정답' 쪽
