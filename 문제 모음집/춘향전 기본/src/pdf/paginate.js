@@ -358,15 +358,15 @@
     const pair = kids.length === 2 && kids[0].classList.contains('set') && kids[1].classList.contains('q');
     kids.slice(0, -1).forEach((k, i) => { const f = (pair || kids[i + 1].dataset.close) ? 0.25 : 1; k.style.marginBottom = (parseFloat(getComputedStyle(k).marginBottom) + add * f) + 'px'; });
   });
-  // 정답 및 해설: 단 아래에 공간이 많이 남지 않게 해설 사이를 더 띄움(마지막 해설 단 제외)
+  // 정답 및 해설: 단 아래에 공간이 많이 남지 않게 해설 사이를 더 띄움
   const exCols = [...document.querySelectorAll('.col')].filter(c => c.querySelector('.u.ex'));
-  exCols.slice(0, -1).forEach(c => {
+  exCols.forEach((c, ci) => {
     const kids = [...c.children].filter(k => k.classList.contains('ex'));
     if (kids.length < 2) return;
     const last = c.lastElementChild;
     const left = c.clientHeight - (last.offsetTop + last.offsetHeight);
     if (left <= 0) return;
-    const add = left * 0.45 / (kids.length - 1);
+    const add = ci === exCols.length - 1 ? Math.min(left * 0.3 / (kids.length - 1), 60) : left * 0.45 / (kids.length - 1);   // 책 마지막 해설 단: 조금만 더 띄움
     kids.slice(0, -1).forEach(k => { k.style.marginBottom = (parseFloat(getComputedStyle(k).marginBottom) + add) + 'px'; });
   });
   window.PAGES = pages.length;
