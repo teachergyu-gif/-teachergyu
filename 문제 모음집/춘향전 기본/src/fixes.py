@@ -15,6 +15,10 @@ FIX = [
     (CH2, 'Ps07-18', '를 두었으니', '를 두었\u200b으니'),
     (CH2, 'Ps08-14', '를 두었으니', '를 두었\u200b으니'),
     (CH2, 'Ps09-16', '를 두었으니', '를 두었\u200b으니'),
+    (CH4, 's13-7', '‘정절부인’ 봉작', '‘정렬부인’ 봉작'),
+    (CH4, 's14-7', '㉮ 내: ~', '㉠ ~'), (CH4, 's14-7', '㉯ 네: ~', '㉡ ~'),
+    (CH4, 's14-7', '내: 어사또, 네: 사또', '㉠ 어사또, ㉡ 사또'),
+    (CH4, 'Ps13-5', '「춘항전」', '「춘향전」'),
     (CH3, 'Ps10-11', '를 두었으니', '를 두었\u200b으니'),
     (CH3, 'Ps10-14', '를 두었으니', '를 두었\u200b으니'),
     (CH3, 'Ps12-11', '를 두었으니', '를 두었\u200b으니'),
@@ -247,7 +251,7 @@ def used_marks(qs):
 
 def json_text(qs):
     import json
-    return json.dumps([{k: q.get(k) for k in ('stem', 'bogi', 'choices', 'extra')} for q in qs], ensure_ascii=False)
+    return json.dumps([{k: q.get(k) for k in ('stem', 'bogi', 'choices', 'extra', 'parts')} for q in qs], ensure_ascii=False)
 
 
 def drop_marks(data, log):
@@ -335,7 +339,7 @@ def drop_works(data, log):
                     m[w['label']] = f'({LABS[k]})'; w['label'] = f'({LABS[k]})'
             m = {a: b for a, b in m.items() if a != b}
             for q in qs:
-                for k in ('stem', 'bogi', 'choices', 'extra'):
+                for k in ('stem', 'bogi', 'choices', 'extra', 'parts'):
                     if q.get(k):
                         q[k] = walk(q[k], lambda t: relabel(t, m))
                 e = exm.get(q['orig'])

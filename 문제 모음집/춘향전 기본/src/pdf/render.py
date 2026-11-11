@@ -132,7 +132,7 @@ def bogi(b):
         for x in b['text'].split('\n'):
             m = re.match(r'^\s*(?:[-•·]|\d+\s*[.)]|\(\d+\)|[①-⑩])\s*(.*)$', x)
             if m or not items:
-                items.append((m.group(1) if m else x).strip())
+                items.append(re.sub(r'^[-–]\s*', '', (m.group(1) if m else x).strip()))
             elif x.strip():
                 items[-1] += ' ' + x.strip()
         items = [re.sub(r'것$', '것.', t) for t in items if t]
@@ -157,14 +157,24 @@ def bogi(b):
     return f'<div class="bogi">{t}{body}</div>'
 
 
-def question(n, q, key=None):
-    ex = q.get('extra')
-    extra = ''
+def _ext(ex):
     if isinstance(ex, dict):
-        extra = bogi({'title': ex.get('title') or '', 'text': ex.get('text') or ''})
-    elif ex:
+        return bogi({'title': ex.get('title') or '', 'text': ex.get('text') or ''})
+    if ex:
         m = re.match(r'^\s*(<[^<>\n]{1,8}>)\s*\n', ex)   # 첫 줄이 ‘<조건>’ 같은 제목이면 <보기>처럼 테두리 가운데 제목으로
-        extra = bogi({'title': m.group(1), 'text': ex[m.end():]}) if m else bogi({'title': '', 'text': ex})
+        return bogi({'title': m.group(1), 'text': ex[m.end():]}) if m else bogi({'title': '', 'text': ex})
+    return ''
+
+
+def question(n, q, key=None):
+    def ext(ex):
+        if isinstance(ex, list):
+            return ''.join(ext(x) for x in ex)
+        return _ext(ex)
+    parts = ''
+    if q.get('parts'):   # (1)·(2) 소문항: 소문항마다 발문 → <보기> → <조건>
+        parts = ''.join(f'<div class="sub"><span class="sn">{esc(pt["no"])}</span><span class="st">{esc(pt["text"])}</span></div>{bogi(pt.get("bogi"))}{ext(pt.get("extra"))}' for pt in q['parts'])
+    extra = ext(q.get('extra'))
     def chtext(t):
         # 선지가 인용 시 + 작가 줄(‘\n- 작가, 「제목」’)이면 작가 줄은 따로 오른쪽 맞춤
         m = re.match(r'^(.*?)\s*\n\s*(-\s*[^\n]+)$', t, re.S)
@@ -177,7 +187,7 @@ def question(n, q, key=None):
     close = ' data-close="1"' if key in CLOSE else ''
     if key: close += f' data-key="{key[0]}|{key[1]}"'
     return (f'<div class="u q"{close}><div class="qh"><span class="n">{n}.</span><span class="s">{esc(q["stem"])}</span></div>'
-            f'{bogi(q.get("bogi"))}{extra}{ch}{ans}</div>')
+            f'{bogi(q.get("bogi"))}{extra}{parts}{ch}{ans}</div>')
 
 
 def explanation(n, e):
@@ -220,7 +230,7 @@ def qlabel(q, e):
     a = e['answer'].strip()
     if q.get('choices'):
         return ' '.join(re.findall(r'[①②③④⑤]', a)) or a
-    return '서술형' if '서술' in q['stem'] else '주관식'
+    return '서술형'
 
 
 def quick(exs, per=5):
