@@ -187,6 +187,8 @@ def question(n, q, key=None):
         return f'<span class="t"><span class="ct">{esc(m.group(1))}</span><span class="cau">{esc(au)}</span></span>'
     ch = ''.join(f'<div class="ch"><span class="c">{CIRC[i]}</span>{chtext(t)}</div>' for i, t in enumerate(q.get('choices') or []))
     ans = '' if q.get('choices') else f'<div class="ans" style="height:{ANSWER_LINES * 1.75 * 11.2}pt"></div>'
+    if q.get('ans_labels'):   # 소문항마다 답 칸: ‘(1):’ 아래 빈 줄, ‘(2):’ 아래 빈 줄
+        ans = ''.join(f'<div class="ansl" style="height:{ANSWER_LINES / len(q["ans_labels"]) * 1.75 * 11.2}pt">{esc(l)}</div>' for l in q['ans_labels'])
     close = ' data-close="1"' if key in CLOSE else ''
     if key: close += f' data-key="{key[0]}|{key[1]}"'
     return (f'<div class="u q"{close}><div class="qh"><span class="n">{n}.</span><span class="s">{esc(q["stem"])}</span></div>'
