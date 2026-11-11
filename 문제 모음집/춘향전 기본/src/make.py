@@ -50,7 +50,7 @@ with tempfile.TemporaryDirectory() as t:
         q = next(i for i in range(start, total) if name in texts[i][:600])
         pages['Q_' + key] = q + 1; start = q + 1
         if has_ex:
-            e = next(i for i in range(q, total) if '빠른 정답' in texts[i])
+            e = next(i for i in range(q, total) if '빠른 정답' in texts[i] or '[모범 답안]' in texts[i])
             pages['E_' + key] = e + 1; start = e + 1
     print(pages)
     sys.path.insert(0, f'{H}/toc')

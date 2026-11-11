@@ -370,6 +370,18 @@
     kids.slice(0, -1).forEach(k => { k.style.marginBottom = (parseFloat(getComputedStyle(k).marginBottom) + add) + 'px'; });
   });
   window.PAGES = pages.length;
+  // <조건> 항목 마지막 줄에 ‘것.’처럼 한두 글자만 남으면 자간을 조금씩 좁혀 한 줄 줄임
+  document.querySelectorAll('.bogi.cond .bl.cj').forEach(d => {
+    const lines = () => { const r = document.createRange(); r.selectNodeContents(d); const R = [...r.getClientRects()]; const tops = []; R.forEach(x => { if (!tops.some(t => Math.abs(t - x.top) < 3)) tops.push(x.top); }); return tops.length; };
+    const last = () => { const r = document.createRange(); r.selectNodeContents(d); const R = [...r.getClientRects()]; const b = R[R.length - 1].top; return R.filter(x => Math.abs(x.top - b) < 3).reduce((a, x) => a + x.width, 0); };
+    const n0 = lines();
+    if (n0 < 2 || last() > 40) return;
+    for (let ls = -0.01; ls >= -0.08; ls -= 0.01) {
+      d.style.setProperty('letter-spacing', ls.toFixed(2) + 'em', 'important');
+      if (lines() < n0) return;
+    }
+    d.style.removeProperty('letter-spacing');
+  });
   // ‘(      )’ 빈칸: 줄이 넘어가지 않는 한 최대한 넓게
   document.querySelectorAll('.fill .fs').forEach(f => {
     const top = () => f.parentNode.lastChild.getBoundingClientRect().top;

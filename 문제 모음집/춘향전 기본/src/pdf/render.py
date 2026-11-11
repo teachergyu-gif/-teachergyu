@@ -176,7 +176,7 @@ def question(n, q, key=None):
         return _ext(ex)
     parts = ''
     if q.get('parts'):   # (1)·(2) 소문항: 소문항마다 발문 → <보기> → <조건>
-        parts = ''.join(f'<div class="sub"><span class="sn">{esc(pt["no"])}</span><span class="st">{esc(pt["text"])}</span></div>{bogi(pt.get("bogi"))}{ext(pt.get("extra"))}' for pt in q['parts'])
+        parts = ''.join(f'<div class="sub{" sub2" if i else ""}"><span class="sn">{esc(pt["no"])}</span><span class="st">{esc(pt["text"])}</span></div>{bogi(pt.get("bogi"))}{ext(pt.get("extra"))}' for i, pt in enumerate(q['parts']))
     extra = ext(q.get('extra'))
     def chtext(t):
         # 선지가 인용 시 + 작가 줄(‘\n- 작가, 「제목」’)이면 작가 줄은 따로 오른쪽 맞춤
@@ -312,7 +312,7 @@ def main(work_dir, out_html):
                     body.append(qh)
                 if q['orig'] in exm: exs.append((n, q, exm[q['orig']]))
         if exs:   # 해설이 없는 묶음(탄궁가)은 정답 및 해설 쪽 없음
-            body += ['<div class="u brk"></div>', f'<div class="u extitle"><span>정답 및 해설</span></div>', quick(exs)]
+            body += ['<div class="u brk"></div>', f'<div class="u extitle"><span>정답 및 해설</span></div>', quick(exs) if any(q.get('choices') for _, q, _ in exs) else '']   # 서술형만 있는 묶음: 빠른 정답 없음
             body += [explanation(k, e) for k, q, e in exs]
     units = body   # 1쪽 목차 없음: 머리 아래부터 바로 문제
     css = open(f'{D}/exam.css').read() 
