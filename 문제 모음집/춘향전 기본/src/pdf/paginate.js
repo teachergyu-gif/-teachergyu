@@ -370,5 +370,13 @@
     kids.slice(0, -1).forEach(k => { k.style.marginBottom = (parseFloat(getComputedStyle(k).marginBottom) + add) + 'px'; });
   });
   window.PAGES = pages.length;
+  // ‘(      )’ 빈칸: 줄이 넘어가지 않는 한 최대한 넓게
+  document.querySelectorAll('.fill .fs').forEach(f => {
+    const top = () => f.parentNode.lastChild.getBoundingClientRect().top;
+    const t0 = top();
+    let w = 8;
+    f.style.width = w + 'px';
+    while (w < 600) { f.style.width = (w + 2) + 'px'; if (Math.abs(top() - t0) > 2) { f.style.width = w + 'px'; break; } w += 2; }
+  });
   document.body.dataset.done = '1';
 })();
