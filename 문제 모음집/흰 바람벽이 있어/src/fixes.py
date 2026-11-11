@@ -13,6 +13,14 @@ FIX = [   # 탄궁가 10~11: (가) 「봄눈 오는 밤」을 두 행씩 빗금�
     (TG, 'PTG-t01-10', '아니?\n', '아니? / '),
     (TG, 'PTG-t01-10', '줄달음쳐 온다.</u>\n', '줄달음쳐 온다.</u> / '),
     (TG, 'PTG-t01-10', '그럴 것이다!</u>\n', '그럴 것이다!</u> / '),
+    # 탄궁가 28번을 26~27번 지문(다른 번역본)에 합치므로 선지·해설 인용을 그 지문 표기로
+    (TG, 'TG-t02-28', '십년에 갓 한번 쓰거나 못 쓰거나', '십 년 동안 갓 하나를 쓰거나 못 쓰거나'),
+    (TG, 'TG-t02-28', '올벼씨 한 말은 반 넘어 쥐 먹었고', '올벼 씨 한 말은 반 넘게 쥐 먹었고'),
+    (TG, 'TG-t02-28', '죽 쑨 물 상전 먹고 건더기 건져 종을 주니', '죽 웃물 상전 먹고 건더기 건져 종을 주니'),
+    (TG, 'TG-t02-28', '주인은 죽 쑨 물을 먹고', '주인은 죽 웃물을 먹고'),
+    (TG, 'TG-t02-28', '세시 절기 명절 제사는 무엇으로 해 올리며', '세시 삭망 명일 기제는 무엇으로 제사하며'),
+    (TG, 'TG-t02-28', '‘무엇으로 해 올리며’', '‘무엇으로 제사하며’'),
+    (TG, 'TG-t02-28', '빈천도 내 분이어니 설워 무엇하리', '빈천도 내 분수니 서러워해 무엇하리'),
 ]
 # 검수·해설 보충 결과(review/*.json: fix = 원본 오류 수정, ex_add = 원본에 없는 해설)
 import json as _json, os as _os
@@ -585,7 +593,8 @@ def _rename_map(have, need):
     return m
 
 
-MERGE_INTO = {('흰 바람벽 고난도', 'L3-s06-22')}   # 앞 묶음의 같은 작품에 합칠 묶음(사용자 지정)
+MERGE_INTO = {('흰 바람벽 고난도', 'L3-s06-22')}
+FORCE_MERGE = {('탄궁가', 'TG-t02-28')}   # 번역이 달라도 앞 묶음 지문에 합칠 묶음(문항 인용은 FIX로 맞춤)   # 앞 묶음의 같은 작품에 합칠 묶음(사용자 지정)
 
 
 def union_merge(data, log):
@@ -619,6 +628,7 @@ def union_merge(data, log):
                     (x.get('label') or '') == (y.get('label') or '') and re.sub(r'\W', '', x.get('author') or '')[-8:] == re.sub(r'\W', '', y.get('author') or '')[-8:]
                     and difflib.SequenceMatcher(None, _plain_pos(x['lines'])[0], _plain_pos(y['lines'])[0], autojunk=False).ratio() >= 0.9
                     for x, y in zip(a['works'], s['works'])))
+                same = same or ((src['source'], qs[0]['orig']) in FORCE_MERGE and len(a['works']) == len(s['works']) == 1)
                 if same and aq and (len(aq) == 1 or len(qs) == 1):
                     have = _marks_in(a['works'])
                     need = _marks_in(s['works'])
@@ -640,7 +650,7 @@ def union_merge(data, log):
                                 for k in ('answer', 'correct', 'wrong', 'plain'):
                                     if e.get(k):
                                         e[k] = walk(e[k], fx)
-                    works = [dict(x, lines=_union_lines(x['lines'], y['lines'])) for x, y in zip(a['works'], s['works'])]
+                    works = a['works'] if (src['source'], qs[0]['orig']) in FORCE_MERGE else [dict(x, lines=_union_lines(x['lines'], y['lines'])) for x, y in zip(a['works'], s['works'])]
                     notes = list(dict.fromkeys((a.get('notes') or []) + (s.get('notes') or [])))
                     out[-1] = dict(a, works=works, notes=notes, questions=aq + qs)
                     log.append(f"{src['source']} 문항 하나짜리 묶음 합침: {[q['orig'] for q in aq]} + {[q['orig'] for q in qs]} (기호 바꿈 {rn})")
