@@ -257,8 +257,11 @@ def drop_marks(data, log):
                         lab = m.group(1); gone.append(lab)
                         L[i] = l = l[m.end():]
                         for j in range(i, len(L)):
-                            if re.search(r'\{/' + re.escape(lab) + r'\}$', L[j]):
+                            end = re.search(r'\{/' + re.escape(lab) + r'\}$', L[j])
+                            L[j] = re.sub(r'^<u>([^<]*)</u>(?=(?:\{/[^{}]+\})?$)', r'\1', L[j])   # 묶음 전체에 친 밑줄도 함께 지움
+                            if end:
                                 L[j] = re.sub(r'\{/' + re.escape(lab) + r'\}$', '', L[j]); break
+                        l = L[i]
                     # 기호(+ 그 기호의 밑줄)
                     def sub(mm):
                         if mm.group(1) in used:
