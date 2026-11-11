@@ -26,6 +26,7 @@ WORKS = [('춘향전', '작자 미상, ｢춘향전｣ 기본', ['s01', 's02', '
 def esc(s):
     s = html.escape(s, quote=False)
     s = re.sub(r'&lt;box&gt;.*?&lt;/box&gt;', lambda m: m.group(0).replace('(', '&#40;'), s)   # 네모 칸 안의 한자 괄호 앞에서는 줄을 끊지 않음(네모가 둘로 갈라지지 않게)
+    s = re.sub(r'\[\s+([ⓐ-ⓩⒶ-Ⓩ㉠-㉭A-Z])\s+\]', lambda m: '<span class=blank>[<span class=bm>' + m.group(1) + '</span>]</span>', s)   # ‘[ ⓐ ]’ 빈칸: 기호를 괄호 한가운데에
     for t in ('u', 'b'):
         s = s.replace(f'&lt;{t}&gt;', f'<{t}>').replace(f'&lt;/{t}&gt;', f'</{t}>')
     s = re.sub(r'([\u3400-\u9fff\uf900-\ufaff]+)', lambda m: '<span class="hj">' + m.group(1) + '</span>', s)
