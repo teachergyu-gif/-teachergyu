@@ -16,8 +16,11 @@ FIX = [
     (CH2, 'Ps08-14', '를 두었으니', '를 두었\u200b으니'),
     (CH2, 'Ps09-16', '를 두었으니', '를 두었\u200b으니'),
     (CH4, 's13-7', '‘정절부인’ 봉작', '‘정렬부인’ 봉작'),
-    (CH4, 's14-7', '㉮ 내: ~', '㉠ ~'), (CH4, 's14-7', '㉯ 네: ~', '㉡ ~'),
-    (CH4, 's14-7', '내: 어사또, 네: 사또', '㉠ 어사또, ㉡ 사또'),
+    (CH4, 's14-7', '㉮ 내: ~', '(1) ~'), (CH4, 's14-7', '㉯ 네: ~', '(2) ~'),
+    (CH4, 's14-7', '내: 어사또, 네: 사또', '(1) 어사또, (2) 사또'),
+    (CH4, 's14-7', '‘내’의 답은 ㉠, ‘네’의 답은 ㉡으로', '‘내’의 답은 (1), ‘네’의 답은 (2)로'),   # 지문의 밑줄 ㉠과 헷갈리지 않게
+    (CH4, 's14-7', '㉠, ㉡으로 답을', '(1), (2)로 답을'),
+    (CH4, 's15-16', '어찌 아니 명관인가’라고', '어찌 아니 명관(훌륭한 관리)인가’라고'),   # <조건>: ‘명관’의 의미를 밝힐 것
     (CH4, 's14-19', '2. 윗글의 ㉠과', '2. {t}윗글의 ㉠과'),
     (CH4, 's14-17', '‘백송골’-‘', '‘백송골’\u200b-‘'),
     (CH4, 'Ps13-5', '「춘항전」', '「춘향전」'),
@@ -94,7 +97,9 @@ def apply(data, log):
         def dot(t):
             out = []
             for para in t.split('\n'):
-                p2 = re.sub(END + r'(?=\s+\S)', lambda m: m.group(0) + '.', para)
+                # 따옴표 안(지문 인용)은 그대로: 바깥 부분에만 마침표 보완
+                p2 = ''.join(x if re.match(r'^[“"‘].*[”"’]$', x, re.S) else re.sub(END + r'(?=\s+\S)', lambda m: m.group(0) + '.', x)
+                             for x in re.split(r'(“[^”]*”|"[^"]*"|‘[^’]*’)', para))
                 if re.search(r'[가-힣ᄀ-ᇿ0-9)\]]$', p2.rstrip()) and not re.fullmatch(r'\s*\[[^\]]+\]\s*', p2):   # ‘[오답풀이]’ 같은 제목 줄 제외
                     p2 = p2.rstrip() + '.'
                 out.append(p2)
@@ -106,7 +111,7 @@ def apply(data, log):
                     t = dot(e[k]); nd += t != e[k]; e[k] = t
             for w in e.get('wrong') or []:
                 t = dot(w[1]); nd += t != w[1]; w[1] = t
-            if len(e['answer']) >= 12:
+            if len(e['answer']) >= 12 and not re.search(r'[ⓐ-ⓩ㉠-㉭]\s*:', e['answer']):   # ‘ⓐ: …’처럼 지문 구절을 그대로 옮겨 쓰는 답은 그대로
                 t = dot(e['answer']); nd += t != e['answer']; e['answer'] = t
         if nd:
             log.append(f'{name} 해설: 문장 끝 마침표 보완 {nd}곳')
@@ -137,6 +142,8 @@ def apply(data, log):
                     ne = walk(e, lambda t: t.replace(a, b))
                     if ne != e: hit = True
                     src['ex'][ei] = ne
+            if not hit and b and b in _json.dumps(src, ensure_ascii=False):   # 이미 고친 꼴로 들어 있음(앞 단계에서 해결됨)
+                continue
             if not hit:
                 raise SystemExit(f'수정 대상 없음: {name} {key} {a}')
             log.append(f'{name} {key}번: {a} → {b}')
@@ -460,6 +467,27 @@ def _same_marks(keep, other, qs):
     return True
 
 
+def _copy_par_labels(keep, other, log):
+    pl = lambda t: re.sub(r'<[^>]+>|\{/?[A-Z]\}|[^가-힣]', '', t)
+    ws = []
+    for kw, ow in zip(keep['works'], other['works']):
+        klines = kw['lines'].split('\n')
+        kplain = [pl(x) for x in klines]
+        added = []
+        for ol in ow['lines'].split('\n'):
+            m = re.match(r'^(\([가-하]\))\s*(.*)$', ol)
+            if not m:
+                continue
+            head = pl(m.group(2))[:15]
+            for i, kp in enumerate(kplain):
+                if head and kp.startswith(head) and not re.match(r'^\([가-하]\)', klines[i]):
+                    klines[i] = m.group(1) + ' ' + klines[i]; added.append(m.group(1)); break
+        ws.append(dict(kw, lines='\n'.join(klines)))
+        if added:
+            log.append(f"단락 표시 옮김: {''.join(added)}")
+    keep['works'] = ws
+
+
 def merge_sets(data, log):
     for src in data:
         out = []
@@ -479,6 +507,7 @@ def merge_sets(data, log):
                         if keep is not None:
                             # 다른 쪽 지문에만 있는 기호를 묻는 문항이 없을 때만 합침
                             merged = dict(keep, questions=a['questions'] + qs, notes=keep.get('notes') or a.get('notes') or s.get('notes'))
+                            _copy_par_labels(merged, other, log)   # 다른 쪽 지문에만 있는 (가)~(라) 단락 표시도 옮겨 옴
                             out[-1] = merged
                             log.append(f"{src['source']} 지문 묶음 합침({r:.3f}): {[q['orig'] for q in a['questions']]} + {[q['orig'] for q in qs]}")
                             continue
