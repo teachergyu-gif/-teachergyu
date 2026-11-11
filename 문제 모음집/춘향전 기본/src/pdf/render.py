@@ -28,6 +28,7 @@ def esc(s):
     s = re.sub(r'&lt;box&gt;.*?&lt;/box&gt;', lambda m: m.group(0).replace('(', '&#40;'), s)   # 네모 칸 안의 한자 괄호 앞에서는 줄을 끊지 않음(네모가 둘로 갈라지지 않게)
     s = re.sub(r'\[\s+([ⓐ-ⓩⒶ-Ⓩ㉠-㉭A-Z])\s+\]', lambda m: '<span class=blank>[<span class=bm>' + m.group(1) + '</span>]</span>', s)   # ‘[ ⓐ ]’ 빈칸: 기호를 괄호 한가운데에
     s = re.sub(r'\(\s{3,}\)', '<span class=fill>(<span class=fs></span><span>)</span></span>', s)   # 긴 빈칸 ( ): 쪽 나눔 뒤 줄 끝까지 늘림(paginate.js)
+    s = re.sub(r'&lt;(?!/?(?:u|b|box)&gt;)[^&\s]{1,8}&gt;[가-힣]{0,3}', lambda m: '<span class=nw>' + m.group(0) + '</span>', s)   # ‘<조건>에’가 ‘<’ 뒤에서 끊기지 않게
     for t in ('u', 'b'):
         s = s.replace(f'&lt;{t}&gt;', f'<{t}>').replace(f'&lt;/{t}&gt;', f'</{t}>')
     s = re.sub(r'([\u3400-\u9fff\uf900-\ufaff]+)', lambda m: '<span class="hj">' + m.group(1) + '</span>', s)
@@ -139,7 +140,7 @@ def bogi(b):
                 items[-1] += ' ' + x.strip()
         items = [re.sub(r'것$', '것.', t) for t in items if t]
         keep = lambda h: re.sub(r'\(\s*[\u3000 ]+\s*\)', lambda m: '<span class="nb">' + m.group(0) + '</span>', h)   # 빈칸 ( )이 줄 끝에서 갈라지지 않게
-        body = ''.join(f'<div class="bl bi cj"><span class="no">({k})</span> {keep(hbr(esc(t)))}</div>' for k, t in enumerate(items, 1))
+        body = ''.join(f'<div class="bl bi cj{" tight" if t.startswith("{t}") else ""}"><span class="no">({k})</span> {keep(hbr(esc(t.replace("{t}", ""))))}</div>' for k, t in enumerate(items, 1))   # {t}: 자간을 조금 좁혀 낱말이 다음 줄로 밀리지 않게
         return f'<div class="bogi cond"><div class="bt"><span>{esc(title)}</span></div>{body}</div>'
     ITEM = re.compile(r'^([ㄱ-ㅎ]\.|[㉠-㉭]|[ⓐ-ⓩ]|\(\S\))')
     def kind(x):
