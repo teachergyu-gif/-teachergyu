@@ -79,7 +79,7 @@ def passage(s, rng=''):
             cell = '<div class="ln sp"></div>' if l.strip() == '' else f'<div class="ln{pr if l.strip() != "(중략)" else " pr nd"}{fi}">{hbr(esc(l))}</div>'
             if re.fullmatch(r'\s*[.…·]*\s*[<〈(（\[]\s*중\s*략\s*[>〉)）\]]\s*[.…·]*\s*', l):   # (중략)·<중략>: 가운데 정렬
                 cell = f'<div class="ln mid">{esc(l.strip())}</div>'
-            if re.fullmatch(r'\s*[<〈(（]\s*제?\s*\d+\s*수\s*[>〉)）]\s*', l):   # <1수>, <제19수> 같은 수 표시: 오른쪽 정렬
+            if re.fullmatch(r'\s*[<〈(（]\s*제?\s*\d+\s*(?:수|장|연|곡)\s*[>〉)）]\s*', l):   # <1수>, <제19수> 같은 수 표시: 오른쪽 정렬
                 cell = f'<div class="ln au">{esc(l.strip())}</div>'
             if group:
                 group[1].append(cell)
