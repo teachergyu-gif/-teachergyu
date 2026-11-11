@@ -594,6 +594,7 @@ def _rename_map(have, need):
 
 
 MERGE_INTO = {('흰 바람벽 고난도', 'L3-s06-22')}
+JOIN_SETS = {('탄궁가', 'TG-t02-30')}   # 앞 묶음에 작품을 더해 합칠 묶음(사용자 지정)
 FORCE_MERGE = {('탄궁가', 'TG-t02-28')}   # 번역이 달라도 앞 묶음 지문에 합칠 묶음(문항 인용은 FIX로 맞춤)   # 앞 묶음의 같은 작품에 합칠 묶음(사용자 지정)
 
 
@@ -603,6 +604,37 @@ def union_merge(data, log):
         out = []
         for s in src['sets']:
             qs = s.get('questions') or []
+            if out and qs and (src['source'], qs[0]['orig']) in JOIN_SETS:
+                # 앞 묶음에 이 묶음의 작품을 더함: 같은 작품은 앞 묶음 것을 쓰고 새 작품은 뒤에 (다)…로, 문항·해설 표지도 바꿈
+                a = out[-1]; aq = a.get('questions') or []
+                key = lambda w: re.sub(r'\W|\(.*?\)', '', re.sub(r'[(（][^)）]*[)）]', '', w.get('author') or ''))[-6:]
+                works = list(a['works']); m = {}
+                for y in s['works']:
+                    k = next((i for i, x in enumerate(works) if key(x) == key(y)), None)
+                    if k is None:
+                        works.append(dict(y, label=f'({LABS[len(works)]})')); m[y['label']] = works[-1]['label']
+                    else:
+                        m[y['label']] = works[k]['label']
+                m = {x: z for x, z in m.items() if x != z}
+                fx = lambda t: relabel(t, m)
+                qs = [{kk: (walk(v, fx) if kk in ('stem', 'bogi', 'choices', 'extra') else v) for kk, v in q.items()} for q in qs]
+                for q in qs:
+                    e = exm.get(q['orig'])
+                    if e:
+                        for kk in ('answer', 'correct', 'wrong', 'plain'):
+                            if e.get(kk):
+                                e[kk] = walk(e[kk], fx)
+                nk = lambda n: re.sub(r'\s', '', n.split(':')[0])
+                notes = list(a.get('notes') or [])
+                for n in s.get('notes') or []:
+                    if not any(nk(n) == nk(x) for x in notes):
+                        notes.append(n)
+                notes = [re.sub(r'^\*\s*([^:]+?)\s*:\s*', r'*\1: ', n) for n in notes]   # 두 묶음 주석 표기 통일(*낱말: 뜻)
+                for q in qs:   # ‘(다)와 (가)’처럼 뒤바뀐 순서는 앞 표지부터
+                    q['stem'] = re.sub(r'\((다|라)\)와 \((가|나)\)', lambda mm: f'({mm.group(2)})와 ({mm.group(1)})', q['stem'])
+                out[-1] = dict(a, works=works, notes=notes, questions=aq + qs)
+                log.append(f"{src['source']} 지문 묶음 합침: {[q['orig'] for q in aq]} + {[q['orig'] for q in qs]} 표지 {m}")
+                continue
             if out and qs and (src['source'], qs[0]['orig']) in MERGE_INTO and len(s['works']) == 1:
                 # 작품 하나짜리 지문을 앞 묶음의 같은 작품((가) 등)에 합침: 빈칸이 있는 이쪽 지문을 바탕으로, 발문의 ‘윗글’은 그 표지로
                 a = out[-1]; aq = a.get('questions') or []
