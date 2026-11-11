@@ -308,7 +308,7 @@ def main(work_dir, out_html):
         if exs:   # 해설이 없는 묶음(탄궁가)은 정답 및 해설 쪽 없음
             body += ['<div class="u brk"></div>', f'<div class="u extitle"><span>정답 및 해설</span></div>', quick(exs)]
             body += [explanation(k, e) for k, q, e in exs]
-    units = body   # 1쪽 목차 없음: 머리 아래부터 바로 문제
+    units = body + ['<div class="u memo"></div>']   # 1쪽 목차 없음: 머리 아래부터 바로 문제 / 맨 끝 MEMO 쪽(사용자 지정)
     css = open(f'{D}/exam.css').read() 
     js = open(f'{D}/paginate.js').read()
     doc = f'''<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>
