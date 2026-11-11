@@ -8,9 +8,9 @@ from pypdf import PdfReader, PdfWriter, Transformation
 
 H = os.path.dirname(os.path.abspath(__file__))
 DATA = sys.argv[1] if len(sys.argv) > 1 else H + '/data'
-TITLE = '국제고 1학년 기말고사 대비 「흰 바람벽이 있어」·「탄궁가」 문제 은행'
-FOOT = '국제고 1학년 「흰 바람벽이 있어」·「탄궁가」 문제 은행'
-OUT = os.path.join(H, '..', '국제고 1학년 기말고사 대비 「흰 바람벽이 있어」·「탄궁가」 문제 은행.pdf')
+TITLE = '부산외고 1학년 기말고사 대비 「흰 바람벽이 있어」·「탄궁가」 문제 은행'
+FOOT = '부산외고 1학년 「흰 바람벽이 있어」·「탄궁가」 문제 은행'
+OUT = os.path.join(H, '..', '부산외고 1학년 기말고사 대비 「흰 바람벽이 있어」·「탄궁가」 문제 은행.pdf')
 WORKS = [('L1', '기본 문제 은행', True), ('L2', '실전 문제 은행', True), ('L3', '고난도 문제 은행', True), ('TG', '｢탄궁가｣ 문제 은행', True)]
 
 
@@ -39,24 +39,27 @@ with tempfile.TemporaryDirectory() as t:
     memo = [i + 1 for i, p in enumerate(PdfReader(f'{t}/m0.pdf').pages) if (p.extract_text() or '').strip() == 'MEMO']
     skip = ','.join(str(x) for x in [1] + memo)   # 1쪽(목차)·MEMO 쪽은 머리말·꼬리말 없음
     print('MEMO 쪽', memo)
-    run('python3', '-I', f'{H}/header_phrase.py', f'{t}/m0.pdf', f'{t}/m1.pdf', '리치아카데미 | 국제고 1학년', '1', skip)
+    run('python3', '-I', f'{H}/header_phrase.py', f'{t}/m0.pdf', f'{t}/m1.pdf', '리치아카데미 | 부산외고 1학년', '1', skip)
     run('python3', '-I', f'{H}/footer_text.py', f'{t}/m1.pdf', f'{t}/m2.pdf', FOOT, '1', skip)
     run('python3', '-I', f'{H}/footer_box.py', f'{t}/m2.pdf', f'{t}/m3.pdf', str(total), '1', skip)
     # 목차 쪽 번호: 작품별 '문제 은행' 제목 쪽, 그 뒤 첫 '빠른 정답' 쪽
     texts = [(p.extract_text() or '') for p in PdfReader(f'{t}/m3.pdf').pages]
-    toc = open(f'{H}/toc/toc.html').read().replace('TOTAL', str(total)).replace('TITLE', TITLE)
     start = 1
+    pages = {}
     for key, name, has_ex in WORKS:
         q = next(i for i in range(start, total) if name in texts[i][:600])
-        toc = toc.replace(f'p. Q_{key}<', f'p. {q + 1}<')
-        print(name, '문제', q + 1, end=' ')
-        start = q + 1
+        pages['Q_' + key] = q + 1; start = q + 1
         if has_ex:
             e = next(i for i in range(q, total) if '빠른 정답' in texts[i])
-            toc = toc.replace(f'p. E_{key}<', f'p. {e + 1}<')
-            print('해설', e + 1, end='')
-            start = e + 1
-        print()
+            pages['E_' + key] = e + 1; start = e + 1
+    print(pages)
+    sys.path.insert(0, f'{H}/toc')
+    import toc_exam   # 1쪽: 시험지 머리 + <목 차> 상자(N제 모의고사와 같은 양식)
+    secs = [('「흰 바람벽이 있어」 문제 은행', [('기본 문제', pages['Q_L1']), ('기본 정답 및 해설', pages['E_L1']),
+                                         ('실전 문제', pages['Q_L2']), ('실전 정답 및 해설', pages['E_L2']),
+                                         ('고난도 문제', pages['Q_L3']), ('고난도 정답 및 해설', pages['E_L3'])]),
+            ('「탄궁가」 문제 은행', [('문제', pages['Q_TG']), ('정답 및 해설', pages['E_TG'])])]
+    toc = toc_exam.page(TITLE, secs, None, total)
     tmp = f'{H}/toc/_toc_out.html'
     open(tmp, 'w').write(toc)
     try:
