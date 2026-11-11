@@ -123,6 +123,7 @@ def apply(data, log):
     drop_works(data, log)
     if not _os.environ.get("NO_MERGE"): merge_sets(data, log)
     drop_marks(data, log)
+    if not _os.environ.get("NO_UNION"): union_merge(data, log)
     relabel_marks(data, log)
     add_ex(data, log)
 
@@ -512,3 +513,106 @@ def relabel_marks(data, log):
                         if e.get(k):
                             e[k] = walk(e[k], fix_text)
             log.append(f"{src['source']} 지문(문항 {[q['orig'] for q in qs]}): 기호를 처음부터 차례대로 " + ', '.join(f'{a}→{b}' for a, b in {**cmap, **{f'[{a}]': f'[{b}]' for a, b in lmap.items()}}.items()))
+
+
+# ---- 문항 하나짜리 지문 묶음을 바로 앞뒤의 같은 지문 묶음과 합침(두 지문의 기호를 모두 살림) ----
+_TOK = re.compile(r'</?u>|</?b>|</?box>|\{/?[^{}\s]{1,2}\}|[' + SYMS + r'] ?')
+_CLOSE = re.compile(r'^(</u>|</b>|</box>|\{/[^{}]+\})$')
+
+
+def _plain_pos(t):
+    """markup·공백을 뺀 글자 열과 각 글자의 원래 위치, markup 토큰과 그 앞 글자 수"""
+    chars, pos, toks = [], [], []
+    i = 0
+    while i < len(t):
+        m = _TOK.match(t, i)
+        if m:
+            toks.append((len(chars), m.group(0))); i = m.end(); continue
+        if not t[i].isspace():
+            chars.append(t[i]); pos.append(i)
+        i += 1
+    return ''.join(chars), pos, toks
+
+
+def _union_lines(a, b):
+    """a 지문(줄 나눔·글자 기준)에 b 지문의 기호·밑줄·묶음 표시를 옮겨 넣음"""
+    pa, posa, _ = _plain_pos(a)
+    pb, _, tokb = _plain_pos(b)
+    sm = difflib.SequenceMatcher(None, pb, pa, autojunk=False)
+    mp = {}
+    for i1, j1, size in sm.get_matching_blocks():
+        for k in range(size + 1):
+            mp.setdefault(i1 + k, j1 + k)
+    def to_a(i):
+        while i not in mp and i > 0:
+            i -= 1
+        return mp.get(i, 0)
+    ins = []   # (원래 위치, 순서, 글)
+    for k, (p, tok) in enumerate(tokb):
+        j = to_a(p)
+        if _CLOSE.match(tok.strip()):
+            at = posa[j - 1] + 1 if j > 0 else 0
+        else:
+            at = posa[j] if j < len(posa) else len(a)
+        ins.append((at, k, tok))
+    out = a
+    for at, k, tok in sorted(ins, key=lambda x: (-x[0], -x[1])):
+        out = out[:at] + tok + out[at:]
+    return out
+
+
+def _rename_map(have, need):
+    """need의 기호 중 have와 겹치는 것 → 같은 계열의 안 쓰인 기호"""
+    m, used = {}, set(have) | set(need)
+    for x in need:
+        if x not in have:
+            continue
+        ser = next((s for s in SERIES if x in s), None)
+        if ser:
+            new = next(c for c in ser if c not in used)
+        else:
+            new = next(c for c in _LET if c not in used)
+        m[x] = new; used.add(new)
+    return m
+
+
+def union_merge(data, log):
+    for src in data:
+        exm = {e['orig']: e for e in src['ex']}
+        out = []
+        for s in src['sets']:
+            qs = s.get('questions') or []
+            if out and qs:
+                a = out[-1]; aq = a.get('questions') or []
+                same = (len(a['works']) == len(s['works']) and all(
+                    (x.get('label') or '') == (y.get('label') or '') and re.sub(r'\W', '', x.get('author') or '')[-8:] == re.sub(r'\W', '', y.get('author') or '')[-8:]
+                    and difflib.SequenceMatcher(None, _plain_pos(x['lines'])[0], _plain_pos(y['lines'])[0], autojunk=False).ratio() >= 0.9
+                    for x, y in zip(a['works'], s['works'])))
+                if same and aq and (len(aq) == 1 or len(qs) == 1):
+                    have = _marks_in(a['works'])
+                    need = _marks_in(s['works'])
+                    rn = _rename_map(have, need)
+                    if rn:
+                        circ = {k: v for k, v in rn.items() if len(k) == 1 and k in SYMS}
+                        lets = {k: v for k, v in rn.items() if k not in circ}
+                        tr = str.maketrans(circ)
+                        def fx(t, passage=False):
+                            t = t.translate(tr)
+                            if lets:
+                                t = re.sub(r'(\{/?|\[)([A-Z])(\}|\])', lambda m: m.group(1) + lets.get(m.group(2), m.group(2)) + m.group(3), t)
+                            return t
+                        s = dict(s, works=[dict(w, lines=fx(w['lines'])) for w in s['works']])
+                        qs = [{k: (walk(v, fx) if k in ('stem', 'bogi', 'choices', 'extra') else v) for k, v in q.items()} for q in qs]
+                        for q in qs:
+                            e = exm.get(q['orig'])
+                            if e:
+                                for k in ('answer', 'correct', 'wrong', 'plain'):
+                                    if e.get(k):
+                                        e[k] = walk(e[k], fx)
+                    works = [dict(x, lines=_union_lines(x['lines'], y['lines'])) for x, y in zip(a['works'], s['works'])]
+                    notes = list(dict.fromkeys((a.get('notes') or []) + (s.get('notes') or [])))
+                    out[-1] = dict(a, works=works, notes=notes, questions=aq + qs)
+                    log.append(f"{src['source']} 문항 하나짜리 묶음 합침: {[q['orig'] for q in aq]} + {[q['orig'] for q in qs]} (기호 바꿈 {rn})")
+                    continue
+            out.append(dict(s, questions=qs) if qs else s)
+        src['sets'] = out
