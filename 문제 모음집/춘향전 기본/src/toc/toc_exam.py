@@ -6,8 +6,12 @@ def page(title, section, items, total):
     """section·items 하나 또는 sections = [(제목, [(이름, 쪽)])] 여럿(section에 목록을 넘김)"""
     secs = section if isinstance(section, list) else [(section, items)]
     n = sum(len(it) + 1.6 for _, it in secs)
-    gap = max(9, min(36, (560 - n * 10) / n))   # 상자가 단 아래까지 차도록 줄 간격
-    rows = ''.join(f'<div class="sec"{" style=margin-top:14pt" if k else ""}>[{escape(sn)}]</div>' + ''.join(f'<div class="r" style="margin-bottom:{gap:.1f}pt"><span class="t">{escape(nm)}</span><span class="d"></span><span class="p">p.{pg}</span></div>' for nm, pg in it) for k, (sn, it) in enumerate(secs))
+    # '정답 및 해설'은 바로 앞 문제 항목에 붙여 짝으로 보이게(좁은 간격), 짝과 짝 사이는 넓게
+    tight = sum(1 for _, it in secs for i in range(len(it) - 1) if '해설' in it[i + 1][0] and '해설' not in it[i][0])
+    small = 8
+    gap = max(9, min(48, (560 - n * 10 - tight * small) / max(1, n - tight)))   # 상자가 단 아래까지 차도록 줄 간격
+    mb = lambda it, i: small if i + 1 < len(it) and '해설' in it[i + 1][0] and '해설' not in it[i][0] else gap
+    rows = ''.join(f'<div class="sec"{" style=margin-top:14pt" if k else ""}>[{escape(sn)}]</div>' + ''.join(f'<div class="r" style="margin-bottom:{mb(it, i):.1f}pt"><span class="t">{escape(nm)}</span><span class="d"></span><span class="p">p.{pg}</span></div>' for i, (nm, pg) in enumerate(it)) for k, (sn, it) in enumerate(secs))
     return f'''<!doctype html><html><head><meta charset="utf-8"><style>
 @page{{size:595pt 841pt;margin:0}}
 html,body{{margin:0;padding:0}}
