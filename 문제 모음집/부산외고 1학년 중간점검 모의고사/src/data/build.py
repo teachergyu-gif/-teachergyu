@@ -200,14 +200,21 @@ for q in RG.SA:
     gq.append({kk: v for kk, v in q.items() if kk != 'ex'} | {'choices': []})
     exs.append(dict(q['ex'], no=q['no']))
 # 사용자 지정: 35문항판 기준 10·14·19·21·22·24·32·34번 삭제 후 번호 다시 매김
+# ---- 비문학(2024. 3월 고3 학평 8～10번): 문학 뒤·문법 앞 ----
+_sp = _iu.spec_from_file_location('nonlit', os.path.join(H, 'nonlit.py')); NL = _iu.module_from_spec(_sp); _sp.loader.exec_module(NL)
+SETS.append(NL.SET); exs += [dict(e) for e in NL.EX]
 DROP = {'10', '14', '15', '19', '21', '22', '24', '32', '34'}   # 15: 주격 조사 ㉠~㉥ 고르기(사용자 지정 추가 삭제)
 gq = [q for q in gq if q['no'] not in DROP]; exs = [e for e in exs if e['no'] not in DROP]
 k = 0
 for q in [q for st in SETS for q in st['questions']] + gq:
-    if q['no'].isdigit():
+    if q['no'].isdigit() or q['no'].startswith('B'):
         k += 1; old = q['no']; q['no'] = str(k)
         e = next(e for e in exs if e['no'] == old and not e.get('_r')); e['no'] = str(k); e['_r'] = 1
 for e in exs: e.pop('_r', None)
+exs.sort(key=lambda e: (0, int(e['no'])) if e['no'].isdigit() else (1, 0))   # 비문학 해설을 문학과 문법 사이로
+for st in SETS:   # 세트 번호 범위는 다시 매긴 번호로
+    if st['works'] and st['rng'] is None:
+        st['rng'] = f"{st['questions'][0]['no']}～{st['questions'][-1]['no']}"
 SETS.append({'rng': None, 'works': [], 'questions': gq})
 json.dump({'sets': SETS, 'ex': exs, 'issues': issues}, open(f'{H}/exam.json', 'w', encoding='utf8'), ensure_ascii=False, indent=1)
 print('문항', sum(len(st['questions']) for st in SETS), '해설', len(exs), '정답', ''.join(x['answer'][0] for x in exs if not x['no'].startswith('서')))

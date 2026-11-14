@@ -38,3 +38,6 @@ table.chtab tr th:first-child{border-left:none}
 .qa .sdq{font-size:10pt;margin-top:2mm;line-height:1.6}
 .ansf{font-size:11.2pt;line-height:2;margin:3mm 0 0 2mm}.ansf .afl{min-height:2em}
 table.chtab td:nth-child(2){white-space:nowrap}table.chtab th{font-size:10pt}
+table.dtab{border-collapse:collapse;margin:1.5mm auto 1mm;width:80%;font-size:10.5pt}
+table.dtab th,table.dtab td{border:1px solid #111;padding:.6mm 1.5mm;text-align:center;font-weight:400;line-height:1.45}
+table.dtab th{background:#f3f3f3}
