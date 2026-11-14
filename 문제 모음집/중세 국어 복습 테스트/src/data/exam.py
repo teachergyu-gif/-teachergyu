@@ -166,6 +166,13 @@ SA = [
             'plain': '[채점 요소]\n(2)에서 ‘-ㅁ’과 ‘-옴/-움’의 형태 차이를 정확히 밝혀야 한다.\n(3)에서 관형어와 부사어를 구별해야 한다.'}},
 ]
 
+# 사용자 지정: OX·서술형 삭제, 기존 오지선다 뒤에 새 15문항을 붙이고 1번부터 다시 매김
+import sys; sys.path.insert(0, H)
+from new2 import NEW
+OX, SA = [], []
+MC = MC + NEW
+for k, q in enumerate(MC, 1):
+    q['no'] = str(k)
 json.dump({'title': TITLE, 'ox': OX, 'mc': MC, 'sa': SA}, open(f'{H}/exam.json', 'w', encoding='utf8'), ensure_ascii=False, indent=1)
 print('OX', len(OX), 'O', sum(1 for x in OX if x[1] == 'O'), '오지선다', len(MC), '서술형', len(SA))
 print('오지선다 정답', ''.join(m['ex']['answer'][0] for m in MC))

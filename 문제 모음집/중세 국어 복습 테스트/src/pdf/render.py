@@ -58,6 +58,11 @@ def yesieung(h):
         k = 'v' if v[0] in _VERT else 'h' if v in _HORZ else 'c'
         return f'<span class="ng ng{k}">\u110B{v}{m.group(2)}<span class="tk"></span></span>'
     h = re.sub(r'\u114C([\u1160-\u11A7]+)([\u11A8-\u11FF]?)', ini, h)
+    def hh(m):   # 여린히읗(ㆆ): 같은 방식으로 ㅇ 위에 가로획
+        v = m.group(1)
+        k = 'v' if v[0] in _VERT else 'h' if v in _HORZ else 'c'
+        return f'<span class="ng ng{k} hh">\u110B{v}{m.group(2)}<span class="tk"></span></span>'
+    h = re.sub(r'\u1159([\u1160-\u11A7]+)([\u11A8-\u11FF]?)', hh, h)
     h = re.sub(r'([\uAC00-\uD7A3]|[\u1100-\u115F][\u1160-\u11A7]+)\u11F0', lambda m: f'<span class="ng ngf">{m.group(1)}\u11BC<span class="tk"></span></span>', h)
     return h
 
@@ -270,13 +275,13 @@ def main(data_json, out_html):
     d = json.load(open(data_json))
     sec = lambda t: f'<div class="u sec">{esc(t)}</div>'
     body = ['<div class="u nmline"><span>이름: <i></i></span><span>점수: <i class="sm"></i></span><span class="st">(★ 표시는 고난도 문항)</span></div>']
-    body.append(sec('Ⅰ. OX 문제 (맞으면 O, 틀리면 X)'))
+    if d['ox']: body.append(sec('Ⅰ. OX 문제 (맞으면 O, 틀리면 X)'))
     for k, (t, a, _) in enumerate(d['ox'], 1):
         body.append(f'<div class="u q ox"><div class="qh"><span class="n">{k}.</span><span class="s">{esc(t)}<span class="oxb">(　　)</span></span></div></div>')
     for qi, q in enumerate(d['mc']):
         n = ('★' if q.get('star') else '') + q['no']
         h = question(n, q)
-        if qi == 0:   # 섹션 제목은 첫 문항과 한 덩어리(단 끝에 제목만 남지 않게)
+        if qi == 0 and (d['ox'] or d['sa']):   # 섹션 제목은 첫 문항과 한 덩어리(단 끝에 제목만 남지 않게)
             h = h.replace('<div class="qh">', '<div class="sec">Ⅱ. 오지선다 문제</div><div class="qh">', 1)
         if q.get('inline'):
             h = h.replace('<div class="u q"', '<div class="u q inl"', 1)
@@ -287,16 +292,16 @@ def main(data_json, out_html):
             h = h.replace('<div class="qh">', '<div class="sec">Ⅲ. 서술형 문제</div><div class="qh">', 1)
         body.append(h)
     # 정답 및 해설
-    body += ['<div class="u brk"></div>', '<div class="u extitle"><span>정답 및 해설</span></div>', sec('Ⅰ. OX')]
+    body += ['<div class="u brk"></div>', '<div class="u extitle"><span>정답 및 해설</span></div>'] + ([sec('Ⅰ. OX')] if d['ox'] else [])
     ox = d['ox']
     tr = lambda cells, cls: '<tr>' + ''.join(f'<td class="{cls}">{c}</td>' for c in cells) + '</tr>'
-    for a, b in ((0, 7), (7, 14)):
+    for a, b in (((0, 7), (7, 14)) if ox else ()):
         body.append(f'<div class="u qa oxt"><table class="qat-t">{tr(["번호"] + [str(i + 1) for i in range(a, b)], "qn")}{tr(["정답"] + [x[1] for x in ox[a:b]], "qv")}</table></div>')
-    body.append('<div class="u ex">' + ''.join(f'<div class="ep hang"><span class="c oxn">{k}.</span><span>{esc(x[2])}</span></div>' for k, x in enumerate(ox, 1) if x[2]) + '</div>')
-    body.append(sec('Ⅱ. 오지선다'))
+    if ox: body.append('<div class="u ex">' + ''.join(f'<div class="ep hang"><span class="c oxn">{k}.</span><span>{esc(x[2])}</span></div>' for k, x in enumerate(ox, 1) if x[2]) + '</div>')
+    if ox or d['sa']: body.append(sec('Ⅱ. 오지선다'))
     body.append(quick([(q['no'], q, q['ex']) for q in d['mc']]))
     body += [explanation(q['no'], q['ex']) for q in d['mc']]
-    body.append(sec('Ⅲ. 서술형 예시 답안'))
+    if d['sa']: body.append(sec('Ⅲ. 서술형 예시 답안'))
     body += [explanation(q['no'], dict(q['ex'], tag='예시 답안')) for q in d['sa']]
     css = open(f'{D}/exam.css').read() + open(f'{D}/mock.css').read()
     js = open(f'{D}/paginate.js').read()
