@@ -158,8 +158,10 @@ S6 = nonlit(gk('A', 0), '19～22')
 S7 = nonlit(gk('B', 1), '23～26')
 S8 = nonlit(gk('E', 0), '27～30, 서답형 4')
 for w in S8['works']:
+    w['lines'] = w['lines'].replace('국립과학수사연수소', '국립과학수사연구소').replace('잘 이해할 수 있었어.\n', '잘 이해할 수 있었어.”\n')
     if w['author']:
         w['author'] = '- ' + w['author']
+issues += ['비문학 07: ⓑ(2) ‘국립과학수사연수소’ → ‘연구소’, (3) 인용문 닫는 따옴표(”) 보충']
 SETS = [S1, S2, S3, S4, S5, S6, S7, S8]
 
 # ---- 문항·해설: raw.txt ----
