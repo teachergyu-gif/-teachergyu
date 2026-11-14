@@ -218,5 +218,17 @@ for st in SETS:   # 세트 번호 범위는 다시 매긴 번호로
 SETS.append({'rng': None, 'works': [], 'questions': gq})
 _sp = _iu.spec_from_file_location('final', os.path.join(H, 'final.py')); FN = _iu.module_from_spec(_sp); _sp.loader.exec_module(FN)
 FN.apply({q['no']: q for st in SETS for q in st['questions']}, {e['no']: e for e in exs})
+# ---- 채만식 「미스터 방」(10～11): 문학 뒤·비문학 앞, 뒤 번호는 2씩 밀림 ----
+_sp = _iu.spec_from_file_location('mrbang', os.path.join(H, 'mrbang.py')); MB = _iu.module_from_spec(_sp); _sp.loader.exec_module(MB)
+sh = lambda n: str(int(n) + 2) if n.isdigit() and int(n) >= 10 else n
+for st in SETS:
+    for q in st['questions']: q['no'] = sh(q['no'])
+for e in exs: e['no'] = sh(e['no'])
+for q, n in zip(MB.SET['questions'], ('10', '11')): q['no'] = n
+SETS.insert(3, MB.SET); exs += [dict(e, no=n) for e, n in zip(MB.EX, ('10', '11'))]
+exs.sort(key=lambda e: (0, int(e['no'])) if e['no'].isdigit() else (1, 0))
+for st in SETS:
+    if st['works'] and not re.match(r'^[1-9]～', st['rng'] or ''):
+        st['rng'] = f"{st['questions'][0]['no']}～{st['questions'][-1]['no']}"
 json.dump({'sets': SETS, 'ex': exs, 'issues': issues}, open(f'{H}/exam.json', 'w', encoding='utf8'), ensure_ascii=False, indent=1)
 print('문항', sum(len(st['questions']) for st in SETS), '해설', len(exs), '정답', ''.join(x['answer'][0] for x in exs if not x['no'].startswith('서')))
