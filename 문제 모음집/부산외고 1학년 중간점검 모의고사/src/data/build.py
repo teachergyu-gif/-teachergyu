@@ -200,7 +200,7 @@ for q in RG.SA:
     gq.append({kk: v for kk, v in q.items() if kk != 'ex'} | {'choices': []})
     exs.append(dict(q['ex'], no=q['no']))
 # 사용자 지정: 35문항판 기준 10·14·19·21·22·24·32·34번 삭제 후 번호 다시 매김
-DROP = {'10', '14', '19', '21', '22', '24', '32', '34'}
+DROP = {'10', '14', '15', '19', '21', '22', '24', '32', '34'}   # 15: 주격 조사 ㉠~㉥ 고르기(사용자 지정 추가 삭제)
 gq = [q for q in gq if q['no'] not in DROP]; exs = [e for e in exs if e['no'] not in DROP]
 k = 0
 for q in [q for st in SETS for q in st['questions']] + gq:
