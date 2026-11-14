@@ -26,7 +26,7 @@
 .oxt{margin-bottom:3mm}
 .ep.hang .c.oxn{min-width:1.6em;font-family:"Noto Sans CJK KR",sans-serif;font-weight:700}
 /* 여린히읗(ㆆ): ㅇ 위 가로획 */
-.ng.hh .tk{height:0;width:.3em;border-left:none;border-top:.075em solid #111;margin-right:-.3em}
-.ngv.hh .tk{left:calc(.27em - 1em - .15em);vertical-align:.86em}
-.ngh.hh .tk{left:calc(.425em - 1em - .15em);vertical-align:.99em}
-.ngc.hh .tk{left:calc(.305em - 1em - .15em);vertical-align:.97em}
+.ng.hh .tk{height:0;width:.4em;border-left:none;border-top:.08em solid #111;margin-right:-.4em}
+.ngv.hh .tk{left:calc(.31em - 1em - .2em);vertical-align:.79em}
+.ngh.hh .tk{left:calc(.43em - 1em - .2em);vertical-align:.86em}
+.ngc.hh .tk{left:calc(.33em - 1em - .2em);vertical-align:.84em}

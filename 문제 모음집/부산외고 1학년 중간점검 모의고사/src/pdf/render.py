@@ -202,12 +202,19 @@ def question(n, q, key=None):
             return f'<span class="t">{esc(t)}</span>'
         au = re.sub(r'^-\s*', '- ', m.group(2)).replace('<', '「').replace('>', '」')
         return f'<span class="t"><span class="ct">{esc(m.group(1))}</span><span class="cau">{esc(au)}</span></span>'
-    ch = ''.join(f'<div class="ch"><span class="c">{CIRC[i]}</span>{chtext(t)}</div>' for i, t in enumerate(q.get('choices') or []))
+    ch = '' if q.get('cols') else ''.join(f'<div class="ch"><span class="c">{CIRC[i]}</span>{chtext(t)}</div>' for i, t in enumerate(q.get('choices') or []))
+    if q.get('cols'):   # 표 모양 선지: 선지마다 [첫 칸, 칸…]
+        head = '<tr><th></th>' + ''.join(f'<th>{esc(c)}</th>' for c in q['cols']) + '</tr>'
+        rows = ''.join('<tr><td class="cn">' + CIRC[i] + '</td>' + ''.join(f'<td>{esc(x)}</td>' for x in r) + '</tr>' for i, r in enumerate(q['choices']))
+        ch = f'<table class="chtab">{head}{rows}</table>'
     ans = '' if q.get('choices') or q.get('noans') else f'<div class="ans" style="height:{q.get("lines", ANSWER_LINES) * 1.75 * 11.2}pt"></div>'
-    if q.get('ansline'):
-        ans = f'<div class="ansl">답: {esc(q["ansline"])}</div>'
+    if q.get('form'):   # 답안 틀(빈칸 문장): 줄마다, 빈 줄은 쓸 자리
+        ans = '<div class="ansf">' + ''.join(f'<div class="afl">{esc(x) if x else "&nbsp;"}</div>' for x in q['form'].split('\n')) + '</div>'
+    elif q.get('ansline'):
+        ans = f'<div class="ansl">답: {esc(q["ansline"])}</div><div class="ans" style="height:{q.get("lines", 3) * 1.75 * 11.2}pt"></div>'
     elif not q.get('choices') and not q.get('noans'):
         ans = '<div class="ansl">답:</div>' + ans
+    ans = ans if not q.get('choices') else ''
     close = ' data-close="1"' if key in CLOSE else ''
     if key: close += f' data-key="{key[0]}|{key[1]}"'
     num = f'<span class="n sd">[{n}]</span>' if str(n).startswith('서답형') else f'<span class="n">{n}.</span>'
@@ -299,6 +306,9 @@ def main(data_json, out_html):
     # 정답 및 해설: 맨 뒤에 한데 모아(빠른 정답은 객관식만)
     body += ['<div class="u brk"></div>', '<div class="u extitle"><span>정답 및 해설</span></div>',
              quick([x for x in exs if x[1].get('choices')])]
+    sq = [(k, e) for k, q, e in exs if e.get('quick')]
+    if sq:   # 빠른 정답 아래 서답형 정답 요약
+        body.append('<div class="u qa"><div class="sdq">' + '<br>'.join(f'<b>[{k}]</b> {esc(e["quick"])}' for k, e in sq) + '</div></div>')
     body += [explanation(k, e) for k, q, e in exs]
     css = open(f'{D}/exam.css').read() + open(f'{D}/mock.css').read()
     js = open(f'{D}/paginate.js').read()

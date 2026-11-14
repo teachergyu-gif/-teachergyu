@@ -178,6 +178,27 @@ for k, q in enumerate(G26, n0 + 1):
     no = str(k)
     gq.append({'no': no, 'stem': q['stem'], 'points': None, 'bogi': q.get('bogi'), 'choices': q['choices'], 'extra': q.get('extra'), 'inline': q.get('inline', False)})
     exs.append(dict(q['ex'], no=no))
+import importlib.util as _iu
+_sp = _iu.spec_from_file_location('rev_grammar', os.path.join(H, 'rev_grammar.py')); RG = _iu.module_from_spec(_sp); _sp.loader.exec_module(RG)
+qm = {q['no']: q for q in gq}; em = {e['no']: e for e in exs}
+for k, r in RG.REPLACE.items():   # 문항 전체 교체(검토 반영)
+    q = qm[str(k)]
+    for f in ('stem', 'bogi', 'choices', 'extra', 'cols'):
+        q[f] = r.get(f)
+    q['inline'] = r.get('inline', False)
+    em[str(k)].clear(); em[str(k)].update(dict(r['ex'], no=str(k)))
+qm['30']['choices'] = RG.CH30; em['30'].clear(); em['30'].update(dict(RG.EX30, no='30'))
+for k, a, b in RG.PATCH:
+    hit = 0
+    for obj in (qm[str(k)], em[str(k)]):
+        t = json.dumps(obj, ensure_ascii=False)
+        if a in t:
+            t = t.replace(a, b); hit += 1
+            obj.clear(); obj.update(json.loads(t))
+    assert hit, (k, a[:30])
+for q in RG.SA:
+    gq.append({kk: v for kk, v in q.items() if kk != 'ex'} | {'choices': []})
+    exs.append(dict(q['ex'], no=q['no']))
 SETS.append({'rng': None, 'works': [], 'questions': gq})
 json.dump({'sets': SETS, 'ex': exs, 'issues': issues}, open(f'{H}/exam.json', 'w', encoding='utf8'), ensure_ascii=False, indent=1)
-print('문항', sum(len(st['questions']) for st in SETS), '해설', len(exs), '정답', ''.join(x['answer'][0] for x in exs))
+print('문항', sum(len(st['questions']) for st in SETS), '해설', len(exs), '정답', ''.join(x['answer'][0] for x in exs if not x['no'].startswith('서')))

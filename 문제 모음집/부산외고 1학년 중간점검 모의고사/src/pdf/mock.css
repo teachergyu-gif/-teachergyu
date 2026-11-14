@@ -26,7 +26,15 @@
 .oxt{margin-bottom:3mm}
 .ep.hang .c.oxn{min-width:1.6em;font-family:"Noto Sans CJK KR",sans-serif;font-weight:700}
 /* 여린히읗(ㆆ): ㅇ 위 가로획 */
-.ng.hh .tk{height:0;width:.3em;border-left:none;border-top:.075em solid #111;margin-right:-.3em}
-.ngv.hh .tk{left:calc(.27em - 1em - .15em);vertical-align:.86em}
-.ngh.hh .tk{left:calc(.425em - 1em - .15em);vertical-align:.99em}
-.ngc.hh .tk{left:calc(.305em - 1em - .15em);vertical-align:.97em}
+.ng.hh .tk{height:0;width:.4em;border-left:none;border-top:.08em solid #111;margin-right:-.4em}
+.ngv.hh .tk{left:calc(.31em - 1em - .2em);vertical-align:.79em}
+.ngh.hh .tk{left:calc(.43em - 1em - .2em);vertical-align:.86em}
+.ngc.hh .tk{left:calc(.33em - 1em - .2em);vertical-align:.84em}
+table.chtab{border-collapse:collapse;margin:2mm 0 1mm 4mm;width:calc(100% - 4mm);font-size:11pt}
+table.chtab th,table.chtab td{border:1px solid #111;padding:1mm 1.5mm;text-align:center;line-height:1.5}
+table.chtab th{font-weight:400;background:#f3f3f3}
+table.chtab td.cn{width:7mm;border-left:none}
+table.chtab tr th:first-child{border-left:none}
+.qa .sdq{font-size:10pt;margin-top:2mm;line-height:1.6}
+.ansf{font-size:11.2pt;line-height:2;margin:3mm 0 0 2mm}.ansf .afl{min-height:2em}
+table.chtab td:nth-child(2){white-space:nowrap}table.chtab th{font-size:10pt}
