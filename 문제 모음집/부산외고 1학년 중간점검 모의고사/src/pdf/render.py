@@ -45,11 +45,19 @@ def esc(s):
         return '<span class="nb">' + t + '</span>'
     s = re.sub(r'[^\s<>\u200b]*(?:<span class="hj">[^<]*</span>[^\s<>\u200b]*)+', nb, s)   # \u200b(줄 바꿀 수 있는 자리)에서는 묶지 않음
     s = re.sub(r'&lt;보기 ?\d?&gt;', lambda m: '<span class="nb">' + m.group(0) + '</span>', s)   # ‘<보기2>’가 줄 끝에서 갈라지지 않게
-    return yesieung(s.replace('&lt;box&gt;', '<span class="bx">').replace('&lt;/box&gt;', '</span>'))
+    return yethangul(s.replace('&lt;box&gt;', '<span class="bx">').replace('&lt;/box&gt;', '</span>'))
 
 
 _VERT = set('\u1161\u1162\u1163\u1164\u1165\u1166\u1167\u1168\u1175')
 _HORZ = set('\u1169\u116D\u116E\u1172\u1173\u119E')
+
+
+_YH = re.compile(r'[\uAC00-\uD7A3\u1100-\u11FF\uA960-\uA97F\uD7B0-\uD7FF]*[\u1100-\u11FF\uA960-\uA97F\uD7B0-\uD7FF][\uAC00-\uD7A3\u1100-\u11FF\uA960-\uA97F\uD7B0-\uD7FF]*')
+
+
+def yethangul(h):
+    """옛한글(조합형 자모가 든 낱말): Noto CJK는 ㅿ·ㅸ 조합을 ㅅ·ㅂ 모양으로 그리므로, 그 낱말만 옛한글 글꼴(나눔명조 옛한글)로"""
+    return _YH.sub(lambda m: '<span class="yh">' + m.group(0) + '</span>', h)
 
 
 def yesieung(h):
@@ -311,7 +319,7 @@ def main(data_json, out_html):
     if sq:   # 빠른 정답 아래 서답형 정답 요약
         body.append('<div class="u qa"><div class="sdq">' + '<br>'.join(f'<b>[{k}]</b> {esc(e["quick"])}' for k, e in sq) + '</div></div>')
     body += [explanation(k, e) for k, q, e in exs]
-    css = open(f'{D}/exam.css').read() + open(f'{D}/mock.css').read()
+    css = open(f'{D}/exam.css').read() + open(f'{D}/mock.css').read() + f'@font-face{{font-family:"YetHangul";src:url("file://{D}/fonts/NanumMyeongjo-YetHangul.woff2") format("woff2")}}.yh{{font-family:"YetHangul","Noto Serif CJK KR",serif}}'
     js = open(f'{D}/paginate.js').read()
     doc = f'''<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>
 <div id="src">{"".join(body)}</div>
