@@ -1,0 +1,27 @@
+/* 모의고사 전용 */
+.qh .pt{font-weight:400;white-space:nowrap}
+.qh .n.sd{font-family:"Noto Serif CJK KR",serif;font-weight:700;font-size:11.2pt;white-space:nowrap}
+.ep.gc{padding-left:1em;text-indent:-1em}
+.ep.gc:before{content:"• "}
+.nw{white-space:nowrap}
+/* 옛이응 꼭지: 글자 '뒤'에 폭 0인 작은 막대를 넣고(PDF에서 옛한글 글자가 흰 바탕 그림으로 찍혀 앞에 그리면 덮임)
+   왼쪽으로 1em 되돌려 ㅇ 위에 올림. 위치는 Noto Serif CJK KR 글자 모양에서 잰 값 */
+.ng{display:inline;text-indent:0}
+.ng .tk{display:inline-block;width:0;height:.21em;border-left:.11em solid #111;margin-right:-.11em;position:relative;z-index:1;line-height:0}
+.ngv .tk{left:calc(.27em - 1em);vertical-align:.655em}
+.ngh .tk{left:calc(.425em - 1em);vertical-align:.79em}
+.ngc .tk{left:calc(.305em - 1em);vertical-align:.765em}
+.ngf .tk{left:calc(.428em - 1em);vertical-align:.215em;height:.15em}
+/* 중세 국어 복습 테스트 */
+.nmline{display:flex;gap:10mm;align-items:flex-end;font-family:"Noto Sans CJK KR",sans-serif;font-size:10.5pt;margin:0 0 4mm}
+.nmline i{display:inline-block;width:26mm;border-bottom:1px solid #111;margin-left:1.5mm}
+.nmline i.sm{width:20mm}
+.nmline .st{margin-left:auto;font-size:9pt;color:#333;white-space:nowrap}
+.u.sec,.q .sec{font-family:"Noto Sans CJK KR",sans-serif;font-weight:900;font-size:12pt;color:#29334A;border-bottom:1.5px solid #29334A;padding-bottom:1mm;margin:3mm 0 4mm}
+.q.ox{margin-bottom:3.2mm}
+.q.ox .oxb{white-space:nowrap;margin-left:.4em}
+.q.inl .ch{display:inline-flex;width:auto;margin-right:7mm;padding-left:0;text-indent:0}
+.ansl{font-family:"Noto Sans CJK KR",sans-serif;font-weight:700;font-size:10.5pt;margin:3mm 0 0}
+.oxt .qat-t td{text-align:center}
+.oxt{margin-bottom:3mm}
+.ep.hang .c.oxn{min-width:1.6em;font-family:"Noto Sans CJK KR",sans-serif;font-weight:700}
