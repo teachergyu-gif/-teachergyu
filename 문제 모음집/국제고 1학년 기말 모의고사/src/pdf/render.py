@@ -27,6 +27,7 @@ WORKS = [('흰 바람벽 기본', '백석, ｢흰 바람벽이 있어｣ 기본'
 def esc(s):
     s = html.escape(s, quote=False)
     s = re.sub(r'&lt;box&gt;.*?&lt;/box&gt;', lambda m: m.group(0).replace('(', '&#40;'), s)   # 네모 칸 안의 한자 괄호 앞에서는 줄을 끊지 않음(네모가 둘로 갈라지지 않게)
+    s = re.sub(r'&lt;(?!/?(?:u|b|box)&gt;)[^&\s]{1,8}&gt;[가-힣]{0,3}', lambda m: '<span class=nw>' + m.group(0) + '</span>', s)   # ‘<조건>에’가 ‘<’ 뒤에서 끊기지 않게
     for t in ('u', 'b'):
         s = s.replace(f'&lt;{t}&gt;', f'<{t}>').replace(f'&lt;/{t}&gt;', f'</{t}>')
     s = re.sub(r'([\u3400-\u9fff\uf900-\ufaff]+)', lambda m: '<span class="hj">' + m.group(1) + '</span>', s)
@@ -215,7 +216,7 @@ def explanation(n, e):
         return f'<div class="ep">{esc(t)}</div>'
     if e.get('plain'):
         out += [(f'<div class="ep wr">{p.strip()}</div>' if p.strip() in ('[오답풀이]', '[채점 기준]') else
-                 f'<div class="ep gc">{esc(p.strip())}</div>' if not p.startswith('[') else hang(p)) for p in e['plain'].split('\n') if p.strip()]
+                 f'<div class="ep{" gn" if p.startswith("※") else " gc"}">{esc(p.strip())}</div>' if not p.startswith('[') else hang(p)) for p in e['plain'].split('\n') if p.strip()]
     else:
         if e.get('correct'):
             c = a[:1] if a[:1] in CIRC else ''

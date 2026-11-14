@@ -370,5 +370,24 @@
     kids.slice(0, -1).forEach(k => { k.style.marginBottom = (parseFloat(getComputedStyle(k).marginBottom) + add) + 'px'; });
   });
   window.PAGES = pages.length;
+  // 양쪽 맞춤 때문에 낱말 사이가 크게 벌어지는 줄(다음 낱말이 줄 끝에 못 들어간 줄): 자간을 조금씩 좁혀 낱말을 끌어올림
+  document.querySelectorAll('.ch .t, .qh .s, .ep').forEach(el => {
+    const gap = () => {
+      const ta = el.style.textAlign; el.style.textAlign = 'left';
+      const r = document.createRange(); r.selectNodeContents(el);
+      const R = [...r.getClientRects()]; const right = el.getBoundingClientRect().right - parseFloat(getComputedStyle(el).paddingRight);
+      const lines = {}; R.forEach(x => { const k = Math.round(x.top / 4); lines[k] = Math.max(lines[k] || 0, x.right); });
+      const ks = Object.keys(lines).map(Number).sort((a, b) => a - b);
+      el.style.textAlign = ta;
+      return Math.max(0, ...ks.slice(0, -1).map(k => right - lines[k]));
+    };
+    const fs = parseFloat(getComputedStyle(el).fontSize);
+    if (gap() <= fs * 1.2) return;
+    for (let ls = -0.01; ls >= -0.06; ls -= 0.01) {
+      el.style.letterSpacing = ls.toFixed(2) + 'em';
+      if (gap() <= fs * 1.2) return;
+    }
+    el.style.letterSpacing = '';
+  });
   document.body.dataset.done = '1';
 })();
