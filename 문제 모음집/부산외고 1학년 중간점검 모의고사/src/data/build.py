@@ -199,8 +199,9 @@ for k, a, b in RG.PATCH:
 for q in RG.SA:
     gq.append({kk: v for kk, v in q.items() if kk != 'ex'} | {'choices': []})
     exs.append(dict(q['ex'], no=q['no']))
-# 사용자 지정: 24번(중성 설축) 삭제 후 번호 다시 매김
-gq = [q for q in gq if q['no'] != '24']; exs = [e for e in exs if e['no'] != '24']
+# 사용자 지정: 35문항판 기준 10·14·19·21·22·24·32·34번 삭제 후 번호 다시 매김
+DROP = {'10', '14', '19', '21', '22', '24', '32', '34'}
+gq = [q for q in gq if q['no'] not in DROP]; exs = [e for e in exs if e['no'] not in DROP]
 k = 0
 for q in [q for st in SETS for q in st['questions']] + gq:
     if q['no'].isdigit():
