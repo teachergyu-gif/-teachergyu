@@ -94,7 +94,7 @@ nh = mark(nh, '큰 기침 에헴이를 꽤 오래도록 한 후에', '㉣')
 nh = mark(nh, '풍채 작은 내 모습에 개가 짖을 뿐이로다', '㉤')
 S2 = {'rng': '4～6', 'works': [
     {'label': '(가)', 'lines': tg, 'author': '- 정훈, 「탄궁가」 -', 'notes': notes_tg},
-    {'label': '(나)', 'lines': nh, 'author': '- 박인로, 「누항사」(현대어 풀이) -', 'notes': [
+    {'label': '(나)', 'lines': nh.replace('“', '').replace('”', ''), 'author': '- 박인로, 「누항사」 -', 'notes': [
         '*멍덕: 짚으로 바구니 비슷하게 엮은 모자.', '*빈이무원: 가난하면서도 남을 원망하지 않음.',
         '*단사표음: 대나무로 만든 밥그릇에 담은 밥과 표주박에 든 물이라는 뜻으로, 소박한 시골 생활을 이르는 말.',
         '*온포: 따뜻하게 입고 배부르게 먹음.', '*화형제 신붕우: 형제간에 화목하고 벗 사이에 믿음이 있음.']}]}
@@ -199,6 +199,14 @@ for k, a, b in RG.PATCH:
 for q in RG.SA:
     gq.append({kk: v for kk, v in q.items() if kk != 'ex'} | {'choices': []})
     exs.append(dict(q['ex'], no=q['no']))
+# 사용자 지정: 24번(중성 설축) 삭제 후 번호 다시 매김
+gq = [q for q in gq if q['no'] != '24']; exs = [e for e in exs if e['no'] != '24']
+k = 0
+for q in [q for st in SETS for q in st['questions']] + gq:
+    if q['no'].isdigit():
+        k += 1; old = q['no']; q['no'] = str(k)
+        e = next(e for e in exs if e['no'] == old and not e.get('_r')); e['no'] = str(k); e['_r'] = 1
+for e in exs: e.pop('_r', None)
 SETS.append({'rng': None, 'works': [], 'questions': gq})
 json.dump({'sets': SETS, 'ex': exs, 'issues': issues}, open(f'{H}/exam.json', 'w', encoding='utf8'), ensure_ascii=False, indent=1)
 print('문항', sum(len(st['questions']) for st in SETS), '해설', len(exs), '정답', ''.join(x['answer'][0] for x in exs if not x['no'].startswith('서')))

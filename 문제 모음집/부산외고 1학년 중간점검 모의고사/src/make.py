@@ -29,8 +29,7 @@ with tempfile.TemporaryDirectory() as t:
         w.add_page(a4(p))
     w.write(f'{t}/m0.pdf')
     total = len(w.pages)
-    run('python3', '-I', f'{H}/header_phrase.py', f'{t}/m0.pdf', f'{t}/m1.pdf', '리치아카데미 | 부산외고 1학년', '0', '1')
-    run('python3', '-I', f'{H}/footer_text.py', f'{t}/m1.pdf', f'{t}/m2.pdf', FOOT, '0', '')
-    run('python3', '-I', f'{H}/footer_box.py', f'{t}/m2.pdf', f'{t}/m3.pdf', str(total), '0', '')
+    # 사용자 지정: 머리말 문구(리치아카데미 | 학교)·꼬리말 교재 이름은 넣지 않음, 쪽 상자만
+    run('python3', '-I', f'{H}/footer_box.py', f'{t}/m0.pdf', f'{t}/m3.pdf', str(total), '0', '')
     os.replace(f'{t}/m3.pdf', OUT)
     print('ok', OUT, total, 'pages')
