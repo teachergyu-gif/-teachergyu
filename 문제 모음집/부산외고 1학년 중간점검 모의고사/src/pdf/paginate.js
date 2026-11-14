@@ -389,5 +389,8 @@
     }
     el.style.letterSpacing = '';
   });
+  // 줄 바꿈 자리로 넣은 U+200B는 <wbr>로 바꿈(줄은 그대로 바뀌고, PDF 글자에는 보이지 않는 공백이 남지 않게)
+  { const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); const ns = []; while (tw.nextNode()) if (tw.currentNode.textContent.includes('\u200b')) ns.push(tw.currentNode);
+    ns.forEach(n => { const f = document.createDocumentFragment(); n.textContent.split('\u200b').forEach((t, i) => { if (i) f.appendChild(document.createElement('wbr')); if (t) f.appendChild(document.createTextNode(t)); }); n.replaceWith(f); }); }
   document.body.dataset.done = '1';
 })();

@@ -216,5 +216,7 @@ for st in SETS:   # 세트 번호 범위는 다시 매긴 번호로
     if st['works'] and st['rng'] is None:
         st['rng'] = f"{st['questions'][0]['no']}～{st['questions'][-1]['no']}"
 SETS.append({'rng': None, 'works': [], 'questions': gq})
+_sp = _iu.spec_from_file_location('final', os.path.join(H, 'final.py')); FN = _iu.module_from_spec(_sp); _sp.loader.exec_module(FN)
+FN.apply({q['no']: q for st in SETS for q in st['questions']}, {e['no']: e for e in exs})
 json.dump({'sets': SETS, 'ex': exs, 'issues': issues}, open(f'{H}/exam.json', 'w', encoding='utf8'), ensure_ascii=False, indent=1)
 print('문항', sum(len(st['questions']) for st in SETS), '해설', len(exs), '정답', ''.join(x['answer'][0] for x in exs if not x['no'].startswith('서')))
