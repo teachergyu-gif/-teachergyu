@@ -1,4 +1,6 @@
-"""국제고 1학년 기말 모의고사 PDF판: 1쪽 시험지 머리(제1교시) → 문항(객관식·서답형) → 맨 뒤 정답 및 해설.
+"""부산외고 1학년 중간점검 모의고사 PDF판: 문학 세트(지문+문항) → 중세 문법 단독 문항 → 정답 및 해설.
+(국제고 1학년 기말 모의고사 render.py에서 가져옴)
+원래 설명: 국제고 1학년 기말 모의고사 PDF판: 1쪽 시험지 머리(제1교시) → 문항(객관식·서답형) → 맨 뒤 정답 및 해설.
 사용: python3 render.py data/exam.json 출력.html"""
 import json, html, re, sys, os
 D = os.path.dirname(os.path.abspath(__file__))
@@ -42,7 +44,27 @@ def esc(s):
         return '<span class="nb">' + t + '</span>'
     s = re.sub(r'[^\s<>\u200b]*(?:<span class="hj">[^<]*</span>[^\s<>\u200b]*)+', nb, s)   # \u200b(줄 바꿀 수 있는 자리)에서는 묶지 않음
     s = re.sub(r'&lt;보기 ?\d?&gt;', lambda m: '<span class="nb">' + m.group(0) + '</span>', s)   # ‘<보기2>’가 줄 끝에서 갈라지지 않게
-    return s.replace('&lt;box&gt;', '<span class="bx">').replace('&lt;/box&gt;', '</span>')
+    return yesieung(s.replace('&lt;box&gt;', '<span class="bx">').replace('&lt;/box&gt;', '</span>'))
+
+
+_VERT = set('\u1161\u1162\u1163\u1164\u1165\u1166\u1167\u1168\u1175')
+_HORZ = set('\u1169\u116D\u116E\u1172\u1173\u119E')
+
+
+def yesieung(h):
+    """옛이응(ㆁ): 글꼴이 음절 속 옛이응을 일반 ㅇ 모양으로 그리므로, ㅇ으로 조합한 뒤 꼭지를 덧그린다(N제 모의고사와 같음)"""
+    def ini(m):
+        v = m.group(1)
+        k = 'v' if v[0] in _VERT else 'h' if v in _HORZ else 'c'
+        return f'<span class="ng ng{k}">\u110B{v}{m.group(2)}<span class="tk"></span></span>'
+    h = re.sub(r'\u114C([\u1160-\u11A7]+)([\u11A8-\u11FF]?)', ini, h)
+    def hh(m):   # 여린히읗(ㆆ): 같은 방식으로 ㅇ 위에 가로획
+        v = m.group(1)
+        k = 'v' if v[0] in _VERT else 'h' if v in _HORZ else 'c'
+        return f'<span class="ng ng{k} hh">\u110B{v}{m.group(2)}<span class="tk"></span></span>'
+    h = re.sub(r'\u1159([\u1160-\u11A7]+)([\u11A8-\u11FF]?)', hh, h)
+    h = re.sub(r'([\uAC00-\uD7A3]|[\u1100-\u115F][\u1160-\u11A7]+)\u11F0', lambda m: f'<span class="ng ngf">{m.group(1)}\u11BC<span class="tk"></span></span>', h)
+    return h
 
 
 def hbr(h):
@@ -145,7 +167,7 @@ def bogi(b):
         return f'<div class="bogi cond"><div class="bt"><span>{esc(title)}</span></div>{body}</div>'
     ITEM = re.compile(r'^([ㄱ-ㅎ]\.|[㉠-㉭]|[ⓐ-ⓩ]|\(\S\))')
     def kind(x):
-        if re.match(r'^[-―—]\s*\S', x) and re.search(r'[「『｢<]|, ', x): return ' bau'     # 작가 줄(‘- 백석, 「…」’): 오른쪽 맞춤
+        if re.match(r'^[-―—]\s*\S', x) and (re.search(r'[「『｢<]|, ', x) or not re.search(r'것\.?$', x)): return ' bau'     # 작가 줄(‘- 백석, 「…」’): 오른쪽 맞춤
         if re.match(r'^[-―—]\s*\S', x): return ' bi'      # ‘- …할 것.’ 같은 조건 항목: 왼쪽 맞춤·내어쓰기
         if re.match(r'^\*', x): return ' bnote'       # 주석: 작은 글씨
         return ' bi' if ITEM.match(x) else ''
@@ -181,7 +203,11 @@ def question(n, q, key=None):
         au = re.sub(r'^-\s*', '- ', m.group(2)).replace('<', '「').replace('>', '」')
         return f'<span class="t"><span class="ct">{esc(m.group(1))}</span><span class="cau">{esc(au)}</span></span>'
     ch = ''.join(f'<div class="ch"><span class="c">{CIRC[i]}</span>{chtext(t)}</div>' for i, t in enumerate(q.get('choices') or []))
-    ans = '' if q.get('choices') else f'<div class="ans" style="height:{ANSWER_LINES * 1.75 * 11.2}pt"></div>'
+    ans = '' if q.get('choices') or q.get('noans') else f'<div class="ans" style="height:{q.get("lines", ANSWER_LINES) * 1.75 * 11.2}pt"></div>'
+    if q.get('ansline'):
+        ans = f'<div class="ansl">답: {esc(q["ansline"])}</div>'
+    elif not q.get('choices') and not q.get('noans'):
+        ans = '<div class="ansl">답:</div>' + ans
     close = ' data-close="1"' if key in CLOSE else ''
     if key: close += f' data-key="{key[0]}|{key[1]}"'
     num = f'<span class="n sd">[{n}]</span>' if str(n).startswith('서답형') else f'<span class="n">{n}.</span>'
@@ -192,7 +218,7 @@ def question(n, q, key=None):
 
 def explanation(n, e):
     a = e['answer']
-    short = len(a) < 12
+    short = len(a) < 12 or a[:1] in CIRC
     lab = f'[{n}]' if str(n).startswith('서답형') else f'{n}.'
     out = [f'<div class="eh"><span>{lab} {esc(a) if short else ""}</span></div>']
     if not short:
@@ -215,8 +241,7 @@ def explanation(n, e):
             return items(t.strip())
         return f'<div class="ep">{esc(t)}</div>'
     if e.get('plain'):
-        out += [(f'<div class="ep wr">{p.strip()}</div>' if p.strip() in ('[오답풀이]', '[채점 기준]') else
-                 f'<div class="ep{" gn" if p.startswith("※") else " gc"}">{esc(p.strip())}</div>' if not p.startswith('[') else hang(p)) for p in e['plain'].split('\n') if p.strip()]
+        out += [(f'<div class="ep wr">{p.strip()}</div>' if p.strip() in ('[오답풀이]', '[채점 기준]', '[정답 근거]', '[채점 요소]') else hang(p)) for p in e['plain'].split('\n') if p.strip()]
     else:
         if e.get('correct'):
             c = a[:1] if a[:1] in CIRC else ''
@@ -255,18 +280,21 @@ def main(data_json, out_html):
         first = s['questions'][0]['no']
         if SET_BREAK.get(('모의', first)) == 'page': body.append('<div class="u brk"></div>')
         elif SET_BREAK.get(('모의', first)) == 'col': body.append('<div class="u colbrk"></div>')
-        ps = passage(s, rng)
+        ps = passage(s, rng) if s['works'] else ''   # 지문 없는 단독 문항(중세 문법)
         if ('모의', first) in KEEP_Q:
             ps = ps.replace('<div class="u set"', '<div class="u set" data-keepq="1"', 1)
         sb = SET_BREAK.get(('모의', first))
         if isinstance(sb, str) and sb.startswith('here'):
             ps = ps.replace('<div class="u set">', f'<div class="u set" data-here="{sb[5:] or 70}">', 1)
-        body.append(ps)
+        if ps: body.append(ps)
         for q in s['questions']:
             n = q['no']
             if Q_BREAK.get(('모의', n)) == 'col': body.append('<div class="u colbrk"></div>')
             elif Q_BREAK.get(('모의', n)) == 'page': body.append('<div class="u brk"></div>')
-            body.append(question(n, q, ('모의', n)))
+            h = question(n, q, ('모의', n))
+            if q.get('inline'):   # 짧은 선지는 한 줄에
+                h = h.replace('<div class="u q"', '<div class="u q inl"', 1)
+            body.append(h)
             exs.append((n, q, exm[n]))
     # 정답 및 해설: 맨 뒤에 한데 모아(빠른 정답은 객관식만)
     body += ['<div class="u brk"></div>', '<div class="u extitle"><span>정답 및 해설</span></div>',

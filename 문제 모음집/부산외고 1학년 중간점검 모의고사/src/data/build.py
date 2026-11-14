@@ -170,5 +170,14 @@ for st, qs in zip(SETS, qsets):
 for qs in qsets:
     for x in qs:
         assert len(x['choices']) == 5, x['no']
+# ---- 중세 문법(중세 국어 복습 테스트 1회의 오지선다 26문항): 지문 없이 문학 뒤에 이어서 ----
+G26 = json.load(open(os.path.join(H, '..', '..', '..', '중세 국어 복습 테스트', 'src', 'data', 'exam.json'), encoding='utf8'))['mc']
+n0 = sum(len(st['questions']) for st in SETS)
+gq = []
+for k, q in enumerate(G26, n0 + 1):
+    no = str(k)
+    gq.append({'no': no, 'stem': q['stem'], 'points': None, 'bogi': q.get('bogi'), 'choices': q['choices'], 'extra': q.get('extra'), 'inline': q.get('inline', False)})
+    exs.append(dict(q['ex'], no=no))
+SETS.append({'rng': None, 'works': [], 'questions': gq})
 json.dump({'sets': SETS, 'ex': exs, 'issues': issues}, open(f'{H}/exam.json', 'w', encoding='utf8'), ensure_ascii=False, indent=1)
-print('문항', sum(len(x) for x in qsets), '해설', len(exs), '정답', ''.join(x['answer'] for x in exs))
+print('문항', sum(len(st['questions']) for st in SETS), '해설', len(exs), '정답', ''.join(x['answer'][0] for x in exs))
