@@ -19,7 +19,7 @@ for t, l, p in DI:
         BINS.append(struct.unpack_from('<H', p, 2)[0] if typ == 1 else None)
 CIRC = '①②③④⑤'
 JOINLOG = []
-PUA = {'\U000f003b': '⇩', '\U000f00bf': '[부사]', '\U000f00cc': '[형용사]', '\U000f00f0': '[동사]', '\U000f02b1': '「1」', '\U000f02b2': '「2」'}
+PUA = {'\U000f003b': '⇩', '\U000f00bf': '[부사]', '\U000f00cc': '[형용사]', '\U000f00f0': '[동사]', '\U000f02b1': '\ue101', '\U000f02b2': '\ue102'}
 EXT = (1, 2, 3, 11, 12, 14, 15, 16, 17, 18, 21, 22, 23)
 
 
@@ -422,6 +422,17 @@ if __name__ == '__main__':
     for q in qs:
         if q['no'] in overrides.FIX: overrides.FIX[q['no']](q)
         if not q.get('ctab'): overrides.choice_tables(q)
+    # 네모 숫자(원본 글꼴 전용 기호) → 상자 친 숫자
+    def boxnum(o):
+        if isinstance(o, str):
+            for k, PU in (('1', '\U000f02b1'), ('2', '\U000f02b2')):
+                o = o.replace(PU, k + '\ue10f')
+            o = o.replace('\ue101', '1\ue10f').replace('\ue102', '2\ue10f')
+            return re.sub(r'(\d)\ue10f', r'<span class="bnum">\1</span>', o)
+        if isinstance(o, list): return [boxnum(x) for x in o]
+        if isinstance(o, dict): return {k: boxnum(v) for k, v in o.items()}
+        return o
+    qs = boxnum(qs)
     json.dump({'parts': parts, 'questions': qs}, open(os.path.join(H, 'qb.json'), 'w', encoding='utf8'), ensure_ascii=False, indent=1)
     print(parts, len(qs))
     bad = [q['no'] for q in qs if len(q['choices']) not in (0, 5)]

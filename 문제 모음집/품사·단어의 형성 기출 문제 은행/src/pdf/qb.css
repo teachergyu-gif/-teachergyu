@@ -63,3 +63,7 @@ table.flow td.dn{text-align:center;padding:.6mm 0}
 .bogi.hb table.ht table.ht{font-size:8.8pt;width:100%}
 .bogi.hb table.ht table.ht td{padding:.4mm .6mm}
 .bogi.hb table.ht table.ht .ln{font-size:8.8pt}
+.bnum{display:inline-block;border:1px solid #111;font-size:.8em;line-height:1.15;padding:0 .25em;margin:0 .15em;vertical-align:.08em;font-family:"Noto Sans CJK KR",sans-serif}
+table.ht .ln{text-indent:0 !important;padding-left:0 !important}
+table.ht .ln.hang{padding-left:1.1em !important;text-indent:-1.1em !important}
+.bnum{text-indent:0 !important;padding-left:.25em !important}

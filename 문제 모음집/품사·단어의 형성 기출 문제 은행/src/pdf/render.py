@@ -167,7 +167,7 @@ def main(data_json, out_html):
             done.append((q['no'], {'choices': q['choices'] or ['x'] * 5}, exs[q['no']]))
     if done:
         body += ['<div class="u brk"></div>', '<div class="u extitle"><span>정답 및 해설</span></div>'] + [quick(done[i:i + 100]).replace('<div class="qat">빠른 정답</div>', '' if i else '<div class="qat">빠른 정답</div>') for i in range(0, len(done), 100)]
-        body += [explanation(k, e) for k, q, e in done]
+        body += [re.sub(r'「([12])」', r'<span class="bnum">\1</span>', explanation(k, e)) for k, q, e in done]
     css = open(f'{D}/exam.css').read() + open(f'{D}/qb.css').read()
     js = open(f'{D}/paginate.js').read()
     doc = f'''<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>
