@@ -183,7 +183,7 @@ def main(data_json, out_html):
     print('questions', len(d['questions']), 'explanations', len(done))
 
 
-PART_TITLE = {'Ⅱ-(1) 문장의 짜임': 'Ⅱ-(1) 문장의 짜임 기출문제 [1～68번]', '추가 기출': '추가 기출문제 [69～117번]'}
+PART_TITLE = {'Ⅱ-(1) 문장의 짜임': 'Ⅱ-(1) 문장의 짜임 기출문제 [1~68번]', '추가 기출': '추가 기출문제 [69~117번]'}
 
 if __name__ == '__main__':
     main(sys.argv[1], sys.argv[2])

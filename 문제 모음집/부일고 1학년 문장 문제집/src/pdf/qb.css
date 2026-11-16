@@ -67,3 +67,10 @@ table.flow td.dn{text-align:center;padding:.6mm 0}
 table.ht .ln{text-indent:0 !important;padding-left:0 !important}
 table.ht .ln.hang{padding-left:1.1em !important;text-indent:-1.1em !important}
 .bnum{text-indent:0 !important;padding-left:.25em !important}
+/* 100번 분류 흐름도 */
+table.flow2{border-collapse:collapse;width:100%;margin:2mm 0;font-size:9pt;line-height:1.35}
+table.flow2 td{padding:0 .4mm;text-align:center;vertical-align:middle}
+table.flow2 td.ar{white-space:nowrap;font-size:8.5pt}
+table.flow2 td.dn{padding:.6mm 0;font-size:8.5pt}
+.fdia{border:1px solid #111;border-radius:2mm;padding:1mm 1.2mm;font-size:8.8pt}
+.fbox.sm{display:inline-block;padding:.4mm 3mm}

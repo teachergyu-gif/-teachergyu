@@ -109,7 +109,7 @@
   {
    "no": 6,
    "part": "Ⅱ-(1) 문장의 짜임",
-   "src": "2014학년도 대학수학능력시험 예비평가 국어영역 A형 12번",
+   "src": "2014학년도 대학수학능력시험 예비시행 국어영역 A형 12번",
    "stem": "&lt;보기&gt;를 바탕으로 ‘목적어’에 대해 탐구한다고 할 때, 적절하지 않은 것은? [3점]",
    "blocks": [
     {
@@ -577,7 +577,7 @@
     "② ㉡은 주어와 부사어를 필수적으로 요구하는 두 자리 서술어이군.",
     "③ ㉢은 주어와 목적어를 필수적으로 요구하는 두 자리 서술어이군.",
     "④ ㉣은 주어와 목적어를 필수적으로 요구하는 두 자리 서술어이군.",
-    "⑤ ㉤은 주어, 목적어, 부사어를 필수적으로 요구하는 세 자리서술어이군."
+    "⑤ ㉤은 주어, 목적어, 부사어를 필수적으로 요구하는 세 자리 서술어이군."
    ],
    "ctab": null
   },
@@ -824,7 +824,7 @@
     "② 꽃이 활짝 피는 봄이 온다.",
     "③ 나는 봄이 오고 꽃이 활짝 피기를 바란다.",
     "④ 나는 꽃이 활짝 핀 봄이 오기를 기다린다.",
-    "⑤ 나는 봄이 와서 꽃이 활짝 피기를 소망한다"
+    "⑤ 나는 봄이 와서 꽃이 활짝 피기를 소망한다."
    ],
    "ctab": null
   },
@@ -906,7 +906,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln\">학생 1 : 어제 보았던 거꾸로 수업 동영상 강의에서 문장 속에</div><div class=\"ln ind\">들어가 있는 절을 ‘안긴문장’이라고 하고, 절을 포함</div><div class=\"ln ind\">하고 있는 문장을 ‘안은문장’이라고 했지?</div><div class=\"ln\">학생 2 : 그래. 그리고 어떤 문장의 짜임을 이해하려면 그</div><div class=\"ln ind\">문장의 주어와 서술어를 파악하는 것이 중요하다고</div><div class=\"ln ind\">했어. 그럼, 먼저 주어를 서술하는 기능을 가진 단어</div><div class=\"ln ind\">부터 찾아보자. 음……. ‘알려 줬다’와 ‘받았음’ 이렇게</div><div class=\"ln ind\">두 개인가?</div><div class=\"ln\">학생 1 : 아니야. ‘아끼던’도 서술 기능이 있잖아. 학생 2 : 그렇구나. 그러면 그중에서 문장 전체의 서술어는</div><div class=\"ln ind\">‘알려 줬다’이고, 그것의 주어는 (  ㉠  )이겠다. 학생 1 : 맞아. 그럼 ‘받았음’의 주어는 (  ㉡  )이겠지? 학생 2 : 응. 명사절이 문장 전체의 목적어 역할을 하며 안겨</div><div class=\"ln ind\">있는 거지.</div><div class=\"ln\">학생 1 : 명사절 외에 관형절도 있잖아. 그러면 이 관형절의</div><div class=\"ln ind\">주어는 (  ㉢  )이겠다.</div><div class=\"ln\">학생 2 : 그래. 국어의 안은문장은 이렇게 여러 개의 안긴</div><div class=\"ln ind\">문장으로 이루어질 수 있는 거구나.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">학생 1 : 어제 보았던 거꾸로 수업 동영상 강의에서 문장 속에 들어가 있는 절을 ‘안긴문장’이라고 하고, 절을 포함하고 있는 문장을 ‘안은문장’이라고 했지?</div><div class=\"ln hang\">학생 2 : 그래. 그리고 어떤 문장의 짜임을 이해하려면 그 문장의 주어와 서술어를 파악하는 것이 중요하다고 했어. 그럼, 먼저 주어를 서술하는 기능을 가진 단어부터 찾아보자. 음……. ‘알려 줬다’와 ‘받았음’ 이렇게 두 개인가?</div><div class=\"ln hang\">학생 1 : 아니야. ‘아끼던’도 서술 기능이 있잖아.</div><div class=\"ln hang\">학생 2 : 그렇구나. 그러면 그중에서 문장 전체의 서술어는 ‘알려 줬다’이고, 그것의 주어는 (  ㉠  )이겠다.</div><div class=\"ln hang\">학생 1 : 맞아. 그럼 ‘받았음’의 주어는 (  ㉡  )이겠지?</div><div class=\"ln hang\">학생 2 : 응. 명사절이 문장 전체의 목적어 역할을 하며 안겨 있는 거지.</div><div class=\"ln hang\">학생 1 : 명사절 외에 관형절도 있잖아. 그러면 이 관형절의 주어는 (  ㉢  )이겠다.</div><div class=\"ln hang\">학생 2 : 그래. 국어의 안은문장은 이렇게 여러 개의 안긴 문장으로 이루어질 수 있는 거구나.</div>"
     }
    ],
    "choices": [],
@@ -963,7 +963,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">(가)～(다)는 관형절을 안은 문장이고 [A]～[C]는 안긴문장인 관형절을 완결된 문장으로 바꾼 것이다. 이를 보면 (가)의 ‘동생’,</div><div class=\"ln hang\">(나)의 ‘책’, (다)의 ‘도서관’은 완결된 문장 [A], [B], [C]에서 뒤에 붙는 조사와 함께 각각 ㉠<u>주어</u>, ㉡<u>목적어</u>, ㉢<u>부사어</u>로 기능을 하고 있다.</div><div class=\"ln e\"></div><div class=\"ln hang\">(가) 어제 책만 읽은 <u>동생</u>에게 오늘은 쉬라고 했다.</div><div class=\"ln hang\" style=\"margin-left:2.0em\">[A] 동생이 어제 책만 읽었다.</div><div class=\"ln hang\">(나) 아이가 읽은 <u>책</u>은 동화책이다.</div><div class=\"ln hang\" style=\"margin-left:2.0em\">[B] 아이가 책을 읽었다.</div><div class=\"ln hang\">(다) 형이 책을 읽은 <u>도서관</u>은 집 근처에 있다.</div><div class=\"ln hang\" style=\"margin-left:2.0em\">[C] 형이 도서관에서 책을 읽었다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">(가)~(다)는 관형절을 안은 문장이고 [A]~[C]는 안긴문장인 관형절을 완결된 문장으로 바꾼 것이다. 이를 보면 (가)의 ‘동생’,</div><div class=\"ln hang\">(나)의 ‘책’, (다)의 ‘도서관’은 완결된 문장 [A], [B], [C]에서 뒤에 붙는 조사와 함께 각각 ㉠<u>주어</u>, ㉡<u>목적어</u>, ㉢<u>부사어</u>로 기능을 하고 있다.</div><div class=\"ln e\"></div><div class=\"ln hang\">(가) 어제 책만 읽은 <u>동생</u>에게 오늘은 쉬라고 했다.</div><div class=\"ln hang\" style=\"margin-left:2.0em\">[A] 동생이 어제 책만 읽었다.</div><div class=\"ln hang\">(나) 아이가 읽은 <u>책</u>은 동화책이다.</div><div class=\"ln hang\" style=\"margin-left:2.0em\">[B] 아이가 책을 읽었다.</div><div class=\"ln hang\">(다) 형이 책을 읽은 <u>도서관</u>은 집 근처에 있다.</div><div class=\"ln hang\" style=\"margin-left:2.0em\">[C] 형이 도서관에서 책을 읽었다.</div>"
     }
    ],
    "choices": [
@@ -1423,7 +1423,7 @@
    "no": 68,
    "part": "Ⅱ-(1) 문장의 짜임",
    "src": "2018년 6월 고2 전국연합학력평가 국어영역 14번",
-   "stem": "&lt;보기&gt;의 (가)～(다)에 대한 설명으로 적절하지 않은 것은?",
+   "stem": "&lt;보기&gt;의 (가)~(다)에 대한 설명으로 적절하지 않은 것은?",
    "blocks": [
     {
      "type": "bogi",
@@ -1929,7 +1929,7 @@
    "no": 93,
    "part": "추가 기출",
    "src": "2024년 3월 고3 전국연합학력평가 국어영역 39번",
-   "stem": "&lt;보기&gt;의 (가) ~ (다)에 들어갈 내용을 바르게 짝지은 것은?",
+   "stem": "&lt;보기&gt;의 (가)~(다)에 들어갈 내용을 바르게 짝지은 것은?",
    "blocks": [
     {
      "type": "bogi",
@@ -2074,7 +2074,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln\">선생님 : 관형절은 안은문장에서 관형어로 쓰이는데 관형절에는 주어가 생략된 관형절, 목적어가 생략된 관형절, 부사어가 생략된 관형절 등이 있어요. 그리고 명사절은 안은문장에서 조사와 결합하여 주어, 목적어, 부사어 등으로 쓰일 수 있어요. 그럼 다음 문장에 대해 관형절과 명사절에 주목하여 분석해 볼까요?</div><div class=\"ln e\"></div><div class=\"ln\">㉠ 약속 시간에 늦은 친구들이 많았다.</div><div class=\"ln\">㉡ 마지막 문제를 풀기가 생각보다 어렵다.</div><div class=\"ln\">㉢ 나는 아버지께서 주신 빵을 형과 함께 먹었다.</div><div class=\"ln\">㉣ 그는 지금 사는 집에서 계속 머무르기를 희망 했다.</div><div class=\"ln\">㉤ 그들은 우리가 어제 목적지에 도착했음을 이미 알았다.</div>"
+     "html": "<div class=\"ln\">선생님 : 관형절은 안은문장에서 관형어로 쓰이는데 관형절에는 주어가 생략된 관형절, 목적어가 생략된 관형절, 부사어가 생략된 관형절 등이 있어요. 그리고 명사절은 안은문장에서 조사와 결합하여 주어, 목적어, 부사어 등으로 쓰일 수 있어요. 그럼 다음 문장에 대해 관형절과 명사절에 주목하여 분석해 볼까요?</div><div class=\"ln e\"></div><div class=\"ln\">㉠ 약속 시간에 늦은 친구들이 많았다.</div><div class=\"ln\">㉡ 마지막 문제를 풀기가 생각보다 어렵다.</div><div class=\"ln\">㉢ 나는 아버지께서 주신 빵을 형과 함께 먹었다.</div><div class=\"ln\">㉣ 그는 지금 사는 집에서 계속 머무르기를 희망했다.</div><div class=\"ln\">㉤ 그들은 우리가 어제 목적지에 도착했음을 이미 알았다.</div>"
     }
    ],
    "choices": [
@@ -2116,7 +2116,7 @@
     {
      "type": "bogi",
      "title": "<학습 활동>",
-     "html": "<div class=\"ln\">아래 그림에 따라 [자료]의 ㉮～㉱를 분류할 때, ⓒ에 해당하는 것만을 있는 대로 찾아보자.</div><div class=\"ln c\"><svg class=\"gso\" viewBox=\"0 0 22846 8948\" style=\"width:80.6mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><image href=\"IMG/BIN0002.png\" x=\"0\" y=\"0\" width=\"12750\" height=\"1540\" preserveAspectRatio=\"none\"/><image href=\"IMG/BIN0003.png\" x=\"0\" y=\"2682\" width=\"12750\" height=\"1540\" preserveAspectRatio=\"none\"/><image href=\"IMG/BIN0004.png\" x=\"0\" y=\"5364\" width=\"12750\" height=\"1533\" preserveAspectRatio=\"none\"/></svg></div><div class=\"ln\"><b>[자료]</b></div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">㉮ <u>노래를 부르기</u>가 쉽지가 않다.</div><div class=\"ln\">㉯ 마당에 <u>아무도 모르게</u> 꽃이 피었다.</div><div class=\"ln\">㉰ 나는 <u>동생이 오기</u> 전에 학교에 갔다.</div><div class=\"ln\">㉱ 내 동생은 누구보다 <u>마음씨가 착하다</u>.</div></td></tr></table></div>"
+     "html": "<div class=\"ln\">아래 그림에 따라 [자료]의 ㉮~㉱를 분류할 때, ⓒ에 해당하는 것만을 있는 대로 찾아보자.</div><div class=\"ln c\"><table class=\"flow2\"><tr><td><div class=\"fbox\">자료</div></td><td class=\"ar\">→</td><td><div class=\"fdia\">안긴문장이 안은문장의<br>서술어로 쓰이고 있는가?</div></td><td class=\"ar\">아니요<br>→</td><td><div class=\"fdia\">안긴문장이 안은문장에서<br>체언을 수식하고 있는가?</div></td><td class=\"ar\">아니요<br>→</td><td><div class=\"fbox\">ⓒ</div></td></tr><tr><td></td><td></td><td class=\"dn\">↓ 예</td><td></td><td class=\"dn\">↓ 예</td><td></td><td></td></tr><tr><td></td><td></td><td><div class=\"fbox sm\">ⓐ</div></td><td></td><td><div class=\"fbox sm\">ⓑ</div></td><td></td><td></td></tr></table></div><div class=\"ln\"><b>[자료]</b></div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">㉮ <u>노래를 부르기</u>가 쉽지가 않다.</div><div class=\"ln\">㉯ 마당에 <u>아무도 모르게</u> 꽃이 피었다.</div><div class=\"ln\">㉰ 나는 <u>동생이 오기</u> 전에 학교에 갔다.</div><div class=\"ln\">㉱ 내 동생은 누구보다 <u>마음씨가 착하다</u>.</div></td></tr></table></div>"
     }
    ],
    "choices": [
@@ -2195,7 +2195,7 @@
    "no": 104,
    "part": "추가 기출",
    "src": "2019년 3월 고3 전국연합학력평가 국어영역 15번",
-   "stem": "&lt;보기&gt;의 ㉮ ∼ ㉰에 대한 설명으로 적절하지 <u>않은</u> 것은?",
+   "stem": "&lt;보기&gt;의 ㉮~㉰에 대한 설명으로 적절하지 <u>않은</u> 것은?",
    "blocks": [
     {
      "type": "bogi",
@@ -2221,7 +2221,7 @@
     {
      "type": "bogi",
      "title": "<학습 활동>",
-     "html": "<div class=\"ln\">겹문장은 다른 문장 속에 들어가 안긴문장으로 쓰일 수 있다. 또한 겹문장은 안은문장에서 다양한 문장 성분으로도 쓰인다. 다음 밑줄 친 겹문장 ⓐ~ⓔ의 쓰임을 설명해 보자.</div><div class=\"ln e\"></div><div class=\"ln\">◦ 기상청은 ⓐ <u>내일은 따뜻하지만 비가 온다는</u> 예 보를 했다.</div><div class=\"ln\">◦ 시민들은 ⓑ <u>공원이 많고 거리가 깨끗한</u> 도시를 만들었다.</div><div class=\"ln\">◦ ⓒ <u>바람이 거세지고 어둠이 내리기</u> 전에 산에서 내려갔다.</div><div class=\"ln\">◦ 나는 나중에야 ⓓ <u>그녀는 왔으나 그가 안 왔음</u>을 깨달았다.</div><div class=\"ln\">◦ 삼촌은 주말에 ⓔ <u>꽃이 피고 새가 지저귀는</u> 들판 을 거닐었다.</div>"
+     "html": "<div class=\"ln\">겹문장은 다른 문장 속에 들어가 안긴문장으로 쓰일 수 있다. 또한 겹문장은 안은문장에서 다양한 문장 성분으로도 쓰인다. 다음 밑줄 친 겹문장 ⓐ~ⓔ의 쓰임을 설명해 보자.</div><div class=\"ln e\"></div><div class=\"ln\">◦ 기상청은 ⓐ <u>내일은 따뜻하지만 비가 온다는</u> 예보를 했다.</div><div class=\"ln\">◦ 시민들은 ⓑ <u>공원이 많고 거리가 깨끗한</u> 도시를 만들었다.</div><div class=\"ln\">◦ ⓒ <u>바람이 거세지고 어둠이 내리기</u> 전에 산에서 내려갔다.</div><div class=\"ln\">◦ 나는 나중에야 ⓓ <u>그녀는 왔으나 그가 안 왔음</u>을 깨달았다.</div><div class=\"ln\">◦ 삼촌은 주말에 ⓔ <u>꽃이 피고 새가 지저귀는</u> 들판을 거닐었다.</div>"
     }
    ],
    "choices": [

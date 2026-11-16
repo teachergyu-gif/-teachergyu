@@ -30,7 +30,7 @@ def glue(a, b):
 def join(seg):
     out = []
     for x in seg:
-        if re.match(r'^\s*([①-⑤]|[ㄱ-ㅎ]\.|-|→|•|◦|○|※|\[|<|\(\d\)|[가-하]\.)', x) or not out: out.append(x.strip())
+        if re.match(r'^\s*([①-⑤]|[ㄱ-ㅎ]\.|-|→|•|◦|○|※|\[|<|“|\(\d\)|[가-하]\.)', x) or not out: out.append(x.strip())
         else: out[-1] = out[-1].rstrip() + glue(out[-1], x) + x.strip() if not out[-1].endswith(' ') else out[-1] + x.strip()
     return [re.sub(r'\s+', ' ', o).strip() for o in out]
 

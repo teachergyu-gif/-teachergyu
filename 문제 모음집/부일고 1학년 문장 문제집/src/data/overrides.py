@@ -113,3 +113,21 @@ def _pairs(q):
 
 
 FIX.update({22: _pairs, 46: _pairs})
+
+
+def _q100(q):
+    """분류 흐름도(그리기 개체가 겹쳐 깨짐) → 표로 다시 그림"""
+    flow = ('<table class="flow2"><tr>'
+            '<td><div class="fbox">자료</div></td><td class="ar">→</td>'
+            '<td><div class="fdia">안긴문장이 안은문장의<br>서술어로 쓰이고 있는가?</div></td><td class="ar">아니요<br>→</td>'
+            '<td><div class="fdia">안긴문장이 안은문장에서<br>체언을 수식하고 있는가?</div></td><td class="ar">아니요<br>→</td>'
+            '<td><div class="fbox">ⓒ</div></td></tr>'
+            '<tr><td></td><td></td><td class="dn">↓ 예</td><td></td><td class="dn">↓ 예</td><td></td><td></td></tr>'
+            '<tr><td></td><td></td><td><div class="fbox sm">ⓐ</div></td><td></td><td><div class="fbox sm">ⓑ</div></td><td></td><td></td></tr></table>')
+    for b in q['blocks']:
+        if 'html' in b and '<svg' in b['html']:
+            b['html'] = re.sub(r'<svg class="gso.*?</svg>', flow, b['html'], count=1, flags=re.S)
+            b['html'] = re.sub(r'<svg class="gso.*?</svg>', '', b['html'], flags=re.S)
+
+
+FIX[100] = _q100
