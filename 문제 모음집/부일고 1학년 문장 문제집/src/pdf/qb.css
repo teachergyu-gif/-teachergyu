@@ -75,3 +75,7 @@ table.flow2 td.dn{padding:.6mm 0;font-size:8.5pt}
 .fdia{border:1px solid #111;border-radius:2mm;padding:1mm 1.2mm;font-size:8.8pt}
 .fbox.sm{display:inline-block;padding:.4mm 3mm}
 .sym{display:inline-block;text-indent:0;white-space:nowrap}
+.prh{display:flex;margin:2mm 0 1mm 1.6em}.prh span:first-child{width:64mm;text-align:center}.prh span:last-child{width:6em;text-align:center}
+.ch .pr{display:inline-flex;flex-direction:column;gap:.7mm;vertical-align:middle;width:64mm;text-align:left;text-indent:0}
+.ch .pb{display:block;text-align:left;font-size:8.8pt;letter-spacing:-.02em;border:1px solid #111;padding:.4mm 1.8mm;line-height:1.45}
+.ch .pi{display:inline-block;vertical-align:middle;white-space:nowrap;margin-left:1.2mm}

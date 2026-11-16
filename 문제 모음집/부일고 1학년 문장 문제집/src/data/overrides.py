@@ -131,3 +131,20 @@ def _q100(q):
 
 
 FIX[100] = _q100
+
+
+def _q30(q):
+    """예문 상자(그리기 개체)와 선지 ➡【문형 정보】가 따로 놀던 것 → 선지마다 [예문 두 상자] ➡ 【문형 정보】"""
+    src = ''.join(b.get('html', '') for b in q['blocks'] if b['type'] == 'html')
+    sents = [x.strip() for x in re.findall(r'<div class="ln[^"]*">(.*?)</div>', src) if len(re.sub(r'<[^>]+>', '', x).strip()) > 2]
+    assert len(sents) == 10, len(sents)
+    infos = [re.search(r'【.*?】', c).group(0) for c in q['choices']]
+    q['choices'] = [f'{"①②③④⑤"[k]} <span class="pr"><span class="pb">{sents[2*k]}</span><span class="pb">{sents[2*k+1]}</span></span>'
+                    f'<span class="pi">➡ {infos[k]}</span>' for k in range(5)]
+    q['blocks'] = [b for b in q['blocks'] if b['type'] != 'html']
+    for b in q['blocks']:
+        if b['type'] == 'line' and '문형 정보' in b['html']:
+            b['html'] = '<div class="prh"><span><b><u>예문</u></b></span><span><b><u>문형 정보</u></b></span></div>'
+
+
+FIX[30] = _q30
