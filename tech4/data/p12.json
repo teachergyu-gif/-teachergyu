@@ -160,7 +160,8 @@
      "table": null,
      "img": null,
      "note": null,
-     "label": "< 보 기 >"
+     "label": "< 보 기 >",
+     "img_after": true
     },
     "bogi2": null,
     "choices": [],
