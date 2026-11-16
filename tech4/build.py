@@ -91,7 +91,8 @@ def passage_block(items):
 def bogi_html(bg):
     if not bg:
         return ""
-    body = img(bg["img"], "fig bg-img") if bg.get("img") else ""
+    after = bg.get("img_after")   # 원문처럼 그림을 글 뒤에
+    body = img(bg["img"], "fig bg-img") if bg.get("img") and not after else ""
     if bg.get("imgs"):  # several captioned figures in a row (A · B · C)
         body += '<div class="bg-imgs">' + "".join(
             f'<figure>{img(f["img"], "fig")}<figcaption>{xmd(f.get("caption"))}</figcaption></figure>' for f in bg["imgs"]) + "</div>"
@@ -134,6 +135,8 @@ def bogi_html(bg):
         body += f'<table class="bg-tb">{trs}</table>'
     if bg.get("imgs"):
         body += paras  # figure row → tables → notes, as on the paper
+    if bg.get("img") and after:
+        body += img(bg["img"], "fig bg-img")
     if bg.get("note"):
         body += f'<div class="bg-note">{xmd(bg["note"])}</div>'
     label = bg.get("label", "< 보 기 >")
