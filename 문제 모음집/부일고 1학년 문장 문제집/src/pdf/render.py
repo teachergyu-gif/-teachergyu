@@ -173,6 +173,9 @@ def main(data_json, out_html):
             h = re.sub(r'‘(-?[^‘’\s<>]{1,6}-?)’', r'<span class="nb">‘\1’</span>', h)   # ‘-다’ 같은 짧은 인용이 줄 끝에서 갈라지지 않게
             return h
         body += [post(explanation(k, e)) for k, q, e in done]
+    # 원문자(㉠ ⓐ 등)는 글자 폭이 넓어 뒤 조사와 띄어 보이므로 오른쪽 여백을 줄여 붙여 보이게
+    # (양쪽 맞춤 때 원문자 뒤가 벌어지지 않게 기호와 뒤 조사를 한 덩어리로)
+    body = [re.sub(r'([㉠-㉭㉮-㉻ⓐ-ⓩⒶ-Ⓩ])([가-힣]{1,3}(?=[\s.,’”)<]))', r'<span class="sym">\1\2</span>', b) for b in body]
     css = open(f'{D}/exam.css').read() + open(f'{D}/qb.css').read()
     js = open(f'{D}/paginate.js').read()
     doc = f'''<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>
