@@ -19,6 +19,7 @@ for t, l, p in DI:
         BINS.append(struct.unpack_from('<H', p, 2)[0] if typ == 1 else None)
 CIRC = '①②③④⑤'
 JOINLOG = []
+PUA = {'\U000f003b': '⇩', '\U000f00bf': '[부사]', '\U000f00cc': '[형용사]', '\U000f00f0': '[동사]', '\U000f02b1': '「1」', '\U000f02b2': '「2」'}
 EXT = (1, 2, 3, 11, 12, 14, 15, 16, 17, 18, 21, 22, 23)
 
 
@@ -113,7 +114,7 @@ def runs_html(p, inline=True):
             flush(); out.append(ctrl_html(c[1])); continue
         st = cs_style(p.shape_at(pos))
         if st != cur: flush(); cur = st
-        buf += c
+        buf += PUA.get(c, c)
     flush()
     return ''.join(out)
 
@@ -160,7 +161,7 @@ def lines_html(paras, join=False):
         pl = p.plain()
         items.append([p, pl, runs_html(p)])
     out = []
-    MARK = re.compile(r'^\s*(?:[ㄱ-ㅎ]\.|[가-하]\.|[○□•◦◎▪※\-*]|\[[^\]]{1,8}\]|[①-⑤]|\([가-하ㄱ-ㅎ]\)|[가-힣]{1,4}\s*:|[가-힣]\s[가-힣]\s*:|-)')
+    MARK = re.compile(r'^\s*(?:[A-Z]\.\s|[ⓐ-ⓩ]\s|[ㄱ-ㅎ]\.|[가-하]\.|[○□•◦◎▪※\-*]|\[[^\]]{1,8}\]|[①-⑤]|\([가-하ㄱ-ㅎ]\)|[가-힣]{1,4}\s*:|[가-힣]\s[가-힣]\s*:|-)')
     k = 0
     while k < len(items):
         p, pl, h = items[k]
@@ -186,6 +187,8 @@ def lines_html(paras, join=False):
                 pl = pl + ql.lstrip()
                 k += 1
             ind = ' ind' if lead else (' hang' if marked else '')
+            nsp = len(p.plain()) - len(p.plain().lstrip(' '))
+            if marked and nsp >= 3: ind += f'" style="margin-left:{nsp / 3:.1f}em'
         else:
             ind = ''
         if not pl.strip() and '￼' not in pl:
@@ -193,7 +196,15 @@ def lines_html(paras, join=False):
         else:
             out.append(f'<div class="ln{(" " + cls) if cls else ""}{ind}">{h.strip() if join else h}</div>')
         k += 1
-    return ''.join(out)
+    # 한 줄에 기호(ⓐ 등)만 있으면 앞 줄 끝에 붙임
+    res = []
+    for o in out:
+        m = re.fullmatch(r'<div class="ln[^"]*">\s*([ⓐ-ⓩ㉠-㉭])\s*</div>', o)
+        if m and res and res[-1].endswith('</div>') and 'ln e' not in res[-1]:
+            res[-1] = res[-1][:-6] + f'<span class="rlab">{m.group(1)}</span></div>'
+        else:
+            res.append(o)
+    return ''.join(res)
 
 
 def table_html(j, join=False):
@@ -410,6 +421,7 @@ if __name__ == '__main__':
     import overrides
     for q in qs:
         if q['no'] in overrides.FIX: overrides.FIX[q['no']](q)
+        if not q.get('ctab'): overrides.choice_tables(q)
     json.dump({'parts': parts, 'questions': qs}, open(os.path.join(H, 'qb.json'), 'w', encoding='utf8'), ensure_ascii=False, indent=1)
     print(parts, len(qs))
     bad = [q['no'] for q in qs if len(q['choices']) not in (0, 5)]

@@ -8,9 +8,9 @@ from pypdf import PdfReader, PdfWriter, Transformation
 
 H = os.path.dirname(os.path.abspath(__file__))
 DATA = H + '/data/qb.json'
-TITLE = '품사·단어의 형성 기출 문제 은행'
-FOOT = '품사·단어의 형성 기출 문제 은행'
-OUT = os.path.join(H, '..', '품사·단어의 형성 기출 문제 은행.pdf')
+TITLE = '청운고 1학년 단어 파트 문제집'
+FOOT = '청운고 1학년 단어 파트 문제집'
+OUT = os.path.join(H, '..', '청운고 1학년 단어 파트 문제집.pdf')
 PARTS = [('Ⅰ-(1) 품사 기출문제', 'Ⅰ-(1) 품사 기출문제'), ('Ⅰ-(2) 단어의 형성 기출문제', 'Ⅰ-(2) 단어의 형성 기출문제'), ('추가 기출문제', '추가 기출문제 [147')]
 
 
@@ -40,9 +40,8 @@ with tempfile.TemporaryDirectory() as t:
     shown = total - (1 if total in memo else 0)   # 맨 끝 MEMO 쪽은 전체 쪽수에 넣지 않음
     skip = ','.join(str(x) for x in [1] + memo)   # 1쪽(목차)·MEMO 쪽은 머리말·꼬리말 없음
     print('MEMO 쪽', memo)
-    run('python3', '-I', f'{H}/header_phrase.py', f'{t}/m0.pdf', f'{t}/m1.pdf', '리치아카데미 | 품사·단어의 형성', '1', skip)
-    run('python3', '-I', f'{H}/footer_text.py', f'{t}/m1.pdf', f'{t}/m2.pdf', FOOT, '1', skip)
-    run('python3', '-I', f'{H}/footer_box.py', f'{t}/m2.pdf', f'{t}/m3.pdf', str(shown), '1', skip)
+    # 머리말 문구·꼬리말 교재 이름은 넣지 않음(사용자 지정)
+    run('python3', '-I', f'{H}/footer_box.py', f'{t}/m0.pdf', f'{t}/m3.pdf', str(shown), '1', skip)
     texts = [(p.extract_text() or '') for p in PdfReader(f'{t}/m3.pdf').pages]
     items = []; start = 1
     for name, key in PARTS:

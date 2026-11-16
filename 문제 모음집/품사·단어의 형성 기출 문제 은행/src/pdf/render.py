@@ -15,7 +15,7 @@ except ImportError:
     KEEP_Q = set()
 
 CIRC = '①②③④⑤'
-HEAD = os.environ.get('HEAD', '품사·단어의 형성 기출 문제 은행')
+HEAD = os.environ.get('HEAD', '청운고 1학년 단어 파트 문제집')
 J_IMG = J + '/img/'
 
 
@@ -57,6 +57,7 @@ def choices_html(q):
     out = ''
     for i, t in enumerate(body):
         pre = ' pre' if re.search(r'\S {3,}\S', re.sub(r'<[^>]+>', '', t)) else ''
+        if 'class="dlg"' in t: pre += ' dl'
         out += f'<div class="ch{pre}"><span class="c">{CIRC[i]}</span><span class="t">{t}</span></div>'
     return out
 
@@ -165,7 +166,7 @@ def main(data_json, out_html):
         if q['no'] in exs:
             done.append((q['no'], {'choices': q['choices'] or ['x'] * 5}, exs[q['no']]))
     if done:
-        body += ['<div class="u brk"></div>', '<div class="u extitle"><span>정답 및 해설</span></div>', quick(done)]
+        body += ['<div class="u brk"></div>', '<div class="u extitle"><span>정답 및 해설</span></div>'] + [quick(done[i:i + 100]).replace('<div class="qat">빠른 정답</div>', '' if i else '<div class="qat">빠른 정답</div>') for i in range(0, len(done), 100)]
         body += [explanation(k, e) for k, q, e in done]
     css = open(f'{D}/exam.css').read() + open(f'{D}/qb.css').read()
     js = open(f'{D}/paginate.js').read()

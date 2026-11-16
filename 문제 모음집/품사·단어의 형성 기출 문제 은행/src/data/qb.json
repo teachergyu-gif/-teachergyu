@@ -13,7 +13,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">□ 품사 분류 기준</div><div class=\"ln hang\">○ 형태에 따라 : 가변어, 불변어</div><div class=\"ln hang\">○ 기능에 따라 : 체언, 용언, 관계언, 수식언, 독립언</div><div class=\"ln hang\">○ 의미에 따라 : 명사, 대명사, 수사, 동사, 형용사, 관형사, 부사, 감탄사, 조사</div><div class=\"ln hang\">□ 예문</div><div class=\"ln hang\">○ 호수가 깊다.</div><div class=\"ln hang\">○ 강의 깊이는 누구도 모른다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">□ 품사 분류 기준</div><div class=\"ln hang\" style=\"margin-left:1.0em\">○ 형태에 따라 : 가변어, 불변어</div><div class=\"ln hang\" style=\"margin-left:1.0em\">○ 기능에 따라 : 체언, 용언, 관계언, 수식언, 독립언</div><div class=\"ln hang\" style=\"margin-left:1.0em\">○ 의미에 따라 : 명사, 대명사, 수사, 동사, 형용사, 관형사, 부사, 감탄사, 조사</div><div class=\"ln hang\">□ 예문</div><div class=\"ln hang\" style=\"margin-left:1.0em\">○ 호수가 깊다.</div><div class=\"ln hang\" style=\"margin-left:1.0em\">○ 강의 깊이는 누구도 모른다.</div>"
     }
    ],
    "choices": [],
@@ -382,7 +382,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 오늘은 조사 ‘와/과’가 사용된 문장에 대해 공부해 봅 시다. ‘와/과/가 쓰인 문장 중, 어떤 것은 두 개 이상의 문장으로 나누어지기도 하고 어떤 것은 나누어 지지 않기도 합니다. 이 설명을 기준으로 할 때, 다음 문장 중 그 종류가 나머지와 다른 하나는 어느 것 일까요? 단, 주어진 문장 외의 다른 상황은 생각하지 않기로 합니다.</div><div class=\"ln e\"></div><div class=\"ln hang\">가. 철수와 영수는 잠잔다.</div><div class=\"ln hang\">나. 철수와 영수는 친하다.</div><div class=\"ln hang\">다. 철수와 영수는 싸웠다.</div><div class=\"ln hang\">라. 철수와 영수는 마주쳤다.</div><div class=\"ln hang\">마. 철수와 영수는 헤어졌다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 오늘은 조사 ‘와/과’가 사용된 문장에 대해 공부해 봅 시다. ‘와/과/가 쓰인 문장 중, 어떤 것은 두 개 이상의 문장으로 나누어지기도 하고 어떤 것은 나누어 지지 않기도 합니다. 이 설명을 기준으로 할 때, 다음 문장 중 그 종류가 나머지와 다른 하나는 어느 것 일까요? 단, 주어진 문장 외의 다른 상황은 생각하지 않기로 합니다.</div><div class=\"ln e\"></div><div class=\"ln hang\" style=\"margin-left:2.7em\">가. 철수와 영수는 잠잔다.</div><div class=\"ln hang\" style=\"margin-left:2.7em\">나. 철수와 영수는 친하다.</div><div class=\"ln hang\" style=\"margin-left:2.7em\">다. 철수와 영수는 싸웠다.</div><div class=\"ln hang\" style=\"margin-left:2.7em\">라. 철수와 영수는 마주쳤다.</div><div class=\"ln hang\" style=\"margin-left:2.7em\">마. 철수와 영수는 헤어졌다.</div>"
     }
    ],
    "choices": [
@@ -790,18 +790,14 @@
      "type": "bogi",
      "title": "<보기>",
      "html": "<div class=\"ln e\"></div><div class=\"ln ind\">보조 용언 구성 ‘-고 있-’은 크게 두 가지 의미를 지닌다.</div><div class=\"ln e\"></div><div class=\"ln hang\">(가) 민수는 지금 떡국을 먹<u>고 있</u>다.</div><div class=\"ln hang\">(나) 선생님은 너를 믿<u>고 있</u>다.</div><div class=\"ln hang\">(다) 지혜는 모자를 쓰<u>고 있</u>다.</div><div class=\"ln e\"></div><div class=\"ln hang\">(가)에서처럼 ⓐ‘<u>어떤 동작이 진행되고 있음</u>’을 나타내기도 하고, (나)에서처럼 ⓑ‘<u>어떤 상태가 지속되고 있음</u>’을 나타내기도 한다. (가)의 ‘-고 있-’은 ‘-는 중이-’로 교체하여도 ⓐ의 의미가 유지되지만, (나)의 ‘-고 있-’은 교체하면 부자연스러운 문장이 되거나 ⓑ의 의미가 유지되지 않는다. 한편 (가), (나)에서는 특정한 문맥이 주어지지 않아도 그 의미를 확정할 수 있는 데 반해, (다)에서는 문맥이 충분히 주어지지 않으면 ‘-고 있-’이 ⓒ<u>두 가지 의미 모두로 해석될 수 있다</u>.</div>"
-    },
-    {
-     "type": "html",
-     "html": "<svg class=\"gso\" viewBox=\"0 0 28513 19439\" style=\"width:100.6mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><polyline points=\"2835,4804 1883,4805 1883,6716 2750,6716\" fill=\"none\" stroke=\"#000000\" stroke-width=\"33\"/><polyline points=\"2835,8777 1883,8778 1883,10689 2750,10689\" fill=\"none\" stroke=\"#000000\" stroke-width=\"33\"/><polyline points=\"2835,12750 1883,12751 1883,14662 2750,14662\" fill=\"none\" stroke=\"#000000\" stroke-width=\"33\"/><polyline points=\"2835,16725 1883,16726 1883,18637 2750,18637\" fill=\"none\" stroke=\"#000000\" stroke-width=\"33\"/><polyline points=\"2835,831 1883,832 1883,2743 2750,2743\" fill=\"none\" stroke=\"#000000\" stroke-width=\"33\"/><rect x=\"0\" y=\"738\" width=\"1883\" height=\"1958\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"0\" y=\"738\" width=\"1883\" height=\"1958\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">ⓐ</div></div></foreignObject><rect x=\"0\" y=\"4703\" width=\"1883\" height=\"1958\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"0\" y=\"4703\" width=\"1883\" height=\"1958\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">ⓑ</div></div></foreignObject><rect x=\"0\" y=\"8668\" width=\"1883\" height=\"1958\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"0\" y=\"8668\" width=\"1883\" height=\"1958\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">ⓑ</div></div></foreignObject><rect x=\"0\" y=\"12633\" width=\"1883\" height=\"1958\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"0\" y=\"12633\" width=\"1883\" height=\"1958\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">ⓒ</div></div></foreignObject><rect x=\"0\" y=\"16598\" width=\"1883\" height=\"1958\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"0\" y=\"16598\" width=\"1883\" height=\"1958\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">ⓒ</div></div></foreignObject><rect x=\"3251\" y=\"0\" width=\"25262\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"3251\" y=\"0\" width=\"25262\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">A : 아빠 들어오실 때 형은 뭐 하고 있었니?</div></div></foreignObject><rect x=\"3216\" y=\"1809\" width=\"25262\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"3216\" y=\"1809\" width=\"25262\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">B : 형은 양치질을 하<u>고 있</u>었어요.</div></div></foreignObject><rect x=\"3216\" y=\"3993\" width=\"25262\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"3216\" y=\"3993\" width=\"25262\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">A : 오빠가 너한테 화가 많이 났나 봐.</div></div></foreignObject><rect x=\"3181\" y=\"5802\" width=\"25262\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"3181\" y=\"5802\" width=\"25262\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">B : 오빠는 지금 날 오해하<u>고 있</u>는 것 같아.</div></div></foreignObject><rect x=\"3231\" y=\"7986\" width=\"25262\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"3231\" y=\"7986\" width=\"25262\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">A : 내일이 고모님 생신이라고 하네.</div></div></foreignObject><rect x=\"3196\" y=\"9795\" width=\"25262\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"3196\" y=\"9795\" width=\"25262\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">B : 아, 나 그거 이미 알<u>고 있</u>어.</div></div></foreignObject><rect x=\"3196\" y=\"11979\" width=\"25262\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"3196\" y=\"11979\" width=\"25262\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">A : 너 안경 잃어버렸다며? 괜찮아?</div></div></foreignObject><rect x=\"3161\" y=\"13788\" width=\"25262\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"3161\" y=\"13788\" width=\"25262\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">B : 눈이 아주 나쁘진 않아서 안경 벗<u>고 있</u>어도 괜찮아.</div></div></foreignObject><rect x=\"3212\" y=\"15916\" width=\"25262\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"3212\" y=\"15916\" width=\"25262\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">A : 저 중에 신입 사원이 누구야?</div></div></foreignObject><rect x=\"3176\" y=\"17725\" width=\"25262\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"3176\" y=\"17725\" width=\"25262\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">B : 저기에 있잖아. 넥타이를 매<u>고 있</u>네.</div></div></foreignObject></svg>"
     }
    ],
    "choices": [
-    "①",
-    "②",
-    "③",
-    "④",
-    "⑤"
+    "① <span class=\"lab\">ⓐ</span><span class=\"dlg\">A : 아빠 들어오실 때 형은 뭐 하고 있었니?<br>B : 형은 양치질을 하<u>고 있</u>었어요.</span>",
+    "② <span class=\"lab\">ⓑ</span><span class=\"dlg\">A : 오빠가 너한테 화가 많이 났나 봐.<br>B : 오빠는 지금 날 오해하<u>고 있</u>는 것 같아.</span>",
+    "③ <span class=\"lab\">ⓑ</span><span class=\"dlg\">A : 내일이 고모님 생신이라고 하네.<br>B : 아, 나 그거 이미 알<u>고 있</u>어.</span>",
+    "④ <span class=\"lab\">ⓒ</span><span class=\"dlg\">A : 너 안경 잃어버렸다며? 괜찮아?<br>B : 눈이 아주 나쁘진 않아서 안경 벗<u>고 있</u>어도 괜찮아.</span>",
+    "⑤ <span class=\"lab\">ⓒ</span><span class=\"dlg\">A : 저 중에 신입 사원이 누구야?<br>B : 저기에 있잖아. 넥타이를 매<u>고 있</u>네.</span>"
    ],
    "ctab": null
   },
@@ -878,18 +874,14 @@
      "type": "bogi",
      "title": "<보기>",
      "html": "<div class=\"ln e\"></div><div class=\"ln ind\">선어말 어미 ‘-았-/-었-’은 여러 가지 의미를 지닌다.</div><div class=\"ln e\"></div><div class=\"ln hang\">(가) 오늘 아침에 누나는 밥을 안 먹었어요.</div><div class=\"ln hang\">(나) 들판에 안개꽃이 아름답게 피었습니다.</div><div class=\"ln hang\">(다) 이렇게 비가 안 오니 농사는 다 지었다.</div><div class=\"ln e\"></div><div class=\"ln hang\">(가)에서와 같이 ⓐ<u>사건이나 상태가 과거의 것임</u>을 나타내기도 하고, (나)에서와 같이 ⓑ<u>과거에 일어난 사건의 결과 </u><u>상태가 현재까지 지속되고 있음</u>을 나타내기도 한다. (가)의 경우와 달리 (나)의 경우에는 ‘-았-/-었-’을 보조 용언 구성 ‘-아/-어 있-’이나 ‘-고 있-’으로 교체하여도 의미가 달라지지 않는다. 또한 (다)에서와 같이 ⓒ<u>미래의 일을 확정적인 사실</u><u>로 받아들임</u>을 나타내기도 한다.</div>"
-    },
-    {
-     "type": "html",
-     "html": "<svg class=\"gso\" viewBox=\"0 0 28513 19439\" style=\"width:100.6mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><polyline points=\"2835,4748 1883,4749 1883,6660 2750,6660\" fill=\"none\" stroke=\"#000000\" stroke-width=\"33\"/><polyline points=\"2835,8721 1883,8722 1883,10633 2750,10633\" fill=\"none\" stroke=\"#000000\" stroke-width=\"33\"/><polyline points=\"2835,12694 1883,12695 1883,14606 2750,14606\" fill=\"none\" stroke=\"#000000\" stroke-width=\"33\"/><polyline points=\"2835,16669 1883,16670 1883,18581 2750,18581\" fill=\"none\" stroke=\"#000000\" stroke-width=\"33\"/><polyline points=\"2835,775 1883,776 1883,2687 2750,2687\" fill=\"none\" stroke=\"#000000\" stroke-width=\"33\"/><rect x=\"0\" y=\"682\" width=\"1883\" height=\"1958\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"0\" y=\"682\" width=\"1883\" height=\"1958\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">ⓐ</div></div></foreignObject><rect x=\"0\" y=\"4647\" width=\"1883\" height=\"1958\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"0\" y=\"4647\" width=\"1883\" height=\"1958\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">ⓐ</div></div></foreignObject><rect x=\"0\" y=\"8612\" width=\"1883\" height=\"1958\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"0\" y=\"8612\" width=\"1883\" height=\"1958\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">ⓑ</div></div></foreignObject><rect x=\"0\" y=\"12577\" width=\"1883\" height=\"1958\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"0\" y=\"12577\" width=\"1883\" height=\"1958\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">ⓑ</div></div></foreignObject><rect x=\"0\" y=\"16542\" width=\"1883\" height=\"1958\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"0\" y=\"16542\" width=\"1883\" height=\"1958\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">ⓒ</div></div></foreignObject><rect x=\"3251\" y=\"0\" width=\"25262\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"3251\" y=\"0\" width=\"25262\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">A : 어제 뭐 했니?</div></div></foreignObject><rect x=\"3216\" y=\"1809\" width=\"25262\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"3216\" y=\"1809\" width=\"25262\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">B : 하루 종일 텔레비전만 <u>보았어</u>.</div></div></foreignObject><rect x=\"3216\" y=\"3993\" width=\"25262\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"3216\" y=\"3993\" width=\"25262\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">A : 너 아까 집에 없더라.</div></div></foreignObject><rect x=\"3181\" y=\"5802\" width=\"25262\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"3181\" y=\"5802\" width=\"25262\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">B : 할머니 생신 선물 사러 <u>갔어</u>.</div></div></foreignObject><rect x=\"3231\" y=\"7986\" width=\"25262\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"3231\" y=\"7986\" width=\"25262\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">A : 감기 걸렸다며?</div></div></foreignObject><rect x=\"3196\" y=\"9795\" width=\"25262\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"3196\" y=\"9795\" width=\"25262\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">B : 응, 그래서인지 아직도 목이 <u>잠겼어</u>.</div></div></foreignObject><rect x=\"3196\" y=\"11979\" width=\"25262\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"3196\" y=\"11979\" width=\"25262\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">A : 소풍날 날씨는 괜찮았어?</div></div></foreignObject><rect x=\"3161\" y=\"13788\" width=\"25262\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"3161\" y=\"13788\" width=\"25262\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">B : 아주 <u>나빴어</u>.</div></div></foreignObject><rect x=\"3212\" y=\"15916\" width=\"25262\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"3212\" y=\"15916\" width=\"25262\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">A : 너 오늘도 바빠?</div></div></foreignObject><rect x=\"3176\" y=\"17725\" width=\"25262\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"3176\" y=\"17725\" width=\"25262\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln\">B : 응, 과제 준비하려면 오늘도 잠은 다 <u>잤어</u>.</div></div></foreignObject></svg>"
     }
    ],
    "choices": [
-    "①",
-    "②",
-    "③",
-    "④",
-    "⑤"
+    "① <span class=\"lab\">ⓐ</span><span class=\"dlg\">A : 어제 뭐 했니?<br>B : 하루 종일 텔레비전만 <u>보았어</u>.</span>",
+    "② <span class=\"lab\">ⓐ</span><span class=\"dlg\">A : 너 아까 집에 없더라.<br>B : 할머니 생신 선물 사러 <u>갔어</u>.</span>",
+    "③ <span class=\"lab\">ⓑ</span><span class=\"dlg\">A : 감기 걸렸다며?<br>B : 응, 그래서인지 아직도 목이 <u>잠겼어</u>.</span>",
+    "④ <span class=\"lab\">ⓑ</span><span class=\"dlg\">A : 소풍날 날씨는 괜찮았어?<br>B : 아주 <u>나빴어</u>.</span>",
+    "⑤ <span class=\"lab\">ⓒ</span><span class=\"dlg\">A : 너 오늘도 바빠?<br>B : 응, 과제 준비하려면 오늘도 잠은 다 <u>잤어</u>.</span>"
    ],
    "ctab": null
   },
@@ -986,20 +978,10 @@
     {
      "type": "html",
      "html": "  <table class=\"ht\"><colgroup><col style=\"width:43.6%\"><col style=\"width:5.2%\"><col style=\"width:51.1%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#d8d8d8;text-align:center\"><div class=\"ln c\"><b>언어 자료</b></div></td><td rowspan=\"2\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">➡</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#d8d8d8;text-align:center\"><div class=\"ln c\"><b>쓰임 환경</b></div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">•던진다, 온다, 잔다</div><div class=\"ln\">•몬다, 운다, 만든다</div><div class=\"ln\">•웃으신다, 막으신다,</div><div class=\"ln\">  감으신다</div><div class=\"ln\">•웃는다, 감는다, 막는다</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">○<b>-ㄴ다</b></div><div class=\"ln\">  •(  ㉠  ) 뒤</div><div class=\"ln\">  •‘ㄹ’ 받침인 동사 어간 뒤</div><div class=\"ln\">  •(  ㉡  ) 뒤</div><div class=\"ln e\"></div><div class=\"ln\">○<b>-는다</b></div><div class=\"ln\">  •‘ㄹ’ 받침을 제외한</div><div class=\"ln\">    (  ㉢  ) 뒤</div></td></tr></table>"
-    },
-    {
-     "type": "line",
-     "html": "           <u>㉠</u>              <u>㉡</u>              <u>㉢</u>"
     }
    ],
-   "choices": [
-    "①  받침 없는 동사 어간   어미 ‘으시’   받침 있는 동사 어간",
-    "②  받침 있는 동사 어간    피동사     받침 없는 동사 어간",
-    "③        타동사          어미 ‘으시’         피동사",
-    "④  받침 없는 동사 어간    타동사           피동사",
-    "⑤        타동사           피동사     받침 있는 동사 어간"
-   ],
-   "ctab": null
+   "choices": [],
+   "ctab": "<table class=\"ht chtab\"><tr><td></td><td><u>㉠</u></td><td><u>㉡</u></td><td><u>㉢</u></td></tr><tr><td>①</td><td>받침 없는 동사 어간</td><td>어미 ‘으시’</td><td>받침 있는 동사 어간</td></tr><tr><td>②</td><td>받침 있는 동사 어간</td><td>피동사</td><td>받침 없는 동사 어간</td></tr><tr><td>③</td><td>타동사</td><td>어미 ‘으시’</td><td>피동사</td></tr><tr><td>④</td><td>받침 없는 동사 어간</td><td>타동사</td><td>피동사</td></tr><tr><td>⑤</td><td>타동사</td><td>피동사</td><td>받침 있는 동사 어간</td></tr></table>"
   },
   {
    "no": 47,
@@ -1010,7 +992,7 @@
     {
      "type": "bogi",
      "title": "<보기 1>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">-대 : [Ⅰ] 어떤 사실을 주어진 것으로 치고, 그 사실에 대한 의문을 나타내는 종결 어미. 놀라거나 못마땅하게 여기는 뜻이 섞여 있음.</div><div class=\"ln hang\">[Ⅱ] ‘-다고 해’가 줄어든 말로, 남이 말한 내용을 간접 적으로 전달할 때 쓰임.</div><div class=\"ln hang\">-데 : 과거 어느 때에 직접 경험하여 알게 된 사실을 현재의 말하는 장면에 그대로 옮겨 와서 말함을 나타내는 종결 어미. ‘-더라’와 같은 의미를 전달할 때 쓰임.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">-대 : [Ⅰ] 어떤 사실을 주어진 것으로 치고, 그 사실에 대한 의문을 나타내는 종결 어미. 놀라거나 못마땅하게 여기는 뜻이 섞여 있음.</div><div class=\"ln hang\" style=\"margin-left:2.0em\">[Ⅱ] ‘-다고 해’가 줄어든 말로, 남이 말한 내용을 간접 적으로 전달할 때 쓰임.</div><div class=\"ln hang\">-데 : 과거 어느 때에 직접 경험하여 알게 된 사실을 현재의 말하는 장면에 그대로 옮겨 와서 말함을 나타내는 종결 어미. ‘-더라’와 같은 의미를 전달할 때 쓰임.</div>"
     },
     {
      "type": "bogi",
@@ -1036,7 +1018,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\"><b>[A]</b>  철수 : 무슨 일이 이렇게 많<u>대</u>?</div><div class=\"ln hang\">영희 : 그러게, 저걸 언제 다 하나?</div><div class=\"ln e\"></div><div class=\"ln hang\"><b>[B]</b>  철수 : 영호 말로는 그 친구 아주 똑똑하<u>대</u>.</div><div class=\"ln hang\">영희 : 나도 영호한테 들었어.</div><div class=\"ln e\"></div><div class=\"ln hang\"><b>[C]</b>  철수 : 전에 보니 그 친구 말 참 잘하<u>데</u>.</div><div class=\"ln hang\">영희 : 나도 본 적 있는데 정말 그런 것 같아.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\"><b>[A]</b>  철수 : 무슨 일이 이렇게 많<u>대</u>?</div><div class=\"ln hang\" style=\"margin-left:1.7em\">영희 : 그러게, 저걸 언제 다 하나?</div><div class=\"ln e\"></div><div class=\"ln hang\"><b>[B]</b>  철수 : 영호 말로는 그 친구 아주 똑똑하<u>대</u>.</div><div class=\"ln hang\" style=\"margin-left:1.7em\">영희 : 나도 영호한테 들었어.</div><div class=\"ln e\"></div><div class=\"ln hang\"><b>[C]</b>  철수 : 전에 보니 그 친구 말 참 잘하<u>데</u>.</div><div class=\"ln hang\" style=\"margin-left:1.7em\">영희 : 나도 본 적 있는데 정말 그런 것 같아.</div>"
     }
    ],
    "choices": [
@@ -1084,20 +1066,10 @@
      "type": "bogi",
      "title": "<보기 2>",
      "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 안녕? 일찍 등교했구나.</div><div class=\"ln\">학  생 : 네. 달리기 ⓐ<u>연습하려고</u> 일찍 왔어요. 체육 대회에</div><div class=\"ln ind\">ⓑ<u>출전하게</u> 됐거든요.</div><div class=\"ln hang\">선생님 : 그래? 그러면 기록을 확인할 수 ⓒ<u>있게</u> 내가 좀 도와줄까?학  생 : 정말요? 안 그래도 기록 측정을 해 줄 사람이 없어 서 ⓓ<u>고민하고</u> 있었는데, 정말 감사합니다.</div><div class=\"ln hang\">선생님 : 고맙긴. 너처럼 ⓔ<u>연습하고</u> 준비하면 좋은 결과가 있을 거야. 그럼 초시계 가져올 테니, 잠깐 기다려.</div>"
-    },
-    {
-     "type": "line",
-     "html": "      <u>㉠</u>          <u>㉡</u>            <u>㉢</u>"
     }
    ],
-   "choices": [
-    "①     ⓑ          ⓐ, ⓔ          ⓒ, ⓓ",
-    "②     ⓓ          ⓐ, ⓒ          ⓑ, ⓔ",
-    "③     ⓓ          ⓑ, ⓒ          ⓐ, ⓔ",
-    "④     ⓔ          ⓐ, ⓒ          ⓑ, ⓓ",
-    "⑤     ⓔ          ⓒ, ⓓ          ⓐ, ⓑ"
-   ],
-   "ctab": null
+   "choices": [],
+   "ctab": "<table class=\"ht chtab\"><tr><td></td><td><u>㉠</u></td><td><u>㉡</u></td><td><u>㉢</u></td></tr><tr><td>①</td><td>ⓑ</td><td>ⓐ, ⓔ</td><td>ⓒ, ⓓ</td></tr><tr><td>②</td><td>ⓓ</td><td>ⓐ, ⓒ</td><td>ⓑ, ⓔ</td></tr><tr><td>③</td><td>ⓓ</td><td>ⓑ, ⓒ</td><td>ⓐ, ⓔ</td></tr><tr><td>④</td><td>ⓔ</td><td>ⓐ, ⓒ</td><td>ⓑ, ⓓ</td></tr><tr><td>⑤</td><td>ⓔ</td><td>ⓒ, ⓓ</td><td>ⓐ, ⓑ</td></tr></table>"
   },
   {
    "no": 51,
@@ -1129,7 +1101,7 @@
     {
      "type": "bogi",
      "title": "<보기 1>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">○ 한 주체가 하는 두 가지 동작을 나타내는 경우</div><div class=\"ln hang\">• -고/고서 : 둘 이상의 동작을 할 때, 그 동작의 ‘나열’이나 ‘선후’를 나타냄.</div><div class=\"ln hang\">• -며/면서 : 둘 이상의 동작이 동시에 일어남을 나타냄.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">○ 한 주체가 하는 두 가지 동작을 나타내는 경우</div><div class=\"ln hang\" style=\"margin-left:1.0em\">• -고/고서 : 둘 이상의 동작을 할 때, 그 동작의 ‘나열’이나 ‘선후’를 나타냄.</div><div class=\"ln hang\" style=\"margin-left:1.0em\">• -며/면서 : 둘 이상의 동작이 동시에 일어남을 나타냄.</div>"
     },
     {
      "type": "bogi",
@@ -1155,7 +1127,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">ㄱ. 동수는 피아노를 <u>치면서/</u><u><sup>*</sup></u><u>쳤으면서</u> 노래를 불렀다.</div><div class=\"ln hang\">ㄴ. 동수가 집을 <u>나서자/</u><u><sup>*</sup></u><u>나섰자</u> 비가 쏟아지기 시작했다.</div><div class=\"ln hang\">ㄷ. <sup>*</sup>동수가 집을 막 <u>나서자</u> (동수는) 학교에 갔다.</div><div class=\"ln hang\">ㄹ. 동수는 <u>상냥하면서/</u><u><sup>*</sup></u><u>상냥하자</u> 차분하다.</div><div class=\"ln hang\">ㅁ. 동수야, 빵 <u>먹으면서/</u><u><sup>*</sup></u><u>먹자</u> 공부해라./공부하자./공부할래?</div><div class=\"ln hang\">ㅂ. 동수는 뉴스를 <u>보지 않으면서</u> 텔레비전을 켜 놓았다.</div><div class=\"ln r hang\">*는 문법적으로 잘못된 것.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">ㄱ. 동수는 피아노를 <u>치면서/</u><u><sup>*</sup></u><u>쳤으면서</u> 노래를 불렀다.</div><div class=\"ln hang\">ㄴ. 동수가 집을 <u>나서자/</u><u><sup>*</sup></u><u>나섰자</u> 비가 쏟아지기 시작했다.</div><div class=\"ln hang\">ㄷ. <sup>*</sup>동수가 집을 막 <u>나서자</u> (동수는) 학교에 갔다.</div><div class=\"ln hang\">ㄹ. 동수는 <u>상냥하면서/</u><u><sup>*</sup></u><u>상냥하자</u> 차분하다.</div><div class=\"ln hang\">ㅁ. 동수야, 빵 <u>먹으면서/</u><u><sup>*</sup></u><u>먹자</u> 공부해라./공부하자./공부할래?</div><div class=\"ln hang\">ㅂ. 동수는 뉴스를 <u>보지 않으면서</u> 텔레비전을 켜 놓았다.</div><div class=\"ln r hang\" style=\"margin-left:1.0em\">*는 문법적으로 잘못된 것.</div>"
     }
    ],
    "choices": [
@@ -1176,7 +1148,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">ㄱ. 동수는 책을 빌리{러/려고/고자} 도서관에 갔다.</div><div class=\"ln hang\">ㄴ. 신간 도서를 빌리{러/<sup>*</sup>려고/<sup>*</sup>고자} 도서관에 가자.</div><div class=\"ln hang\">ㄷ. 동수는 책을 빌리{<sup>*</sup>러/려고/고자} 도서관에 예약을 했다.</div><div class=\"ln hang\">ㄹ. 영희는 그를 안 만나{<sup>*</sup>러/려고/고자} 집으로 돌아갔다.</div><div class=\"ln hang\">ㅁ. 지금 공원에 가서 그 사람을 만나{<sup>*</sup>러/려고/<sup>*</sup>고자}?</div><div class=\"ln r hang\">*는 문법적으로 잘못된 것.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">ㄱ. 동수는 책을 빌리{러/려고/고자} 도서관에 갔다.</div><div class=\"ln hang\">ㄴ. 신간 도서를 빌리{러/<sup>*</sup>려고/<sup>*</sup>고자} 도서관에 가자.</div><div class=\"ln hang\">ㄷ. 동수는 책을 빌리{<sup>*</sup>러/려고/고자} 도서관에 예약을 했다.</div><div class=\"ln hang\">ㄹ. 영희는 그를 안 만나{<sup>*</sup>러/려고/고자} 집으로 돌아갔다.</div><div class=\"ln hang\">ㅁ. 지금 공원에 가서 그 사람을 만나{<sup>*</sup>러/려고/<sup>*</sup>고자}?</div><div class=\"ln r hang\" style=\"margin-left:1.0em\">*는 문법적으로 잘못된 것.</div>"
     }
    ],
    "choices": [
@@ -1201,7 +1173,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">ㄱ. 도서관에 가려고 철호가 집을 나섰다.</div><div class=\"ln hang\"><sup>*</sup>영희가 도서관에 가려고 철호가 집을 나섰다.</div><div class=\"ln hang\">ㄴ. 철호가 도서관에 가려고 집을 나섰다.</div><div class=\"ln ind\">도서관에 가려고 철호가 집을 나섰다.</div><div class=\"ln ind\">철호가 집을 나섰다, 도서관에 가려고.</div><div class=\"ln hang\">ㄷ. 철호야, 공부하려고 도서관에 가니?/<sup>*</sup>가라./<sup>*</sup>가자.</div><div class=\"ln hang\">ㄹ. 할머니께서는 병원에 가시려고/<sup>*</sup>가셨으려고/<sup>*</sup>가시겠으려고 버스를 타셨다.</div><div class=\"ln hang\">ㅁ. 할머니께서는 운동을 하려고 공원에 가셨다.</div><div class=\"ln ind\">할머니께서는 <sup>*</sup>건강하려고 공원에 가셨다.</div><div class=\"ln r hang\">*는 문법적으로 잘못된 것.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">ㄱ. 도서관에 가려고 철호가 집을 나섰다.</div><div class=\"ln hang\" style=\"margin-left:1.0em\"><sup>*</sup>영희가 도서관에 가려고 철호가 집을 나섰다.</div><div class=\"ln hang\">ㄴ. 철호가 도서관에 가려고 집을 나섰다.</div><div class=\"ln ind\">도서관에 가려고 철호가 집을 나섰다.</div><div class=\"ln ind\">철호가 집을 나섰다, 도서관에 가려고.</div><div class=\"ln hang\">ㄷ. 철호야, 공부하려고 도서관에 가니?/<sup>*</sup>가라./<sup>*</sup>가자.</div><div class=\"ln hang\">ㄹ. 할머니께서는 병원에 가시려고/<sup>*</sup>가셨으려고/<sup>*</sup>가시겠으려고 버스를 타셨다.</div><div class=\"ln hang\">ㅁ. 할머니께서는 운동을 하려고 공원에 가셨다.</div><div class=\"ln ind\">할머니께서는 <sup>*</sup>건강하려고 공원에 가셨다.</div><div class=\"ln r hang\" style=\"margin-left:1.0em\">*는 문법적으로 잘못된 것.</div>"
     }
    ],
    "choices": [
@@ -1222,7 +1194,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">ㄱ. 비가 <u>와서/</u><u><sup>*</sup></u><u>왔어서</u> 길이 젖었다.</div><div class=\"ln hang\">ㄴ. 비가 <u>오니까/왔으니까</u> 길이 젖었을 거야.</div><div class=\"ln hang\">ㄷ. 비가 <u>와서</u> 우산을 샀니?</div><div class=\"ln hang\">ㄹ. 비가 <u>오니까/</u><u><sup>*</sup></u><u>와서</u> 제가 우산을 살까요?</div><div class=\"ln hang\">ㅁ. 비가 <u>오니까/</u><u><sup>*</sup></u><u>와서</u> 우산을 가져가라./가져가자.</div><div class=\"ln r hang\">*는 문법적으로 잘못된 것.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">ㄱ. 비가 <u>와서/</u><u><sup>*</sup></u><u>왔어서</u> 길이 젖었다.</div><div class=\"ln hang\">ㄴ. 비가 <u>오니까/왔으니까</u> 길이 젖었을 거야.</div><div class=\"ln hang\">ㄷ. 비가 <u>와서</u> 우산을 샀니?</div><div class=\"ln hang\">ㄹ. 비가 <u>오니까/</u><u><sup>*</sup></u><u>와서</u> 제가 우산을 살까요?</div><div class=\"ln hang\">ㅁ. 비가 <u>오니까/</u><u><sup>*</sup></u><u>와서</u> 우산을 가져가라./가져가자.</div><div class=\"ln r hang\" style=\"margin-left:1.0em\">*는 문법적으로 잘못된 것.</div>"
     }
    ],
    "choices": [
@@ -1243,7 +1215,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">ㄱ. 선물을 {사<u>느라고</u>/<sup>*</sup>샀<u>느라고</u>} 돈을 다 썼다.</div><div class=\"ln hang\">ㄴ. 눈이 그치<u>거든</u> 네가 {떠나라/<sup>*</sup>떠난다}.</div><div class=\"ln hang\">ㄷ. 책을 읽<u>고자</u> 도서관에 {갔다/<sup>*</sup>가라}.</div><div class=\"ln hang\">ㄹ. 나는 철수를 만나<u>려고</u> 약속 장소로 나갔다.</div><div class=\"ln hang\">ㅁ. <sup>*</sup>나는 철수를 만나<u>려고</u> 그는 약속 장소로 나갔다.</div><div class=\"ln r hang\">*는 문법적으로 잘못된 것.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">ㄱ. 선물을 {사<u>느라고</u>/<sup>*</sup>샀<u>느라고</u>} 돈을 다 썼다.</div><div class=\"ln hang\">ㄴ. 눈이 그치<u>거든</u> 네가 {떠나라/<sup>*</sup>떠난다}.</div><div class=\"ln hang\">ㄷ. 책을 읽<u>고자</u> 도서관에 {갔다/<sup>*</sup>가라}.</div><div class=\"ln hang\">ㄹ. 나는 철수를 만나<u>려고</u> 약속 장소로 나갔다.</div><div class=\"ln hang\">ㅁ. <sup>*</sup>나는 철수를 만나<u>려고</u> 그는 약속 장소로 나갔다.</div><div class=\"ln r hang\" style=\"margin-left:1.0em\">*는 문법적으로 잘못된 것.</div>"
     }
    ],
    "choices": [
@@ -1373,20 +1345,10 @@
     {
      "type": "html",
      "html": "  <table class=\"ht\"><colgroup><col style=\"width:11.1%\"><col style=\"width:4.3%\"><col style=\"width:84.6%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#bbbbbb;text-align:center\"><div class=\"ln c\"><b>자료</b></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">○ 차에 실은(◯) 것이 뭐니?</div><div class=\"ln\">○ 시들은(✕)/시든(◯) 꽃 한 송이가 있다.</div><div class=\"ln r\">* ◯ : 어문 규정에 맞음.  ✕ : 어문 규정에 어긋남.</div></td></tr><tr><td colspan=\"3\" style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln c\">⇩</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#bbbbbb;text-align:center\"><div class=\"ln c\"><b>의문</b></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">○ 어문 규정에 따를 때, ‘싣다’처럼 어간 끝이 ‘ㄷ’인</div><div class=\"ln\">   용언과 ‘시들다’처럼 어간 끝이 ‘ㄹ’인 용언에 관형</div><div class=\"ln\">   사형 어미가 결합하면 어떻게 될까?</div></td></tr><tr><td colspan=\"3\" style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln c\">⇩</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#bbbbbb;text-align:center\"><div class=\"ln c\"><b>탐구</b></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\"><span class=\"ovl\">󰊱</span> ‘실은’, ‘시든’이 어떻게 만들어진 것인지 분석해 </div><div class=\"ln\">   본다.</div><div class=\"ln\">  ○ 실은 → 싣-(어간) + -은(어미)</div><div class=\"ln\">  ○ 시든 → 시들-(어간) + -ㄴ(어미)</div><div class=\"ln e\"></div><div class=\"ln\"><span class=\"ovl\">󰊲</span> 유사한 사례를 찾아 분석해 본다.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:42.3%\"><col style=\"width:15.9%\"><col style=\"width:15.9%\"><col style=\"width:25.9%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">예  문</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">기본형</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">활용형</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">형태소 분석</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">이것이 바로 내가 들은</div><div class=\"ln\">(O) 소리다.</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">듣다</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">들은</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">듣-+-은</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">정성을 쏟은(O) 일은 </div><div class=\"ln\">실패하지 않는다.</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">쏟다</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">쏟은</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">쏟-+-은</div></td></tr></table></div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:42.3%\"><col style=\"width:15.9%\"><col style=\"width:15.9%\"><col style=\"width:25.9%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">예  문</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">기본형</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">활용형</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">형태소 분석</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">그가 내밀은(X)/내민</div><div class=\"ln\">(O) 손을 잡지 못했다.</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">내밀다</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">내민</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">내밀-+-ㄴ</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">부풀은(X)/부푼(O)</div><div class=\"ln\">꿈을 안고 왔다.</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">부풀다</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">부푼</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">부풀-+-ㄴ</div></td></tr></table></div></td></tr><tr><td colspan=\"3\" style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln c\">⇩</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#bbbbbb;text-align:center\"><div class=\"ln c\"><b>결과</b></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">○ 어간 끝이 ‘ㄷ’인 용언은, 관형사형 어미 ‘-은’이 </div><div class=\"ln\">   결합하면 ‘ㄷ’이 그대로 유지되거나, <u>   ㉠    </u>.</div><div class=\"ln\">○ 어간 끝이 ‘ㄹ’인 용언은, 관형사형 어미 ‘-ㄴ’이</div><div class=\"ln\">   결합하면 <u>   ㉡    </u>.</div></td></tr></table>"
-    },
-    {
-     "type": "line",
-     "html": "            <u>㉠</u>                       <u>㉡</u>"
     }
    ],
-   "choices": [
-    "①   ‘ㄷ’이 ‘ㄹ’로 교체됨         ‘-으-’가 삽입됨",
-    "②   ‘ㄷ’이 ‘ㄹ’로 교체됨         ‘ㄹ’이 탈락함",
-    "③   어미의 형태가 바뀜         어미의 형태가 바뀜",
-    "④   ‘ㄷ’이 탈락함               ‘ㄹ’이 탈락함",
-    "⑤   어간의 형태가 바뀜         어미의 형태가 바뀜"
-   ],
-   "ctab": null
+   "choices": [],
+   "ctab": "<table class=\"ht chtab\"><tr><td></td><td><u>㉠</u></td><td><u>㉡</u></td></tr><tr><td>①</td><td>‘ㄷ’이 ‘ㄹ’로 교체됨</td><td>‘-으-’가 삽입됨</td></tr><tr><td>②</td><td>‘ㄷ’이 ‘ㄹ’로 교체됨</td><td>‘ㄹ’이 탈락함</td></tr><tr><td>③</td><td>어미의 형태가 바뀜</td><td>어미의 형태가 바뀜</td></tr><tr><td>④</td><td>‘ㄷ’이 탈락함</td><td>‘ㄹ’이 탈락함</td></tr><tr><td>⑤</td><td>어간의 형태가 바뀜</td><td>어미의 형태가 바뀜</td></tr></table>"
   },
   {
    "no": 64,
@@ -1418,7 +1380,7 @@
     {
      "type": "bogi",
      "title": "<보기 1>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">○ 어간이 ‘ㅂ’으로 끝나는 용언에, 모음 어미 ‘-아/어’가 붙어 활용할 때, <b><u>어간의 ‘ㅂ’이</u></b> A. <b><u>바뀌는 경우</u></b>가 있다. ⓐ 어간에 ‘오’가 있고 어간이 1음절인 경우 → ‘오’로 바뀐다. ⓑ 그 외의 경우는 → ‘우’로 바뀐다. B. <b><u>바뀌지 않는 경우</u></b>가 있다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">○ 어간이 ‘ㅂ’으로 끝나는 용언에, 모음 어미 ‘-아/어’가 붙어 활용할 때, <b><u>어간의 ‘ㅂ’이</u></b></div><div class=\"ln hang\" style=\"margin-left:1.0em\">A. <b><u>바뀌는 경우</u></b>가 있다.</div><div class=\"ln hang\" style=\"margin-left:2.0em\">ⓐ 어간에 ‘오’가 있고 어간이 1음절인 경우</div><div class=\"ln ind\">→ ‘오’로 바뀐다.</div><div class=\"ln hang\" style=\"margin-left:2.0em\">ⓑ 그 외의 경우는 → ‘우’로 바뀐다.</div><div class=\"ln hang\" style=\"margin-left:1.0em\">B. <b><u>바뀌지 않는 경우</u></b>가 있다.</div>"
     },
     {
      "type": "bogi",
@@ -1591,7 +1553,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 부사는 일반적으로 뒤에 오는 용언을 수식합니다. 그 런데 ‘의외로’와 같은 부사는 말하는 사람의 심리적 태도를 나타내고 문장 전체를 수식하며 문장 내의 위치 이동이 자유롭다는 특징이 있습니다. 또 ‘의외로’는 형태를 바꾸어서 서술어로 표현하는 것도 가능합 니다. 이와 같은 특징을 지닌 부사를 찾아서 문장을 하나씩 만들어볼까요? 다음 예를 참고하면 도움이 될 거예요.</div><div class=\"ln e\"></div><div class=\"ln ind\">예) 가. <u>의외로</u> 그는 성실하게 일했다.</div><div class=\"ln ind\">그는 <u>의외로</u> 성실하게 일했다.</div><div class=\"ln ind\">그는 성실하게 일했다, <u>의외로</u>.</div><div class=\"ln hang\">나. 그가 성실하게 일했다니 <u>의외였다</u>.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 부사는 일반적으로 뒤에 오는 용언을 수식합니다. 그 런데 ‘의외로’와 같은 부사는 말하는 사람의 심리적 태도를 나타내고 문장 전체를 수식하며 문장 내의 위치 이동이 자유롭다는 특징이 있습니다. 또 ‘의외로’는 형태를 바꾸어서 서술어로 표현하는 것도 가능합 니다. 이와 같은 특징을 지닌 부사를 찾아서 문장을 하나씩 만들어볼까요? 다음 예를 참고하면 도움이 될 거예요.</div><div class=\"ln e\"></div><div class=\"ln ind\">예) 가. <u>의외로</u> 그는 성실하게 일했다.</div><div class=\"ln ind\">그는 <u>의외로</u> 성실하게 일했다.</div><div class=\"ln ind\">그는 성실하게 일했다, <u>의외로</u>.</div><div class=\"ln hang\" style=\"margin-left:4.0em\">나. 그가 성실하게 일했다니 <u>의외였다</u>.</div>"
     }
    ],
    "choices": [
@@ -1771,21 +1733,11 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">㉠<u>관형사</u>, ㉡<u>대명사</u>, ㉢<u>부사</u> 중에는 ‘이, 그, 여기, 이리,그리’ 등과 같이 ‘지시성’을 지닌 단어들이 있다. 이들은 지시성이라는 공통점 때문에 구별이 쉽지 않으므로 문장 내에서의기능을 통해 단어의 품사를 파악해야 한다.</div><div class=\"ln e\"></div><div class=\"ln ind\">ⓐ <u>이</u> 사과는 맛있게 생겼다.</div><div class=\"ln ind\">ⓑ <u>그</u> 책 좀 나에게 빌려줄 수 있어?</div><div class=\"ln ind\">ⓒ <u>여기</u>가 바로 우리의 고향입니다.</div><div class=\"ln ind\">ⓓ <u>이리</u> 가까이 오게.</div><div class=\"ln ind\">ⓔ <u>그리</u> 물건을 보내겠습니다.</div>"
-    },
-    {
-     "type": "line",
-     "html": "       <u>㉠</u>           <u>㉡</u>           <u>㉢</u>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">㉠<u>관형사</u>, ㉡<u>대명사</u>, ㉢<u>부사</u> 중에는 ‘이, 그, 여기, 이리,그리’ 등과 같이 ‘지시성’을 지닌 단어들이 있다. 이들은 지시성이라는 공통점 때문에 구별이 쉽지 않으므로 문장 내에서의기능을 통해 단어의 품사를 파악해야 한다.</div><div class=\"ln e\"></div><div class=\"ln hang\">ⓐ <u>이</u> 사과는 맛있게 생겼다.</div><div class=\"ln hang\">ⓑ <u>그</u> 책 좀 나에게 빌려줄 수 있어?</div><div class=\"ln hang\">ⓒ <u>여기</u>가 바로 우리의 고향입니다.</div><div class=\"ln hang\">ⓓ <u>이리</u> 가까이 오게.</div><div class=\"ln hang\">ⓔ <u>그리</u> 물건을 보내겠습니다.</div>"
     }
    ],
-   "choices": [
-    "①      ⓐ          ⓑ, ⓒ         ⓓ, ⓔ",
-    "②    ⓐ, ⓑ           ⓒ          ⓓ, ⓔ",
-    "③    ⓑ, ⓒ         ⓓ, ⓔ           ⓐ",
-    "④    ⓑ, ⓓ           ⓔ          ⓐ, ⓒ",
-    "⑤    ⓒ, ⓓ           ⓐ          ⓑ, ⓔ"
-   ],
-   "ctab": null
+   "choices": [],
+   "ctab": "<table class=\"ht chtab\"><tr><td></td><td><u>㉠</u></td><td><u>㉡</u></td><td><u>㉢</u></td></tr><tr><td>①</td><td>ⓐ</td><td>ⓑ, ⓒ</td><td>ⓓ, ⓔ</td></tr><tr><td>②</td><td>ⓐ, ⓑ</td><td>ⓒ</td><td>ⓓ, ⓔ</td></tr><tr><td>③</td><td>ⓑ, ⓒ</td><td>ⓓ, ⓔ</td><td>ⓐ</td></tr><tr><td>④</td><td>ⓑ, ⓓ</td><td>ⓔ</td><td>ⓐ, ⓒ</td></tr><tr><td>⑤</td><td>ⓒ, ⓓ</td><td>ⓐ</td><td>ⓑ, ⓔ</td></tr></table>"
   },
   {
    "no": 82,
@@ -1838,7 +1790,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln\"><svg class=\"gso inl\" viewBox=\"0 0 1052 1912\" style=\"width:3.7mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><polyline points=\"1052,0 0,1 0,1912 958,1912\" fill=\"none\" stroke=\"#000000\" stroke-width=\"33\"/></svg>    제 시간에 도착했는지 모르겠다.</div><div class=\"ln ind\">벌써 집 떠난 지 삼 년이 지났다.</div><div class=\"ln e\"></div><div class=\"ln ind\">‘-ㄴ’과 ‘지’는, ‘-ㄴ지’와 ‘-ㄴ 지’의 형태를 이루어 쓰인다. 전자는 어미로 쓰이는 경우이고, 후자는 관형사형 어미 ‘-ㄴ’과 의존명사 ‘지’로 쓰이는 경우이다. ㉠<u>이처럼 어미와 의존</u><u>명사가 겉으로 볼 때 형태가 같아서</u> 구분하기 어려운 경우가 있다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln\">    제 시간에 도착했는지 모르겠다.</div><div class=\"ln ind\">벌써 집 떠난 지 삼 년이 지났다.</div><div class=\"ln e\"></div><div class=\"ln ind\">‘-ㄴ’과 ‘지’는, ‘-ㄴ지’와 ‘-ㄴ 지’의 형태를 이루어 쓰인다. 전자는 어미로 쓰이는 경우이고, 후자는 관형사형 어미 ‘-ㄴ’과 의존명사 ‘지’로 쓰이는 경우이다. ㉠<u>이처럼 어미와 의존</u><u>명사가 겉으로 볼 때 형태가 같아서</u> 구분하기 어려운 경우가 있다.</div>"
     }
    ],
    "choices": [
@@ -2018,20 +1970,10 @@
      "type": "bogi",
      "title": "<보기>",
      "html": "<div class=\"ln e\"></div><div class=\"ln ind\">북두칠성은 ㉠<u>어느</u> 계절에나 북쪽 밤하늘을 보면 쉽게 찾을 수 ㉡<u>있</u>다. 북두칠성을 흔히 국자㉢<u>에</u> 비유하는데, 그것이 국자라면 국을 쏟을 때 국이 흐를 마지막 두 별을 잇㉣<u>는</u> 직선상에 있는 별 중 가장 밝고, 두 별의 간격의 다섯 배쯤에 있는 별을 발견할 것이다. 그 ㉤<u>자리</u>에 보이는 것이 바로 우리가 알고 있는 밤하늘의 북극성이다.</div>"
-    },
-    {
-     "type": "line",
-     "html": "       <u>A</u>            <u>B</u>            <u>C</u>"
     }
    ],
-   "choices": [
-    "①    ㉠, ㉤           ㉢          ㉡, ㉣",
-    "②    ㉡, ㉢         ㉠, ㉤           ㉣",
-    "③    ㉢, ㉣         ㉠, ㉡           ㉤",
-    "④    ㉢, ㉣           ㉡          ㉠, ㉤",
-    "⑤      ㉣          ㉢, ㉤         ㉠, ㉡"
-   ],
-   "ctab": null
+   "choices": [],
+   "ctab": "<table class=\"ht chtab\"><tr><td></td><td><u>A</u></td><td><u>B</u></td><td><u>C</u></td></tr><tr><td>①</td><td>㉠, ㉤</td><td>㉢</td><td>㉡, ㉣</td></tr><tr><td>②</td><td>㉡, ㉢</td><td>㉠, ㉤</td><td>㉣</td></tr><tr><td>③</td><td>㉢, ㉣</td><td>㉠, ㉡</td><td>㉤</td></tr><tr><td>④</td><td>㉢, ㉣</td><td>㉡</td><td>㉠, ㉤</td></tr><tr><td>⑤</td><td>㉣</td><td>㉢, ㉤</td><td>㉠, ㉡</td></tr></table>"
   },
   {
    "no": 93,
@@ -2395,20 +2337,10 @@
      "type": "bogi",
      "title": "<보기>",
      "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 여러분이 헷갈려 하는 것들 중 ⓐ<u>용언의 어간과</u> <u>결합하는 명사형 어미 ‘-(으)ㅁ’과 ‘-기’</u>와 ⓑ<u>어근과 결합</u><u>하여 명사를 만드는 접미사 ‘-이’, ‘-음’, ‘-기’</u>가 있어요. 전자는 용언의 품사를 바꾸지 않으며, 전자가 결합해 활용된 용언은 서술하는 기능이 유지되고 부사어의 수식을 받을 수 있어요. 한편 후자가 결합하여 만들어진 명사는 관형어의 수식을 받을 수 있어요.</div><div class=\"ln e\"></div><div class=\"ln hang\">○ 세상은 홀로 ㉠<u>살기</u>가 어렵다.</div><div class=\"ln hang\">○ 형은 충분히 ㉡<u>잠</u>으로써 피로를 풀었다.</div><div class=\"ln hang\">○ 날씨가 더워 시원한 ㉢<u>얼음</u>이 필요하다.</div><div class=\"ln hang\">○ 우리에게 건전한 ㉣<u>놀이</u> 문화가 필요하다.</div><div class=\"ln hang\">○ 이곳은 풍경이 매우 ㉤<u>아름답기</u>로 유명하다.</div>"
-    },
-    {
-     "type": "line",
-     "html": "          <u>ⓐ</u>                <u>ⓑ</u>"
     }
    ],
-   "choices": [
-    "①       ㉠, ㉡             ㉢, ㉣, ㉤",
-    "②       ㉠, ㉤             ㉡, ㉢, ㉣",
-    "③       ㉢, ㉣             ㉠, ㉡, ㉤",
-    "④     ㉠, ㉡, ㉤             ㉢, ㉣",
-    "⑤     ㉡, ㉢, ㉣             ㉠, ㉤"
-   ],
-   "ctab": null
+   "choices": [],
+   "ctab": "<table class=\"ht chtab\"><tr><td></td><td><u>ⓐ</u></td><td><u>ⓑ</u></td></tr><tr><td>①</td><td>㉠, ㉡</td><td>㉢, ㉣, ㉤</td></tr><tr><td>②</td><td>㉠, ㉤</td><td>㉡, ㉢, ㉣</td></tr><tr><td>③</td><td>㉢, ㉣</td><td>㉠, ㉡, ㉤</td></tr><tr><td>④</td><td>㉠, ㉡, ㉤</td><td>㉢, ㉣</td></tr><tr><td>⑤</td><td>㉡, ㉢, ㉣</td><td>㉠, ㉤</td></tr></table>"
   },
   {
    "no": 111,
@@ -2419,7 +2351,7 @@
     {
      "type": "bogi",
      "title": "<보기 1>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln\">● <b>‘-ㅁ/-음’에 대하여</b></div><div class=\"ln hang\">□ 명사형 어미 : 동사의 어간 뒤에 붙어서 동사를 명사형이 되게 하는 역할을 한다. 동사의 명사형은 서술성이 있어서 주어를 서술하며, 품사가 변하지 않는다. 앞에 부사적 표현이 쓰일 수 있다.</div><div class=\"ln hang\">□ 접미사 : 동사의 어간 뒤에 붙어서 동사를 명사로 파생 시킨다. 파생된 명사는 서술성이 없으므로 앞에 부사적 표현이 쓰일 수 없고, 관형어가 올 수 있다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln\">● <b>‘-ㅁ/-음’에 대하여</b></div><div class=\"ln hang\" style=\"margin-left:1.0em\">□ 명사형 어미 : 동사의 어간 뒤에 붙어서 동사를 명사형이 되게 하는 역할을 한다. 동사의 명사형은 서술성이 있어서 주어를 서술하며, 품사가 변하지 않는다. 앞에 부사적 표현이 쓰일 수 있다.</div><div class=\"ln hang\" style=\"margin-left:1.0em\">□ 접미사 : 동사의 어간 뒤에 붙어서 동사를 명사로 파생 시킨다. 파생된 명사는 서술성이 없으므로 앞에 부사적 표현이 쓰일 수 없고, 관형어가 올 수 있다.</div>"
     },
     {
      "type": "bogi",
@@ -2576,20 +2508,10 @@
      "type": "bogi",
      "title": "<보기>",
      "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 어간은 용언의 활용 시 변하지 않는 부분을, 어근은 단어 분석 시 실질적 의미를 나타내는 중심 부분을가리킵니다.</div><div class=\"ln ind\"><table class=\"ht\"><colgroup><col style=\"width:42.1%\"><col style=\"width:28.9%\"><col style=\"width:28.9%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>용언</b></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>어간</b></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>어근</b></div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">솟다   (단일어)</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">솟-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">솟-</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">치솟다 (파생어)</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">치솟-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">솟-</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">샘솟다 (합성어)</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">샘솟-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">샘, 솟-</div></td></tr></table></div><div class=\"ln ind\">위의 예에서 알 수 있듯이 어떤 용언이 단일어일 경우</div><div class=\"ln ind\">어간과 어근이 일치합니다. 하지만, 용언이 파생어나</div><div class=\"ln ind\">합성어일 경우 어간과 어근이 일치하지 않습니다.</div><div class=\"ln ind\">그렇다면 이번에는 다음 세 단어의 어간과 어근을</div><div class=\"ln ind\">분석해 볼까요?</div><div class=\"ln ind\"><table class=\"ht\"><colgroup><col style=\"width:42.1%\"><col style=\"width:28.9%\"><col style=\"width:28.9%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>용언</b></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>어간</b></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>어근</b></div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">줄이다</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">줄이-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉠</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">힘들다</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">힘들-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉡</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">오가다</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">오가-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉢</div></td></tr></table></div>"
-    },
-    {
-     "type": "line",
-     "html": "       <u>㉠</u>         <u>㉡</u>         <u>㉢</u>"
     }
    ],
-   "choices": [
-    "①    줄이-       힘들-        오가-",
-    "②    줄이-       힘들-       오-, 가-",
-    "③     줄-        힘들-        오가-",
-    "④     줄-       힘, 들-      오-, 가-",
-    "⑤     줄-       힘, 들-       오가-"
-   ],
-   "ctab": null
+   "choices": [],
+   "ctab": "<table class=\"ht chtab\"><tr><td></td><td><u>㉠</u></td><td><u>㉡</u></td><td><u>㉢</u></td></tr><tr><td>①</td><td>줄이-</td><td>힘들-</td><td>오가-</td></tr><tr><td>②</td><td>줄이-</td><td>힘들-</td><td>오-, 가-</td></tr><tr><td>③</td><td>줄-</td><td>힘들-</td><td>오가-</td></tr><tr><td>④</td><td>줄-</td><td>힘, 들-</td><td>오-, 가-</td></tr><tr><td>⑤</td><td>줄-</td><td>힘, 들-</td><td>오가-</td></tr></table>"
   },
   {
    "no": 119,
@@ -2679,20 +2601,10 @@
      "type": "bogi",
      "title": "<보기>",
      "html": "<div class=\"ln e\"></div><div class=\"ln hang\">○ A＋B → AB : 단순한 의미의 결합……………………㉠ 예) 논＋밭 → 논밭</div><div class=\"ln hang\">○ A＋B → AX/XB : 한 쪽에만 의미 변화가 나타남…㉡ 예) 불＋호령 → 불호령</div><div class=\"ln hang\">○ A＋B → XY : 제3의 의미가 생겨남……………………㉢ 예) 까치＋발 → 까치발</div>"
-    },
-    {
-     "type": "line",
-     "html": "       <u>㉠</u>          <u>㉡</u>          <u>㉢</u>"
     }
    ],
-   "choices": [
-    "①     칼집        돌부처        오누이",
-    "②   쥐며느리      오누이        돌부처",
-    "③    비바람        칼집        벼락부자",
-    "④    오누이      벼락부자      쥐며느리",
-    "⑤   벼락부자      돌부처        비바람"
-   ],
-   "ctab": null
+   "choices": [],
+   "ctab": "<table class=\"ht chtab\"><tr><td></td><td><u>㉠</u></td><td><u>㉡</u></td><td><u>㉢</u></td></tr><tr><td>①</td><td>칼집</td><td>돌부처</td><td>오누이</td></tr><tr><td>②</td><td>쥐며느리</td><td>오누이</td><td>돌부처</td></tr><tr><td>③</td><td>비바람</td><td>칼집</td><td>벼락부자</td></tr><tr><td>④</td><td>오누이</td><td>벼락부자</td><td>쥐며느리</td></tr><tr><td>⑤</td><td>벼락부자</td><td>돌부처</td><td>비바람</td></tr></table>"
   },
   {
    "no": 124,
@@ -2791,6 +2703,7 @@
     }
    ],
    "choices": [
+    "① 아이들이 <u>뛰노는</u> 소리가 밖에서 들렸다.",
     "② 서로 <u>몰라볼</u> 정도로 세월이 많이 흘렀다.",
     "③ 저마다의 <u>타고난</u> 소질을 계발하는 것이 중요하다.",
     "④ <u>지난달</u>부터 공부를 열심히 했더니 자신감이 생겼다.",
@@ -2807,7 +2720,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">합성어는 어근의 배열 양상에 따라 통사적 합성어와 비통사적 합성어로 나뉜다. 어근의 배열이 우리말의 일반적인 문장 구성 방식과 일치하는 것을 통사적 합성어라 하고, 그렇지 않은 것을 비통사적 합성어라 한다. 합성어에서 어근의 구체적 결합 양상은 다음과 같다.</div><div class=\"ln e\"></div><div class=\"ln\"><b> &lt;통사적 합성어의 유형과 예&gt;</b></div><div class=\"ln hang\">○ 체언＋체언 : 밤낮</div><div class=\"ln hang\">○ 체언＋용언 :      ㉠</div><div class=\"ln hang\">○ 관형사＋체언 :      ㉡</div><div class=\"ln hang\">○ 용언의 관형사형＋체언 :      ㉢</div><div class=\"ln e\"></div><div class=\"ln ind\"><b>  &lt;비통사적 합성어의 유형과 예&gt;</b></div><div class=\"ln hang\">○ 부사＋체언 : 보슬비</div><div class=\"ln hang\">○ 용언의 어간＋체언 :      ㉣</div><div class=\"ln hang\">○ 용언의 어간＋용언의 어간 :      ㉤</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">합성어는 어근의 배열 양상에 따라 통사적 합성어와 비통사적 합성어로 나뉜다. 어근의 배열이 우리말의 일반적인 문장 구성 방식과 일치하는 것을 통사적 합성어라 하고, 그렇지 않은 것을 비통사적 합성어라 한다. 합성어에서 어근의 구체적 결합 양상은 다음과 같다.</div><div class=\"ln e\"></div><div class=\"ln\"><b> &lt;통사적 합성어의 유형과 예&gt;</b></div><div class=\"ln hang\" style=\"margin-left:1.3em\">○ 체언＋체언 : 밤낮</div><div class=\"ln hang\" style=\"margin-left:1.3em\">○ 체언＋용언 :      ㉠</div><div class=\"ln hang\" style=\"margin-left:1.3em\">○ 관형사＋체언 :      ㉡</div><div class=\"ln hang\" style=\"margin-left:1.3em\">○ 용언의 관형사형＋체언 :      ㉢</div><div class=\"ln e\"></div><div class=\"ln ind\"><b>  &lt;비통사적 합성어의 유형과 예&gt;</b></div><div class=\"ln hang\" style=\"margin-left:1.3em\">○ 부사＋체언 : 보슬비</div><div class=\"ln hang\" style=\"margin-left:1.3em\">○ 용언의 어간＋체언 :      ㉣</div><div class=\"ln hang\" style=\"margin-left:1.3em\">○ 용언의 어간＋용언의 어간 :      ㉤</div>"
     }
    ],
    "choices": [
@@ -2923,20 +2836,10 @@
      "type": "bogi",
      "title": "<보기 2>",
      "html": "<div class=\"ln e\"></div><div class=\"ln c hang\">ㄱ. 멋쟁이   ㄴ. 몰래카메라   ㄷ. 배나무   ㄹ. 풋사랑</div>"
-    },
-    {
-     "type": "line",
-     "html": "       <u>[A]</u>         <u>[B]</u>"
     }
    ],
-   "choices": [
-    "①    ㄱ, ㄴ        ㄷ, ㄹ",
-    "②    ㄱ, ㄹ        ㄴ, ㄷ",
-    "③    ㄴ, ㄷ        ㄱ, ㄹ",
-    "④    ㄴ, ㄹ        ㄱ, ㄷ",
-    "⑤    ㄷ, ㄹ        ㄱ, ㄴ"
-   ],
-   "ctab": null
+   "choices": [],
+   "ctab": "<table class=\"ht chtab\"><tr><td></td><td><u>[A]</u></td><td><u>[B]</u></td></tr><tr><td>①</td><td>ㄱ, ㄴ</td><td>ㄷ, ㄹ</td></tr><tr><td>②</td><td>ㄱ, ㄹ</td><td>ㄴ, ㄷ</td></tr><tr><td>③</td><td>ㄴ, ㄷ</td><td>ㄱ, ㄹ</td></tr><tr><td>④</td><td>ㄴ, ㄹ</td><td>ㄱ, ㄷ</td></tr><tr><td>⑤</td><td>ㄷ, ㄹ</td><td>ㄱ, ㄴ</td></tr></table>"
   },
   {
    "no": 135,
@@ -2973,20 +2876,10 @@
     {
      "type": "html",
      "html": " <img class=\"pic\" src=\"IMG/BIN0009.png\" style=\"width:110.9mm\">"
-    },
-    {
-     "type": "line",
-     "html": "        <u>㉠</u>            <u>㉡</u>                 <u>㉢</u>"
     }
    ],
-   "choices": [
-    "①     하늘       논밭, 높푸르다      지우개, 헛수고",
-    "②     하늘           논밭        지우개, 헛수고, 높푸르다",
-    "③    지우개        논밭, 하늘       헛수고, 높푸르다",
-    "④    지우개     헛수고, 높푸르다       논밭, 하늘",
-    "⑤  하늘, 지우개       논밭           헛수고, 높푸르다"
-   ],
-   "ctab": null
+   "choices": [],
+   "ctab": "<table class=\"ht chtab\"><tr><td></td><td><u>㉠</u></td><td><u>㉡</u></td><td><u>㉢</u></td></tr><tr><td>①</td><td>하늘</td><td>논밭, 높푸르다</td><td>지우개, 헛수고</td></tr><tr><td>②</td><td>하늘</td><td>논밭</td><td>지우개, 헛수고, 높푸르다</td></tr><tr><td>③</td><td>지우개</td><td>논밭, 하늘</td><td>헛수고, 높푸르다</td></tr><tr><td>④</td><td>지우개</td><td>헛수고, 높푸르다</td><td>논밭, 하늘</td></tr><tr><td>⑤</td><td>하늘, 지우개</td><td>논밭</td><td>헛수고, 높푸르다</td></tr></table>"
   },
   {
    "no": 137,
@@ -3003,20 +2896,10 @@
      "type": "bogi",
      "title": "<보기 2>",
      "html": "<div class=\"ln e\"></div><div class=\"ln ind\">외래어를 순화한 말도 일반적인 단어 형성법에 의해서 만들어지는데, 그 예는 다음과 같다.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:22.5%\"><col style=\"width:38.3%\"><col style=\"width:23.5%\"><col style=\"width:15.6%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>외래어</b></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>의 미</b></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>구성 요소</b></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>순화어</b></div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">매치업</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">서로 맞서서 대결함.</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">‘맞-’, ‘대결’</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">맞대결</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">다크서클</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">눈 아랫부분이 거무</div><div class=\"ln\">스름하게 그늘이 지</div><div class=\"ln\">는 것을 가리킴.</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">‘눈’, ‘그늘’</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">눈그늘</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">패셔니스타</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">맵시 있거나 맵시를 </div><div class=\"ln\">잘 부리는 사람.</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">‘맵시’, ‘-꾼’</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">맵시꾼</div></td></tr></table></div>"
-    },
-    {
-     "type": "line",
-     "html": "       <u>㉠</u>          <u>㉡</u>          <u>㉢</u>"
     }
    ],
-   "choices": [
-    "①    눈그늘        맞대결        맵시꾼",
-    "②    눈그늘        맵시꾼        맞대결",
-    "③    맞대결        눈그늘        맵시꾼",
-    "④    맵시꾼        맞대결        눈그늘",
-    "⑤    맵시꾼        눈그늘        맞대결"
-   ],
-   "ctab": null
+   "choices": [],
+   "ctab": "<table class=\"ht chtab\"><tr><td></td><td><u>㉠</u></td><td><u>㉡</u></td><td><u>㉢</u></td></tr><tr><td>①</td><td>눈그늘</td><td>맞대결</td><td>맵시꾼</td></tr><tr><td>②</td><td>눈그늘</td><td>맵시꾼</td><td>맞대결</td></tr><tr><td>③</td><td>맞대결</td><td>눈그늘</td><td>맵시꾼</td></tr><tr><td>④</td><td>맵시꾼</td><td>맞대결</td><td>눈그늘</td></tr><tr><td>⑤</td><td>맵시꾼</td><td>눈그늘</td><td>맞대결</td></tr></table>"
   },
   {
    "no": 138,
@@ -3238,51 +3121,10 @@
      "type": "bogi",
      "title": "<보기>",
      "html": "<div class=\"ln\"><b>선생님</b> : 형태소는 뜻을 가진 가장 작은 말의 단위를 뜻하는 말입니다. 형태소는 다음의 두 기준에 따라 자립 형태소와 의존 형태소, 실질 형태소와 형식 형태소로 나눌 수 있습니다.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:44.1%\"><col style=\"width:5.9%\"><col style=\"width:5.9%\"><col style=\"width:44.1%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">홀로 쓰일 수 있는가?</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">실질적 의미가 있는가?</div></td></tr><tr><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:none;text-align:center\"><div class=\"ln c\">예 <svg class=\"gso inl\" viewBox=\"0 0 1901 1854\" style=\"width:6.7mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"1901\" y1=\"0\" x2=\"0\" y2=\"1854\" stroke=\"#000000\" stroke-width=\"33\"/></svg> <svg class=\"gso inl\" viewBox=\"0 0 1884 1893\" style=\"width:6.6mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"0\" y1=\"0\" x2=\"1884\" y2=\"1893\" stroke=\"#000000\" stroke-width=\"33\"/></svg>아니요</div></td><td style=\"border-left:none;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:none;text-align:center\"><div class=\"ln c\">예 <svg class=\"gso inl\" viewBox=\"0 0 1901 1854\" style=\"width:6.7mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"1901\" y1=\"0\" x2=\"0\" y2=\"1854\" stroke=\"#000000\" stroke-width=\"33\"/></svg> <svg class=\"gso inl\" viewBox=\"0 0 1884 1893\" style=\"width:6.6mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"0\" y1=\"0\" x2=\"1884\" y2=\"1893\" stroke=\"#000000\" stroke-width=\"33\"/></svg>아니요</div></td></tr><tr><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln c\">자립      의존</div><div class=\"ln c\">형태소    형태소</div></td><td style=\"border-left:none;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln c\">실질      형식</div><div class=\"ln c\">형태소    형태소</div></td></tr></table></div><div class=\"ln e\"></div><div class=\"ln\">다음은 아래 ‘예문’을 형태소 단위로 나누고, 위 기준에 따라 분석한 결과입니다.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:left\"><div class=\"ln\">◦ 예문 : 경찰이 도둑을 잡았다.</div><div class=\"ln\">◦ 형태소 분석 결과 :</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:18.5%\"><col style=\"width:10.2%\"><col style=\"width:9.1%\"><col style=\"width:12.4%\"><col style=\"width:9.1%\"><col style=\"width:13.6%\"><col style=\"width:13.6%\"><col style=\"width:13.6%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:right\"><div class=\"ln r\">형태소</div><div class=\"ln\">구분 기준</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">경찰</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">이</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">도둑</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">을</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">잡-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">-았-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">-다</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">홀로 쓰일 수 있는가?</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">예</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">예</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉡</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">실질적 의미가 있는가?</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉠</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">예</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉢</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td></tr></table></div></td></tr></table></div><div class=\"ln e\"></div><div class=\"ln\">㉠~㉢에 들어갈 대답을 모두 바르게 짝지어 볼까요?</div>"
-    },
-    {
-     "type": "tabrows",
-     "rows": [
-      [
-       "<u>㉠</u>",
-       "<u>㉡</u>",
-       "<u>㉢</u>"
-      ],
-      [
-       "①",
-       "예",
-       "예",
-       "예"
-      ],
-      [
-       "②",
-       "예",
-       "아니요",
-       "예"
-      ],
-      [
-       "③",
-       "예",
-       "아니요",
-       "아니요"
-      ],
-      [
-       "④",
-       "아니요",
-       "예",
-       "예"
-      ],
-      [
-       "⑤",
-       "아니요",
-       "아니요",
-       "아니요"
-      ]
-     ],
-     "choices": true
     }
    ],
    "choices": [],
-   "ctab": null
+   "ctab": "<table class=\"ht chtab\"><tr><td></td><td><u>㉠</u></td><td><u>㉡</u></td><td><u>㉢</u></td></tr><tr><td>①</td><td>예</td><td>예</td><td>예</td></tr><tr><td>②</td><td>예</td><td>아니요</td><td>예</td></tr><tr><td>③</td><td>예</td><td>아니요</td><td>아니요</td></tr><tr><td>④</td><td>아니요</td><td>예</td><td>예</td></tr><tr><td>⑤</td><td>아니요</td><td>아니요</td><td>아니요</td></tr></table>"
   },
   {
    "no": 149,
@@ -3294,45 +3136,10 @@
      "type": "bogi",
      "title": "<보기>",
      "html": "<div class=\"ln\">어근과 어간은 혼동하기 쉬운 문법 용어이다. 어근은 단어의 형성과 관련되는 것으로 실질적, 중심적 의미를 띠는 부분이고, 어간은 용언의 활용과 관련되는 것으로 활용할 때 형태가 변하지 않는 부분이다. 예를 들어 ‘놀다’는 ㉠ <u>어근과 어간이 일치하는 경우</u>로 ‘놀-’은 어근이면서 어간이다. 그러나 ‘덧붙이다’는 ㉡ <u>어근과 어간이 일치하지 않는 경우</u>이다. 어근 ‘붙-’의 앞뒤에 접사 ‘덧-’과 ‘-이-’가 결합한 파생어로, 어간은 ‘덧붙이-’이다.</div>"
-    },
-    {
-     "type": "tabrows",
-     "rows": [
-      [
-       "<u>㉠</u>",
-       "<u>㉡</u>"
-      ],
-      [
-       "①",
-       "기르다",
-       "기쁘다"
-      ],
-      [
-       "②",
-       "치솟다",
-       "견주다"
-      ],
-      [
-       "③",
-       "구기다",
-       "휘감다"
-      ],
-      [
-       "④",
-       "알리다",
-       "새롭다"
-      ],
-      [
-       "⑤",
-       "맞바꾸다",
-       "되살리다"
-      ]
-     ],
-     "choices": true
     }
    ],
    "choices": [],
-   "ctab": null
+   "ctab": "<table class=\"ht chtab\"><tr><td></td><td><u>㉠</u></td><td><u>㉡</u></td></tr><tr><td>①</td><td>기르다</td><td>기쁘다</td></tr><tr><td>②</td><td>치솟다</td><td>견주다</td></tr><tr><td>③</td><td>구기다</td><td>휘감다</td></tr><tr><td>④</td><td>알리다</td><td>새롭다</td></tr><tr><td>⑤</td><td>맞바꾸다</td><td>되살리다</td></tr></table>"
   },
   {
    "no": 150,
@@ -3342,7 +3149,7 @@
    "blocks": [
     {
      "type": "html",
-     "html": "<table class=\"ht\"><colgroup><col style=\"width:12.6%\"><col style=\"width:87.4%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">탐구 목표</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">어근의 뒤에 붙어 새로운 단어를 만드는 접미사 중 ‘-쟁이’와 ‘-장이’의 의미와 쓰임을 구분해 사용할 수 있다.</div></td></tr><tr><td colspan=\"2\" style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">󰀻</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">탐구 자료</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">(1) 고집쟁이 : 고집이 센 사람.</div><div class=\"ln\">거짓말쟁이 : 거짓말을 잘하는 사람.</div><div class=\"ln\">(2) 노래쟁이 : ‘가수(歌手)’를 낮잡아 이르는 말.</div><div class=\"ln\">그림쟁이 : ‘화가(畫家)’를 낮잡아 이르는 말.</div><div class=\"ln\">(3) 땜장이 : 땜질을 직업으로 하는 사람.</div><div class=\"ln\">옹기장이 : 옹기 만드는 일을 직업으로 하는 사람.</div></td></tr><tr><td colspan=\"2\" style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">󰀻</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">탐구 결과</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">◦ (1)의 ‘-쟁이’의 의미는 ‘어떤 속성을 많이 가진 사람’으로 볼 수 있다. ······· ㄱ</div><div class=\"ln\">◦ (2)와 (3)은 둘 다 직업과 관련된 말이지만, ‘기술자’를 의미할 때는 ‘-장이’를 쓴다. ············································· ㄴ</div><div class=\"ln\">◦ (1) ~ (3)을 볼 때, ‘-쟁이’와 ‘-장이’는 모두 명사와 결합하여 새로운 단어를 만든다. ·············································· ㄷ</div><div class=\"ln\">◦ (1) ~ (3)을 볼 때, ‘-쟁이’와 ‘-장이’는 모두 어근의 품사를 변화시키지 않는 접미사이다. ······································· ㄹ</div><div class=\"ln\">◦ (1), (2), (3)의 예로 ‘욕심쟁이’, ‘대장쟁이’, ‘중매장이’를 각각 추가할 수 있다. ······················································· ㅁ</div></td></tr></table>"
+     "html": "<table class=\"ht\"><colgroup><col style=\"width:12.6%\"><col style=\"width:87.4%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">탐구 목표</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">어근의 뒤에 붙어 새로운 단어를 만드는 접미사 중 ‘-쟁이’와 ‘-장이’의 의미와 쓰임을 구분해 사용할 수 있다.</div></td></tr><tr><td colspan=\"2\" style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">⇩</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">탐구 자료</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">(1) 고집쟁이 : 고집이 센 사람.</div><div class=\"ln\">거짓말쟁이 : 거짓말을 잘하는 사람.</div><div class=\"ln\">(2) 노래쟁이 : ‘가수(歌手)’를 낮잡아 이르는 말.</div><div class=\"ln\">그림쟁이 : ‘화가(畫家)’를 낮잡아 이르는 말.</div><div class=\"ln\">(3) 땜장이 : 땜질을 직업으로 하는 사람.</div><div class=\"ln\">옹기장이 : 옹기 만드는 일을 직업으로 하는 사람.</div></td></tr><tr><td colspan=\"2\" style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">⇩</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">탐구 결과</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">◦ (1)의 ‘-쟁이’의 의미는 ‘어떤 속성을 많이 가진 사람’으로 볼 수 있다. ······· ㄱ</div><div class=\"ln\">◦ (2)와 (3)은 둘 다 직업과 관련된 말이지만, ‘기술자’를 의미할 때는 ‘-장이’를 쓴다. ············································· ㄴ</div><div class=\"ln\">◦ (1) ~ (3)을 볼 때, ‘-쟁이’와 ‘-장이’는 모두 명사와 결합하여 새로운 단어를 만든다. ·············································· ㄷ</div><div class=\"ln\">◦ (1) ~ (3)을 볼 때, ‘-쟁이’와 ‘-장이’는 모두 어근의 품사를 변화시키지 않는 접미사이다. ······································· ㄹ</div><div class=\"ln\">◦ (1), (2), (3)의 예로 ‘욕심쟁이’, ‘대장쟁이’, ‘중매장이’를 각각 추가할 수 있다. ······················································· ㅁ</div></td></tr></table>"
     }
    ],
    "choices": [
@@ -3672,7 +3479,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln\">선생님 : 파생어란 어근에 접사가 결합하여 형성된 단어입니다. 그런데 파생어는 접사에 의해 본래 단어의 품사가 변화되는 경우와 변화되지 않는 경우로 나뉩니다. 다음은 사전에서 찾은 단어들입니다. 제시된 단어들에 접사가 결합된 파생어를 찾아보고 분석해 봅시다.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\"><b>더욱</b> 󰃌 정도나 수준 따위가 한층 심하거나 높게.</div><div class=\"ln\"><b>넓다</b> 󰃰 면이나 바닥 따위의 면적이 크다.</div><div class=\"ln\"><b>덮다</b> 󰂿 물건 따위가 드러나거나 보이지 않도록 넓은 천 따위를 얹어서 씌우다.</div></td></tr></table></div>"
+     "html": "<div class=\"ln\">선생님 : 파생어란 어근에 접사가 결합하여 형성된 단어입니다. 그런데 파생어는 접사에 의해 본래 단어의 품사가 변화되는 경우와 변화되지 않는 경우로 나뉩니다. 다음은 사전에서 찾은 단어들입니다. 제시된 단어들에 접사가 결합된 파생어를 찾아보고 분석해 봅시다.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\"><b>더욱</b> [형용사] 정도나 수준 따위가 한층 심하거나 높게.</div><div class=\"ln\"><b>넓다</b> [동사] 면이나 바닥 따위의 면적이 크다.</div><div class=\"ln\"><b>덮다</b> [부사] 물건 따위가 드러나거나 보이지 않도록 넓은 천 따위를 얹어서 씌우다.</div></td></tr></table></div>"
     }
    ],
    "choices": [
@@ -3736,51 +3543,10 @@
      "type": "bogi",
      "title": "<보기>",
      "html": "<div class=\"ln\">선생님 : 파생어는 어근과 접사로 이루어진 단어를 말합니다. [자료]의 파생어를 분류해 봅시다.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\"><b>[자료]</b></div><div class=\"ln\">ㄱ. 겁쟁이 \tㄴ. 날고기 \tㄷ. 넓히다</div><div class=\"ln\">ㄹ. 맡기다 \tㅁ. 지우개 \tㅂ. 풋사랑</div></td></tr></table></div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:22.0%\"><col style=\"width:22.0%\"><col style=\"width:19.5%\"><col style=\"width:17.9%\"><col style=\"width:18.5%\"></colgroup><tr><td rowspan=\"3\" colspan=\"3\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">접사가 어근 뒤에 결합하는가?</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln e\"></div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln c\">→</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">[A]</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td></tr><tr><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">   ↓ 예</div></td><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td></tr><tr><td rowspan=\"3\" colspan=\"3\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">파생어의 품사가 어근의 품사와 동일한가?</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln e\"></div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln c\">→</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">[B]</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td></tr><tr><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">   ↓ 예</div></td><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td></tr><tr><td style=\"border-left:none;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">[C]</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td></tr></table></div>"
-    },
-    {
-     "type": "tabrows",
-     "rows": [
-      [
-       "<u>[A]</u>",
-       "<u>[B]</u>",
-       "<u>[C]</u>"
-      ],
-      [
-       "①",
-       "ㄱ, ㄴ",
-       "ㄷ, ㅁ",
-       "ㄹ, ㅂ"
-      ],
-      [
-       "②",
-       "ㄱ, ㄴ",
-       "ㄹ, ㅁ",
-       "ㄷ, ㅂ"
-      ],
-      [
-       "③",
-       "ㄴ, ㅂ",
-       "ㄷ, ㄹ",
-       "ㄱ, ㅁ"
-      ],
-      [
-       "④",
-       "ㄴ, ㅂ",
-       "ㄷ, ㅁ",
-       "ㄱ, ㄹ"
-      ],
-      [
-       "⑤",
-       "ㄷ, ㅁ",
-       "ㄴ, ㅂ",
-       "ㄱ, ㄹ"
-      ]
-     ],
-     "choices": true
     }
    ],
    "choices": [],
-   "ctab": null
+   "ctab": "<table class=\"ht chtab\"><tr><td></td><td><u>[A]</u></td><td><u>[B]</u></td><td><u>[C]</u></td></tr><tr><td>①</td><td>ㄱ, ㄴ</td><td>ㄷ, ㅁ</td><td>ㄹ, ㅂ</td></tr><tr><td>②</td><td>ㄱ, ㄴ</td><td>ㄹ, ㅁ</td><td>ㄷ, ㅂ</td></tr><tr><td>③</td><td>ㄴ, ㅂ</td><td>ㄷ, ㄹ</td><td>ㄱ, ㅁ</td></tr><tr><td>④</td><td>ㄴ, ㅂ</td><td>ㄷ, ㅁ</td><td>ㄱ, ㄹ</td></tr><tr><td>⑤</td><td>ㄷ, ㅁ</td><td>ㄴ, ㅂ</td><td>ㄱ, ㄹ</td></tr></table>"
   },
   {
    "no": 167,
@@ -3969,51 +3735,10 @@
      "type": "bogi",
      "title": "<보기>",
      "html": "<div class=\"ln\">학생 1 : 우리 스무고개 할래? [자료]에 있는 단어 중에서 내가 무얼 생각하는지 맞혀 봐.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\"><b>[자료]</b></div><div class=\"ln c\">높이다 \t\t접히다 \t\t여닫다</div></td></tr></table></div><div class=\"ln\">학생 2 : 좋아. 그 단어는 어근과 어근으로 구성되었니?</div><div class=\"ln\">학생 1 : 아니, 어근과 접사로 이루어져 있어.</div><div class=\"ln\">학생 2 : 그렇다면    ⓐ   는 아니겠군. 그러면 단어의 품사가 어근의 품사와 같니?</div><div class=\"ln\">학생 1 : 아니, 이 단어의 품사는 어근의 품사와 달라.</div><div class=\"ln\">학생 2 :    ⓑ   는 접사가 결합하며 품사가 달라지지 않았고,    ⓒ   는 접사가 결합하며 품사가 달라졌네. 그렇다면 네가 생각하는 단어는    ⓒ   이구나!</div><div class=\"ln\">학생 1 : 맞아, 바로 그거야.</div>"
-    },
-    {
-     "type": "tabrows",
-     "rows": [
-      [
-       "<u>ⓐ</u>",
-       "<u>ⓑ</u>",
-       "<u>ⓒ</u>"
-      ],
-      [
-       "①",
-       "여닫다",
-       "접히다",
-       "높이다"
-      ],
-      [
-       "②",
-       "여닫다",
-       "높이다",
-       "접히다"
-      ],
-      [
-       "③",
-       "높이다",
-       "여닫다",
-       "접히다"
-      ],
-      [
-       "④",
-       "높이다",
-       "접히다",
-       "여닫다"
-      ],
-      [
-       "⑤",
-       "접히다",
-       "여닫다",
-       "높이다"
-      ]
-     ],
-     "choices": true
     }
    ],
    "choices": [],
-   "ctab": null
+   "ctab": "<table class=\"ht chtab\"><tr><td></td><td><u>ⓐ</u></td><td><u>ⓑ</u></td><td><u>ⓒ</u></td></tr><tr><td>①</td><td>여닫다</td><td>접히다</td><td>높이다</td></tr><tr><td>②</td><td>여닫다</td><td>높이다</td><td>접히다</td></tr><tr><td>③</td><td>높이다</td><td>여닫다</td><td>접히다</td></tr><tr><td>④</td><td>높이다</td><td>접히다</td><td>여닫다</td></tr><tr><td>⑤</td><td>접히다</td><td>여닫다</td><td>높이다</td></tr></table>"
   },
   {
    "no": 176,
@@ -4114,51 +3839,10 @@
      "type": "bogi",
      "title": "<보기>",
      "html": "<div class=\"ln\">※ 다음 밑줄 친 단어를 통해 합성어의 형성 과정을 탐구해 보자.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">◦ 이곳은 ㉠ <u>이른바</u> 우리나라의 곡창 지대이다.</div><div class=\"ln\">◦ 붕대로 ㉡ <u>감싼</u> 상처가 정말 심각해 보였다.</div><div class=\"ln\">◦ 집행부가 질서를 ㉢ <u>바로잡을</u> 계획을 세웠다.</div><div class=\"ln\">◦ 대학교에 가려면 ㉣ <u>건널목</u>을 건너야만 한다.</div></td></tr></table></div><div class=\"ln e\"></div><div class=\"ln\">[탐구 과정]</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:23.3%\"><col style=\"width:23.3%\"><col style=\"width:20.8%\"><col style=\"width:17.7%\"><col style=\"width:14.9%\"></colgroup><tr><td rowspan=\"3\" colspan=\"3\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">어근의 배열이 우리말의 일반적인 문장 구성 방식에 맞습니까?</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln e\"></div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln c\">→</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">[A]</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td></tr><tr><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">   ↓ 예</div></td><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td></tr><tr><td rowspan=\"3\" colspan=\"3\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">합성어의 품사와 합성어를 이루는 뒤 어근의 품사가 일치합니까?</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln e\"></div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln c\">→</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">[B]</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td></tr><tr><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">   ↓ 예</div></td><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td></tr><tr><td style=\"border-left:none;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">[C]</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td></tr></table></div>"
-    },
-    {
-     "type": "tabrows",
-     "rows": [
-      [
-       "<u>[A]</u>",
-       "<u>[B]</u>",
-       "<u>[C]</u>"
-      ],
-      [
-       "①",
-       "㉠",
-       "㉡, ㉣",
-       "㉢"
-      ],
-      [
-       "②",
-       "㉠, ㉢",
-       "㉡",
-       "㉣"
-      ],
-      [
-       "③",
-       "㉡",
-       "㉠",
-       "㉢, ㉣"
-      ],
-      [
-       "④",
-       "㉡",
-       "㉢",
-       "㉠, ㉣"
-      ],
-      [
-       "⑤",
-       "㉡, ㉣",
-       "㉢",
-       "㉠"
-      ]
-     ],
-     "choices": true
     }
    ],
    "choices": [],
-   "ctab": null
+   "ctab": "<table class=\"ht chtab\"><tr><td></td><td><u>[A]</u></td><td><u>[B]</u></td><td><u>[C]</u></td></tr><tr><td>①</td><td>㉠</td><td>㉡, ㉣</td><td>㉢</td></tr><tr><td>②</td><td>㉠, ㉢</td><td>㉡</td><td>㉣</td></tr><tr><td>③</td><td>㉡</td><td>㉠</td><td>㉢, ㉣</td></tr><tr><td>④</td><td>㉡</td><td>㉢</td><td>㉠, ㉣</td></tr><tr><td>⑤</td><td>㉡, ㉣</td><td>㉢</td><td>㉠</td></tr></table>"
   },
   {
    "no": 181,
@@ -4231,46 +3915,11 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln\"><b>[복합어]</b></div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">헛수고, 어느새, 톱질, 마음껏, 꺾쇠, 지우개</div></td></tr></table></div><div class=\"ln e\"></div><div class=\"ln\"><b>[분류 과정]</b></div><div class=\"ln c\"><table class=\"ht\"><colgroup><col style=\"width:19.7%\"><col style=\"width:7.1%\"><col style=\"width:19.7%\"><col style=\"width:7.1%\"><col style=\"width:19.7%\"><col style=\"width:7.1%\"><col style=\"width:19.6%\"></colgroup><tr><td colspan=\"7\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">둘 이상의 어근으로만 구성되어 있나요?</div></td></tr><tr><td rowspan=\"5\" style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\"><svg class=\"gso\" viewBox=\"0 0 647 11387\" style=\"width:2.3mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><polyline points=\"647,7468 485,7468 485,0 162,0 162,7468 0,7468 324,11387 647,7468\" fill=\"none\" stroke=\"none\" stroke-width=\"20\"/></svg></div><div class=\"ln c\">예</div></td><td colspan=\"6\" style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">⇩</div><div class=\"ln c\">아니요</div></td></tr><tr><td colspan=\"6\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">접사가 어근의 앞에 붙어서 특정한 뜻을 더하거나 제한해 주나요?</div></td></tr><tr><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:none;text-align:left\"><div class=\"ln e\"></div></td><td rowspan=\"3\" style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\"><svg class=\"gso\" viewBox=\"0 0 729 5875\" style=\"width:2.6mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><polyline points=\"729,3853 547,3853 547,0 182,0 182,3853 0,3853 365,5875 729,3853\" fill=\"none\" stroke=\"none\" stroke-width=\"20\"/></svg></div><div class=\"ln c\">예</div></td><td colspan=\"4\" style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">⇩</div><div class=\"ln c\">아니요</div></td></tr><tr><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln e\"></div></td><td colspan=\"4\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">접사가 어근의 뒤에 붙어서 어근의 품사를 바꾸어 주나요?</div></td></tr><tr><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:none;text-align:left\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">⇩</div><div class=\"ln c\">예</div></td><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:none;text-align:left\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">⇩</div><div class=\"ln c\">아니요</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉠</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉡</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln e\"></div></td></tr></table></div>"
-    },
-    {
-     "type": "tabrows",
-     "rows": [
-      [
-       "<u>㉠</u>",
-       "<u>㉡</u>"
-      ],
-      [
-       "①",
-       "어느새, 꺾쇠",
-       "마음껏, 지우개"
-      ],
-      [
-       "②",
-       "헛수고, 어느새",
-       "지우개"
-      ],
-      [
-       "③",
-       "톱질, 꺾쇠",
-       "헛수고, 마음껏"
-      ],
-      [
-       "④",
-       "톱질, 마음껏, 꺾쇠",
-       "헛수고"
-      ],
-      [
-       "⑤",
-       "어느새, 톱질, 꺾쇠",
-       "지우개"
-      ]
-     ],
-     "choices": true
+     "html": "<div class=\"ln\"><b>[복합어]</b></div><div class=\"fbox wide\">헛수고, 어느새, 톱질, 마음껏, 꺾쇠, 지우개</div><div class=\"ln\" style=\"margin-top:2mm\"><b>[분류 과정]</b></div><table class=\"flow\"><tr><td><div class=\"fbox\">둘 이상의 어근으로만 구성되어 있나요?</div></td><td class=\"ar\">예 →</td><td><div class=\"fbox\">㉠</div></td></tr><tr><td class=\"dn\">↓ 아니요</td><td></td><td></td></tr><tr><td><div class=\"fbox\">접사가 어근의 앞에 붙어서 특정한 뜻을 더하거나 제한해 주나요?</div></td><td class=\"ar\">예 →</td><td><div class=\"fbox\">&nbsp;</div></td></tr><tr><td class=\"dn\">↓ 아니요</td><td></td><td></td></tr><tr><td><div class=\"fbox\">접사가 어근의 뒤에 붙어서 어근의 품사를 바꾸어 주나요?</div></td><td class=\"ar\">예 →</td><td><div class=\"fbox\">㉡</div></td></tr><tr><td class=\"dn\">↓ 아니요</td><td></td><td></td></tr><tr><td><div class=\"fbox\">&nbsp;</div></td><td></td><td></td></tr></table>"
     }
    ],
    "choices": [],
-   "ctab": null
+   "ctab": "<table class=\"ht chtab\"><tr><td></td><td><u>㉠</u></td><td><u>㉡</u></td></tr><tr><td>①</td><td>어느새, 꺾쇠</td><td>마음껏, 지우개</td></tr><tr><td>②</td><td>헛수고, 어느새</td><td>지우개</td></tr><tr><td>③</td><td>톱질, 꺾쇠</td><td>헛수고, 마음껏</td></tr><tr><td>④</td><td>톱질, 마음껏, 꺾쇠</td><td>헛수고</td></tr><tr><td>⑤</td><td>어느새, 톱질, 꺾쇠</td><td>지우개</td></tr></table>"
   },
   {
    "no": 185,
@@ -4349,7 +3998,7 @@
     {
      "type": "bogi",
      "title": "<보기 2>",
-     "html": "<div class=\"ln\">◦ 그들은 서로 손을 쥐<u>고</u> 팔씨름을 했다.</div><div class=\"ln\">ⓐ</div><div class=\"ln\">◦ 어머니는 나를 업<u>고</u> 병원으로 달려갔다.</div><div class=\"ln\">ⓑ</div><div class=\"ln\">◦ 나는 그가 정직하<u>고</u> 성실하다는 것을 알고 있었다.</div><div class=\"ln\">ⓒ</div><div class=\"ln\">◦ 눈 깜짝할 사이에 다리가 벌에 쏘이<u>고</u> 퉁퉁 부었다.</div><div class=\"ln\">ⓓ</div><div class=\"ln\">◦ 그 책은 내가 읽을 책이<u>고</u> 이 책은 내가 읽은 책이다.</div><div class=\"ln\">ⓔ</div>"
+     "html": "<div class=\"ln\">◦ 그들은 서로 손을 쥐<u>고</u> 팔씨름을 했다.<span class=\"rlab\">ⓐ</span></div><div class=\"ln\">◦ 어머니는 나를 업<u>고</u> 병원으로 달려갔다.<span class=\"rlab\">ⓑ</span></div><div class=\"ln\">◦ 나는 그가 정직하<u>고</u> 성실하다는 것을 알고 있었다.<span class=\"rlab\">ⓒ</span></div><div class=\"ln\">◦ 눈 깜짝할 사이에 다리가 벌에 쏘이<u>고</u> 퉁퉁 부었다.<span class=\"rlab\">ⓓ</span></div><div class=\"ln\">◦ 그 책은 내가 읽을 책이<u>고</u> 이 책은 내가 읽은 책이다.<span class=\"rlab\">ⓔ</span></div>"
     }
    ],
    "choices": [
@@ -4370,11 +4019,11 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln\"><b>-ㄴ- 「어미」</b></div><div class=\"ln\">이야기하는 시점에서 볼 때 사건이나 행위가 현재 일어남을 나타내는 어미.</div><div class=\"ln\">¶ 일을 마치고 집으로 간다.</div><div class=\"ln e\"></div><div class=\"ln\"><b>-ㄴ 「어미」</b></div><div class=\"ln\">󰊱 사건이나 행위가 과거 또는 말하는 이가 상정한 기준 시점보다 과거에 일어남을 나타내는 어미.</div><div class=\"ln\">¶ 이것은 털실로 짠 옷이다.</div><div class=\"ln\">󰊲 현재의 상태를 나타내는 어미.</div><div class=\"ln\">¶ 누나는 유명한 성악가이다.</div>"
+     "html": "<div class=\"ln\"><b>-ㄴ- 「어미」</b></div><div class=\"ln\">이야기하는 시점에서 볼 때 사건이나 행위가 현재 일어남을 나타내는 어미.</div><div class=\"ln\">¶ 일을 마치고 집으로 간다.</div><div class=\"ln e\"></div><div class=\"ln\"><b>-ㄴ 「어미」</b></div><div class=\"ln\">「1」 사건이나 행위가 과거 또는 말하는 이가 상정한 기준 시점보다 과거에 일어남을 나타내는 어미.</div><div class=\"ln\">¶ 이것은 털실로 짠 옷이다.</div><div class=\"ln\">「2」 현재의 상태를 나타내는 어미.</div><div class=\"ln\">¶ 누나는 유명한 성악가이다.</div>"
     },
     {
      "type": "html",
-     "html": "<table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\"><b>[학습지]</b></div><div class=\"ln\">각 질문에 대해 ‘예’는 ○, ‘아니요’는 ×로 표시하시오.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:47.8%\"><col style=\"width:15.0%\"><col style=\"width:12.4%\"><col style=\"width:12.4%\"><col style=\"width:12.4%\"></colgroup><tr><td rowspan=\"2\" style=\"border-left:1.4px solid #111;border-right:0.8px solid #111;border-top:1.4px solid #111;border-bottom:1.4px solid #111;text-align:center\"><div class=\"ln c\">질문</div></td><td rowspan=\"2\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:1.4px solid #111;border-bottom:1.4px solid #111;text-align:left\"><div class=\"ln\">-ㄴ-</div></td><td colspan=\"2\" style=\"border-left:0.8px solid #111;border-right:1.4px solid #111;border-top:1.4px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">-ㄴ</div></td><td style=\"border-left:1.4px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln e\"></div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:1.4px solid #111;text-align:center\"><div class=\"ln c\">󰊱</div></td><td style=\"border-left:0.8px solid #111;border-right:1.4px solid #111;border-top:0.8px solid #111;border-bottom:1.4px solid #111;text-align:center\"><div class=\"ln c\">󰊲</div></td><td style=\"border-left:1.4px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln e\"></div></td></tr><tr><td style=\"border-left:1.4px solid #111;border-right:0.8px solid #111;border-top:1.4px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">◦다른 어미 앞에 붙을 수 있는가?</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:1.4px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">○</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:1.4px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">×</div></td><td style=\"border-left:0.8px solid #111;border-right:1.4px solid #111;border-top:1.4px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">×</div></td><td style=\"border-left:1.4px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">… ㉠</div></td></tr><tr><td style=\"border-left:1.4px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">◦어미 ‘-(으)시-’ 뒤에 붙을 수 있는가?</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">○</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">○</div></td><td style=\"border-left:0.8px solid #111;border-right:1.4px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">○</div></td><td style=\"border-left:1.4px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">… ㉡</div></td></tr><tr><td style=\"border-left:1.4px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">◦어간에 붙어 관형어 구실을 하게 하는가?</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">×</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">○</div></td><td style=\"border-left:0.8px solid #111;border-right:1.4px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">○</div></td><td style=\"border-left:1.4px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">… ㉢</div></td></tr><tr><td style=\"border-left:1.4px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">◦받침 없는 용언의 어간 뒤에 붙어 현재 시제를 나타내는가?</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">○</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">×</div></td><td style=\"border-left:0.8px solid #111;border-right:1.4px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">○</div></td><td style=\"border-left:1.4px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">… ㉣</div></td></tr><tr><td style=\"border-left:1.4px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:1.4px solid #111;text-align:left\"><div class=\"ln\">◦예문으로 ‘흰 눈이 내립니다.’를 추가할 수 있는가?</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:1.4px solid #111;text-align:center\"><div class=\"ln c\">○</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:1.4px solid #111;text-align:center\"><div class=\"ln c\">×</div></td><td style=\"border-left:0.8px solid #111;border-right:1.4px solid #111;border-top:0.8px solid #111;border-bottom:1.4px solid #111;text-align:center\"><div class=\"ln c\">×</div></td><td style=\"border-left:1.4px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">… ㉤</div></td></tr></table></div></td></tr></table>"
+     "html": "<table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\"><b>[학습지]</b></div><div class=\"ln\">각 질문에 대해 ‘예’는 ○, ‘아니요’는 ×로 표시하시오.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:47.8%\"><col style=\"width:15.0%\"><col style=\"width:12.4%\"><col style=\"width:12.4%\"><col style=\"width:12.4%\"></colgroup><tr><td rowspan=\"2\" style=\"border-left:1.4px solid #111;border-right:0.8px solid #111;border-top:1.4px solid #111;border-bottom:1.4px solid #111;text-align:center\"><div class=\"ln c\">질문</div></td><td rowspan=\"2\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:1.4px solid #111;border-bottom:1.4px solid #111;text-align:left\"><div class=\"ln\">-ㄴ-</div></td><td colspan=\"2\" style=\"border-left:0.8px solid #111;border-right:1.4px solid #111;border-top:1.4px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">-ㄴ</div></td><td style=\"border-left:1.4px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln e\"></div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:1.4px solid #111;text-align:center\"><div class=\"ln c\">「1」</div></td><td style=\"border-left:0.8px solid #111;border-right:1.4px solid #111;border-top:0.8px solid #111;border-bottom:1.4px solid #111;text-align:center\"><div class=\"ln c\">「2」</div></td><td style=\"border-left:1.4px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln e\"></div></td></tr><tr><td style=\"border-left:1.4px solid #111;border-right:0.8px solid #111;border-top:1.4px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">◦다른 어미 앞에 붙을 수 있는가?</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:1.4px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">○</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:1.4px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">×</div></td><td style=\"border-left:0.8px solid #111;border-right:1.4px solid #111;border-top:1.4px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">×</div></td><td style=\"border-left:1.4px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">… ㉠</div></td></tr><tr><td style=\"border-left:1.4px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">◦어미 ‘-(으)시-’ 뒤에 붙을 수 있는가?</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">○</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">○</div></td><td style=\"border-left:0.8px solid #111;border-right:1.4px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">○</div></td><td style=\"border-left:1.4px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">… ㉡</div></td></tr><tr><td style=\"border-left:1.4px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">◦어간에 붙어 관형어 구실을 하게 하는가?</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">×</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">○</div></td><td style=\"border-left:0.8px solid #111;border-right:1.4px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">○</div></td><td style=\"border-left:1.4px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">… ㉢</div></td></tr><tr><td style=\"border-left:1.4px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">◦받침 없는 용언의 어간 뒤에 붙어 현재 시제를 나타내는가?</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">○</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">×</div></td><td style=\"border-left:0.8px solid #111;border-right:1.4px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">○</div></td><td style=\"border-left:1.4px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">… ㉣</div></td></tr><tr><td style=\"border-left:1.4px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:1.4px solid #111;text-align:left\"><div class=\"ln\">◦예문으로 ‘흰 눈이 내립니다.’를 추가할 수 있는가?</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:1.4px solid #111;text-align:center\"><div class=\"ln c\">○</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:1.4px solid #111;text-align:center\"><div class=\"ln c\">×</div></td><td style=\"border-left:0.8px solid #111;border-right:1.4px solid #111;border-top:0.8px solid #111;border-bottom:1.4px solid #111;text-align:center\"><div class=\"ln c\">×</div></td><td style=\"border-left:1.4px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">… ㉤</div></td></tr></table></div></td></tr></table>"
     }
    ],
    "choices": [
