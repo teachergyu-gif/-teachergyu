@@ -24,7 +24,7 @@ def esc(s):
 
 
 def fix_img(h):
-    return h.replace('src="IMG/', f'src="file://{J_IMG}')
+    return h.replace('src="IMG/', f'src="file://{J_IMG}').replace('href="IMG/', f'href="file://{J_IMG}')
 
 
 def block_html(b):

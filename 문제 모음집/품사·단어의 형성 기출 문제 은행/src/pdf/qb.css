@@ -28,3 +28,8 @@ img.pic{max-width:100%;display:block;margin:1mm auto}
 .draw{display:inline-block;border:1px dashed #c00;color:#c00;font-size:8pt;padding:0 1mm}
 .ovl{border:1px solid #111;padding:0 .5mm}
 sup{font-size:.65em}
+svg.gso{display:block;margin:1mm auto}
+.svgtx .ln{font-size:1000px !important;line-height:1.25 !important;padding:0 120px !important;text-indent:0 !important;white-space:nowrap}
+.svgtx .ln.c{text-align:center}
+svg.gso.inl{display:inline-block;vertical-align:middle;margin:0 .5mm}
+table.ht.plain td{border:none;padding:.4mm 2mm}

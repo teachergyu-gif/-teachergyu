@@ -224,6 +224,10 @@ def gso_html(j):
     end = j + 1
     while end < len(SEC) and SEC[end][1] > L: end += 1
     pics = [struct.unpack_from('<H', SEC[i][2], 71)[0] for i in range(j, end) if SEC[i][0] == 85]
+    shapes_kind = [SEC[i][2][:4][::-1] for i in range(j, end) if SEC[i][0] == 76]
+    if not (pics and len(shapes_kind) == 1):   # 그리기 개체(묶음·도형·글상자): 좌표대로 SVG
+        import shapes
+        return shapes.render(j)
     if pics:
         mm = w / 7200 * 25.4
         return ''.join(f'<img class="pic" src="IMG/BIN{BINS[b - 1]:04X}.png" style="width:{mm:.1f}mm">' for b in pics if 0 < b <= len(BINS))
@@ -362,8 +366,11 @@ def convert():
                     choices = [f'{CIRC[k]} ' + lines[2 * k] + '<br>' + lines[2 * k + 1] for k in range(5)]
                     del blocks[bi:]
                 break
-        if choices and '②③④⑤③④⑤' in re.sub(r'<[^>]+>|\s', '', ''.join(choices)):
-            raw = '<br>'.join(re.sub(r'<span class="draw".*?</span>', '', c) for c in choices)
+        # 선지 앞 괄호 도형(그리기 개체)은 빼고 글만
+        choices = [re.sub(r'\s*(<br>)+\s*', '<br>', re.sub(r'<svg.*?</svg>', '', c, flags=re.S)).replace(' <br>', ' ') for c in choices]
+        choices = [re.sub(r'^([①-⑤])\s*<br>', r'\1 ', c) for c in choices]
+        if len(choices) == 1 and '<svg' in choices[0]:
+            raw = '<br>'.join(re.sub(r'<svg.*?</svg>|<span class="draw".*?</span>', '', c, flags=re.S) for c in choices)
             raw = re.sub(r'<div[^>]*>|</div>', '', raw)
             ls = [x.strip() for x in raw.split('<br>') if re.sub(r'<[^>]+>', '', x).strip()]
             ls = [re.sub(r'^[①-⑤\s]+', '', x) for x in ls]
@@ -400,6 +407,9 @@ def convert():
 
 if __name__ == '__main__':
     parts, qs = convert()
+    import overrides
+    for q in qs:
+        if q['no'] in overrides.FIX: overrides.FIX[q['no']](q)
     json.dump({'parts': parts, 'questions': qs}, open(os.path.join(H, 'qb.json'), 'w', encoding='utf8'), ensure_ascii=False, indent=1)
     print(parts, len(qs))
     bad = [q['no'] for q in qs if len(q['choices']) not in (0, 5)]
