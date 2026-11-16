@@ -19,7 +19,12 @@ for t, l, p in DI:
         BINS.append(struct.unpack_from('<H', p, 2)[0] if typ == 1 else None)
 CIRC = '①②③④⑤'
 JOINLOG = []
-PUA = {'\U000f003b': '⇩', '\U000f00bf': '[부사]', '\U000f00cc': '[형용사]', '\U000f00f0': '[동사]', '\U000f02b1': '\ue101', '\U000f02b2': '\ue102'}
+JOINLIST = []
+try:
+    JOINS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'joins.json'), encoding='utf8'))
+except FileNotFoundError:
+    JOINS = {}
+PUA = {'\U000f003b': '⇩', '\U000f00cc': '[부사]', '\U000f00f0': '[형용사]', '\U000f00bf': '[동사]', '\U000f02b1': '\ue101', '\U000f02b2': '\ue102'}
 EXT = (1, 2, 3, 11, 12, 14, 15, 16, 17, 18, 21, 22, 23)
 
 
@@ -161,7 +166,7 @@ def lines_html(paras, join=False):
         pl = p.plain()
         items.append([p, pl, runs_html(p)])
     out = []
-    MARK = re.compile(r'^\s*(?:[A-Z]\.\s|[ⓐ-ⓩ]\s|[ㄱ-ㅎ]\.|[가-하]\.|[○□•◦◎▪※\-*]|\[[^\]]{1,8}\]|[①-⑤]|\([가-하ㄱ-ㅎ]\)|[가-힣]{1,4}\s*:|[가-힣]\s[가-힣]\s*:|-)')
+    MARK = re.compile(r'^\s*(?:[A-Z]\.\s|[a-z]\.\s|\d\.\s|예\)|▶|[㉠-㉭]\s|[ⓐ-ⓩ]\s|[ㄱ-ㅎ]\.|[가-하]\.|[○□•◦◎▪※\-*]|\[[^\]]{1,8}\]|[①-⑤]|\([가-하ㄱ-ㅎ]\)|[가-힣]{1,4}\s*:|[가-힣]\s+[가-힣]\s*:|-)')
     k = 0
     while k < len(items):
         p, pl, h = items[k]
@@ -177,13 +182,22 @@ def lines_html(paras, join=False):
                 if len(cur.replace(' ', '')) < 22: break          # 짧은 줄 = 문단 끝
                 if MARK.match(ql.lstrip()): break
                 if ql.startswith('  ') and not marked: break        # 두 칸 들여쓴 줄 = 새 문단
-                if ql.startswith(' ') and not pl.endswith(' '):
-                    nxt = ql.lstrip()
-                    glue = '' if re.match(r'^(이다|이며|이고|이므로|이나|이라|이란|을|를|은|는|이|가|의|에|에서|에게|와|과|로|으로|도|만|까지|부터|하다|한다|했다|하는|하고|하여|해|된다|되어|되는|된|할|함|하며|들|다\.|다,)', nxt) else ' '
-                    JOINLOG.append(pl.rstrip()[-8:] + '|' + glue + '|' + nxt[:8])
-                    h = h.rstrip() + glue + qh.lstrip()
+                # 손 줄바꿈 이음매: 띄어 쓸지(원본에서 줄 끝 띄어쓰기가 빠진 곳이 있음) — joins.json의 판정이 우선
+                nxt = ql.lstrip()
+                if pl.endswith(' '):
+                    glue = ''
                 else:
-                    h = h + qh.lstrip() if ql.startswith(' ') else h + qh
+                    key = pl.rstrip()[-10:] + '|' + nxt[:10]
+                    if key in JOINS:
+                        glue = JOINS[key]
+                    elif ql.startswith(' '):
+                        glue = '' if re.match(r'^(이다|이며|이고|이므로|이나|이라|이란|을|를|은|는|이|가|의|에|에서|에게|와|과|로|으로|도|만|까지|부터|하다|한다|했다|하는|하고|하여|해|된다|되어|되는|된|할|함|하며|들|서|다\.|다,)', nxt) else ' '
+                    else:
+                        glue = ' ' if re.search(r'([을를이가은는의에와과로도만며고면게서록기듯데니요다,.)’”]|에서|에게|까지|부터)$', pl.rstrip()) and not re.match(r'^[.,)’”]', nxt) else ''
+                        if re.match(r'^(도|이다|일까|이기|하지|하게|하다|한다|했다|하는|하고|하여|하며|해|지지|되|된|됩|으로|로|를|을|는|은|의|에|와|과|이|가|들|씩|만)(\s|[.,?!’”]|$)', nxt): glue = ''
+                    JOINLIST.append((key, glue))
+                h = h.rstrip() + glue + qh.lstrip() if not pl.endswith(' ') else h + qh.lstrip()
+                if glue == '<br>': glue = ' '
                 pl = pl + ql.lstrip()
                 k += 1
             ind = ' ind' if lead else (' hang' if marked else '')
@@ -422,6 +436,8 @@ if __name__ == '__main__':
     for q in qs:
         if q['no'] in overrides.FIX: overrides.FIX[q['no']](q)
         if not q.get('ctab'): overrides.choice_tables(q)
+    import edits
+    for q in qs: edits.apply(q)
     # 네모 숫자(원본 글꼴 전용 기호) → 상자 친 숫자
     def boxnum(o):
         if isinstance(o, str):
@@ -435,6 +451,7 @@ if __name__ == '__main__':
     qs = boxnum(qs)
     json.dump({'parts': parts, 'questions': qs}, open(os.path.join(H, 'qb.json'), 'w', encoding='utf8'), ensure_ascii=False, indent=1)
     print(parts, len(qs))
+    json.dump(JOINLIST, open(os.path.join(H, '_joinlist.json'), 'w', encoding='utf8'), ensure_ascii=False, indent=0)
     bad = [q['no'] for q in qs if len(q['choices']) not in (0, 5)]
     print('선지 수 이상:', bad)
     print('선지 없음:', [q['no'] for q in qs if not q['choices'] and not q['ctab'] and not any(b.get('choices') for b in q['blocks'])])

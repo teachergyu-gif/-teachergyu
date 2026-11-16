@@ -167,7 +167,12 @@ def main(data_json, out_html):
             done.append((q['no'], {'choices': q['choices'] or ['x'] * 5}, exs[q['no']]))
     if done:
         body += ['<div class="u brk"></div>', '<div class="u extitle"><span>정답 및 해설</span></div>'] + [quick(done[i:i + 100]).replace('<div class="qat">빠른 정답</div>', '' if i else '<div class="qat">빠른 정답</div>') for i in range(0, len(done), 100)]
-        body += [re.sub(r'「([12])」', r'<span class="bnum">\1</span>', explanation(k, e)) for k, q, e in done]
+        def post(h):
+            h = re.sub(r'「([12])」', r'<span class="bnum">\1</span>', h)
+            h = re.sub(r'\^(\d)', r'<sup>\1</sup>', h)                       # 어깨번호
+            h = re.sub(r'‘(-?[^‘’\s<>]{1,6}-?)’', r'<span class="nb">‘\1’</span>', h)   # ‘-다’ 같은 짧은 인용이 줄 끝에서 갈라지지 않게
+            return h
+        body += [post(explanation(k, e)) for k, q, e in done]
     css = open(f'{D}/exam.css').read() + open(f'{D}/qb.css').read()
     js = open(f'{D}/paginate.js').read()
     doc = f'''<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>

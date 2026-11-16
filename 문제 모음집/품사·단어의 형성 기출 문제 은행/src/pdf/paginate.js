@@ -241,7 +241,7 @@
             const wpx = m.getBoundingClientRect().width; m.remove();
             if (wpx <= slack - fs * 0.3 && (cls < bestCls || (cls === bestCls && c > best))) { best = c; bestCls = cls; }
           }
-          if (best > 0) { nw.textContent = txt.slice(0, best) + '​' + txt.slice(best); changed = true; }
+          if (false && best > 0) { nw.textContent = txt.slice(0, best) + '​' + txt.slice(best); changed = true; }   // 이 교재: 낱말 가운데 끊지 않음(글 간격이 벌어져 ‘명 사’처럼 보임)
         }
         el.style.textAlign = ta;
         if (!changed) break;

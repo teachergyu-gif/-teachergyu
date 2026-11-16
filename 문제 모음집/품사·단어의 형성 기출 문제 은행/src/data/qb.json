@@ -174,7 +174,7 @@
    "no": 9,
    "part": "Ⅰ-(1) 품사",
    "src": "2012년 3월 고3 전국연합학력평가 언어영역 12번",
-   "stem": "&lt;보기 1&gt;을 참조하여 &lt;보기 2&gt;의 ㉠～㉤을 판단한 것으로 적절하지 <u>않은</u> 것은?",
+   "stem": "&lt;보기 1&gt;을 참조하여 &lt;보기 2&gt;의 ㉠~㉤을 판단한 것으로 적절하지 <u>않은</u> 것은?",
    "blocks": [
     {
      "type": "bogi",
@@ -184,7 +184,7 @@
     {
      "type": "bogi",
      "title": "<보기 2>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">초인종이 울린다. “계세요?” 외치는 소리가 들린다.아  들 : ㉠<u>누가</u> 왔는지 ㉡<u>제</u>가 나가 볼게요. (현관으로 나</div><div class=\"ln ind\">가며) ㉢<u>누구</u>세요? (문을 열어 상대방을 확인한다.)</div><div class=\"ln hang\">우체부 : 택배 왔습니다.</div><div class=\"ln\">아  들 : (물건을 건네받아 확인하고) 할머니께서 ㉣<u>당신</u>이</div><div class=\"ln ind\">손수 말리신 곶감을 보내셨네요. 아버지, 곶감 좀</div><div class=\"ln ind\">맛보실래요?</div><div class=\"ln hang\">아버지 : ㉤<u>네</u>가 먼저 먹으렴. 난 이따가 먹을란다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">초인종이 울린다. “계세요?” 외치는 소리가 들린다.</div><div class=\"ln hang\">아  들 : ㉠<u>누가</u> 왔는지 ㉡<u>제</u>가 나가 볼게요. (현관으로 나 가며) ㉢<u>누구</u>세요? (문을 열어 상대방을 확인한다.)</div><div class=\"ln hang\">우체부 : 택배 왔습니다.</div><div class=\"ln hang\">아  들 : (물건을 건네받아 확인하고) 할머니께서 ㉣<u>당신</u>이 손수 말리신 곶감을 보내셨네요. 아버지, 곶감 좀 맛보실래요?</div><div class=\"ln hang\">아버지 : ㉤<u>네</u>가 먼저 먹으렴. 난 이따가 먹을란다.</div>"
     }
    ],
    "choices": [
@@ -205,7 +205,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">대명사는 인칭에 따라 ‘나, 우리’와 같은 1인칭, ‘너, 자네, 그대’와 같은 2인칭, ‘이분, 그분, 이이, 그이’와 같은 3인칭으로 나뉜다. ㉠<u>그런데 다음에서 볼 수 있듯이 동일한 형태가</u><u>1인칭, 2인칭, 3인칭 중에서 두 가지 인칭으로 쓰이기도 한다.</u></div><div class=\"ln e\"></div><div class=\"ln hang\">가. <u>당신</u>은 누구십니까?(2인칭)</div><div class=\"ln hang\">나. 할머니께서는 <u>당신</u>이 젊었을 때 미인이셨다.(3인칭)</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">대명사는 인칭에 따라 ‘나, 우리’와 같은 1인칭, ‘너, 자네, 그대’와 같은 2인칭, ‘이분, 그분, 이이, 그이’와 같은 3인칭으로 나뉜다. ㉠<u>그런데 다음에서 볼 수 있듯이 동일한 형태가</u> <u>1인칭, 2인칭, 3인칭 중에서 두 가지 인칭으로 쓰이기도 한다.</u></div><div class=\"ln e\"></div><div class=\"ln hang\">가. <u>당신</u>은 누구십니까?(2인칭)</div><div class=\"ln hang\">나. 할머니께서는 <u>당신</u>이 젊었을 때 미인이셨다.(3인칭)</div>"
     }
    ],
    "choices": [
@@ -242,12 +242,12 @@
    "no": 12,
    "part": "Ⅰ-(1) 품사",
    "src": "2014학년도 대학수학능력시험 국어영역 A/B형 14번",
-   "stem": "&lt;보기&gt;의 ㉠～㉤에 대한 설명으로 적절하지 <u>않은</u> 것은?",
+   "stem": "&lt;보기&gt;의 ㉠~㉤에 대한 설명으로 적절하지 <u>않은</u> 것은?",
    "blocks": [
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 안녕? 어, 손에 들고 있는 그거 뭐니?</div><div class=\"ln\">학  생 : 네, 중생대 공룡에 관한 책이에요. 할아버지께서는</div><div class=\"ln ind\">제 생일마다 책들을 사 주셨는데, ㉠<u>이것</u>도 ㉡<u>그것</u></div><div class=\"ln ind\">중 하나예요. 해마다 할아버지께서는 ㉢<u>당신</u> 손으로</div><div class=\"ln ind\">직접 골라 주신답니다.</div><div class=\"ln hang\">선생님 : 그렇구나. ㉣<u>우리</u> 집 아이들도 공룡 책을 참 좋아 하지. 우리 아이들은 ㉤<u>저희</u>들끼리 책을 고르려고 아옹다옹한단다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 안녕? 어, 손에 들고 있는 그거 뭐니?</div><div class=\"ln hang\">학  생 : 네, 중생대 공룡에 관한 책이에요. 할아버지께서는 제 생일마다 책들을 사 주셨는데, ㉠<u>이것</u>도 ㉡<u>그것</u> 중 하나예요. 해마다 할아버지께서는 ㉢<u>당신</u> 손으로 직접 골라 주신답니다.</div><div class=\"ln hang\">선생님 : 그렇구나. ㉣<u>우리</u> 집 아이들도 공룡 책을 참 좋아하지. 우리 아이들은 ㉤<u>저희</u>들끼리 책을 고르려고 아옹다옹한단다.</div>"
     }
    ],
    "choices": [
@@ -276,7 +276,7 @@
     "② ㄷ을 보니 앞에 붙는 말이 받침이 없을 때 ‘이-’를 생략할 수 있군.",
     "③ ㄱ과 ㄴ을 보니 체언, 용언의 어미, 조사, 부사 뒤에 붙는군.",
     "④ ㄴ과 ㄷ을 보니 자립성이 있는 단어와 결합될 때에는 주어가 생략되는군.",
-    "⑤ ㄱ～ㄷ을 보니 다른 말에 붙어서 서술의 기능을 갖게 하는군."
+    "⑤ ㄱ~ㄷ을 보니 다른 말에 붙어서 서술의 기능을 갖게 하는군."
    ],
    "ctab": null
   },
@@ -289,7 +289,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">•목적어는 타동사에 의해 표현되는 행위의 대상을 나타내는 문장 성분으로 ‘체언+목적격 조사(을/를)’의 형태로 성립된다. 예) 나는 <u>독서를</u> 즐긴다./그는 <u>책을</u> 사랑한다.</div><div class=\"ln hang\">ㄱ. 그는 <u>누굴</u> 더 사랑할까?</div><div class=\"ln hang\">ㄴ. 나는 <u>사과는</u> 좋아해./나는 <u>사과를</u> 좋아해.</div><div class=\"ln hang\">ㄷ. 나는 <u>너만을</u> 좋아해./나는 <u>너를</u> 좋아해.</div><div class=\"ln hang\">ㄹ. 나는 영수<u>와</u> 만났다./나는 영수<u>를</u> 만났다.</div><div class=\"ln hang\">ㅁ. 선생님께서 <u>책을 열 권을</u> 주셨다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">•목적어는 타동사에 의해 표현되는 행위의 대상을 나타내는 문장 성분으로 ‘체언+목적격 조사(을/를)’의 형태로 성립된다.</div><div class=\"ln hang\">예) 나는 <u>독서를</u> 즐긴다./그는 <u>책을</u> 사랑한다.</div><div class=\"ln hang\">ㄱ. 그는 <u>누굴</u> 더 사랑할까?</div><div class=\"ln hang\">ㄴ. 나는 <u>사과는</u> 좋아해./나는 <u>사과를</u> 좋아해.</div><div class=\"ln hang\">ㄷ. 나는 <u>너만을</u> 좋아해./나는 <u>너를</u> 좋아해.</div><div class=\"ln hang\">ㄹ. 나는 영수<u>와</u> 만났다./나는 영수<u>를</u> 만났다.</div><div class=\"ln hang\">ㅁ. 선생님께서 <u>책을 열 권을</u> 주셨다.</div>"
     }
    ],
    "choices": [
@@ -331,7 +331,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">사람들이 하나둘 공원㉠<u>에</u> 모여들기 시작했다. 공원에는 의자㉡<u>에</u> 앉아 있는 사람들과 잔디㉢<u>에</u> 누워 있는 사람들이 많이 있었다. 음악 소리가 나자 모든 사람들이 자리㉣<u>에서</u> 일어나 한곳㉤<u>에</u> 모였다. 많은 사람들이 앞㉥<u>에</u> 있는 한 사람을 바라보았다. 잠시 후 사람들 사이㉦<u>에서</u> 웅성거리는 소리가나기 시작했다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">사람들이 하나둘 공원㉠<u>에</u> 모여들기 시작했다. 공원에는 의자㉡<u>에</u> 앉아 있는 사람들과 잔디㉢<u>에</u> 누워 있는 사람들이 많이 있었다. 음악 소리가 나자 모든 사람들이 자리㉣<u>에서</u> 일어나 한곳㉤<u>에</u> 모였다. 많은 사람들이 앞㉥<u>에</u> 있는 한 사람을 바라보았다. 잠시 후 사람들 사이㉦<u>에서</u> 웅성거리는 소리가 나기 시작했다.</div>"
     }
    ],
    "choices": [
@@ -357,7 +357,7 @@
     {
      "type": "bogi",
      "title": "<보기 2>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln\">a. 고마운 마음<u>에서</u> 드리는 말씀입니다.</div><div class=\"ln\">b. 어느 학교 동창회<u>에서</u> 있었던 일이다.</div><div class=\"ln\">c. 우리는 아침에 도서관<u>에서</u> 만나기로 하였다.</div><div class=\"ln\">d. 그저 조그마한 보탬이라도 되고자 하는 뜻<u>에서</u> 행한 일이다.e. 죽은 부모가 살아 돌아온들 이<u>에서</u> 더 기쁘지는 않을 것</div><div class=\"ln ind\">이다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">a. 고마운 마음<u>에서</u> 드리는 말씀입니다.</div><div class=\"ln hang\">b. 어느 학교 동창회<u>에서</u> 있었던 일이다.</div><div class=\"ln hang\">c. 우리는 아침에 도서관<u>에서</u> 만나기로 하였다.</div><div class=\"ln hang\">d. 그저 조그마한 보탬이라도 되고자 하는 뜻<u>에서</u> 행한 일이다.</div><div class=\"ln hang\">e. 죽은 부모가 살아 돌아온들 이<u>에서</u> 더 기쁘지는 않을 것이다.</div>"
     },
     {
      "type": "line",
@@ -382,7 +382,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 오늘은 조사 ‘와/과’가 사용된 문장에 대해 공부해 봅 시다. ‘와/과/가 쓰인 문장 중, 어떤 것은 두 개 이상의 문장으로 나누어지기도 하고 어떤 것은 나누어 지지 않기도 합니다. 이 설명을 기준으로 할 때, 다음 문장 중 그 종류가 나머지와 다른 하나는 어느 것 일까요? 단, 주어진 문장 외의 다른 상황은 생각하지 않기로 합니다.</div><div class=\"ln e\"></div><div class=\"ln hang\" style=\"margin-left:2.7em\">가. 철수와 영수는 잠잔다.</div><div class=\"ln hang\" style=\"margin-left:2.7em\">나. 철수와 영수는 친하다.</div><div class=\"ln hang\" style=\"margin-left:2.7em\">다. 철수와 영수는 싸웠다.</div><div class=\"ln hang\" style=\"margin-left:2.7em\">라. 철수와 영수는 마주쳤다.</div><div class=\"ln hang\" style=\"margin-left:2.7em\">마. 철수와 영수는 헤어졌다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 오늘은 조사 ‘와/과’가 사용된 문장에 대해 공부해 봅시다. ‘와/과/가 쓰인 문장 중, 어떤 것은 두 개 이상의 문장으로 나누어지기도 하고 어떤 것은 나누어지지 않기도 합니다. 이 설명을 기준으로 할 때, 다음 문장 중 그 종류가 나머지와 다른 하나는 어느 것일까요? 단, 주어진 문장 외의 다른 상황은 생각하지 않기로 합니다.</div><div class=\"ln e\"></div><div class=\"ln hang\" style=\"margin-left:2.7em\">가. 철수와 영수는 잠잔다.</div><div class=\"ln hang\" style=\"margin-left:2.7em\">나. 철수와 영수는 친하다.</div><div class=\"ln hang\" style=\"margin-left:2.7em\">다. 철수와 영수는 싸웠다.</div><div class=\"ln hang\" style=\"margin-left:2.7em\">라. 철수와 영수는 마주쳤다.</div><div class=\"ln hang\" style=\"margin-left:2.7em\">마. 철수와 영수는 헤어졌다.</div>"
     }
    ],
    "choices": [
@@ -481,7 +481,7 @@
    "no": 23,
    "part": "Ⅰ-(1) 품사",
    "src": "2008학년도 6월 모의평가 언어영역 12번",
-   "stem": "&lt;보기 1&gt;을 참고할 때, &lt;보기 2&gt;의 ⓐ～ⓓ 중 ‘-마는’이 들어가야 할 것은?",
+   "stem": "&lt;보기 1&gt;을 참고할 때, &lt;보기 2&gt;의 ⓐ~ⓓ 중 ‘-마는’이 들어가야 할 것은?",
    "blocks": [
     {
      "type": "bogi",
@@ -528,7 +528,7 @@
    "no": 25,
    "part": "Ⅰ-(1) 품사",
    "src": "2014년 9월 고2 전국연합학력평가 국어영역 A형 12번",
-   "stem": "&lt;보기&gt;의 ㉠～㉤에 대해 이해한 내용으로 적절하지 <u>않은</u> 것은?",
+   "stem": "&lt;보기&gt;의 ㉠~㉤에 대해 이해한 내용으로 적절하지 <u>않은</u> 것은?",
    "blocks": [
     {
      "type": "bogi",
@@ -549,20 +549,20 @@
    "no": 26,
    "part": "Ⅰ-(1) 품사",
    "src": "2012년 11월 고2 전국연합학력평가 국어영역 A형 12번",
-   "stem": "‘보조사’의 의미를 중심으로 ㉠～㉤을 이해할 때, 적절하지 <u>않은</u> 것은? [3점]",
+   "stem": "‘보조사’의 의미를 중심으로 ㉠~㉤을 이해할 때, 적절하지 <u>않은</u> 것은? [3점]",
    "blocks": [
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">㉠<u>나는 지난 주말</u><b><u>도</u></b><u> ○○미술관에 다녀왔다.</u> 같은 동네에 사는 친구와 함께 가려고 했지만, ㉡<u>그 친구는 미술에 관심이</u><u>없어서 나</u><b><u>만</u></b><u> 가게 되었다.</u> ㉢<u>주변 친구들 중에서 이렇게 미술</u><u>관에 자주 가는 사람은 나</u><b><u>뿐</u></b><u>일 것이다.</u> ㉣<u>○○미술관에서 버스</u><u>정류장</u><b><u>은</u></b><u> 멀지만 전철역</u><b><u>은</u></b><u> 가까워서 전철을 타고 갔다.</u> ○○미술관에는 추상화부터 설치 미술까지 다양한 작품이 있어서㉤<u>나는 그곳에 갈 때</u><b><u>마다</u></b><u> 행복해진다.</u></div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">㉠<u>나는 지난 주말</u><b><u>도</u></b><u> <span class=\"nb\">○○미술관에</span> 다녀왔다.</u> 같은 동네에 사는 친구와 함께 가려고 했지만, ㉡<u>그 친구는 미술에 관심이</u> <u>없어서 나</u><b><u>만</u></b><u> 가게 되었다.</u> ㉢<u>주변 친구들 중에서 이렇게 미술</u><u>관에 자주 가는 사람은 나</u><b><u>뿐</u></b><u>일 것이다.</u> ㉣<u><span class=\"nb\">○○미술관에서</span> 버스</u> <u>정류장</u><b><u>은</u></b><u> 멀지만 전철역</u><b><u>은</u></b><u> 가까워서 전철을 타고 갔다.</u> <span class=\"nb\">○○미술관에는</span> 추상화부터 설치 미술까지 다양한 작품이 있어서 ㉤<u>나는 그곳에 갈 때</u><b><u>마다</u></b><u> 행복해진다.</u></div>"
     }
    ],
    "choices": [
-    "① ‘도’에 주목하면, ㉠에는 ‘나’가 지난 주말 이전에 ○○미술관에 간 경험이 있다는 의미도 담겨 있음을 알 수 있어.",
-    "② ‘만’에 주목하면, ㉡에는 ○○미술관에 가기로 한 ‘나’의 결정이 친구들의 결정과 같다는 의미도 담겨 있음을 알 수 있어.",
+    "① ‘도’에 주목하면, ㉠에는 ‘나’가 지난 주말 이전에 <span class=\"nb\">○○미술관에</span> 간 경험이 있다는 의미도 담겨 있음을 알 수 있어.",
+    "② ‘만’에 주목하면, ㉡에는 <span class=\"nb\">○○미술관에</span> 가기로 한 ‘나’의 결정이 친구들의 결정과 같다는 의미도 담겨 있음을 알 수 있어.",
     "③ ‘뿐’에 주목하면, ㉢에는 ‘나’ 이외의 친구들은 미술관에 자주 가지 않는다는 의미도 담겨 있음을 알 수 있어.",
-    "④ ‘은’에 주목하면, ㉣에는 ○○미술관에서 전철역까지의 거리와 버스 정류장까지의 거리에는 차이가 있다는 의미도 담겨 있음을 알 수 있어.",
-    "⑤ ‘마다’에 주목하면, ㉤에는 ‘나’는 ○○미술관에 가 있는 시간이 항상 행복하다는 의미도 담겨 있음을 알 수 있어."
+    "④ ‘은’에 주목하면, ㉣에는 <span class=\"nb\">○○미술관에서</span> 전철역까지의 거리와 버스 정류장까지의 거리에는 차이가 있다는 의미도 담겨 있음을 알 수 있어.",
+    "⑤ ‘마다’에 주목하면, ㉤에는 ‘나’는 <span class=\"nb\">○○미술관에</span> 가 있는 시간이 항상 행복하다는 의미도 담겨 있음을 알 수 있어."
    ],
    "ctab": null
   },
@@ -570,7 +570,7 @@
    "no": 27,
    "part": "Ⅰ-(1) 품사",
    "src": "2013년 8월 고2 학력평가 국어영역 A형 12번",
-   "stem": "‘보조사’의 의미를 중심으로 ㉠～㉤을 이해한 것으로 적절하지 <u>않은</u> 것은?",
+   "stem": "‘보조사’의 의미를 중심으로 ㉠~㉤을 이해한 것으로 적절하지 <u>않은</u> 것은?",
    "blocks": [
     {
      "type": "bogi",
@@ -675,7 +675,7 @@
    "no": 32,
    "part": "Ⅰ-(1) 품사",
    "src": "2009년 6월 고2 전국연합학력평가 언어영역 11번",
-   "stem": "다음은 동사와 형용사를 구분하는 방법을 학습한 결과이다. ⓐ～ⓓ 중, 옳은 것만을 있는 대로 고른 것은?",
+   "stem": "다음은 동사와 형용사를 구분하는 방법을 학습한 결과이다. ⓐ~ⓓ 중, 옳은 것만을 있는 대로 고른 것은?",
    "blocks": [
     {
      "type": "html",
@@ -721,12 +721,12 @@
     {
      "type": "bogi",
      "title": "<보기 1>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">&lt;보기 2&gt;의 ㉠은 문장에서 자립적으로 쓰여 서술어 기능을 한다. 그러나 ㉡은 혼자서는 쓰이지 못하고 반드시 다른 용언의 뒤에 붙어서 의미를 더하여 주는 ‘보조 용언’ 기능을한다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">&lt;보기 2&gt;의 ㉠은 문장에서 자립적으로 쓰여 서술어 기능을 한다. 그러나 ㉡은 혼자서는 쓰이지 못하고 반드시 다른 용언의 뒤에 붙어서 의미를 더하여 주는 ‘보조 용언’ 기능을 한다.</div>"
     },
     {
      "type": "bogi",
      "title": "<보기 2>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">○ 악기가 ㉠<u>내는</u> 소리의 식별 가능한 독특성인 음색은 부분 음들로 구성된 복합음의 구조, 즉 부분음들의 진동수와 상대적 세기에 의해 결정된다.</div><div class=\"ln hang\">○ 19세기 음악 평론가인 한슬리크에 따르면, 음악의 독자 적인 아름다움은 음들이 ‘울리면서 움직이는 형식’에서 비롯되는데, 음악을 구성하는 음악적 재료들이 움직이며 만들어 ㉡<u>내는</u> 형식 그 자체를 말한다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">○ 악기가 ㉠<u>내는</u> 소리의 식별 가능한 독특성인 음색은 부분음들로 구성된 복합음의 구조, 즉 부분음들의 진동수와 상대적 세기에 의해 결정된다.</div><div class=\"ln hang\">○ 19세기 음악 평론가인 한슬리크에 따르면, 음악의 독자적인 아름다움은 음들이 ‘울리면서 움직이는 형식’에서 비롯되는데, 음악을 구성하는 음악적 재료들이 움직이며 만들어 ㉡<u>내는</u> 형식 그 자체를 말한다.</div>"
     }
    ],
    "choices": [
@@ -742,12 +742,12 @@
    "no": 35,
    "part": "Ⅰ-(1) 품사",
    "src": "2011년 6월 고2 전국연합학력평가 언어영역 11번",
-   "stem": "&lt;보기&gt;를 참고할 때, 밑줄 친 단어가 보조용언으로 사용된 것은?",
+   "stem": "&lt;보기&gt;를 참고할 때, 밑줄 친 단어가 보조 용언으로 사용된 것은?",
    "blocks": [
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">○ 본용언은 실질적인 뜻을 나타내고, 보조용언은 본용언과 연결되어 그것의 뜻을 보충하는 역할을 한다. 예) 사람들이 모두 가 버렸다. : ‘버렸다’는 ‘가다’의 행동이 이미 끝났음을 나타내는 뜻을 보충함.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">○ 본용언은 실질적인 뜻을 나타내고, 보조 용언은 본용언과 연결되어 그것의 뜻을 보충하는 역할을 한다.</div><div class=\"ln hang\" style=\"margin-left:1.0em\">예) 사람들이 모두 가 버렸다. : ‘버렸다’는 ‘가다’의 행동이 이미 끝났음을 나타내는 뜻을 보충함.</div>"
     }
    ],
    "choices": [
@@ -776,7 +776,7 @@
     "② ㄴ의 경우, 뒤의 용언이 앞의 용언의 의미를 보조하는 역할을 하는군.",
     "③ ㄷ으로 볼 때, 문장 안에서 두 용언이 모두 실질적인 의미를 가지고 있으면 띄어 써야 하는군.",
     "④ ㄴ과 ㄷ은 모두 ㄹ처럼 의미가 성립하는 두 문장으로 나눌 수 있겠군.",
-    "⑤ ㄴ～ㄹ로 볼 때, 두 용언이 어울려 쓰일 경우 ‘-아/어’, ‘-고’와 같은 어미로 연결되는군."
+    "⑤ ㄴ~ㄹ로 볼 때, 두 용언이 어울려 쓰일 경우 ‘-아/어’, ‘-고’와 같은 어미로 연결되는군."
    ],
    "ctab": null
   },
@@ -784,7 +784,7 @@
    "no": 37,
    "part": "Ⅰ-(1) 품사",
    "src": "2016학년도 대학수학능력시험 국어영역 A형 13번",
-   "stem": "&lt;보기&gt;의 ⓐ～ⓒ에 해당하는 예로 적절하지 <u>않은</u> 것은?",
+   "stem": "&lt;보기&gt;의 ⓐ~ⓒ에 해당하는 예로 적절하지 <u>않은</u> 것은?",
    "blocks": [
     {
      "type": "bogi",
@@ -856,7 +856,7 @@
     }
    ],
    "choices": [
-    "① ㄱ～ㅁ의 서술어에 나타난 ‘-었-, -았-, -였-’ 속에는 모두 과거의 의미가 내포되어 있다.",
+    "① ㄱ~ㅁ의 서술어에 나타난 ‘-었-, -았-, -였-’ 속에는 모두 과거의 의미가 내포되어 있다.",
     "② ㄴ에서는 서술어의 기본형이 ‘조이다’이고, ㄷ에서는 ‘먹이다’이므로 두 경우 모두 ‘-었-’이 포함되어 있다.",
     "③ ㄱ과 ㄷ의 서술어에 나타난 ‘-였-’의 형태소를 분석해 보면, 그것을 구성하고 있는 형태소가 다름을 알 수 있다.",
     "④ ㄹ로 보아, 어간 뒤에 ‘-았-’이 아니라 ‘-었-’이 쓰일 수 있는 경우는 어간의 마지막 음절에 양성 모음이 쓰이지 않았을 때이다.",
@@ -868,7 +868,7 @@
    "no": 41,
    "part": "Ⅰ-(1) 품사",
    "src": "2015학년도 대학수학능력시험 국어영역 A형 12번",
-   "stem": "&lt;보기&gt;의 ⓐ～ⓒ에 해당하는 예로 적절하지 <u>않은</u> 것은?",
+   "stem": "&lt;보기&gt;의 ⓐ~ⓒ에 해당하는 예로 적절하지 <u>않은</u> 것은?",
    "blocks": [
     {
      "type": "bogi",
@@ -936,7 +936,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">선어말 어미 ‘-겠-’은 일반적으로 미래 시제를 나타내기위하여 사용되며, 미래의 일에 대한 추측이나 가능성, 말하는이의 의지 등을 나타내기도 한다. 그러나 특정 담화 상황에서는 말하는 이의 <u>완곡한 태도를 나타내기 위해 사용</u>되기도한다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">선어말 어미 ‘-겠-’은 일반적으로 미래 시제를 나타내기 위하여 사용되며, 미래의 일에 대한 추측이나 가능성, 말하는 이의 의지 등을 나타내기도 한다. 그러나 특정 담화 상황에서는 말하는 이의 <u>완곡한 태도를 나타내기 위해 사용</u>되기도 한다.</div>"
     }
    ],
    "choices": [
@@ -957,7 +957,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">국어의 ‘선어말 어미’는 용언의 어간과 어말어미 사이에 놓이는 어미로 시제와 높임 등의 의미를 부가하는 기능을 한다.</div><div class=\"ln e\"></div><div class=\"ln hang\">ㄱ. 나는 지금 소설을 읽<u>는</u>다. / 나는 어제 소설을 읽<u>었</u>다.</div><div class=\"ln hang\">ㄴ. 철수는 내일 소설을 읽<u>겠</u>구나.</div><div class=\"ln hang\">ㄷ. 나는 올해 안에 반드시 그 소설을 읽<u>겠</u>다.</div><div class=\"ln hang\">ㄹ. 어제 보니, 철수는 소설을 읽<u>더</u>라.</div><div class=\"ln hang\">ㅁ. 선생님께서는 소설을 읽<u>으셨</u>다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">국어의 ‘선어말 어미’는 용언의 어간과 어말 어미 사이에 놓이는 어미로 시제와 높임 등의 의미를 부가하는 기능을 한다.</div><div class=\"ln e\"></div><div class=\"ln hang\">ㄱ. 나는 지금 소설을 읽<u>는</u>다. / 나는 어제 소설을 읽<u>었</u>다.</div><div class=\"ln hang\">ㄴ. 철수는 내일 소설을 읽<u>겠</u>구나.</div><div class=\"ln hang\">ㄷ. 나는 올해 안에 반드시 그 소설을 읽<u>겠</u>다.</div><div class=\"ln hang\">ㄹ. 어제 보니, 철수는 소설을 읽<u>더</u>라.</div><div class=\"ln hang\">ㅁ. 선생님께서는 소설을 읽<u>으셨</u>다.</div>"
     }
    ],
    "choices": [
@@ -973,7 +973,7 @@
    "no": 46,
    "part": "Ⅰ-(1) 품사",
    "src": "2008년 4월 고3 전국연합학력평가 언어영역 12번",
-   "stem": "‘언어 자료’를 활용하여 ‘-ㄴ다/는다’의 ‘쓰임 환경’을 탐구하려고 할 때, ㉠～㉢에 들어갈 말이 바르게 배열된 것은?",
+   "stem": "‘언어 자료’를 활용하여 ‘-ㄴ다/는다’의 ‘쓰임 환경’을 탐구하려고 할 때, ㉠~㉢에 들어갈 말이 바르게 배열된 것은?",
    "blocks": [
     {
      "type": "html",
@@ -992,7 +992,7 @@
     {
      "type": "bogi",
      "title": "<보기 1>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">-대 : [Ⅰ] 어떤 사실을 주어진 것으로 치고, 그 사실에 대한 의문을 나타내는 종결 어미. 놀라거나 못마땅하게 여기는 뜻이 섞여 있음.</div><div class=\"ln hang\" style=\"margin-left:2.0em\">[Ⅱ] ‘-다고 해’가 줄어든 말로, 남이 말한 내용을 간접 적으로 전달할 때 쓰임.</div><div class=\"ln hang\">-데 : 과거 어느 때에 직접 경험하여 알게 된 사실을 현재의 말하는 장면에 그대로 옮겨 와서 말함을 나타내는 종결 어미. ‘-더라’와 같은 의미를 전달할 때 쓰임.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">-대 : [Ⅰ] 어떤 사실을 주어진 것으로 치고, 그 사실에 대한 의문을 나타내는 종결 어미. 놀라거나 못마땅하게 여기는 뜻이 섞여 있음.</div><div class=\"ln hang\" style=\"margin-left:2.0em\">[Ⅱ] ‘-다고 해’가 줄어든 말로, 남이 말한 내용을 간접적으로 전달할 때 쓰임.</div><div class=\"ln hang\">-데 : 과거 어느 때에 직접 경험하여 알게 된 사실을 현재의 말하는 장면에 그대로 옮겨 와서 말함을 나타내는 종결 어미. ‘-더라’와 같은 의미를 전달할 때 쓰임.</div>"
     },
     {
      "type": "bogi",
@@ -1055,17 +1055,17 @@
    "no": 50,
    "part": "Ⅰ-(1) 품사",
    "src": "2014년 11월 고2 전국연합학력평가 국어영역 A형 15번/B형 12번",
-   "stem": "&lt;보기 1&gt;을 참고하여 &lt;보기 2&gt;의 ⓐ～ⓔ를 분류하고자 한다. ㉠～㉢이 사용된 용언을 올바르게 짝지은 것은?",
+   "stem": "&lt;보기 1&gt;을 참고하여 &lt;보기 2&gt;의 ⓐ~ⓔ를 분류하고자 한다. ㉠~㉢이 사용된 용언을 올바르게 짝지은 것은?",
    "blocks": [
     {
      "type": "bogi",
      "title": "<보기 1>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">㉠<u>대등적 연결 어미</u>와 ㉡<u>종속적 연결 어미</u>는 앞문장과 뒷문장을 연결해 주는 기능을 하고, ㉢<u>보조적 연결 어미</u>는 본용언에 보조 용언을 이어 주는 기능을 한다. 이때, 대등적 연결 어미는 두 문장을 ‘나열’, ‘대조’, ‘선택’ 등의 의미 관계로 이어 주고, 종속적 연결 어미는 앞의 문장이 뒤의 문장의 ‘배경’, ‘원인’, ‘조건’, ‘양보’, ‘결과’, ‘목적’ 등의 의미를 가지도록이어 준다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">㉠<u>대등적 연결 어미</u>와 ㉡<u>종속적 연결 어미</u>는 앞문장과 뒷문장을 연결해 주는 기능을 하고, ㉢<u>보조적 연결 어미</u>는 본용언에 보조 용언을 이어 주는 기능을 한다. 이때, 대등적 연결 어미는 두 문장을 ‘나열’, ‘대조’, ‘선택’ 등의 의미 관계로 이어 주고, 종속적 연결 어미는 앞의 문장이 뒤의 문장의 ‘배경’, ‘원인’, ‘조건’, ‘양보’, ‘결과’, ‘목적’ 등의 의미를 가지도록 이어 준다.</div>"
     },
     {
      "type": "bogi",
      "title": "<보기 2>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 안녕? 일찍 등교했구나.</div><div class=\"ln\">학  생 : 네. 달리기 ⓐ<u>연습하려고</u> 일찍 왔어요. 체육 대회에</div><div class=\"ln ind\">ⓑ<u>출전하게</u> 됐거든요.</div><div class=\"ln hang\">선생님 : 그래? 그러면 기록을 확인할 수 ⓒ<u>있게</u> 내가 좀 도와줄까?학  생 : 정말요? 안 그래도 기록 측정을 해 줄 사람이 없어 서 ⓓ<u>고민하고</u> 있었는데, 정말 감사합니다.</div><div class=\"ln hang\">선생님 : 고맙긴. 너처럼 ⓔ<u>연습하고</u> 준비하면 좋은 결과가 있을 거야. 그럼 초시계 가져올 테니, 잠깐 기다려.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 안녕? 일찍 등교했구나.</div><div class=\"ln hang\">학  생 : 네. 달리기 ⓐ<u>연습하려고</u> 일찍 왔어요. 체육 대회에 ⓑ<u>출전하게</u> 됐거든요.</div><div class=\"ln hang\">선생님 : 그래? 그러면 기록을 확인할 수 ⓒ<u>있게</u> 내가 좀 도와줄까?</div><div class=\"ln hang\">학  생 : 정말요? 안 그래도 기록 측정을 해 줄 사람이 없어서 ⓓ<u>고민하고</u> 있었는데, 정말 감사합니다.</div><div class=\"ln hang\">선생님 : 고맙긴. 너처럼 ⓔ<u>연습하고</u> 준비하면 좋은 결과가 있을 거야. 그럼 초시계 가져올 테니, 잠깐 기다려.</div>"
     }
    ],
    "choices": [],
@@ -1247,7 +1247,7 @@
    "choices": [
     "① ㄱ의 ‘-는’은 현재 진행되는 상황을 나타내는구나.",
     "② ㄴ과 ㄷ을 보니 ‘-은’은 과거 시제뿐만 아니라 현재의 상태도 나타내는구나.",
-    "③ ㄱ～ㄷ을 보니 ‘-는’, ‘-은’은 동사 어간에는 모두 결합할 수 있지만, 형용사의 어간에는 ‘-는’이 결합하는 데 제약이 있구나.",
+    "③ ㄱ~ㄷ을 보니 ‘-는’, ‘-은’은 동사 어간에는 모두 결합할 수 있지만, 형용사의 어간에는 ‘-는’이 결합하는 데 제약이 있구나.",
     "④ ㄹ의 ‘-을’은 미래 시제를 나타내면서 동시에 추측의 의미도 포함하고 있구나.",
     "⑤ ㄹ의 ‘-을’은 ‘학교에 남아 있다’가 ‘사람’을 꾸미는 관형어의 역할을 하도록 만드는구나."
    ],
@@ -1262,7 +1262,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">단어의 끝에 들어가는 어말어미는 그 기능에 따라 다음과 같이 분류할 수 있다.</div><div class=\"ln e\"></div><div class=\"ln ind\">㉠ 문장을 끝맺어 주는 기능을 하는 어미.</div><div class=\"ln ind\"><span class=\"ovl\">□예</span> ‘동생은 책을 읽었다.’의 ‘-다’</div><div class=\"ln ind\">㉡ 두 문장을 연결해 주는 기능을 하는 어미.</div><div class=\"ln ind\"><span class=\"ovl\">□예</span> ‘이것은 장미꽃이고, 저것은 국화꽃이다.’의 ‘-고’</div><div class=\"ln ind\">㉢ 용언을 명사, 관형사, 부사처럼 기능하게 하는 어미.</div><div class=\"ln ind\"><span class=\"ovl\">□예</span> ‘내일 읽을 책을 미리 준비해라.’의 ‘-을’</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">단어의 끝에 들어가는 어말 어미는 그 기능에 따라 다음과 같이 분류할 수 있다.</div><div class=\"ln e\"></div><div class=\"ln hang\">㉠ 문장을 끝맺어 주는 기능을 하는 어미.</div><div class=\"ln ind\"><span class=\"ovl\">□예</span> ‘동생은 책을 읽었다.’의 ‘-다’</div><div class=\"ln hang\">㉡ 두 문장을 연결해 주는 기능을 하는 어미.</div><div class=\"ln ind\"><span class=\"ovl\">□예</span> ‘이것은 장미꽃이고, 저것은 국화꽃이다.’의 ‘-고’</div><div class=\"ln hang\">㉢ 용언을 명사, 관형사, 부사처럼 기능하게 하는 어미.</div><div class=\"ln ind\"><span class=\"ovl\">□예</span> ‘내일 읽을 책을 미리 준비해라.’의 ‘-을’</div>"
     }
    ],
    "choices": [
@@ -1278,12 +1278,12 @@
    "no": 60,
    "part": "Ⅰ-(1) 품사",
    "src": "2017학년도 9월 모의평가 국어영역 13번",
-   "stem": "&lt;보기&gt;의 ㉠～㉤에 쓰인 ⓐ, ⓑ에 대한 설명으로 옳지 <u>않은</u> 것은?",
+   "stem": "&lt;보기&gt;의 ㉠~㉤에 쓰인 ⓐ, ⓑ에 대한 설명으로 옳지 <u>않은</u> 것은?",
    "blocks": [
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">용언은 어간에 어미가 붙어 다양한 의미를 나타내며 활용된다. 어미는 ⓐ<u>선어말 어미</u>와 ⓑ<u>어말 어미</u>로 나뉜다. 어말어미는 다시 종결 어미, 연결 어미, 전성 어미로 나뉜다. 용언의활용형에서 선어말 어미는 없는 경우가 있어도 어말 어미는반드시 있어야 한다.</div><div class=\"ln e\"></div><div class=\"ln ind\">㉠ 민수가 그 나무를 <u>심었구나</u>!</div><div class=\"ln ind\">㉡ 저기서 <u>청소하는</u> 아이가 내 동생이야.</div><div class=\"ln ind\">㉢ 그 친구가 설마 그 음식을 다 <u>먹었겠니</u>?</div><div class=\"ln ind\">㉣ 그가 나에게 권한 책은 이미 <u>읽은</u> 책이다.</div><div class=\"ln ind\">㉤ 주말에 바람은 <u>불겠지만</u> 비는 오지 않을 것이다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">용언은 어간에 어미가 붙어 다양한 의미를 나타내며 활용된다. 어미는 ⓐ<u>선어말 어미</u>와 ⓑ<u>어말 어미</u>로 나뉜다. 어말 어미는 다시 종결 어미, 연결 어미, 전성 어미로 나뉜다. 용언의 활용형에서 선어말 어미는 없는 경우가 있어도 어말 어미는 반드시 있어야 한다.</div><div class=\"ln e\"></div><div class=\"ln hang\">㉠ 민수가 그 나무를 <u>심었구나</u>!</div><div class=\"ln hang\">㉡ 저기서 <u>청소하는</u> 아이가 내 동생이야.</div><div class=\"ln hang\">㉢ 그 친구가 설마 그 음식을 다 <u>먹었겠니</u>?</div><div class=\"ln hang\">㉣ 그가 나에게 권한 책은 이미 <u>읽은</u> 책이다.</div><div class=\"ln hang\">㉤ 주말에 바람은 <u>불겠지만</u> 비는 오지 않을 것이다.</div>"
     }
    ],
    "choices": [
@@ -1359,7 +1359,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln c\">이웃 주민들은 깨끗한 길거리를 기분 좋게 ㉠<u>걸을</u> 수 있다.</div><div class=\"ln e\"></div><div class=\"ln ind\">㉠은 ㄷ불규칙 활용의 예이다. 어간의 끝소리가 ‘ㄷ’인 용언가운데 모음으로 시작하는 어미 앞에서 ‘ㄷ’이 ‘ㄹ’로 바뀌는 것을 ㄷ불규칙 활용이라 하며, 이 용언을 ‘ㄷ불규칙 용언’이라한다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln c\">이웃 주민들은 깨끗한 길거리를 기분 좋게 ㉠<u>걸을</u> 수 있다.</div><div class=\"ln e\"></div><div class=\"ln ind\">㉠은 ㄷ불규칙 활용의 예이다. 어간의 끝소리가 ‘ㄷ’인 용언 가운데 모음으로 시작하는 어미 앞에서 ‘ㄷ’이 ‘ㄹ’로 바뀌는 것을 ㄷ불규칙 활용이라 하며, 이 용언을 ‘ㄷ불규칙 용언’이라 한다.</div>"
     }
    ],
    "choices": [
@@ -1421,13 +1421,13 @@
   {
    "no": 67,
    "part": "Ⅰ-(1) 품사",
-   "src": "2013년 6월 고2 전국연합학력평가 국어 B형 12번",
+   "src": "2013년 6월 고2 전국연합학력평가 국어영역 B형 12번",
    "stem": "&lt;보기&gt;의 밑줄 친 부분에 해당하는 예로 적절한 것은?",
    "blocks": [
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 우리말에서 용언을 활용할 때 어미 ‘-아/-어’는 어떻 게 결정되는 것일까요? 예를 들어 ‘몰다’는 ‘몰아’로, ‘물다’는 ‘물어’로 바뀌는 것을 알 수 있습니다. 이는 어간의 끝 음절 모음이 ‘ㅏ, ㅗ’일 때에는 어미를 ‘-아’로 적고, 그 밖의 모음일 때에는 ‘-어’로 적는 것이 원칙이기 때문입니다. 그런데 <u>한글맞춤법 규정은 이</u> <u>원칙에서 벗어난 형태를 옳은 것으로 인정하는 경우</u><u>도 있습니다.</u></div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 우리말에서 용언을 활용할 때 어미 ‘-아/-어’는 어떻게 결정되는 것일까요? 예를 들어 ‘몰다’는 ‘몰아’로, ‘물다’는 ‘물어’로 바뀌는 것을 알 수 있습니다. 이는 어간의 끝 음절 모음이 ‘ㅏ, ㅗ’일 때에는 어미를 ‘-아’로 적고, 그 밖의 모음일 때에는 ‘-어’로 적는 것이 원칙이기 때문입니다. 그런데 <u>한글 맞춤법 규정은 이</u> <u>원칙에서 벗어난 형태를 옳은 것으로 인정하는 경우</u><u>도 있습니다.</u></div>"
     }
    ],
    "choices": [
@@ -1442,13 +1442,13 @@
   {
    "no": 68,
    "part": "Ⅰ-(1) 품사",
-   "src": "2013년 4월 고3 전국연합학력평가 국어 A형 13번",
+   "src": "2013년 4월 고3 전국연합학력평가 국어영역 A형 13번",
    "stem": "&lt;보기&gt;는 ‘용언의 불규칙 활용’에 대한 설명이다. ㉠에 해당하는 것은?",
    "blocks": [
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">용언의 활용에서 용언의 어간이나 어미의 기본 형태가 불규칙적으로 달라지는 것을 ‘불규칙 활용’이라고 하는데, 불규칙활용에는 다음과 같은 세 가지 유형이 있다.</div><div class=\"ln e\"></div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#bbbbbb;text-align:left\"><div class=\"ln\">•<b>어간만 바뀌는 경우</b></div></td></tr></table></div><div class=\"ln ind\">&lt;예시&gt;  <u> 어간 </u>      <u> 어미의 기본형태 </u></div><div class=\"ln ind\">걷-      +      -고          →  걷고</div><div class=\"ln ind\">+      -아/어       →  <b>걸어</b></div><div class=\"ln ind\">+      -아라/어라   →  <b>걸어라</b></div><div class=\"ln ind\">⋮</div><div class=\"ln e\"></div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#bbbbbb;text-align:left\"><div class=\"ln\">•<b>어미만 바뀌는 경우</b></div></td></tr></table></div><div class=\"ln ind\">&lt;예시&gt;   어간        어미의 기본형태</div><div class=\"ln ind\">이르(至)-   +      -고          →  이르고</div><div class=\"ln ind\">+      -아/어       →  <b>이르러</b></div><div class=\"ln ind\">+      -아서/어서   →  <b>이르러서</b></div><div class=\"ln ind\">⋮</div><div class=\"ln e\"></div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#bbbbbb;text-align:left\"><div class=\"ln\">•<b>어간과 어미가 모두 바뀌는 경우</b></div></td></tr></table>………㉠</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">용언의 활용에서 용언의 어간이나 어미의 기본 형태가 불규칙적으로 달라지는 것을 ‘불규칙 활용’이라고 하는데, 불규칙 활용에는 다음과 같은 세 가지 유형이 있다.</div><div class=\"ln e\"></div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#bbbbbb;text-align:left\"><div class=\"ln\">•<b>어간만 바뀌는 경우</b></div></td></tr></table></div><div class=\"ln ind\">&lt;예시&gt;  <u> 어간 </u>      <u> 어미의 기본형태 </u></div><div class=\"ln ind\">걷-      +      -고          →  걷고</div><div class=\"ln ind\">+      -아/어       →  <b>걸어</b></div><div class=\"ln ind\">+      -아라/어라   →  <b>걸어라</b></div><div class=\"ln ind\">⋮</div><div class=\"ln e\"></div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#bbbbbb;text-align:left\"><div class=\"ln\">•<b>어미만 바뀌는 경우</b></div></td></tr></table></div><div class=\"ln ind\">&lt;예시&gt;   어간 어미의 기본형태</div><div class=\"ln ind\">이르(至)-   +      -고          →  이르고</div><div class=\"ln ind\">+      -아/어       →  <b>이르러</b></div><div class=\"ln ind\">+      -아서/어서   →  <b>이르러서</b></div><div class=\"ln ind\">⋮</div><div class=\"ln e\"></div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#bbbbbb;text-align:left\"><div class=\"ln\">•<b>어간과 어미가 모두 바뀌는 경우</b></div></td></tr></table>………㉠</div>"
     }
    ],
    "choices": [
@@ -1490,7 +1490,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">용언이 활용할 때 어간이나 어미의 기본 형태가 바뀌지 않거나 바뀌어도 일반적인 음운 규칙으로 설명할 수 있는 경우를‘규칙 활용’이라 하고, 어간이나 어미의 기본 형태가 바뀌는 것을 일반적인 음운 규칙으로 설명할 수 없는 경우를 ‘불규칙 활용’이라 한다. 불규칙 활용은 ㉠<u>어간이 바뀌는 경우</u>, ㉡<u>어미가</u><u>바뀌는 경우</u>, ㉢<u>어간과 어미가 모두 바뀌는 경우</u>로 나누어 살펴볼 수 있다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">용언이 활용할 때 어간이나 어미의 기본 형태가 바뀌지 않거나 바뀌어도 일반적인 음운 규칙으로 설명할 수 있는 경우를 ‘규칙 활용’이라 하고, 어간이나 어미의 기본 형태가 바뀌는 것을 일반적인 음운 규칙으로 설명할 수 없는 경우를 ‘불규칙 활용’이라 한다. 불규칙 활용은 ㉠<u>어간이 바뀌는 경우</u>, ㉡<u>어미가</u> <u>바뀌는 경우</u>, ㉢<u>어간과 어미가 모두 바뀌는 경우</u>로 나누어 살펴볼 수 있다.</div>"
     }
    ],
    "choices": [
@@ -1540,7 +1540,7 @@
     "② ㄴ을 보니 관형사는 사물의 성질이나 상태를 나타내기도 하는군.",
     "③ ㄷ을 보니 관형사가 대상을 한정하여 가리키기도 하는군.",
     "④ ㄹ을 보니 관형사가 사물의 수나 양을 나타내기도 하는군.",
-    "⑤ ㄱ～ㄹ을 보니 관형사는 체언 앞에서 체언을 꾸며주는군."
+    "⑤ ㄱ~ㄹ을 보니 관형사는 체언 앞에서 체언을 꾸며주는군."
    ],
    "ctab": null
   },
@@ -1553,7 +1553,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 부사는 일반적으로 뒤에 오는 용언을 수식합니다. 그 런데 ‘의외로’와 같은 부사는 말하는 사람의 심리적 태도를 나타내고 문장 전체를 수식하며 문장 내의 위치 이동이 자유롭다는 특징이 있습니다. 또 ‘의외로’는 형태를 바꾸어서 서술어로 표현하는 것도 가능합 니다. 이와 같은 특징을 지닌 부사를 찾아서 문장을 하나씩 만들어볼까요? 다음 예를 참고하면 도움이 될 거예요.</div><div class=\"ln e\"></div><div class=\"ln ind\">예) 가. <u>의외로</u> 그는 성실하게 일했다.</div><div class=\"ln ind\">그는 <u>의외로</u> 성실하게 일했다.</div><div class=\"ln ind\">그는 성실하게 일했다, <u>의외로</u>.</div><div class=\"ln hang\" style=\"margin-left:4.0em\">나. 그가 성실하게 일했다니 <u>의외였다</u>.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 부사는 일반적으로 뒤에 오는 용언을 수식합니다. 그런데 ‘의외로’와 같은 부사는 말하는 사람의 심리적 태도를 나타내고 문장 전체를 수식하며 문장 내의 위치 이동이 자유롭다는 특징이 있습니다. 또 ‘의외로’는 형태를 바꾸어서 서술어로 표현하는 것도 가능합니다. 이와 같은 특징을 지닌 부사를 찾아서 문장을 하나씩 만들어볼까요? 다음 예를 참고하면 도움이 될 거예요.</div><div class=\"ln e\"></div><div class=\"ln hang\" style=\"margin-left:2.7em\">예) 가. <u>의외로</u> 그는 성실하게 일했다.</div><div class=\"ln ind\">그는 <u>의외로</u> 성실하게 일했다.</div><div class=\"ln ind\">그는 성실하게 일했다, <u>의외로</u>.</div><div class=\"ln hang\" style=\"margin-left:4.0em\">나. 그가 성실하게 일했다니 <u>의외였다</u>.</div>"
     }
    ],
    "choices": [
@@ -1616,7 +1616,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln\">아  들 : 아버지, 저도 바둑을 배워서 명인이 되고 싶어요.</div><div class=\"ln hang\">아버지 : ㉠<u>뭐</u>, 명인이 된다고?</div><div class=\"ln\">아  들 : ㉡<u>예</u>, 그러니까 바둑판 하나 사 주세요.</div><div class=\"ln hang\">아버지 : ㉢<u>글쎄</u>, 사 줘야 되나?</div><div class=\"ln\">아  들 : 사 주세요, ㉣<u>예</u>?</div><div class=\"ln hang\">아버지 : 얼마 전에 농구 선수가 되겠다고 해서 농구공을 사 줬더니 작심삼일이었잖아. 이번에도 흐지부지할거지?아  들 : 그런데, ㉤<u>음</u>, 작심삼일이 무슨 뜻이에요?</div><div class=\"ln hang\">아버지 : 그건 결심이 사흘을 가지 못한다는 말인데, 이번에도 그러는 거 아니냐고.아  들 : ㉥<u>아니요</u>, 이번에는 다를 거예요.</div><div class=\"ln hang\">아버지 : 명인이 되는 게 얼마나 힘든지 아니?</div><div class=\"ln\">아  들 : ㉦<u>글쎄요</u>, 잘은 모르겠지만 열심히 해 볼게요.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">아  들 : 아버지, 저도 바둑을 배워서 명인이 되고 싶어요.</div><div class=\"ln hang\">아버지 : ㉠<u>뭐</u>, 명인이 된다고?</div><div class=\"ln hang\">아  들 : ㉡<u>예</u>, 그러니까 바둑판 하나 사 주세요.</div><div class=\"ln hang\">아버지 : ㉢<u>글쎄</u>, 사 줘야 되나?</div><div class=\"ln hang\">아  들 : 사 주세요, ㉣<u>예</u>?</div><div class=\"ln hang\">아버지 : 얼마 전에 농구 선수가 되겠다고 해서 농구공을 사 줬더니 작심삼일이었잖아. 이번에도 흐지부지할거지?</div><div class=\"ln hang\">아  들 : 그런데, ㉤<u>음</u>, 작심삼일이 무슨 뜻이에요?</div><div class=\"ln hang\">아버지 : 그건 결심이 사흘을 가지 못한다는 말인데, 이번에도 그러는 거 아니냐고.</div><div class=\"ln hang\">아  들 : ㉥<u>아니요</u>, 이번에는 다를 거예요.</div><div class=\"ln hang\">아버지 : 명인이 되는 게 얼마나 힘든지 아니?</div><div class=\"ln hang\">아  들 : ㉦<u>글쎄요</u>, 잘은 모르겠지만 열심히 해 볼게요.</div>"
     }
    ],
    "choices": [
@@ -1632,7 +1632,7 @@
    "no": 77,
    "part": "Ⅰ-(1) 품사",
    "src": "2005학년도 대학수학능력시험 언어영역 60번",
-   "stem": "ⓐ～ⓔ 중, ‘는’의 쓰임이 <u>다른</u> 하나는?",
+   "stem": "ⓐ~ⓔ 중, ‘는’의 쓰임이 <u>다른</u> 하나는?",
    "blocks": [
     {
      "type": "html",
@@ -1682,7 +1682,7 @@
     {
      "type": "bogi",
      "title": "<보기 1>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">수관형사는 수사와 형태가 같은 경우가 많아 혼동하기 쉽다. 문장에서 둘 다 활용을 하지 않고 사물의 수량이나 순서를 가리키지만, 수관형사는 수사와 달리 단위를 나타내는 의존명사와 함께 쓰인다는 차이가 있다.</div><div class=\"ln e\"></div><div class=\"ln hang\">○ 이 일을 마치는 데에 ㉠<u>칠</u> 개월 걸렸다.(수관형사)</div><div class=\"ln hang\">○ 육에 일을 더하면 칠이다.(수사)</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">수관형사는 수사와 형태가 같은 경우가 많아 혼동하기 쉽다. 문장에서 둘 다 활용을 하지 않고 사물의 수량이나 순서를 가리키지만, 수관형사는 수사와 달리 단위를 나타내는 의존 명사와 함께 쓰인다는 차이가 있다.</div><div class=\"ln e\"></div><div class=\"ln hang\">○ 이 일을 마치는 데에 ㉠<u>칠</u> 개월 걸렸다.(수관형사)</div><div class=\"ln hang\">○ 육에 일을 더하면 칠이다.(수사)</div>"
     },
     {
      "type": "bogi",
@@ -1728,12 +1728,12 @@
    "no": 81,
    "part": "Ⅰ-(1) 품사",
    "src": "2016년 9월 고2 전국연합학력평가 국어영역 12번",
-   "stem": "&lt;보기&gt;의 ㉠～㉢에 해당하는 것을 바르게 분류한 것은?",
+   "stem": "&lt;보기&gt;의 ㉠~㉢에 해당하는 것을 바르게 분류한 것은?",
    "blocks": [
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">㉠<u>관형사</u>, ㉡<u>대명사</u>, ㉢<u>부사</u> 중에는 ‘이, 그, 여기, 이리,그리’ 등과 같이 ‘지시성’을 지닌 단어들이 있다. 이들은 지시성이라는 공통점 때문에 구별이 쉽지 않으므로 문장 내에서의기능을 통해 단어의 품사를 파악해야 한다.</div><div class=\"ln e\"></div><div class=\"ln hang\">ⓐ <u>이</u> 사과는 맛있게 생겼다.</div><div class=\"ln hang\">ⓑ <u>그</u> 책 좀 나에게 빌려줄 수 있어?</div><div class=\"ln hang\">ⓒ <u>여기</u>가 바로 우리의 고향입니다.</div><div class=\"ln hang\">ⓓ <u>이리</u> 가까이 오게.</div><div class=\"ln hang\">ⓔ <u>그리</u> 물건을 보내겠습니다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">㉠<u>관형사</u>, ㉡<u>대명사</u>, ㉢<u>부사</u> 중에는 ‘이, 그, 여기, 이리, 그리’ 등과 같이 ‘지시성’을 지닌 단어들이 있다. 이들은 지시성이라는 공통점 때문에 구별이 쉽지 않으므로 문장 내에서의 기능을 통해 단어의 품사를 파악해야 한다.</div><div class=\"ln e\"></div><div class=\"ln hang\">ⓐ <u>이</u> 사과는 맛있게 생겼다.</div><div class=\"ln hang\">ⓑ <u>그</u> 책 좀 나에게 빌려줄 수 있어?</div><div class=\"ln hang\">ⓒ <u>여기</u>가 바로 우리의 고향입니다.</div><div class=\"ln hang\">ⓓ <u>이리</u> 가까이 오게.</div><div class=\"ln hang\">ⓔ <u>그리</u> 물건을 보내겠습니다.</div>"
     }
    ],
    "choices": [],
@@ -1769,7 +1769,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">동사는 움직임이나 작용을 나타내고, 형용사는 성질이나 상태를 나타낸다. 그런데 ㉠<u>하나의 단어가 하나 이상의 문법적 </u><u>성질을 가지고 있어 동사와 형용사 두 가지로 사용되는 경우가</u><u>있다.</u> ‘밝다’의 경우, ‘달이 밝다.’에서는 ‘환하다’의 의미로 쓰여형용사가 되고 ‘날이 밝는다.’에서는 ‘밤이 지나고 환해지다’의 의미로 쓰여 동사가 된다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">동사는 움직임이나 작용을 나타내고, 형용사는 성질이나 상태를 나타낸다. 그런데 ㉠<u>하나의 단어가 하나 이상의 문법적 </u><u>성질을 가지고 있어 동사와 형용사 두 가지로 사용되는 경우가</u> <u>있다.</u> ‘밝다’의 경우, ‘달이 밝다.’에서는 ‘환하다’의 의미로 쓰여 형용사가 되고 ‘날이 밝는다.’에서는 ‘밤이 지나고 환해지다’의 의미로 쓰여 동사가 된다.</div>"
     }
    ],
    "choices": [
@@ -1790,7 +1790,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln\">    제 시간에 도착했는지 모르겠다.</div><div class=\"ln ind\">벌써 집 떠난 지 삼 년이 지났다.</div><div class=\"ln e\"></div><div class=\"ln ind\">‘-ㄴ’과 ‘지’는, ‘-ㄴ지’와 ‘-ㄴ 지’의 형태를 이루어 쓰인다. 전자는 어미로 쓰이는 경우이고, 후자는 관형사형 어미 ‘-ㄴ’과 의존명사 ‘지’로 쓰이는 경우이다. ㉠<u>이처럼 어미와 의존</u><u>명사가 겉으로 볼 때 형태가 같아서</u> 구분하기 어려운 경우가 있다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln\">    제 시간에 도착했는지 모르겠다.</div><div class=\"ln ind\">벌써 집 떠난 지 삼 년이 지났다.</div><div class=\"ln e\"></div><div class=\"ln ind\">‘-ㄴ’과 ‘지’는, ‘-ㄴ지’와 ‘-ㄴ 지’의 형태를 이루어 쓰인다. 전자는 어미로 쓰이는 경우이고, 후자는 관형사형 어미 ‘-ㄴ’과 의존명사 ‘지’로 쓰이는 경우이다. ㉠<u>이처럼 어미와 의존</u> <u>명사가 겉으로 볼 때 형태가 같아서</u> 구분하기 어려운 경우가 있다.</div>"
     }
    ],
    "choices": [
@@ -1811,7 +1811,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">‘나는 엄청난 잘못을 저질렀다.’에서의 ‘잘못’과 ‘나는 음식을잘못 먹어서 배가 아프다.’의 ‘잘못’은 단어의 형태는 같으나단어가 수행하는 기능은 다르다. 즉, 전자의 ‘잘못’은 명사이지만, 후자의 ‘잘못’은 부사이다. 이와 같이 동일한 형태가 다른 기능을 수행하는 것을 ‘품사 통용’이라고 한다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">‘나는 엄청난 잘못을 저질렀다.’에서의 ‘잘못’과 ‘나는 음식을 잘못 먹어서 배가 아프다.’의 ‘잘못’은 단어의 형태는 같으나 단어가 수행하는 기능은 다르다. 즉, 전자의 ‘잘못’은 명사이지만, 후자의 ‘잘못’은 부사이다. 이와 같이 동일한 형태가 다른 기능을 수행하는 것을 ‘품사 통용’이라고 한다.</div>"
     }
    ],
    "choices": [
@@ -1853,7 +1853,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 단어는 자립할 수 있는 말이나 자립할 수 있는 형태 소에 붙으면서 쉽게 분리할 수 있는 말이고, 형태소는 일정한 의미를 지닌 가장 작은 말의 단위를 뜻합 니다. 다음 문장을 단어와 형태소로 분류하면 다음과 같습니다.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:15.0%\"><col style=\"width:9.4%\"><col style=\"width:9.4%\"><col style=\"width:9.4%\"><col style=\"width:18.9%\"><col style=\"width:9.4%\"><col style=\"width:9.4%\"><col style=\"width:9.4%\"><col style=\"width:9.4%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\">문장</div></td><td colspan=\"8\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">나는 풋사과를 먹었다.</div></td></tr><tr><td colspan=\"9\" style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">⇓</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\">단어</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">나</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">는</div></td><td colspan=\"2\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">풋사과</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">를</div></td><td colspan=\"3\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">먹었다</div></td></tr><tr><td colspan=\"9\" style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">⇓</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\">형태소</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">나</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">는</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">풋</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">사과</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">를</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">먹</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">었</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">다</div></td></tr></table></div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 단어는 자립할 수 있는 말이나 자립할 수 있는 형태소에 붙으면서 쉽게 분리할 수 있는 말이고, 형태소는 일정한 의미를 지닌 가장 작은 말의 단위를 뜻합니다. 다음 문장을 단어와 형태소로 분류하면 다음과 같습니다.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:15.0%\"><col style=\"width:9.4%\"><col style=\"width:9.4%\"><col style=\"width:9.4%\"><col style=\"width:18.9%\"><col style=\"width:9.4%\"><col style=\"width:9.4%\"><col style=\"width:9.4%\"><col style=\"width:9.4%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\">문장</div></td><td colspan=\"8\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">나는 풋사과를 먹었다.</div></td></tr><tr><td colspan=\"9\" style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">⇓</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\">단어</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">나</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">는</div></td><td colspan=\"2\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">풋사과</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">를</div></td><td colspan=\"3\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">먹었다</div></td></tr><tr><td colspan=\"9\" style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">⇓</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\">형태소</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">나</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">는</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">풋</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">사과</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">를</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">먹</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">었</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">다</div></td></tr></table></div>"
     }
    ],
    "choices": [
@@ -1935,7 +1935,7 @@
    "no": 91,
    "part": "Ⅰ-(2) 단어의 형성",
    "src": "2013년 11월 고2 전국연합학력평가 국어영역 A형 12번",
-   "stem": "다음은 ‘형태소’에 대한 설명이다. 이를 바탕으로 &lt;보기&gt;의 ㉠～㉤을 분석했을 때, 적절하지 <u>않은</u> 것은?",
+   "stem": "다음은 ‘형태소’에 대한 설명이다. 이를 바탕으로 &lt;보기&gt;의 ㉠~㉤을 분석했을 때, 적절하지 <u>않은</u> 것은?",
    "blocks": [
     {
      "type": "html",
@@ -1948,9 +1948,9 @@
     }
    ],
    "choices": [
-    "① ㉠의 ‘먹-’은 구체적인 동작을 나타내는 용언의 어간이므로 실질형태소이다.",
+    "① ㉠의 ‘먹-’은 구체적인 동작을 나타내는 용언의 어간이므로 실질 형태소이다.",
     "② ㉡의 ‘하늘’은 구체적인 대상을 나타내는 명사이므로 실질 형태소이다.",
-    "③ ㉢의 ‘-겠-’은 미래 시제를 나타내는 선어말어미이므로 형식형태소이다.",
+    "③ ㉢의 ‘-겠-’은 미래 시제를 나타내는 선어말어미이므로 형식 형태소이다.",
     "④ ㉣의 ‘-면서’는 진행상을 나타내는 연결어미이므로 형식 형태소이다.",
     "⑤ ㉤의 ‘-시-’는 높임을 나타내는 선어말어미이므로 형식 형태소이다."
    ],
@@ -1960,7 +1960,7 @@
    "no": 92,
    "part": "Ⅰ-(2) 단어의 형성",
    "src": "2013년 4월 고3 전국연합학력평가 국어영역 A/B형 11번",
-   "stem": "다음의 탐구 과정에 따라 &lt;보기&gt;의 ㉠～㉤을 분류하고자 한다. A～C에 해당하는 사례를 올바르게 짝지은 것은?",
+   "stem": "다음의 탐구 과정에 따라 &lt;보기&gt;의 ㉠~㉤을 분류하고자 한다. A～C에 해당하는 사례를 올바르게 짝지은 것은?",
    "blocks": [
     {
      "type": "html",
@@ -2004,7 +2004,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">형태소는 의미를 가진 최소 단위이다. 하나의 형태소가 실제로 쓰일 때에는 그 앞뒤에 어떤 말이 있느냐에 따라 둘 이상의 모습으로 나타나기도 하는데, 그 모습들을 이형태(異形態)라고 한다. 예컨대 주격 조사는 앞말이 자음으로 끝날 때 ‘이’로 나타나고 모음으로 끝날 때 ‘가’로 나타난다. 따라서 ‘이’와‘가’는 ㉠<u>이형태 관계</u>에 있는 것이다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">형태소는 의미를 가진 최소 단위이다. 하나의 형태소가 실제로 쓰일 때에는 그 앞뒤에 어떤 말이 있느냐에 따라 둘 이상의 모습으로 나타나기도 하는데, 그 모습들을 이형태(異形態)라고 한다. 예컨대 주격 조사는 앞말이 자음으로 끝날 때 ‘이’로 나타나고 모음으로 끝날 때 ‘가’로 나타난다. 따라서 ‘이’와 ‘가’는 ㉠<u>이형태 관계</u>에 있는 것이다.</div>"
     }
    ],
    "choices": [
@@ -2025,7 +2025,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 어근은 단어에서 실질적인 의미를 나타내는 중심이되는 부분을, 접사는 어근이나 단어에 붙어 새로운 단어를 구성하는 부분을 말합니다. 어근과 접사의 결합 관계를</div><div class=\"ln\">쉽게 구별해 보기 위해 어근을 <svg class=\"gso inl\" viewBox=\"0 0 2409 1133\" style=\"width:8.5mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"2409\" height=\"1133\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"0\" y=\"0\" width=\"2409\" height=\"1133\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln e\"></div></div></foreignObject></svg>로, 접사를 <svg class=\"gso inl\" viewBox=\"0 0 2409 1133\" style=\"width:8.5mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><ellipse cx=\"1204\" cy=\"566\" rx=\"1204\" ry=\"566\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/></svg>로</div><div class=\"ln\">나타내 보겠습니다. 예를 들어 ‘하늘’은 하나의 어근으로이루어져 있고, ‘먹이’는 어근 ‘먹­’과 접사 ‘­이’로 이루어져</div><div class=\"ln\"><svg class=\"gso inl\" viewBox=\"0 0 4557 1716\" style=\"width:16.1mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><ellipse cx=\"2278\" cy=\"858\" rx=\"2278\" ry=\"858\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/></svg>있으므로 다음과 같이 도식화할 수 있습니다.</div><div class=\"ln hang\">◦하늘 : <svg class=\"gso inl\" viewBox=\"0 0 3404 1714\" style=\"width:12.0mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"3404\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"0\" y=\"0\" width=\"3404\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln c\">하늘</div></div></foreignObject></svg>     ◦ 먹이 : <svg class=\"gso inl\" viewBox=\"0 0 3404 1566\" style=\"width:12.0mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"3404\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"0\" y=\"0\" width=\"3404\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln c\">먹­</div></div></foreignObject></svg></div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 어근은 단어에서 실질적인 의미를 나타내는 중심이 되는 부분을, 접사는 어근이나 단어에 붙어 새로운 단어를 구성하는 부분을 말합니다. 어근과 접사의 결합 관계를</div><div class=\"ln\">쉽게 구별해 보기 위해 어근을 <svg class=\"gso inl\" viewBox=\"0 0 2409 1133\" style=\"width:8.5mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"2409\" height=\"1133\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"0\" y=\"0\" width=\"2409\" height=\"1133\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln e\"></div></div></foreignObject></svg>로, 접사를 <svg class=\"gso inl\" viewBox=\"0 0 2409 1133\" style=\"width:8.5mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><ellipse cx=\"1204\" cy=\"566\" rx=\"1204\" ry=\"566\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/></svg>로</div><div class=\"ln\">나타내 보겠습니다. 예를 들어 ‘하늘’은 하나의 어근으로 이루어져 있고, ‘먹이’는 어근 ‘먹­’과 접사 ‘­이’로 이루어져</div><div class=\"ln\"><svg class=\"gso inl\" viewBox=\"0 0 4557 1716\" style=\"width:16.1mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><ellipse cx=\"2278\" cy=\"858\" rx=\"2278\" ry=\"858\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/></svg>있으므로 다음과 같이 도식화할 수 있습니다.</div><div class=\"ln hang\">◦하늘 : <svg class=\"gso inl\" viewBox=\"0 0 3404 1714\" style=\"width:12.0mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"3404\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"0\" y=\"0\" width=\"3404\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln c\">하늘</div></div></foreignObject></svg>     ◦ 먹이 : <svg class=\"gso inl\" viewBox=\"0 0 3404 1566\" style=\"width:12.0mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"3404\" height=\"1714\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"33\"/><foreignObject x=\"0\" y=\"0\" width=\"3404\" height=\"1714\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"svgtx\" style=\"height:100%;display:flex;flex-direction:column;justify-content:center\"><div class=\"ln c\">먹­</div></div></foreignObject></svg></div>"
     },
     {
      "type": "html",
@@ -2044,7 +2044,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">접사는 그 기능에 따라 크게 두 가지로 나눌 수 있다. 하나는 단어의 품사에 영향을 미치지 않고 실질적인 의미에 제한적 의미만을 덧붙이는 것이고, 다른 하나는 ㉠<u>단어의 품사를</u><u>바꾸는 것</u>이다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">접사는 그 기능에 따라 크게 두 가지로 나눌 수 있다. 하나는 단어의 품사에 영향을 미치지 않고 실질적인 의미에 제한적 의미만을 덧붙이는 것이고, 다른 하나는 ㉠<u>단어의 품사를</u> <u>바꾸는 것</u>이다.</div>"
     }
    ],
    "choices": [
@@ -2065,7 +2065,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">접사는 단어의 어근에 결합하여 새로운 단어를 만들어내는 형식 형태소이다. 이러한 접사가 결합하면 본래 단어의 의미가한정되거나 새로운 의미가 부가되는데, 이렇게 만들어진 단어를파생어라 한다. <u>파생어는 본래 단어의 품사가 변화되는 경우</u>와품사가 변화되지 않는 경우로 나뉜다.</div><div class=\"ln e\"></div><div class=\"ln hang\"><b>  [예]</b></div><div class=\"ln hang\">○ 깊-(‘깊다’의 어근)＋-이(접사) = 깊이(형용사→명사)</div><div class=\"ln hang\">○ 덧-(접사)＋신(어근) = 덧신(명사→명사)</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">접사는 단어의 어근에 결합하여 새로운 단어를 만들어내는 형식 형태소이다. 이러한 접사가 결합하면 본래 단어의 의미가 한정되거나 새로운 의미가 부가되는데, 이렇게 만들어진 단어를 파생어라 한다. <u>파생어는 본래 단어의 품사가 변화되는 경우</u>와 품사가 변화되지 않는 경우로 나뉜다.</div><div class=\"ln e\"></div><div class=\"ln hang\"><b>  [예]</b></div><div class=\"ln hang\">○ 깊-(‘깊다’의 어근)＋-이(접사) = 깊이(형용사→명사)</div><div class=\"ln hang\">○ 덧-(접사)＋신(어근) = 덧신(명사→명사)</div>"
     }
    ],
    "choices": [
@@ -2102,12 +2102,12 @@
    "no": 99,
    "part": "Ⅰ-(2) 단어의 형성",
    "src": "2013년 11월 고2 전국연합학력평가 국어영역 A형 13번",
-   "stem": "&lt;보기&gt;는 문법 수업의 일부이다. 선생님의 설명을 듣고 ㉠～㉣에 대해 학생들이 이해한 내용으로 적절하지 <u>않은</u> 것은?",
+   "stem": "&lt;보기&gt;는 문법 수업의 일부이다. 선생님의 설명을 듣고 ㉠~㉣에 대해 학생들이 이해한 내용으로 적절하지 <u>않은</u> 것은?",
    "blocks": [
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 우리말의 접사에는 어근의 앞에 결합되는 접두사가 있고, 어근의 뒤에 결합되는 접미사가 있습니다. 접사는 어근의 뜻을 한정해 주거나 품사를 바꾸어 줍니다. 또한 사동이나 피동의 의미를 갖는 단어를 만들어 줍 니다. 그러면 접사의 종류와 기능에 대해서 다음의 학습 과제를 분석해 보겠습니다.</div><div class=\"ln e\"></div><div class=\"ln c\"><img class=\"pic\" src=\"IMG/BIN0005.png\" style=\"width:102.4mm\"></div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 우리말의 접사에는 어근의 앞에 결합되는 접두사가 있고, 어근의 뒤에 결합되는 접미사가 있습니다. 접사는 어근의 뜻을 한정해 주거나 품사를 바꾸어 줍니다. 또한 사동이나 피동의 의미를 갖는 단어를 만들어 줍니다. 그러면 접사의 종류와 기능에 대해서 다음의 학습 과제를 분석해 보겠습니다.</div><div class=\"ln e\"></div><div class=\"ln c\"><img class=\"pic\" src=\"IMG/BIN0005.png\" style=\"width:102.4mm\"></div>"
     }
    ],
    "choices": [
@@ -2164,7 +2164,7 @@
   {
    "no": 102,
    "part": "Ⅰ-(2) 단어의 형성",
-   "src": "2014학년도 대학수학능력시험 예비평가 국어영역 A/B형 15번",
+   "src": "2014학년도 대학수학능력시험 예비시행 국어영역 A/B형 15번",
    "stem": "다음의 ㉠에 제시된 파생 접사들을 이용하여 새말을 만든  결과로 가장 적절한 것은?",
    "blocks": [
     {
@@ -2219,7 +2219,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln\">▶ 접미사 ‘-보’가 결합하여 만들어진 단어의 예</div><div class=\"ln ind\">꾀보/느림보/털보/먹보/울보/뚱뚱보</div><div class=\"ln\">▶ 접미사 ‘-쟁이’가 결합하여 만들어진 단어의 예</div><div class=\"ln ind\">멋쟁이/고집쟁이/욕심쟁이/심술쟁이/말썽쟁이/변덕쟁이▶ 접미사 ‘-꾸러기’가 결합하여 만들어진 단어의 예</div><div class=\"ln ind\">욕심꾸러기/장난꾸러기/심술꾸러기/말썽꾸러기/변덕꾸러기</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">▶ 접미사 ‘-보’가 결합하여 만들어진 단어의 예</div><div class=\"ln ind\">꾀보/느림보/털보/먹보/울보/뚱뚱보</div><div class=\"ln hang\">▶ 접미사 ‘-쟁이’가 결합하여 만들어진 단어의 예<br>멋쟁이/고집쟁이/욕심쟁이/심술쟁이/말썽쟁이/변덕쟁이</div><div class=\"ln hang\">▶ 접미사 ‘-꾸러기’가 결합하여 만들어진 단어의 예<br>욕심꾸러기/장난꾸러기/심술꾸러기/말썽꾸러기/변덕꾸러기</div>"
     }
    ],
    "choices": [
@@ -2260,7 +2260,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">접미사 ‘-답-’은 다음 조건에 따라 ‘-답<sup>1</sup>-’과 ‘-답<sup>2</sup>-’의 두 가지 종류로 나눌 수 있다.</div><div class=\"ln e\"></div><div class=\"ln hang\"><b>[조건]</b></div><div class=\"ln\">1. ‘-답<sup>1</sup>-’은 자음 뒤나 모음 뒤 모두에 결합하고, ‘-답<sup>2</sup>-’는</div><div class=\"ln ind\">자음 뒤에만 결합한다.</div><div class=\"ln\">2. ‘-답<sup>1</sup>-’은 단어에도 결합하지만 ‘그는 [싸움에서 이긴 장군]</div><div class=\"ln ind\">답다.’에서 볼 수 있듯이 단어보다 큰 단위에도 결합할 수</div><div class=\"ln ind\">있고, ‘-답<sup>2</sup>-’는 단어보다 큰 단위에는 결합하지 않는다.3. ‘-답<sup>1</sup>-’은 ‘～자격이나 특성 따위를 지니고 있다’의 의미를</div><div class=\"ln ind\">가지고, ‘-답<sup>2</sup>-’는 ‘～성질을 지니고 있다’의 의미를 가진다.</div><div class=\"ln e\"></div><div class=\"ln hang\"><b>[예]</b></div><div class=\"ln\">㉠ 정답다        ㉡ 신사답다        ㉢ 도서관답다</div><div class=\"ln\">㉣ 참답다        ㉤ 아이답다</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">접미사 ‘-답-’은 다음 조건에 따라 ‘-답<sup>1</sup>-’과 ‘-답<sup>2</sup>-’의 두 가지 종류로 나눌 수 있다.</div><div class=\"ln e\"></div><div class=\"ln hang\"><b>[조건]</b></div><div class=\"ln hang\">1. ‘-답<sup>1</sup>-’은 자음 뒤나 모음 뒤 모두에 결합하고, ‘-답<sup>2</sup>-’는 자음 뒤에만 결합한다.</div><div class=\"ln hang\">2. ‘-답<sup>1</sup>-’은 단어에도 결합하지만 ‘그는 [싸움에서 이긴 장군]답다.’에서 볼 수 있듯이 단어보다 큰 단위에도 결합할 수 있고, ‘-답<sup>2</sup>-’는 단어보다 큰 단위에는 결합하지 않는다.</div><div class=\"ln hang\">3. ‘-답<sup>1</sup>-’은 ‘～자격이나 특성 따위를 지니고 있다’의 의미를 가지고, ‘-답<sup>2</sup>-’는 ‘～성질을 지니고 있다’의 의미를 가진다.</div><div class=\"ln e\"></div><div class=\"ln hang\"><b>[예]</b></div><div class=\"ln hang\">㉠ 정답다        ㉡ 신사답다        ㉢ 도서관답다</div><div class=\"ln hang\">㉣ 참답다        ㉤ 아이답다</div>"
     },
     {
      "type": "line",
@@ -2310,7 +2310,7 @@
    "blocks": [
     {
      "type": "html",
-     "html": "  <table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:none;text-align:left\"><div class=\"ln e\"></div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:none;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln e\"></div><div class=\"ln\">민  수 : 선생님, 질문이 있는데요. ‘-(으)ㅁ’의 구별이 참 </div><div class=\"ln\">어려워요. ‘-(으)ㅁ’이 어떤 때는 접미사로 쓰이고, 어떤 </div><div class=\"ln\">때는 명사형 전성어미로 쓰인다는데, 이 둘을 구분하는 </div><div class=\"ln\">좋은 방법이 없을까요?</div><div class=\"ln\">선생님 : 선생님이 설명하는 내용을 이해하면 쉽게 구분할 수</div><div class=\"ln\">있을 거예요. ‘-(으)ㅁ’이 서술성이 있거나, 부사의 수식을</div><div class=\"ln\">받거나, 선어말 어미가 쓰일 수 있으면 그건 명사형 전성</div><div class=\"ln\">어미고요. 그렇지 않을 경우에는 접미사로 쓰인 거예요. </div><div class=\"ln\">이해가 잘 되나요? 그럼, 아래의 ㉠∼㉣ 중 ‘-(으)ㅁ’이 </div><div class=\"ln\">명사형 전성어미로 쓰인 것을 찾아볼까요?</div></td></tr></table>"
+     "html": "  <table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:none;text-align:left\"><div class=\"ln e\"></div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:none;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln e\"></div><div class=\"ln\">민  수 : 선생님, 질문이 있는데요. ‘-(으)ㅁ’의 구별이 참 </div><div class=\"ln\">어려워요. ‘-(으)ㅁ’이 어떤 때는 접미사로 쓰이고, 어떤 </div><div class=\"ln\">때는 명사형 전성어미로 쓰인다는데, 이 둘을 구분하는 </div><div class=\"ln\">좋은 방법이 없을까요?</div><div class=\"ln\">선생님 : 선생님이 설명하는 내용을 이해하면 쉽게 구분할 수</div><div class=\"ln\">있을 거예요. ‘-(으)ㅁ’이 서술성이 있거나, 부사의 수식을</div><div class=\"ln\">받거나, 선어말 어미가 쓰일 수 있으면 그건 명사형 전성</div><div class=\"ln\">어미고요. 그렇지 않을 경우에는 접미사로 쓰인 거예요. </div><div class=\"ln\">이해가 잘 되나요? 그럼, 아래의 ㉠~㉣ 중 ‘-(으)ㅁ’이 </div><div class=\"ln\">명사형 전성어미로 쓰인 것을 찾아볼까요?</div></td></tr></table>"
     },
     {
      "type": "bogi",
@@ -2331,7 +2331,7 @@
    "no": 110,
    "part": "Ⅰ-(2) 단어의 형성",
    "src": "2017년 3월 고3 전국연합학력평가 국어영역 11번",
-   "stem": "&lt;보기&gt;의 ⓐ, ⓑ가 사용된 예를 ㉠～㉤에서 바르게 고른 것은?",
+   "stem": "&lt;보기&gt;의 ⓐ, ⓑ가 사용된 예를 ㉠~㉤에서 바르게 고른 것은?",
    "blocks": [
     {
      "type": "bogi",
@@ -2351,7 +2351,7 @@
     {
      "type": "bogi",
      "title": "<보기 1>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln\">● <b>‘-ㅁ/-음’에 대하여</b></div><div class=\"ln hang\" style=\"margin-left:1.0em\">□ 명사형 어미 : 동사의 어간 뒤에 붙어서 동사를 명사형이 되게 하는 역할을 한다. 동사의 명사형은 서술성이 있어서 주어를 서술하며, 품사가 변하지 않는다. 앞에 부사적 표현이 쓰일 수 있다.</div><div class=\"ln hang\" style=\"margin-left:1.0em\">□ 접미사 : 동사의 어간 뒤에 붙어서 동사를 명사로 파생 시킨다. 파생된 명사는 서술성이 없으므로 앞에 부사적 표현이 쓰일 수 없고, 관형어가 올 수 있다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln\">● <b>‘-ㅁ/-음’에 대하여</b></div><div class=\"ln hang\" style=\"margin-left:1.0em\">□ 명사형 어미 : 동사의 어간 뒤에 붙어서 동사를 명사형이 되게 하는 역할을 한다. 동사의 명사형은 서술성이 있어서 주어를 서술하며, 품사가 변하지 않는다. 앞에 부사적 표현이 쓰일 수 있다.</div><div class=\"ln hang\" style=\"margin-left:1.0em\">□ 접미사 : 동사의 어간 뒤에 붙어서 동사를 명사로 파생시킨다. 파생된 명사는 서술성이 없으므로 앞에 부사적 표현이 쓰일 수 없고, 관형어가 올 수 있다.</div>"
     },
     {
      "type": "bogi",
@@ -2377,7 +2377,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">학생 : 선생님, ‘젊음’은 사전의 표제어인데, 왜 ‘늙음’은 사전의 표제어가 아닌가요?</div><div class=\"ln hang\">선생님 : 사전의 표제어인 ‘젊음’은 파생 명사입니다. 반면에‘늙음’은 파생 명사가 아니라 동사 ‘늙다’의 명사형입니다.‘늙음’은 ‘늙다’의 활용형이기 때문에 표제어가 아닙니다.</div><div class=\"ln hang\">학생 : 둘 다 ‘-음’으로 끝나는데, 무엇이 다른가요?</div><div class=\"ln hang\">선생님 : 사전의 표제어 ‘젊음’은 어근 ‘젊-’에 명사를 만드는접미사 ‘-음’이 결합하여 만들어진 말로 관형어의 꾸밈을받을 수 있어요. 그런데 ‘늙음’은 어간 ‘늙-’에 명사형어미 ‘-음’이 결합한 말로 문장에 쓰이면 서술하는 기능이 있고 부사어의 꾸밈을 받을 수 있어요. 다음 문장의 밑줄 친 말들 중에서 사전의 표제어가 되는 것은 무엇일까요?</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">학생 : 선생님, ‘젊음’은 사전의 표제어인데, 왜 ‘늙음’은 사전의 표제어가 아닌가요?</div><div class=\"ln hang\">선생님 : 사전의 표제어인 ‘젊음’은 파생 명사입니다. 반면에 ‘늙음’은 파생 명사가 아니라 동사 ‘늙다’의 명사형입니다. ‘늙음’은 ‘늙다’의 활용형이기 때문에 표제어가 아닙니다.</div><div class=\"ln hang\">학생 : 둘 다 ‘-음’으로 끝나는데, 무엇이 다른가요?</div><div class=\"ln hang\">선생님 : 사전의 표제어 ‘젊음’은 어근 ‘젊-’에 명사를 만드는 접미사 ‘-음’이 결합하여 만들어진 말로 관형어의 꾸밈을 받을 수 있어요. 그런데 ‘늙음’은 어간 ‘늙-’에 명사형 어미 ‘-음’이 결합한 말로 문장에 쓰이면 서술하는 기능이 있고 부사어의 꾸밈을 받을 수 있어요. 다음 문장의 밑줄 친 말들 중에서 사전의 표제어가 되는 것은 무엇일까요?</div>"
     }
    ],
    "choices": [
@@ -2419,7 +2419,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">단어를 이루는 형태소 중에서 실질적인 의미를 나타내는부분을 어근이라고 하고, 단독으로 쓰이지 아니하고 항상 다른 어근이나 단어에 붙어 새로운 단어를 구성하는 부분을 파생 접사라고 한다. 파생어는 어근에 파생 접사가 결합하여만들어진다.</div><div class=\"ln e\"></div><div class=\"ln ind\">예) 정(어근)＋-답다(파생 접사) → 정답다(파생어)</div><div class=\"ln ind\">공부(어근)＋-하다(파생 접사) → 공부하다(파생어)</div><div class=\"ln ind\">막(어근)＋-히-(파생 접사)＋-다(어미) → 막히다(파생어)</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">단어를 이루는 형태소 중에서 실질적인 의미를 나타내는 부분을 어근이라고 하고, 단독으로 쓰이지 아니하고 항상 다른 어근이나 단어에 붙어 새로운 단어를 구성하는 부분을 파생 접사라고 한다. 파생어는 어근에 파생 접사가 결합하여 만들어진다.</div><div class=\"ln e\"></div><div class=\"ln hang\">예) 정(어근)＋-답다(파생 접사) → 정답다(파생어)<br>공부(어근)＋-하다(파생 접사) → 공부하다(파생어)<br>막(어근)＋-히-(파생 접사)＋-다(어미) → 막히다(파생어)</div>"
     }
    ],
    "choices": [
@@ -2461,7 +2461,7 @@
     {
      "type": "bogi",
      "title": "<보기 1>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">파생어는 어근에 접사가 붙어 이루어진 말이다. 파생어 형성의 결과는 다음과 같이 분류된다.㉠ 품사와 문장 구조에 변화가 없음.</div><div class=\"ln ind\"><span class=\"ovl\">□예</span> 명사 ‘어머니’에 ‘시-’가 붙어 명사 ‘시어머니’가 된다.㉡ 파생어가 되어 품사가 달라짐.</div><div class=\"ln ind\"><span class=\"ovl\">□예</span> 동사 ‘웃다’의 ‘웃-’에 ‘-음’이 붙어 명사 ‘웃음’이 된다.㉢ 파생어의 사용으로 문장 구조가 달라짐.</div><div class=\"ln ind\"><span class=\"ovl\">□예</span> ‘잡다’에 ‘-히-’가 붙어 ‘잡히다’가 되면 ‘경찰이 도둑을</div><div class=\"ln ind\">잡다’와 같은 문장이 ‘도둑이 경찰에게 잡히다’와 같이</div><div class=\"ln ind\">바뀐다.</div><div class=\"ln\">㉣ 위의 ㉡과 ㉢ 모두에 해당함.</div><div class=\"ln ind\"><span class=\"ovl\">□예</span> 형용사 ‘낮다’에 ‘-추-’가 붙어 동사 ‘낮추다’가 되면 ‘방</div><div class=\"ln ind\">온도가 낮다’와 같은 문장이 ‘내가 방 온도를 낮추다’와</div><div class=\"ln ind\">같이 바뀐다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">파생어는 어근에 접사가 붙어 이루어진 말이다. 파생어 형성의 결과는 다음과 같이 분류된다.</div><div class=\"ln hang\">㉠ 품사와 문장 구조에 변화가 없음.</div><div class=\"ln ind\"><span class=\"ovl\">□예</span> 명사 ‘어머니’에 ‘시-’가 붙어 명사 ‘시어머니’가 된다.</div><div class=\"ln hang\">㉡ 파생어가 되어 품사가 달라짐.</div><div class=\"ln ind\"><span class=\"ovl\">□예</span> 동사 ‘웃다’의 ‘웃-’에 ‘-음’이 붙어 명사 ‘웃음’이 된다.</div><div class=\"ln hang\">㉢ 파생어의 사용으로 문장 구조가 달라짐.</div><div class=\"ln ind\"><span class=\"ovl\">□예</span> ‘잡다’에 ‘-히-’가 붙어 ‘잡히다’가 되면 ‘경찰이 도둑을</div><div class=\"ln ind\">잡다’와 같은 문장이 ‘도둑이 경찰에게 잡히다’와 같이</div><div class=\"ln ind\">바뀐다.</div><div class=\"ln hang\">㉣ 위의 ㉡과 ㉢ 모두에 해당함.</div><div class=\"ln ind\"><span class=\"ovl\">□예</span> 형용사 ‘낮다’에 ‘-추-’가 붙어 동사 ‘낮추다’가 되면 ‘방</div><div class=\"ln ind\">온도가 낮다’와 같은 문장이 ‘내가 방 온도를 낮추다’와</div><div class=\"ln ind\">같이 바뀐다.</div>"
     },
     {
      "type": "bogi",
@@ -2502,12 +2502,12 @@
    "no": 118,
    "part": "Ⅰ-(2) 단어의 형성",
    "src": "2015년 3월 고3 전국연합학력평가 국어영역 A형 12번",
-   "stem": "&lt;보기&gt;의 ㉠～㉢에 들어갈 말로 적절한 것은?",
+   "stem": "&lt;보기&gt;의 ㉠~㉢에 들어갈 말로 적절한 것은?",
    "blocks": [
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 어간은 용언의 활용 시 변하지 않는 부분을, 어근은 단어 분석 시 실질적 의미를 나타내는 중심 부분을가리킵니다.</div><div class=\"ln ind\"><table class=\"ht\"><colgroup><col style=\"width:42.1%\"><col style=\"width:28.9%\"><col style=\"width:28.9%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>용언</b></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>어간</b></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>어근</b></div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">솟다   (단일어)</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">솟-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">솟-</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">치솟다 (파생어)</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">치솟-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">솟-</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">샘솟다 (합성어)</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">샘솟-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">샘, 솟-</div></td></tr></table></div><div class=\"ln ind\">위의 예에서 알 수 있듯이 어떤 용언이 단일어일 경우</div><div class=\"ln ind\">어간과 어근이 일치합니다. 하지만, 용언이 파생어나</div><div class=\"ln ind\">합성어일 경우 어간과 어근이 일치하지 않습니다.</div><div class=\"ln ind\">그렇다면 이번에는 다음 세 단어의 어간과 어근을</div><div class=\"ln ind\">분석해 볼까요?</div><div class=\"ln ind\"><table class=\"ht\"><colgroup><col style=\"width:42.1%\"><col style=\"width:28.9%\"><col style=\"width:28.9%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>용언</b></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>어간</b></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>어근</b></div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">줄이다</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">줄이-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉠</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">힘들다</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">힘들-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉡</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">오가다</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">오가-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉢</div></td></tr></table></div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">선생님 : 어간은 용언의 활용 시 변하지 않는 부분을, 어근은 단어 분석 시 실질적 의미를 나타내는 중심 부분을 가리킵니다.</div><div class=\"ln ind\"><table class=\"ht\"><colgroup><col style=\"width:42.1%\"><col style=\"width:28.9%\"><col style=\"width:28.9%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>용언</b></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>어간</b></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>어근</b></div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">솟다 (단일어)</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">솟-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">솟-</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">치솟다 (파생어)</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">치솟-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">솟-</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">샘솟다 (합성어)</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">샘솟-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">샘, 솟-</div></td></tr></table></div><div class=\"ln ind\">위의 예에서 알 수 있듯이 어떤 용언이 단일어일 경우</div><div class=\"ln ind\">어간과 어근이 일치합니다. 하지만, 용언이 파생어나</div><div class=\"ln ind\">합성어일 경우 어간과 어근이 일치하지 않습니다.</div><div class=\"ln ind\">그렇다면 이번에는 다음 세 단어의 어간과 어근을</div><div class=\"ln ind\">분석해 볼까요?</div><div class=\"ln ind\"><table class=\"ht\"><colgroup><col style=\"width:42.1%\"><col style=\"width:28.9%\"><col style=\"width:28.9%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>용언</b></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>어간</b></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#cccccc;text-align:center\"><div class=\"ln c\"><b>어근</b></div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">줄이다</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">줄이-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉠</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">힘들다</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">힘들-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉡</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">오가다</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">오가-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉢</div></td></tr></table></div>"
     }
    ],
    "choices": [],
@@ -2522,7 +2522,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">합성어는 어근과 어근이 결합해 만들어진 단어로 결합하는두 어근의 품사가 같은 경우도 있고 다른 경우도 있다. 합성어는 합성된 후의 품사에 따라 합성 명사, 합성 형용사, 합성동사, 합성 부사 등 다양하게 나뉜다. 그리고 몇몇 단어들은합성된 후 접사가 붙어 파생되기도 한다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">합성어는 어근과 어근이 결합해 만들어진 단어로 결합하는 두 어근의 품사가 같은 경우도 있고 다른 경우도 있다. 합성어는 합성된 후의 품사에 따라 합성 명사, 합성 형용사, 합성 동사, 합성 부사 등 다양하게 나뉜다. 그리고 몇몇 단어들은 합성된 후 접사가 붙어 파생되기도 한다.</div>"
     }
    ],
    "choices": [
@@ -2543,7 +2543,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">합성어의 품사는 합성어를 구성하는 어근의 품사와 관계없이 새로운 품사가 되기도 하지만, [A]<u>일차적으로 직접 구성</u><u>성분</u><u><sup>*</sup></u><u> 분석을 했을 때 맨 끝 구성 성분의 품사에 따라 결정</u><u>되는 경우</u>가 많다. 그 사례는 아래와 같다.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:25.1%\"><col style=\"width:49.8%\"><col style=\"width:25.1%\"></colgroup><tr><td style=\"border-left:none;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:1.4px solid #111;text-align:center\"><div class=\"ln c\">단어</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:1.4px solid #111;text-align:center\"><div class=\"ln c\">직접 구성 성분 분석</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:0.8px solid #111;border-bottom:1.4px solid #111;text-align:center\"><div class=\"ln c\">단어의 품사</div></td></tr><tr><td style=\"border-left:none;border-right:0.8px solid #111;border-top:1.4px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">큰집</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:1.4px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">큰(형용사)＋집(명사)</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:1.4px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">명사</div></td></tr><tr><td style=\"border-left:none;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">본받다</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">본(명사)＋받다(동사)</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">동사</div></td></tr><tr><td style=\"border-left:none;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:none;text-align:center\"><div class=\"ln c\">․</div><div class=\"ln c\">․</div><div class=\"ln c\">․</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:none;text-align:center\"><div class=\"ln c\">․</div><div class=\"ln c\">․</div><div class=\"ln c\">․</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:0.8px solid #111;border-bottom:none;text-align:center\"><div class=\"ln c\">․</div><div class=\"ln c\">․</div><div class=\"ln c\">․</div></td></tr></table></div><div class=\"ln hang\">※ 직접 구성 성분 : 어떤 언어 단위를 층위를 두고 분석할 때 일차적으로 분석되어 나오는 성분.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">합성어의 품사는 합성어를 구성하는 어근의 품사와 관계없이 새로운 품사가 되기도 하지만, [A]<u>일차적으로 직접 구성</u> <u>성분</u><u><sup>*</sup></u><u> 분석을 했을 때 맨 끝 구성 성분의 품사에 따라 결정</u><u>되는 경우</u>가 많다. 그 사례는 아래와 같다.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:25.1%\"><col style=\"width:49.8%\"><col style=\"width:25.1%\"></colgroup><tr><td style=\"border-left:none;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:1.4px solid #111;text-align:center\"><div class=\"ln c\">단어</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:1.4px solid #111;text-align:center\"><div class=\"ln c\">직접 구성 성분 분석</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:0.8px solid #111;border-bottom:1.4px solid #111;text-align:center\"><div class=\"ln c\">단어의 품사</div></td></tr><tr><td style=\"border-left:none;border-right:0.8px solid #111;border-top:1.4px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">큰집</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:1.4px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">큰(형용사)＋집(명사)</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:1.4px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">명사</div></td></tr><tr><td style=\"border-left:none;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">본받다</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">본(명사)＋받다(동사)</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">동사</div></td></tr><tr><td style=\"border-left:none;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:none;text-align:center\"><div class=\"ln c\">․</div><div class=\"ln c\">․</div><div class=\"ln c\">․</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:none;text-align:center\"><div class=\"ln c\">․</div><div class=\"ln c\">․</div><div class=\"ln c\">․</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:0.8px solid #111;border-bottom:none;text-align:center\"><div class=\"ln c\">․</div><div class=\"ln c\">․</div><div class=\"ln c\">․</div></td></tr></table></div><div class=\"ln hang\">※ 직접 구성 성분 : 어떤 언어 단위를 층위를 두고 분석할 때 일차적으로 분석되어 나오는 성분.</div>"
     }
    ],
    "choices": [
@@ -2585,7 +2585,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">낱말은 합성어로 형성되는 과정에서 그 형태나 본래의 의미가바뀌는 경우도 있다.</div><div class=\"ln e\"></div><div class=\"ln hang\"><b>  [예]</b></div><div class=\"ln hang\">ㄱ. 농부들이 <u>논밭</u>(논＋밭)에서 열심히 일한다.</div><div class=\"ln hang\">ㄴ. 해와 달이 된 <u>오누이</u>(오빠＋누이) 이야기를 읽었다.</div><div class=\"ln hang\">ㄷ. 교실 <u>안팎</u>(안＋밖)을 가리지 않고 깨끗이 청소했다.</div><div class=\"ln hang\">ㄹ. 내 동생은 공부는 안 하고 <u>밤낮</u>(밤＋낮) 놀기만 한다.</div><div class=\"ln hang\">ㅁ. 어머니께서 <u>반짇고리</u>(바느질＋고리)에 바늘을 넣으셨다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">낱말은 합성어로 형성되는 과정에서 그 형태나 본래의 의미가 바뀌는 경우도 있다.</div><div class=\"ln e\"></div><div class=\"ln hang\"><b>  [예]</b></div><div class=\"ln hang\">ㄱ. 농부들이 <u>논밭</u>(논＋밭)에서 열심히 일한다.</div><div class=\"ln hang\">ㄴ. 해와 달이 된 <u>오누이</u>(오빠＋누이) 이야기를 읽었다.</div><div class=\"ln hang\">ㄷ. 교실 <u>안팎</u>(안＋밖)을 가리지 않고 깨끗이 청소했다.</div><div class=\"ln hang\">ㄹ. 내 동생은 공부는 안 하고 <u>밤낮</u>(밤＋낮) 놀기만 한다.</div><div class=\"ln hang\">ㅁ. 어머니께서 <u>반짇고리</u>(바느질＋고리)에 바늘을 넣으셨다.</div>"
     }
    ],
    "choices": [],
@@ -2595,12 +2595,12 @@
    "no": 123,
    "part": "Ⅰ-(2) 단어의 형성",
    "src": "2010년 4월 고3 전국연합학력평가 언어영역 12번",
-   "stem": "&lt;보기&gt;는 ‘합성명사의 의미 변화 양상’을 도식화한 것이다. ㉠～㉢에 해당하는 예를 바르게 분류한 것은?",
+   "stem": "&lt;보기&gt;는 ‘합성명사의 의미 변화 양상’을 도식화한 것이다. ㉠~㉢에 해당하는 예를 바르게 분류한 것은?",
    "blocks": [
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">○ A＋B → AB : 단순한 의미의 결합……………………㉠ 예) 논＋밭 → 논밭</div><div class=\"ln hang\">○ A＋B → AX/XB : 한 쪽에만 의미 변화가 나타남…㉡ 예) 불＋호령 → 불호령</div><div class=\"ln hang\">○ A＋B → XY : 제3의 의미가 생겨남……………………㉢ 예) 까치＋발 → 까치발</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">○ A＋B → AB : 단순한 의미의 결합……………………㉠</div><div class=\"ln hang\" style=\"margin-left:6.0em\">예) 논＋밭 → 논밭</div><div class=\"ln hang\">○ A＋B → AX/XB : 한 쪽에만 의미 변화가 나타남…㉡</div><div class=\"ln hang\" style=\"margin-left:6.0em\">예) 불＋호령 → 불호령</div><div class=\"ln hang\">○ A＋B → XY : 제3의 의미가 생겨남……………………㉢</div><div class=\"ln hang\" style=\"margin-left:6.0em\">예) 까치＋발 → 까치발</div>"
     }
    ],
    "choices": [],
@@ -2657,7 +2657,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">대등한 자격을 지닌 단어들이 결합하여 합성어가 될 때에는 일정한 결합 순서를 지키는 것이 일반적이다. 이것은 우리나라 사람들이 지니고 있는 보편적인 사고방식이 작용한 결과이다. 이와 같은 합성어의 결합 양상과 관련이 있는 사고방식은다음과 같다.</div><div class=\"ln e\"></div><div class=\"ln hang\">○ 작은 수에서 큰 수의 차례로 파악하려는 경향</div><div class=\"ln hang\">○ 가까운 거리를 먼 거리보다 먼저 파악하려는 경향</div><div class=\"ln hang\">○ 긍정적인 요소를 부정적인 요소보다 선호하는 경향</div><div class=\"ln hang\">○ 앞선 시간을 뒤에 오는 시간보다 먼저 파악하려는 경향</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">대등한 자격을 지닌 단어들이 결합하여 합성어가 될 때에는 일정한 결합 순서를 지키는 것이 일반적이다. 이것은 우리나라 사람들이 지니고 있는 보편적인 사고방식이 작용한 결과이다. 이와 같은 합성어의 결합 양상과 관련이 있는 사고방식은 다음과 같다.</div><div class=\"ln e\"></div><div class=\"ln hang\">○ 작은 수에서 큰 수의 차례로 파악하려는 경향</div><div class=\"ln hang\">○ 가까운 거리를 먼 거리보다 먼저 파악하려는 경향</div><div class=\"ln hang\">○ 긍정적인 요소를 부정적인 요소보다 선호하는 경향</div><div class=\"ln hang\">○ 앞선 시간을 뒤에 오는 시간보다 먼저 파악하려는 경향</div>"
     }
    ],
    "choices": [
@@ -2715,7 +2715,7 @@
    "no": 129,
    "part": "Ⅰ-(2) 단어의 형성",
    "src": "2015년 3월 고2 전국연합학력평가 국어영역 12번",
-   "stem": "&lt;보기&gt;의 ㉠～㉤에 들어갈 어휘의 예로 적절하지 <u>않은</u> 것은?",
+   "stem": "&lt;보기&gt;의 ㉠~㉤에 들어갈 어휘의 예로 적절하지 <u>않은</u> 것은?",
    "blocks": [
     {
      "type": "bogi",
@@ -2783,7 +2783,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">국어의 단어 형성 방식을 보면, 실질적인 의미를 갖는 어근들끼리 만나 새말을 만들기도 하지만, <u>특정한 뜻을 더하는 </u><u>접사가 어근 앞에 붙어 새말을 만들기</u>도 한다. 전자의 예로는어근 ‘날다’가 어근 ‘가다’를 만나 ‘날아가다’를 만드는 것을들 수 있고, 후자의 예로는 ‘풋’이 어근 ‘사과’ 앞에 붙어 ‘덜 익은’의 뜻을 더하면서 ‘풋사과’를 만드는 것을 들 수 있다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">국어의 단어 형성 방식을 보면, 실질적인 의미를 갖는 어근들끼리 만나 새말을 만들기도 하지만, <u>특정한 뜻을 더하는 </u><u>접사가 어근 앞에 붙어 새말을 만들기</u>도 한다. 전자의 예로는 어근 ‘날다’가 어근 ‘가다’를 만나 ‘날아가다’를 만드는 것을 들 수 있고, 후자의 예로는 ‘풋’이 어근 ‘사과’ 앞에 붙어 ‘덜 익은’의 뜻을 더하면서 ‘풋사과’를 만드는 것을 들 수 있다.</div>"
     }
    ],
    "choices": [
@@ -2799,12 +2799,12 @@
    "no": 133,
    "part": "Ⅰ-(2) 단어의 형성",
    "src": "2014년 3월 고1 전국연합학력평가 국어영역 12번",
-   "stem": "&lt;보기 1&gt;의 설명을 참고할 때, &lt;보기 2&gt;의 ㉠～㉣ 중 합성어에 해당하는 말을 바르게 고른 것은?",
+   "stem": "&lt;보기 1&gt;의 설명을 참고할 때, &lt;보기 2&gt;의 ㉠~㉣ 중 합성어에 해당하는 말을 바르게 고른 것은?",
    "blocks": [
     {
      "type": "bogi",
      "title": "<보기 1>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">하나의 형태소로 이루어진 단어를 단일어라 하고, 둘 이상의 형태소로 이루어진 단어를 복합어라고 한다. 복합어에는두 종류가 있다. ‘손(어근)＋수레(어근)’와 같이 둘 이상의어근으로 이루어진 단어는 합성어이고, ‘사냥(어근)＋꾼(접사)’과 같이 어근에 접사가 결합되어 만들어진 단어는 파생어이다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">하나의 형태소로 이루어진 단어를 단일어라 하고, 둘 이상의 형태소로 이루어진 단어를 복합어라고 한다. 복합어에는 두 종류가 있다. ‘손(어근)＋수레(어근)’와 같이 둘 이상의 어근으로 이루어진 단어는 합성어이고, ‘사냥(어근)＋꾼(접사)’과 같이 어근에 접사가 결합되어 만들어진 단어는 파생어이다.</div>"
     },
     {
      "type": "bogi",
@@ -2845,12 +2845,12 @@
    "no": 135,
    "part": "Ⅰ-(2) 단어의 형성",
    "src": "2012년 3월 고1 전국연합학력평가 국어영역 6번",
-   "stem": "&lt;보기 1&gt;을 참고하여 &lt;보기 2&gt;의 ㉠～㉢에 대해 탐구한 내용으로 적절한 것은? [3점]",
+   "stem": "&lt;보기 1&gt;을 참고하여 &lt;보기 2&gt;의 ㉠~㉢에 대해 탐구한 내용으로 적절한 것은? [3점]",
    "blocks": [
     {
      "type": "bogi",
      "title": "<보기 1>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">○ 단어를 형성할 때, 실질적인 의미를 나타내는 중심 부분을 어근이라 하고, 그 뜻을 제한하는 주변 부분을 접사라 고 한다.</div><div class=\"ln hang\">○ 하나의 어근으로 된 단어를 단일어라 한다. 둘 이상의 어근으로 이루어진 단어는 합성어라 하고, 어근과 접사가 결합하여 이루어진 단어를 파생어라고 한다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln hang\">○ 단어를 형성할 때, 실질적인 의미를 나타내는 중심 부분을 어근이라 하고, 그 뜻을 제한하는 주변 부분을 접사라고 한다.</div><div class=\"ln hang\">○ 하나의 어근으로 된 단어를 단일어라 한다. 둘 이상의 어근으로 이루어진 단어는 합성어라 하고, 어근과 접사가 결합하여 이루어진 단어를 파생어라고 한다.</div>"
     },
     {
      "type": "bogi",
@@ -2871,7 +2871,7 @@
    "no": 136,
    "part": "Ⅰ-(2) 단어의 형성",
    "src": "2013년 11월 고1 전국연합학력평가 국어영역 12번",
-   "stem": "단어 형성법에 따라 단어를 분류하는 탐구 과제를 수행해 보았다. ㉠～㉢에 들어갈 말을 바르게 짝지은 것은?",
+   "stem": "단어 형성법에 따라 단어를 분류하는 탐구 과제를 수행해 보았다. ㉠~㉢에 들어갈 말을 바르게 짝지은 것은?",
    "blocks": [
     {
      "type": "html",
@@ -2885,12 +2885,12 @@
    "no": 137,
    "part": "Ⅰ-(2) 단어의 형성",
    "src": "2012년 11월 고2 전국연합학력평가 국어영역 A/B형 15번",
-   "stem": "&lt;보기 1&gt;의 ㉠～㉢에 해당하는 예를 &lt;보기 2&gt;의 순화어에서 찾아 바르게 짝지은 것은?",
+   "stem": "&lt;보기 1&gt;의 ㉠~㉢에 해당하는 예를 &lt;보기 2&gt;의 순화어에서 찾아 바르게 짝지은 것은?",
    "blocks": [
     {
      "type": "bogi",
      "title": "<보기 1>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">단어는 그 형성 방법에 따라 단일어와 합성어, 파생어로 나누어진다. 이 중 합성어는 ‘산길’, ‘뛰놀다’와 같이 ㉠<u>어근과</u><u>어근이 결합한 단어</u>이다. 이와 달리 파생어는 어근과 접사가 결합한 단어이다. 파생어는 ‘풋사과’와 같이 ㉡<u>접두사와 어근</u><u>이 결합한 단어</u>와 ‘잠보’와 같이 ㉢<u>어근과 접미사가 결합한 </u><u>단어</u>로 구분할 수 있다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">단어는 그 형성 방법에 따라 단일어와 합성어, 파생어로 나누어진다. 이 중 합성어는 ‘산길’, ‘뛰놀다’와 같이 ㉠<u>어근과</u> <u>어근이 결합한 단어</u>이다. 이와 달리 파생어는 어근과 접사가 결합한 단어이다. 파생어는 ‘풋사과’와 같이 ㉡<u>접두사와 어근</u><u>이 결합한 단어</u>와 ‘잠보’와 같이 ㉢<u>어근과 접미사가 결합한 </u><u>단어</u>로 구분할 수 있다.</div>"
     },
     {
      "type": "bogi",
@@ -2931,7 +2931,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">단어의 실질적 의미를 나타내는 중심 부분을 어근이라 하고,일부 어근에 붙어서 그 의미를 제한하며 어근과 달리 독립적으로 쓰이지 못하는 주변 부분을 접사라고 한다. 단어는 구성방식에 따라서 하나의 어근으로 이루어진 단일어, 어근과어근이 결합한 합성어, 어근과 접사가 결합한 파생어로 구분할 수 있다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">단어의 실질적 의미를 나타내는 중심 부분을 어근이라 하고, 일부 어근에 붙어서 그 의미를 제한하며 어근과 달리 독립적으로 쓰이지 못하는 주변 부분을 접사라고 한다. 단어는 구성 방식에 따라서 하나의 어근으로 이루어진 단일어, 어근과 어근이 결합한 합성어, 어근과 접사가 결합한 파생어로 구분할 수 있다.</div>"
     }
    ],
    "choices": [
@@ -2952,7 +2952,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">단어의 실질적 의미를 나타내는 중심 부분을 어근이라 하고,어근에 붙어 그 뜻을 더하는 부분을 접사라고 한다. 단어는 형성 방법에 따라 단일어와 파생어, 합성어로 나누어진다. 단일어는 ‘바다’, ‘놀다’와 같이 하나의 어근으로 이루어진 말이고, 파생어는 ‘군살’이나 ‘멋쟁이’처럼 어근과 접사의 결합으로 이루어진 말이다. 합성어는 어근과 어근이 결합한 말로 ‘달빛’이나 ‘뛰놀다’와 같은 말이 이에 해당한다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">단어의 실질적 의미를 나타내는 중심 부분을 어근이라 하고, 어근에 붙어 그 뜻을 더하는 부분을 접사라고 한다. 단어는 형성 방법에 따라 단일어와 파생어, 합성어로 나누어진다. 단일어는 ‘바다’, ‘놀다’와 같이 하나의 어근으로 이루어진 말이고, 파생어는 ‘군살’이나 ‘멋쟁이’처럼 어근과 접사의 결합으로 이루어진 말이다. 합성어는 어근과 어근이 결합한 말로 ‘달빛’이나 ‘뛰놀다’와 같은 말이 이에 해당한다.</div>"
     }
    ],
    "choices": [
@@ -2973,7 +2973,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">단어에서 실질적 의미를 나타내는 중심 부분을 어근이라 하고, 어근에 붙어 그 뜻을 더하는 부분을 접사라고 한다. 우리말은 어근끼리 결합해도 새말을 만들 수 있고, 어근과 접사가 결합해도 새말을 만들 수 있다. 예를 들어 ‘솔방울’은 실질적 의미를 지닌 ‘솔’과 ‘방울’이라는 어근끼리 결합하여 형성된 단어이고, ‘풋고추’는 ‘덜 익은’이라는 뜻을 더하는 접사‘풋-’과 어근인 ‘고추’가 결합하여 형성된 단어이다. 어근끼리결합한 단어를 합성어라 부르고, 어근과 접사가 결합한 단어를파생어라 부른다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">단어에서 실질적 의미를 나타내는 중심 부분을 어근이라 하고, 어근에 붙어 그 뜻을 더하는 부분을 접사라고 한다. 우리말은 어근끼리 결합해도 새말을 만들 수 있고, 어근과 접사가 결합해도 새말을 만들 수 있다. 예를 들어 ‘솔방울’은 실질적 의미를 지닌 ‘솔’과 ‘방울’이라는 어근끼리 결합하여 형성된 단어이고, ‘풋고추’는 ‘덜 익은’이라는 뜻을 더하는 접사 ‘풋-’과 어근인 ‘고추’가 결합하여 형성된 단어이다. 어근끼리 결합한 단어를 합성어라 부르고, 어근과 접사가 결합한 단어를 파생어라 부른다.</div>"
     }
    ],
    "choices": [
@@ -2994,7 +2994,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">단어의 실질적인 의미 부분을 어근이라 하며, 어근에 붙어그 뜻을 제한하는 부분을 접사라고 한다.</div><div class=\"ln ind\">하나의 어근으로 이루어진 단어를 단일어라 한다. 어근은 다른 어근이나 접사와 결합하여 새로운 단어를 만들어낸다. 어근이 어근과 결합하면 ‘합성어’라고 하고, 어근이 접사와 결합하면 ‘파생어’라고 한다. 합성어가 새로운 단어로 파생되기도 하고, 파생어가 다른 어근과 결합하여 합성어가 되기도 한다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">단어의 실질적인 의미 부분을 어근이라 하며, 어근에 붙어 그 뜻을 제한하는 부분을 접사라고 한다.</div><div class=\"ln ind\">하나의 어근으로 이루어진 단어를 단일어라 한다. 어근은 다른 어근이나 접사와 결합하여 새로운 단어를 만들어낸다. 어근이 어근과 결합하면 ‘합성어’라고 하고, 어근이 접사와 결합하면 ‘파생어’라고 한다. 합성어가 새로운 단어로 파생되기도 하고, 파생어가 다른 어근과 결합하여 합성어가 되기도 한다.</div>"
     }
    ],
    "choices": [
@@ -3036,7 +3036,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">‘뜨개질’의 형태소를 분석해 보면 ‘어근＋접미사＋접미사’의구조로 되어 있음을 알 수 있다. 그런데 이 세 가지 구성 요소는 동일한 층위에서 결합된 것이 아니라 계층적으로 결합된것이다. 즉, 어근 ‘뜨-’에 접미사 ‘-개’가 붙어 먼저 ‘뜨개’가만들어지고, 여기에 다시 접미사 ‘-질’이 붙어 ‘뜨개질’이 된것이다. 따라서 ‘뜨개질’은 ‘(어근＋접미사)＋접미사’의 구조로 된 파생어이다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">‘뜨개질’의 형태소를 분석해 보면 ‘어근＋접미사＋접미사’의 구조로 되어 있음을 알 수 있다. 그런데 이 세 가지 구성 요소는 동일한 층위에서 결합된 것이 아니라 계층적으로 결합된 것이다. 즉, 어근 ‘뜨-’에 접미사 ‘-개’가 붙어 먼저 ‘뜨개’가 만들어지고, 여기에 다시 접미사 ‘-질’이 붙어 ‘뜨개질’이 된 것이다. 따라서 ‘뜨개질’은 ‘(어근＋접미사)＋접미사’의 구조로 된 파생어이다.</div>"
     }
    ],
    "choices": [
@@ -3078,7 +3078,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">‘쓰임’은 ‘쓰다’에서 비롯된 말이다. ‘쓰다’에 접미사 ‘-이-’가 결합되어 ‘쓰이다’로 파생되었으며, 여기에 다시 접사 ‘-ㅁ(음)’이 결합되어 ‘쓰임’으로 파생되었다. 즉, ‘쓰임’은 두 번의 파생과정을 겪은 것이다.</div>"
+     "html": "<div class=\"ln e\"></div><div class=\"ln ind\">‘쓰임’은 ‘쓰다’에서 비롯된 말이다. ‘쓰다’에 접미사 ‘-이-’가 결합되어 ‘쓰이다’로 파생되었으며, 여기에 다시 접사 ‘-ㅁ(음)’이 결합되어 ‘쓰임’으로 파생되었다. 즉, ‘쓰임’은 두 번의 파생 과정을 겪은 것이다.</div>"
     }
    ],
    "choices": [
@@ -3120,7 +3120,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln\"><b>선생님</b> : 형태소는 뜻을 가진 가장 작은 말의 단위를 뜻하는 말입니다. 형태소는 다음의 두 기준에 따라 자립 형태소와 의존 형태소, 실질 형태소와 형식 형태소로 나눌 수 있습니다.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:44.1%\"><col style=\"width:5.9%\"><col style=\"width:5.9%\"><col style=\"width:44.1%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">홀로 쓰일 수 있는가?</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">실질적 의미가 있는가?</div></td></tr><tr><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:none;text-align:center\"><div class=\"ln c\">예 <svg class=\"gso inl\" viewBox=\"0 0 1901 1854\" style=\"width:6.7mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"1901\" y1=\"0\" x2=\"0\" y2=\"1854\" stroke=\"#000000\" stroke-width=\"33\"/></svg> <svg class=\"gso inl\" viewBox=\"0 0 1884 1893\" style=\"width:6.6mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"0\" y1=\"0\" x2=\"1884\" y2=\"1893\" stroke=\"#000000\" stroke-width=\"33\"/></svg>아니요</div></td><td style=\"border-left:none;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:none;text-align:center\"><div class=\"ln c\">예 <svg class=\"gso inl\" viewBox=\"0 0 1901 1854\" style=\"width:6.7mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"1901\" y1=\"0\" x2=\"0\" y2=\"1854\" stroke=\"#000000\" stroke-width=\"33\"/></svg> <svg class=\"gso inl\" viewBox=\"0 0 1884 1893\" style=\"width:6.6mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"0\" y1=\"0\" x2=\"1884\" y2=\"1893\" stroke=\"#000000\" stroke-width=\"33\"/></svg>아니요</div></td></tr><tr><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln c\">자립      의존</div><div class=\"ln c\">형태소    형태소</div></td><td style=\"border-left:none;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln c\">실질      형식</div><div class=\"ln c\">형태소    형태소</div></td></tr></table></div><div class=\"ln e\"></div><div class=\"ln\">다음은 아래 ‘예문’을 형태소 단위로 나누고, 위 기준에 따라 분석한 결과입니다.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:left\"><div class=\"ln\">◦ 예문 : 경찰이 도둑을 잡았다.</div><div class=\"ln\">◦ 형태소 분석 결과 :</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:18.5%\"><col style=\"width:10.2%\"><col style=\"width:9.1%\"><col style=\"width:12.4%\"><col style=\"width:9.1%\"><col style=\"width:13.6%\"><col style=\"width:13.6%\"><col style=\"width:13.6%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:right\"><div class=\"ln r\">형태소</div><div class=\"ln\">구분 기준</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">경찰</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">이</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">도둑</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">을</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">잡-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">-았-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">-다</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">홀로 쓰일 수 있는가?</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">예</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">예</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉡</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">실질적 의미가 있는가?</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉠</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">예</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉢</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td></tr></table></div></td></tr></table></div><div class=\"ln e\"></div><div class=\"ln\">㉠~㉢에 들어갈 대답을 모두 바르게 짝지어 볼까요?</div>"
+     "html": "<div class=\"ln\"><b>선생님</b> : 형태소는 뜻을 가진 가장 작은 말의 단위를 뜻하는 말입니다. 형태소는 다음의 두 기준에 따라 자립 형태소와 의존 형태소, 실질 형태소와 형식 형태소로 나눌 수 있습니다.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:44.1%\"><col style=\"width:5.9%\"><col style=\"width:5.9%\"><col style=\"width:44.1%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">홀로 쓰일 수 있는가?</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">실질적 의미가 있는가?</div></td></tr><tr><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:none;text-align:center\"><div class=\"ln c\">예 <svg class=\"gso inl\" viewBox=\"0 0 1901 1854\" style=\"width:6.7mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"1901\" y1=\"0\" x2=\"0\" y2=\"1854\" stroke=\"#000000\" stroke-width=\"33\"/></svg> <svg class=\"gso inl\" viewBox=\"0 0 1884 1893\" style=\"width:6.6mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"0\" y1=\"0\" x2=\"1884\" y2=\"1893\" stroke=\"#000000\" stroke-width=\"33\"/></svg>아니요</div></td><td style=\"border-left:none;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:0.8px solid #111;border-bottom:none;text-align:center\"><div class=\"ln c\">예 <svg class=\"gso inl\" viewBox=\"0 0 1901 1854\" style=\"width:6.7mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"1901\" y1=\"0\" x2=\"0\" y2=\"1854\" stroke=\"#000000\" stroke-width=\"33\"/></svg> <svg class=\"gso inl\" viewBox=\"0 0 1884 1893\" style=\"width:6.6mm;max-width:100%;overflow:visible\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"0\" y1=\"0\" x2=\"1884\" y2=\"1893\" stroke=\"#000000\" stroke-width=\"33\"/></svg>아니요</div></td></tr><tr><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln c\">자립 의존</div><div class=\"ln c\">형태소 형태소</div></td><td style=\"border-left:none;border-right:0.8px solid #111;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:center\"><div class=\"ln c\">실질 형식</div><div class=\"ln c\">형태소 형태소</div></td></tr></table></div><div class=\"ln e\"></div><div class=\"ln\">다음은 아래 ‘예문’을 형태소 단위로 나누고, 위 기준에 따라 분석한 결과입니다.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:left\"><div class=\"ln\">◦ 예문 : 경찰이 도둑을 잡았다.</div><div class=\"ln\">◦ 형태소 분석 결과 :</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:18.5%\"><col style=\"width:10.2%\"><col style=\"width:9.1%\"><col style=\"width:12.4%\"><col style=\"width:9.1%\"><col style=\"width:13.6%\"><col style=\"width:13.6%\"><col style=\"width:13.6%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:right\"><div class=\"ln r\">형태소</div><div class=\"ln\">구분 기준</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">경찰</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">이</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">도둑</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">을</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">잡-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">-았-</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">-다</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">홀로 쓰일 수 있는가?</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">예</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">예</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉡</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">실질적 의미가 있는가?</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉠</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">예</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉢</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">아니요</div></td></tr></table></div></td></tr></table></div><div class=\"ln e\"></div><div class=\"ln\">㉠~㉢에 들어갈 대답을 모두 바르게 짝지어 볼까요?</div>"
     }
    ],
    "choices": [],
@@ -3145,7 +3145,7 @@
    "no": 150,
    "part": "추가 기출",
    "src": "2019년 3월 전국연합학력평가 국어영역 11번",
-   "stem": "다음은 학생들이 ‘-쟁이’와 ‘-장이’에 대해 탐구한 내용이다. ㄱ ~ ㅁ에 제시된 탐구 결과 중 적절하지 <u>않은</u> 것은? [3점]",
+   "stem": "다음은 학생들이 ‘-쟁이’와 ‘-장이’에 대해 탐구한 내용이다. ㄱ~ㅁ에 제시된 탐구 결과 중 적절하지 <u>않은</u> 것은? [3점]",
    "blocks": [
     {
      "type": "html",
@@ -3207,7 +3207,7 @@
    "no": 153,
    "part": "추가 기출",
    "src": "2024년 6월 전국연합학력평가 국어영역 13번",
-   "stem": "&lt;보기&gt;를 바탕으로 ㉠ ~ ㉤을 이해한 내용으로 적절하지 <u>않은</u> 것은? [3점]",
+   "stem": "&lt;보기&gt;를 바탕으로 밑줄 친 단어를 이해한 내용으로 적절하지 <u>않은</u> 것은? [3점]",
    "blocks": [
     {
      "type": "bogi",
@@ -3228,7 +3228,7 @@
    "no": 154,
    "part": "추가 기출",
    "src": "2021년 6월 전국연합학력평가 국어영역 14번",
-   "stem": "&lt;보기&gt;를 바탕으로 ㉠ ~ ㉤을 이해한 내용으로 적절하지 <u>않은</u> 것은? [3점]",
+   "stem": "&lt;보기&gt;를 바탕으로 ㉠~㉤을 이해한 내용으로 적절하지 <u>않은</u> 것은? [3점]",
    "blocks": [
     {
      "type": "bogi",
@@ -3249,7 +3249,7 @@
    "no": 155,
    "part": "추가 기출",
    "src": "2025년 10월 전국연합학력평가 국어영역 8번",
-   "stem": "&lt;보기&gt;의 ㉠ ~ ㉤에 대한 이해로 적절하지 <u>않은</u> 것은? [3점]",
+   "stem": "&lt;보기&gt;의 ㉠~㉤에 대한 이해로 적절하지 <u>않은</u> 것은? [3점]",
    "blocks": [
     {
      "type": "bogi",
@@ -3325,7 +3325,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln\">수사는 체언으로, 수량이나 순서를 가리키는 단어이다. 수 관형사는 수식언으로, 체언 앞에서 사물의 수량이나 순서를 나타내는 단어이다. 수 관형사와 달리 수사는 조사와 결합할 수 있다.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">￮ <u>다섯</u> 친구가 회의를 했다.</div><div class=\"ln\">￮ 나는 사과 <u>하나</u>를 받았다.</div><div class=\"ln\">￮ 나는 과자 <u>두</u> 봉지를 샀다.</div><div class=\"ln\">￮ 내 나이는 올해 <u>열일곱</u>이다.</div></td></tr></table></div>"
+     "html": "<div class=\"ln\">수사는 체언으로, 수량이나 순서를 가리키는 단어이다. 수 관형사는 수식언으로, 체언 앞에서 사물의 수량이나 순서를 나타내는 단어이다. 수 관형사와 달리 수사는 조사와 결합할 수 있다.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">◦ <u>다섯</u> 친구가 회의를 했다.</div><div class=\"ln\">◦ 나는 사과 <u>하나</u>를 받았다.</div><div class=\"ln\">◦ 나는 과자 <u>두</u> 봉지를 샀다.</div><div class=\"ln\">◦ 내 나이는 올해 <u>열일곱</u>이다.</div></td></tr></table></div>"
     },
     {
      "type": "tabrows",
@@ -3459,7 +3459,7 @@
    "no": 162,
    "part": "추가 기출",
    "src": "2026년 6월 전국연합학력평가 국어영역 7번",
-   "stem": "&lt;보기&gt;를 바탕으로 ㉠ ~ ㉤을 분석한 것으로 적절한 것은?",
+   "stem": "&lt;보기&gt;를 바탕으로 ㉠~㉤을 분석한 것으로 적절한 것은?",
    "blocks": [
     {
      "type": "bogi",
@@ -3479,7 +3479,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln\">선생님 : 파생어란 어근에 접사가 결합하여 형성된 단어입니다. 그런데 파생어는 접사에 의해 본래 단어의 품사가 변화되는 경우와 변화되지 않는 경우로 나뉩니다. 다음은 사전에서 찾은 단어들입니다. 제시된 단어들에 접사가 결합된 파생어를 찾아보고 분석해 봅시다.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\"><b>더욱</b> [형용사] 정도나 수준 따위가 한층 심하거나 높게.</div><div class=\"ln\"><b>넓다</b> [동사] 면이나 바닥 따위의 면적이 크다.</div><div class=\"ln\"><b>덮다</b> [부사] 물건 따위가 드러나거나 보이지 않도록 넓은 천 따위를 얹어서 씌우다.</div></td></tr></table></div>"
+     "html": "<div class=\"ln\">선생님 : 파생어란 어근에 접사가 결합하여 형성된 단어입니다. 그런데 파생어는 접사에 의해 본래 단어의 품사가 변화되는 경우와 변화되지 않는 경우로 나뉩니다. 다음은 사전에서 찾은 단어들입니다. 제시된 단어들에 접사가 결합된 파생어를 찾아보고 분석해 봅시다.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\"><b>더욱</b> [부사] 정도나 수준 따위가 한층 심하거나 높게.</div><div class=\"ln\"><b>넓다</b> [형용사] 면이나 바닥 따위의 면적이 크다.</div><div class=\"ln\"><b>덮다</b> [동사] 물건 따위가 드러나거나 보이지 않도록 넓은 천 따위를 얹어서 씌우다.</div></td></tr></table></div>"
     }
    ],
    "choices": [
@@ -3495,7 +3495,7 @@
    "no": 164,
    "part": "추가 기출",
    "src": "2019년 6월 전국연합학력평가 국어영역 14번",
-   "stem": "&lt;보기&gt;의 ㉠ ～ ㉣에 대한 이해로 적절하지 <u>않은</u> 것은?",
+   "stem": "&lt;보기&gt;의 ㉠~㉣에 대한 이해로 적절하지 <u>않은</u> 것은?",
    "blocks": [
     {
      "type": "bogi",
@@ -3521,7 +3521,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln\"><b>[탐구 과제]</b></div><div class=\"ln\">다음을 참고하여 [탐구 자료] ㉠ ~ ㉣을 [A], [B]로 구분하고, 그렇게 구분한 근거를 적어 보자.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">어근에 파생 접사가 결합하여 새로운 단어가 형성될 때 [A] <u>품사가 바뀌는 경우</u>도 있고, [B] <u>품사가 바뀌지 않는 경우</u>도 있다. 예를 들어, 명사 ‘마음’에 접사 ‘-씨’가 결합하여 ‘마음씨’가 될 때는 품사가 바뀌지 않지만, 형용사 ‘넓다’의 어근 ‘넓-’에 접사 ‘-이’가 결합하여 ‘넓이’가 될 때는 품사가 명사로 바뀐다.</div></td></tr></table></div><div class=\"ln\"><b>[탐구 자료]</b></div><div class=\"ln\">· 예술에 대한 안목을 ㉠ <u>높이다</u>.</div><div class=\"ln\">· 그는 모자를 ㉡ <u>깊이</u> 눌러썼다.</div><div class=\"ln\">· 오랫동안 ㉢ <u>딸꾹질</u>이 멈추지 않았다.</div><div class=\"ln\">· 그런 일은 ㉣ <u>일찍이</u> 경험하지 못했던 일이다.</div><div class=\"ln e\"></div><div class=\"ln\"><b>[탐구 결과]</b></div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:16.2%\"><col style=\"width:14.0%\"><col style=\"width:55.8%\"><col style=\"width:14.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">탐구</div><div class=\"ln c\">자료</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">구분</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">근거</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln e\"></div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉠</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">[B]</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">형용사 ‘높다’의 어근 ‘높-’에 접사 ‘-이-’가 결합하여 형용사가 됨.</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">… ⓐ</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉡</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">[A]</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">형용사 ‘깊다’의 어근 ‘깊-’에 접사 ‘-이’가 결합하여 명사가 됨.</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">… ⓑ</div></td></tr><tr><td rowspan=\"2\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉢</div></td><td rowspan=\"2\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">[A]</div></td><td rowspan=\"2\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">부사 ‘딸꾹’에 접사 ‘-질’이 결합하여 명사가 됨.</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">… ⓒ</div></td></tr><tr><td rowspan=\"2\" style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">… ⓓ</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉣</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">[B]</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">부사 ‘일찍’에 접사 ‘-이’가 결합하여 부사가 됨.</div></td></tr></table></div>"
+     "html": "<div class=\"ln\"><b>[탐구 과제]</b></div><div class=\"ln\">다음을 참고하여 [탐구 자료] ㉠~㉣을 [A], [B]로 구분하고, 그렇게 구분한 근거를 적어 보자.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">어근에 파생 접사가 결합하여 새로운 단어가 형성될 때 [A] <u>품사가 바뀌는 경우</u>도 있고, [B] <u>품사가 바뀌지 않는 경우</u>도 있다. 예를 들어, 명사 ‘마음’에 접사 ‘-씨’가 결합하여 ‘마음씨’가 될 때는 품사가 바뀌지 않지만, 형용사 ‘넓다’의 어근 ‘넓-’에 접사 ‘-이’가 결합하여 ‘넓이’가 될 때는 품사가 명사로 바뀐다.</div></td></tr></table></div><div class=\"ln\"><b>[탐구 자료]</b></div><div class=\"ln\">· 예술에 대한 안목을 ㉠ <u>높이다</u>.</div><div class=\"ln\">· 그는 모자를 ㉡ <u>깊이</u> 눌러썼다.</div><div class=\"ln\">· 오랫동안 ㉢ <u>딸꾹질</u>이 멈추지 않았다.</div><div class=\"ln\">· 그런 일은 ㉣ <u>일찍이</u> 경험하지 못했던 일이다.</div><div class=\"ln e\"></div><div class=\"ln\"><b>[탐구 결과]</b></div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:16.2%\"><col style=\"width:14.0%\"><col style=\"width:55.8%\"><col style=\"width:14.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">탐구</div><div class=\"ln c\">자료</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">구분</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">근거</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln e\"></div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉠</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">[B]</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">형용사 ‘높다’의 어근 ‘높-’에 접사 ‘-이-’가 결합하여 형용사가 됨.</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">… ⓐ</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉡</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">[A]</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">형용사 ‘깊다’의 어근 ‘깊-’에 접사 ‘-이’가 결합하여 명사가 됨.</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">… ⓑ</div></td></tr><tr><td rowspan=\"2\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉢</div></td><td rowspan=\"2\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">[A]</div></td><td rowspan=\"2\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">부사 ‘딸꾹’에 접사 ‘-질’이 결합하여 명사가 됨.</div></td><td style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">… ⓒ</div></td></tr><tr><td rowspan=\"2\" style=\"border-left:0.8px solid #111;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">… ⓓ</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉣</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">[B]</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\">부사 ‘일찍’에 접사 ‘-이’가 결합하여 부사가 됨.</div></td></tr></table></div>"
     }
    ],
    "choices": [
@@ -3573,7 +3573,7 @@
    "no": 168,
    "part": "추가 기출",
    "src": "2020년 3월 전국연합학력평가 국어영역 14번",
-   "stem": "&lt;보기&gt;의 ㉠에 해당하는 예로 적절한 것만을 ⓐ ~ ⓓ에서 고른 것은?",
+   "stem": "&lt;보기&gt;의 ㉠에 해당하는 예로 적절한 것만을 ⓐ~ⓓ에서 고른 것은?",
    "blocks": [
     {
      "type": "bogi",
@@ -3646,7 +3646,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln\"><b>-음</b><b><sup>1</sup></b>  「어미」 (‘ㄹ’을 제외한 받침 있는 용언의 어간       이나 어미 ‘-었-’, ‘-겠-’ 뒤에 붙어) 그 말이 명       사 구실을 하게 하는 어미.</div><div class=\"ln\">◦ 그는 그 말을 믿었음이 분명하다.</div><div class=\"ln\">◦ 나는 그의 판단이 옳음을 믿는다.</div><div class=\"ln e\"></div><div class=\"ln\"><b>-음</b><b><sup>2</sup></b>  「접사」 (‘ㄹ’을 제외한 받침 있는 용언의 어간        뒤에 붙어) 명사를 만드는 접미사.</div><div class=\"ln\">◦ 그는 나의 믿음을 저버렸다.</div><div class=\"ln\">◦ 그는 서랍에서 종이 한 묶음을 꺼냈다.</div>"
+     "html": "<div class=\"ln\"><b>-음</b><b><sup>1</sup></b>  「어미」 (‘ㄹ’을 제외한 받침 있는 용언의 어간이나 어미 ‘-었-’, ‘-겠-’ 뒤에 붙어) 그 말이 명 사 구실을 하게 하는 어미.</div><div class=\"ln\">◦ 그는 그 말을 믿었음이 분명하다.</div><div class=\"ln\">◦ 나는 그의 판단이 옳음을 믿는다.</div><div class=\"ln e\"></div><div class=\"ln\"><b>-음</b><b><sup>2</sup></b>  「접사」 (‘ㄹ’을 제외한 받침 있는 용언의 어간 뒤에 붙어) 명사를 만드는 접미사.</div><div class=\"ln\">◦ 그는 나의 믿음을 저버렸다.</div><div class=\"ln\">◦ 그는 서랍에서 종이 한 묶음을 꺼냈다.</div>"
     }
    ],
    "choices": [
@@ -3713,7 +3713,7 @@
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln\">a. ㉠과 ㉡에 들어갈 적절한 대답은 각각 ‘×’, ‘○’이다.</div><div class=\"ln\">b. ㉢이 ‘‘막내딸’은, 자립 형태소이면서 실질 형태소인 형태소 두 개로만 이루어진 말이다.’라면, ㉢에 대한 대답은 적절하다.</div><div class=\"ln\">c. ㉣이 ‘‘햇감자’에는 형식 형태소가 존재하고, ‘조금씩’에는 형식 형태소가 존재하지 않는다.’라면, ㉤에 들어갈 적절한 대답은 ‘×’이다.</div><div class=\"ln\">d. ㉣이 ‘‘삶은’은 실질 형태소가 한 개 포함된 말이고, ‘깨물어’는 실질 형태소가 두 개 포함된 말이다.’라면, ㉤에 들어갈 적절한 대답은 ‘○’이다.</div>"
+     "html": "<div class=\"ln\">a. ㉠과 ㉡에 들어갈 적절한 대답은 각각 ‘×’, ‘○’이다.</div><div class=\"ln\">b. ㉢이 ‘‘막내딸’은 자립 형태소이면서 실질 형태소인 형태소 두 개로만 이루어진 말이다.’라면, ㉢에 대한 대답은 적절하다.</div><div class=\"ln\">c. ㉣이 ‘‘햇감자’에는 형식 형태소가 존재하고, ‘조금씩’에는 형식 형태소가 존재하지 않는다.’라면, ㉤에 들어갈 적절한 대답은 ‘×’이다.</div><div class=\"ln\">d. ㉣이 ‘‘삶은’은 실질 형태소가 한 개 포함된 말이고, ‘깨물어’는 실질 형태소가 두 개 포함된 말이다.’라면, ㉤에 들어갈 적절한 대답은 ‘○’이다.</div>"
     }
    ],
    "choices": [
@@ -3729,12 +3729,12 @@
    "no": 175,
    "part": "추가 기출",
    "src": "2023년 10월 고3 전국연합학력평가 국어영역 38번",
-   "stem": "&lt;보기&gt;의 ⓐ ~ ⓒ에 들어갈 말을 바르게 짝지은 것은?",
+   "stem": "&lt;보기&gt;의 ⓐ~ⓒ에 들어갈 말을 바르게 짝지은 것은?",
    "blocks": [
     {
      "type": "bogi",
      "title": "<보기>",
-     "html": "<div class=\"ln\">학생 1 : 우리 스무고개 할래? [자료]에 있는 단어 중에서 내가 무얼 생각하는지 맞혀 봐.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\"><b>[자료]</b></div><div class=\"ln c\">높이다 \t\t접히다 \t\t여닫다</div></td></tr></table></div><div class=\"ln\">학생 2 : 좋아. 그 단어는 어근과 어근으로 구성되었니?</div><div class=\"ln\">학생 1 : 아니, 어근과 접사로 이루어져 있어.</div><div class=\"ln\">학생 2 : 그렇다면    ⓐ   는 아니겠군. 그러면 단어의 품사가 어근의 품사와 같니?</div><div class=\"ln\">학생 1 : 아니, 이 단어의 품사는 어근의 품사와 달라.</div><div class=\"ln\">학생 2 :    ⓑ   는 접사가 결합하며 품사가 달라지지 않았고,    ⓒ   는 접사가 결합하며 품사가 달라졌네. 그렇다면 네가 생각하는 단어는    ⓒ   이구나!</div><div class=\"ln\">학생 1 : 맞아, 바로 그거야.</div>"
+     "html": "<div class=\"ln\">학생 1 : 우리 스무고개 할래? [자료]에 있는 단어 중에서 내가 무얼 생각하는지 맞혀 봐.</div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\"><b>[자료]</b></div><div class=\"ln c\">높이다 접히다 여닫다</div></td></tr></table></div><div class=\"ln\">학생 2 : 좋아. 그 단어는 어근과 어근으로 구성되었니?</div><div class=\"ln\">학생 1 : 아니, 어근과 접사로 이루어져 있어.</div><div class=\"ln\">학생 2 : 그렇다면    ⓐ   는 아니겠군. 그러면 단어의 품사가 어근의 품사와 같니?</div><div class=\"ln\">학생 1 : 아니, 이 단어의 품사는 어근의 품사와 달라.</div><div class=\"ln\">학생 2 :    ⓑ   는 접사가 결합하며 품사가 달라지지 않았고,    ⓒ   는 접사가 결합하며 품사가 달라졌네. 그렇다면 네가 생각하는 단어는    ⓒ   이구나!</div><div class=\"ln\">학생 1 : 맞아, 바로 그거야.</div>"
     }
    ],
    "choices": [],
@@ -3765,7 +3765,7 @@
    "no": 177,
    "part": "추가 기출",
    "src": "2025년 10월 고3 전국연합학력평가 국어영역 38번",
-   "stem": "&lt;보기&gt;의 ㉠ ~ ㉤에 대한 이해로 적절하지 <u>않은</u> 것은?",
+   "stem": "&lt;보기&gt;의 ㉠~㉤에 대한 이해로 적절하지 <u>않은</u> 것은?",
    "blocks": [
     {
      "type": "bogi",
@@ -3785,8 +3785,8 @@
   {
    "no": 178,
    "part": "추가 기출",
-   "src": "2020년 3월 전국연합학력평가 국어영역 13번",
-   "stem": "&lt;보기 1&gt;을 바탕으로 &lt;보기 2&gt;의 ㉠ ~ ㉤에 대해 설명한 내용으로 적절하지 <u>않은</u> 것은?",
+   "src": "2020년 3월 고3 전국연합학력평가 국어영역 13번",
+   "stem": "&lt;보기 1&gt;을 바탕으로 &lt;보기 2&gt;의 ㉠~㉤에 대해 설명한 내용으로 적절하지 <u>않은</u> 것은?",
    "blocks": [
     {
      "type": "bogi",
@@ -3832,8 +3832,8 @@
   {
    "no": 180,
    "part": "추가 기출",
-   "src": "2020년 10월 전국연합학력평가 국어영역 15번",
-   "stem": "&lt;보기&gt;의 ㉠ ~ ㉣을 바르게 분류한 것은? [3점]",
+   "src": "2020년 10월 고3 전국연합학력평가 국어영역 15번",
+   "stem": "&lt;보기&gt;의 ㉠~㉣을 바르게 분류한 것은? [3점]",
    "blocks": [
     {
      "type": "bogi",
@@ -3909,7 +3909,7 @@
   {
    "no": 184,
    "part": "추가 기출",
-   "src": "2020년 10월 전국연합학력평가 국어영역 37번",
+   "src": "2020년 10월 고3 전국연합학력평가 국어영역 37번",
    "stem": "&lt;보기&gt;의 ‘복합어’를 ‘분류 과정’에 따라 분류할 때, ㉠과 ㉡에 들어갈 말을 바르게 짝지은 것은? [3점]",
    "blocks": [
     {
@@ -3966,7 +3966,7 @@
   {
    "no": 187,
    "part": "추가 기출",
-   "src": "2019년 10월 전국연합학력평가 국어영역 14번",
+   "src": "2019년 10월 고3 전국연합학력평가 국어영역 14번",
    "stem": "&lt;보기&gt;의 밑줄 친 단어의 품사에 대한 이해로 적절하지 <u>않은</u> 것은?",
    "blocks": [
     {
@@ -3988,7 +3988,7 @@
    "no": 188,
    "part": "추가 기출",
    "src": "2022년 4월 고3 전국연합학력평가 국어영역 37번",
-   "stem": "&lt;보기 1&gt;의 ㉠ ∼ ㉢에 해당하는 예만을 &lt;보기 2&gt;에서 고른 것은?",
+   "stem": "&lt;보기 1&gt;의 ㉠~㉢에 해당하는 예만을 &lt;보기 2&gt;에서 고른 것은?",
    "blocks": [
     {
      "type": "bogi",
@@ -4013,7 +4013,7 @@
   {
    "no": 189,
    "part": "추가 기출",
-   "src": "2019년 3월 전국연합학력평가 국어영역 14번",
+   "src": "2019년 3월 고3 전국연합학력평가 국어영역 14번",
    "stem": "사전 자료의 일부인 &lt;보기&gt;를 바탕으로 어미의 쓰임을 탐구한 학습지 활동의 결과로 적절하지 <u>않은</u> 것은?   [3점]",
    "blocks": [
     {
@@ -4044,7 +4044,7 @@
     {
      "type": "bogi",
      "title": "<학습 활동>",
-     "html": "<div class=\"ln\">관형사형 어미의 형태는 시제 및 단어의 품사에 의해 결정된다. [자료]에서 밑줄 친 단어의 품사와 시제를 분석하여 그 단어에 쓰인 어미가 [표]의 ㉠～㉢ 중 어느 것에 해당하는지 확인해 보자.</div><div class=\"ln\"><b>[자료]</b></div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">ⓐ 하늘에 <u>뜬</u> 태양     ⓑ 우리가 즐겨 <u>부르던</u> 노래</div><div class=\"ln\">ⓒ 늘 <u>푸르던</u> 하늘     ⓓ 운동장에 <u>남은</u> 아이들</div><div class=\"ln\">ⓔ 네가 <u>읽는</u> 소설</div><div class=\"ln\">ⓕ 이미 아이들로 가득 <u>찬</u> 교실</div><div class=\"ln\">ⓖ 달리기가 제일 <u>빠른</u> 친구</div></td></tr></table></div></td></tr></table></div><div class=\"ln e\"></div><div class=\"ln\"><b>[표] 관형사형 어미 체계</b></div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:14.8%\"><col style=\"width:42.6%\"><col style=\"width:42.6%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">동사</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">형용사</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">현재</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">-는</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉠</div></td></tr><tr><td rowspan=\"2\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">과거</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉡</div></td><td rowspan=\"2\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉢</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">-던</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">미래</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">-(으)ㄹ</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">-(으)ㄹ</div></td></tr></table></div>"
+     "html": "<div class=\"ln\">관형사형 어미의 형태는 시제 및 단어의 품사에 의해 결정된다. [자료]에서 밑줄 친 단어의 품사와 시제를 분석하여 그 단어에 쓰인 어미가 [표]의 ㉠~㉢ 중 어느 것에 해당하는지 확인해 보자.</div><div class=\"ln\"><b>[자료]</b></div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:left\"><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:100.0%\"></colgroup><tr><td style=\"border-left:none;border-right:none;border-top:none;border-bottom:none;text-align:left\"><div class=\"ln\">ⓐ 하늘에 <u>뜬</u> 태양     ⓑ 우리가 즐겨 <u>부르던</u> 노래</div><div class=\"ln\">ⓒ 늘 <u>푸르던</u> 하늘     ⓓ 운동장에 <u>남은</u> 아이들</div><div class=\"ln\">ⓔ 네가 <u>읽는</u> 소설</div><div class=\"ln\">ⓕ 이미 아이들로 가득 <u>찬</u> 교실</div><div class=\"ln\">ⓖ 달리기가 제일 <u>빠른</u> 친구</div></td></tr></table></div></td></tr></table></div><div class=\"ln e\"></div><div class=\"ln\"><b>[표] 관형사형 어미 체계</b></div><div class=\"ln\"><table class=\"ht\"><colgroup><col style=\"width:14.8%\"><col style=\"width:42.6%\"><col style=\"width:42.6%\"></colgroup><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln e\"></div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">동사</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">형용사</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">현재</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">-는</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉠</div></td></tr><tr><td rowspan=\"2\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">과거</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉡</div></td><td rowspan=\"2\" style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">㉢</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">-던</div></td></tr><tr><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;background:#fffae6;text-align:center\"><div class=\"ln c\">미래</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">-(으)ㄹ</div></td><td style=\"border-left:0.8px solid #111;border-right:0.8px solid #111;border-top:0.8px solid #111;border-bottom:0.8px solid #111;text-align:center\"><div class=\"ln c\">-(으)ㄹ</div></td></tr></table></div>"
     }
    ],
    "choices": [
@@ -4060,7 +4060,7 @@
    "no": 191,
    "part": "추가 기출",
    "src": "2023학년도 9월 모의평가 국어영역 37번",
-   "stem": "&lt;보기&gt;의 ⓐ ~ ⓔ에 대한 이해로 적절한 것은? [3점]",
+   "stem": "&lt;보기&gt;의 ⓐ~ⓔ에 대한 이해로 적절한 것은? [3점]",
    "blocks": [
     {
      "type": "bogi",
@@ -4101,8 +4101,8 @@
   {
    "no": 193,
    "part": "추가 기출",
-   "src": "2020년 4월 전국연합학력평가 국어영역 14번",
-   "stem": "&lt;보기 1&gt;의 ㉠ ~ ㉣에 해당하는 가장 적절한 예를 &lt;보기 2&gt;에서 고른 것은?",
+   "src": "2020년 4월 고3 전국연합학력평가 국어영역 14번",
+   "stem": "&lt;보기 1&gt;의 ㉠~㉣에 해당하는 가장 적절한 예를 &lt;보기 2&gt;에서 고른 것은?",
    "blocks": [
     {
      "type": "bogi",
@@ -4122,7 +4122,7 @@
    "no": 194,
    "part": "추가 기출",
    "src": "2021학년도 대학수학능력시험 국어영역 13번",
-   "stem": "ⓐ ～ ⓔ는 잘못된 표기를 바르게 고친 것이다. 고치는 과정에서 해당 단어에 적용된 용언 활용의 예로 적절하지 <u>않은</u> 것은?",
+   "stem": "ⓐ~ⓔ는 잘못된 표기를 바르게 고친 것이다. 고치는 과정에서 해당 단어에 적용된 용언 활용의 예로 적절하지 <u>않은</u> 것은?",
    "blocks": [
     {
      "type": "html",
@@ -4205,7 +4205,7 @@
    "no": 198,
    "part": "추가 기출",
    "src": "2024년 10월 고3 전국연합학력평가 국어영역 38번",
-   "stem": "&lt;보기&gt;의 ㉠ ~ ㉥에 대한 이해로 적절한 것은?",
+   "stem": "&lt;보기&gt;의 ㉠~㉥에 대한 이해로 적절한 것은?",
    "blocks": [
     {
      "type": "bogi",
@@ -4231,7 +4231,7 @@
     {
      "type": "bogi",
      "title": "<학습 활동>",
-     "html": "<div class=\"ln\">국어의 의존 형태소에는 접사, 조사, 어미 등이 있다. 이들은 각각 새로운 단어를 만들거나, 문법적 의미를 더해 주는 등 다양한 기능을 한다. 제시된 자료 ㉠～㉢을 분석해 보자.</div><div class=\"ln e\"></div><div class=\"ln\">㉠ : 발표가 <u>시작되자</u> 참석자들은 모두 목소리를 <u>낮췄다</u>.</div><div class=\"ln\">㉡ : 비에 젖은 옷들을 <u>말리는</u> 데 시간을 다 <u>빼앗겼다</u>.</div><div class=\"ln\">㉢ : 나는 내일 <u>친구랑</u> <u>만나</u> <u>미술관이랑</u> 영화관에 <u>가</u>.</div>"
+     "html": "<div class=\"ln\">국어의 의존 형태소에는 접사, 조사, 어미 등이 있다. 이들은 각각 새로운 단어를 만들거나, 문법적 의미를 더해 주는 등 다양한 기능을 한다. 제시된 자료 ㉠~㉢을 분석해 보자.</div><div class=\"ln e\"></div><div class=\"ln\">㉠ : 발표가 <u>시작되자</u> 참석자들은 모두 목소리를 <u>낮췄다</u>.</div><div class=\"ln\">㉡ : 비에 젖은 옷들을 <u>말리는</u> 데 시간을 다 <u>빼앗겼다</u>.</div><div class=\"ln\">㉢ : 나는 내일 <u>친구랑</u> <u>만나</u> <u>미술관이랑</u> 영화관에 <u>가</u>.</div>"
     }
    ],
    "choices": [
