@@ -94,7 +94,7 @@ def bogi_html(bg):
         return ""
     after = bg.get("img_after")   # 원문처럼 그림을 글 뒤에
     body = img(bg["img"], "fig bg-img") if bg.get("img") and not after else ""
-    if bg.get("imgs"):  # several captioned figures in a row (A · B · C)
+    if bg.get("imgs") and not after:  # several captioned figures in a row (A · B · C)
         body += '<div class="bg-imgs">' + "".join(
             f'<figure>{img(f["img"], "fig")}<figcaption>{xmd(f.get("caption"))}</figcaption></figure>' for f in bg["imgs"]) + "</div>"
     HANG = re.compile(r"^((?:\*\*)?(?:\([가-힣A-Za-z]\)|[ⓐ-ⓩ㉠-㉭㉮-㉻Ⓐ-Ⓩ]|[ㄱ-ㅎ]\.|\[[가-힣]+ ?\d*\]|[◦•※∘▪])(?:\*\*)?)\s+")
@@ -115,8 +115,11 @@ def bogi_html(bg):
         else:
             fix = f' style="letter-spacing:{ls}" data-fixed="1"' if ls else ""
         paras += para(t)
-    if not bg.get("imgs"):
+    if not bg.get("imgs") or after:
         body += paras  # text first, then tables (the usual layout)
+    if bg.get("imgs") and after:   # 원문처럼 글 뒤에 그림 줄
+        body += '<div class="bg-imgs">' + "".join(
+            f'<figure>{img(f["img"], "fig")}<figcaption>{xmd(f.get("caption"))}</figcaption></figure>' for f in bg["imgs"]) + "</div>"
     tbs = bg.get("tables")
     if tbs:  # several captioned tables side by side (e.g. [진리표 1] · [진리표 2])
         cells = []
@@ -134,7 +137,7 @@ def bogi_html(bg):
             "<tr>" + "".join((f"<th>{xmd(c)}</th>" if (hdr and i == 0) else f"<td>{xmd(c)}</td>") for c in r) + "</tr>"
             for i, r in enumerate(rows))
         body += f'<table class="bg-tb">{trs}</table>'
-    if bg.get("imgs"):
+    if bg.get("imgs") and not after:
         body += paras  # figure row → tables → notes, as on the paper
     if bg.get("img") and after:
         body += img(bg["img"], "fig bg-img")
