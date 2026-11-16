@@ -44,6 +44,7 @@ for b in blocks:
     i = next(k for k, x in enumerate(ls) if '정답이 정답인 이유' in x)
     j = next((k for k, x in enumerate(ls) if '오답이 오답인 이유' in x), len(ls))
     cor = join(ls[i + 1:j]); wr = join(ls[j + 1:])
+    cor = [re.sub(r'\s*\* 상당히 복잡하다\. 설명을 천천히 잘 따라와야 한다\.', '', x) for x in cor]   # 원본 편집 메모 삭제
     plain = cor + (['[오답풀이]'] + wr if wr else [])
     e = {'no': b['no'] - 262, 'answer': ans, 'plain': '\n'.join(plain), 'orig': b['no']}
     ex.append(e)

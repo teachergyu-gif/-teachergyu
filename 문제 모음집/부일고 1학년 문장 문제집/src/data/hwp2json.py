@@ -112,6 +112,7 @@ def runs_html(p, inline=True):
         if st['sup']: s = f'<sup>{s}</sup>'
         if st['sub']: s = f'<sub>{s}</sub>'
         if st['u'] and s.strip(): s = f'<u>{s}</u>'
+        elif st['u'] and len(buf) >= 3: s = '<u>' + '&#160;' * len(buf) + '</u>'   # 밑줄 친 빈칸(그는 ____ 갔어.)
         if st['b'] and s.strip(): s = f'<b>{s}</b>'
         out.append(s); buf = ''
     for c, pos in p.chars():

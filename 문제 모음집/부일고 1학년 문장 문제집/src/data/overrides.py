@@ -98,3 +98,18 @@ def _unwrap_table_svg(q):
 
 
 
+
+
+def _pairs(q):
+    """두 문장씩 괄호로 묶은 선지(그리기 개체) → 선지 ①~⑤마다 [표지] + 두 문장 상자"""
+    src = ''.join(b.get('html', '') for b in q['blocks'] if b['type'] == 'html')
+    lines = [x for x in re.findall(r'<div class="ln[^"]*">(.*?)</div>', src) if re.sub(r'<[^>]+>', '', x).strip()]
+    labs = [x.strip() for x in lines if re.fullmatch(r'\s*[㉠-㉭ⓐ-ⓩ]\s*', re.sub(r'<[^>]+>', '', x))]
+    sents = [x.strip() for x in lines if len(re.sub(r'<[^>]+>', '', x).strip()) > 2]
+    assert len(sents) == 10, (q['no'], len(sents))
+    lab = lambda k: f'<span class="lab">{labs[k]}</span>' if len(labs) == 5 else ''
+    q['choices'] = [f'{"①②③④⑤"[k]} {lab(k)}<span class="dlg">{sents[2 * k]}<br>{sents[2 * k + 1]}</span>' for k in range(5)]
+    q['blocks'] = [b for b in q['blocks'] if b['type'] != 'html']
+
+
+FIX.update({22: _pairs, 46: _pairs})
