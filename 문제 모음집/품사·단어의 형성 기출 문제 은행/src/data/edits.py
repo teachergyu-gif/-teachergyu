@@ -4,7 +4,7 @@ import re, json
 SRC = {  # 출처 고침
     102: ('예비평가', '예비시행'),
 }
-GRADE3 = {178, 180, 184, 187, 189, 193}   # 고3 표기 빠진 문항(검토 지적)
+GRADE = {**{n: '고1' for n in range(147, 159)}, **{n: '고2' for n in range(159, 174)}, **{n: '고3' for n in range(174, 200)}}   # 참고 문제집(고1·고2·고3 단어 파트) 대조 결과
 REP = {  # 문항별 바꿀 글
     35: [('보조용언', '보조 용언')],
     45: [('어말어미', '어말 어미')],
@@ -55,5 +55,5 @@ def apply(q):
     s = q['src']
     s = re.sub(r'국어 ([AB](?:/[AB])?형)', r'국어영역 \1', s)
     if no in SRC: s = s.replace(*SRC[no])
-    if no in GRADE3 and '고3' not in s: s = re.sub(r'(\d+월) ', r'\1 고3 ', s, 1)
+    if no in GRADE and '학력평가' in s and not re.search(r'고[123]', s): s = re.sub(r'(\d+월) ', r'\1 ' + GRADE[no] + ' ', s, 1)
     q['src'] = s
