@@ -1,0 +1,30 @@
+/* 품사·단어의 형성 기출 문제 은행: 출처 띠, 표·그림, 짧은 선지 격자 */
+.src{margin:0 0 1.6mm}
+.src span{display:inline-block;font-family:"Noto Sans CJK KR",sans-serif;font-weight:700;font-size:9.6pt;padding:.6mm 2.6mm;border-radius:1mm}
+.src.hp span{background:#cfe0f3;color:#1d3557}
+.src.pg span{background:#f6d3d3;color:#6b1f1f}
+.bogi.hb .ln{font-size:10.5pt;line-height:1.7;padding-left:0;text-indent:0;text-align:justify}
+.bogi.hb .ln.ind{text-indent:1em;padding-left:0}
+.bogi.hb .ln.hang{padding-left:1em;text-indent:-1em}
+.bogi.hb .ln.c{text-align:center}
+.bogi.hb .ln.r{text-align:right}
+.bogi.hb .ln.e{height:1.2mm}
+table.ht{border-collapse:collapse;width:100%;margin:1.5mm 0;font-size:10pt;line-height:1.5}
+table.ht td{padding:.8mm 1.6mm;vertical-align:middle}
+table.ht .ln{font-size:10pt;line-height:1.5;padding-left:0;text-indent:0}
+table.ht .ln.e{height:0}
+.hblk{margin:2mm 4mm}
+.ctab-h{margin:1.5mm 0 0 4mm}
+.ctab-h table.ht{width:calc(100% - 4mm)}
+table.tabrows{border-collapse:collapse;margin:1mm 0 1mm 4mm;font-size:11pt}
+table.tabrows td{padding:.4mm 3mm .4mm 0;white-space:nowrap}
+.chg{display:grid;margin:.8mm 0 .8mm 4mm}
+.chg.g5{grid-template-columns:repeat(5,1fr)}
+.chg.g3{grid-template-columns:repeat(3,1fr)}
+.chg .ch{margin:.6mm 0}
+.ch.pre .t{white-space:pre}
+.ln.qline{padding-left:4mm;text-indent:0;white-space:pre-wrap}
+img.pic{max-width:100%;display:block;margin:1mm auto}
+.draw{display:inline-block;border:1px dashed #c00;color:#c00;font-size:8pt;padding:0 1mm}
+.ovl{border:1px solid #111;padding:0 .5mm}
+sup{font-size:.65em}
