@@ -48,6 +48,7 @@ def xmd(s):
     t = re.sub(r"__(.+?)__", r"<u>\1</u>", t)
     t = re.sub(r"\{\{(.+?)\}\}", r'<span class="bx">\1</span>', t)  # boxed term (네모 표시)
     t = t.replace("[3점]", '<span class="pt3">[3점]</span>')
+    t = re.sub(r"\[\[img:([\w.]+)\]\]", lambda m: f'<img class="inl" src="file://{B}/img/{m.group(1)}" alt="">', t)   # 글 속 작은 그림(057 물체 모양)
     # 기호(ⓐ ㉠ ㉮ Ⓐ)와 바로 뒤 말은 한 줄에: 사이를 줄 바꿈 없는 공백으로
     t = re.sub(r"([㉠-㉭ⓐ-ⓩ㉮-㉻Ⓐ-Ⓩ]) ", "\\1\u00a0", t)
     t = re.sub(r"&lt;보기( \d)?&gt;", lambda m: '<span class="nw">' + m.group(0) + '</span>', t)   # ‘<보기 2>’를 끊지 않음
