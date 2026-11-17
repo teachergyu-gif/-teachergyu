@@ -18,3 +18,5 @@ table.pairch td.c{padding-right:1.2mm}
 .ep.anp:last-child{margin-bottom:0}
 .ansec + .ep.anp + .ansec{margin-top:4.5mm}
 .eh.anh{margin-bottom:3mm;font-weight:700;color:#29334A;font-size:1.05em}
+
+.qsm{display:block;font-size:7pt;color:#555;letter-spacing:-.03em;line-height:1.1}

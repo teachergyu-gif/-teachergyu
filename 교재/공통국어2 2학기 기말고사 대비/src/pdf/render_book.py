@@ -101,7 +101,8 @@ def explanation(q, e):
         return render.explanation(n, e).replace('<div class="ep">[오답풀이]</div>', '<div class="ep wr">[오답풀이]</div>')
     # 서답형: 모범 답안 + 채점 기준
     out = [f'<div class="eh"><span>[{esc(n)}]</span></div>', f'<div class="ep"><b>[모범 답안]</b></div>']
-    out += [f'<div class="ep hang"><span class="c">·</span><span>{esc(x)}</span></div>' for x in a.split('\n') if x.strip()]
+    al = [x for x in a.split('\n') if x.strip()]
+    out += [f'<div class="ep">{esc(x)}</div>' for x in al] if len(al) == 1 else [f'<div class="ep hang"><span class="c">·</span><span>{esc(x)}</span></div>' for x in al]
     if e.get('points'):
         out.append('<div class="ep wr">[채점 기준]</div>')
         out += [f'<div class="ep hang"><span class="c">·</span><span>{esc(x)}</span></div>' for x in e['points']]
@@ -116,11 +117,15 @@ def quick(sets, ans, per=5, note='서답형 1~4는 해설의 모범 답안 참�
     for s in sets:
         for q in s['questions']:
             if q.get('choices'):
-                cells.append((qnum(q), ' '.join(re.findall('[①-⑤]', (ans.get(qkey(q)) or {}).get('answer', '')))))
+                e = ans.get(qkey(q)) or {}
+                v = esc(' '.join(re.findall('[①-⑤]', e.get('answer', ''))))
+                if e.get('qnote'):
+                    v += f'<span class="qsm">{esc(e["qnote"])}</span>'
+                cells.append((qnum(q), v))
     rows = []
     for i in range(0, len(cells), per):
         r = cells[i:i + per] + [('', '')] * (per - len(cells[i:i + per]))
-        rows.append('<tr>' + ''.join(f'<td class="qn">{n}</td><td class="qv">{esc(v)}</td>' for n, v in r) + '</tr>')
+        rows.append('<tr>' + ''.join(f'<td class="qn">{n}</td><td class="qv">{v}</td>' for n, v in r) + '</tr>')
     return f'<div class="u qa"><div class="qat">빠른 정답</div><table class="qat-t">{"".join(rows)}</table>' + (f'<div class="qanote">{note}</div>' if note else '') + '</div>'
 
 
