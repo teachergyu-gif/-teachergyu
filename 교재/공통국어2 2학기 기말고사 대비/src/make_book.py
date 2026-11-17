@@ -41,7 +41,7 @@ def sets_info():
         rng = (f'{mc[0]}~{mc[-1]}번' if len(mc) > 1 else f'{mc[0]}번') if mc else ''
         if sd:
             rng += (', ' if rng else '') + '서답형 ' + '·'.join(sd)
-        head = re.sub(r'\s*-\s*', '～', re.match(r'^\[\s*([^\],]+?)\s*[,\]]', s['head']).group(1).strip())
+        head = (f'{mc[0]}～{mc[-1]}' if len(mc) > 1 else mc[0]) if mc else '서답형 ' + ', '.join(sd)   # 원본 머리 번호 대신 실제 문항 번호
         out.append({'title': SET_TITLES[i] if i < len(SET_TITLES) else f'지문 {i + 1}', 'rng': rng, 'head': head,
                     'first': nums[0], 'first_mc': mc[0] if mc else None})
     return out
@@ -184,11 +184,11 @@ def build_perset(prefix=None, out_name=None):
         parts, start = [], k + 1
         for i, s in enumerate(info):
             items = []
-            for name in ('강의용', '지문 분석', '정답 및 해설'):
+            for name in ('비문학 프린트물 강의용', '지문 분석', '정답 및 해설'):
                 key = f'{i + 1:02d}' + name.replace(' ', '')
                 pg = next((k for k in range(start, total) if key in texts[k]), None)
                 assert pg is not None, key
-                items.append(({'강의용': '강의용 교재', '지문 분석': '지문 분석지'}.get(name, name), '', pg + 1))
+                items.append(({'비문학 프린트물 강의용': '강의용 교재', '지문 분석': '지문 분석지'}.get(name, name), '', pg + 1))
                 start = pg
             parts.append((s, items))
         tmp = f'{H}/toc/_toc_out.html'

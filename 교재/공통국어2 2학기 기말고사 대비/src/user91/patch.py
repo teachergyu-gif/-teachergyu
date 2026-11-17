@@ -4,7 +4,7 @@ sys.path.insert(0, os.getcwd())
 from make_book import run, a4, H, DATA, PHRASE, FOOT
 from pypdf import PdfReader, PdfWriter
 T, OUT = sys.argv[1:3]
-MAP = {8: 8, 25: 25, 34: 34, 41: 40, 42: 41, 50: 48, 51: 49}   # 보내준 파일 쪽 → 새 빌드 쪽
+MAP = {8: 8, 22: 22, 23: 23, 25: 25, 34: 34, 41: 40, 42: 41, 44: 42, 47: 45, 50: 48, 51: 49}   # 보내준 파일 쪽 → 새 빌드 쪽
 TOTAL = str(len(PdfReader(T).pages))
 new = {}
 with tempfile.TemporaryDirectory() as t:

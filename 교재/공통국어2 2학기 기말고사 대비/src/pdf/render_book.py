@@ -35,9 +35,16 @@ def qnum(q):
 
 
 def set_head(s):
+    """세트 안내문 번호는 실제 문항 번호로 다시 매김(원본 머리 번호가 틀린 곳이 있음)"""
     h = s.get('head') or '다음 글을 읽고 물음에 답하시오.'
-    h = re.sub(r'^\[\s*([^\]]+?)\s*\]\s*', lambda m: '【' + re.sub(r'\s*-\s*', '～', m.group(1)) + '】 ', h)
-    return h
+    qs = s.get('questions') or []
+    mc = [str(q['orig']) for q in qs if not q.get('label')]
+    sd = [q['label'].replace('서답형 ', '') for q in qs if q.get('label')]
+    rng = (f'{mc[0]}～{mc[-1]}' if len(mc) > 1 else mc[0]) if mc else ''
+    if sd:
+        rng += (', ' if rng else '') + '서답형 ' + ', '.join(sd)
+    body = re.sub(r'^\[[^\]]*\]\s*', '', h)
+    return f'【{rng}】 {body}' if rng else body
 
 
 def passage(s, numbered=False):
@@ -181,7 +188,7 @@ def main(work_dir, out_html):
             for k, name in enumerate(('강의용', '지문 분석', '정답 및 해설')):
                 if body:
                     body.append('<div class="u brk"></div>')
-                body.append(f'<div class="u qtitle"><span>{no} {name}</span></div>')
+                body.append(f'<div class="u qtitle"><span>{no} {"비문학 프린트물 강의용" if k == 0 else name}</span></div>')
                 if k == 0:
                     body.append(passage(s))
                     body += [question(q) for q in s['questions']]
