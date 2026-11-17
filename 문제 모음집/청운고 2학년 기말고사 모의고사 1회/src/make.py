@@ -27,40 +27,13 @@ def a4(p):
 
 
 with tempfile.TemporaryDirectory() as t:
-    run('python3', '-I', f'{H}/pdf/render.py', DATA, f'{t}/qb.html', env=dict(os.environ, START_PAGE='2'))
+    run('python3', '-I', f'{H}/pdf/render.py', DATA, f'{t}/qb.html', env=dict(os.environ, START_PAGE='1'))
     run('node', f'{H}/pdf/print.js', f'{t}/qb.html', f'{t}/qb.pdf', f'{H}/pdf/balanced.json')
-    qb = PdfReader(f'{t}/qb.pdf').pages
     w = PdfWriter()
-    w.add_blank_page(595, 841)
-    for p in qb:
+    for p in PdfReader(f'{t}/qb.pdf').pages:
         w.add_page(a4(p))
     w.write(f'{t}/m0.pdf')
     total = len(w.pages)
-    memo = [i + 1 for i, p in enumerate(PdfReader(f'{t}/m0.pdf').pages) if (p.extract_text() or '').strip() == 'MEMO']
-    shown = total - (1 if total in memo else 0)   # 맨 끝 MEMO 쪽은 전체 쪽수에 넣지 않음
-    skip = ','.join(str(x) for x in [1] + memo)   # 1쪽(목차)·MEMO 쪽은 머리말·꼬리말 없음
-    print('MEMO 쪽', memo)
-    # 머리말 문구·꼬리말 교재 이름은 넣지 않음(사용자 지정)
-    run('python3', '-I', f'{H}/footer_box.py', f'{t}/m0.pdf', f'{t}/m3.pdf', str(shown), '1', skip)
-    texts = [(p.extract_text() or '') for p in PdfReader(f'{t}/m3.pdf').pages]
-    items = []; start = 1
-    for name, key in PARTS:
-        q = next(i for i in range(start, total) if key in texts[i][:800]); items.append((name, q + 1)); start = q + 1
-    ex = [i for i in range(total) if '빠른 정답' in texts[i]]
-    if ex: items.append(('정답 및 해설', ex[0] + 1))
-    print(items)
-    sys.path.insert(0, f'{H}/toc')
-    import toc_exam
-    toc = toc_exam.page(TITLE, [('청운고 2학년 기말고사 모의고사 1회', items)], None, shown)
-    tmp = f'{H}/toc/_toc_out.html'
-    open(tmp, 'w').write(toc)
-    try:
-        run('node', f'{H}/toc/print_toc.js', f'{t}/toc.pdf', '_toc_out.html')
-    finally:
-        os.remove(tmp)
-    w = PdfWriter()
-    w.add_page(PdfReader(f'{t}/toc.pdf').pages[0])
-    for p in PdfReader(f'{t}/m3.pdf').pages[1:]:
-        w.add_page(p)
-    w.write(OUT)
+    # 목차 없음: 1쪽 머리(제목·로고) 아래부터 바로 문제(사용자 지정)
+    run('python3', '-I', f'{H}/footer_box.py', f'{t}/m0.pdf', OUT, str(total), '0', '')
     print('ok', OUT, total, 'pages')

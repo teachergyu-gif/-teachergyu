@@ -7,14 +7,14 @@
 
   function header(n) {
     const box = '<span class="kt">이재규T</span>';
-    if (false && n === 1) return `<div class="h1box"><div class="h1t">${HEAD}</div><span class="kyo">제1교시</span><img class="h1logo" src="${LOGO}">${box}<span class="pn1">1</span></div>`;
+    if (n === 1) return `<div class="h1box"><div class="h1row"><img class="h1brand" src="file:///home/user/teachergyu-gif/-teachergyu/brand/logo_slogan_navy.png"><span class="h1title">${HEAD}</span></div><span class="pn1">1</span></div>`;
     return `<div class="topn"><span class="pn">${n}</span><span class="ra">RICH ACADEMY</span><span class="lg">${box}</span></div><div class="rule"></div>`;
   }
   function newPage() {
     const n = pages.length + 1 + (window.P0 || 0);   // 이 교재: 앞 문서 뒤에 붙일 때 쪽 번호를 이어서(P0 = 앞 문서 쪽수)
     const p = document.createElement('div');
     p.className = 'page ' + (n % 2 ? 'odd' : 'even');
-    p.innerHTML = header(n) + `<div class="cols" style="--top:50mm"><div class="col"></div><div class="col"></div></div>
+    p.innerHTML = header(n) + `<div class="cols" style="--top:${n === 1 ? '102mm' : '50mm'}"><div class="col"></div><div class="col"></div></div>
 <div class="foot"><span class="fr"><i>${n}</i><s class="tot"></s></span></div>`;
     document.body.appendChild(p);
     pages.push(p);

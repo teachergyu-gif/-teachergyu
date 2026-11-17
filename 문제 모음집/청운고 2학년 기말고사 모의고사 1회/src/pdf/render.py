@@ -86,7 +86,7 @@ def passage(st, n):
 
 def question(n, q):
     hamp = not re.search(r'모의평가|대학수학능력|예비평가', q['src'])
-    src = f'<div class="src {"hp" if hamp else "pg"}"><span>{esc(q["src"])}</span></div>'
+    src = ''   # 출처 띠는 넣지 않음(사용자 지정)
     stem = re.sub(r'^\s+', '', q['stem'])
     bl = ''.join(block_html(b) for b in q['blocks'])
     return (f'<div class="u q" data-key="{n}">{src}<div class="qh"><span class="n">{n}.</span><span class="s">{fix_img(stem)}</span></div>'
@@ -181,7 +181,7 @@ def main(data_json, out_html):
             if part is not None:
                 body.append('<div class="u brk"></div>')
             part = q['part']
-            body.append(f'<div class="u qtitle"><span>{esc(PART_TITLE.get(part, part))}</span></div>')
+            pass   # 1쪽 머리에 제목이 있으므로 제목 상자 없음
         if Q_BREAK.get(q['no']) == 'col': body.append('<div class="u colbrk"></div>')
         elif Q_BREAK.get(q['no']) == 'page': body.append('<div class="u brk"></div>')
         if q.get('set'):

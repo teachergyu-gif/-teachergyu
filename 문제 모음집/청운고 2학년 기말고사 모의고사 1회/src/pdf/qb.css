@@ -95,3 +95,7 @@ table.ht.g2 td{border:none;padding:.3mm 1mm}
 .inbox .ln.hang2{padding-left:1em;text-indent:-1em}
 .ch .dlg.brc{width:calc(100% - 2em);text-align:left;text-align-last:left;letter-spacing:-.01em}
 .ch .lab{width:1.4em}
+.h1title{font-family:'나눔스퀘어',"Noto Sans CJK KR",sans-serif;font-weight:800;color:#29334A;letter-spacing:-.005em}
+.h1row{position:absolute;left:0;right:0;top:0;bottom:0}
+.h1row .h1title{position:absolute;left:50%;top:15mm;transform:translateX(-50%);font-size:30pt;white-space:nowrap}
+.h1row .h1brand{position:absolute;left:0;bottom:4mm;height:9.5mm}
