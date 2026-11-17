@@ -89,14 +89,14 @@ def question(n, q):
     src = ''   # 출처 띠는 넣지 않음(사용자 지정)
     stem = re.sub(r'^\s+', '', q['stem'])
     bl = ''.join(block_html(b) for b in q['blocks'])
-    return (f'<div class="u q" data-key="{n}">{src}<div class="qh"><span class="n">{n}.</span><span class="s">{fix_img(stem)}</span></div>'
+    return (f'<div class="u q" data-key="{n}">{src}<div class="qh"><span class="n">{n}{"" if str(n).startswith("[") else "."}</span><span class="s">{fix_img(stem)}</span></div>'
             f'{bl}{choices_html(q)}</div>')
 
 
 def explanation(n, e):
     a = e['answer']
     short = len(a) < 12
-    out = [f'<div class="eh"><span>{n}. {esc(a) if short else ""}</span></div>']
+    out = [f'<div class="eh"><span>{n}{"" if str(n).startswith("[") else "."} {esc(a) if short else ""}</span></div>']
     if not short:
         out.append(f'<div class="ep"><b>[모범 답안]</b> {esc(a)}</div>')
     ITEM = r'[ㄱ-ㅎ]\s?[:.]\s'
@@ -186,11 +186,11 @@ def main(data_json, out_html):
         elif Q_BREAK.get(q['no']) == 'page': body.append('<div class="u brk"></div>')
         if q.get('set'):
             body.append(passage(q['set'], q['no']))
-        body.append(question(q['no'], q))
+        body.append(question(q.get('label') or q['no'], q))
         if q['no'] in exs:
-            done.append((q['no'], {'choices': q['choices'] or ['x'] * 5}, exs[q['no']]))
+            done.append((q.get('label') or q['no'], {'choices': q['choices']}, exs[q['no']]))
     if done:
-        body += ['<div class="u brk"></div>', '<div class="u extitle"><span>정답 및 해설</span></div>'] + [quick(done[i:i + 100]).replace('<div class="qat">빠른 정답</div>', '' if i else '<div class="qat">빠른 정답</div>') for i in range(0, len(done), 100)]
+        body += ['<div class="u brk"></div>', '<div class="u extitle"><span>정답 및 해설</span></div>'] + [quick([d for d in done if d[1]['choices']][i:i + 100]).replace('<div class="qat">빠른 정답</div>', '' if i else '<div class="qat">빠른 정답</div>') for i in range(0, len(done), 100)]
         def post(h):
             h = re.sub(r'「([12])」', r'<span class="bnum">\1</span>', h)
             h = re.sub(r'\^(\d)', r'<sup>\1</sup>', h)                       # 어깨번호
