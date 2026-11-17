@@ -106,3 +106,4 @@ table.ht.g2 td{border:none;padding:.3mm 1mm}
 .qimg{display:block;width:calc(100% - 4mm);margin:1.5mm auto}
 .hblk:has(.qimg){margin:2mm 0}
 .hblk .qimg{width:108mm!important;max-width:none!important;height:auto}
+.tdlg.bx{border:1px solid #111;padding:1.6mm 2.4mm;margin:1.5mm 2mm}

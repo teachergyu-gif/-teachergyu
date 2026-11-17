@@ -8,9 +8,9 @@ from pypdf import PdfReader, PdfWriter, Transformation
 
 H = os.path.dirname(os.path.abspath(__file__))
 DATA = H + '/data/qb.json'
-TITLE = '청운고 2학년 기말고사 모의고사 1회'
-FOOT = '청운고 2학년 기말고사 모의고사 1회'
-OUT = os.path.join(H, '..', '청운고 2학년 기말고사 모의고사 1회.pdf')
+TITLE = '청운고 2학년 국어 기말고사 대비 모의고사 1회'
+FOOT = TITLE
+OUT = os.path.join(H, '..', f'{TITLE}.pdf')
 PARTS = [('문제', '청운고 2학년 기말고사 모의고사 1회')]
 
 

@@ -15,7 +15,7 @@ except ImportError:
     KEEP_Q = set()
 
 CIRC = '①②③④⑤'
-HEAD = os.environ.get('HEAD', '청운고 2학년 기말고사 모의고사 1회')
+HEAD = os.environ.get('HEAD', '청운고 2학년 국어 기말고사 대비 모의고사 1회')
 J_IMG = J + '/img/'
 
 

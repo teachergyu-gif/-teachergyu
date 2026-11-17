@@ -7,7 +7,7 @@
 
   function header(n) {
     const box = '<span class="kt">이재규T</span>';
-    if (n === 1) return `<div class="h1box"><div class="h1row"><img class="h1brand" src="file:///home/user/teachergyu-gif/-teachergyu/brand/logo_slogan_navy.png"><span class="h1title">${HEAD}</span></div><span class="pn1">1</span></div>`;
+    if (n === 1) return `<div class="h1box"><div class="h1row"><span class="h1title">${HEAD}</span></div><span class="pn1">1</span></div>`;
     return `<div class="topn"><span class="pn">${n}</span><span class="ra">RICH ACADEMY</span><span class="lg">${box}</span></div><div class="rule"></div>`;
   }
   function newPage() {
