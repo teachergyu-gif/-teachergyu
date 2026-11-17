@@ -72,7 +72,7 @@ def passage(st, n):
         end = l.endswith('{/' + (group[0] if group else 'A') + '}')
         if end:
             l = l[:l.rindex('{/')]
-        KIND = {'@': ' po', '#': ' tag', '%': ' mid', '&': ' au', '*': ' note', '~': ' sp'}   # 시행·표지·가운데·지은이·각주·빈 줄
+        KIND = {'$': ' dg', '@': ' po', '#': ' tag', '%': ' mid', '&': ' au', '*': ' note', '~': ' sp'}   # 시행·표지·가운데·지은이·각주·빈 줄
         if l[:1] in KIND:
             cell = f'<div class="ln{KIND[l[0]]}">{l[1:]}</div>'
         else:
@@ -85,7 +85,7 @@ def passage(st, n):
         else:
             out.append(cell)
     k = n + st.get('count', 2) - 1
-    return f'<div class="u set"><div class="sethd">【{n}～{k}】 다음 글을 읽고 물음에 답하시오.</div><div class="box">{"".join(out)}</div></div>'
+    return f'<div class="u set"><div class="sethd">【{n}～{k}】 {st.get("head", "다음 글을 읽고 물음에 답하시오.")}</div><div class="box">{"".join(out)}</div></div>'
 
 
 def question(n, q):

@@ -102,3 +102,7 @@ table.ht.g2 td{border:none;padding:.3mm 1mm}
 .ansbox{border:1px solid #111;height:52mm;margin:2mm 0 0}
 .box .ln.po{padding-left:1em;text-indent:-1em;text-align:left}
 .box .ln.mid{text-align:center}
+.box .ln.dg{padding-left:1.2em;text-indent:-1.2em;text-align:justify}
+.qimg{display:block;width:calc(100% - 4mm);margin:1.5mm auto}
+.hblk:has(.qimg){margin:2mm 0}
+.hblk .qimg{width:108mm!important;max-width:none!important;height:auto}
