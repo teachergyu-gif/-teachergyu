@@ -268,16 +268,17 @@ EX.append(('⑤', "⑤ ‘택시로 밤새 이동한’은 ‘그’를 꾸미�
 
 # ───────── 출력 ─────────
 DROP = {M8 + '37번'}   # 사용자 지정으로 뺀 문항(음운 변동, 8월 대단위 37번)
-keep = [i for i, x in enumerate(QS) if x['src'] not in DROP]
-QS, EX = [QS[i] for i in keep], [EX[i] for i in keep]
-for i, x in enumerate(QS, 1):
-    x['no'] = i
-    if x.get('set'):
-        x['set']['first'] = i
-sets_cnt = {}
-for x in QS:
-    pass
-json.dump({'parts': [P], 'questions': QS}, open(f'{D}/qb.json', 'w'), ensure_ascii=False, indent=1)
-os.makedirs(f'{D}/ex', exist_ok=True)
-json.dump([{'no': i, 'answer': a, 'plain': p} for i, (a, p) in enumerate(EX, 1)], open(f'{D}/ex/ex.json', 'w'), ensure_ascii=False, indent=1)
-print(len(QS), 'questions', ''.join(a for a, _ in EX))
+ROUND2 = {OM.format(4) + '39번', OM.format(6) + '38번', OM.format(9) + '37번'}   # 1회에서 빼 2회로 옮긴 문항(단어 비중 조정)
+D2 = os.path.join(D, '..', '..', '..', '청운고 2학년 기말고사 모의고사 2회', 'src', 'data')
+ALL = list(zip(QS, EX))
+for d, P_, pick in ((D, P, lambda x: x['src'] not in DROP | ROUND2), (D2, '청운고 2학년 기말고사 모의고사 2회', lambda x: x['src'] in ROUND2)):
+    qs = [dict(x, part=P_) for x, _ in ALL if pick(x)]
+    ex = [e for x, e in ALL if pick(x)]
+    for i, x in enumerate(qs, 1):
+        x['no'] = i
+        if x.get('set'):
+            x['set'] = dict(x['set'], first=i)
+    os.makedirs(f'{d}/ex', exist_ok=True)
+    json.dump({'parts': [P_], 'questions': qs}, open(f'{d}/qb.json', 'w'), ensure_ascii=False, indent=1)
+    json.dump([{'no': i, 'answer': a, 'plain': p} for i, (a, p) in enumerate(ex, 1)], open(f'{d}/ex/ex.json', 'w'), ensure_ascii=False, indent=1)
+    print(os.path.basename(os.path.dirname(os.path.dirname(os.path.abspath(d)))), len(qs), ''.join(a for a, _ in ex))

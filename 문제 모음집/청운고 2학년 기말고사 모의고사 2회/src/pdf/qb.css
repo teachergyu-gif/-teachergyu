@@ -1,0 +1,101 @@
+/* 품사·단어의 형성 기출 문제 은행: 출처 띠, 표·그림, 짧은 선지 격자 */
+.src{margin:0 0 1.6mm}
+.src span{display:inline-block;font-family:"Noto Sans CJK KR",sans-serif;font-weight:700;font-size:9.6pt;padding:.6mm 2.6mm;border-radius:1mm}
+.src.hp span{background:#cfe0f3;color:#1d3557}
+.src.pg span{background:#f6d3d3;color:#6b1f1f}
+.bogi.hb .ln{font-size:10.5pt;line-height:1.7;padding-left:0;text-indent:0;text-align:justify}
+.bogi.hb .ln.ind{text-indent:1em;padding-left:0}
+.bogi.hb .ln.hang{padding-left:1em;text-indent:-1em}
+.bogi.hb .ln.c{text-align:center}
+.bogi.hb .ln.r{text-align:right}
+.bogi.hb .ln.e{height:1.2mm}
+table.ht{border-collapse:collapse;width:100%;margin:1.5mm 0;font-size:10pt;line-height:1.5}
+table.ht td{padding:.8mm 1.6mm;vertical-align:middle}
+table.ht .ln{font-size:10pt;line-height:1.5;padding-left:0;text-indent:0}
+table.ht .ln.e{height:0}
+.hblk{margin:2mm 4mm}
+.ctab-h{margin:1.5mm 0 0 4mm}
+.ctab-h table.ht{width:calc(100% - 4mm)}
+table.tabrows{border-collapse:collapse;margin:1mm 0 1mm 4mm;font-size:11pt}
+table.tabrows td{padding:.4mm 3mm .4mm 0;white-space:nowrap}
+.chg{display:grid;margin:.8mm 0 .8mm 4mm}
+.chg.g5{grid-template-columns:repeat(5,1fr)}
+.chg.g3{grid-template-columns:repeat(3,1fr)}
+.chg .ch{margin:.6mm 0}
+.ch.pre .t{white-space:pre}
+.ln.qline{padding-left:4mm;text-indent:0;white-space:pre-wrap}
+img.pic{max-width:100%;display:block;margin:1mm auto}
+.draw{display:inline-block;border:1px dashed #c00;color:#c00;font-size:8pt;padding:0 1mm}
+.ovl{border:1px solid #111;padding:0 .5mm}
+sup{font-size:.65em}
+svg.gso{display:block;margin:1mm auto}
+.svgtx .ln{font-size:1000px !important;line-height:1.25 !important;padding:0 120px !important;text-indent:0 !important;white-space:nowrap}
+.svgtx .ln.c{text-align:center}
+svg.gso.inl{display:inline-block;vertical-align:middle;margin:0 .5mm}
+table.ht.plain td{border:none;padding:.4mm 2mm}
+/* 선지 표(머리 ㉠ ㉡ … 와 칸 맞춤) */
+table.ht.chtab{width:auto;min-width:60%;margin:1mm 0 0 0;font-size:11pt}
+table.ht.chtab td{border:none;padding:.5mm 4mm .5mm 0;text-align:left;white-space:nowrap}
+table.ht.chtab tr:first-child td{padding-bottom:.8mm}
+/* 대화 선지(37·41번): 표지 + 상자 */
+.ch .lab{display:inline-block;width:1.6em}
+.ch .dlg{display:inline-block;vertical-align:top;border:1px solid #111;padding:.6mm 2.4mm;line-height:1.55;width:calc(100% - 2.2em)}
+/* 184번 분류 과정 */
+.fbox{border:1px solid #111;padding:1mm 2mm;text-align:center;font-size:10pt;line-height:1.45}
+.fbox.wide{margin:1mm 0}
+table.flow{border-collapse:collapse;width:100%;margin-top:1mm;font-size:10pt}
+table.flow td{padding:0;vertical-align:middle}
+table.flow td:first-child{width:62%}
+table.flow td:last-child{width:22%}
+table.flow td.ar{text-align:center;white-space:nowrap;padding:0 1mm}
+table.flow td.dn{text-align:center;padding:.6mm 0}
+/* 보기 속 줄 끝 표지(ⓐ 등) */
+.rlab{float:right;margin-left:2mm}
+/* 표가 상자 밖으로 넘치지 않게 */
+.bogi.hb table.ht{table-layout:auto;max-width:100%}
+.bogi.hb table.ht col{width:auto !important}
+.bogi.hb table.ht td{word-break:keep-all;padding:.6mm 1.2mm}
+.bogi.hb .hblk,.bogi.hb svg.gso{max-width:100%}
+.qat-t td{height:6.6mm}
+.ch.dl .t{flex:1}
+.ch .dlg{width:calc(100% - 2.2em)}
+.tbox{border:1px solid #111;background:#fdf8e4;padding:1.2mm 2mm;margin:1.5mm 0}
+.bogi.hb table.ht table.ht{font-size:8.8pt;width:100%}
+.bogi.hb table.ht table.ht td{padding:.4mm .6mm}
+.bogi.hb table.ht table.ht .ln{font-size:8.8pt}
+.bnum{display:inline-block;border:1px solid #111;font-size:.8em;line-height:1.15;padding:0 .25em;margin:0 .15em;vertical-align:.08em;font-family:"Noto Sans CJK KR",sans-serif}
+table.ht .ln{text-indent:0 !important;padding-left:0 !important}
+table.ht .ln.hang{padding-left:1.1em !important;text-indent:-1.1em !important}
+.bnum{text-indent:0 !important;padding-left:.25em !important}
+/* 100번 분류 흐름도 */
+table.flow2{border-collapse:collapse;width:100%;margin:2mm 0;font-size:9pt;line-height:1.35}
+table.flow2 td{padding:0 .4mm;text-align:center;vertical-align:middle}
+table.flow2 td.ar{white-space:nowrap;font-size:8.5pt}
+table.flow2 td.dn{padding:.6mm 0;font-size:8.5pt}
+.fdia{border:1px solid #111;border-radius:2mm;padding:1mm 1.2mm;font-size:8.8pt}
+.fbox.sm{display:inline-block;padding:.4mm 3mm}
+.sym{display:inline-block;text-indent:0;white-space:nowrap}
+.prh{display:flex;margin:2mm 0 1mm 1.6em}.prh span:first-child{width:64mm;text-align:center}.prh span:last-child{width:6em;text-align:center}
+.ch .pr{display:inline-flex;flex-direction:column;gap:.7mm;vertical-align:middle;width:64mm;text-align:left;text-indent:0}
+.ch .pb{display:block;text-align:left;font-size:8.8pt;letter-spacing:-.02em;border:1px solid #111;padding:.4mm 1.8mm;line-height:1.45}
+.ch .pi{display:inline-block;vertical-align:middle;white-space:nowrap;margin-left:1.2mm}
+/* 청운고 모의고사 추가 */
+.inbox{border:1px solid #111;padding:.8mm 2.4mm;margin:1.2mm 2mm;text-align:center}
+.inbox.l{text-align:left}
+.tdlg{margin:1.5mm 0}
+.tdlg .ln.hang{padding-left:3.6em;text-indent:-3.6em}
+.tdlg .inbox .ln{padding-left:0;text-indent:0}
+.blank{display:inline-block;min-width:60%;border-bottom:1px solid #111;text-align:center}
+.ch .dlg.brc{border:none;position:relative;padding:0 0 0 3mm}
+.ch .dlg.brc::before{content:'';position:absolute;left:0;top:.5em;bottom:.5em;width:1.6mm;border:1px solid #111;border-right:none}
+.sp2{display:inline-block;width:8em}
+table.ht.g2 td{border:none;padding:.3mm 1mm}
+.ln.ex2{padding-left:1em}
+.ibx{display:inline-block;border:1px solid #111;padding:0 2mm;min-width:22mm;text-align:center;text-indent:0}
+.inbox .ln.hang2{padding-left:1em;text-indent:-1em}
+.ch .dlg.brc{width:calc(100% - 2em);text-align:left;text-align-last:left;letter-spacing:-.01em}
+.ch .lab{width:1.4em}
+.h1title{font-family:'나눔스퀘어',"Noto Sans CJK KR",sans-serif;font-weight:800;color:#29334A;letter-spacing:-.005em}
+.h1row{position:absolute;left:0;right:0;top:0;bottom:0}
+.h1row .h1title{position:absolute;left:50%;top:15mm;transform:translateX(-50%);font-size:30pt;white-space:nowrap}
+.h1row .h1brand{position:absolute;left:0;bottom:4mm;height:9.5mm}
