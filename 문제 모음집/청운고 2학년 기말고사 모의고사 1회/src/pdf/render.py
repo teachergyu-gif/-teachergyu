@@ -92,7 +92,7 @@ def passage(st, n):
 def question(n, q):
     hamp = not re.search(r'모의평가|대학수학능력|예비평가', q['src'])
     src = ''   # 출처 띠는 넣지 않음(사용자 지정)
-    stem = re.sub(r'^\s+', '', q['stem']) + (f' [{q["pts"]}]' if q.get('pts') else '')
+    stem = re.sub(r'\s*\[\d+점\]', '', re.sub(r'^\s+', '', q['stem']))   # 배점 표시 없음(사용자 지정)
     bl = ''.join(block_html(b) for b in q['blocks'])
     return (f'<div class="u q" data-key="{n}">{src}<div class="qh"><span class="n">{n}{"" if str(n).startswith("[") else "."}</span><span class="s">{fix_img(stem)}</span></div>'
             f'{bl}{choices_html(q)}</div>')
