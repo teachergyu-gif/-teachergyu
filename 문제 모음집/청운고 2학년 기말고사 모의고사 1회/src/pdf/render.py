@@ -15,6 +15,7 @@ except ImportError:
     KEEP_Q = set()
 
 CIRC = '①②③④⑤'
+MODE = os.environ.get('MODE', '')   # q: 문제만, a: 정답 및 해설만, 빈칸: 합본
 HEAD = os.environ.get('HEAD', '청운고 2학년 국어 기말고사 대비 모의고사 1회')
 J_IMG = J + '/img/'
 
@@ -190,11 +191,18 @@ def main(data_json, out_html):
         elif Q_BREAK.get(q['no']) == 'page': body.append('<div class="u brk"></div>')
         if q.get('set'):
             body.append(passage(q['set'], q['no']))
-        body.append(question(q.get('label') or q['no'], q))
+        if MODE != 'a':
+            body.append(question(q.get('label') or q['no'], q))
+        elif q.get('set'):
+            body.pop()
         if q['no'] in exs:
             done.append((q.get('label') or q['no'], {'choices': q['choices']}, exs[q['no']]))
+    if MODE == 'q':
+        done = []   # 문제 파일: 해설 없음
+    if MODE == 'a':
+        body = []   # 해설 파일: 문제 없음(1쪽 머리가 '정답 및 해설')
     if done:
-        body += ['<div class="u brk"></div>', '<div class="u extitle"><span>정답 및 해설</span></div>'] + [quick([d for d in done if d[1]['choices']][i:i + 100]).replace('<div class="qat">빠른 정답</div>', '' if i else '<div class="qat">빠른 정답</div>') for i in range(0, len(done), 100)]
+        body += ([] if MODE == 'a' else ['<div class="u brk"></div>', '<div class="u extitle"><span>정답 및 해설</span></div>']) + [quick([d for d in done if d[1]['choices']][i:i + 100]).replace('<div class="qat">빠른 정답</div>', '' if i else '<div class="qat">빠른 정답</div>') for i in range(0, len(done), 100)]
         def post(h):
             h = re.sub(r'「([12])」', r'<span class="bnum">\1</span>', h)
             h = re.sub(r'\^(\d)', r'<sup>\1</sup>', h)                       # 어깨번호
@@ -211,7 +219,7 @@ def main(data_json, out_html):
     js = open(f'{D}/paginate.js').read()
     doc = f'''<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>
 <div id="src">{"".join(body)}</div>
-<script>window.P0={int(os.environ.get("START_PAGE", "1")) - 1};window.HEAD="{HEAD}";window.SUB="";window.LOGO="file://{J}/logo2.jpg";</script>
+<script>window.P0={int(os.environ.get("START_PAGE", "1")) - 1};window.HEAD="{HEAD}";window.BIG="{'정답 및 해설' if MODE == 'a' else '국어 영역'}";window.SUB="";window.LOGO="file://{J}/logo2.jpg";</script>
 <script>{js}</script></body></html>'''
     open(out_html, 'w').write(doc)
     print('questions', len(d['questions']), 'explanations', len(done))

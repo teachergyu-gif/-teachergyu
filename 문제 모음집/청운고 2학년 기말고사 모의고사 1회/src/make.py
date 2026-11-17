@@ -26,14 +26,14 @@ def a4(p):
     return p
 
 
-with tempfile.TemporaryDirectory() as t:
-    run('python3', '-I', f'{H}/pdf/render.py', DATA, f'{t}/qb.html', env=dict(os.environ, START_PAGE='1'))
+for mode, out in (('q', os.path.join(H, '..', f'{TITLE} (문제).pdf')), ('a', os.path.join(H, '..', f'{TITLE} (정답 및 해설).pdf'))):
+  with tempfile.TemporaryDirectory() as t:   # 문제 파일·해설 파일 따로(사용자 지정)
+    run('python3', '-I', f'{H}/pdf/render.py', DATA, f'{t}/qb.html', env=dict(os.environ, START_PAGE='1', MODE=mode))
     run('node', f'{H}/pdf/print.js', f'{t}/qb.html', f'{t}/qb.pdf', f'{H}/pdf/balanced.json')
     w = PdfWriter()
     for p in PdfReader(f'{t}/qb.pdf').pages:
         w.add_page(a4(p))
     w.write(f'{t}/m0.pdf')
     total = len(w.pages)
-    # 목차 없음: 1쪽 머리(제목·로고) 아래부터 바로 문제(사용자 지정)
-    run('python3', '-I', f'{H}/footer_box.py', f'{t}/m0.pdf', OUT, str(total), '0', '')
-    print('ok', OUT, total, 'pages')
+    run('python3', '-I', f'{H}/footer_box.py', f'{t}/m0.pdf', out, str(total), '0', '')
+    print('ok', out, total, 'pages')

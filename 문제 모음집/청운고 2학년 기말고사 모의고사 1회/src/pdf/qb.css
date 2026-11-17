@@ -107,3 +107,11 @@ table.ht.g2 td{border:none;padding:.3mm 1mm}
 .hblk:has(.qimg){margin:2mm 0}
 .hblk .qimg{width:108mm!important;max-width:none!important;height:auto}
 .tdlg.bx{border:1px solid #111;padding:1.6mm 2.4mm;margin:1.5mm 2mm}
+/* 1쪽 머리: 문제 은행 양식 */
+.h1x{position:absolute;left:31mm;right:31mm;top:0;height:59mm}
+.h1n{position:absolute;right:0;top:20mm;font-family:"Times New Roman",serif;font-weight:700;font-size:34pt;line-height:1}
+.h1s{position:absolute;left:0;right:0;top:25mm;text-align:center;font-family:"Noto Serif CJK KR",serif;font-size:17.5pt;letter-spacing:-.3pt}
+.h1b{position:absolute;left:0;right:0;top:34mm;text-align:center;font-family:"Noto Sans CJK KR",sans-serif;font-weight:900;font-size:37pt;letter-spacing:1.4pt;line-height:1.2}
+.h1k{position:absolute;right:0;top:42mm;border:1.8pt solid #111;border-radius:4pt;padding:2pt 6pt;font-family:"Noto Sans CJK KR",sans-serif;font-weight:900;font-size:17pt;line-height:1.2}
+.h1r{position:absolute;left:31mm;right:31mm;top:59mm;border-top:1.4pt solid #111}
+.h1x{border-bottom:1.4pt solid #111;box-sizing:border-box}

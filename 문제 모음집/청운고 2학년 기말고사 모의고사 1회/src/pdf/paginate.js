@@ -7,14 +7,15 @@
 
   function header(n) {
     const box = '<span class="kt">이재규T</span>';
-    if (n === 1) return `<div class="h1box"><div class="h1row"><span class="h1title">${HEAD}</span></div><span class="pn1">1</span></div>`;
+    // 1쪽 머리: 문제 은행 양식(시험지 머리) — 위에 교재 이름, 가운데 큰 '국어 영역', 오른쪽 '이재규T' 상자와 쪽 번호
+    if (n === 1) return `<div class="h1x"><span class="h1n">1</span><div class="h1s">${HEAD}</div><div class="h1b">${window.BIG || '국어 영역'}</div><span class="h1k">이재규T</span></div><div class="h1r"></div>`;
     return `<div class="topn"><span class="pn">${n}</span><span class="ra">RICH ACADEMY</span><span class="lg">${box}</span></div><div class="rule"></div>`;
   }
   function newPage() {
     const n = pages.length + 1 + (window.P0 || 0);   // 이 교재: 앞 문서 뒤에 붙일 때 쪽 번호를 이어서(P0 = 앞 문서 쪽수)
     const p = document.createElement('div');
     p.className = 'page ' + (n % 2 ? 'odd' : 'even');
-    p.innerHTML = header(n) + `<div class="cols" style="--top:${n === 1 ? '102mm' : '50mm'}"><div class="col"></div><div class="col"></div></div>
+    p.innerHTML = header(n) + `<div class="cols" style="--top:${n === 1 ? '62mm' : '50mm'}"><div class="col"></div><div class="col"></div></div>
 <div class="foot"><span class="fr"><i>${n}</i><s class="tot"></s></span></div>`;
     document.body.appendChild(p);
     pages.push(p);
