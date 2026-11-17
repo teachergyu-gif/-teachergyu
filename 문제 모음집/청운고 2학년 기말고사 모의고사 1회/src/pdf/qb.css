@@ -100,3 +100,5 @@ table.ht.g2 td{border:none;padding:.3mm 1mm}
 .h1row .h1title{position:absolute;left:50%;top:15mm;transform:translateX(-50%);font-size:30pt;white-space:nowrap}
 .h1row .h1brand{position:absolute;left:0;bottom:4mm;height:9.5mm}
 .ansbox{border:1px solid #111;height:52mm;margin:2mm 0 0}
+.box .ln.po{padding-left:1em;text-indent:-1em;text-align:left}
+.box .ln.mid{text-align:center}

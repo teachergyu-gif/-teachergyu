@@ -72,7 +72,11 @@ def passage(st, n):
         end = l.endswith('{/' + (group[0] if group else 'A') + '}')
         if end:
             l = l[:l.rindex('{/')]
-        cell = f'<div class="ln{"" if l.startswith('<span class="exl">') else " fi"}">{l}</div>'
+        KIND = {'@': ' po', '#': ' tag', '%': ' mid', '&': ' au', '*': ' note', '~': ' sp'}   # 시행·표지·가운데·지은이·각주·빈 줄
+        if l[:1] in KIND:
+            cell = f'<div class="ln{KIND[l[0]]}">{l[1:]}</div>'
+        else:
+            cell = f'<div class="ln{"" if l.startswith('<span class="exl">') else " fi"}">{l}</div>'
         if group:
             group[1].append(cell)
             if end:
