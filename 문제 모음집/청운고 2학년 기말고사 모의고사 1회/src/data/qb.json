@@ -1,0 +1,48 @@
+{
+ "parts": [
+  "청운고 2학년 기말고사 모의고사 1회"
+ ],
+ "questions": [
+  {
+   "no": 1,
+   "part": "청운고 2학년 기말고사 모의고사 1회",
+   "src": "2027학년도 대비 7월 전국 대단위 실전 모의고사 언어와 매체 37번",
+   "stem": "&lt;보기&gt;의 ㉠~㉤에 대한 설명으로 적절한 것은? [3점]",
+   "blocks": [
+    {
+     "type": "bogi",
+     "title": "<보기>",
+     "html": "<div class=\"ln\">  좋은 글은 ㉠ <u>타고난</u> 재능에서만 나오지 않는다. 꾸준히 읽고 자주 쓰면 누구나 ㉡ <u>좋은</u> 문장을 가질 수 있다. ㉢ <u>짧은</u> 글이라도 매일 ㉣ <u>써 보는</u> 습관이 글쓰기 실력을 ㉤ <u>키우는</u> 가장 확실한 방법이다.</div>"
+    }
+   ],
+   "choices": [
+    "㉠이 서술어인 안긴문장의 수식을 받는 체언이 그 안긴문장 안에서 어떤 성분으로도 쓰이지 않는다.",
+    "㉡이 서술어인 안긴문장의 수식을 받는 체언이 그 안긴문장 안에서 목적어 기능을 한다.",
+    "㉢이 서술어인 안긴문장의 수식을 받는 체언이 그 안긴문장 안에서 부사어 기능을 한다.",
+    "㉣이 서술어인 안긴문장의 수식을 받는 체언이 그 안긴문장 안에서 어떤 성분으로도 쓰이지 않는다.",
+    "㉤이 서술어인 안긴문장의 수식을 받는 체언이 그 안긴문장 안에서 주어 기능을 한다."
+   ]
+  },
+  {
+   "no": 2,
+   "part": "청운고 2학년 기말고사 모의고사 1회",
+   "src": "2027학년도 대비 7월 전국 대단위 실전 모의고사 언어와 매체 38번",
+   "stem": "&lt;보기&gt;의 ㉠~㉢에 해당하는 단어로 적절한 것은?",
+   "blocks": [
+    {
+     "type": "bogi",
+     "title": "<보기>",
+     "html": "<div class=\"ln\">  합성 명사를 이루는 두 어근은 각각 중심적 의미로 쓰이기도 하고 주변적 의미로 쓰이기도 한다. 이를 바탕으로 합성 명사를 분류하면, ㉠ <u>두 어근이 모두 중심적 의미로 쓰이는 유형</u>, ㉡ <u>선행 어근은 주변적 의미로, 후행 어근은 중심적 의미로 쓰이는 유형</u>, ㉢ <u>선행 어근은 중심적 의미로, 후행 어근은 주변적 의미로 쓰이는 유형</u>, 두 어근이 모두 주변적 의미로 쓰이는 유형으로 나눌 수 있다.</div>"
+    }
+   ],
+   "choices": [
+    "①",
+    "②",
+    "③",
+    "④",
+    "⑤"
+   ],
+   "ctab": "<table class=\"ht chtab\"><tr><td></td><td style=\"text-align:center;padding:.5mm 6mm\">㉠</td><td style=\"text-align:center;padding:.5mm 6mm\">㉡</td><td style=\"text-align:center;padding:.5mm 6mm\">㉢</td></tr><tr><td>①</td><td style=\"text-align:center;padding:.5mm 6mm\">돌다리</td><td style=\"text-align:center;padding:.5mm 6mm\">책벌레</td><td style=\"text-align:center;padding:.5mm 6mm\">칼바람</td></tr><tr><td>②</td><td style=\"text-align:center;padding:.5mm 6mm\">책가방</td><td style=\"text-align:center;padding:.5mm 6mm\">칼바람</td><td style=\"text-align:center;padding:.5mm 6mm\">벼락부자</td></tr><tr><td>③</td><td style=\"text-align:center;padding:.5mm 6mm\">돌다리</td><td style=\"text-align:center;padding:.5mm 6mm\">산허리</td><td style=\"text-align:center;padding:.5mm 6mm\">책벌레</td></tr><tr><td>④</td><td style=\"text-align:center;padding:.5mm 6mm\">돌다리</td><td style=\"text-align:center;padding:.5mm 6mm\">칼바람</td><td style=\"text-align:center;padding:.5mm 6mm\">책벌레</td></tr><tr><td>⑤</td><td style=\"text-align:center;padding:.5mm 6mm\">산허리</td><td style=\"text-align:center;padding:.5mm 6mm\">벼락부자</td><td style=\"text-align:center;padding:.5mm 6mm\">책가방</td></tr></table>"
+  }
+ ]
+}
