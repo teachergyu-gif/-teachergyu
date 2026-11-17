@@ -8,9 +8,9 @@ from pypdf import PdfReader, PdfWriter, Transformation
 
 H = os.path.dirname(os.path.abspath(__file__))
 DATA = H + '/data/qb.json'
-TITLE = '부일고 1학년 문장 문제집'
-FOOT = '부일고 1학년 문장 문제집'
-OUT = os.path.join(H, '..', '부일고 1학년 문장 문제집.pdf')
+TITLE = os.environ.get('BOOK', '부일고 1학년 문장 문제집')   # BOOK='청운고 1학년 문장 문제집' 으로 학교 이름만 바꾼 판
+FOOT = TITLE
+OUT = os.path.join(H, '..', f'{TITLE}.pdf')
 PARTS = [('Ⅱ-(1) 문장의 짜임 기출문제', 'Ⅱ-(1) 문장의 짜임 기출문제'), ('추가 기출문제', '추가 기출문제 [69')]
 
 
