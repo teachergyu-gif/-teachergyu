@@ -92,7 +92,7 @@ def passage(st, n):
 def question(n, q):
     hamp = not re.search(r'모의평가|대학수학능력|예비평가', q['src'])
     src = ''   # 출처 띠는 넣지 않음(사용자 지정)
-    stem = re.sub(r'^\s+', '', q['stem'])
+    stem = re.sub(r'^\s+', '', q['stem']) + (f' [{q["pts"]}]' if q.get('pts') else '')
     bl = ''.join(block_html(b) for b in q['blocks'])
     return (f'<div class="u q" data-key="{n}">{src}<div class="qh"><span class="n">{n}{"" if str(n).startswith("[") else "."}</span><span class="s">{fix_img(stem)}</span></div>'
             f'{bl}{choices_html(q)}</div>')
@@ -211,6 +211,8 @@ def main(data_json, out_html):
         body += [post(explanation(k, e)) for k, q, e in done]
     # 원문자(㉠ ⓐ 등)는 글자 폭이 넓어 뒤 조사와 띄어 보이므로 오른쪽 여백을 줄여 붙여 보이게
     # (양쪽 맞춤 때 원문자 뒤가 벌어지지 않게 기호와 뒤 조사를 한 덩어리로)
+    body = [re.sub(r'‘-\([^)<]*\)ㅁ’', lambda m: '<span class="nb">' + m.group(0) + '</span>', b) for b in body]   # ‘-(으)ㅁ’이 줄 끝에서 갈라지지 않게
+    body = [re.sub(r'([㉠-㉭㉮-㉻ⓐ-ⓩ])\s*~\s*([㉠-㉭㉮-㉻ⓐ-ⓩ])', r'<span class="nb">\1~\2</span>', b) for b in body]   # ‘㉠~㉢’ 붙여 쓰고 한 덩어리로
     body = [re.sub(r'([㉠-㉭㉮-㉻ⓐ-ⓩⒶ-Ⓩ])([가-힣]{1,3}(?=[\s.,’”)<]))', r'<span class="sym">\1\2</span>', b) for b in body]
     YH = re.compile(r'[\uAC00-\uD7A3\u1100-\u11FF]*[\u1100-\u11FF][\uAC00-\uD7A3\u1100-\u11FF]*')
     body = [YH.sub(lambda m: '<span class="yh">' + m.group(0) + '</span>', b) for b in body]   # 옛한글 낱말은 옛한글 글꼴로
