@@ -57,9 +57,31 @@ def choices_html(q):
     out = ''
     for i, t in enumerate(body):
         pre = ' pre' if re.search(r'\S {3,}\S', re.sub(r'<[^>]+>', '', t)) else ''
-        if 'class="dlg"' in t: pre += ' dl'
+        if 'class="dlg' in t: pre += ' dl'
         out += f'<div class="ch{pre}"><span class="c">{CIRC[i]}</span><span class="t">{t}</span></div>'
     return out
+
+
+def passage(st, n):
+    """지문 묶음: {A}…{/A}는 [A] 괄호 묶음, 줄 앞 <span class="exl">은 들여쓰지 않는 예시 줄"""
+    out, group = [], None
+    for l in st['lines']:
+        m = re.match(r'^\{(\w+)\}', l)
+        if m:
+            group = [m.group(1), []]; l = l[m.end():]
+        end = l.endswith('{/' + (group[0] if group else 'A') + '}')
+        if end:
+            l = l[:l.rindex('{/')]
+        cell = f'<div class="ln{"" if l.startswith('<span class="exl">') else " fi"}">{l}</div>'
+        if group:
+            group[1].append(cell)
+            if end:
+                out.append(f'<div class="ln brk"><div class="bx2"><span class="lab2">[{group[0]}]</span><span class="br2"></span><div>{"".join(group[1])}</div></div></div>')
+                group = None
+        else:
+            out.append(cell)
+    k = n + st.get('count', 2) - 1
+    return f'<div class="u set"><div class="sethd">【{n}～{k}】 다음 글을 읽고 물음에 답하시오.</div><div class="box">{"".join(out)}</div></div>'
 
 
 def question(n, q):
@@ -162,6 +184,8 @@ def main(data_json, out_html):
             body.append(f'<div class="u qtitle"><span>{esc(PART_TITLE.get(part, part))}</span></div>')
         if Q_BREAK.get(q['no']) == 'col': body.append('<div class="u colbrk"></div>')
         elif Q_BREAK.get(q['no']) == 'page': body.append('<div class="u brk"></div>')
+        if q.get('set'):
+            body.append(passage(q['set'], q['no']))
         body.append(question(q['no'], q))
         if q['no'] in exs:
             done.append((q['no'], {'choices': q['choices'] or ['x'] * 5}, exs[q['no']]))
@@ -176,7 +200,10 @@ def main(data_json, out_html):
     # 원문자(㉠ ⓐ 등)는 글자 폭이 넓어 뒤 조사와 띄어 보이므로 오른쪽 여백을 줄여 붙여 보이게
     # (양쪽 맞춤 때 원문자 뒤가 벌어지지 않게 기호와 뒤 조사를 한 덩어리로)
     body = [re.sub(r'([㉠-㉭㉮-㉻ⓐ-ⓩⒶ-Ⓩ])([가-힣]{1,3}(?=[\s.,’”)<]))', r'<span class="sym">\1\2</span>', b) for b in body]
-    css = open(f'{D}/exam.css').read() + open(f'{D}/qb.css').read()
+    YH = re.compile(r'[\uAC00-\uD7A3\u1100-\u11FF]*[\u1100-\u11FF][\uAC00-\uD7A3\u1100-\u11FF]*')
+    body = [YH.sub(lambda m: '<span class="yh">' + m.group(0) + '</span>', b) for b in body]   # 옛한글 낱말은 옛한글 글꼴로
+    css = (open(f'{D}/exam.css').read() + open(f'{D}/qb.css').read()
+           + f'@font-face{{font-family:"YetHangul";src:url("file://{D}/fonts/NanumMyeongjo-YetHangul.woff2") format("woff2")}}.yh{{font-family:"YetHangul","Noto Serif CJK KR",serif}}')
     js = open(f'{D}/paginate.js').read()
     doc = f'''<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>
 <div id="src">{"".join(body)}</div>
