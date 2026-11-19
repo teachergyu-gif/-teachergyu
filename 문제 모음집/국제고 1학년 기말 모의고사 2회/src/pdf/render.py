@@ -186,7 +186,7 @@ def question(n, q, key=None):
     close = ' data-close="1"' if key in CLOSE else ''
     if key: close += f' data-key="{key[0]}|{key[1]}"'
     num = f'<span class="n sd">[{n}]</span>' if str(n).startswith('서답형') else f'<span class="n">{n}.</span>'
-    pts = f' <span class="pt">[{q["points"]}점]</span>' if q.get('points') else ''
+    pts = ''   # 배점 표시 없음(사용자 지정)
     return (f'<div class="u q{" sdq" if str(n).startswith("서답형") else ""}"{close}><div class="qh">{num}<span class="s">{esc(q["stem"])}{pts}</span></div>'
             f'{bogi(q.get("bogi"))}{extra}{ch}{ans}</div>')
 
