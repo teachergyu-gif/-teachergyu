@@ -145,3 +145,5 @@ table.ht.g3 td{border:none;padding:.3mm 2mm;text-align:left}
 .inbox .ln.ind{text-indent:1em}
 .inbox .ln.c{text-align:center}
 .diag svg{position:absolute;left:0;top:0;width:100%;height:100%}
+.ch.dl{align-items:center;margin-top:1.4mm;margin-bottom:1.4mm}   /* 두 줄 선지: 번호를 괄호 가운데에 */
+.ch.dl .t{line-height:1.6}
