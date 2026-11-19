@@ -25,7 +25,7 @@ def a4(p):
     return p
 
 
-for mode, out in (('q', os.path.join(H, '..', f'{TITLE} (문제 은행).pdf')),):   # 문제만(해설 없음: 사용자 지정)
+for mode, out in (('', os.path.join(H, '..', f'{TITLE} (문제 은행).pdf')),):   # 문제 → 정답 및 해설(사용자 요청으로 해설 추가)
   with tempfile.TemporaryDirectory() as t:   
     run('python3', '-I', f'{H}/pdf/render.py', DATA, f'{t}/qb.html', env=dict(os.environ, START_PAGE='1', MODE=mode, HEAD=TITLE))
     run('node', f'{H}/pdf/print.js', f'{t}/qb.html', f'{t}/qb.pdf', f'{H}/pdf/balanced.json')
