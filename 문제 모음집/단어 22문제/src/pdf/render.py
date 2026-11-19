@@ -6,6 +6,10 @@ J = os.path.dirname(D)
 sys.path.insert(0, J)
 from layout_overrides import Q_BREAK
 try:
+    from layout_overrides import Q_AFTER_SET
+except ImportError:
+    Q_AFTER_SET = set()
+try:
     from layout_overrides import SPLIT_CH
 except ImportError:
     SPLIT_CH = set()
@@ -192,6 +196,7 @@ def main(data_json, out_html):
         elif Q_BREAK.get(q['no']) == 'page': body.append('<div class="u brk"></div>')
         if q.get('set'):
             body.append(passage(q['set'], q['no']))
+            if q['no'] in Q_AFTER_SET: body.append('<div class="u colbrk"></div>')
         if MODE != 'a':
             body.append(question(q.get('label') or q['no'], q))
         elif q.get('set'):
