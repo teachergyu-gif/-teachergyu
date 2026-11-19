@@ -34,56 +34,87 @@ TABLES = {
     'DM': tbl([['', '전설 모음', '후설 평순 모음', '후설 원순 모음'], ['고모음', 'ㅣ', 'ㅡ', 'ㅜ'], ['중모음', '', 'ㅓ', 'ㅗ'], ['저모음', '', 'ㅏ', 'ㆍ']]),
 }
 
-qs = []; q = None; box = None
-for line in open(f'{H}/questions.txt', encoding='utf8').read().split('\n') + ['']:
-    s = line.rstrip()
-    m = re.match(r'^(\d+)\. (.+)$', s)
-    if m and not s[:1] in CIRC:
-        q = {'no': m.group(1), 'stem': m.group(2), 'bogi': [], 'choices': [], 'extra': None}
-        qs.append(q); box = None; continue
-    if not s:
-        continue
-    if s[:1] in CIRC:
-        q['choices'].append(s[1:].strip()); box = None; continue
-    if re.fullmatch(r'<[^<>]{1,12}>', s) or s == '[상자]':
-        box = {'title': '' if s == '[상자]' else s, 'parts': []}
-        q['bogi'].append(box); continue
-    mt = re.match(r'^@T (\w+)$', s)
-    if mt:
-        if box is not None:
-            box['parts'].append(('T', TABLES[mt.group(1)]))
-        else:
-            q['bogi'].append({'title': '', 'html': TABLES[mt.group(1)]})
-        continue
-    assert box is not None, (q['no'], s)
-    box['parts'].append(('L', s))
+def parse_q(path):
+    qs = []; q = None; box = None
+    for line in open(path, encoding='utf8').read().split('\n') + ['']:
+        s = line.rstrip()
+        m = re.match(r'^(\d+)\. (.+)$', s) or re.match(r'^\[(서답형 \d+)\] (.+)$', s)
+        if m and not s[:1] in CIRC and not (box is not None and '조' in box['title'] and re.match(r'^\d+\. ', s)):
+            q = {'no': m.group(1), 'stem': m.group(2), 'bogi': [], 'choices': [], 'extra': None}
+            qs.append(q); box = None; continue
+        if not s:
+            continue
+        if s[:1] in CIRC:
+            q['choices'].append(s[1:].strip()); box = None; continue
+        if re.fullmatch(r'<[^<>]{1,12}>', s) or s == '[상자]':
+            box = {'title': '' if s == '[상자]' else s, 'parts': []}
+            q['bogi'].append(box); continue
+        mt = re.match(r'^@T (\w+)$', s)
+        if mt:
+            if box is not None:
+                box['parts'].append(('T', TABLES[mt.group(1)]))
+            else:
+                q['bogi'].append({'title': '', 'html': TABLES[mt.group(1)]})
+            continue
+        assert box is not None, (q['no'], s)
+        box['parts'].append(('L', s))
+    for q in qs:   # 상자 정리: 글만 있으면 text, 표가 섞이면 html
+        out = []
+        for b in q['bogi']:
+            if 'html' in b:
+                out.append(b); continue
+            if any(k == 'T' for k, _ in b['parts']):
+                h = ''.join(f'<div class="bl">{v}</div>' if k == 'L' else v for k, v in b['parts'])
+                out.append({'title': b['title'] or '<보 기>', 'html': h})
+            else:
+                out.append({'title': b['title'], 'text': '\n'.join(v for _, v in b['parts'])})
+        q['bogi'] = out or None
+        assert len(q['choices']) == (0 if q['no'].startswith('서답형') else 5), q['no']
+    return qs
 
-# 상자 정리: 글만 있으면 text, 표가 섞이면 html
-for q in qs:
-    out = []
-    for b in q['bogi']:
-        if 'html' in b:
-            out.append(b); continue
-        if any(k == 'T' for k, _ in b['parts']):
-            h = ''.join(f'<div class="bl">{v}</div>' if k == 'L' else v for k, v in b['parts'])
-            out.append({'title': b['title'] or '<보 기>', 'html': h})
-        else:
-            out.append({'title': b['title'], 'text': '\n'.join(v for _, v in b['parts'])})
-    q['bogi'] = out or None
-    assert len(q['choices']) == 5, q['no']
 
-exs = []
-for blk in re.split(r'\n(?=\d+\. [①-⑤]\n)', '\n' + open(f'{H}/answers.txt', encoding='utf8').read().strip()):
-    blk = blk.strip()
-    if not blk:
-        continue
-    head, *rest = blk.split('\n')
-    m = re.match(r'^(\d+)\. ([①-⑤])$', head)
-    exs.append({'no': m.group(1), 'answer': m.group(2), 'plain': '\n'.join(rest)})
-assert [e['no'] for e in exs] == [q['no'] for q in qs], 'answers mismatch'
+def parse_a(path):
+    exs = []
+    for blk in re.split(r'\n(?=(?:\d+\. [①-⑤]|\[서답형 \d+\])\n)', '\n' + open(path, encoding='utf8').read().strip()):
+        blk = blk.strip()
+        if not blk:
+            continue
+        head, *rest = blk.split('\n')
+        m = re.match(r'^(\d+)\. ([①-⑤])$', head)
+        if m:
+            exs.append({'no': m.group(1), 'answer': m.group(2), 'plain': '\n'.join(rest)}); continue
+        no = re.match(r'^\[(서답형 \d+)\]$', head).group(1)
+        e = {'no': no, 'answer': '', 'plain': ''}
+        lines = []
+        for x in rest:
+            k = re.match(r'^\[(모범 답안|예시 답안)\] (.*)$', x)
+            if k:
+                e['answer'], e['tag'] = k.group(2), k.group(1)
+            elif x.strip():
+                lines.append(re.sub(r'^\*\s*', '· ', x.strip()))
+        e['plain'] = '\n'.join(lines)
+        exs.append(e)
+    return exs
+
+
+# 묶음: (이름, 문항 파일, 해설 파일, 지문)
+LIT = json.load(open(f'{H}/lit.json', encoding='utf8'))   # 「흥보전」·「춘향전」
 NL = open(f'{H}/nonlit.txt', encoding='utf8').read().strip()   # 2024년 7월 고3 더프리미엄 모의고사 [4~7] 지문(4~6번 문항만 수록)
-k = next(i for i, x in enumerate(qs) if x['no'] == '32')
-SETS = [{'rng': '', 'works': [], 'questions': qs[:k]},
-        {'rng': '32～34', 'works': [{'label': '', 'lines': NL, 'author': ''}], 'questions': qs[k:]}]
+gq, ga = parse_q(f'{H}/questions.txt'), parse_a(f'{H}/answers.txt')
+k = next(i for i, x in enumerate(gq) if x['no'] == '32')
+GROUPS = [(parse_q(f'{H}/lit_q.txt'), parse_a(f'{H}/lit_a.txt'), LIT),
+          (parse_q(f'{H}/lit2_q.txt'), parse_a(f'{H}/lit2_a.txt'), json.load(open(f'{H}/lit2.json', encoding='utf8'))),   # 「흰 바람벽이 있어」·「논두렁에 서서」·「수경당기」(원 세트 1~5번 중 1~4번)
+          (gq[:k], ga[:k], []),
+          (gq[k:], ga[k:], [{'label': '', 'lines': NL, 'author': ''}])]
+SETS, exs, n = [], [], 0
+for qs, ea, works in GROUPS:
+    assert [e['no'] for e in ea] == [q['no'] for q in qs], 'answers mismatch'
+    for q, e in zip(qs, ea):   # 객관식 번호는 앞에서부터 이어서 다시 매김
+        if not q['no'].startswith('서답형'):
+            n += 1; q['no'] = e['no'] = str(n)
+    mc = [q['no'] for q in qs if q['no'].isdigit()]
+    sd = [q['no'] for q in qs if not q['no'].isdigit()]
+    rng = (f'{mc[0]}～{mc[-1]}' if len(mc) > 1 else mc[0]) + (', ' + ', '.join(sd) if sd else '')
+    SETS.append({'rng': rng, 'works': works, 'questions': qs}); exs += ea
 json.dump({'sets': SETS, 'ex': exs, 'issues': []}, open(f'{H}/exam.json', 'w', encoding='utf8'), ensure_ascii=False, indent=1)
-print('문항', len(qs), '정답', ''.join(e['answer'] for e in exs))
+print('문항', len(exs), '정답', ''.join(e['answer'] for e in exs if not e['no'].startswith('서답형')))
