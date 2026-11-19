@@ -1,13 +1,13 @@
 """문법 기출문제(품사·단어) 합본: 품사 문제(원본 PDF 그대로) → 품사 정답 및 해설 → 단어 문제(원본) → 단어 정답 및 해설.
 해설 쪽은 render.py(MODE=x, A3 문제 은행 양식) → print.js → A4로 줄임 → 쪽 상자. 쪽 번호는 각 부분 원본에 이어서.
-사용: python3 data/build.py && python3 make.py   (NODE_PATH에 playwright)"""
+사용: python3 fix_raw.py && python3 data/build.py && python3 make.py   (NODE_PATH에 playwright)"""
 import os, subprocess, tempfile
 from pypdf import PdfReader, PdfWriter, Transformation
 
 H = os.path.dirname(os.path.abspath(__file__))
 TITLE = '문법 기출문제(2021년~2025년 시행) 품사·단어'
 OUT = os.path.join(H, '..', TITLE + '.pdf')
-PARTS = [('품사', 'raw/1_품사.pdf', 'pum'), ('단어', 'raw/2_단어.pdf', 'dan')]
+PARTS = [('품사', 'raw/fixed/1_품사.pdf', 'pum'), ('단어', 'raw/fixed/2_단어.pdf', 'dan')]
 
 
 def run(*a, **kw):
