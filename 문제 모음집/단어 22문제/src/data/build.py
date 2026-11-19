@@ -113,7 +113,7 @@ QS.append(q(f'{B}의 ㉠에 해당하는 예로 적절하지 <u>않은</u> 것�
   ['일찍이', '마음껏', '가리개', '높이다', '슬기롭다']))
 
 # ───────── 6: 단어의 짜임과 품사 ─────────
-DIAG = ('<td class="diag"><span class="d1">품사</span><span class="d2">단어의 짜임</span></td>')
+DIAG = ('<td class="diag"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="0" y1="0" x2="100" y2="100" stroke="#111" stroke-width=".8" vector-effect="non-scaling-stroke"/></svg><span class="d1">품사</span><span class="d2">단어의 짜임</span></td>')
 T6 = ('<table class="ht grid"><tr>' + DIAG + '<td>명사</td><td>동사</td><td>형용사</td></tr>'
       '<tr><td>합성어</td><td>ⓐ 새것</td><td>ⓑ 휘감다</td><td>ⓒ 본받다</td></tr>'
       '<tr><td>파생어</td><td>ⓓ 먹이</td><td>들볶다</td><td>ⓔ 굳세다</td></tr></table>')

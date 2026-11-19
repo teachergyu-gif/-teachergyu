@@ -129,7 +129,7 @@ table.ht.grid{margin:1.5mm 0}
 table.ht.grid td{border:.8px solid #111;text-align:center;padding:.8mm 1.5mm}
 table.ht.grid td.l{text-align:left}
 table.ht.grid td.nb0{border:none;padding-right:2mm;width:5mm}
-table.ht.grid td.diag{position:relative;width:33%;height:12mm;background:linear-gradient(to top right,transparent calc(50% - .5px),#111 calc(50% - .5px),#111 calc(50% + .5px),transparent calc(50% + .5px))}
+table.ht.grid td.diag{position:relative;width:33%;height:12mm;padding:0}
 .diag .d1{position:absolute;right:2mm;top:.4mm;font-size:8.6pt}
 .diag .d2{position:absolute;left:1mm;bottom:.3mm;font-size:8.6pt;white-space:nowrap}
 .ctab-h table.ht.grid.c7{width:calc(100% - 4mm);font-size:10.5pt}
@@ -144,3 +144,4 @@ table.ht.g3 td{border:none;padding:.3mm 2mm;text-align:left}
 .inbox .ln{padding-left:0;text-indent:0}
 .inbox .ln.ind{text-indent:1em}
 .inbox .ln.c{text-align:center}
+.diag svg{position:absolute;left:0;top:0;width:100%;height:100%}
