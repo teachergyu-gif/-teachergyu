@@ -81,6 +81,9 @@ for blk in re.split(r'\n(?=\d+\. [①-⑤]\n)', '\n' + open(f'{H}/answers.txt', 
     m = re.match(r'^(\d+)\. ([①-⑤])$', head)
     exs.append({'no': m.group(1), 'answer': m.group(2), 'plain': '\n'.join(rest)})
 assert [e['no'] for e in exs] == [q['no'] for q in qs], 'answers mismatch'
-SETS = [{'rng': '', 'works': [], 'questions': qs}]
+NL = open(f'{H}/nonlit.txt', encoding='utf8').read().strip()   # 2024년 7월 고3 더프리미엄 모의고사 [4~7] 지문(4~6번 문항만 수록)
+k = next(i for i, x in enumerate(qs) if x['no'] == '32')
+SETS = [{'rng': '', 'works': [], 'questions': qs[:k]},
+        {'rng': '32～34', 'works': [{'label': '', 'lines': NL, 'author': ''}], 'questions': qs[k:]}]
 json.dump({'sets': SETS, 'ex': exs, 'issues': []}, open(f'{H}/exam.json', 'w', encoding='utf8'), ensure_ascii=False, indent=1)
 print('문항', len(qs), '정답', ''.join(e['answer'] for e in exs))
