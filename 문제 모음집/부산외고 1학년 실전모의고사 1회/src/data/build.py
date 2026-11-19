@@ -49,6 +49,9 @@ def parse_q(path):
         if re.fullmatch(r'<[^<>]{1,12}>', s) or s == '[상자]':
             box = {'title': '' if s == '[상자]' else s, 'parts': []}
             q['bogi'].append(box); continue
+        mi = re.match(r'^@I (\S+)$', s)   # 그림
+        if mi:
+            box['parts'].append(('T', f'<img src="file://{os.path.dirname(H)}/img/{mi.group(1)}" style="display:block;width:100%;margin:1mm 0">')); continue
         mt = re.match(r'^@T (\w+)$', s)
         if mt:
             if box is not None:
@@ -104,6 +107,7 @@ gq, ga = parse_q(f'{H}/questions.txt'), parse_a(f'{H}/answers.txt')
 k = next(i for i, x in enumerate(gq) if x['no'] == '32')
 GROUPS = [(parse_q(f'{H}/lit_q.txt'), parse_a(f'{H}/lit_a.txt'), LIT),
           (parse_q(f'{H}/lit2_q.txt'), parse_a(f'{H}/lit2_a.txt'), json.load(open(f'{H}/lit2.json', encoding='utf8'))),   # 「흰 바람벽이 있어」·「논두렁에 서서」·「수경당기」(원 세트 1~5번 중 1~4번)
+          (parse_q(f'{H}/hw_q.txt'), parse_a(f'{H}/hw_a.txt'), json.load(open(f'{H}/hw.json', encoding='utf8'))),   # 2027학년도 3월 고3 더프리미엄 화법과 작문 43~45
           (gq[:k], ga[:k], []),
           (gq[k:], ga[k:], [{'label': '', 'lines': NL, 'author': ''}])]
 SETS, exs, n = [], [], 0
