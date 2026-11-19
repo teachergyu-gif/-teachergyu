@@ -138,7 +138,7 @@ table.ht.g3 td{border:none;padding:.3mm 2mm;text-align:left}
 .recipe{border:1px solid #111;border-radius:4mm;padding:1.6mm 3.6mm 2mm;margin:2mm 4mm}
 .recipe .ln{padding-left:0;text-indent:0}
 .recipe .ln.c{text-align:center;font-size:10pt;margin-bottom:.5mm}
-.recipe .ln.rb{line-height:2.45;font-size:10pt}
+.recipe .ln.rb{line-height:1.7;font-size:10pt;margin-top:7.4mm}
 .recipe rt{font-size:8.2pt;line-height:1}
 .recipe .wr{border:1px solid #111;border-radius:3mm;padding:0 1.2mm}
 .inbox .ln{padding-left:0;text-indent:0}
@@ -147,3 +147,6 @@ table.ht.g3 td{border:none;padding:.3mm 2mm;text-align:left}
 .diag svg{position:absolute;left:0;top:0;width:100%;height:100%}
 .ch.dl{align-items:center;margin-top:1.4mm;margin-bottom:1.4mm}   /* 두 줄 선지: 번호를 괄호 가운데에 */
 .ch.dl .t{line-height:1.6}
+.fx{position:relative;display:inline-block;text-indent:0}
+.fx .fl{position:absolute;left:50%;bottom:92%;white-space:nowrap;font-size:8.8pt;line-height:1;padding-left:6.4mm;padding-bottom:3.4mm}
+.fx .fa{position:absolute;left:0;bottom:0;width:6.4mm;height:4.8mm}

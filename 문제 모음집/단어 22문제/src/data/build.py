@@ -52,8 +52,10 @@ def ex(lab, text, w='2.6em'):
 
 
 def fix(wrong, right):
-    """잘못 쓴 말(동그라미) 위에 고친 말"""
-    return f'<ruby><span class="wr">{wrong}</span><rt>{right}</rt></ruby>'
+    """잘못 쓴 말(동그라미)에서 오른쪽 위로 화살표를 그어 고친 말(원본 사진처럼)"""
+    arrow = ('<svg class="fa" viewBox="0 0 24 18"><path d="M2 17 Q4 6 21 5" fill="none" stroke="#111" stroke-width="1.1"/>'
+             '<path d="M16.5 1.8 L21.5 5 L16.8 8.4" fill="none" stroke="#111" stroke-width="1.1"/></svg>')
+    return f'<span class="fx"><span class="wr">{wrong}</span><span class="fl">{arrow}{right.replace(" ", "&nbsp;")}</span></span>'
 
 
 QS = []
