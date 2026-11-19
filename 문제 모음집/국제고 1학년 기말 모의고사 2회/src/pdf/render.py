@@ -159,7 +159,7 @@ def bogi(b):
             k = re.match(r'^(.*?)\s*[…‥.·]+\s*([ㄱ-ㅎ])$', body)   # 끝의 ‘……… ㄱ’ 표지: 점선은 빼고 오른쪽 끝에 따로
             if k:
                 body, lab = k.group(1), f'<span class="slab">{k.group(2)}</span>'
-            return f'<div class="bl bsp"><span class="spk">{esc(m.group(1))} :</span><span class="spt">{hbr(esc(body))}</span>{lab}</div>'
+            return f'<div class="bl bsp"><span class="spk">{esc(m.group(1))}:&nbsp;</span><span class="spt">{hbr(esc(body))}</span>{lab}</div>'
         return '<div class="bl' + kind(x) + '">' + hbr(esc(x)) + '</div>'
     body = ''.join(line(x) for x in b['text'].split('\n'))
     t = f'<div class="bt"><span>{esc(title)}</span></div>' if title else ''
