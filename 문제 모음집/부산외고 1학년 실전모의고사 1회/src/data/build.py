@@ -105,10 +105,12 @@ LIT = json.load(open(f'{H}/lit.json', encoding='utf8'))   # 「흥보전」·「
 NL = open(f'{H}/nonlit.txt', encoding='utf8').read().strip()   # 2024년 7월 고3 더프리미엄 모의고사 [4~7] 지문(4~6번 문항만 수록)
 gq, ga = parse_q(f'{H}/questions.txt'), parse_a(f'{H}/answers.txt')
 k = next(i for i, x in enumerate(gq) if x['no'] == '32')
+DEL = {13, 14, 15, 17, 19, 23, 24}   # 10~19번 삭제 뒤 번호 기준(그때 번호 N = gq[N])
+KEEP = [i for i in range(10, k) if i not in DEL]
 GROUPS = [(parse_q(f'{H}/lit_q.txt'), parse_a(f'{H}/lit_a.txt'), LIT),
           (parse_q(f'{H}/lit2_q.txt'), parse_a(f'{H}/lit2_a.txt'), json.load(open(f'{H}/lit2.json', encoding='utf8'))),   # 「흰 바람벽이 있어」·「논두렁에 서서」·「수경당기」(원 세트 1~5번 중 1~4번)
           (parse_q(f'{H}/hw_q.txt'), parse_a(f'{H}/hw_a.txt'), json.load(open(f'{H}/hw.json', encoding='utf8'))),   # 2027학년도 3월 고3 더프리미엄 화법과 작문 43~45
-          (gq[10:k], ga[10:k], []),   # 중세 문법 앞 10문항(10~19번) 삭제(사용자 지정)
+          ([gq[i] for i in KEEP], [ga[i] for i in KEEP], []),   # 중세 문법: 앞 10문항 삭제, 이어 당시 13·14·15·17·19·23·24번 삭제(사용자 지정)
           (gq[k:], ga[k:], [{'label': '', 'lines': NL, 'author': ''}])]
 SETS, exs, n = [], [], 0
 for qs, ea, works in GROUPS:
