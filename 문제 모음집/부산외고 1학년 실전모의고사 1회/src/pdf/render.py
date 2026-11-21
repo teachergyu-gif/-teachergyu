@@ -284,9 +284,10 @@ def main(data_json, out_html):
         body += ['<div class="u brk"></div>', '<div class="u extitle"><span>정답 및 해설</span></div>', qa]
         body += [explanation(k, e) for k, q, e in exs]
     YH = re.compile(r'[\uAC00-\uD7A3\u1100-\u11FF]*[\u1100-\u11FF\u3165-\u318E][\uAC00-\uD7A3\u1100-\u11FF]*')
-    body = [re.sub(r'(<[^>]*>)|([^<]+)', lambda m: m.group(1) or YH.sub(lambda k: '<span class="yh">' + k.group(0) + '</span>', m.group(2)), b) for b in body]   # 옛한글 낱말은 옛한글 글꼴로
+    body = [re.sub(r'(<[^>]*>)|([^<]+)', lambda m: m.group(1) or YH.sub(lambda k: '<span class="yh' + (' yi' if re.search('[\u114c\u11f0]', k.group(0)) else '') + '">' + k.group(0) + '</span>', m.group(2)), b) for b in body]   # 옛한글 낱말은 옛한글 글꼴로
     css = (open(f'{D}/exam.css').read() + open(f'{D}/mock.css').read()
            + f'@font-face{{font-family:"YetHangul";src:url("file://{D}/fonts/NanumMyeongjo-YetHangul.woff2") format("woff2")}}.yh{{font-family:"YetHangul","Noto Serif CJK KR",serif}}'
+           + '.yh.yi{font-family:"Noto Sans CJK KR",sans-serif;font-weight:350}'   # 옛이응(ᅌ·ᇰ)이 든 낱말: 명조 글꼴은 ㅇ과 구별되지 않아 꼭지가 뚜렷한 고딕으로
            + '.qtbl{margin:1.5mm 4mm}.qtbl table{border-collapse:collapse;width:100%;font-size:9.5pt}.qtbl td,.qtbl th{border:.8px solid #111;padding:1mm 1.2mm;text-align:center;height:6mm}.qtbl th{background:#eee;font-weight:700}'
            + '.bogi table.in{border-collapse:collapse;width:100%;margin:1.2mm 0;font-size:9.3pt}.bogi table.in td,.bogi table.in th{border:.8px solid #111;padding:.8mm 1mm;text-align:center}.bogi table.in th{background:#eee}')
     js = open(f'{D}/paginate.js').read()
