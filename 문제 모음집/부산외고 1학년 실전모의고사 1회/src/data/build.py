@@ -7,7 +7,21 @@
   ①~⑤                          선지
 해설 형식
   N. ③                          정답, 다음 줄부터 해설(‘[오답풀이]’ 포함)"""
-import json, os, re
+import json, os, re, unicodedata
+
+
+
+def yet(x):
+    """옛한글: 현대 음절 글자 뒤에 옛 자모가 붙은 것(조ᇰ, 뿌ᇙ 등)은 그 음절을 자모로 풀어 한 덩어리로 조합되게"""
+    if isinstance(x, str):
+        return re.sub(r'[가-힣](?=[\u1160-\u11ff\ud7b0-\ud7ff])', lambda m: unicodedata.normalize('NFD', m.group()), x)
+    if isinstance(x, list):
+        return [yet(v) for v in x]
+    if isinstance(x, tuple):
+        return tuple(yet(v) for v in x)
+    if isinstance(x, dict):
+        return {k: yet(v) for k, v in x.items()}
+    return x
 H = os.path.dirname(os.path.abspath(__file__))
 CIRC = '①②③④⑤'
 COLS = ['아음', '설음', '순음', '치음', '후음', '반설음', '반치음']
@@ -32,6 +46,7 @@ TABLES = {
     'MO': mo_empty('&lt;중세국어 단모음&gt;') + mo_empty('&lt;현대국어 단모음&gt;'),
     'SY': tbl([['', '허용되는 자음의 개수', '허용되는 자음의 종류'], ['초성 제약', '최대 1개', '‘ㅇ’을 제외한 18종류'], ['종성 제약', '최대 1개', '‘ㄱ, ㄴ, ㄷ, ㄹ, ㅁ, ㅂ, ㅇ’']], cls='in'),
     'DM': tbl([['', '전설 모음', '후설 평순 모음', '후설 원순 모음'], ['고모음', 'ㅣ', 'ㅡ', 'ㅜ'], ['중모음', '', 'ㅓ', 'ㅗ'], ['저모음', '', 'ㅏ', 'ㆍ']]),
+    'DMB': tbl([['', '전설 모음', '후설 평순 모음', '후설 원순 모음'], ['고모음', 'ㅣ', 'ㅡ', 'ㅜ'], ['중모음', '', 'ㅓ', 'ㅗ'], ['저모음', '', 'ㅏ', 'ㆍ']], cls='in'),   # 상자 안 표(테두리 있음)
 }
 
 def parse_q(path):
@@ -111,7 +126,7 @@ GROUPS = [(parse_q(f'{H}/lit_q.txt'), parse_a(f'{H}/lit_a.txt'), LIT),
           (parse_q(f'{H}/lit2_q.txt'), parse_a(f'{H}/lit2_a.txt'), json.load(open(f'{H}/lit2.json', encoding='utf8'))),   # 「흰 바람벽이 있어」·「논두렁에 서서」·「수경당기」(원 세트 1~5번 중 1~4번)
           (parse_q(f'{H}/lit3_q.txt'), parse_a(f'{H}/lit3_a.txt'), json.load(open(f'{H}/lit3.json', encoding='utf8'))),   # 「한거십팔곡」·「탄궁가」·「포화옥기」(더프21-8, 사용자 한글 파일 20쪽)
           (parse_q(f'{H}/hw_q.txt'), parse_a(f'{H}/hw_a.txt'), json.load(open(f'{H}/hw.json', encoding='utf8'))),   # 2027학년도 3월 고3 더프리미엄 화법과 작문 43~45
-          ([gq[i] for i in KEEP], [ga[i] for i in KEEP], []),   # 중세 문법: 앞 10문항 삭제, 이어 당시 13·14·15·17·19·23·24번 삭제(사용자 지정)
+          (yet(parse_q(f'{H}/gram_q.txt')), yet(parse_a(f'{H}/gram_a.txt')), []),   # 중세 문법: 기존 14문항을 새 9문항 + 서답형 2·3으로 교체(사용자 지정, 2026-11)
           (gq[k:], ga[k:], [{'label': '', 'lines': NL, 'author': ''}])]
 SETS, exs, n = [], [], 0
 for qs, ea, works in GROUPS:
