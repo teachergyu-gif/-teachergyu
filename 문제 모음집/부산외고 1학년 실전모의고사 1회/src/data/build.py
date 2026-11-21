@@ -109,6 +109,7 @@ DEL = {13, 14, 15, 17, 19, 23, 24}   # 10~19번 삭제 뒤 번호 기준(그때 
 KEEP = [i for i in range(10, k) if i not in DEL]
 GROUPS = [(parse_q(f'{H}/lit_q.txt'), parse_a(f'{H}/lit_a.txt'), LIT),
           (parse_q(f'{H}/lit2_q.txt'), parse_a(f'{H}/lit2_a.txt'), json.load(open(f'{H}/lit2.json', encoding='utf8'))),   # 「흰 바람벽이 있어」·「논두렁에 서서」·「수경당기」(원 세트 1~5번 중 1~4번)
+          (parse_q(f'{H}/lit3_q.txt'), parse_a(f'{H}/lit3_a.txt'), json.load(open(f'{H}/lit3.json', encoding='utf8'))),   # 「한거십팔곡」·「탄궁가」·「포화옥기」(더프21-8, 사용자 한글 파일 20쪽)
           (parse_q(f'{H}/hw_q.txt'), parse_a(f'{H}/hw_a.txt'), json.load(open(f'{H}/hw.json', encoding='utf8'))),   # 2027학년도 3월 고3 더프리미엄 화법과 작문 43~45
           ([gq[i] for i in KEEP], [ga[i] for i in KEEP], []),   # 중세 문법: 앞 10문항 삭제, 이어 당시 13·14·15·17·19·23·24번 삭제(사용자 지정)
           (gq[k:], ga[k:], [{'label': '', 'lines': NL, 'author': ''}])]
