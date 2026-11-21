@@ -109,7 +109,7 @@ def parse_a(path):
             if k:
                 e['answer'], e['tag'] = k.group(2), k.group(1)
             elif x.strip():
-                lines.append(re.sub(r'^\*\s*', '· ', x.strip()))
+                lines.append(re.sub(r'^\*\s*', '', x.strip()))   # 글머리 기호는 CSS(•)가 붙임
         e['plain'] = '\n'.join(lines)
         exs.append(e)
     return exs
