@@ -122,18 +122,22 @@ gq, ga = parse_q(f'{H}/questions.txt'), parse_a(f'{H}/answers.txt')
 k = next(i for i, x in enumerate(gq) if x['no'] == '32')
 DEL = {13, 14, 15, 17, 19, 23, 24}   # 10~19번 삭제 뒤 번호 기준(그때 번호 N = gq[N])
 KEEP = [i for i in range(10, k) if i not in DEL]
-GROUPS = [(parse_q(f'{H}/lit_q.txt'), parse_a(f'{H}/lit_a.txt'), LIT),
+# 배치(사용자 지정): 화법과 작문 → 문법 → 비문학 → 문학
+GROUPS = [(parse_q(f'{H}/hw_q.txt'), parse_a(f'{H}/hw_a.txt'), json.load(open(f'{H}/hw.json', encoding='utf8'))),   # 2027학년도 3월 고3 더프리미엄 화법과 작문 43~45
+          (yet(parse_q(f'{H}/gram_q.txt')), yet(parse_a(f'{H}/gram_a.txt')), []),   # 중세 문법: 기존 14문항을 새 9문항 + 서답형 2·3으로 교체(사용자 지정, 2026-11)
+          (gq[k:], ga[k:], [{'label': '', 'lines': NL, 'author': ''}]),
+          (parse_q(f'{H}/lit_q.txt'), parse_a(f'{H}/lit_a.txt'), LIT),
           (parse_q(f'{H}/lit2_q.txt'), parse_a(f'{H}/lit2_a.txt'), json.load(open(f'{H}/lit2.json', encoding='utf8'))),   # 「흰 바람벽이 있어」·「논두렁에 서서」·「수경당기」(원 세트 1~5번 중 1~4번)
           (parse_q(f'{H}/lit3_q.txt'), parse_a(f'{H}/lit3_a.txt'), json.load(open(f'{H}/lit3.json', encoding='utf8'))),   # 「한거십팔곡」·「탄궁가」·「포화옥기」(더프21-8, 사용자 한글 파일 20쪽)
-          (parse_q(f'{H}/hw_q.txt'), parse_a(f'{H}/hw_a.txt'), json.load(open(f'{H}/hw.json', encoding='utf8'))),   # 2027학년도 3월 고3 더프리미엄 화법과 작문 43~45
-          (yet(parse_q(f'{H}/gram_q.txt')), yet(parse_a(f'{H}/gram_a.txt')), []),   # 중세 문법: 기존 14문항을 새 9문항 + 서답형 2·3으로 교체(사용자 지정, 2026-11)
-          (gq[k:], ga[k:], [{'label': '', 'lines': NL, 'author': ''}])]
-SETS, exs, n = [], [], 0
+          ]
+SETS, exs, n, m = [], [], 0, 0
 for qs, ea, works in GROUPS:
     assert [e['no'] for e in ea] == [q['no'] for q in qs], 'answers mismatch'
     for q, e in zip(qs, ea):   # 객관식 번호는 앞에서부터 이어서 다시 매김
         if not q['no'].startswith('서답형'):
             n += 1; q['no'] = e['no'] = str(n)
+        else:   # 서답형 번호도 배치 순서대로 다시 매김
+            m += 1; q['no'] = e['no'] = f'서답형 {m}'
     mc = [q['no'] for q in qs if q['no'].isdigit()]
     sd = [q['no'] for q in qs if not q['no'].isdigit()]
     rng = (f'{mc[0]}～{mc[-1]}' if len(mc) > 1 else mc[0]) + (', ' + ', '.join(sd) if sd else '')
