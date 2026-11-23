@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 230" font-family="Noto Sans CJK KR, sans-serif">
+  <!-- 나선 은하의 회전 곡선: A(중력 법칙으로 계산), B(실제 관측) -->
+  <rect x="0" y="0" width="360" height="230" fill="#fff"/>
+  <!-- 축 -->
+  <line x1="50" y1="190" x2="340" y2="190" stroke="#111" stroke-width="1.4"/>
+  <line x1="50" y1="190" x2="50" y2="18" stroke="#111" stroke-width="1.4"/>
+  <path d="M340 190 l-7 -3.5 v7 z" fill="#111"/>
+  <path d="M50 18 l-3.5 7 h7 z" fill="#111"/>
+  <!-- 중심부 경계 -->
+  <line x1="108" y1="190" x2="108" y2="40" stroke="#777" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="79" y="205" font-size="11" text-anchor="middle" fill="#333">중심부</text>
+  <!-- 곡선 B(관측): 중심부에서 오르다가 밖에서 거의 일정 -->
+  <path d="M50 190 C 70 120, 92 80, 112 72 C 140 64, 200 66, 330 66" fill="none" stroke="#111" stroke-width="2"/>
+  <!-- 곡선 A(계산): 중심부에서 오르다가 밖에서 줄어듦 -->
+  <path d="M50 190 C 70 120, 92 80, 112 72 C 140 66, 170 100, 330 150" fill="none" stroke="#111" stroke-width="2" stroke-dasharray="7 4"/>
+  <text x="318" y="58" font-size="14" font-weight="700">B</text>
+  <text x="318" y="142" font-size="14" font-weight="700">A</text>
+  <!-- 축 이름 -->
+  <text x="34" y="105" font-size="12" text-anchor="middle" transform="rotate(-90 34 105)">별의 공전 속력</text>
+  <text x="250" y="210" font-size="12" text-anchor="middle">은하 중심으로부터의 거리</text>
+  <text x="44" y="204" font-size="11" text-anchor="middle">0</text>
+</svg>
