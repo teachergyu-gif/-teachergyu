@@ -16,7 +16,7 @@ except ImportError:
     KEEP_Q = set()
 
 CIRC = '①②③④⑤'
-HEAD = os.environ.get('HEAD', '국제고등학교 실전모의고사 2회')
+HEAD = os.environ.get('HEAD', '국제고 2학년 실전모의고사 2회')
 MODE = os.environ.get('MODE', '')   # q: 문제지, a: 해설지(맨 끝에 빠른 정답), 빈칸: 합본
 # (묶음 이름, '작가, 「작품」 단계', 데이터 폴더) — 난이도별 20문항(select.py가 만든 L1~L3), 탄궁가(TG, 해설 없음)
 WORKS = [('흰 바람벽 기본', '백석, ｢흰 바람벽이 있어｣ 기본', ['L1']),

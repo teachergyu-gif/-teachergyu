@@ -4,7 +4,7 @@ import os, sys, subprocess, tempfile
 from pypdf import PdfReader, PdfWriter, Transformation
 
 H = os.path.dirname(os.path.abspath(__file__))
-TITLE = '국제고등학교 실전모의고사 2회'
+TITLE = '국제고 2학년 실전모의고사 2회'
 FOOT = TITLE
 OUT = os.path.join(H, '..', TITLE + '.pdf')
 
