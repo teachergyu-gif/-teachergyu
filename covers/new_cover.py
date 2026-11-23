@@ -7,7 +7,8 @@ import os, subprocess, sys
 
 COV = os.path.dirname(os.path.abspath(__file__))
 R = os.path.dirname(COV)
-NM = "/tmp/claude-0/-home-user/7daa3587-3e11-50f3-879d-8fd5436a77fe/scratchpad/node_modules"
+import glob
+NM = os.environ.get("COVER_NM") or next(iter(sorted(glob.glob("/tmp/claude-0/*/7daa3587-3e11-50f3-879d-8fd5436a77fe/scratchpad/node_modules/@kfonts"), key=os.path.getmtime, reverse=True)), "/@kfonts").rsplit("/@kfonts", 1)[0]
 OLD_NM = "/tmp/claude-0/-home-user--teachergyu/ccaedf91-0008-5bf5-a455-13038ab5cfd7/scratchpad/node_modules"
 env = dict(os.environ, FONT_DIR=NM, NODE_PATH=NM)
 
