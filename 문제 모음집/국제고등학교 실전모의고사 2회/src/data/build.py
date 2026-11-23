@@ -95,7 +95,8 @@ def add_ctab(path, qs):
             continue
         rows = '<tr><td></td>' + ''.join(f'<td>{x}</td>' for x in h) + '</tr>'
         rows += ''.join(f'<tr><td>{CIRC[i]}</td>' + ''.join(f'<td>{x.strip()}</td>' for x in c.split('|')) + '</tr>' for i, c in enumerate(q['choices']))
-        q['ctab'] = f'<div class="ctabq"><table>{rows}</table></div>'
+        wide = any(len(x.strip()) > 8 for c in q['choices'] for x in c.split('|'))   # 긴 선지는 단 너비에 맞춰 줄바꿈
+        q['ctab'] = f'<div class="ctabq{" wide" if wide else ""}"><table>{rows}</table></div>'
     for q in qs:
         q.pop('_chead', None)
 
