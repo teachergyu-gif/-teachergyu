@@ -203,6 +203,7 @@ def question(n, q, key=None):
     ans = '' if q.get('choices') else f'<div class="ans" style="height:{ANSWER_LINES * 1.75 * 11.2}pt"></div>'
     close = ' data-close="1"' if key in CLOSE else ''
     if key: close += f' data-key="{key[0]}|{key[1]}"'
+    if key in SPLIT_CH: close += ' data-chall="1"'   # 단을 넘길 때 선지는 ①부터 모두 다음 단으로
     num = f'<span class="n sd">[{n}]</span>' if str(n).startswith('서답형') else f'<span class="n">{n}.</span>'
     pts = f' <span class="pt">[{q["points"]}점]</span>' if q.get('points') else ''
     return (f'<div class="u q{" sdq" if str(n).startswith("서답형") else ""}"{close}><div class="qh">{num}<span class="s">{esc(q["stem"])}{pts}</span></div>'

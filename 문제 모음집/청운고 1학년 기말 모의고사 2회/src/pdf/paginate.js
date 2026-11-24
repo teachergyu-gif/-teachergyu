@@ -141,6 +141,9 @@
       }
       moved.unshift(last); u.removeChild(last);
     }
+    if (u.dataset.chall && moved.length && moved[0].classList.contains('ch')) {   // 선지 일부만 남았으면 남은 선지도 함께 넘김
+      while (u.lastElementChild && u.lastElementChild.classList.contains('ch')) { const c = u.lastElementChild; u.removeChild(c); moved.unshift(c); }
+    }
     nextCol(); moved.forEach(m => w.appendChild(m)); col.appendChild(w);
   }
   function place(u) {
