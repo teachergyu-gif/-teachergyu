@@ -87,7 +87,7 @@ def passage(s, rng=''):
             cell = '<div class="ln sp"></div>' if l.strip() == '' else f'<div class="ln{pr if l.strip() != "(중략)" else " pr nd"}{fi}">{hbr(esc(l))}</div>'
             if re.fullmatch(r'\s*[.…·]*\s*[<〈(（\[]\s*중\s*략\s*[>〉)）\]]\s*[.…·]*\s*', l):   # (중략)·<중략>: 가운데 정렬
                 cell = f'<div class="ln mid">{esc(l.strip())}</div>'
-            if re.fullmatch(r'\s*[<〈(（]\s*제?\s*\d+\s*(?:수|장|연|곡)\s*[>〉)）]\s*', l):   # <1수>, <제19수> 같은 수 표시: 오른쪽 정렬
+            if re.fullmatch(r'\s*[<〈(（]\s*제?\s*\d+\s*(?:수|장|연|곡)\s*[>〉)）]\s*', l) or re.fullmatch(r'\s*<[^<>]{1,6}노래>\s*', l):   # <1수>, <제19수> 같은 수 표시: 오른쪽 정렬
                 cell = f'<div class="ln au">{esc(l.strip())}</div>'
             if group:
                 group[1].append(cell)
@@ -152,10 +152,11 @@ def bogi(b):
         keep = lambda h: re.sub(r'\(\s*[\u3000 ]+\s*\)', lambda m: '<span class="nb">' + m.group(0) + '</span>', h)   # 빈칸 ( )이 줄 끝에서 갈라지지 않게
         body = ''.join(f'<div class="bl bi cj"><span class="no">({k})</span> {keep(hbr(esc(t)))}</div>' for k, t in enumerate(items, 1))
         return f'<div class="bogi cond"><div class="bt"><span>{esc(title)}</span></div>{body}</div>'
-    ITEM = re.compile(r'^([ㄱ-ㅎ]\.|[㉠-㉭]|[㉮-㉻]|[ⓐ-ⓩ]|○|\(\S\))')
+    ITEM = re.compile(r'^([ㄱ-ㅎ]\.|[㉠-㉭]|[㉮-㉻]|[ⓐ-ⓩ]|○|\(\S\)(?=\s))')
     def kind(x):
         if re.match(r'^[—―]\s', x): return ' bau'   # ‘— 훈민정음 제자해’ 같은 출전 줄: 오른쪽 맞춤
-        if re.match(r'^[-―—]\s*\S', x) and re.search(r'[「『｢<]|, ', x): return ' bau'     # 작가 줄(‘- 백석, 「…」’): 오른쪽 맞춤
+        if re.match(r'^[-―—]\s*\S', x) and re.search(r'[「『｢<]|, ', x): return ' bau'
+        if re.fullmatch(r'-\s.*\s-', x): return ' bau'   # ‘- 작자 미상의 사설시조 -’ 같은 출전 줄     # 작가 줄(‘- 백석, 「…」’): 오른쪽 맞춤
         if re.match(r'^[-―—]\s*\S', x): return ' bi'      # ‘- …할 것.’ 같은 조건 항목: 왼쪽 맞춤·내어쓰기
         if re.match(r'^\*', x): return ' bnote'       # 주석: 작은 글씨
         return ' bi' if ITEM.match(x) else ''
