@@ -131,8 +131,12 @@ for a, b, works, head in PSETS:
     rng = f'{a}～{b}' + (', ' + ', '.join(sd) if sd else '')
     SETS.append({'rng': rng, 'works': works, 'questions': qs, **({'head': head} if head else {})})
     used |= {q['no'] for q in qs}
-rest = [q for q in QS if q['no'] not in used]   # 지문 없는 단독 문항(있으면)
-if rest:
-    SETS.append({'rng': ', '.join(q['no'] for q in rest), 'works': [], 'questions': rest})
+run = []   # 지문 없는 단독 문항: 이어지는 번호끼리 묶어 문항 순서대로 끼워 넣음
+for q in QS + [None]:
+    if q is not None and q['no'] not in used:
+        run.append(q); continue
+    if run:
+        SETS.append({'rng': ', '.join(x['no'] for x in run), 'works': [], 'questions': run}); run = []
+SETS.sort(key=lambda s: int(s['questions'][0]['no']) if s['questions'][0]['no'].isdigit() else 999)
 json.dump({'sets': SETS, 'ex': EX, 'issues': []}, open(f'{H}/exam.json', 'w', encoding='utf8'), ensure_ascii=False, indent=1)
 print('문항', len(EX), '정답', ''.join(e['answer'] for e in EX if e['answer']))
