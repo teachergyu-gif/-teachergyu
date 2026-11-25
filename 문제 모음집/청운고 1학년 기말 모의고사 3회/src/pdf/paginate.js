@@ -50,7 +50,11 @@
     };
     let [w, b] = make(true);
     let i = 0;
-    for (; i < Math.min(3, lines.length); i++) b.appendChild(lines[i]);
+    for (; i < Math.min(3, lines.length); i++) {
+      b.appendChild(lines[i]);
+      // 단 첫머리에서 시작한 지문: 산문 문단이 길어 넘치면 여기서 멈추고 아래에서 어절 단위로 나눔
+      if (i > 0 && col.children.length === 1 && over()) { b.removeChild(lines[i]); break; }
+    }
     if (over() && col.children.length > 1) { w.remove(); nextCol(); col.appendChild(w); }
     while (i < lines.length) {
       const l = lines[i];
