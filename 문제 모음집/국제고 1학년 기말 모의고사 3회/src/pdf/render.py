@@ -16,7 +16,7 @@ except ImportError:
     KEEP_Q = set()
 
 CIRC = '①②③④⑤'
-HEAD = os.environ.get('HEAD', '국제고 1학년 2학기 기말고사 대비 모의고사 2회')
+HEAD = os.environ.get('HEAD', '국제고 1학년 2학기 기말고사 대비 모의고사 3회')
 MODE = os.environ.get('MODE', '')   # q: 문제지, a: 해설지(맨 끝에 빠른 정답), 빈칸: 합본
 # (묶음 이름, '작가, 「작품」 단계', 데이터 폴더) — 난이도별 20문항(select.py가 만든 L1~L3), 탄궁가(TG, 해설 없음)
 WORKS = [('흰 바람벽 기본', '백석, ｢흰 바람벽이 있어｣ 기본', ['L1']),
@@ -51,6 +51,22 @@ def hbr(h):
     return re.sub(r'([가-힣])\((<span class="hj">)', r'\1</span><wbr><span class="nb">(\2', h)
 
 
+def imgsize(name):
+    """그림 크기(가로·세로 비율)를 미리 적어 둠: 그림을 읽기 전에 쪽 나눔이 끝나 단이 넘치는 것 방지"""
+    f = f'{J}/img/{name}'
+    try:
+        if name.endswith('.svg'):
+            t = open(f, encoding='utf8').read(2000)
+            m = re.search(r'viewBox="[\d.\s-]+?\s([\d.]+)\s+([\d.]+)"', t)
+            w, h = float(m.group(1)), float(m.group(2))
+        else:
+            from PIL import Image
+            w, h = Image.open(f).size
+        return f' width="{w:g}" height="{h:g}"'
+    except Exception:
+        return ''
+
+
 def passage(s, rng=''):
     out = []
     for wi, w in enumerate(s['works']):
@@ -62,6 +78,10 @@ def passage(s, rng=''):
         # 산문(설명문·수필 등, 한 문단이 아주 긴 글): 문단 첫 줄 들여쓰기(시처럼 내어쓰지 않음)
         pr = ' pr' if (max(len(re.sub(r'<[^>]+>', '', x)) for x in w['lines'].split('\n')) > 100 or '나의 꿈' in (w.get('author') or '')) else ''   # 「나의 꿈」: 산문시
         for l in re.sub(r'(?<=\S)\s+([<(]중략[>)])\s*(?=\n|$)', r'\n\1', w['lines']).split('\n'):   # 줄 끝에 붙은 <중략>은 따로 한 줄
+            mi = re.match(r'^@I (\S+)(?: (.*))?$', l)   # 지문 속 그림(img/ 파일), 뒤에 캡션
+            if mi:
+                cap = f'<div class="figcap">{esc(mi.group(2))}</div>' if mi.group(2) else ''
+                out.append(f'<div class="ln fig"><img src="file://{J}/img/{mi.group(1)}"{imgsize(mi.group(1))}>{cap}</div>'); continue
             m = re.match(r'^\{([^{}/]+)\}', l)
             if m:
                 group = [m.group(1), []]; l = l[m.end():]
@@ -181,7 +201,7 @@ def question(n, q, key=None):
             return f'<span class="t">{esc(t)}</span>'
         au = re.sub(r'^-\s*', '- ', m.group(2)).replace('<', '「').replace('>', '」')
         return f'<span class="t"><span class="ct">{esc(m.group(1))}</span><span class="cau">{esc(au)}</span></span>'
-    ch = ''.join(f'<div class="ch"><span class="c">{CIRC[i]}</span>{chtext(t)}</div>' for i, t in enumerate(q.get('choices') or []))
+    ch = q['ctab'] if q.get('ctab') else ''.join(f'<div class="ch"><span class="c">{CIRC[i]}</span>{chtext(t)}</div>' for i, t in enumerate(q.get('choices') or []))
     ans = '' if q.get('choices') else f'<div class="ans" style="height:{ANSWER_LINES * 1.75 * 11.2}pt"></div>'
     close = ' data-close="1"' if key in CLOSE else ''
     if key: close += f' data-key="{key[0]}|{key[1]}"'
@@ -216,7 +236,7 @@ def explanation(n, e):
             return items(t.strip())
         return f'<div class="ep">{esc(t)}</div>'
     if e.get('plain'):
-        out += [(f'<div class="ep wr">{p.strip()}</div>' if p.strip() in ('[오답풀이]', '[채점 기준]') else
+        out += [(f'<div class="ep wr">{p.strip()}</div>' if p.strip() in ('[오답풀이]', '[채점 기준]', '[채점 요소]') else
                  f'<div class="ep{" gn" if p.startswith("※") else " gc"}">{esc(p.strip())}</div>' if not p.startswith('[') else hang(p)) for p in e['plain'].split('\n') if p.strip()]
     else:
         if e.get('correct'):

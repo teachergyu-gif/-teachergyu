@@ -103,6 +103,9 @@
           if (t > 0 && rest < lh * 2.6) {
             kids.slice(t).forEach(k => b.removeChild(k)); i -= kids.length - t; } }
         while (b.lastChild && b.lastChild.classList.contains('sp')) b.removeChild(b.lastChild);
+        // 3회: 단 끝에 굵은 소제목 줄(‘ⓑ로젠버그 부부를 옹호한 입장’ 등)만 남으면 다음 단으로 함께 넘김
+        { const lt = b.lastElementChild;
+          if (lt && b.children.length > 1 && lt.querySelector('b') && lt.textContent.trim().length < 40 && lt.textContent.trim() === lt.querySelector('b').textContent.trim()) { b.removeChild(lt); i--; } }
         b.classList.add('open');
         nextCol();
         [w, b] = make(false);
