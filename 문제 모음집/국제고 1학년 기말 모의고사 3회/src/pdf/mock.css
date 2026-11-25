@@ -1,0 +1,6 @@
+/* 모의고사 전용 */
+.qh .pt{font-weight:400;white-space:nowrap}
+.qh .n.sd{font-family:"Noto Serif CJK KR",serif;font-weight:700;font-size:11.2pt;white-space:nowrap}
+.ep.gc{padding-left:1em;text-indent:-1em}
+.ep.gc:before{content:"• "}
+.nw{white-space:nowrap}
