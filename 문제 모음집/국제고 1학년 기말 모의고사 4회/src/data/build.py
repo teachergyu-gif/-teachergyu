@@ -232,6 +232,8 @@ S8 = nonlit(gk('B', 1), '24～26')
 assert not re.search(SYM + '|<u>', S8['works'][0]['lines'])
 # 27~29, 서답형 3: 05 지문(2회 24~27번) — ⓐ 삭제, (나)의 ⓑ만 유지, (가)에 빈칸 ㉮~㉰
 S9 = nonlit(gk('C', 0), '27～29, 서답형 3')
+for w in S9['works']:
+    w['lines'] = w['lines'].replace('(Afred Dreyfus)', '(Alfred Dreyfus)')   # 원문 오타
 wa, wb = S9['works'][0], S9['works'][1]
 wa['lines'] = nosym(wa['lines'])
 assert 'ⓑ<u>사람들</u>' in wb['lines']

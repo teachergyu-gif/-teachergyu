@@ -84,6 +84,13 @@
         // 산문 문단: 단 끝까지 채우고 남는 말은 다음 단으로(문단을 어절 단위로 나눔)
         const rest = l.cloneNode(false); rest.classList.add('cont');
         while (over() && l.lastChild) rest.insertBefore(l.lastChild, rest.firstChild);
+        // 밑줄(<u>)처럼 여러 어절을 품은 요소가 통째로 넘어가 앞부분 마지막 줄이 짧아지면: 그 요소를 어절 단위로 나눠 앞부분은 이 단에 남김
+        { const x = rest.firstChild;
+          if (x && x.nodeType === 1 && x.querySelectorAll('.w').length > 1) {
+            const xa = x.cloneNode(false); l.appendChild(xa);
+            while (x.firstChild) { xa.appendChild(x.firstChild); if (over()) { x.insertBefore(xa.lastChild, x.firstChild); break; } }
+            if (!xa.textContent.trim()) { while (xa.lastChild) x.insertBefore(xa.lastChild, x.firstChild); l.removeChild(xa); }
+          } }
         // 단 끝에 기호(㉡ 등)나 빈칸만 남지 않게 함께 넘김
         while (l.lastChild && /^[\s\u00a0]*[㉠-㉭㉮-㉻ⓐ-ⓩⒶ-Ⓩ]?[\s\u00a0]*$/.test(l.lastChild.textContent)) rest.insertBefore(l.lastChild, rest.firstChild);
         if (l.textContent.trim() && rest.textContent.trim()) {
