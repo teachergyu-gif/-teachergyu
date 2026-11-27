@@ -1,0 +1,4 @@
+Q_BREAK = {}
+SET_BREAK = {}
+CLOSE = set()
+ANSWER_LINES = 8
