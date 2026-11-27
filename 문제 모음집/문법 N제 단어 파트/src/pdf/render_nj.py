@@ -60,8 +60,9 @@ def explanation(q, e):
     hang = lambda k, t: f'<div class="ep hang"><span class="c">{k}</span><span>{esc(t)}</span></div>'
     out = [f'<div class="njh"><span class="no">{qno(q):02d}</span><span class="an">답 {esc(e["answer"])}</span>'
            + (f'<span style="margin-left:auto;font-size:8.5pt;color:#6B7785;font-family:Noto Sans CJK KR,sans-serif">{esc(e["src"])}</span>' if e.get('src') else '') + '</div>',
-           '<div class="njl ok"><span>이게 정답!</span></div>', f'<div class="ep">{esc(e["correct"])}</div>',
-           '<div class="njl no"><span>왜 답이 아니지?</span></div>']
+           '<div class="njl ok"><span>이게 정답!</span></div>'] + [f'<div class="ep">{esc(p)}</div>' for p in e['correct'].split('\n') if p.strip()]
+    if e['wrong']:   # 원본 해설에 오답 풀이가 없는 문항은 제목도 넣지 않음
+        out.append('<div class="njl no"><span>왜 답이 아니지?</span></div>')
     out += [hang(k, t) for k, t in e['wrong']]
     return '<div class="u ex nj">' + ''.join(out) + '</div>'
 
