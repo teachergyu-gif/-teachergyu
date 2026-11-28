@@ -6,7 +6,7 @@ data/*_ppt.txt(PPT 내용을 그대로 옮긴 것) → HTML → Chromium 인쇄 
   @meta key 값 / @passage 지문(새 쪽) / @slide 소주제(제목 줄 '지문 | 소주제') / @sum ▶ 한 줄 요약 / @info ▶ 안내
   @h 소제목('(가) …'는 큰 제목, '★ …'는 별 제목) / - 항목, '  - ' 하위 항목 / | 표 |(첫 행 = 머리)
   @col … @col …(좌우 비교 상자, ↔) / @steps … @endsteps('N) 내용' 단계 상자) / @box 제목 … @endbox
-  @img 파일 [너비%] / @imgs 파일 파일 …(2열 배치) / **굵게** / ' // ' 줄 바꿈
+  @newpage(다음 @slide를 새 쪽에서 시작) / @img 파일 [너비%] / @imgs 파일 파일 …(2열 배치) / **굵게** / ' // ' 줄 바꿈
 """
 import os, re, sys, json, base64, tempfile
 from pypdf import PdfReader, PdfWriter
@@ -20,7 +20,7 @@ HL = '#FFE780'       # 형광 밑줄(흑백 인쇄 시 옅은 회색)
 
 def parse(path):
     meta, psgs = {}, []
-    tgt = None; mode = None; box = None
+    tgt = None; mode = None; box = None; newpage = False
     for raw in open(path, encoding='utf8').read().split('\n'):
         line = raw.rstrip()
         if not line.strip():
@@ -29,8 +29,10 @@ def parse(path):
             _, k, v = line.split(' ', 2); meta[k] = v; continue
         if line.startswith('@passage '):
             psgs.append({'title': line[9:].strip(), 'slides': []}); continue
+        if line.strip() == '@newpage':
+            newpage = True; continue
         if line.startswith('@slide '):
-            sl = {'sub': line[7:].strip(), 'blocks': []}; psgs[-1]['slides'].append(sl); tgt = sl['blocks']; mode = None; continue
+            sl = {'sub': line[7:].strip(), 'blocks': [], 'newpage': newpage}; newpage = False; psgs[-1]['slides'].append(sl); tgt = sl['blocks']; mode = None; continue
         root = psgs[-1]['slides'][-1]['blocks']
         if line == '@steps':
             root.append({'type': 'steps', 'items': []}); mode = 'steps'; continue
@@ -161,6 +163,7 @@ body{{font-family:{BODY_FONT};font-size:{SIZE["body"]}pt;line-height:{LINE}%;col
 .cover .ac{{margin-top:auto;font-size:13pt;font-weight:700;letter-spacing:.5pt}}
 .sl{{margin:0 0 2mm}}
 .sl+.sl{{margin-top:7mm}}
+.sl.np{{break-before:page;margin-top:0}}
 .bar{{font-family:{HEAD_FONT};font-size:12.5pt;font-weight:800;line-height:1.4;padding:0 0 1.6mm;margin:0 0 3mm;border-bottom:1.3pt solid #595959;break-after:avoid;break-inside:avoid;word-break:keep-all}}
 .bar .ps{{color:#000}}
 .bar .sep{{color:#8c8c8c;font-weight:400;margin:0 2mm}}
@@ -216,7 +219,7 @@ def build_html(meta, psgs):
         s = ''
         for k, sl in enumerate(p['slides']):
             bar = f'<div class="bar"><span class="ps">{esc(p["title"])}</span><span class="sep">|</span><span class="sb">{esc(sl["sub"])}</span></div>'
-            s += f'<div class="sl{" first" if k == 0 else ""}">{bar}{blocks_html(sl["blocks"])}</div>'
+            s += f'<div class="sl{" first" if k == 0 else ""}{" np" if sl.get("newpage") else ""}">{bar}{blocks_html(sl["blocks"])}</div>'
         body.append(f'<section class="pg">{s}</section>')
     return f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>{"".join(body)}</body></html>'
 
@@ -383,6 +386,7 @@ def make_docx(meta, psgs, out_docx):
         d.add_paragraph().add_run().add_break(WD_BREAK.PAGE)
         for k, sl in enumerate(p['slides']):
             q = d.add_paragraph(); q.paragraph_format.keep_with_next = True
+            if sl.get('newpage'): q.paragraph_format.page_break_before = True
             q.paragraph_format.space_before = Pt(0 if k == 0 else 14); q.paragraph_format.space_after = Pt(6)
             sz = SIZE['title'] if k == 0 else 12.5
             font(q.add_run(p['title']), HF, sz, True); font(q.add_run('  |  '), HF, sz)

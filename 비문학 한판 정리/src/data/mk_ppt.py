@@ -29,6 +29,7 @@ if which == 'A':
     t = sub(t, '@slide 가상 공간과 인터넷 ID\n@h 1. 자기표현과 가상 공간\n', '@slide 가상 공간과 인터넷 ID\n')
     t = sub(t, '제3자의 인식 여부는 책임의 . 근거가', '제3자의 인식 여부는 책임의 근거가')
     t = sub(t, '@img imgw/s10_그림8.png', '@img imgw/s10_그림8.png 50')
+    t = sub(t, '@slide 추천·보증 광고', '@newpage\n@slide 추천·보증 광고')   # 사용자 요청: 다음 쪽으로
 else:
     head = ('@meta school 부산국제고 1학년\n@meta title 김T 통합 교재 비문학 한판 정리\n'
             '@meta exam 2026년 2학기 기말고사 대비\n@meta cover 김T 통합 교재|비문학 한판 정리\n'
