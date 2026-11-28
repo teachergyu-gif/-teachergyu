@@ -24,12 +24,14 @@ if which == 'A':
     t = sub(t, '@slide 재판매 가격 유지 행위 (1)', '@slide 재판매 가격 유지 행위')
     t = sub(t, '@slide 재판매 가격 유지 행위 (2)\n@h 1. 재판매 가격 유지 행위 (공정거래법, 원칙적 금지)\n', '')
     t = sub(t, '# --- slide 27\n@h 2. 새 블록이 연결되는 과정\n@img imgw/s27_그림30.png\n@img imgw/s27_그림28.png\n@img imgw/s27_그림26.png\n@img imgw/s27_그림32.png',
-            '@imgs imgw/s27_그림26.png imgw/s27_그림28.png imgw/s27_그림30.png imgw/s27_그림32.png')
+            '@break\n@imgs imgw/s27_그림26.png imgw/s27_그림28.png imgw/s27_그림30.png imgw/s27_그림32.png')
     t = sub(t, '@slide 정신분석학: 카메라 시점 동일시\n@h 2. 동일시의 종류\n', '@slide 정신분석학: 카메라 시점 동일시\n')
     t = sub(t, '@slide 가상 공간과 인터넷 ID\n@h 1. 자기표현과 가상 공간\n', '@slide 가상 공간과 인터넷 ID\n')
     t = sub(t, '제3자의 인식 여부는 책임의 . 근거가', '제3자의 인식 여부는 책임의 근거가')
     t = sub(t, '@img imgw/s10_그림8.png', '@img imgw/s10_그림8.png 50')
     t = sub(t, '@slide 추천·보증 광고', '@newpage\n@slide 추천·보증 광고')   # 사용자 요청: 다음 쪽으로
+    t = sub(t, '@slide 무결성\n', '@newpage\n@slide 무결성\n')   # 비교 상자가 제목과 떨어지지 않게
+    t = sub(t, '@slide 바쟁: 높이 평가한 것', '@newpage\n@slide 바쟁: 높이 평가한 것')   # 사용자 요청
 else:
     head = ('@meta school 부산국제고 1학년\n@meta title 김T 통합 교재 비문학 한판 정리\n'
             '@meta exam 2026년 2학기 기말고사 대비\n@meta cover 김T 통합 교재|비문학 한판 정리\n'

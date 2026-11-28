@@ -6,7 +6,7 @@ data/*_ppt.txt(PPT 내용을 그대로 옮긴 것) → HTML → Chromium 인쇄 
   @meta key 값 / @passage 지문(새 쪽) / @slide 소주제(제목 줄 '지문 | 소주제') / @sum ▶ 한 줄 요약 / @info ▶ 안내
   @h 소제목('(가) …'는 큰 제목, '★ …'는 별 제목) / - 항목, '  - ' 하위 항목 / | 표 |(첫 행 = 머리)
   @col … @col …(좌우 비교 상자, ↔) / @steps … @endsteps('N) 내용' 단계 상자) / @box 제목 … @endbox
-  @newpage(다음 @slide를 새 쪽에서 시작) / @img 파일 [너비%] / @imgs 파일 파일 …(2열 배치) / **굵게** / ' // ' 줄 바꿈
+  @newpage(다음 @slide를 새 쪽에서 시작) / @break(이 자리에서 쪽 넘김) / @img 파일 [너비%] / @imgs 파일 파일 …(2열 배치) / **굵게** / ' // ' 줄 바꿈
 """
 import os, re, sys, json, base64, tempfile
 from pypdf import PdfReader, PdfWriter
@@ -34,6 +34,8 @@ def parse(path):
         if line.startswith('@slide '):
             sl = {'sub': line[7:].strip(), 'blocks': [], 'newpage': newpage}; newpage = False; psgs[-1]['slides'].append(sl); tgt = sl['blocks']; mode = None; continue
         root = psgs[-1]['slides'][-1]['blocks']
+        if line == '@break':
+            root.append({'type': 'brk'}); continue
         if line == '@steps':
             root.append({'type': 'steps', 'items': []}); mode = 'steps'; continue
         if line == '@endsteps':
@@ -142,6 +144,8 @@ def blocks_html(bl):
             out.append(f'<div class="pair">{cols[0]}<div class="vs">↔</div>{cols[1]}</div>')
         elif t == 'box':
             out.append(f'<div class="box"><div class="bt">{esc(b["title"])}</div>{blocks_html(b["blocks"])}</div>')
+        elif t == 'brk':
+            out.append('<div class="brk"></div>')
         elif t == 'imgs':
             if len(b['files']) == 1:
                 out.append(f'<div class="fig"><img src="{img_uri(b["files"][0])}" style="width:{b["w"]}%"></div>')
@@ -204,7 +208,8 @@ table.t tr{{break-inside:avoid}}
 .box .bt{{font-family:{HEAD_FONT};font-weight:800;font-size:{SIZE["sub"]}pt;margin:0 0 2mm}}
 .fig{{text-align:center;margin:2mm 0 3mm;break-inside:avoid}}
 .fig img{{border:.6pt solid #bbb}}
-.fig.g2{{display:grid;grid-template-columns:1fr 1fr;gap:3mm;break-inside:auto}}
+.fig.g2{{display:grid;grid-template-columns:1fr 1fr;gap:3mm;break-inside:avoid}}
+.brk{{break-before:page;height:0}}
 .fig.g2 img{{break-inside:avoid}}
 .fig.g2 img{{width:100%}}
 '''
@@ -363,6 +368,8 @@ def make_docx(meta, psgs, out_docx):
                 _, cell = cellbox(c); font(cell.paragraphs[0].add_run(b['title']), HF, SIZE['sub'], True)
                 cell.paragraphs[0].paragraph_format.keep_with_next = True
                 blocks(cell, b['blocks']); c.add_paragraph()
+            elif t == 'brk':
+                c.add_paragraph().add_run().add_break(WD_BREAK.PAGE)
             elif t == 'imgs':
                 if len(b['files']) == 1:
                     p = c.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
