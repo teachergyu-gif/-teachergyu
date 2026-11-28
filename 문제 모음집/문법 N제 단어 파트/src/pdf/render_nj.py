@@ -8,7 +8,7 @@ sys.path.insert(0, J)
 import render
 from render import esc, hbr, bogi, CIRC
 
-BOOK = '청운고 2학년 문법 N제 단어 파트'
+BOOK = '청운고 1학년 문법 N제 단어 파트'
 
 
 OFFSET = 34   # 원본 35~39번 → 교재 1~5번

@@ -6,8 +6,8 @@ from pypdf import PdfReader, PdfWriter, Transformation
 H = os.path.dirname(os.path.abspath(__file__))
 DATA = H + '/data'
 OUTDIR = os.path.join(H, '..')
-NAME = '청운고 2학년 문법 N제 단어 파트'
-PHRASE = '리치아카데미 | 청운고 2학년'
+NAME = '청운고 1학년 문법 N제 단어 파트'
+PHRASE = '리치아카데미 | 청운고 1학년'
 
 
 def run(*a, **kw):
